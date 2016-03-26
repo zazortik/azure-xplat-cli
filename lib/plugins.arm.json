@@ -46632,6 +46632,2175 @@
             }
           }
         },
+        "application-gateway": {
+          "name": "application-gateway",
+          "description": "Commands to manage application gateways",
+          "fullName": "network application-gateway",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create an application gateway",
+              "fullName": "network application-gateway create",
+              "usage": "[options] <resource-group> <name> <location>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location"
+                },
+                {
+                  "flags": "-e, --vnet-name <vnet-name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--vnet-name",
+                  "description": "the name of the virtual network application gateway should be deployed in"
+                },
+                {
+                  "flags": "-m, --subnet-name <subnet-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--subnet-name",
+                  "description": "the name of subnet in the virtual network identified by --vnet-name"
+                },
+                {
+                  "flags": "-d, --subnet-id <subnet-id>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--subnet-id",
+                  "description": "the subnet identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/VirtualNetworks/<vnet-name>/subnets/<subnet-name>"
+                },
+                {
+                  "flags": "-y, --cert-file <cert-file>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-y",
+                  "long": "--cert-file",
+                  "description": "the path to the certificate"
+                },
+                {
+                  "flags": "-x, --cert-password <cert-password>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-x",
+                  "long": "--cert-password",
+                  "description": "the certificate password"
+                },
+                {
+                  "flags": "-r, --servers <servers>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--servers",
+                  "description": "comma separated list of IP addresses or DNS names corresponding to backend servers"
+                },
+                {
+                  "flags": "-i, --http-settings-protocol <http-settings-protocol>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--http-settings-protocol",
+                  "description": "the HTTP settings protocol, valid values are [http]"
+                },
+                {
+                  "flags": "-o, --http-settings-port <http-settings-port>",
+                  "required": -26,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--http-settings-port",
+                  "description": "the HTTP settings port, valid range is [0-65535]"
+                },
+                {
+                  "flags": "-f, --http-settings-cookie-based-affinity <http-settings-cookie-based-affinity>",
+                  "required": -43,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--http-settings-cookie-based-affinity",
+                  "description": "Enable or disable HTTP settings cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is \"Disabled\""
+                },
+                {
+                  "flags": "-j, --frontend-port <frontend-port>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-j",
+                  "long": "--frontend-port",
+                  "description": "the frontend port value, valid range is [0-65535]"
+                },
+                {
+                  "flags": "-k, --public-ip-name <public-ip-name>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--public-ip-name",
+                  "description": "the name of the public ip"
+                },
+                {
+                  "flags": "-p, --public-ip-id <public-ip-id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--public-ip-id",
+                  "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                },
+                {
+                  "flags": "-b, --http-listener-protocol <http-listener-protocol>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--http-listener-protocol",
+                  "description": "the HTTP listener protocol, valid values are [http,https]"
+                },
+                {
+                  "flags": "-w, --routing-rule-type <routing-rule-type>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--routing-rule-type",
+                  "description": "the request routing rule type, default is \"Basic\""
+                },
+                {
+                  "flags": "-a, --sku-name <sku-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--sku-name",
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]. Default values is \"Standard_Medium\""
+                },
+                {
+                  "flags": "-u, --sku-tier <sku-tier>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--sku-tier",
+                  "description": "the sku tier, valid values are [undefined]. Default values is \"Standard\""
+                },
+                {
+                  "flags": "-z, --capacity <capacity>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--capacity",
+                  "description": "application gateway instance count in range [2,10]. Default value is 2."
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set an application gateway",
+              "fullName": "network application-gateway set",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-a, --sku-name <sku-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--sku-name",
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]"
+                },
+                {
+                  "flags": "-u, --sku-tier <sku-tier>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--sku-tier",
+                  "description": "the sku tier, valid values are [Standard]"
+                },
+                {
+                  "flags": "-z, --capacity <capacity>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--capacity",
+                  "description": "application gateway instance count in range [2,10]"
+                },
+                {
+                  "flags": "-t, --tags [tags]",
+                  "required": 0,
+                  "optional": -12,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List resource group application gateways",
+              "fullName": "network application-gateway list",
+              "usage": "[options]",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show application gateway",
+              "fullName": "network application-gateway show",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete application gateway",
+              "fullName": "network application-gateway delete",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "start",
+              "description": "Start application gateway",
+              "fullName": "network application-gateway start",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "stop",
+              "description": "Stop application gateway",
+              "fullName": "network application-gateway stop",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the application gateway"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "ssl-cert": {
+              "name": "ssl-cert",
+              "description": "Commands to manage application gateway SSL certificates",
+              "fullName": "network application-gateway ssl-cert",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add application gateway SSL certificate",
+                  "fullName": "network application-gateway ssl-cert add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-c, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--name",
+                      "description": "the name of the certificate"
+                    },
+                    {
+                      "flags": "-f, --cert-file <cert-file>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--cert-file",
+                      "description": "the full path to the certificate in pfx format"
+                    },
+                    {
+                      "flags": "-p, --password <password>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--password",
+                      "description": "the certificate password"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove application gateway SSL certificate",
+                  "fullName": "network application-gateway ssl-cert remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-c, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--name",
+                      "description": "the name of the certificate"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "frontend-ip": {
+              "name": "frontend-ip",
+              "description": "Commands to manage application gateway frontend ips",
+              "fullName": "network application-gateway frontend-ip",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a frontend ip configuration to an application gateway",
+                  "fullName": "network application-gateway frontend-ip add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend IP address name"
+                    },
+                    {
+                      "flags": "-e, --vnet-name <vnet-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--vnet-name",
+                      "description": "the name of the virtual network"
+                    },
+                    {
+                      "flags": "-u, --subnet-name <subnet-name>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--subnet-name",
+                      "description": "the name of the subnet"
+                    },
+                    {
+                      "flags": "-i, --subnet-id <subnet-id>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--subnet-id",
+                      "description": "the id of the subnet"
+                    },
+                    {
+                      "flags": "-a, --static-ip-address <static-ip-address>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--static-ip-address",
+                      "description": "the static IP address name"
+                    },
+                    {
+                      "flags": "-p, --public-ip-name <public-ip-name>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--public-ip-name",
+                      "description": "the name of the public ip name"
+                    },
+                    {
+                      "flags": "-r, --public-ip-id <public-ip-id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--public-ip-id",
+                      "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a frontend ip configuration from an application gateway",
+                  "fullName": "network application-gateway frontend-ip remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend IP configuration"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "frontend-port": {
+              "name": "frontend-port",
+              "description": "Commands to manage application gateway frontend ports",
+              "fullName": "network application-gateway frontend-port",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a frontend port to an application gateway",
+                  "fullName": "network application-gateway frontend-port add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend port"
+                    },
+                    {
+                      "flags": "-p, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--port",
+                      "description": "the port, valid range is [0,65535]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a frontend port from an application gateway",
+                  "fullName": "network application-gateway frontend-port remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend port"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "address-pool": {
+              "name": "address-pool",
+              "description": "Commands to manage application gateway backend address pools",
+              "fullName": "network application-gateway address-pool",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a backend address pool to an application gateway",
+                  "fullName": "network application-gateway address-pool add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the backend address pool"
+                    },
+                    {
+                      "flags": "-r, --servers <servers>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--servers",
+                      "description": "comma separated list of IP addresses or DNS names\n     corresponding to backend servers"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a backend address pool from an application gateway",
+                  "fullName": "network application-gateway address-pool remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the backend address pool"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "http-settings": {
+              "name": "http-settings",
+              "description": "Commands to manage application gateway http settings",
+              "fullName": "network application-gateway http-settings",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add http settings to an application gateway",
+                  "fullName": "network application-gateway http-settings add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-b, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--name",
+                      "description": "the name of the HTTP settings"
+                    },
+                    {
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the protocol, valid value is [http]"
+                    },
+                    {
+                      "flags": "-o, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--port",
+                      "description": "the port, valid range is [0,65535]"
+                    },
+                    {
+                      "flags": "-c, --cookie-based-affinity <cookie-based-affinity>",
+                      "required": -29,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cookie-based-affinity",
+                      "description": "enable or disable cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is [Disabled]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove http settings to an application gateway",
+                  "fullName": "network application-gateway http-settings remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-b, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--name",
+                      "description": "the name of the HTTP settings"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "http-listener": {
+              "name": "http-listener",
+              "description": "Commands to manage application gateway http listeners",
+              "fullName": "network application-gateway http-listener",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add an http listener to an application gateway",
+                  "fullName": "network application-gateway http-listener add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the HTTP listener"
+                    },
+                    {
+                      "flags": "-i, --frontend-ip-name <frontend-ip-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--frontend-ip-name",
+                      "description": "the name of an existing frontend ip configuration"
+                    },
+                    {
+                      "flags": "-p, --frontend-port-name <frontend-port-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--frontend-port-name",
+                      "description": "the name of an existing frontend port"
+                    },
+                    {
+                      "flags": "-t, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--protocol",
+                      "description": "the protocol, supported values are [http,https]"
+                    },
+                    {
+                      "flags": "-c, --ssl-cert <ssl-cert>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--ssl-cert",
+                      "description": "the name of an existing SSL certificate.\n   This parameter is required when --protocol is Https"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove an http listener from an application gateway",
+                  "fullName": "network application-gateway http-listener remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the HTTP listener"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "rule": {
+              "name": "rule",
+              "description": "Commands to manage application gateway request routing rule",
+              "fullName": "network application-gateway rule",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add request routing rule to application gateway",
+                  "fullName": "network application-gateway rule add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the request routing rule"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-l, --http-listener-name <http-listener-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--http-listener-name",
+                      "description": "the name of an existing HTTP listener"
+                    },
+                    {
+                      "flags": "-p, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "-t, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--type",
+                      "description": "the type, currently supported only default value \"%s\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a request routing rule from an application gateway",
+                  "fullName": "network application-gateway rule remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the request routing rule"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "probe": {
+              "name": "probe",
+              "description": "Commands to manage application gateway probes",
+              "fullName": "network application-gateway probe",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add probe to application gateway",
+                  "fullName": "network application-gateway probe add",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the probe"
+                    },
+                    {
+                      "flags": "-o, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--port",
+                      "description": "the port, valid range is [0,65535]"
+                    },
+                    {
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the protocol, only valid value is \"http\""
+                    },
+                    {
+                      "flags": "-d, --host-name <host-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--host-name",
+                      "description": "the name of host to send probe.\n   Default value is \"http://127.0.0.1\""
+                    },
+                    {
+                      "flags": "-f, --path <path>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--path",
+                      "description": "the relative path of probe. Valid path starts from \"/\".\n   Probe is sent to ://:. Default value is \"/\""
+                    },
+                    {
+                      "flags": "-i, --interval <interval>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--interval",
+                      "description": "the probe interval in seconds.\n   This is the time interval between two consecutive probes.\n   Default value is 30"
+                    },
+                    {
+                      "flags": "-u, --timeout <timeout>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--timeout",
+                      "description": "the probe timeout in seconds.\n   Probe marked as failed if valid response is not received with this timeout period.\n   Default value is 30"
+                    },
+                    {
+                      "flags": "-e, --unhealthy-threshold <unhealthy-threshold>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--unhealthy-threshold",
+                      "description": "probe retry count.\n   Back end server is marked down after consecutive probe failure count reaches an unhealthy threshold\n   Default value is 5"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a probe from an application gateway",
+                  "fullName": "network application-gateway probe remove",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the probe"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
         "express-route": {
           "name": "express-route",
           "description": "Commands to manage express routes",

@@ -312,6 +312,13 @@ _.extend(NetworkTestUtil.prototype, {
       callback(profile);
     });
   },
+  stopAppGateway: function(groupName, appGatewayPrefix, suite, callback) {
+    var cmd = util.format('network application-gateway stop %s %s --json', groupName, appGatewayPrefix).split(' ');
+    testUtils.executeCommand(suite, retry, cmd, function(result) {
+      result.exitStatus.should.equal(0);
+      callback();
+    });
+  },
 
   /**
    * Assertions
