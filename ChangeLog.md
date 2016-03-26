@@ -15,6 +15,7 @@
   * Added debugSetting parameter for group deployment create
   * Added group export command
   * Added group deployment template download command
+  * Brought back the validation step when submitting an ARM deployment
   * Fixed tests
 * VM
   * Added more tests for command "azure vm enable-aem"
@@ -38,6 +39,7 @@
 * General
   * Fixed #2619, #2579
   * Improved warn output to respect --json option
+  * Implemented ARM network application gateways commands
 
 ##2016-03-11 Version 0.9.18
 * Upgraded Graph to 1.6-internal api-version and consumed it in ad commands
