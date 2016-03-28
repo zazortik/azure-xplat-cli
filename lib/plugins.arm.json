@@ -26242,7 +26242,7 @@
                           "bool": true,
                           "short": "-e",
                           "long": "--customEmails",
-                          "description": "The string that represents thead list of end custom e-mails; the e-mails must be comma-separated."
+                          "description": "A string with the list of custom e-mails in comma-separated format."
                         },
                         {
                           "flags": "-o --sendToServiceOwners",
@@ -26313,7 +26313,7 @@
                           "bool": true,
                           "short": "-o",
                           "long": "--properties",
-                          "description": "The list of property / value pairs."
+                          "description": "A string with the list of key / value pairs in comma-separated format. Example: \"key1,value1,key2,value2\"."
                         }
                       ]
                     }
@@ -26571,7 +26571,7 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions."
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
                         },
                         {
                           "flags": "-i --targetResourceId <targetResourceId>",
@@ -26784,7 +26784,7 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions."
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
                         }
                       ]
                     }
@@ -26935,7 +26935,7 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions."
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
                         }
                       ]
                     }
@@ -27096,7 +27096,7 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--customEmails",
-                      "description": "The list of end custom e-mails."
+                      "description": "A string with the list of custom e-mails in comma-separated format."
                     },
                     {
                       "flags": "-o --sendEmailToSubscriptionAdministrator",
@@ -27115,6 +27115,15 @@
                       "short": "-p",
                       "long": "--sendEmailToSubscriptionCoAdministrators",
                       "description": "Flag to send em-mail to the subscription coadministrators when the alert fires."
+                    },
+                    {
+                      "flags": "-w --webhooks <webhooks>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--webhooks",
+                      "description": "List of webhooks in the escaped json format"
                     }
                   ]
                 }
@@ -27122,16 +27131,16 @@
               "categories": {
                 "webhook": {
                   "name": "webhook",
-                  "description": "Creates alert rule webhook actions",
+                  "description": "Creates autoscale webhook notifications",
                   "fullName": "insights autoscale notifications webhook",
                   "usage": "[options] [command]",
                   "options": [],
                   "commands": [
                     {
                       "name": "create",
-                      "description": "Creates an autoscale webhook.",
+                      "description": "Creates an autoscale webhook notification.",
                       "fullName": "insights autoscale notifications webhook create",
-                      "usage": "[options]",
+                      "usage": "[options] <serviceUri>",
                       "filePath": "commands/arm/insights/insights.autoscale.notifications.js",
                       "options": [
                         {
@@ -27175,7 +27184,7 @@
                           "bool": true,
                           "short": "-o",
                           "long": "--properties",
-                          "description": "The list of property / value pairs."
+                          "description": "A string with the list of key / value pairs in comma-separated format. Example: \"key1,value1,key2,value2\"."
                         }
                       ]
                     }
@@ -27621,7 +27630,7 @@
                   "name": "set",
                   "description": "Create or set an autoscale setting.",
                   "fullName": "insights autoscale setting set",
-                  "usage": "[options] <resourceGroup>",
+                  "usage": "[options] <settingName> <location> <resourceGroup>",
                   "filePath": "commands/arm/insights/insights.autoscale.setting._js",
                   "options": [
                     {
@@ -27711,6 +27720,15 @@
                       "short": "-p",
                       "long": "--settingSpec",
                       "description": "The setting spec in JSON format."
+                    },
+                    {
+                      "flags": "-w --notifications <notifications>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--notifications",
+                      "description": "The list object autoscale notifications in escaped-jsson format."
                     }
                   ]
                 }
