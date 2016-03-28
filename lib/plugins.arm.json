@@ -45986,7 +45986,344 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "root-cert": {
+              "name": "root-cert",
+              "description": "Commands to manage Virtual Network Gateways Root Certificates",
+              "fullName": "network vpn-gateway root-cert",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a root certificate to a virtual network gateway",
+                  "fullName": "network vpn-gateway root-cert add",
+                  "usage": "[options] <resource-group> <name> <cert-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-c, --cert-name <cert-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cert-name",
+                      "description": "the name of the root certificate"
+                    },
+                    {
+                      "flags": "-f, --cert-file <cert-file>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--cert-file",
+                      "description": "the path to the root certificate"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a root certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway root-cert remove",
+                  "usage": "[options] <resource-group> <name> <cert-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-c, --cert-name <cert-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cert-name",
+                      "description": "the name of the root certificate"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "revoked-cert": {
+              "name": "revoked-cert",
+              "description": "Commands to manage Virtual Network Gateways Revoked Certificates",
+              "fullName": "network vpn-gateway revoked-cert",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a revoked certificate to a virtual network gateway",
+                  "fullName": "network vpn-gateway revoked-cert add",
+                  "usage": "[options] <resource-group> <name> <cert-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-c, --cert-name <cert-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cert-name",
+                      "description": "the name of the revoked certificate"
+                    },
+                    {
+                      "flags": "-f, --thumbprint <thumbprint>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--thumbprint",
+                      "description": "the certificate thumbprint"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove a revoked certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway revoked-cert remove",
+                  "usage": "[options] <resource-group> <name> <cert-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the virtual network gateway"
+                    },
+                    {
+                      "flags": "-c, --cert-name <cert-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cert-name",
+                      "description": "the name of the revoked certificate"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "vpn-connection": {
           "name": "vpn-connection",
