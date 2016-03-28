@@ -35,11 +35,13 @@
   * Changed default values to '*''network nsg rule create'
   * Added support for --sku-name option in 'network vpn-gateway create/set' commands
   * Added support for --address-prefixes option in 'network vpn-gateway create/set'
+  * Implemented commands for vpn gateways to manage Root/Revoked Certificates
   * Fixed incorrect properties of provider in the listProviders method #2667
 * General
   * Fixed #2619, #2579
   * Improved warn output to respect --json option
   * Implemented ARM network application gateways commands
+  * Fixed silly logging of Buffer types in the cli 
 
 ##2016-03-11 Version 0.9.18
 * Upgraded Graph to 1.6-internal api-version and consumed it in ad commands
