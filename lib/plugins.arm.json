@@ -40867,7 +40867,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a backend address pool from a NIC",
+                  "description": "Delete a backend address pool from a NIC",
                   "fullName": "network nic address-pool remove",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -41053,7 +41053,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove an inbound NAT rule from a NIC",
+                  "description": "Delete an inbound NAT rule from a NIC",
                   "fullName": "network nic inbound-nat-rule remove",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -47709,7 +47709,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove application gateway SSL certificate",
+                  "description": "Delete application gateway SSL certificate",
                   "fullName": "network application-gateway ssl-cert remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -47922,7 +47922,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a frontend ip configuration from an application gateway",
+                  "description": "Delete a frontend ip configuration from an application gateway",
                   "fullName": "network application-gateway frontend-ip remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -48090,7 +48090,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a frontend port from an application gateway",
+                  "description": "Delete a frontend port from an application gateway",
                   "fullName": "network application-gateway frontend-port remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -48258,7 +48258,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a backend address pool from an application gateway",
+                  "description": "Delete a backend address pool from an application gateway",
                   "fullName": "network application-gateway address-pool remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -48444,7 +48444,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove http settings to an application gateway",
+                  "description": "Delete http settings to an application gateway",
                   "fullName": "network application-gateway http-settings remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -48639,7 +48639,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove an http listener from an application gateway",
+                  "description": "Delete an http listener from an application gateway",
                   "fullName": "network application-gateway http-listener remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -48834,7 +48834,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a request routing rule from an application gateway",
+                  "description": "Delete a request routing rule from an application gateway",
                   "fullName": "network application-gateway rule remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
@@ -49056,7 +49056,7 @@
                 },
                 {
                   "name": "remove",
-                  "description": "Remove a probe from an application gateway",
+                  "description": "Delete a probe from an application gateway",
                   "fullName": "network application-gateway probe remove",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
