@@ -17,32 +17,19 @@
 var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
-var fs = require('fs');
 var util = require('util');
 var applicationInsights = require('applicationInsights');
-
-var profile = require('../../lib/util/profile');
-var utils = require('../../lib/util/utils');
-
-var CLITest = require('../framework/cli-test');
-var testPrefix = 'cli.account-tests';
-var suite = new CLITest(null, testPrefix);
 
 describe('cli', function() {
   describe.only('telemetry', function() {
     var sandbox = sinon.sandbox.create();
-
-    var testUser = 'johndoe@johndoe.com';
-    var sampleError;
-    var configMatched;
-
+    var telemetry = require('../../lib/util/telemetry');
     var testInstrumentationKey = "1234";
-    var trackEvent = {};
 
     beforeEach(function (done) {
-
       var client = applicationInsights.setup(testInstrumentationKey).client;
-
+            
+      // stub AppInsights functions.
       sandbox.stub(applicationInsights, 'setup', function(ikey) {
         return applicationInsights;
       });
@@ -64,7 +51,9 @@ describe('cli', function() {
       });
 
       sandbox.stub(client, 'sendPendingData', function(callback) {
-        callback && callback();
+        if (typeof callback === 'function') {
+          callback();
+        }
       });
 
       done();
@@ -76,7 +65,6 @@ describe('cli', function() {
     });
 
     it('should not send out event if data-collection is not enabled', function(done){
-      var telemetry = require('../../lib/util/telemetry');
       var track = sandbox.spy(applicationInsights.client, 'track');
 
       telemetry.init(false)
@@ -93,8 +81,6 @@ describe('cli', function() {
     });
 
     it('should encrypt user sensitive data', function(done) {
-
-      var telemetry = require('../../lib/util/telemetry');
       var eventData;
       sandbox.stub(applicationInsights.client, 'track', function(data) {
         eventData = data;
@@ -110,6 +96,28 @@ describe('cli', function() {
       });
       telemetry.onFinish(null);
 
+      (eventData.baseData.properties.command === 'azure login -u *** -p ***').should.be.true;
+      done();
+    });
+
+    it('should catch exception and encrypt exception data', function(done) {
+      var eventData;
+      sandbox.stub(applicationInsights.client, 'track', function(data) {
+        eventData = data;
+      });
+
+      telemetry.setAppInsights(applicationInsights);
+      telemetry.init(true)
+      telemetry.start(['foo', 'bar', 'azure', 'login', '-u', 'foo', '-p', 'bar']);
+      telemetry.currentCommand({
+        fullName: function() {
+          return 'azure login';
+        }
+      });
+      var err = new Error('error');
+      telemetry.onError(err, null);
+      (eventData.baseData.properties.isSuccess).should.be.false;
+      //(eventData.baseData.properties.stacktrace).should.be.true;
       (eventData.baseData.properties.command === 'azure login -u *** -p ***').should.be.true;
       done();
     });
