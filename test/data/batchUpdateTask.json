@@ -1,0 +1,6 @@
+{
+  "constraints": {
+    "maxWallClockTime": "P1D",
+    "maxTaskRetryCount": 5
+  }
+}

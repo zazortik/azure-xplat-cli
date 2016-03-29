@@ -43,8 +43,11 @@ commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-image-list-tests.js
 commands/arm/vm/arm.vm-usage-tests.js
 commands/arm/vm/arm.availset-tests.js
+commands/arm/batch/arm.batch.account-tests.js
+commands/arm/batch/arm.batch.subscription-tests.js
 # Extension Tests
 commands/arm/vm/arm.vm.enable-aem-tests.js
+commands/arm/vm/arm.vm.enable-aem-tests.no-wad.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
 include:./testlist-arm-vm.txt
 include:./testlist-arm-vmss.txt
@@ -81,3 +84,4 @@ commands/arm/datalakestore/arm.datalake-store-tests.js
 commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
 commands/arm/group/arm.group.deployment.operation-tests.js
+commands/arm/cdnMangement/arm.cdnMangement-tests.js

@@ -39,7 +39,7 @@ describe('arm', function () {
     var testLocation;
     var normalizedTestLocation;
     var originalSetTimeout = setTimeout;
-
+    
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       if (suite.isPlayback()) {
@@ -49,7 +49,7 @@ describe('arm', function () {
       }
       suite.setupSuite(done);
     });
-
+    
     after(function (done) {
       if (suite.isPlayback()) {
         setTimeout = originalSetTimeout;
@@ -64,11 +64,11 @@ describe('arm', function () {
         done();
       });
     });
-
+    
     afterEach(function (done) {
       suite.teardownTest(done);
     });
-
+    
     function cleanup(done) {
       function deleteGroups(index, callback) {
         if (index === createdGroups.length) {
@@ -78,23 +78,30 @@ describe('arm', function () {
           deleteGroups(index + 1, callback);
         });
       }
-
+      
       deleteGroups(cleanedUpGroups, function () {
         cleanedUpGroups = createdGroups.length;
         done();
       });
     }
-
+    
     function setUniqParameterNames(suite, filename) {
       //no need to create unique parameter values in playbackmode
       var deploymentParameters = JSON.parse(fs.readFileSync(filename).toString());
       if (deploymentParameters.parameters) {
         deploymentParameters = deploymentParameters.parameters;
       }
-      var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
-      var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
-      deploymentParameters.siteName.value = siteName;
-      deploymentParameters.hostingPlanName.value = hostingPlanName;
+      
+      if (filename.indexOf('nested') > -1) {
+        var storageAccountName = suite.generateId('sdkdeploymenttest', [], suite.isMocked);
+        deploymentParameters.StorageAccountName.value = storageAccountName;
+      } else {
+        var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
+        var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
+        deploymentParameters.siteName.value = siteName;
+        deploymentParameters.hostingPlanName.value = hostingPlanName;
+      }
+      
       if (!suite.isPlayback()) {
         fs.writeFileSync(filename, JSON.stringify(deploymentParameters, null, 2));
       }
@@ -370,6 +377,26 @@ describe('arm', function () {
           suite.execute('group deployment create -f %s -g %s -n %s -p %s --json', templateFile, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.match(/.*Deployment template validation failed.*/i);
+            cleanup(done);
+          });
+        });
+      });
+
+      it('should show nested error messages when deployments with nested templates fail', function (done) {
+        var parameterFile = path.join(__dirname, '../../../data/nestedTemplate-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
+        var templateUri = 'https://raw.githubusercontent.com/vivsriaus/armtemplates/master/testNestedTemplateFail.json';
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s',
+            templateUri, groupName, deploymentName, parameterFile);
+        
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.indexOf('RequestDisallowedByPolicy').should.be.below(0);
             cleanup(done);
           });
         });

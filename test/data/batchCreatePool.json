@@ -1,0 +1,11 @@
+{
+  "id": "xplatCreatedPool",
+  "vmSize": "small",
+  "osFamily": "4",
+  "targetOSVersion": "*",
+  "targetDedicated": 0,
+  "startTask": {
+    "commandLine": "cmd /c echo test",
+    "waitForSuccess": true
+  }
+}
