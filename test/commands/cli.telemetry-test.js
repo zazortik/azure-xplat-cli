@@ -18,7 +18,7 @@ var _ = require('underscore');
 var should = require('should');
 var sinon = require('sinon');
 var util = require('util');
-var applicationInsights = require('applicationInsights');
+var applicationInsights = require('applicationinsights');
 
 describe('cli', function() {
   describe('telemetry', function() {
