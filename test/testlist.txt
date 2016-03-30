@@ -12,6 +12,7 @@ commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
 commands/cli.help-tests.js
+commands/cli.telemetry-test.js
 commands/cli.mobile-tests.js
 commands/cli.mobile.api-tests.js
 commands/cli.mobile.appsetting-tests.js
@@ -92,7 +93,13 @@ commands/cli.storage.file-tests.js
 commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
 commands/cli.storage.service-tests.js
-commands/cli.telemetry-test.js
+commands/batch/cli.batch.job-tests.js
+commands/batch/cli.batch.jobschedule-tests.js
+commands/batch/cli.batch.task-tests.js
+commands/batch/cli.batch.file-tests.js
+commands/batch/cli.batch.node-tests.js
+commands/batch/cli.batch.pool-tests.js
+>>>>>>> 47e58ab4ae7d67bc998ab07237c7bf601a66771f
 util/git/linkrevisioncontrol-tests.js
 #TODO: uncomment after remove the dependencies on streamline files
 #hdinsight/unit-cli-setup.js

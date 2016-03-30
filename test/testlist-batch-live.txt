@@ -1,0 +1,6 @@
+commands/batch/cli.batch.job-tests.js
+commands/batch/cli.batch.jobschedule-tests.js
+commands/batch/cli.batch.task-tests.js
+commands/batch/cli.batch.file-tests.js
+commands/batch/cli.batch.node-tests.js
+commands/batch/cli.batch.pool-tests.js

@@ -1,0 +1,7 @@
+{
+  "id": "xplatJobForFileTests",
+  "displayName": "displayName",
+  "poolInfo": {
+    "poolId": "xplatTestPool"
+  }
+}

@@ -69,9 +69,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(true);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -87,9 +87,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(false);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(false);
             
             done();
@@ -105,9 +105,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(true);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(false);
             
             done();
@@ -123,9 +123,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(true);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -141,9 +141,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(false);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -159,9 +159,9 @@ describe('arm', function () {
             properties.metrics[0].enabled.should.equal(true);
             properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();

@@ -102,6 +102,15 @@ describe('arm', function() {
         });
       });
 
+      it('redeploy vm should pass', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('vm redeploy %s %s', groupName, vm1Prefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
       it('quick create with existing group should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {

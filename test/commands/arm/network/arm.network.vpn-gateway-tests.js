@@ -36,6 +36,7 @@ var gatewayProp = {
   subnetAddressPrefix: '10.1.0.0/28',
   publicIpName: 'test-ip',
   type: 'RouteBased',
+  sku: 'HighPerformance',
   privateIpAddress: '10.1.0.11',
   newPrivateIpAddress: '10.1.0.12',
   enableBgp: false,
@@ -107,6 +108,7 @@ describe('arm', function () {
       });
       it('set should modify vpn gateway', function (done) {
         var cmd = 'network vpn-gateway set -g {group} -n {name} -a {newPrivateIpAddress} -t {newTags} --json'.formatArgs(gatewayProp);
+
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vpnGateway = JSON.parse(result.text);
@@ -119,7 +121,7 @@ describe('arm', function () {
           done();
         });
       });
-      it('set should attach default site to vpn gateway', function (done) {
+      it('set should attach default site to vpn gateway using site id', function (done) {
         networkUtil.createLocalGateway(localGatewayProp, suite, function (localGateway) {
           var cmd = 'network vpn-gateway set -g {group} -n {name} -i {1} --json'.formatArgs(gatewayProp, localGateway.id);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -131,7 +133,27 @@ describe('arm', function () {
           });
         });
       });
-      it('set should detach default site from vpn gateway', function (done) {
+      it('set should detach default site from vpn gateway using site id', function (done) {
+        var cmd = 'network vpn-gateway set -g {group} -n {name} -i --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var vpnGateway = JSON.parse(result.text);
+          vpnGateway.should.not.have.property('gatewayDefaultSite');
+          networkUtil.shouldBeSucceeded(vpnGateway);
+          done();
+        });
+      });
+      it('set should attach default site to vpn gateway using site name', function (done) {
+        var cmd = 'network vpn-gateway set -g {group} -n {name} -d {1} --json'.formatArgs(gatewayProp, localGatewayProp.name);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var vpnGateway = JSON.parse(result.text);
+          vpnGateway.gatewayDefaultSite.id.should.containEql(localGatewayProp.name);
+          networkUtil.shouldBeSucceeded(vpnGateway);
+          done();
+        });
+      });
+      it('set should detach default site from vpn gateway using site name', function (done) {
         var cmd = 'network vpn-gateway set -g {group} -n {name} -d --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

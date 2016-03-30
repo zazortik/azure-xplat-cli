@@ -1,0 +1,20 @@
+{
+  "priority": 5,
+  "constraints": {
+    "maxWallClockTime": "P1D",
+    "maxTaskRetryCount": 5
+  },
+  "poolInfo": {
+      "poolId" : "pool1"
+  },
+  "metadata": [
+    {
+      "name": "meta3",
+      "value": "value3"
+    },
+    {
+      "name": "meta4",
+      "value": "value4"
+    }
+  ]
+}
