@@ -21,7 +21,7 @@ var util = require('util');
 var applicationInsights = require('applicationInsights');
 
 describe('cli', function() {
-  describe.only('telemetry', function() {
+  describe('telemetry', function() {
     var sandbox = sinon.sandbox.create();
     var telemetry = require('../../lib/util/telemetry');
     var testInstrumentationKey = "1234";
