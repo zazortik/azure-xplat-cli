@@ -13762,6 +13762,14 @@
                   "description": "HDInsight cluster type. Hadoop | HBase | Spark | Storm"
                 },
                 {
+                  "flags": "--clusterTier <clusterTier>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--clusterTier",
+                  "description": "HDInsight cluster tier. Standard | Premium"
+                },
+                {
                   "flags": "--defaultStorageAccountName <storageAccountName>",
                   "required": -29,
                   "optional": 0,
