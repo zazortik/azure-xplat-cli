@@ -23,6 +23,7 @@ var fs = require('fs');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-insights-diagnostic-get-tests';
 var utils = require('../../../../lib/util/utils');
+var moment = require('moment');
 
 var requiredEnvironment = [
   { requiresToken: true }
@@ -65,7 +66,7 @@ describe('arm', function () {
             properties.storageAccountId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus');
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
             properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
