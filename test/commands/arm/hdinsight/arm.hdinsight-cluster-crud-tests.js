@@ -41,6 +41,7 @@ var timeBeforeClusterAvailable;
 var groupName;
 var clusterNameWindows;
 var clusterNameLinux;
+var clusterNamePremium;
 var createdResources = [];
 
 var  location = "East US",
@@ -79,6 +80,7 @@ describe('arm', function() {
         groupName = suite.generateId(groupPrefix, createdResources);
         clusterNameWindows = suite.generateId(clusterNamePrefix, createdResources);
         clusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
+        clusterNamePremium = suite.generateId(clusterNamePrefix, createdResources)+ 'Premium';
         tags = 'a=b;b=c;d=';
         rdpExpiryDate = '12/12/2025';
         timeBeforeClusterAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
@@ -136,11 +138,11 @@ describe('arm', function() {
             '--clusterType %s ' +
             '--version %s ' +
             '--json ',
-            groupName, clusterNameLinux, location, 'Linux', 'Premium',
+            groupName, clusterNamePremium, location, 'Linux', 'premium',
             defaultStorageAccount, defaultStorageAccountKey, defaultStorageContainer,
             headNodeSize, workerNodeCount, workerNodeSize, zookeeperNodeSize,
             username, password, sshUserName, sshPassword,
-            'Hadoop', 'default',
+            'Hadoop', '3.4',
             tags).split(' ');
 
           suite.execute(cmd, function (result) {
@@ -156,6 +158,18 @@ describe('arm', function() {
           });
       });
 	
+	     it('show should display details about premium hdinsight cluster', function (done) {
+	         setTimeout(function () {
+	             var cmd = util.format('hdinsight cluster show --resource-group %s --clusterName %s --json', groupName, clusterNamePremium).split(' ');
+
+	             suite.execute(cmd, function (result) {
+	                 result.text.should.containEql('');
+	                 result.exitStatus.should.equal(0);
+	                 done();
+	             });
+	         }, timeBeforeClusterAvailable);
+	     });
+
 	  it('create linux cluster should pass', function(done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster create ' +
