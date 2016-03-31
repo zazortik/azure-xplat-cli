@@ -99,7 +99,6 @@ commands/batch/cli.batch.task-tests.js
 commands/batch/cli.batch.file-tests.js
 commands/batch/cli.batch.node-tests.js
 commands/batch/cli.batch.pool-tests.js
->>>>>>> 47e58ab4ae7d67bc998ab07237c7bf601a66771f
 util/git/linkrevisioncontrol-tests.js
 #TODO: uncomment after remove the dependencies on streamline files
 #hdinsight/unit-cli-setup.js
