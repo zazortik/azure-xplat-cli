@@ -16,6 +16,10 @@ set AZURE_SITE_TEST_LOCATION=West US
 set AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=storage_account;AccountKey=access_key
 set AZURE_SCM_SITE_SUFFIX=.scm.azurewebsites.net
 set AZURE_AD_TEST_PASSWORD=your_password
+set AZURE_BATCH_ACCOUNT=The name of the Batch account
+set AZURE_BATCH_ACCESS_KEY=The key for the Batch account
+set AZURE_BATCH_ENDPOINT=The url of the Batch account
+
 ```
 
 * **OS X**, **Linux**
@@ -33,6 +37,10 @@ export AZURE_SITE_TEST_LOCATION="West US"
 export AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=storage_account;AccountKey=access_key
 export AZURE_SCM_SITE_SUFFIX=.scm.azurewebsites.net
 export AZURE_AD_TEST_PASSWORD=your_password
+export AZURE_BATCH_ACCOUNT=The name of the Batch account
+export AZURE_BATCH_ACCESS_KEY=The key for the Batch account
+export AZURE_BATCH_ENDPOINT=The url of the Batch account
+
 ```
 
 ### Running VM Tests
