@@ -27,8 +27,8 @@ set OUTPUT_FOLDER=.\out
 if exist %OUTPUT_FOLDER% rmdir /s /q %OUTPUT_FOLDER%
 mkdir %OUTPUT_FOLDER%
 
-set TEMP_REPO_FOLDER=azure-cli
-set TEMP_REPO=%temp%\%TEMP_REPO_FOLDER%
+set TEMP_REPO_FOLDER=zcli
+set TEMP_REPO=%HOMEDRIVE%%HOMEPATH%\%TEMP_REPO_FOLDER%
 if not exist %TEMP_REPO% goto CLONE_REPO
 
 echo Temporary clone of the repo already exists. Removing it...
