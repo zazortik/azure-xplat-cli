@@ -1,0 +1,79 @@
+{
+  "sku": {
+    "name": "Standard_A1",
+    "tier": "Standard",
+    "capacity": 10
+  },
+  "upgradePolicy": {
+    "mode": "Manual"
+  },
+  "virtualMachineProfile": {
+    "osProfile": {
+      "computerNamePrefix": "test",
+      "adminUsername": "azureuser",
+      "adminPassword": "Brillio@2015"
+    },
+    "storageProfile": {
+      "imageReference": {
+        "publisher": "MicrosoftWindowsServer",
+        "offer": "WindowsServer",
+        "sku": "2012-R2-Datacenter",
+        "version": "latest"
+      },
+      "osDisk": {
+        "name": "test",
+        "caching": "None",
+        "createOption": "fromImage",
+        "vhdContainers": [
+          "https://xplatteststorage14148.blob.core.windows.net/xplatteststoragecnt12801",
+          "https://xplatteststorage25703.blob.core.windows.net/xplatteststoragecnt21666",
+          "https://xplatteststorage32724.blob.core.windows.net/xplatteststoragecnt32769"
+        ]
+      }
+    },
+    "networkProfile": {
+      "networkInterfaceConfigurations": [
+        {
+          "name": "test",
+          "primary": true,
+          "ipConfigurations": [
+            {
+              "name": "test",
+              "subnet": {
+                "id": "/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate9498/providers/Microsoft.Network/VirtualNetworks/xplattestvnet1417/subnets/xplattestsubnet7931"
+              },
+              "id": ""
+            }
+          ],
+          "id": ""
+        }
+      ]
+    },
+    "extensionProfile": {
+      "extensions": [
+        {
+          "name": "test",
+          "publisher": "Microsoft.Compute",
+          "type": "VMAccessAgent",
+          "typeHandlerVersion": "2.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {},
+          "protectedSettings": {},
+          "provisioningState": "",
+          "id": ""
+        },
+        {
+          "name": "test1",
+          "publisher": "Microsoft.Compute",
+          "type": "BGInfo",
+          "typeHandlerVersion": "2.1",
+          "autoUpgradeMinorVersion": true
+        }
+      ]
+    }
+  },
+  "overProvision": false,
+  "id": null,
+  "name": "xplattestvmss5",
+  "location": "southeastasia"
+}

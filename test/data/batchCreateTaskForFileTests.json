@@ -1,0 +1,5 @@
+{
+  "id": "xplatTask",
+  "displayName": "displayName",
+  "commandLine": "cmd /c echo test > taskOut.txt"
+}
