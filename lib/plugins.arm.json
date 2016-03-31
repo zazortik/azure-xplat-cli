@@ -45578,13 +45578,22 @@
                   "description": "the location"
                 },
                 {
-                  "flags": "-y, --type <type>",
-                  "required": -12,
+                  "flags": "-w, --gateway-type <gateway-type>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--gateway-type",
+                  "description": "the gateway type\n     Valid values are [Vpn,ExpressRoute]\n     Default is Vpn"
+                },
+                {
+                  "flags": "-y, --vpn-type <vpn-type>",
+                  "required": -16,
                   "optional": 0,
                   "bool": true,
                   "short": "-y",
-                  "long": "--type",
-                  "description": "the gateway type\n     Valid values are [RouteBased,PolicyBased,Dedicated]\n     Default is RouteBased"
+                  "long": "--vpn-type",
+                  "description": "the vpn type\n     Valid values are [RouteBased,PolicyBased,Dedicated]\n     Default is RouteBased"
                 },
                 {
                   "flags": "-k, --sku-name <sku-name>",
