@@ -251,9 +251,7 @@ describe('arm', function() {
             done();
           }
         });
-      });
-
-     
+      });     
 
       it('show should display details about windows hdinsight cluster', function(done) {
         setTimeout(function() {
