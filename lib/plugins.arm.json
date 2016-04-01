@@ -2263,7 +2263,7 @@
               "name": "connect",
               "description": "Connect cluster",
               "fullName": "servicefabric cluster connect",
-              "usage": "[options] [connectionEndpoint] [caCertPath] [clientKeyPath] [clientCertPath]",
+              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [caCertPath] [clientKeyPath] [clientCertPath]",
               "filePath": "commands/serviceFabricCluster._js",
               "options": [
                 {
@@ -2298,6 +2298,14 @@
                   "bool": true,
                   "long": "--connection-endpoint",
                   "description": "the url of the connection endpoint"
+                },
+                {
+                  "flags": "--client-connection-endpoint <clientConnectionEndpoint>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--client-connection-endpoint",
+                  "description": "the endpoint of the client connection"
                 },
                 {
                   "flags": "--ca-cert-path <caCertPath>",
@@ -4616,7 +4624,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--service-kind",
-                  "description": "the kind of the service"
+                  "description": "the kind of the service, values are [Stateless|Stateful]"
                 },
                 {
                   "flags": "--instance-count <instanceCount>",
@@ -4770,7 +4778,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--service-kind",
-                  "description": "the kind of the service"
+                  "description": "the kind of the service, values are [Stateless|Stateful]"
                 },
                 {
                   "flags": "--flags <flags>",
@@ -5521,7 +5529,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--service-kind",
-                      "description": "the kind of the service"
+                      "description": "the kind of the service, values are [Stateless|Stateful]"
                     },
                     {
                       "flags": "--instance-count <instanceCount>",
@@ -5691,7 +5699,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--service-kind",
-                      "description": "the kind of the service"
+                      "description": "the kind of the service, values are [Stateless|Stateful]"
                     },
                     {
                       "flags": "--flags <flags>",
