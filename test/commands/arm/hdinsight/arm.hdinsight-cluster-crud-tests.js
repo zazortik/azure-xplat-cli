@@ -43,6 +43,8 @@ var clusterNameWindows;
 var clusterNameLinux;
 var clusterNamePremium;
 var createdResources = [];
+var scriptActionName;
+var scriptActionUri;
 
 var  location = "East US",
   username = 'azureuser',
@@ -84,6 +86,8 @@ describe('arm', function() {
         tags = 'a=b;b=c;d=';
         rdpExpiryDate = '12/12/2025';
         timeBeforeClusterAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
+        scriptActionName = 'testscriptname';
+        scriptActionUri = 'https://hdiconfigactions.blob.core.windows.net/linuxsampleconfigaction/sample.sh';
 
         if (!suite.isPlayback()) {
           suite.execute('group create %s --location %s --json', groupName, location, function() {
@@ -292,7 +296,7 @@ describe('arm', function() {
         });
       });
 
-      it.skip('disable-http-access should disable HTTP access to the cluster', function(done) {
+      it('disable-http-access should disable HTTP access to the cluster', function(done) {
         setTimeout(function() {
           var cmd = util.format('hdinsight cluster disable-http-access --resource-group %s --clusterName %s --json',
             groupName, clusterNameWindows).split(' ');
@@ -350,7 +354,113 @@ describe('arm', function() {
         });
       });
 
+      it('script action should succeed on hdinsight linux cluster', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action create %s --resource-group %s -n %s -u %s -t headnode;workernode --persistOnSuccess --json', clusterNameLinux, groupName, scriptActionName, scriptActionUri).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+      
+      it('script action list persisted should list persisted scripts on the cluster', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action persisted list %s --resource-group %s --json', clusterNameLinux, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
+      it('script action show persisted should show persisted script on the cluster', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action persisted show %s %s --resource-group %s --json', clusterNameLinux, scriptActionName, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
+      it('script action delete persisted should delete persisted scripts from the cluster', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action persisted delete %s %s --resource-group %s --json', clusterNameLinux, scriptActionName, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
+      it('script action list history should list script execution history', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action history list %s --resource-group %s --json', clusterNameLinux, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+      
+      it('script action show details should fail for invalid execution id', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action history show %s 1 --resource-group %s --json', clusterNameLinux, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.not.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+      
+      it('script action promote should fail for invalid execution id', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action persisted set %s 1 --resource-group %s --json', clusterNameLinux, groupName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.not.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
       it('delete should delete hdinsight linux cluster', function(done) {
+        this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, clusterNameLinux).split(' ');
         suite.execute(cmd, function(result) {
           result.exitStatus.should.equal(0);

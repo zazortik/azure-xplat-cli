@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46153750-fa3b-4140-bf57-8beb7d5c971a',
-    name: 'KonaMDI3_697842',
+    id: '53d9063d-87ae-4ea8-be90-3686c3b8669f',
+    name: 'Visual Studio Ultimate with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '6e606ece-3a5a-4674-a654-d6b02bc5a51b',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -24,40 +24,42 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_ARM_TEST_LOCATION'] = 'East US 2';
-  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlsrg01';
+  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadls3181.azuredatalakestore.net:443')
-  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?op=OPEN&offset=0&length=23&read=true&api-version=2015-10-01-preview')
+nock('http://xplattestadls3769.azuredatalakestore.net:443')
+  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
   .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   expires: '-1',
-  'x-ms-request-id': 'ad41b844-6484-4c16-a3fa-90668d834d56',
-  'set-cookie': [ 'UserPrincipalSession=ca58cfb5-426a-467d-a02b-082b41db594b; path=/; secure; HttpOnly' ],
-  'server-perf': '[ad41b84464844c16a3fa90668d834d56][ AuthTime::1861.32766723293::PostAuthTime::34073.5874524617 ][GetCacheEntry :: 00:00:000 ms]%0a[FsOpenStream :: 00:00:188 ms]%0a[OpenNewHandle :: 00:00:188 ms]%0a[CreateCacheEntry :: 00:00:000 ms]%0a[GetOrCreateHandle :: 00:00:188 ms]%0a[Open :: 00:00:188 ms]%0a[FsReadStream :: 00:00:052 ms]%0a[OPEN :: 00:00:240 ms]%0a',
+  'x-ms-request-id': 'ffcb832e-b9f6-444a-858b-b47b1fa41948',
+  'set-cookie': [ 'UserPrincipalSession=273691a3-f973-424e-8df4-6e98b2bfcc94; path=/; secure; HttpOnly' ],
+  'server-perf': '[ffcb832eb9f6444a858bb47b1fa41948][ AuthTime::1451.16775593351::PostAuthTime::31551.0301665828 ][FsOpenStream :: 00:00:054 ms]%0a[Open :: 00:00:054 ms]%0a[FsReadStream :: 00:00:026 ms]%0a[OPEN :: 00:00:081 ms]%0a',
+  status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 19 Nov 2015 22:07:29 GMT',
+  date: 'Wed, 16 Mar 2016 22:18:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls3181.azuredatalakestore.net:443')
-  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?op=OPEN&offset=0&length=23&read=true&api-version=2015-10-01-preview')
+nock('https://xplattestadls3769.azuredatalakestore.net:443')
+  .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
   .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   expires: '-1',
-  'x-ms-request-id': 'ad41b844-6484-4c16-a3fa-90668d834d56',
-  'set-cookie': [ 'UserPrincipalSession=ca58cfb5-426a-467d-a02b-082b41db594b; path=/; secure; HttpOnly' ],
-  'server-perf': '[ad41b84464844c16a3fa90668d834d56][ AuthTime::1861.32766723293::PostAuthTime::34073.5874524617 ][GetCacheEntry :: 00:00:000 ms]%0a[FsOpenStream :: 00:00:188 ms]%0a[OpenNewHandle :: 00:00:188 ms]%0a[CreateCacheEntry :: 00:00:000 ms]%0a[GetOrCreateHandle :: 00:00:188 ms]%0a[Open :: 00:00:188 ms]%0a[FsReadStream :: 00:00:052 ms]%0a[OPEN :: 00:00:240 ms]%0a',
+  'x-ms-request-id': 'ffcb832e-b9f6-444a-858b-b47b1fa41948',
+  'set-cookie': [ 'UserPrincipalSession=273691a3-f973-424e-8df4-6e98b2bfcc94; path=/; secure; HttpOnly' ],
+  'server-perf': '[ffcb832eb9f6444a858bb47b1fa41948][ AuthTime::1451.16775593351::PostAuthTime::31551.0301665828 ][FsOpenStream :: 00:00:054 ms]%0a[Open :: 00:00:054 ms]%0a[FsReadStream :: 00:00:026 ms]%0a[OPEN :: 00:00:081 ms]%0a',
+  status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 19 Nov 2015 22:07:29 GMT',
+  date: 'Wed, 16 Mar 2016 22:18:20 GMT',
   connection: 'close' });
  return result; }]];

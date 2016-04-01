@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c36fd9e7-e5b1-4d3e-bb85-2e538040258b',
-    name: 'BDHadoopHumboldtAdhocTestShortTermTeam1',
+    id: 'd66b1168-d835-4066-8c45-7d2ed713c082',
+    name: 'BDHadoopTeamPMTestDemo',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate7333','xplatTestHDInsightClusterCreate5637','xplatTestHDInsightClusterCreate9113'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate4179','xplatTestHDInsightClusterCreate2519','xplatTestHDInsightClusterCreate44'];};

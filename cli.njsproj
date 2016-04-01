@@ -12,8 +12,9 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <StartWebBrowser>True</StartWebBrowser>
-    <ScriptArguments>group list</ScriptArguments>
+    <StartWebBrowser>False</StartWebBrowser>
+    <ScriptArguments>
+    </ScriptArguments>
     <Environment>
     </Environment>
     <NodeExeArguments>
@@ -23,8 +24,34 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.actions.js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.log._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.metric._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule.webtest._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts.rule._js" />
+    <Content Include="lib\commands\arm\insights\insights.alerts._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.setting._js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.diagnostic.set._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.add._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.delete._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.get._js" />
+    <Content Include="lib\commands\arm\insights\insights.logprofiles.list._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics.definition._js" />
+    <Content Include="lib\commands\arm\insights\insights.metrics._js" />
+    <Content Include="lib\commands\arm\insights\insights.usage._js" />
+    <Content Include="lib\commands\arm\insights\insights._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiClient._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiConfigClient._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiConstants._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiCustomization._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdinsight._js" />
+    <Content Include="lib\commands\arm\hdinsight\hdiUtils._js" />
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
+    <Content Include="lib\commands\arm\cdnmanagement\cdnmanagement._js" />
+    <Compile Include="lib\commands\arm\cdnmanagement\cdnmanagement.utils.js" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -48,6 +75,7 @@
     <Compile Include="lib\autocomplete.js" />
     <Compile Include="lib\cli.js" />
     <Compile Include="lib\cmdLoader.js" />
+    <Compile Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -99,8 +127,6 @@
     <Compile Include="lib\commands\arm\role\rbacClients.js" />
     <Compile Include="lib\commands\arm\role\rbacConstants.js" />
     <Compile Include="lib\commands\arm\tag\tagUtils.js" />
-    <Compile Include="lib\commands\arm\temporary\storage.js" />
-    <Compile Include="lib\commands\arm\temporary\storageManagementClient.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\azureSdkStream.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\deployTracker.js" />
     <Compile Include="lib\commands\arm\apiapp\lib\propertyPrompts.js" />
@@ -148,6 +174,13 @@
     <Compile Include="lib\util\profile\profile.js" />
     <Compile Include="lib\util\profile\publishSettings.js" />
     <Compile Include="lib\util\profile\subscription.js" />
+    <Compile Include="test\commands\arm\cdnMangement\arm.cdnMangement-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.get-tests.js" />
+    <Compile Include="test\commands\arm\insights\arm.insights.diagnostic.set-tests.js" />
+    <Compile Include="test\commands\arm\batch\arm.batch.account-tests.js" />
+    <Compile Include="test\commands\arm\batch\arm.batch.subscription-tests.js" />
     <Compile Include="test\commands\arm\vm\arm.vm-disk-encryption-tests.js">
       <TestFramework>
       </TestFramework>
@@ -442,8 +475,10 @@
     <Folder Include="lib\commands\arm\apiapp\lib\packaging\schemas" />
     <Folder Include="lib\commands\arm\armsdk" />
     <Folder Include="lib\commands\arm\availabilityset" />
+    <Folder Include="lib\commands\arm\cdnmanagement\" />
     <Folder Include="lib\commands\arm\feature" />
     <Folder Include="lib\commands\arm\group" />
+    <Folder Include="lib\commands\arm\hdinsight" />
     <Folder Include="lib\commands\arm\insights" />
     <Folder Include="lib\commands\arm\keyvault" />
     <Folder Include="lib\commands\arm\location" />
@@ -453,7 +488,6 @@
     <Folder Include="lib\commands\arm\resource" />
     <Folder Include="lib\commands\arm\role" />
     <Folder Include="lib\commands\arm\tag" />
-    <Folder Include="lib\commands\arm\temporary" />
     <Folder Include="lib\commands\arm\usage" />
     <Folder Include="lib\commands\arm\vm" />
     <Folder Include="lib\commands\arm\webapp" />
@@ -498,6 +532,8 @@
     <Folder Include="test\commands\arm\keyvault" />
     <Folder Include="test\commands\arm\location" />
     <Folder Include="test\commands\arm\network" />
+    <Folder Include="test\commands\arm\cdnMangement\" />
+    <Folder Include="test\commands\arm\batch\" />
     <Folder Include="test\commands\arm\provider" />
     <Folder Include="test\commands\arm\resource" />
     <Folder Include="test\commands\arm\role" />

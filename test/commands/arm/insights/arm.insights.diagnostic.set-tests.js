@@ -23,6 +23,7 @@ var fs = require('fs');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-insights-diagnostic-set-tests';
 var utils = require('../../../../lib/util/utils');
+var moment = require('moment');
 
 var requiredEnvironment = [
   { requiresToken: true }
@@ -61,17 +62,17 @@ describe('arm', function () {
 
       describe('set', function() {
         it('should work enable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -e true --json', resourceId, storageId, function (result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -85,11 +86,11 @@ describe('arm', function () {
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(false);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(false);
             
             done();
@@ -103,11 +104,11 @@ describe('arm', function () {
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(false);
             
             done();
@@ -121,11 +122,11 @@ describe('arm', function () {
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -139,11 +140,11 @@ describe('arm', function () {
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(false);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(false);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
@@ -157,11 +158,11 @@ describe('arm', function () {
             properties.storageAccountId.should.equal(storageId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
-            properties.metrics[0].timeGrain._milliseconds.should.equal(60000);
+            moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
             properties.logs.length.should.equal(2);
-            properties.logs[0].category.should.equal("TestLog1");
+            properties.logs[0].category.should.equal('TestLog1');
             properties.logs[0].enabled.should.equal(true);
-            properties.logs[1].category.should.equal("TestLog2");
+            properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
             done();
