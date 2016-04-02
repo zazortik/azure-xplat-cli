@@ -23,38 +23,39 @@ var testUtils = require('../../../util/util');
 var testPrefix = 'arm-network-application-gateway-tests';
 var util = require('util');
 
-var location, groupName,
-  groupPrefix = 'xplatTestGroupCreateAppGw',
-  appGwPrefix = 'xplatTestAppGw',
-  vnetPrefix = 'xplatTestVnet',
-  vnetAddressPrefix = '10.0.0.0/8',
-  subnetPrefix = 'xplatTestSubnet',
-  subnetAddressPrefix = '10.0.0.0/11',
-  servers = '1.1.1.1',
-  tags = networkUtil.tags,
-  newTags = networkUtil.newTags,
-  updatedCapacity = 5,
-  configPrefix = 'ipConfig01',
-  frontendIpPrefix = 'testFronteEndIp',
-  publicIpPrefix = 'xplatTestPublicIp',
-  poolPrefix = 'xplatTestPoolName',
-  poolServers = '4.4.4.4',
-  portPrefix = 'xplatTestPoolName',
-  portAddress = 123,
-  httpListenerPrefix = 'xplatTestListener',
-  httpSettingsPrefix = 'xplatTestHttpSettings',
-  httpSettingsPort = 234,
-  cookieBasedAffinity = 'Disabled',
-  httpProtocol = 'Http',
-  rulePrefix = 'xplatTestRule',
-  probePrefix = 'xplatTestProbe',
-  probePublicIpPrefix = 'probePublicIp',
-  probePort = 90,
-  hostName = 'contoso.com',
-  path = '/',
-  interval = 30,
-  timeout = 120,
-  unhealthyThreshold = 8;
+var location, groupName = 'xplatTestGroupCreateAppGw',
+  gatewayProp = {
+    name: 'xplatTestAppGw',
+    vnetName: 'xplatTestVnet',
+    vnetAddress: '10.0.0.0/8',
+    subnetName: 'xplatTestSubnet',
+    subnetAddress: '10.0.0.0/11',
+    servers: '1.1.1.1',
+    tags: networkUtil.tags,
+    newCapacity: 5,
+    newTags: networkUtil.newTags,
+    configName: 'ipConfig01',
+    frontendIpName: 'testFronteEndIp',
+    publicIpName: 'xplatTestPublicIp',
+    portName: 'xplatTestPoolName',
+    portAddress: 123,
+    poolName: 'xplatTestPoolName',
+    poolServers: '4.4.4.4',
+    httpSettingsName: 'xplatTestHttpSettings',
+    httpSettingsPort: 234,
+    cookieBasedAffinity: 'Disabled',
+    httpProtocol: 'Http',
+    httpListenerName: 'xplatTestListener',
+    ruleName: 'xplatTestRule',
+    probeName: 'xplatTestProbe',
+    probePublicIpName: 'probePublicIp',
+    probePort: 90,
+    hostName: 'contoso.com',
+    path: '/',
+    interval: 30,
+    timeout: 120,
+    unhealthyThreshold: 8
+  };
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -68,18 +69,22 @@ describe('arm', function () {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        appGwPrefix = suite.isMocked ? appGwPrefix : suite.generateId(appGwPrefix, null);
-        vnetPrefix = suite.isMocked ? vnetPrefix : suite.generateId(vnetPrefix, null);
-        subnetPrefix = suite.isMocked ? subnetPrefix : suite.generateId(subnetPrefix, null);
-        configPrefix = suite.isMocked ? configPrefix : suite.generateId(configPrefix, null);
-        frontendIpPrefix = suite.isMocked ? frontendIpPrefix : suite.generateId(frontendIpPrefix, null);
-        publicIpPrefix = suite.isMocked ? publicIpPrefix : suite.generateId(publicIpPrefix, null);
-        poolPrefix = suite.isMocked ? poolPrefix : suite.generateId(poolPrefix, null);
-        portPrefix = suite.isMocked ? portPrefix : suite.generateId(portPrefix, null);
-        httpListenerPrefix = suite.isMocked ? httpListenerPrefix : suite.generateId(httpListenerPrefix, null);
-        rulePrefix = suite.isMocked ? rulePrefix : suite.generateId(rulePrefix, null);
-        probePrefix = suite.isMocked ? probePrefix : suite.generateId(probePrefix, null);
+        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+
+        gatewayProp.group = groupName;
+        gatewayProp.location = location;
+        gatewayProp.name = suite.isMocked ? gatewayProp.name : suite.generateId(gatewayProp.name, null);
+        gatewayProp.vnetName = suite.isMocked ? gatewayProp.vnetName : suite.generateId(gatewayProp.vnetName, null);
+        gatewayProp.subnetName = suite.isMocked ? gatewayProp.subnetName : suite.generateId(gatewayProp.subnetName, null);
+        gatewayProp.configName = suite.isMocked ? gatewayProp.configName : suite.generateId(gatewayProp.configName, null);
+        gatewayProp.frontendIpName = suite.isMocked ? gatewayProp.frontendIpName : suite.generateId(gatewayProp.frontendIpName, null);
+        gatewayProp.publicIpName = suite.isMocked ? gatewayProp.publicIpName : suite.generateId(gatewayProp.publicIpName, null);
+        gatewayProp.poolName = suite.isMocked ? gatewayProp.poolName : suite.generateId(gatewayProp.poolName, null);
+        gatewayProp.portName = suite.isMocked ? gatewayProp.portName : suite.generateId(gatewayProp.portName, null);
+        gatewayProp.httpListenerName = suite.isMocked ? gatewayProp.httpListenerName : suite.generateId(gatewayProp.httpListenerName, null);
+        gatewayProp.httpSettingsName = suite.isMocked ? gatewayProp.httpSettingsName : suite.generateId(gatewayProp.httpSettingsName, null);
+        gatewayProp.ruleName = suite.isMocked ? gatewayProp.ruleName : suite.generateId(gatewayProp.ruleName, null);
+        gatewayProp.probeName = suite.isMocked ? gatewayProp.probeName : suite.generateId(gatewayProp.probeName, null);
         done();
       });
     });
@@ -100,17 +105,15 @@ describe('arm', function () {
       this.timeout(hour);
 
       it('create should pass', function (done) {
-        networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createVnet(groupName, vnetPrefix, location, vnetAddressPrefix, suite, function () {
-            networkUtil.createSubnet(groupName, vnetPrefix, subnetPrefix, subnetAddressPrefix, suite, function () {
-              var cmd = util.format('network application-gateway create %s %s --location %s --vnet-name %s' +
-                ' --subnet-name %s --servers %s --tags %s --json',
-                groupName, appGwPrefix, location, vnetPrefix, subnetPrefix, servers, tags).split(' ');
+        networkUtil.createGroup(gatewayProp.group, gatewayProp.location, suite, function () {
+          networkUtil.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddress, suite, function () {
+            networkUtil.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddress, suite, function () {
+              var cmd = 'network application-gateway create {group} {name} -l {location} -e {vnetName} -m {subnetName} -r {servers} -t {tags} --json'.formatArgs(gatewayProp);
               testUtils.executeCommand(suite, retry, cmd, function (result) {
                 result.exitStatus.should.equal(0);
                 var appGateway = JSON.parse(result.text);
-                appGateway.name.should.equal(appGwPrefix);
-                appGateway.location.should.equal(location);
+                appGateway.name.should.equal(gatewayProp.name);
+                appGateway.location.should.equal(gatewayProp.location);
                 networkUtil.shouldHaveTags(appGateway);
                 networkUtil.shouldBeSucceeded(appGateway);
                 done();
@@ -121,13 +124,12 @@ describe('arm', function () {
       });
 
       it('set should modify application gateway', function (done) {
-        var cmd = util.format('network application-gateway set %s %s --capacity %s --tags %s --json',
-          groupName, appGwPrefix, updatedCapacity, newTags).split(' ');
+        var cmd = 'network application-gateway set {group} {name} -z {newCapacity} -t {newTags} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
-          appGateway.sku.capacity.should.equal(updatedCapacity);
+          appGateway.name.should.equal(gatewayProp.name);
+          appGateway.sku.capacity.should.equal(gatewayProp.newCapacity);
           networkUtil.shouldAppendTags(appGateway);
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -135,43 +137,42 @@ describe('arm', function () {
       });
 
       it('show should display details of application gateway', function (done) {
-        var cmd = util.format('network application-gateway show %s %s --json', groupName, appGwPrefix).split(' ');
+        var cmd = 'network application-gateway show {group} {name} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
           networkUtil.shouldBeSucceeded(appGateway);
           done();
         });
       });
 
       it('list should display all application gateways from all resource groups', function (done) {
-        var cmd = util.format('network application-gateway list --json').split(' ');
+        var cmd = 'network application-gateway list --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var gateways = JSON.parse(result.text);
           _.some(gateways, function (appGw) {
-            return appGw.name === appGwPrefix;
+            return appGw.name === gatewayProp.name;
           }).should.be.true;
           done();
         });
       });
 
       it('list should display application gateways from specified resource group', function (done) {
-        var cmd = util.format('network application-gateway list %s --json', groupName).split(' ');
+        var cmd = 'network application-gateway list {group} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var gateways = JSON.parse(result.text);
           _.some(gateways, function (appGw) {
-            return appGw.name === appGwPrefix;
+            return appGw.name === gatewayProp.name;
           }).should.be.true;
           done();
         });
       });
 
       it('stop should pass', function (done) {
-        this.timeout(hour);
-        var cmd = util.format('network application-gateway stop %s %s --json', groupName, appGwPrefix).split(' ');
+        var cmd = 'network application-gateway stop {group} {name} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
@@ -179,8 +180,7 @@ describe('arm', function () {
       });
 
       it('start should pass', function (done) {
-        this.timeout(hour);
-        var cmd = util.format('network application-gateway start %s %s --json', groupName, appGwPrefix).split(' ');
+        var cmd = 'network application-gateway start {group} {name} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
@@ -188,7 +188,7 @@ describe('arm', function () {
       });
 
       it('start should not fail already started application gateway', function (done) {
-        var cmd = util.format('network application-gateway start %s %s --json', groupName, appGwPrefix).split(' ');
+        var cmd = 'network application-gateway start {group} {name} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
@@ -196,16 +196,15 @@ describe('arm', function () {
       });
 
       it('frontend-ip add should create public frontend ip in application gateway ', function (done) {
-        networkUtil.createPublicIp(groupName, publicIpPrefix, location, suite, function () {
-          var cmd = util.format('network application-gateway frontend-ip add %s %s %s --public-ip-name %s --json',
-            groupName, appGwPrefix, frontendIpPrefix, publicIpPrefix).split(' ');
+        networkUtil.createPublicIp(gatewayProp.group, gatewayProp.publicIpName, gatewayProp.location, suite, function () {
+          var cmd = 'network application-gateway frontend-ip add {group} {name} {frontendIpName} -p {publicIpName} --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var appGateway = JSON.parse(result.text);
-            appGateway.name.should.equal(appGwPrefix);
+            appGateway.name.should.equal(gatewayProp.name);
 
             var frontendIp = appGateway.frontendIPConfigurations[1];
-            frontendIp.name.should.equal(frontendIpPrefix);
+            frontendIp.name.should.equal(gatewayProp.frontendIpName);
             networkUtil.shouldBeSucceeded(frontendIp);
             done();
           });
@@ -213,33 +212,31 @@ describe('arm', function () {
       });
 
       it('frontend-port add should create new frontend port in application gateway', function (done) {
-        var cmd = util.format('network application-gateway frontend-port add %s %s %s --port %s --json',
-          groupName, appGwPrefix, portPrefix, portAddress).split(' ');
+        var cmd = 'network application-gateway frontend-port add {group} {name} {portName} -p {portAddress} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
 
           var frontendPort = appGateway.frontendPorts[1];
-          frontendPort.name.should.equal(portPrefix);
-          frontendPort.port.should.equal(portAddress);
+          frontendPort.name.should.equal(gatewayProp.portName);
+          frontendPort.port.should.equal(gatewayProp.portAddress);
           networkUtil.shouldBeSucceeded(frontendPort);
           done();
         });
       });
 
       it('address-pool add command should create new address pool in application gateway', function (done) {
-        var cmd = util.format('network application-gateway address-pool add %s %s %s --servers %s --json',
-          groupName, appGwPrefix, poolPrefix, poolServers).split(' ');
+        var cmd = 'network application-gateway address-pool add {group} {name} {poolName} -r {poolServers} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
 
           var addressPool = appGateway.backendAddressPools[1];
-          addressPool.name.should.equal(portPrefix);
+          addressPool.name.should.equal(gatewayProp.poolName);
 
-          var pools = poolServers.split(',');
+          var pools = gatewayProp.poolServers.split(',');
           var index = 0;
           addressPool.backendAddresses.forEach(function (address) {
             address.ipAddress.should.equal(pools[index]);
@@ -252,75 +249,67 @@ describe('arm', function () {
       });
 
       it('http-settings add command should create new http settings in application gateway', function (done) {
-        var cmd = util.format('network application-gateway http-settings add %s %s %s --port %s --cookie-based-affinity %s ' +
-          '--protocol %s --json',
-          groupName, appGwPrefix, httpSettingsPrefix, httpSettingsPort, cookieBasedAffinity, httpProtocol).split(' ');
+        var cmd = 'network application-gateway http-settings add {group} {name} {httpSettingsName} -o {httpSettingsPort} -c {cookieBasedAffinity} -p {httpProtocol} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
 
           var setting = appGateway.backendHttpSettingsCollection[1];
-          setting.name.should.equal(httpSettingsPrefix);
-          setting.port.should.equal(httpSettingsPort);
-          setting.cookieBasedAffinity.should.equal(cookieBasedAffinity);
-          setting.protocol.should.equal(httpProtocol);
+          setting.name.should.equal(gatewayProp.httpSettingsName);
+          setting.port.should.equal(gatewayProp.httpSettingsPort);
+          setting.cookieBasedAffinity.should.equal(gatewayProp.cookieBasedAffinity);
+          setting.protocol.should.equal(gatewayProp.httpProtocol);
           networkUtil.shouldBeSucceeded(setting);
           done();
         });
       });
 
       it('http-listener add command should create new http listener in application gateway', function (done) {
-        var cmd = util.format('network application-gateway http-listener add %s %s %s --frontend-ip-name %s --frontend-port-name %s --json',
-          groupName, appGwPrefix, httpListenerPrefix, frontendIpPrefix, portPrefix).split(' ');
+        var cmd = 'network application-gateway http-listener add {group} {name} {httpListenerName} -i {frontendIpName} -p {portName} -r {httpProtocol} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
 
           var listener = appGateway.httpListeners[1];
-          listener.name.should.equal(httpListenerPrefix);
-          listener.protocol.should.equal(httpProtocol);
+          listener.name.should.equal(gatewayProp.httpListenerName);
+          listener.protocol.should.equal(gatewayProp.httpProtocol);
           networkUtil.shouldBeSucceeded(listener);
           done();
         });
       });
 
       it('rule add command should create new request routing rule in application gateway', function (done) {
-        var cmd = util.format('network application-gateway rule add %s %s %s --http-settings-name %s ' +
-          '--http-listener-name %s  --address-pool-name %s --json',
-          groupName, appGwPrefix, rulePrefix, httpSettingsPrefix, httpListenerPrefix, poolPrefix).split(' ');
+        var cmd = 'network application-gateway rule add {group} {name} {ruleName} -i {httpSettingsName} -l {httpListenerName} -p {poolName} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(appGwPrefix);
+          appGateway.name.should.equal(gatewayProp.name);
 
           var rule = appGateway.requestRoutingRules[1];
-          rule.name.should.equal(rulePrefix);
+          rule.name.should.equal(gatewayProp.ruleName);
           networkUtil.shouldBeSucceeded(rule);
           done();
         });
       });
 
       it('probe add should create probe in application gateway ', function (done) {
-        networkUtil.createPublicIp(groupName, probePublicIpPrefix, location, suite, function () {
-          var cmd = util.format('network application-gateway probe add %s %s %s --port %s  --protocol %s --host-name %s ' +
-            '--path %s --interval %s --timeout %s --unhealthy-threshold %s --json',
-            groupName, appGwPrefix, probePrefix, probePort, httpProtocol, hostName, path, interval, timeout,
-            unhealthyThreshold).split(' ');
+        networkUtil.createPublicIp(groupName, gatewayProp.probePublicIpName, gatewayProp.location, suite, function () {
+          var cmd = 'network application-gateway probe add {group} {name} {probeName} -o {port} -p {httpProtocol} -d {hostName} -f {path} -i {interval} -u {timeout} -e {unhealthyThreshold} --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var appGateway = JSON.parse(result.text);
-            appGateway.name.should.equal(appGwPrefix);
+            appGateway.name.should.equal(gatewayProp.name);
 
             var probe = appGateway.probes[0];
-            probe.name.should.equal(probePrefix);
-            probe.protocol.should.equal(httpProtocol);
-            probe.host.should.equal(hostName);
-            probe.path.should.equal(path);
-            probe.interval.should.equal(interval);
-            probe.timeout.should.equal(timeout);
-            probe.unhealthyThreshold.should.equal(unhealthyThreshold);
+            probe.name.should.equal(gatewayProp.probeName);
+            probe.protocol.should.equal(gatewayProp.httpProtocol);
+            probe.host.should.equal(gatewayProp.hostName);
+            probe.path.should.equal(gatewayProp.path);
+            probe.interval.should.equal(gatewayProp.interval);
+            probe.timeout.should.equal(gatewayProp.timeout);
+            probe.unhealthyThreshold.should.equal(gatewayProp.unhealthyThreshold);
             networkUtil.shouldBeSucceeded(probe);
             done();
           });
@@ -329,17 +318,16 @@ describe('arm', function () {
 
       // Changed application gateway state to "Stopped" in this test case.
       it('probe remove should remove probe from application gateway', function (done) {
-        networkUtil.stopAppGateway(groupName, appGwPrefix, suite, function () {
-          var cmd = util.format('network application-gateway probe remove %s %s %s -q --json', groupName, appGwPrefix,
-            probePrefix).split(' ');
+        networkUtil.stopAppGateway(groupName, gatewayProp.name, suite, function () {
+          var cmd = 'network application-gateway probe remove {group} {name} {probeName} -q --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var appGateway = JSON.parse(result.text);
-            appGateway.name.should.equal(appGwPrefix);
+            appGateway.name.should.equal(gatewayProp.name);
 
             var probes = appGateway.probes;
             _.some(probes, function (probe) {
-              return probe.name === probePrefix;
+              return probe.name === gatewayProp.probeName;
             }).should.be.false;
             networkUtil.shouldBeSucceeded(appGateway);
             done();
@@ -348,16 +336,15 @@ describe('arm', function () {
       });
 
       it('rule remove should remove request routing rule from application gateway', function (done) {
-        networkUtil.stopAppGateway(groupName, appGwPrefix, suite, function () {
-          var cmd = util.format('network application-gateway rule remove %s %s %s -q --json',
-            groupName, appGwPrefix, rulePrefix).split(' ');
+        networkUtil.stopAppGateway(gatewayProp.group, gatewayProp.name, suite, function () {
+          var cmd = 'network application-gateway rule remove {group} {name} {ruleName} -q --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var appGateway = JSON.parse(result.text);
 
             var rules = appGateway.requestRoutingRules;
             _.some(rules, function (rule) {
-              return rule.name === rulePrefix;
+              return rule.name === gatewayProp.ruleName;
             }).should.be.false;
             networkUtil.shouldBeSucceeded(appGateway);
             done();
@@ -366,15 +353,14 @@ describe('arm', function () {
       });
 
       it('http-listener remove should remove http listener from application gateway', function (done) {
-        var cmd = util.format('network application-gateway http-listener remove %s %s %s -q --json',
-          groupName, appGwPrefix, httpListenerPrefix).split(' ');
+        var cmd = 'network application-gateway http-listener remove {group} {name} {httpListenerName} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
 
           var listeners = appGateway.httpListeners;
           _.some(listeners, function (listener) {
-            return listener.name === httpListenerPrefix;
+            return listener.name === gatewayProp.httpListenerName;
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -383,15 +369,14 @@ describe('arm', function () {
 
       it('frontend-port remove should remove frontend port from application gateway', function (done) {
         this.timeout(hour);
-        var cmd = util.format('network application-gateway frontend-port remove %s %s %s -q --json',
-          groupName, appGwPrefix, portPrefix).split(' ');
+        var cmd = 'network application-gateway frontend-port remove {group} {name} {portName} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
 
           var ports = appGateway.frontendPorts;
           _.some(ports, function (port) {
-            return port.name === portPrefix;
+            return port.name === gatewayProp.portName;
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -399,15 +384,14 @@ describe('arm', function () {
       });
 
       it('frontend-ip remove should remove public frontend ip from application gateway', function (done) {
-        var cmd = util.format('network application-gateway frontend-ip remove %s %s %s -q --json',
-          groupName, appGwPrefix, frontendIpPrefix).split(' ');
+        var cmd = 'network application-gateway frontend-ip remove {group} {name} {frontendIpName} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
 
           var frontendIps = appGateway.frontendIPConfigurations;
           _.some(frontendIps, function (ip) {
-            return ip.name === frontendIpPrefix;
+            return ip.name === gatewayProp.frontendIpName;
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -415,15 +399,14 @@ describe('arm', function () {
       });
 
       it('http-settings remove should remove http settings from application gateway', function (done) {
-        var cmd = util.format('network application-gateway http-settings remove %s %s %s -q --json',
-          groupName, appGwPrefix, httpSettingsPrefix).split(' ');
+        var cmd = 'network application-gateway http-settings remove {group} {name} {httpSettingsName} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
 
           var settings = appGateway.backendHttpSettingsCollection;
           _.some(settings, function (setting) {
-            return setting.name === httpSettingsPrefix;
+            return setting.name === gatewayProp.httpSettingsName;
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -431,15 +414,14 @@ describe('arm', function () {
       });
 
       it('address-pool remove should remove address pool from application gateway', function (done) {
-        var cmd = util.format('network application-gateway address-pool remove %s %s %s -q --json',
-          groupName, appGwPrefix, poolPrefix).split(' ');
+        var cmd = 'network application-gateway address-pool remove {group} {name} {poolName} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
 
           var pools = appGateway.backendAddressPools;
           _.some(pools, function (pool) {
-            return pool.name === poolPrefix;
+            return pool.name === gatewayProp.poolName;
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
@@ -447,7 +429,7 @@ describe('arm', function () {
       });
 
       it('delete should delete application gateway', function (done) {
-        var cmd = util.format('network application-gateway delete %s %s -q --json', groupName, appGwPrefix).split(' ');
+        var cmd = 'network application-gateway delete {group} {name} -q --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();

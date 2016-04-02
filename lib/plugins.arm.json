@@ -48636,11 +48636,11 @@
                       "description": "the name of an existing frontend port"
                     },
                     {
-                      "flags": "-t, --protocol <protocol>",
+                      "flags": "-r, --protocol <protocol>",
                       "required": -16,
                       "optional": 0,
                       "bool": true,
-                      "short": "-t",
+                      "short": "-r",
                       "long": "--protocol",
                       "description": "the protocol, supported values are [http,https]"
                     },
