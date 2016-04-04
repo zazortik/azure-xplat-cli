@@ -25,6 +25,7 @@ var utilsCore = require('../lib/util/utilsCore');
 var TelemetryClient = require('../lib/util/telemetry');
 
 utilsCore.isTelemetryEnabled(function (err, isEnabled) {
+  // err will always be null
   TelemetryClient.init(isEnabled);
   if (isEnabled) {
     TelemetryClient.start(process.argv);

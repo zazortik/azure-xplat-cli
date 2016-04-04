@@ -74,7 +74,7 @@ describe('cli', function() {
           return 'azure login';
         }
       });
-      telemetry.onFinish(null);
+      telemetry.onFinish(function() {});
 
       (track.called).should.be.false;
       done();
@@ -94,7 +94,7 @@ describe('cli', function() {
           return 'azure login';
         }
       });
-      telemetry.onFinish(null);
+      telemetry.onFinish(function() {});
 
       (eventData.baseData.properties.command === 'azure login -u *** -p ***').should.be.true;
       done();
@@ -115,7 +115,7 @@ describe('cli', function() {
         }
       });
       var err = new Error('error');
-      telemetry.onError(err, null);
+      telemetry.onError(err, function() {});
       (eventData.baseData.properties.isSuccess).should.be.false;
       //(eventData.baseData.properties.stacktrace).should.be.true;
       (eventData.baseData.properties.command === 'azure login -u *** -p ***').should.be.true;
