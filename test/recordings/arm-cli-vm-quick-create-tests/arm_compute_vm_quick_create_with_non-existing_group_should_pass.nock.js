@@ -283,7 +283,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -300,7 +300,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -317,7 +317,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -334,7 +334,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -352,7 +352,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"c6bd4efc-46d0-44c1-bd35-dbab2ba549d4\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"c6bd4efc-46d0-44c1-bd35-dbab2ba549d4\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1110',
@@ -360,7 +360,7 @@ nock('http://management.azure.com:443')
   expires: '-1',
   'retry-after': '10',
   'x-ms-request-id': 'c6df903b-b863-4e45-bcbf-c910c7d27e2d',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -373,7 +373,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"c6bd4efc-46d0-44c1-bd35-dbab2ba549d4\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"c6bd4efc-46d0-44c1-bd35-dbab2ba549d4\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1110',
@@ -381,7 +381,7 @@ nock('https://management.azure.com:443')
   expires: '-1',
   'retry-after': '10',
   'x-ms-request-id': 'c6df903b-b863-4e45-bcbf-c910c7d27e2d',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -393,7 +393,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
@@ -411,7 +411,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/c6df903b-b863-4e45-bcbf-c910c7d27e2d?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
@@ -429,7 +429,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1112',
@@ -448,7 +448,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1112',
@@ -467,7 +467,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1112',
@@ -486,7 +486,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-vnet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"0aec9c79-1c30-478b-befb-c48b5bbafc06\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-westu-2524963298-snet\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n        \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1112',
@@ -505,7 +505,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-snet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '412',
@@ -524,7 +524,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualnetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-snet\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\",\r\n  \"etag\": \"W/\\\"193be854-0115-4289-a764-37798ec16ecb\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '412',
@@ -543,7 +543,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -560,7 +560,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip' under resource group 'xplatTestVMQCreate8414' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -578,7 +578,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"c1f6f55c-fbf0-4deb-9d89-1a48fc57bb98\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '706',
@@ -586,7 +586,7 @@ nock('http://management.azure.com:443')
   expires: '-1',
   'retry-after': '10',
   'x-ms-request-id': '6e2a5983-ba0b-432d-973a-3290a1e6d812',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -599,7 +599,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"c1f6f55c-fbf0-4deb-9d89-1a48fc57bb98\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '706',
@@ -607,7 +607,7 @@ nock('https://management.azure.com:443')
   expires: '-1',
   'retry-after': '10',
   'x-ms-request-id': '6e2a5983-ba0b-432d-973a-3290a1e6d812',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
@@ -619,7 +619,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
@@ -637,7 +637,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/6e2a5983-ba0b-432d-973a-3290a1e6d812?api-version=2016-03-30')
   .reply(200, "{\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '29',
@@ -655,7 +655,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"b3d3b189-f525-46f0-a1f4-2200d35e752f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '707',
@@ -674,7 +674,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"b3d3b189-f525-46f0-a1f4-2200d35e752f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '707',
@@ -693,7 +693,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"b3d3b189-f525-46f0-a1f4-2200d35e752f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '707',
@@ -712,7 +712,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"b3d3b189-f525-46f0-a1f4-2200d35e752f\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '707',
@@ -732,14 +732,14 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"enableIPForwarding\": false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1661',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': 'b840252c-51d3-4c34-9baa-acefe510f6d1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/b840252c-51d3-4c34-9baa-acefe510f6d1?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/b840252c-51d3-4c34-9baa-acefe510f6d1?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
@@ -752,14 +752,14 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15', '*')
+.put('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"enableIPForwarding\": false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1661',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': 'b840252c-51d3-4c34-9baa-acefe510f6d1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/b840252c-51d3-4c34-9baa-acefe510f6d1?api-version=2015-06-15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Network/locations/westus/operations/b840252c-51d3-4c34-9baa-acefe510f6d1?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
@@ -771,7 +771,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"enableIPForwarding\": false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1661',
@@ -790,7 +790,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"24aed3b8-84b5-4266-a0a8-5ad9aec1352d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"enableIPForwarding\": false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1661',
@@ -1079,7 +1079,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"b9497ef6-3edb-4634-bf17-99be45898246\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"b9497ef6-3edb-4634-bf17-99be45898246\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"macAddress\": \"00-0D-3A-32-7C-9E\",\r\n    \"enableIPForwarding\": false,\r\n    \"primary\": true,\r\n    \"virtualMachine\": {\r\n      \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Compute/virtualMachines/xplatvm101\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1916',
@@ -1098,7 +1098,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-nic\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic\",\r\n  \"etag\": \"W/\\\"b9497ef6-3edb-4634-bf17-99be45898246\\\"\",\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"81075c8b-a01a-4397-9908-e4ea3468a4ac\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1458777828896\",\r\n        \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\",\r\n        \"etag\": \"W/\\\"b9497ef6-3edb-4634-bf17-99be45898246\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.0.1.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\"\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/virtualNetworks/xplat-westu-2524963298-vnet/subnets/xplat-westu-2524963298-snet\"\r\n          },\r\n          \"primary\": true\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": []\r\n    },\r\n    \"macAddress\": \"00-0D-3A-32-7C-9E\",\r\n    \"enableIPForwarding\": false,\r\n    \"primary\": true,\r\n    \"virtualMachine\": {\r\n      \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Compute/virtualMachines/xplatvm101\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1916',
@@ -1117,7 +1117,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"30ea0f7e-9a9c-4e8a-8e12-407261c6343d\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"ipAddress\": \"13.91.107.174\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    },\r\n    \"ipConfiguration\": {\r\n      \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '993',
@@ -1136,7 +1136,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2015-06-15')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-westu-2524963298-pip\",\r\n  \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/publicIPAddresses/xplat-westu-2524963298-pip\",\r\n  \"etag\": \"W/\\\"30ea0f7e-9a9c-4e8a-8e12-407261c6343d\\\"\",\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c8d4f8db-5a51-49ca-a92f-d93e01401610\",\r\n    \"ipAddress\": \"13.91.107.174\",\r\n    \"publicIPAllocationMethod\": \"Dynamic\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"xplat-westu-2524963298-pip\",\r\n      \"fqdn\": \"xplat-westu-2524963298-pip.westus.cloudapp.azure.com\"\r\n    },\r\n    \"ipConfiguration\": {\r\n      \"id\": \"/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTestVMQCreate8414/providers/Microsoft.Network/networkInterfaces/xplat-westu-2524963298-nic/ipConfigurations/ipconfig1458777828896\"\r\n    }\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '993',
