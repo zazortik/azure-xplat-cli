@@ -68,6 +68,7 @@
     "azure-storage": "0.7.0",
     "azure-arm-batch": "0.1.0",
     "azure-batch": "0.1.0",
+    "applicationinsights": "0.15.12",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
@@ -98,7 +99,8 @@
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
-    "xmlbuilder": "0.4.x"
+    "xmlbuilder": "0.4.x",
+    "read": "^1.0.7"
   },
   "devDependencies": {
     "istanbul": "0.3.19",
@@ -120,7 +122,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
-    "unit-arm": "node scripts/unit.js testlist-arm.txt",   
+    "unit-arm": "node scripts/unit.js testlist-arm.txt",
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
     "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",

@@ -243,6 +243,58 @@
           "description": "the organization's realm"
         }
       ]
+    },
+    {
+      "name": "telemetry",
+      "description": "Manages the data collection preference.",
+      "fullName": "telemetry",
+      "usage": "[options]",
+      "filePath": "commands/telemetry.js",
+      "options": [
+        {
+          "flags": "-v, --verbose",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "short": "-v",
+          "long": "--verbose",
+          "description": "use verbose output"
+        },
+        {
+          "flags": "-vv",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "-vv",
+          "description": "more verbose with debug output"
+        },
+        {
+          "flags": "--json",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "long": "--json",
+          "description": "use json output"
+        },
+        {
+          "flags": "-e, --enable",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "short": "-e",
+          "long": "--enable",
+          "description": "use this flag to enable telemetry"
+        },
+        {
+          "flags": "-d, --disable",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "short": "-d",
+          "long": "--disable",
+          "description": "use this flag to disable telemetry"
+        }
+      ]
     }
   ],
   "categories": {
