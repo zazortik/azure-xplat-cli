@@ -125,7 +125,8 @@ describe('arm', function () {
         });
       });
       it('set should modify vpn gateway', function (done) {
-        var cmd = 'network vpn-gateway set -g {group} -n {name} -a {newPrivateIpAddress} -f {addressPrefix} -t {newTags} --json'.formatArgs(gatewayProp);
+        var cmd = util.format('network vpn-gateway set -g {group} -n {name} -a {newPrivateIpAddress} -f {addressPrefix} ' +
+          '-t {newTags} --json').formatArgs(gatewayProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

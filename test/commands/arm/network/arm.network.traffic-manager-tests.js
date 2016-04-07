@@ -92,8 +92,8 @@ describe('arm', function () {
         });
       });
       it('set should modify traffic-manager profile', function (done) {
-        var cmd = 'network traffic-manager profile set -g {group} -n {name} -u {newProfileStatus} -m {newTrafficRoutingMethod} -l {newTtl} -p {newMonitorProtocol} -o {newMonitorPort} -a {newMonitorPath} -t {newTags} --json'
-          .formatArgs(profileProp);
+        var cmd = util.format('network traffic-manager profile set -g {group} -n {name} -u {newProfileStatus} -m {newTrafficRoutingMethod} ' +
+          '-l {newTtl} -p {newMonitorProtocol} -o {newMonitorPort} -a {newMonitorPath} -t {newTags} --json').formatArgs(profileProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

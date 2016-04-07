@@ -108,7 +108,8 @@ describe('arm', function () {
         networkUtil.createGroup(gatewayProp.group, gatewayProp.location, suite, function () {
           networkUtil.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddress, suite, function () {
             networkUtil.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddress, suite, function () {
-              var cmd = 'network application-gateway create {group} {name} -l {location} -e {vnetName} -m {subnetName} -r {servers} -t {tags} --json'.formatArgs(gatewayProp);
+              var cmd = util.format('network application-gateway create {group} {name} -l {location} -e {vnetName} -m {subnetName} ' +
+                '-r {servers} -t {tags} --json').formatArgs(gatewayProp);
               testUtils.executeCommand(suite, retry, cmd, function (result) {
                 result.exitStatus.should.equal(0);
                 var appGateway = JSON.parse(result.text);
@@ -249,7 +250,8 @@ describe('arm', function () {
       });
 
       it('http-settings add command should create new http settings in application gateway', function (done) {
-        var cmd = 'network application-gateway http-settings add {group} {name} {httpSettingsName} -o {httpSettingsPort} -c {cookieBasedAffinity} -p {httpProtocol} --json'.formatArgs(gatewayProp);
+        var cmd = util.format('network application-gateway http-settings add {group} {name} {httpSettingsName} -o {httpSettingsPort} ' +
+          '-c {cookieBasedAffinity} -p {httpProtocol} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
@@ -266,7 +268,8 @@ describe('arm', function () {
       });
 
       it('http-listener add command should create new http listener in application gateway', function (done) {
-        var cmd = 'network application-gateway http-listener add {group} {name} {httpListenerName} -i {frontendIpName} -p {portName} -r {httpProtocol} --json'.formatArgs(gatewayProp);
+        var cmd = util.format('network application-gateway http-listener add {group} {name} {httpListenerName} -i {frontendIpName} ' +
+          '-p {portName} -r {httpProtocol} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
@@ -281,7 +284,8 @@ describe('arm', function () {
       });
 
       it('rule add command should create new request routing rule in application gateway', function (done) {
-        var cmd = 'network application-gateway rule add {group} {name} {ruleName} -i {httpSettingsName} -l {httpListenerName} -p {poolName} --json'.formatArgs(gatewayProp);
+        var cmd = util.format('network application-gateway rule add {group} {name} {ruleName} -i {httpSettingsName} ' +
+          '-l {httpListenerName} -p {poolName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
@@ -296,7 +300,8 @@ describe('arm', function () {
 
       it('probe add should create probe in application gateway ', function (done) {
         networkUtil.createPublicIp(groupName, gatewayProp.probePublicIpName, gatewayProp.location, suite, function () {
-          var cmd = 'network application-gateway probe add {group} {name} {probeName} -o {port} -p {httpProtocol} -d {hostName} -f {path} -i {interval} -u {timeout} -e {unhealthyThreshold} --json'.formatArgs(gatewayProp);
+          var cmd = util.format('network application-gateway probe add {group} {name} {probeName} -o {port} -p {httpProtocol} ' +
+            '-d {hostName} -f {path} -i {interval} -u {timeout} -e {unhealthyThreshold} --json').formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var appGateway = JSON.parse(result.text);

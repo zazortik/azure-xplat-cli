@@ -110,8 +110,8 @@ describe('arm', function () {
         });
       });
       it('set should set nsg and route table using name', function (done) {
-        var cmd = 'network vnet subnet set -g {group} -e {vnetName} -n {name} -a {newAddressPrefix} -o {nsgName} -r {routeTableName} --json'
-          .formatArgs(subnetProp);
+        var cmd = util.format('network vnet subnet set -g {group} -e {vnetName} -n {name} -a {newAddressPrefix} -o {nsgName} ' +
+          '-r {routeTableName} --json').formatArgs(subnetProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
