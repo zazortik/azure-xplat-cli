@@ -102,7 +102,7 @@ describe('arm', function () {
         describe('set', function() {
           it('should create a setting', function(done) {
             // Assume profile is created
-            suite.execute('insights autoscale setting set %s -l %s -n %s -i %s -a %s --json', 'Default-Web-WestUS', 'West US', 'MySetting', resourceId, profiles, function(result) {
+            suite.execute('insights autoscale setting set %s %s %s -i %s -a %s --json', 'MySetting', 'West US', 'Default-Web-WestUS', resourceId, profiles, function(result) {
               result.exitStatus.should.equal(0);
 
               var response = JSON.parse(result.text);

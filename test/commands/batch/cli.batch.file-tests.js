@@ -205,7 +205,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var computeNodes = JSON.parse(result.text);
         computeNodeId = computeNodes[0].id;
-        suite.execute('batch node-file download %s %s %s %s --account-name %s --account-key %s --account-endpoint %s --json',
+        suite.execute('batch node-file download %s %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
           poolId, computeNodeId, startTaskStdOut, downloadLocation, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var downloadedContent = fs.readFileSync(downloadLocation).toString();
@@ -218,7 +218,7 @@ describe('cli', function () {
     });
 
     it('should download the task file', function (done) {
-      suite.execute('batch task-file download %s %s %s %s --account-name %s --account-key %s --account-endpoint %s --json',
+      suite.execute('batch task-file download %s %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
         jobId, taskId, taskOut, downloadLocation, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         var downloadedContent = fs.readFileSync(downloadLocation).toString();
