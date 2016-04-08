@@ -205,8 +205,8 @@ _.extend(NetworkTestUtil.prototype, {
     self.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddressPrefix, suite, function (vnet) {
       self.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddressPrefix, suite, function (subnet) {
         self.createPublicIp(gatewayProp.group, gatewayProp.publicIpName, gatewayProp.location, suite, function (publicIp) {
-          var cmd = util.format('network vpn-gateway create -g {group} -n {name} -l {location} -w {gatewayType} -y {vpnType}' +
-            ' -k {sku} -a {privateIpAddress} -b {enableBgp} -t {tags} -u {1} -f {2} --json').formatArgs(gatewayProp, publicIp.id, subnet.id);
+          var cmd = 'network vpn-gateway create -g {group} -n {name} -l {location} -w {gatewayType} -y {vpnType} -k {sku} -a {privateIpAddress} -b {enableBgp} -t {tags} -u {1} -f {2} --json'
+            .formatArgs(gatewayProp, publicIp.id, subnet.id);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);

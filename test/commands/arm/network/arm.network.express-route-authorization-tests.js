@@ -28,10 +28,9 @@ var groupName, location, encryptedKey1,
     expressRCName: 'xplatExpressRoute',
     serviceProvider: 'InterCloud',
     peeringLocation: 'London',
-    bandwidth: 50,
     skuTier: 'Standard',
     skuFamily: 'MeteredData',
-    tags: networkUtil.tags,
+    tags: 'tag1=val1',
     name: 'xplatExpressRouteAuth',
     key: 'abc@123',
     newKey: 'ABC@123'
@@ -74,7 +73,8 @@ describe('arm', function () {
     describe('express-route authorization', function () {
       it('create should pass', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createExpressRoute(auth, suite, function () {
+          networkUtil.createExpressRoute(groupName, auth.expressRCName, location, auth.serviceProvider, auth.peeringLocation,
+            auth.skuTier, auth.skuFamily, auth.tags, suite, function () {
             var cmd = 'network express-route authorization create {group} {expressRCName} {name} -k {key} --json'.formatArgs(auth);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);

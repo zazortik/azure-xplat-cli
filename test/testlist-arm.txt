@@ -87,5 +87,3 @@ commands/arm/group/arm.group-tests.js
 commands/arm/group/arm.group.deployment-tests.js
 commands/arm/group/arm.group.deployment.operation-tests.js
 commands/arm/cdnMangement/arm.cdnMangement-tests.js
-commands/arm/policy/arm.policy.definition-tests.js
-commands/arm/policy/arm.policy.assignment-tests.js
