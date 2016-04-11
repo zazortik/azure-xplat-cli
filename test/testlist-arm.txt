@@ -1,1 +1,1 @@
-commands/arm/network/arm.network.vpn-gateway-tests.js
+commands/arm/hdinsight/arm.hdinsight-cluster-crud-tests.js
