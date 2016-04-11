@@ -26,14 +26,14 @@ var taskJsonFilePath = path.resolve(__dirname, '../../data/batchCreateTaskForFil
 var jobId = 'xplatJobForFileTests';
 var taskId = 'xplatTask';
 var taskWorkDir = 'wd';
-var taskOut = 'wd\\taskOut.txt';
+var taskOut = 'wd/taskOut.txt';
 var taskStdErr = 'stderr.txt';
-var taskOutComputeNodePath = 'workitems\\xplatjobforfiletests\\job-1\\xplattask\\wd\\taskOut.txt';
+var taskOutComputeNodePath = 'workitems/xplatjobforfiletests/job-1/xplattask/wd/taskOut.txt';
 var poolId = 'xplatTestPool';
 var computeNodeId;
 var startTaskDir = 'startup';
-var startTaskStdOut = 'startup\\stdout.txt';
-var downloadLocation = '.\\temp.txt';
+var startTaskStdOut = 'startup/stdout.txt';
+var downloadLocation = './temp.txt';
 
 var requiredEnvironment = [
   { name: 'AZURE_BATCH_ACCOUNT', defaultValue: 'defaultaccount' },
@@ -88,9 +88,11 @@ describe('cli', function () {
         suite.execute('batch job delete %s --account-name %s --account-key %s --account-endpoint %s --quiet --json', jobId,
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
+          suite.teardownSuite(done);
         });
+      } else {
+        suite.teardownSuite(done);
       }
-      suite.teardownSuite(done);
     });
 
     beforeEach(function (done) {
@@ -134,7 +136,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var files = JSON.parse(result.text);
           files.some(function (file) {
-            return file.name === startTaskStdOut;
+            return file.name === startTaskStdOut || file.name.replace("\\", "/") === startTaskStdOut;
           }).should.be.true;
           done();
         });
@@ -181,7 +183,7 @@ describe('cli', function () {
           result.exitStatus.should.equal(0);
           var files = JSON.parse(result.text);
           files.some(function (file) {
-            return file.name === taskOut;
+            return file.name === taskOut || file.name.replace("\\", "/") === taskOut;
           }).should.be.true;
           done();
         });
