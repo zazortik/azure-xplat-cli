@@ -24103,6 +24103,15 @@
               "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
             },
             {
+              "flags": "-h, --passphrase <passphrase>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-h",
+              "long": "--passphrase",
+              "description": "Passphrase specified in parameter"
+            },
+            {
               "flags": "-q, --quiet",
               "required": 0,
               "optional": 0,
@@ -24118,7 +24127,7 @@
               "bool": true,
               "short": "-e",
               "long": "--extension-version",
-              "description": "Version of Diagnostics extension. Default values are [1.0] for Windows"
+              "description": "Version of AzureDiskEncryption extension. Default values are [1.1] for Windows"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -24128,6 +24137,58 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "-d, --disable-auto-upgrade-minor-version",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--disable-auto-upgrade-minor-version",
+              "description": "Disable auto-upgrade of minor version"
+            }
+          ]
+        },
+        {
+          "name": "remove-backup",
+          "description": "Remove the backup for the vm",
+          "fullName": "vm remove-backup",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-i, --identity <identity>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--identity",
+              "description": "The identity of the backup"
             }
           ]
         },
@@ -24189,6 +24250,112 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "disable-disk-encryption",
+          "description": "Disable azure disk encryption on a VM in a resource group.",
+          "fullName": "vm disable-disk-encryption",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-t, --volume-type <volume-type>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--volume-type",
+              "description": "Type of the volume OS or Data or All to perform encryption operation"
+            },
+            {
+              "flags": "-x, --sequence-version <sequence-version>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "short": "-x",
+              "long": "--sequence-version",
+              "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
+              "flags": "-e, --extension-version <extension-version>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--extension-version",
+              "description": "Version of AzureDiskEncryption extension. Default values are [1.1] for Windows"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            },
+            {
+              "flags": "-d, --disable-auto-upgrade-minor-version",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--disable-auto-upgrade-minor-version",
+              "description": "Disable auto-upgrade of minor version"
             }
           ]
         }
