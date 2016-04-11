@@ -3919,7 +3919,95 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "remote-login-settings": {
+              "name": "remote-login-settings",
+              "description": "The remote login settings for a Batch compute node",
+              "fullName": "batch node remote-login-settings",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the remote login settings for the specified node",
+                  "fullName": "batch node remote-login-settings show",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "node-user": {
           "name": "node-user",
@@ -3932,7 +4020,7 @@
               "name": "create",
               "description": "Adds a user account to the specified compute node",
               "fullName": "batch node-user create",
-              "usage": "[options] [pool-id] [node-id] [user-name] [user-password]",
+              "usage": "[options] [pool-id] [node-id] [user-name]",
               "filePath": "commands/batch/batch.node._js",
               "options": [
                 {
@@ -3985,12 +4073,20 @@
                   "description": "the name of the user account to be created"
                 },
                 {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
+                  "flags": "--user-password [user-password]",
+                  "required": 0,
+                  "optional": -17,
                   "bool": true,
                   "long": "--user-password",
                   "description": "the password of the user account"
+                },
+                {
+                  "flags": "--ssh-public-key [ssh-public-key]",
+                  "required": 0,
+                  "optional": -18,
+                  "bool": true,
+                  "long": "--ssh-public-key",
+                  "description": "the ssh public key that can be used for remote login to the compute node; can only be specified for Linux nodes"
                 },
                 {
                   "flags": "--admin",
@@ -4001,9 +4097,9 @@
                   "description": "whether the account should be an administrator on the compute node"
                 },
                 {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
+                  "flags": "--expiry-time [expiry-time]",
+                  "required": 0,
+                  "optional": -15,
                   "bool": true,
                   "long": "--expiry-time",
                   "description": "the time at which the account should expire"
@@ -4188,17 +4284,25 @@
                   "description": "the name of the user account to update"
                 },
                 {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
+                  "flags": "--user-password [user-password]",
+                  "required": 0,
+                  "optional": -17,
                   "bool": true,
                   "long": "--user-password",
                   "description": "the password of the user account"
                 },
                 {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
+                  "flags": "--ssh-public-key [ssh-public-key]",
+                  "required": 0,
+                  "optional": -18,
+                  "bool": true,
+                  "long": "--ssh-public-key",
+                  "description": "the ssh public key that can be used for remote login to the compute node; can only be specified for Linux nodes"
+                },
+                {
+                  "flags": "--expiry-time [expiry-time]",
+                  "required": 0,
+                  "optional": -15,
                   "bool": true,
                   "long": "--expiry-time",
                   "description": "the time at which the account should expire"
@@ -4714,6 +4818,75 @@
                   "bool": true,
                   "long": "--if-unmodified-since",
                   "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "list-node-agent-skus",
+              "description": "Lists the node agent SKUs supported by the Azure Batch service",
+              "fullName": "batch pool list-node-agent-skus",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",

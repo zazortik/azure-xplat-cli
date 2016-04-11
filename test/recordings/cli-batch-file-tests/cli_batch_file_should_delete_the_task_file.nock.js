@@ -27,59 +27,59 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9f5937c8-4446-44a3-b118-9c33edc71aef',
+  'request-id': 'd3205418-6d60-4479-8117-dfa55c39e026',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '75ca7c19-d426-4a00-a99f-cf99b86d29b1',
+  'client-request-id': '732986e7-8bef-4359-a487-7cec244fd69d',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 00:27:46 GMT',
+  date: 'Mon, 11 Apr 2016 18:52:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9f5937c8-4446-44a3-b118-9c33edc71aef',
+  'request-id': 'd3205418-6d60-4479-8117-dfa55c39e026',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '75ca7c19-d426-4a00-a99f-cf99b86d29b1',
+  'client-request-id': '732986e7-8bef-4359-a487-7cec244fd69d',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 00:27:46 GMT',
+  date: 'Mon, 11 Apr 2016 18:52:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '43c381a6-9fec-41bf-8fdf-b60e21d9cc1e',
+  'request-id': '3dc6a824-f2f4-401b-8be8-174600952148',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '24c2013d-e15b-409f-8dac-8867e9635ad8',
+  'client-request-id': '694db6e0-46d1-4f7b-a061-e4a36d6603e6',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 00:27:47 GMT',
+  date: 'Mon, 11 Apr 2016 18:52:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/stderr.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(404, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '43c381a6-9fec-41bf-8fdf-b60e21d9cc1e',
+  'request-id': '3dc6a824-f2f4-401b-8be8-174600952148',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '24c2013d-e15b-409f-8dac-8867e9635ad8',
+  'client-request-id': '694db6e0-46d1-4f7b-a061-e4a36d6603e6',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 00:27:47 GMT',
+  date: 'Mon, 11 Apr 2016 18:52:38 GMT',
   connection: 'close' });
  return result; }]];

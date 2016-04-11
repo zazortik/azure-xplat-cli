@@ -1,0 +1,14 @@
+{
+  "id": "xplatTestLinuxPool",
+  "vmSize": "STANDARD_A1",
+  "virtualMachineConfiguration": {
+      "imageReference": {
+        "publisher":"Canonical",
+        "offer":"UbuntuServer",
+        "sku":"14.04.4-LTS",
+        "version":"latest"
+      },
+      "nodeAgentSKUId":"batch.node.ubuntu 14.04"
+  },
+  "targetDedicated": 1
+}

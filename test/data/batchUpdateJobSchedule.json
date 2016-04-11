@@ -30,8 +30,10 @@
         "keepAlive": false,
         "pool": {
           "vmSize": "small",
-          "osFamily": "4",
-          "targetOSVersion": "*",
+		  "cloudServiceConfiguration": { 
+            "osFamily": "4",
+            "targetOSVersion": "*"
+		  },
           "targetDedicated": 3,
           "startTask": {
             "commandLine": "cmd /c dir /s"
