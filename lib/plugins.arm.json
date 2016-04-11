@@ -47699,9 +47699,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add application gateway SSL certificate",
-                  "fullName": "network application-gateway ssl-cert add",
+                  "fullName": "network application-gateway ssl-cert create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -47787,9 +47787,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete application gateway SSL certificate",
-                  "fullName": "network application-gateway ssl-cert remove",
+                  "fullName": "network application-gateway ssl-cert delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -47876,9 +47876,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a frontend ip configuration to an application gateway",
-                  "fullName": "network application-gateway frontend-ip add",
+                  "fullName": "network application-gateway frontend-ip create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48000,9 +48000,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a frontend ip configuration from an application gateway",
-                  "fullName": "network application-gateway frontend-ip remove",
+                  "fullName": "network application-gateway frontend-ip delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48089,9 +48089,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a frontend port to an application gateway",
-                  "fullName": "network application-gateway frontend-port add",
+                  "fullName": "network application-gateway frontend-port create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48168,9 +48168,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a frontend port from an application gateway",
-                  "fullName": "network application-gateway frontend-port remove",
+                  "fullName": "network application-gateway frontend-port delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48257,9 +48257,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a backend address pool to an application gateway",
-                  "fullName": "network application-gateway address-pool add",
+                  "fullName": "network application-gateway address-pool create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48336,9 +48336,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a backend address pool from an application gateway",
-                  "fullName": "network application-gateway address-pool remove",
+                  "fullName": "network application-gateway address-pool delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48425,9 +48425,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add http settings to an application gateway",
-                  "fullName": "network application-gateway http-settings add",
+                  "fullName": "network application-gateway http-settings create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48522,9 +48522,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete http settings to an application gateway",
-                  "fullName": "network application-gateway http-settings remove",
+                  "fullName": "network application-gateway http-settings delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48611,9 +48611,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add an http listener to an application gateway",
-                  "fullName": "network application-gateway http-listener add",
+                  "fullName": "network application-gateway http-listener create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48717,9 +48717,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete an http listener from an application gateway",
-                  "fullName": "network application-gateway http-listener remove",
+                  "fullName": "network application-gateway http-listener delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48806,9 +48806,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add request routing rule to application gateway",
-                  "fullName": "network application-gateway rule add",
+                  "fullName": "network application-gateway rule create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48912,9 +48912,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a request routing rule from an application gateway",
-                  "fullName": "network application-gateway rule remove",
+                  "fullName": "network application-gateway rule delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -49001,9 +49001,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add probe to application gateway",
-                  "fullName": "network application-gateway probe add",
+                  "fullName": "network application-gateway probe create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -49134,9 +49134,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a probe from an application gateway",
-                  "fullName": "network application-gateway probe remove",
+                  "fullName": "network application-gateway probe delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -49214,6 +49214,406 @@
                 }
               ],
               "categories": {}
+            },
+            "url-path-map": {
+              "name": "url-path-map",
+              "description": "Commands to manage application gateway url path maps",
+              "fullName": "network application-gateway url-path-map",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Add url path map to application gateway",
+                  "fullName": "network application-gateway url-path-map create",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
+                    },
+                    {
+                      "flags": "-r, --rule-name <rule-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--rule-name",
+                      "description": "the name of the url path map rule"
+                    },
+                    {
+                      "flags": "-p, --path <path>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "path, which specifies application gateway path rule"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-a, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an url path map from an application gateway",
+                  "fullName": "network application-gateway url-path-map delete",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "rule": {
+                  "name": "rule",
+                  "description": "Commands to manage application gateway url path map rules",
+                  "fullName": "network application-gateway url-path-map rule",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Add url path map to application gateway",
+                      "fullName": "network application-gateway url-path-map rule create",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the url path map rule"
+                        },
+                        {
+                          "flags": "-p, --path <path>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "path, which specifies application gateway path rule"
+                        },
+                        {
+                          "flags": "-i, --http-settings-name <http-settings-name>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--http-settings-name",
+                          "description": "the name of an existing backend HTTP settings"
+                        },
+                        {
+                          "flags": "-a, --address-pool-name <address-pool-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--address-pool-name",
+                          "description": "the name of an existing backend address pool"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Delete an url path map from an application gateway",
+                      "fullName": "network application-gateway url-path-map rule delete",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the map"
+                        },
+                        {
+                          "flags": "-q, --quiet",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-q",
+                          "long": "--quiet",
+                          "description": "quiet mode, do not ask for delete confirmation"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
             }
           }
         },
