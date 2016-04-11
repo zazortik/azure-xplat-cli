@@ -43,7 +43,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:35 GMT',
   connection: 'close',
-  'content-length': '115' });
+  'content-length': '114' });
  return result; },
 function (nock) { 
 var result = 
@@ -61,7 +61,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:35 GMT',
   connection: 'close',
-  'content-length': '115' });
+  'content-length': '114' });
  return result; },
 function (nock) { 
 var result = 
@@ -70,7 +70,7 @@ nock('http://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/xplatTestVMSSCreate5174?api-version=2016-02-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174\",\"name\":\"xplatTestVMSSCreate5174\",\"location\":\"southeastasia\",\"tags\":{\"arm-cli-vmss-create-tests\":\"2016-04-20T04:01:27.987Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '270',
+  'content-length': '268',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1195',
@@ -88,7 +88,7 @@ nock('https://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/xplatTestVMSSCreate5174?api-version=2016-02-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174\",\"name\":\"xplatTestVMSSCreate5174\",\"location\":\"southeastasia\",\"tags\":{\"arm-cli-vmss-create-tests\":\"2016-04-20T04:01:27.987Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '270',
+  'content-length': '268',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1195',
