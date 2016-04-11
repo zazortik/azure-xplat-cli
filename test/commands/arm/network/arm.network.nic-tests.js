@@ -212,8 +212,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('address-pool add should attach address pool by name', function (done) {
-        var cmd = 'network nic address-pool add -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
+      it('address-pool create should attach address pool by name', function (done) {
+        var cmd = 'network nic address-pool create -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -224,8 +224,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('address-pool remove should detach address-pool by name', function (done) {
-        var cmd = 'network nic address-pool remove -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
+      it('address-pool delete should detach address-pool by name', function (done) {
+        var cmd = 'network nic address-pool delete -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -261,8 +261,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('inbound-nat-rule add should attach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule add -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+      it('inbound-nat-rule create should attach inbound nat rule by name', function (done) {
+        var cmd = 'network nic inbound-nat-rule create -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -273,8 +273,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('inbound-nat-rule remove should detach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule remove -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+      it('inbound-nat-rule delete should detach inbound nat rule by name', function (done) {
+        var cmd = 'network nic inbound-nat-rule delete -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);

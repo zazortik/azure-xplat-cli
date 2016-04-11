@@ -40848,9 +40848,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a backend address pool to a NIC",
-                  "fullName": "network nic address-pool add",
+                  "fullName": "network nic address-pool create",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -40936,9 +40936,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a backend address pool from a NIC",
-                  "fullName": "network nic address-pool remove",
+                  "fullName": "network nic address-pool delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -41034,9 +41034,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add an inbound NAT rule to a NIC",
-                  "fullName": "network nic inbound-nat-rule add",
+                  "fullName": "network nic inbound-nat-rule create",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -41122,9 +41122,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete an inbound NAT rule from a NIC",
-                  "fullName": "network nic inbound-nat-rule remove",
+                  "fullName": "network nic inbound-nat-rule delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -46074,9 +46074,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a root certificate to a virtual network gateway",
-                  "fullName": "network vpn-gateway root-cert add",
+                  "fullName": "network vpn-gateway root-cert create",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -46153,9 +46153,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
-                  "description": "Remove a root certificate from a virtual network gateway",
-                  "fullName": "network vpn-gateway root-cert remove",
+                  "name": "delete",
+                  "description": "Delete a root certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway root-cert delete",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -46242,9 +46242,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a revoked certificate to a virtual network gateway",
-                  "fullName": "network vpn-gateway revoked-cert add",
+                  "fullName": "network vpn-gateway revoked-cert create",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -46321,9 +46321,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
-                  "description": "Remove a revoked certificate from a virtual network gateway",
-                  "fullName": "network vpn-gateway revoked-cert remove",
+                  "name": "delete",
+                  "description": "Delete a revoked certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway revoked-cert delete",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [

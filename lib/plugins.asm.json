@@ -25248,7 +25248,7 @@
         },
         {
           "name": "show",
-          "description": "Show Azure cloud service",
+          "description": "Show Azure cloud service. Provides detailed information about deployments when used with --json option.",
           "fullName": "service show",
           "usage": "[options] <serviceName>",
           "filePath": "commands/asm/service._js",
