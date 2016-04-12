@@ -13,7 +13,7 @@ if [ "$files" == "" ]; then
   # for now only test arm ones, as asm mode one rarely changed
   files=`ls $base_dir/*arm-*-live.txt`
 fi
-echo "Sceanrio Test Start: `date`"
+echo "Scenario Test Start: `date`"
 echo
 # echo files: $files
 for file in $files
@@ -30,4 +30,4 @@ do
   node $base_dir/../scripts/unit.js $file 
   echo
 done
-echo "Sceanrio Test End: `date`"
+echo "Scenario Test End: `date`"

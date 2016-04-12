@@ -147,8 +147,8 @@ describe('arm', function () {
         });
       });
       it('create connection should create connection between vpn gateways in different resource groups', function (done) {
-        var cmd = 'network vpn-connection create -g {group} -n {name} -l {location} -i {gatewayName1} -r {gatewayGroup1} -e {gatewayName2} -m {gatewayGroup2} -y {type} -w {routingWeight} -k {sharedKey} -t {tags} --json'
-          .formatArgs(connectionProp);
+        var cmd = util.format('network vpn-connection create -g {group} -n {name} -l {location} -i {gatewayName1} -r {gatewayGroup1} ' +
+          '-e {gatewayName2} -m {gatewayGroup2} -y {type} -w {routingWeight} -k {sharedKey} -t {tags} --json').formatArgs(connectionProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

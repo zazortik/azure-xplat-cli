@@ -89,8 +89,8 @@ describe('arm', function () {
           networkUtil.createLB(groupName, lbName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function () {
-                var cmd = 'network lb probe create -g {group} -l {lbName} -n {name} -p {protocol} -o {port} -f {requestPath} -i {intervalInSeconds} -c {numberOfProbes} --json'
-                  .formatArgs(probeProp);
+                var cmd = util.format('network lb probe create -g {group} -l {lbName} -n {name} -p {protocol} -o {port} ' +
+                  '-f {requestPath} -i {intervalInSeconds} -c {numberOfProbes} --json').formatArgs(probeProp);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
@@ -110,8 +110,8 @@ describe('arm', function () {
         });
       });
       it('set should modify probe', function (done) {
-        var cmd = 'network lb probe set -g {group} -l {lbName} -n {name} -p {newProtocol} -o {newPort} -i {newIntervalInSeconds} -c {newNumberOfProbes} --json'
-          .formatArgs(probeProp);
+        var cmd = util.format('network lb probe set -g {group} -l {lbName} -n {name} -p {newProtocol} -o {newPort} ' +
+          '-i {newIntervalInSeconds} -c {newNumberOfProbes} --json').formatArgs(probeProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

@@ -85,8 +85,8 @@ describe('arm', function () {
           networkUtil.createLB(groupName, lbName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
-                var cmd = 'network lb inbound-nat-pool create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPortRangeStart} -e {frontendPortRangeEnd} -b {backendPort} -i {1} --json'
-                  .formatArgs(poolProp, fip.name);
+                var cmd = util.format('network lb inbound-nat-pool create -g {group} -l {lbName} -n {name} -p {protocol} ' +
+                  '-f {frontendPortRangeStart} -e {frontendPortRangeEnd} -b {backendPort} -i {1} --json').formatArgs(poolProp, fip.name);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
@@ -106,7 +106,8 @@ describe('arm', function () {
         });
       });
       it('set should modify inbound nat pool in load balancer', function (done) {
-        var cmd = 'network lb inbound-nat-pool set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPortRangeStart} -e {newFrontendPortRangeEnd} -b {newBackendPort} --json'.formatArgs(poolProp);
+        var cmd = util.format('network lb inbound-nat-pool set -g {group} -l {lbName} -n {name} -p {newProtocol} ' +
+          '-f {newFrontendPortRangeStart} -e {newFrontendPortRangeEnd} -b {newBackendPort} --json').formatArgs(poolProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var pool = JSON.parse(result.text);

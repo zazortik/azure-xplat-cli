@@ -26511,6 +26511,15 @@
               "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
             },
             {
+              "flags": "-h, --passphrase <passphrase>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-h",
+              "long": "--passphrase",
+              "description": "Passphrase specified in parameter"
+            },
+            {
               "flags": "-q, --quiet",
               "required": 0,
               "optional": 0,
@@ -26526,7 +26535,7 @@
               "bool": true,
               "short": "-e",
               "long": "--extension-version",
-              "description": "Version of Diagnostics extension. Default values are [1.0] for Windows"
+              "description": "Version of AzureDiskEncryption extension. Default values are [1.1] for Windows"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -26536,6 +26545,58 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "-d, --disable-auto-upgrade-minor-version",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--disable-auto-upgrade-minor-version",
+              "description": "Disable auto-upgrade of minor version"
+            }
+          ]
+        },
+        {
+          "name": "remove-backup",
+          "description": "Remove the backup for the vm",
+          "fullName": "vm remove-backup",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-i, --identity <identity>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--identity",
+              "description": "The identity of the backup"
             }
           ]
         },
@@ -26597,6 +26658,112 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "disable-disk-encryption",
+          "description": "Disable azure disk encryption on a VM in a resource group.",
+          "fullName": "vm disable-disk-encryption",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the virtual machine name"
+            },
+            {
+              "flags": "-t, --volume-type <volume-type>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--volume-type",
+              "description": "Type of the volume OS or Data or All to perform encryption operation"
+            },
+            {
+              "flags": "-x, --sequence-version <sequence-version>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "short": "-x",
+              "long": "--sequence-version",
+              "description": "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for confirmation"
+            },
+            {
+              "flags": "-e, --extension-version <extension-version>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--extension-version",
+              "description": "Version of AzureDiskEncryption extension. Default values are [1.1] for Windows"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            },
+            {
+              "flags": "-d, --disable-auto-upgrade-minor-version",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--disable-auto-upgrade-minor-version",
+              "description": "Disable auto-upgrade of minor version"
             }
           ]
         }
@@ -43256,9 +43423,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a backend address pool to a NIC",
-                  "fullName": "network nic address-pool add",
+                  "fullName": "network nic address-pool create",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -43344,9 +43511,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a backend address pool from a NIC",
-                  "fullName": "network nic address-pool remove",
+                  "fullName": "network nic address-pool delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -43442,9 +43609,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add an inbound NAT rule to a NIC",
-                  "fullName": "network nic inbound-nat-rule add",
+                  "fullName": "network nic inbound-nat-rule create",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -43530,9 +43697,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete an inbound NAT rule from a NIC",
-                  "fullName": "network nic inbound-nat-rule remove",
+                  "fullName": "network nic inbound-nat-rule delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48482,9 +48649,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a root certificate to a virtual network gateway",
-                  "fullName": "network vpn-gateway root-cert add",
+                  "fullName": "network vpn-gateway root-cert create",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48561,9 +48728,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
-                  "description": "Remove a root certificate from a virtual network gateway",
-                  "fullName": "network vpn-gateway root-cert remove",
+                  "name": "delete",
+                  "description": "Delete a root certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway root-cert delete",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48650,9 +48817,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a revoked certificate to a virtual network gateway",
-                  "fullName": "network vpn-gateway revoked-cert add",
+                  "fullName": "network vpn-gateway revoked-cert create",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -48729,9 +48896,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
-                  "description": "Remove a revoked certificate from a virtual network gateway",
-                  "fullName": "network vpn-gateway revoked-cert remove",
+                  "name": "delete",
+                  "description": "Delete a revoked certificate from a virtual network gateway",
+                  "fullName": "network vpn-gateway revoked-cert delete",
                   "usage": "[options] <resource-group> <name> <cert-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50107,9 +50274,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add application gateway SSL certificate",
-                  "fullName": "network application-gateway ssl-cert add",
+                  "fullName": "network application-gateway ssl-cert create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50195,9 +50362,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete application gateway SSL certificate",
-                  "fullName": "network application-gateway ssl-cert remove",
+                  "fullName": "network application-gateway ssl-cert delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50284,9 +50451,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a frontend ip configuration to an application gateway",
-                  "fullName": "network application-gateway frontend-ip add",
+                  "fullName": "network application-gateway frontend-ip create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50408,9 +50575,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a frontend ip configuration from an application gateway",
-                  "fullName": "network application-gateway frontend-ip remove",
+                  "fullName": "network application-gateway frontend-ip delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50497,9 +50664,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a frontend port to an application gateway",
-                  "fullName": "network application-gateway frontend-port add",
+                  "fullName": "network application-gateway frontend-port create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50576,9 +50743,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a frontend port from an application gateway",
-                  "fullName": "network application-gateway frontend-port remove",
+                  "fullName": "network application-gateway frontend-port delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50665,9 +50832,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add a backend address pool to an application gateway",
-                  "fullName": "network application-gateway address-pool add",
+                  "fullName": "network application-gateway address-pool create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50744,9 +50911,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a backend address pool from an application gateway",
-                  "fullName": "network application-gateway address-pool remove",
+                  "fullName": "network application-gateway address-pool delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50833,9 +51000,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add http settings to an application gateway",
-                  "fullName": "network application-gateway http-settings add",
+                  "fullName": "network application-gateway http-settings create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -50930,9 +51097,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete http settings to an application gateway",
-                  "fullName": "network application-gateway http-settings remove",
+                  "fullName": "network application-gateway http-settings delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51019,9 +51186,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add an http listener to an application gateway",
-                  "fullName": "network application-gateway http-listener add",
+                  "fullName": "network application-gateway http-listener create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51125,9 +51292,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete an http listener from an application gateway",
-                  "fullName": "network application-gateway http-listener remove",
+                  "fullName": "network application-gateway http-listener delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51214,9 +51381,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add request routing rule to application gateway",
-                  "fullName": "network application-gateway rule add",
+                  "fullName": "network application-gateway rule create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51320,9 +51487,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a request routing rule from an application gateway",
-                  "fullName": "network application-gateway rule remove",
+                  "fullName": "network application-gateway rule delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51409,9 +51576,9 @@
               "options": [],
               "commands": [
                 {
-                  "name": "add",
+                  "name": "create",
                   "description": "Add probe to application gateway",
-                  "fullName": "network application-gateway probe add",
+                  "fullName": "network application-gateway probe create",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51542,9 +51709,9 @@
                   ]
                 },
                 {
-                  "name": "remove",
+                  "name": "delete",
                   "description": "Delete a probe from an application gateway",
-                  "fullName": "network application-gateway probe remove",
+                  "fullName": "network application-gateway probe delete",
                   "usage": "[options] <resource-group> <gateway-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -51622,6 +51789,406 @@
                 }
               ],
               "categories": {}
+            },
+            "url-path-map": {
+              "name": "url-path-map",
+              "description": "Commands to manage application gateway url path maps",
+              "fullName": "network application-gateway url-path-map",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Add url path map to application gateway",
+                  "fullName": "network application-gateway url-path-map create",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
+                    },
+                    {
+                      "flags": "-r, --rule-name <rule-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--rule-name",
+                      "description": "the name of the url path map rule"
+                    },
+                    {
+                      "flags": "-p, --path <path>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--path",
+                      "description": "path, which specifies application gateway path rule"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-a, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an url path map from an application gateway",
+                  "fullName": "network application-gateway url-path-map delete",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {
+                "rule": {
+                  "name": "rule",
+                  "description": "Commands to manage application gateway url path map rules",
+                  "fullName": "network application-gateway url-path-map rule",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "create",
+                      "description": "Add url path map to application gateway",
+                      "fullName": "network application-gateway url-path-map rule create",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the url path map rule"
+                        },
+                        {
+                          "flags": "-p, --path <path>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "path, which specifies application gateway path rule"
+                        },
+                        {
+                          "flags": "-i, --http-settings-name <http-settings-name>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--http-settings-name",
+                          "description": "the name of an existing backend HTTP settings"
+                        },
+                        {
+                          "flags": "-a, --address-pool-name <address-pool-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--address-pool-name",
+                          "description": "the name of an existing backend address pool"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "delete",
+                      "description": "Delete an url path map from an application gateway",
+                      "fullName": "network application-gateway url-path-map rule delete",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the map"
+                        },
+                        {
+                          "flags": "-q, --quiet",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-q",
+                          "long": "--quiet",
+                          "description": "quiet mode, do not ask for delete confirmation"
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {}
+                }
+              }
             }
           }
         },
@@ -52479,6 +53046,687 @@
               "categories": {}
             }
           }
+        }
+      }
+    },
+    "policy": {
+      "name": "policy",
+      "fullName": "policy",
+      "usage": "[options]",
+      "options": [],
+      "commands": [],
+      "categories": {
+        "assignment": {
+          "name": "assignment",
+          "description": "Commands to manage your policy assignments.",
+          "fullName": "policy assignment",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Creates a new policy assignment",
+              "fullName": "policy assignment create",
+              "usage": "[options] <name> <policyDefinitionId> <scope>",
+              "filePath": "commands/arm/policy/policy.assignment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy assignment name"
+                },
+                {
+                  "flags": "-p --policy-definition-id <policyDefinitionId>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--policy-definition-id",
+                  "description": "the fully qualified id of existing policy definition. For example: /subscriptions/{mySubId}/providers/Microsoft.Authorization/policyDefinitions/{myPolicy}. Use policy definition list to get a list of existing policy definitions. More information here: https://azure.microsoft.com/en-us/documentation/articles/resource-manager-policy/"
+                },
+                {
+                  "flags": "-s --scope <scope>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--scope",
+                  "description": "the scope for policy assignment. For example, /subscriptions/{mySubId}/resourceGroups/{myGroup}"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the display name for policy assignment."
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Updates a policy assignment",
+              "fullName": "policy assignment set",
+              "usage": "[options] <name> <scope>",
+              "filePath": "commands/arm/policy/policy.assignment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy assignment name"
+                },
+                {
+                  "flags": "-p --policy-definition-id <policyDefinitionId>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--policy-definition-id",
+                  "description": "the fully qualified id of existing policy definition. For example: /subscriptions/{mySubId}/providers/Microsoft.Authorization/policyDefinitions/{myPolicy}. Use policy definition list to get a list of existing policy definitions. More information here: https://azure.microsoft.com/en-us/documentation/articles/resource-manager-policy/"
+                },
+                {
+                  "flags": "-s --scope <scope>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--scope",
+                  "description": "the scope for policy assignment. For example, /subscriptions/{mySubId}/resourceGroups/{myGroup}"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the display name for policy assignment."
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Lists all the policy assignments in the subscription.",
+              "fullName": "policy assignment list",
+              "usage": "[options]",
+              "filePath": "commands/arm/policy/policy.assignment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Shows a policy assignment",
+              "fullName": "policy assignment show",
+              "usage": "[options] <name> <scope>",
+              "filePath": "commands/arm/policy/policy.assignment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy assignment name"
+                },
+                {
+                  "flags": "-s --scope <scope>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--scope",
+                  "description": "the scope for policy assignment. For example, /subscriptions/{mySubId}/resourceGroups/{myGroup}"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes a policy assignment",
+              "fullName": "policy assignment delete",
+              "usage": "[options] <name> <scope>",
+              "filePath": "commands/arm/policy/policy.assignment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy definition name"
+                },
+                {
+                  "flags": "-s --scope <scope>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--scope",
+                  "description": "the scope for policy assignment. For example, /subscriptions/{mySubId}/resourceGroups/{myGroup}"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "definition": {
+          "name": "definition",
+          "description": "Commands to manage your policy definitions.",
+          "fullName": "policy definition",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Creates a new policy definition",
+              "fullName": "policy definition create",
+              "usage": "[options] <name> <policy>",
+              "filePath": "commands/arm/policy/policy.definition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy definition name"
+                },
+                {
+                  "flags": "-p --policy <policy>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--policy",
+                  "description": "the rule for policy definition. This should be a path to a file name containing the rule. More information here: https://azure.microsoft.com/en-us/documentation/articles/resource-manager-policy/",
+                  "fileRelatedOption": true
+                },
+                {
+                  "flags": "--policy-string <policyString>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--policy-string",
+                  "description": "a JSON-formatted string containing the policy rule."
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the display name for policy definition."
+                },
+                {
+                  "flags": "--description <description>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--description",
+                  "description": "the description for policy definition."
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Updates a policy definition",
+              "fullName": "policy definition set",
+              "usage": "[options] <name>",
+              "filePath": "commands/arm/policy/policy.definition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy definition name"
+                },
+                {
+                  "flags": "-p --policy <policy>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--policy",
+                  "description": "the rule for policy definition. This should be a path to a file name containing the rule. More information here: https://azure.microsoft.com/en-us/documentation/articles/resource-manager-policy/",
+                  "fileRelatedOption": true
+                },
+                {
+                  "flags": "--policy-string <policyString>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--policy-string",
+                  "description": "a JSON-formatted string containing the policy rule."
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the display name for policy definition."
+                },
+                {
+                  "flags": "--description <description>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--description",
+                  "description": "the description for policy definition."
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Lists all the policy definitions in the subscription.",
+              "fullName": "policy definition list",
+              "usage": "[options]",
+              "filePath": "commands/arm/policy/policy.definition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Shows a policy definition",
+              "fullName": "policy definition show",
+              "usage": "[options] <name>",
+              "filePath": "commands/arm/policy/policy.definition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy definition name"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes a policy definition",
+              "fullName": "policy definition delete",
+              "usage": "[options] <name>",
+              "filePath": "commands/arm/policy/policy.definition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the policy definition name"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         }
       }
     },
