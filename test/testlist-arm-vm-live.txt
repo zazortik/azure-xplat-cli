@@ -8,6 +8,7 @@ commands/arm/vm/arm.vm-create-generate-ssh-tests.js
 commands/arm/vm/arm.vm.extension-tests.js
 commands/arm/vm/arm.vm.size-tests.js
 commands/arm/vm/arm.vm-disk-encryption-tests.js
+commands/arm/vm/arm.vm-disk-encryption-extension-tests.js
 # Docker
 commands/arm/vm/arm.vm-docker-tests.js
 commands/arm/vm/arm.vm-docker-ssh-tests.js

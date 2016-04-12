@@ -104,7 +104,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestVnet4267')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestVnet4267?embed-detail=true')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The hosted service does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',
@@ -117,7 +117,7 @@ nock('http://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestVnet4267')
+  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/hostedservices/clitestVnet4267?embed-detail=true')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The hosted service does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',

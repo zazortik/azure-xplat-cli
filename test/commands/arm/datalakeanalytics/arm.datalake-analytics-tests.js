@@ -101,7 +101,7 @@ describe('arm', function () {
                   suite.execute('datalake analytics account create --accountName %s --resource-group %s --location %s --defaultDataLakeStore %s --json', jobAndCatalogAccountName, testResourceGroup, testLocation, storeAccountName, function () {
                       setTimeout(function () {
                         done();
-                      }, 120000); // sleep for two minutes to guarantee that the queue has been created to run jobs against
+                      }, 1); // sleep for two minutes to guarantee that the queue has been created to run jobs against
                   });
                 });
               });
@@ -128,7 +128,7 @@ describe('arm', function () {
             });
           });
         });                  
-      }, 60000); // sleep for one minute before attempting to delete the analytics account.
+      }, 1); // sleep for one minute before attempting to delete the analytics account.
     }
     else {
       suite.teardownSuite(done);
@@ -314,14 +314,7 @@ describe('arm', function () {
         result.exitStatus.should.be.equal(0);
         var jobList = JSON.parse(result.text);
         jobList.length.should.be.above(0);
-        
-        // list within resource group as well to make sure that code path works.
-        suite.execute('datalake analytics job list --accountName %s --resource-group %s --json', jobAndCatalogAccountName, testResourceGroup, function (result) {
-          result.exitStatus.should.be.equal(0);
-          var jobList = JSON.parse(result.text);
-          jobList.length.should.be.above(0);
-          done();
-        });
+        done();
       });
     });
   });
