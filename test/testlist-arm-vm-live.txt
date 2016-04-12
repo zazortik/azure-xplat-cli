@@ -1,5 +1,7 @@
 #owner @huangpf 
 # Live + Playback
+include:./testlist-arm-container.txt
+include:./testlist-arm-vmss.txt
 include:./testlist-arm-vm.txt
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js

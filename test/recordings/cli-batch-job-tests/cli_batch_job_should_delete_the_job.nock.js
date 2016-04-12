@@ -27,61 +27,61 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '65119961-d304-490d-b2d6-87713519b89f',
+  'request-id': '7dd9f77e-29c9-479c-8e1e-922ab41d877d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'fd6c5046-400e-473e-bb15-baa6bd211291',
+  'client-request-id': '9bcae1fa-ef55-4381-9121-0f8bb36a1cfe',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:20 GMT',
+  date: 'Sat, 09 Apr 2016 00:03:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .delete('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '65119961-d304-490d-b2d6-87713519b89f',
+  'request-id': '7dd9f77e-29c9-479c-8e1e-922ab41d877d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'fd6c5046-400e-473e-bb15-baa6bd211291',
+  'client-request-id': '9bcae1fa-ef55-4381-9121-0f8bb36a1cfe',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:20 GMT',
+  date: 'Sat, 09 Apr 2016 00:03:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:b4d6ae48-de7f-468a-95f0-a3979978fdc5\\nTime:2016-03-21T16:45:22.1698332Z\"\r\n  }\r\n}", { 'content-length': '329',
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .get('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:2c9d9904-4488-4624-9664-267a34be6392\\nTime:2016-04-09T00:03:12.4721398Z\"\r\n  }\r\n}", { 'content-length': '333',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b4d6ae48-de7f-468a-95f0-a3979978fdc5',
+  'request-id': '2c9d9904-4488-4624-9664-267a34be6392',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'a7d61538-2317-4af5-b1a6-598166e1d82d',
+  'client-request-id': '56a8467f-fbb6-491a-a89b-e2c860d94524',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:21 GMT',
+  date: 'Sat, 09 Apr 2016 00:03:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobs/xplatJob?api-version=2015-12-01.2.2&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:b4d6ae48-de7f-468a-95f0-a3979978fdc5\\nTime:2016-03-21T16:45:22.1698332Z\"\r\n  }\r\n}", { 'content-length': '329',
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .get('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:2c9d9904-4488-4624-9664-267a34be6392\\nTime:2016-04-09T00:03:12.4721398Z\"\r\n  }\r\n}", { 'content-length': '333',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b4d6ae48-de7f-468a-95f0-a3979978fdc5',
+  'request-id': '2c9d9904-4488-4624-9664-267a34be6392',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'a7d61538-2317-4af5-b1a6-598166e1d82d',
+  'client-request-id': '56a8467f-fbb6-491a-a89b-e2c860d94524',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:21 GMT',
+  date: 'Sat, 09 Apr 2016 00:03:12 GMT',
   connection: 'close' });
  return result; }]];

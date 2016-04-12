@@ -9,6 +9,9 @@
   * Added commands for CDN Management in ARM mode
 * Insights
   * Introduced log profiles commands for CLI
+  * Introducing actions and webhooks to alerts and autoscale
+  * Splitting alert creation command into three separate commands: one for metrics, one for logs, one for webtest
+  * Using latest version of Insights SDK
 * DataLake
   * Migrated to Autorest generated node sdk
 * ResourceManager
