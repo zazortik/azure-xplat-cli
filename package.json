@@ -58,7 +58,7 @@
     "azure-asm-mgmt": "0.10.1",
     "azure-monitoring": "0.10.2",
     "azure-asm-network": "0.10.2",
-    "azure-arm-resource": "1.4.2-preview",
+    "azure-arm-resource": "1.4.3-preview",
     "azure-arm-storage": "0.12.2-preview",
     "azure-asm-sb": "0.10.1",
     "azure-asm-sql": "0.10.1",

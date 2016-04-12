@@ -28,7 +28,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policydefinitions/testPolicyDefinition?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policydefinitions/testPolicyDefinition?api-version=2016-04-01', '*')
   .reply(201, "{\"properties\":{\"displayName\":\"myPolicy\",\"policyType\":\"Custom\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Storage/storageAccounts/write\"},\"then\":{\"effect\":\"deny\"}}},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"testPolicyDefinition\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '392',
@@ -78,7 +78,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2016-04-01', '*')
   .reply(201, "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '489',
@@ -94,7 +94,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2015-10-01-preview')
+  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2016-04-01')
   .reply(200, "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '489',
@@ -111,7 +111,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2015-10-01-preview')
+  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2016-04-01')
   .reply(200, "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '489',
@@ -129,7 +129,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2016-04-01', '*')
   .reply(201, "{\"properties\":{\"displayName\":\"myAssignment\",\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '518',
@@ -145,7 +145,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyassignments?api-version=2015-10-01-preview')
+  .get('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyassignments?api-version=2016-04-01')
   .reply(200, "{\"value\":[{\"properties\":{\"displayName\":\"myAssignment\",\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"},{\"properties\":{\"displayName\":\"newTestVivek\",\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testVivekNewPolicy\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/vtest\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/vtest/providers/Microsoft.Authorization/policyAssignments/testAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testAssignment\"},{\"properties\":{\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/CostCenterTagPolicy\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/policies\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/policies/providers/Microsoft.Authorization/policyAssignments/CostCenterTagPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"CostCenterTagPolicyAssignment\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1532',
@@ -162,7 +162,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2015-10-01-preview')
+  .delete('/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyassignments/testPolicyAssignment?api-version=2016-04-01')
   .reply(200, "{\"properties\":{\"displayName\":\"myAssignment\",\"policyDefinitionId\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/providers/Microsoft.Authorization/policyDefinitions/testPolicyDefinition\",\"scope\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup\"},\"id\":\"/subscriptions/9167af2d-c13e-4d34-9a57-8f37dba6ff31/resourceGroups/testGroup/providers/Microsoft.Authorization/policyAssignments/testPolicyAssignment\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPolicyAssignment\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '518',
