@@ -88,8 +88,8 @@ describe('arm', function () {
           networkUtil.createLB(groupName, lbName, location, suite, function () {
             networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
-                var cmd = 'network lb inbound-nat-rule create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -t {1} --json'
-                  .formatArgs(ruleProp, fip.name);
+                var cmd = util.format('network lb inbound-nat-rule create -g {group} -l {lbName} -n {name} -p {protocol} ' +
+                  '-f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -t {1} --json').formatArgs(ruleProp, fip.name);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
@@ -110,8 +110,8 @@ describe('arm', function () {
         });
       });
       it('set should modify inbound-nat-rule in load balancer', function (done) {
-        var cmd = 'network lb inbound-nat-rule set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPort} -b {newBackendPort} -e {newEnableFloatingIP} -i {newIdleTimeoutInMinutes} --json'
-          .formatArgs(ruleProp);
+        var cmd = util.format('network lb inbound-nat-rule set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPort} ' +
+          '-b {newBackendPort} -e {newEnableFloatingIP} -i {newIdleTimeoutInMinutes} --json').formatArgs(ruleProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

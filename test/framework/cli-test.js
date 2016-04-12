@@ -26,6 +26,7 @@ var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 var utilsCore = require('../../lib/util/utilsCore');
+var telemetry = require('../../lib/util/telemetry');
 
 
 var executeCommand = require('./cli-executor').execute;
@@ -86,6 +87,9 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
+
+  // disable telemetry in test
+  telemetry.init(false);
 
   this.randomTestIdsGenerated = [];
   this.numberOfRandomTestIdGenerated = 0;

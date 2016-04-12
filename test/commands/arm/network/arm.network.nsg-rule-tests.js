@@ -93,8 +93,9 @@ describe('arm', function () {
       it('create should create nsg rule', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createNSG(groupName, nsgName, location, suite, function () {
-            var cmd = 'network nsg rule create -g {group} -a {nsgName} -n {name} -d {description} -p {protocol} -f {sourceAddressPrefix} -o {sourcePortRange} -e {destinationAddressPrefix} -u {destinationPortRange} -c {access} -y {priority} -r {direction} --json'
-              .formatArgs(ruleProp);
+            var cmd = util.format('network nsg rule create -g {group} -a {nsgName} -n {name} -d {description} -p {protocol} ' +
+              '-f {sourceAddressPrefix} -o {sourcePortRange} -e {destinationAddressPrefix} -u {destinationPortRange} ' +
+              '-c {access} -y {priority} -r {direction} --json').formatArgs(ruleProp);
 
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
@@ -116,8 +117,9 @@ describe('arm', function () {
         });
       });
       it('set should modify nsg rule', function (done) {
-        var cmd = 'network nsg rule set -g {group} -a {nsgName} -n {name} -d {newDescription} -p {newProtocol} -f {newSourceAddressPrefix} -o {newSourcePortRange} -e {newDestinationAddressPrefix} -u {newDestinationPortRange} -c {newAccess} -y {newPriority} -r {newDirection} --json'
-          .formatArgs(ruleProp);
+        var cmd = util.format('network nsg rule set -g {group} -a {nsgName} -n {name} -d {newDescription} -p {newProtocol} ' +
+          '-f {newSourceAddressPrefix} -o {newSourcePortRange} -e {newDestinationAddressPrefix} -u {newDestinationPortRange} ' +
+          '-c {newAccess} -y {newPriority} -r {newDirection} --json').formatArgs(ruleProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

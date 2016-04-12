@@ -97,8 +97,8 @@ describe('arm', function () {
       it('create should create endpoint in traffic manager profile', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createTrafficManagerProfile(profileProp, suite, function () {
-            var cmd = 'network traffic-manager endpoint create -g {group} -f {profileName} -n {name} -l {location} -y {type} -t {target} -u {status} -w {weight} -p {priority} --json'
-              .formatArgs(endpointProp);
+            var cmd = util.format('network traffic-manager endpoint create -g {group} -f {profileName} -n {name} -l {location} ' +
+              '-y {type} -t {target} -u {status} -w {weight} -p {priority} --json').formatArgs(endpointProp);
 
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
@@ -114,8 +114,8 @@ describe('arm', function () {
         });
       });
       it('set should modify endpoint in traffic manager profile', function (done) {
-        var cmd = 'network traffic-manager endpoint set -g {group} -f {profileName} -n {name} -y {type} -t {newTarget} -u {newStatus} -w {newWeight} -p {newPriority} --json'
-          .formatArgs(endpointProp);
+        var cmd = util.format('network traffic-manager endpoint set -g {group} -f {profileName} -n {name} -y {type} -t {newTarget} ' +
+          '-u {newStatus} -w {newWeight} -p {newPriority} --json').formatArgs(endpointProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
