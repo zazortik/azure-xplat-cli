@@ -35,13 +35,13 @@ var requiredEnvironment = [
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'westus' },
 ];
 
-var testPrefix = 'arm-cli-batch-account-tests';
+var testPrefix = 'arm-cli-batch-application-tests';
 var suite;
 var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 var storageAccount;
 
 describe('arm', function () {
-  describe('batch account', function () {
+  describe('batch application', function () {
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
