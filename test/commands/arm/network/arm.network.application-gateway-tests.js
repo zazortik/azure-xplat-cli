@@ -132,18 +132,18 @@ describe('arm', function () {
         });
       });
 
-    it('set should modify application gateway', function (done) {
-      var cmd = 'network application-gateway set {group} {name} -z {newCapacity} -t {newTags} --json'.formatArgs(gatewayProp);
-      testUtils.executeCommand(suite, retry, cmd, function (result) {
-        result.exitStatus.should.equal(0);
-        var appGateway = JSON.parse(result.text);
-        appGateway.name.should.equal(gatewayProp.name);
-        appGateway.sku.capacity.should.equal(gatewayProp.newCapacity);
-        networkUtil.shouldAppendTags(appGateway);
-        networkUtil.shouldBeSucceeded(appGateway);
-        done();
+      it('set should modify application gateway', function (done) {
+        var cmd = 'network application-gateway set {group} {name} -z {newCapacity} -t {newTags} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+          appGateway.sku.capacity.should.equal(gatewayProp.newCapacity);
+          networkUtil.shouldAppendTags(appGateway);
+          networkUtil.shouldBeSucceeded(appGateway);
+          done();
+        });
       });
-    });
 
       it('show should display details of application gateway', function (done) {
         var cmd = 'network application-gateway show {group} {name} --json'.formatArgs(gatewayProp);
