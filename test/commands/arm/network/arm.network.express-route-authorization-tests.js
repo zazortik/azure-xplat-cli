@@ -21,15 +21,17 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testPrefix = 'arm-network-express-route-authorization-tests';
 var _ = require('underscore');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 var groupName, location, encryptedKey1,
   groupPrefix = 'xplatTestGroupExpressRouteAuth',
   auth = {
     expressRCName: 'xplatExpressRoute',
     serviceProvider: 'InterCloud',
     peeringLocation: 'London',
+    bandwidth: 50,
     skuTier: 'Standard',
     skuFamily: 'MeteredData',
-    tags: 'tag1=val1',
+    tags: networkUtil.tags,
     name: 'xplatExpressRouteAuth',
     key: 'abc@123',
     newKey: 'ABC@123'
@@ -44,7 +46,6 @@ describe('arm', function () {
   describe('network', function () {
     var suite,
       retry = 5;
-    var networkUtil = new NetworkTestUtil();
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
@@ -73,8 +74,7 @@ describe('arm', function () {
     describe('express-route authorization', function () {
       it('create should pass', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createExpressRoute(groupName, auth.expressRCName, location, auth.serviceProvider, auth.peeringLocation,
-            auth.skuTier, auth.skuFamily, auth.tags, suite, function () {
+          networkUtil.createExpressRoute(auth, suite, function () {
             var cmd = 'network express-route authorization create {group} {expressRCName} {name} -k {key} --json'.formatArgs(auth);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
