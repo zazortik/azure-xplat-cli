@@ -19,6 +19,7 @@ var should = require('should');
 var sinon = require('sinon');
 var util = require('util');
 var applicationInsights = require('applicationinsights');
+var fs = require('fs');
 
 describe('cli', function() {
   describe('telemetry', function() {
@@ -122,5 +123,28 @@ describe('cli', function() {
       done();
     });
 
+    it('should filter username from the stacktrace', function(done) {
+      var eventData;
+      sandbox.stub(applicationInsights.client, 'track', function(data) {
+        eventData = data;
+      });
+
+      telemetry.setAppInsights(applicationInsights);
+      telemetry.init(true)
+      telemetry.start(['foo', 'bar', 'azure', 'login', '-u', 'foo', '-p', 'bar']);
+      telemetry.currentCommand({
+        fullName: function() {
+          return 'azure login';
+        }
+      });
+      var err = new Error('error');
+      err.stack = fs.readFileSync(__dirname + '/../data/error.txt', 'utf8');
+      var filteredError = fs.readFileSync(__dirname + '/../data/filtered_error.txt', 'utf8');
+      telemetry.onError(err, function() {});
+      (eventData.baseData.properties.isSuccess).should.be.false;
+      eventData.baseData.properties.stacktrace.should.equal(filteredError);
+      (eventData.baseData.properties.command === 'azure login -u *** -p ***').should.be.true;
+      done();
+    });
   })
 });

@@ -89,7 +89,8 @@ describe('arm', function () {
             networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
                 var cmd = util.format('network lb inbound-nat-rule create -g {group} -l {lbName} -n {name} -p {protocol} ' +
-                  '-f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -t {1} --json').formatArgs(ruleProp, fip.name);
+                  '-f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -t {1} --json')
+                  .formatArgs(ruleProp, fip.name);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
