@@ -179,9 +179,10 @@ _.extend(NetworkTestUtil.prototype, {
       callback(rule);
     });
   },
-  createExpressRoute: function (groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, callback) {
-    var cmd = util.format('network express-route circuit create %s %s %s -p %s -i %s -b 50 -e %s -f %s -t %s --json',
-      groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1).split(' ');
+  createExpressRoute: function (expressRouteCircuitProps, suite, callback) {
+    var self = this;
+    var cmd = util.format('network express-route circuit create {group} {expressRCName} {location} -p {serviceProvider} ' + 
+      '-i {peeringLocation} -b 50 -e {skuTier} -f {skuFamily} -t {tags} --json').formatArgs(expressRouteCircuitProps);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
 

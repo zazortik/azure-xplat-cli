@@ -417,7 +417,7 @@ describe('arm', function () {
       });
 
       it('rule delete should remove request routing rule from application gateway', function (done) {
-        networkUtil.stopAppGateway(gatewayProp.group, gatewayProp.name, suite, function () {
+        networkUtil.stopAppGateway(gatewayProp, suite, function () {
           var cmd = 'network application-gateway rule delete {group} {name} {ruleName} -q --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
