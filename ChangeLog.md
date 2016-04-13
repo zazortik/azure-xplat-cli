@@ -1,3 +1,36 @@
+##2016-04-19 Version 0.9.20
+* Enabled Telemetry for data-collection for command usage and exception tracking
+* Fixed issues #2274 #2731 and #2732 and updated node.js installation steps on linux systems
+* Network
+  * Added --gateway-type option to create VPN or ExpressRoute gateways, 
+  * Renamed --type option  to --vpn-type in `network vpn-gateway create` command
+  * Used dedicated verbs for consistency
+    * azure network nic address-pool add/remove -> create/delete
+    * azure network nic inbound-nat-rule add/remove -> create/delete
+    * azure network vpn-gateway root-cert add/remove -> create/delete
+    * azure network vpn-gateway revoked-cert add/remove -> create/delete
+  * Added ARM application gateways URL path maps support
+  * Added ARM app gateways url path map rules modifications support
+  * Improved network tests
+* Batch
+  * Added support for creating and displaying Batch Linux pools
+  * Updated the batch node-user create and set commands to support SSH keys for Linux users
+  * Added the batch pool list-node-agent-skus command
+  * Added the batch node get-remote-login-settings command
+* ResourceManager
+  * Add policy definition commands
+  * Add policy assignment commands
+* Improved insight commands in the PR #2721 and #2716
+* Backup
+  * Added command remove-backup [resource-group] [name] to remove VM backups
+  * VM backup creation for Linux VMs
+  * Added new command disable-disk-encryption that disables encryption on Windows VMs, there's no support for Linux VMs
+  * Enable and disable encryption commands now use version 1.1.. of the AzureDiskEncryption extension
+  * Enable and disable commands support now --disable-auto-upgrade-minor-version switch
+  * Enable/Disable encryption and show status commands now support new encryption setting: ‘enabled’
+  * Enable encryption command only allows encryption of data volumes for Linux VMs
+* Added --platform-update-domain-count, --platform-fault-domain-count options to availset create command in asm
+
 ##2016-03-30 Version 0.9.19
 * Graph-RBAC
   * RBAC cmdlets consuming new graph version
