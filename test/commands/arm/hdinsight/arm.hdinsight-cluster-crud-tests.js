@@ -37,7 +37,6 @@ var requiredEnvironment = [
 
 var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 var timeBeforeClusterAvailable;
-
 var groupName;
 var clusterNameWindows;
 var clusterNameLinux;
