@@ -27,3 +27,5 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [];
+
+ exports.randomTestIdsGenerated = function() { return ['armclibatch2706','armclibatch6075','armclibatchgroup917'];};

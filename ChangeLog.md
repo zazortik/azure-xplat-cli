@@ -17,6 +17,7 @@
   * Updated the batch node-user create and set commands to support SSH keys for Linux users
   * Added the batch pool list-node-agent-skus command
   * Added the batch node get-remote-login-settings command
+  * Added the batch application package related commands
 * ResourceManager
   * Add policy definition commands
   * Add policy assignment commands
