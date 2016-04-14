@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'd66b1168-d835-4066-8c45-7d2ed713c082',
-    name: 'BDHadoopTeamPMTestDemo',
+    id: '12f44720-8952-422c-bb7d-28831c2de639',
+    name: 'BDHadoopHumboltCRUDReliability',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -30,38 +30,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight//clusters/xplatTestHDInsightClusterCreate44/scriptExecutionHistory/1/promote?api-version=2015-03-01-preview')
-  .reply(404, "{\"code\":\"NotFound\",\"message\":\"Script with execution id '1' not found for cluster with id 'xplatTestHDInsightClusterCreate44'\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/12f44720-8952-422c-bb7d-28831c2de639/resourceGroups/xplatTestRgHDInsightClusterCreate1069/providers/Microsoft.HDInsight//clusters/xplatTestHDInsightClusterCreate2050/scriptExecutionHistory/1/promote?api-version=2015-03-01-preview')
+  .reply(404, "{\"code\":\"NotFound\",\"message\":\"Script with execution id '1' not found for cluster with id 'xplatTestHDInsightClusterCreate2050'\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '126',
+  'content-length': '128',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '55a4a060-a338-4913-8e72-3f3957350c7f',
+  'x-ms-request-id': 'bf526496-6771-41d5-89ce-4f790fca685c',
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '2e27dcf2-4e83-49d4-99f5-b0d2a01c1687',
-  'x-ms-routing-request-id': 'WESTUS:20160322T004833Z:2e27dcf2-4e83-49d4-99f5-b0d2a01c1687',
+  'x-ms-correlation-request-id': 'a37615d9-e63e-4411-9e48-3fde7824de0e',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T203433Z:a37615d9-e63e-4411-9e48-3fde7824de0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 22 Mar 2016 00:48:33 GMT',
+  date: 'Wed, 13 Apr 2016 20:34:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight//clusters/xplatTestHDInsightClusterCreate44/scriptExecutionHistory/1/promote?api-version=2015-03-01-preview')
-  .reply(404, "{\"code\":\"NotFound\",\"message\":\"Script with execution id '1' not found for cluster with id 'xplatTestHDInsightClusterCreate44'\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/12f44720-8952-422c-bb7d-28831c2de639/resourceGroups/xplatTestRgHDInsightClusterCreate1069/providers/Microsoft.HDInsight//clusters/xplatTestHDInsightClusterCreate2050/scriptExecutionHistory/1/promote?api-version=2015-03-01-preview')
+  .reply(404, "{\"code\":\"NotFound\",\"message\":\"Script with execution id '1' not found for cluster with id 'xplatTestHDInsightClusterCreate2050'\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '126',
+  'content-length': '128',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '55a4a060-a338-4913-8e72-3f3957350c7f',
+  'x-ms-request-id': 'bf526496-6771-41d5-89ce-4f790fca685c',
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '2e27dcf2-4e83-49d4-99f5-b0d2a01c1687',
-  'x-ms-routing-request-id': 'WESTUS:20160322T004833Z:2e27dcf2-4e83-49d4-99f5-b0d2a01c1687',
+  'x-ms-correlation-request-id': 'a37615d9-e63e-4411-9e48-3fde7824de0e',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T203433Z:a37615d9-e63e-4411-9e48-3fde7824de0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 22 Mar 2016 00:48:33 GMT',
+  date: 'Wed, 13 Apr 2016 20:34:32 GMT',
   connection: 'close' });
  return result; }]];
