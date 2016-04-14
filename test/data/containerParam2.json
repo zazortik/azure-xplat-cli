@@ -5,15 +5,15 @@
   },
   "masterProfile": {
     "count": 1,
-    "dnsPrefix": "xplatContainer22920master",
+    "dnsPrefix": "xplatContainer21664master",
     "fqdn": ""
   },
   "agentPoolProfiles": [
     {
-      "name": "xplatContainer22920a1",
+      "name": "xplatContainer21664a1",
       "count": null,
       "vmSize": "Standard_A1",
-      "dnsPrefix": "xplatContainer22920a2",
+      "dnsPrefix": "xplatContainer21664a2",
       "fqdn": ""
     }
   ],
@@ -28,7 +28,7 @@
     }
   },
   "id": null,
-  "name": "xplatContainer22920",
+  "name": "xplatContainer21664",
   "type": null,
   "location": "australiasoutheast",
   "tags": {}
