@@ -1,7 +1,7 @@
 {
   "provisioningState": "",
   "orchestratorProfile": {
-    "orchestratorType": "SwarmPreview"
+    "orchestratorType": "Swarm"
   },
   "masterProfile": {
     "count": 1,
