@@ -145,7 +145,7 @@ describe('arm', function() {
         });
       });
 
-      it('container config set and create SwarmPreview should pass', function(done) {
+      it('container config set and create Swarm should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         vmTest.createGroup(groupName, location, suite, function(result) {
@@ -167,7 +167,7 @@ describe('arm', function() {
                     var cmd = makeCommandStr('agent-pool-profiles', 'set', paramFileName2, util.format('--index 0 --name %s --vm-size Standard_A1 --dns-prefix %s', containerPrefix2 + 'a1', containerPrefix2 + 'a2')).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                       result.exitStatus.should.equal(0);
-                      var cmd = makeCommandStr('orchestrator-profile', 'set', paramFileName2, util.format('--orchestrator-type %s', 'SwarmPreview', location)).split(' ');
+                      var cmd = makeCommandStr('orchestrator-profile', 'set', paramFileName2, util.format('--orchestrator-type %s', 'Swarm', location)).split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
                         result.exitStatus.should.equal(0);
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName2, util.format('--admin-username %s', username)).split(' ');
@@ -201,7 +201,7 @@ describe('arm', function() {
           result.text.should.containEql(containerPrefix);
           result.text.should.containEql('DCOS');
           result.text.should.containEql(containerPrefix2);
-          result.text.should.containEql('SwarmPreview');
+          result.text.should.containEql('Swarm');
           done();
         });
       });
