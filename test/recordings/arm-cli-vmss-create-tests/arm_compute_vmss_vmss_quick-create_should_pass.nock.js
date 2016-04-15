@@ -42,7 +42,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:48 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -59,7 +59,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:48 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -76,7 +76,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:51 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -93,7 +93,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:51 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -110,7 +110,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:53 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
@@ -127,7 +127,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:01:53 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
@@ -136,7 +136,7 @@ nock('http://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"cb44b5ef-9a90-4cde-b406-f560882b9abd\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"cb44b5ef-9a90-4cde-b406-f560882b9abd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1117',
+  'content-length': '1119',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'retry-after': '10',
@@ -157,7 +157,7 @@ nock('https://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"cb44b5ef-9a90-4cde-b406-f560882b9abd\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"cb44b5ef-9a90-4cde-b406-f560882b9abd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1117',
+  'content-length': '1119',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'retry-after': '10',
@@ -213,7 +213,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -232,7 +232,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -251,7 +251,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -270,7 +270,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8977beed-6d7d-4592-8945-00636e0a061a\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n        \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -289,7 +289,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-snet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '412',
+  'content-length': '413',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -308,7 +308,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-3189343054-snet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-3189343054-vnet/subnets/xplat-south-3189343054-snet\",\r\n  \"etag\": \"W/\\\"32cc19c2-f809-44ed-9b00-3c767865d0c1\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '412',
+  'content-length': '413',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"32cc19c2-f809-44ed-9b00-3c767865d0c1"',
@@ -336,7 +336,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:02:34 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -353,7 +353,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:02:34 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -710,7 +710,7 @@ nock('http://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-3189343054-lb\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb\",\r\n  \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"86a89988-0ce0-4855-be5a-f8144810770c\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"loadBalancerFrontEnd\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/frontendIPConfigurations/loadBalancerFrontEnd\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/publicIPAddresses/xplat-south-3189343054-pip2\"\r\n          },\r\n          \"inboundNatPools\": [\r\n            {\r\n              \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/inboundNatPools/xplat-south-3189343054-nat\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-be\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/backendAddressPools/xplat-south-3189343054-be\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n    \"inboundNatRules\": [],\r\n    \"outboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-nat\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/inboundNatPools/xplat-south-3189343054-nat\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendPortRangeStart\": 50000,\r\n          \"frontendPortRangeEnd\": 50099,\r\n          \"backendPort\": 22,\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/frontendIPConfigurations/loadBalancerFrontEnd\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2981',
+  'content-length': '2988',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': '0edd911f-d9d4-44c2-921e-3ca68bf0b98f',
@@ -730,7 +730,7 @@ nock('https://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-3189343054-lb\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb\",\r\n  \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"86a89988-0ce0-4855-be5a-f8144810770c\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"loadBalancerFrontEnd\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/frontendIPConfigurations/loadBalancerFrontEnd\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/publicIPAddresses/xplat-south-3189343054-pip2\"\r\n          },\r\n          \"inboundNatPools\": [\r\n            {\r\n              \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/inboundNatPools/xplat-south-3189343054-nat\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-be\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/backendAddressPools/xplat-south-3189343054-be\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n    \"inboundNatRules\": [],\r\n    \"outboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n        \"name\": \"xplat-south-3189343054-nat\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/inboundNatPools/xplat-south-3189343054-nat\",\r\n        \"etag\": \"W/\\\"381cc7a2-a16e-43bb-9b30-dc770d14085d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendPortRangeStart\": 50000,\r\n          \"frontendPortRangeEnd\": 50099,\r\n          \"backendPort\": 22,\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-3189343054-lb/frontendIPConfigurations/loadBalancerFrontEnd\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2981',
+  'content-length': '2988',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': '0edd911f-d9d4-44c2-921e-3ca68bf0b98f',
@@ -1712,7 +1712,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:13:56 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -1729,7 +1729,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:13:56 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -1738,7 +1738,7 @@ nock('http://management.azure.com:443')
 .patch('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/xplatTestVMSSCreate5174?api-version=2016-02-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174\",\"name\":\"xplatTestVMSSCreate5174\",\"location\":\"southeastasia\",\"tags\":{\"arm-cli-vmss-create-tests\":\"2016-04-20T04:13:55.093Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '268',
+  'content-length': '270',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1192',
@@ -1756,7 +1756,7 @@ nock('https://management.azure.com:443')
 .patch('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/xplatTestVMSSCreate5174?api-version=2016-02-01', '*')
   .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174\",\"name\":\"xplatTestVMSSCreate5174\",\"location\":\"southeastasia\",\"tags\":{\"arm-cli-vmss-create-tests\":\"2016-04-20T04:13:55.093Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '268',
+  'content-length': '270',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-writes': '1192',
@@ -1782,7 +1782,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:00 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -1799,7 +1799,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:00 GMT',
   connection: 'close',
-  'content-length': '268' });
+  'content-length': '270' });
  return result; },
 function (nock) { 
 var result = 
@@ -1816,7 +1816,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:02 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -1833,7 +1833,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:02 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -1850,7 +1850,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:04 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
@@ -1867,7 +1867,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:04 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
@@ -1876,7 +1876,7 @@ nock('http://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"8fd5609e-f4cc-4df1-a837-c70d26dea510\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"8fd5609e-f4cc-4df1-a837-c70d26dea510\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1117',
+  'content-length': '1119',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'retry-after': '10',
@@ -1897,7 +1897,7 @@ nock('https://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"8fd5609e-f4cc-4df1-a837-c70d26dea510\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"8fd5609e-f4cc-4df1-a837-c70d26dea510\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1117',
+  'content-length': '1119',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'retry-after': '10',
@@ -1953,7 +1953,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -1972,7 +1972,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -1991,7 +1991,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -2010,7 +2010,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-vnet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"d6292b9a-ff0f-4e01-9e3c-7938e2e8ff6e\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-snet\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n        \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1119',
+  'content-length': '1121',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -2029,7 +2029,7 @@ nock('http://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-snet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '412',
+  'content-length': '413',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -2048,7 +2048,7 @@ nock('https://management.azure.com:443')
   .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualnetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet?api-version=2016-03-30')
   .reply(200, "{\r\n  \"name\": \"xplat-south-2304386781-snet\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/virtualNetworks/xplat-south-2304386781-vnet/subnets/xplat-south-2304386781-snet\",\r\n  \"etag\": \"W/\\\"816be6b1-2c4a-4934-9e67-2e804da41ee2\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"addressPrefix\": \"10.0.1.0/24\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '412',
+  'content-length': '413',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   etag: 'W/"816be6b1-2c4a-4934-9e67-2e804da41ee2"',
@@ -2076,7 +2076,7 @@ nock('http://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:45 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -2093,7 +2093,7 @@ nock('https://management.azure.com:443')
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   date: 'Wed, 20 Apr 2016 04:14:45 GMT',
   connection: 'close',
-  'content-length': '188' });
+  'content-length': '189' });
  return result; },
 function (nock) { 
 var result = 
@@ -2450,7 +2450,7 @@ nock('http://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-2304386781-lb\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb\",\r\n  \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"58da6fab-fb12-455a-b833-444acf2ab760\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"loadBalancerFrontEnd\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/frontendIPConfigurations/loadBalancerFrontEnd\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/publicIPAddresses/xplat-south-2304386781-pip2\"\r\n          },\r\n          \"inboundNatPools\": [\r\n            {\r\n              \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/inboundNatPools/xplat-south-2304386781-nat\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-be\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/backendAddressPools/xplat-south-2304386781-be\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n    \"inboundNatRules\": [],\r\n    \"outboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-nat\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/inboundNatPools/xplat-south-2304386781-nat\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendPortRangeStart\": 50000,\r\n          \"frontendPortRangeEnd\": 50099,\r\n          \"backendPort\": 22,\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/frontendIPConfigurations/loadBalancerFrontEnd\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2981',
+  'content-length': '2988',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': '92514461-dc5c-4f4a-9ca0-280dce2eece6',
@@ -2470,7 +2470,7 @@ nock('https://management.azure.com:443')
 .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb?api-version=2016-03-30', '*')
   .reply(201, "{\r\n  \"name\": \"xplat-south-2304386781-lb\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb\",\r\n  \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"58da6fab-fb12-455a-b833-444acf2ab760\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"loadBalancerFrontEnd\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/frontendIPConfigurations/loadBalancerFrontEnd\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/publicIPAddresses/xplat-south-2304386781-pip2\"\r\n          },\r\n          \"inboundNatPools\": [\r\n            {\r\n              \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/inboundNatPools/xplat-south-2304386781-nat\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-be\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/backendAddressPools/xplat-south-2304386781-be\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n        }\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n    \"inboundNatRules\": [],\r\n    \"outboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n        \"name\": \"xplat-south-2304386781-nat\",\r\n        \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/inboundNatPools/xplat-south-2304386781-nat\",\r\n        \"etag\": \"W/\\\"737073d7-d9c7-4d40-8c36-2bd1d6539535\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendPortRangeStart\": 50000,\r\n          \"frontendPortRangeEnd\": 50099,\r\n          \"backendPort\": 22,\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTestVMSSCreate5174/providers/Microsoft.Network/loadBalancers/xplat-south-2304386781-lb/frontendIPConfigurations/loadBalancerFrontEnd\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2981',
+  'content-length': '2988',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-request-id': '92514461-dc5c-4f4a-9ca0-280dce2eece6',
