@@ -4042,9 +4042,428 @@
                   "description": "the Batch account URL"
                 }
               ]
+            },
+            {
+              "name": "enable",
+              "description": "Enables the specified job, allowing new tasks to run",
+              "fullName": "batch job enable",
+              "usage": "[options] [jobId]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "disable",
+              "description": "Disables the specified job.  Disabled jobs do not run new tasks, but may be re-enabled later.",
+              "fullName": "batch job disable",
+              "usage": "[options] [jobId]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job"
+                },
+                {
+                  "flags": "--disable-option <disableOption>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--disable-option",
+                  "description": "specifies what to do with active tasks during a disable job operation, available options include \"requeue\", \"terminate\", and \"wait\""
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "terminate",
+              "description": "Terminates the specified job, marking it as completed",
+              "fullName": "batch job terminate",
+              "usage": "[options] [jobId]",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job"
+                },
+                {
+                  "flags": "--terminate-reason [terminateReason]",
+                  "required": 0,
+                  "optional": -20,
+                  "bool": true,
+                  "long": "--terminate-reason",
+                  "description": "the text you want to appear as the job's terminate reason"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "prep-and-release-task-status": {
+              "name": "prep-and-release-task-status",
+              "description": "Commands to manage the status of your job preparation and release tasks",
+              "fullName": "batch job prep-and-release-task-status",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists the execution status of the job preparation and job release task for the specified job across the compute nodes where the job has run",
+                  "fullName": "batch job prep-and-release-task-status list",
+                  "usage": "[options] [jobId]",
+                  "filePath": "commands/batch/batch.job._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --id <jobId>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--id",
+                      "description": "the id of the job"
+                    },
+                    {
+                      "flags": "--select-clause <selectClause>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--select-clause",
+                      "description": "list of a subset of properties to select"
+                    },
+                    {
+                      "flags": "--filter-clause <filterClause>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--filter-clause",
+                      "description": "an OData expression by which the results will be filtered"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "job-schedule": {
           "name": "job-schedule",
@@ -4493,6 +4912,312 @@
                   "short": "-p",
                   "long": "--patch",
                   "description": "uses patch instead of update"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "enable",
+              "description": "Enables the specified job schedule, allowing jobs to be created according to its schedule",
+              "fullName": "batch job-schedule enable",
+              "usage": "[options] [jobScheduleId]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job schedule"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "disable",
+              "description": "Disables the specified job schedule. Disabled schedules do not create new jobs, but may be re-enabled later.",
+              "fullName": "batch job-schedule disable",
+              "usage": "[options] [jobScheduleId]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job schedule"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "terminate",
+              "description": "Terminates the specified job schedule",
+              "fullName": "batch job-schedule terminate",
+              "usage": "[options] [jobScheduleId]",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the id of the job schedule"
                 },
                 {
                   "flags": "--if-match <if-match>",
