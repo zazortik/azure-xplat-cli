@@ -1,6 +1,8 @@
 ##2016-04-19 Version 0.9.20
 * Enabled Telemetry for data-collection for command usage and exception tracking
-* Fixed issues #2274 #2731 and #2732 and updated node.js installation steps on linux systems
+* Fixed issues #2274 #2731, #2732, #2747, #2754 and updated node.js installation steps on linux systems
+* Fixed structuring of cdn commands
+* Added BlackForest Environment to the list of supported environments
 * Network
   * Added --gateway-type option to create VPN or ExpressRoute gateways, 
   * Renamed --type option  to --vpn-type in `network vpn-gateway create` command
