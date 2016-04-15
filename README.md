@@ -20,6 +20,7 @@ This project provides a cross-platform command line interface for developers and
   * Role based access control
   * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc.
   * Datalake
+  * CDN
 * Key Vault
 
 For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
