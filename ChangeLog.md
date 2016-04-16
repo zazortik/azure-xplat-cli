@@ -2,11 +2,12 @@
 * Fix computer name prefix issue in vmss quick-create command
 * Fix FD/UD parameter issue in availset create command
 * Added Azure Container Service set of CLI commands.
-  container config generate/patch/set/delete
-  container create-or-update [options] <resource-group-name> <container-service-name> <parameters>
-  container delete [options] <resource-group-name> <container-service-name>
-  container get [options] <resource-group-name> <container-service-name>
-  container list [options] <resource-group-name>
+  * container config create/patch
+  * container config parameter [options] set/delete
+  * container create [options] <resource-group> <name>
+  * container delete [options] <resource-group> <name>
+  * container show [options] <resource-group> <name>
+  * container list [options] <resource-group>
 * Enabled Telemetry for data-collection for command usage and exception tracking
 * Fixed issues #2274 #2731, #2732, #2747, #2754 and updated node.js installation steps on linux systems
 * Fixed structuring of cdn commands
