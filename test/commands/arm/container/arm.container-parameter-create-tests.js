@@ -87,7 +87,7 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('container config generate --parameter-file %s --json', paramFileName).split(' ');
+          var cmd = util.format('container config create --parameter-file %s --json', paramFileName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var cmd = makeCommandStr('container-service', 'set', paramFileName, util.format('--name %s --location %s', containerPrefix, location)).split(' ');
@@ -114,7 +114,7 @@ describe('arm', function() {
                           var cmd = makeCommandStr('public-keys', 'set', paramFileName, util.format('--index 0 --key-data %s', keydata)).split(' ');
                           testUtils.executeCommand(suite, retry, cmd, function(result) {
                             result.exitStatus.should.equal(0);
-                            var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
+                            var cmd = util.format('container create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
                               result.exitStatus.should.equal(0);
                               done();
@@ -137,7 +137,7 @@ describe('arm', function() {
         var cmd = makeCommandStr('agent-pool-profiles', 'set', paramFileName, util.format('--index 0 --count %s --parse', updateCount)).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
+          var cmd = util.format('container create --resource-group %s --name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -149,7 +149,7 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('container config generate --parameter-file %s --json', paramFileName2).split(' ');
+          var cmd = util.format('container config create --parameter-file %s --json', paramFileName2).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var cmd = makeCommandStr('container-service', 'set', paramFileName2, util.format('--name %s --location %s', containerPrefix2, location)).split(' ');
@@ -176,7 +176,7 @@ describe('arm', function() {
                           var cmd = makeCommandStr('public-keys', 'set', paramFileName2, util.format('--index 0 --key-data %s', keydata)).split(' ');
                           testUtils.executeCommand(suite, retry, cmd, function(result) {
                             result.exitStatus.should.equal(0);
-                            var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
+                            var cmd = util.format('container create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
                               result.exitStatus.should.equal(0);
                               done();
@@ -208,7 +208,7 @@ describe('arm', function() {
       
       it('container get should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container get -g %s --container-service-name %s --json', groupName, containerPrefix).split(' ');
+        var cmd = util.format('container show -g %s --name %s --json', groupName, containerPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql(containerPrefix);
@@ -219,10 +219,10 @@ describe('arm', function() {
 
       it('container delete should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container delete -g %s --container-service-name %s --json', groupName, containerPrefix).split(' ');
+        var cmd = util.format('container delete -g %s --name %s --json', groupName, containerPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('container delete -g %s --container-service-name %s --json', groupName, containerPrefix2).split(' ');
+          var cmd = util.format('container delete -g %s --name %s --json', groupName, containerPrefix2).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
