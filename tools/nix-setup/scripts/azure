@@ -11,21 +11,31 @@ new AutoComplete();
 
 var AzureCli = require('/usr/local/azure/lib/cli');
 var Constants = require('/usr/local/azure/lib/util/constants');
+var utilsCore = require('/usr/local/azure/lib/util/utilsCore');
+var TelemetryClient = require('/usr/local/azure/lib/util/telemetry');
 
-if (process.argv[2] !== '--gen') {
-  cli = new AzureCli();
-  cli.parse(process.argv);
-  if (cli.args.length === 0) {
-    cli.parse(['', '', '-h']);
+utilsCore.isTelemetryEnabled(function (err, isEnabled) {
+  // err will always be null
+  TelemetryClient.init(isEnabled);
+  if (isEnabled) {
+    TelemetryClient.start(process.argv);
   }
-} else {
-  if (process.argv[3]) {
-    cli = new AzureCli(null, null, process.argv[3]);
+
+  if (process.argv[2] !== '--gen') {
+    cli = new AzureCli();
+    cli.parse(process.argv);
+    if (cli.args.length === 0) {
+      cli.parse(['', '', '-h']);
+    }
   } else {
-    cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
-    cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+    if (process.argv[3]) {
+      cli = new AzureCli(null, null, process.argv[3]);
+    } else {
+      cli = new AzureCli(null, null, Constants.API_VERSIONS.ARM);
+      cli = new AzureCli(null, null, Constants.API_VERSIONS.ASM);
+    }
   }
-}
+});
 
 // Note: this script makes use of a private, local binary of Node 
 // instead of using the system-wide installation version.
