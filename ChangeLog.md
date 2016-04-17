@@ -1,4 +1,13 @@
 ##2016-04-19 Version 0.9.20
+* Fix computer name prefix issue in vmss quick-create command
+* Fix FD/UD parameter issue in availset create command
+* Added Azure Container Service set of CLI commands.
+  * container config create/patch
+  * container config parameter [options] set/delete
+  * container create [options] <resource-group> <name>
+  * container delete [options] <resource-group> <name>
+  * container show [options] <resource-group> <name>
+  * container list [options] <resource-group>
 * Enabled Telemetry for data-collection for command usage and exception tracking
 * Fixed issues #2274 #2731, #2732, #2747, #2754 and updated node.js installation steps on linux systems
 * Fixed structuring of cdn commands
