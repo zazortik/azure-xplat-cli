@@ -63,6 +63,7 @@ In a Docker host, run:
 ```bash
 sudo docker run -it microsoft/azure-cli 
 ```
+You can clone the repo and use the "Dockerfile" from master branch. It should install the last released version of azure-cli.
 
 ### Pre-compiled installers
 
