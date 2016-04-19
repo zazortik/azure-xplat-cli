@@ -23,7 +23,7 @@ This project provides a cross-platform command line interface for developers and
   * CDN
 * Key Vault
 
-For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
+Note: The list of features may not be up-to-date. For accurate command details, type `azure` | `azure -h` | `azure --help` to navigate through the help system. Also, use `azure config mode asm|arm` to switch between service management (Version V1)and resource management (Version V2) of the Azure REST API.
 
 ## Endpoints for Azure
 
@@ -111,7 +111,7 @@ azure login -u <your organizational ID email address>
 azure login -u "<service-principal-id>" -p "<key>" --service-principal --tenant "<tenant-id>"
 ```
 
-#### Use publish settings file (Management certificate authentication) - works only with ASM (Version V1)of Azure API
+#### Use publish settings file (Management certificate authentication) - works only with ASM (Version V1) of Azure API
 
 ```bash
 # Download a file which contains the publish settings information of your subscription.
