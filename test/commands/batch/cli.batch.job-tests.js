@@ -146,7 +146,7 @@ describe('cli', function () {
     });
     
     it('should list job prep and release status for the job', function (done) {
-      suite.execute('batch job prep-and-release-task-status list %s --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch job prep-release-status list %s --account-name %s --account-key %s --account-endpoint %s --json', 
         jobId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         var jobPrepAndReleaseInfo = JSON.parse(result.text);
@@ -196,7 +196,7 @@ describe('cli', function () {
     });
     
     it('should terminate the job', function (done) {
-      suite.execute('batch job terminate %s --terminate-reason %s --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch job terminate %s --reason %s --account-name %s --account-key %s --account-endpoint %s --json', 
         jobId, 'done', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         suite.execute('batch job show %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
