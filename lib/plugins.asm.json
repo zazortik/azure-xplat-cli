@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support Active Directory."
         },
         {
           "flags": "-p --password <password>",
@@ -17315,14 +17315,14 @@
             },
             "aad": {
               "name": "aad",
-              "description": "Manage azure active directory settings for mobile service",
+              "description": "Manage azure Active Directory settings for mobile service",
               "fullName": "mobile auth aad",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "get",
-                  "description": "Get azure active directory identity settings for mobile service",
+                  "description": "Get azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad get",
                   "usage": "[options] [servicename]",
                   "filePath": "commands/asm/mobile._js",
@@ -17365,7 +17365,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Set azure active directory identity settings for mobile service",
+                  "description": "Set azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad set",
                   "usage": "[options] [servicename] [clientId]",
                   "filePath": "commands/asm/mobile._js",
@@ -17408,7 +17408,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete azure active directory identity settings for mobile service",
+                  "description": "Delete azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad delete",
                   "usage": "[options] [servicename]",
                   "filePath": "commands/asm/mobile._js",
@@ -17453,14 +17453,14 @@
               "categories": {
                 "tenant": {
                   "name": "tenant",
-                  "description": "Manage azure active directory tenants for mobile service",
+                  "description": "Manage azure Active Directory tenants for mobile service",
                   "fullName": "mobile auth aad tenant",
                   "usage": "[options] [command]",
                   "options": [],
                   "commands": [
                     {
                       "name": "list",
-                      "description": "List azure active directory tenants for mobile service",
+                      "description": "List azure Active Directory tenants for mobile service",
                       "fullName": "mobile auth aad tenant list",
                       "usage": "[options] [servicename]",
                       "filePath": "commands/asm/mobile._js",
@@ -17503,7 +17503,7 @@
                     },
                     {
                       "name": "add",
-                      "description": "Add azure active directory tenant for mobile service",
+                      "description": "Add azure Active Directory tenant for mobile service",
                       "fullName": "mobile auth aad tenant add",
                       "usage": "[options] [servicename] [tenant]",
                       "filePath": "commands/asm/mobile._js",
@@ -17546,7 +17546,7 @@
                     },
                     {
                       "name": "delete",
-                      "description": "Remove azure active directory tenant for mobile service",
+                      "description": "Remove azure Active Directory tenant for mobile service",
                       "fullName": "mobile auth aad tenant delete",
                       "usage": "[options] [servicename] [tenant]",
                       "filePath": "commands/asm/mobile._js",

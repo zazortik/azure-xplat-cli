@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support Active Directory."
         },
         {
           "flags": "-p --password <password>",
@@ -13632,7 +13632,7 @@
     },
     "ad": {
       "name": "ad",
-      "description": "Commands to display active directory objects",
+      "description": "Commands to display Active Directory objects",
       "fullName": "ad",
       "usage": "[options]",
       "options": [],
@@ -13640,14 +13640,14 @@
       "categories": {
         "app": {
           "name": "app",
-          "description": "Commands to display active directory applications",
+          "description": "Commands to display Active Directory applications",
           "fullName": "ad app",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "Creates a new active directory application",
+              "description": "Creates a new Active Directory application",
               "fullName": "ad app create",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.application._js",
@@ -13765,7 +13765,7 @@
             },
             {
               "name": "delete",
-              "description": "Deletes the active directory application",
+              "description": "Deletes the Active Directory application",
               "fullName": "ad app delete",
               "usage": "[options] <object-id>",
               "filePath": "commands/arm/ad/ad.application._js",
@@ -13816,7 +13816,7 @@
             },
             {
               "name": "list",
-              "description": "Get all active directory applications in current subscription's tenant",
+              "description": "Get all Active Directory applications in current subscription's tenant",
               "fullName": "ad app list",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.application._js",
@@ -13850,7 +13850,7 @@
             },
             {
               "name": "show",
-              "description": "Get active directory applications",
+              "description": "Get Active Directory applications",
               "fullName": "ad app show",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.application._js",
@@ -13919,14 +13919,14 @@
         },
         "group": {
           "name": "group",
-          "description": "Commands to display active directory groups",
+          "description": "Commands to display Active Directory groups",
           "fullName": "ad group",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "list",
-              "description": "Get active directory groups in current subscription's tenant",
+              "description": "Get Active Directory groups in current subscription's tenant",
               "fullName": "ad group list",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.groups._js",
@@ -13969,7 +13969,7 @@
             },
             {
               "name": "show",
-              "description": "Get active directory groups",
+              "description": "Get Active Directory groups",
               "fullName": "ad group show",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.groups._js",
@@ -14021,14 +14021,14 @@
           "categories": {
             "member": {
               "name": "member",
-              "description": "Commands to provide an active directory sub group or member info",
+              "description": "Commands to provide an Active Directory sub group or member info",
               "fullName": "ad group member",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "list",
-                  "description": "Provides an active directory sub group or member info",
+                  "description": "Provides an Active Directory sub group or member info",
                   "fullName": "ad group member list",
                   "usage": "[options] [objectId]",
                   "filePath": "commands/arm/ad/ad.groups._js",
@@ -14075,14 +14075,14 @@
         },
         "sp": {
           "name": "sp",
-          "description": "Commands to display active directory service principals",
+          "description": "Commands to display Active Directory service principals",
           "fullName": "ad sp",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "list",
-              "description": "Get all active directory service principals in current subscription's tenant",
+              "description": "Get all Active Directory service principals in current subscription's tenant",
               "fullName": "ad sp list",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
@@ -14125,7 +14125,7 @@
             },
             {
               "name": "show",
-              "description": "Get active directory service principals",
+              "description": "Get Active Directory service principals",
               "fullName": "ad sp show",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
@@ -14183,7 +14183,7 @@
             },
             {
               "name": "create",
-              "description": "Create active directory service principal",
+              "description": "Create Active Directory service principal",
               "fullName": "ad sp create",
               "usage": "[options] <applicationId>",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
@@ -14225,7 +14225,7 @@
             },
             {
               "name": "delete",
-              "description": "Deletes active directory service principal",
+              "description": "Deletes Active Directory service principal",
               "fullName": "ad sp delete",
               "usage": "[options] <objectId>",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
@@ -14279,14 +14279,14 @@
         },
         "user": {
           "name": "user",
-          "description": "Commands to display active directory users",
+          "description": "Commands to display Active Directory users",
           "fullName": "ad user",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "list",
-              "description": "Get all active directory users in current subscription's tenant",
+              "description": "Get all Active Directory users in current subscription's tenant",
               "fullName": "ad user list",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.users._js",
@@ -14329,7 +14329,7 @@
             },
             {
               "name": "show",
-              "description": "Get an active directory user",
+              "description": "Get an Active Directory user",
               "fullName": "ad user show",
               "usage": "[options]",
               "filePath": "commands/arm/ad/ad.users._js",
