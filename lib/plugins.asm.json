@@ -4238,9 +4238,9 @@
               ]
             },
             {
-              "name": "terminate",
+              "name": "stop",
               "description": "Terminates the specified job, marking it as completed",
-              "fullName": "batch job terminate",
+              "fullName": "batch job stop",
               "usage": "[options] <jobId>",
               "filePath": "commands/batch/batch.job._js",
               "options": [
@@ -5125,9 +5125,9 @@
               ]
             },
             {
-              "name": "terminate",
+              "name": "stop",
               "description": "Terminates the specified job schedule",
-              "fullName": "batch job-schedule terminate",
+              "fullName": "batch job-schedule stop",
               "usage": "[options] <jobScheduleId>",
               "filePath": "commands/batch/batch.jobSchedule._js",
               "options": [

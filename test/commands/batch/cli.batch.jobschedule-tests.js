@@ -152,8 +152,8 @@ describe('cli', function () {
       });
     });
     
-    it('should terminate the job schedule', function (done) {
-      suite.execute('batch job-schedule terminate %s --account-name %s --account-key %s --account-endpoint %s --json', 
+    it('should stop the job schedule', function (done) {
+      suite.execute('batch job-schedule stop %s --account-name %s --account-key %s --account-endpoint %s --json', 
         jobScheduleId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
