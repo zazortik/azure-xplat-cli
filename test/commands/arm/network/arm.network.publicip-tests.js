@@ -79,8 +79,8 @@ describe('arm', function () {
     describe('publicip', function () {
       it('create should create publicip', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = 'network public-ip create -g {group} -n {name} -l {location} -d {domainName} -a {staticMethod} -i {idleTimeout} -t {tags} --json'
-            .formatArgs(publicIpProp);
+          var cmd = util.format('network public-ip create -g {group} -n {name} -l {location} -d {domainName} -a {staticMethod} ' +
+            '-i {idleTimeout} -t {tags} --json').formatArgs(publicIpProp);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -96,8 +96,8 @@ describe('arm', function () {
         });
       });
       it('set should modify publicip', function (done) {
-        var cmd = 'network public-ip set -g {group} -n {name} -d {newDomainName} -a {dynamicMethod} -i {newIdleTimeout} -t {newTags} --json'
-          .formatArgs(publicIpProp);
+        var cmd = util.format('network public-ip set -g {group} -n {name} -d {newDomainName} -a {dynamicMethod} -i {newIdleTimeout} ' +
+          '-t {newTags} --json').formatArgs(publicIpProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);

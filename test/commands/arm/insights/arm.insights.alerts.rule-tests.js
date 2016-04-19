@@ -63,7 +63,7 @@ describe('arm', function () {
             description = 'Pura vida';
             windowSize = '00:05:00';
             operationName = 'microsoft.web/sites/delete';
-            actions = '[{ "customEmails": [ "gu@ms.com", "fu@inet.net" ]}]';
+            actions = '[{\"customEmails\":[\"gu@ms.com\"],\"type\":\"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\"}, {\"serviceUri\":\"http://foo.com\",\"properties\":{\"key1\":\"value1\"},\"type\":\"Microsoft.Azure.Management.Insights.Models.RuleWebhookAction\"}]';
             done();
           });
         });
@@ -186,8 +186,8 @@ describe('arm', function () {
             });
           });
 
-          it.skip('should work for log rules', function (done) {
-            suite.execute('insights alerts rule log set deleted %s %s %s --targetResourceId %s -d %s --json', location, 'Default-Web-WestUS', operationName, resourceId, description, function (result) {
+          it('should work for log rules', function (done) {
+            suite.execute('insights alerts rule log set logRule %s mytestrg005 create -d %s --json', 'East US', description, function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
@@ -195,14 +195,29 @@ describe('arm', function () {
               response.should.have.property('statusCode');
               response.should.have.property('requestId');
               
-              response.statusCode.should.equal(201);
+              response.statusCode.should.equal(200);
               
               done();
             });
           });
           
-          it.skip('should disable a log rule', function (done) {
-            suite.execute('insights alerts rule log set deleted %s %s %s --targetResourceId %s -d %s --disable --json', location, 'Default-Web-WestUS', operationName, resourceId, description, function (result) {
+          it('should work for log rules with actions', function (done) {
+            suite.execute('insights alerts rule log set logRuleActions %s mytestrg005 create --actions %s -d %s --json', 'East US', actions, description, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
+              done();
+            });
+          });
+
+          it('should disable a log rule', function (done) {
+            suite.execute('insights alerts rule log set logRule %s mytestrg005 create -d %s --disable --json', 'East US', description, function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);

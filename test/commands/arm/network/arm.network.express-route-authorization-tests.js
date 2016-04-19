@@ -21,18 +21,21 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testPrefix = 'arm-network-express-route-authorization-tests';
 var _ = require('underscore');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
+var networkUtil = new NetworkTestUtil();
 var groupName, location, encryptedKey1,
-  groupPrefix = 'xplatTestGroupExpressRouteAuth';
-var groupPrefix = 'xplatTestGroupExpressRouteAuth',
-  expressRCPrefix = 'xplatExpressRoute',
-  serviceProvider = 'InterCloud',
-  peeringLocation = 'London',
-  skuTier = 'Standard',
-  skuFamily = 'MeteredData',
-  tags1 = 'tag1=val1',
-  expressRCAuthPrefix = 'xplatExpressRouteAuth',
-  key1 = 'abc@123',
-  key2 = 'ABC@123';
+  groupPrefix = 'xplatTestGroupExpressRouteAuth',
+  auth = {
+    expressRCName: 'xplatExpressRoute',
+    serviceProvider: 'InterCloud',
+    peeringLocation: 'London',
+    bandwidth: 50,
+    skuTier: 'Standard',
+    skuFamily: 'MeteredData',
+    tags: networkUtil.tags,
+    name: 'xplatExpressRouteAuth',
+    key: 'abc@123',
+    newKey: 'ABC@123'
+  };
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -43,14 +46,16 @@ describe('arm', function () {
   describe('network', function () {
     var suite,
       retry = 5;
-    var networkUtil = new NetworkTestUtil();
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
         groupName = suite.isMocked ? groupPrefix : suite.generateId(groupPrefix, null);
-        expressRCPrefix = suite.isMocked ? expressRCPrefix : suite.generateId(expressRCPrefix, null);
-        expressRCAuthPrefix = suite.isMocked ? expressRCAuthPrefix : suite.generateId(expressRCAuthPrefix, null);
+
+        auth.location = location;
+        auth.group = groupName;
+        auth.expressRCName = suite.isMocked ? auth.expressRCName : suite.generateId(auth.expressRCName, null);
+        auth.name = suite.isMocked ? auth.name : suite.generateId(auth.name, null);
         done();
       });
     });
@@ -69,13 +74,12 @@ describe('arm', function () {
     describe('express-route authorization', function () {
       it('create should pass', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createExpressRoute(groupName, expressRCPrefix, location, serviceProvider, peeringLocation, skuTier, skuFamily, tags1, suite, function () {
-            var cmd = util.format('network express-route authorization create %s %s %s -k %s --json',
-              groupName, expressRCPrefix, expressRCAuthPrefix, key1).split(' ');
+          networkUtil.createExpressRoute(auth, suite, function () {
+            var cmd = 'network express-route authorization create {group} {expressRCName} {name} -k {key} --json'.formatArgs(auth);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
               var auth = JSON.parse(result.text);
-              auth.name.should.equal(expressRCAuthPrefix);
+              auth.name.should.equal(auth.name);
               encryptedKey1 = auth.authorizationKey;
               networkUtil.shouldBeSucceeded(auth);
               done();
@@ -84,46 +88,46 @@ describe('arm', function () {
         });
       });
       it('set should modify express-route authorization', function (done) {
-        var cmd = util.format('network express-route authorization set %s %s %s -k %s --json', groupName, expressRCPrefix, expressRCAuthPrefix, key2).split(' ');
+        var cmd = 'network express-route authorization set {group} {expressRCName} {name} -k {newKey} --json'.formatArgs(auth);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var auth = JSON.parse(result.text);
-          auth.name.should.equal(expressRCAuthPrefix);
+          auth.name.should.equal(auth.name);
           (encryptedKey1 === auth.authorizationKey).should.be.false;
           networkUtil.shouldBeSucceeded(auth);
           done();
         });
       });
       it('show should display details of express-route authorization', function (done) {
-        var cmd = util.format('network express-route authorization show %s %s %s --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
+        var cmd = 'network express-route authorization show {group} {expressRCName} {name} --json'.formatArgs(auth);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var auth = JSON.parse(result.text);
-          auth.name.should.equal(expressRCAuthPrefix);
+          auth.name.should.equal(auth.name);
           done();
         });
       });
       it('list should display all express-routes authorization from resource group', function (done) {
-        var cmd = util.format('network express-route authorization list %s %s --json', groupName, expressRCPrefix).split(' ');
+        var cmd = 'network express-route authorization list {group} {expressRCName} --json'.formatArgs(auth);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var auth = JSON.parse(result.text);
-          _.some(auth, function (auth) {
-            return auth.name === expressRCAuthPrefix;
+          var authorization = JSON.parse(result.text);
+          _.some(authorization, function (item) {
+            return item.name === auth.name;
           }).should.be.true;
           done();
         });
       });
       it('delete should delete express-route authorization', function (done) {
-        var cmd = util.format('network express-route authorization delete %s %s %s -q --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
+        var cmd = 'network express-route authorization delete {group} {expressRCName} {name} -q --json'.formatArgs(auth);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
 
-          cmd = util.format('network express-route authorization show %s %s %s --json', groupName, expressRCPrefix, expressRCAuthPrefix).split(' ');
+          cmd = 'network express-route authorization show {group} {expressRCName} {name} --json'.formatArgs(auth);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
-            var auth = JSON.parse(result.text);
-            auth.should.be.empty;
+            var authorization = JSON.parse(result.text);
+            authorization.should.be.empty;
             done();
           });
         });

@@ -96,7 +96,8 @@ describe('arm', function () {
             networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
                 networkUtil.createAddressPool(groupName, lbName, poolName, suite, function (pool) {
-                  var cmd = 'network lb rule create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -d {loadDistribution} -o {1} -t {2} --json'
+                  var cmd = util.format('network lb rule create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPort} ' +
+                    '-b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -d {loadDistribution} -o {1} -t {2} --json')
                     .formatArgs(ruleProp, pool.name, fip.name);
 
                   testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -122,7 +123,8 @@ describe('arm', function () {
       });
       it('set should modify lb rule', function (done) {
         networkUtil.createProbe(groupName, lbName, probeName, probePort, probeProtocol, suite, function (probe) {
-          var cmd = 'network lb rule set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPort} -b {newBackendPort} -e {newEnableFloatingIP} -i {newIdleTimeoutInMinutes} -d {newLoadDistribution} -a {1} --json'
+          var cmd = util.format('network lb rule set -g {group} -l {lbName} -n {name} -p {newProtocol} -f {newFrontendPort} ' +
+            '-b {newBackendPort} -e {newEnableFloatingIP} -i {newIdleTimeoutInMinutes} -d {newLoadDistribution} -a {1} --json')
             .formatArgs(ruleProp, probe.name);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {

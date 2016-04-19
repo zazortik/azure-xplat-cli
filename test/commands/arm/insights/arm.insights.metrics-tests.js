@@ -111,6 +111,14 @@ describe('arm', function () {
             done();
           });
         });
+
+        it('should fail for shoebox metrics', function (done) {
+          suite.execute('insights metrics list %s %s', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/my_vm', timeGrain, function (result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.include('Invalid resourceId: \"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/my_vm\"');
+            done();
+          });
+        });
       });
     });
   });

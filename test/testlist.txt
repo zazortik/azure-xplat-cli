@@ -12,6 +12,7 @@ commands/cli.account.cert-tests.js
 commands/cli.account.environment-tests.js
 commands/cli.account.affinitygroup-tests.js
 commands/cli.help-tests.js
+commands/cli.telemetry-test.js
 commands/cli.mobile-tests.js
 commands/cli.mobile.api-tests.js
 commands/cli.mobile.appsetting-tests.js

@@ -75,9 +75,11 @@ describe('cli', function () {
         suite.execute('batch job-schedule delete %s --account-name %s --account-key %s --account-endpoint %s --quiet --json', jobScheduleId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
+          suite.teardownSuite(done);
         });
+      } else {
+        suite.teardownSuite(done);
       }
-      suite.teardownSuite(done);
     });
     
     beforeEach(function (done) {

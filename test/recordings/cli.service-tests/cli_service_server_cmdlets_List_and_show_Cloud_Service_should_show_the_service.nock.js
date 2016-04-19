@@ -89,7 +89,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/hostedservices/cli-cs1013')
+  .get('/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/hostedservices/cli-cs1013?embed-detail=true')
   .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/c9cbd920-c00c-427c-852b-8aaf38badaeb/services/hostedservices/cli-cs1013</Url><ServiceName>cli-cs1013</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2xpLWNzMTAxMw==</Label><Status>Created</Status><DateCreated>2015-03-13T02:24:38Z</DateCreated><DateLastModified>2015-03-13T02:24:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
   'content-length': '574',
   'content-type': 'application/xml; charset=utf-8',
