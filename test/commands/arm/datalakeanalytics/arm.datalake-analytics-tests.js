@@ -96,7 +96,7 @@ describe('arm', function () {
           suite.execute('group create %s --location %s --json', secondResourceGroup, testLocation, function () {
             suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', storeAccountName, testResourceGroup, testLocation, function () {
               suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', additionalStoreAccountName, testResourceGroup, testLocation, function () {
-                suite.execute('storage account create %s --resource-group %s --location %s --type GRS --json', azureBlobAccountName, testResourceGroup, testLocation, function () {
+                suite.execute('storage account create %s --resource-group %s --location %s --sku-name GRS --kind Storage --json', azureBlobAccountName, testResourceGroup, testLocation, function () {
                   // create an account for job and catalog operations
                   suite.execute('datalake analytics account create --accountName %s --resource-group %s --location %s --defaultDataLakeStore %s --json', jobAndCatalogAccountName, testResourceGroup, testLocation, storeAccountName, function () {
                       setTimeout(function () {
