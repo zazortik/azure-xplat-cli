@@ -98,7 +98,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 If you use both mechanisms on the same subscription, Azure Active Directory authentication will be used by default. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
 
-#### Login directly from xplat-cli (Azure Active Directory authentication)
+#### Login directly from xplat-cli (Azure Active Directory authentication) - works with ARM & ASM (Version V2 & V1) of Azure API
 
 ```bash
 # This will output an url and a device code for you to use browser to login  
@@ -111,7 +111,7 @@ azure login -u <your organizational ID email address>
 azure login -u "<service-principal-id>" -p "<key>" --service-principal --tenant "<tenant-id>"
 ```
 
-#### Use publish settings file (Management certificate authentication)
+#### Use publish settings file (Management certificate authentication) - works only with ASM (Version V1)of Azure API
 
 ```bash
 # Download a file which contains the publish settings information of your subscription.
