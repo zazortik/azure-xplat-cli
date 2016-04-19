@@ -27,43 +27,43 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%5CtaskOut.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%2FtaskOut.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'content-length': '7',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'last-modified': 'Mon, 11 Apr 2016 18:52:27 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '35d8c3e3-493d-4e4e-aae8-6ee2b2bdf42f',
+  'request-id': '36fcb02b-593c-451b-8fe3-4444c78b3d79',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '24842fb3-f994-4419-ab74-640b2c5ef043',
+  'client-request-id': 'b3c71a92-c6c1-4411-9c4a-6a628be16f4a',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'ocp-creation-time': 'Mon, 11 Apr 2016 18:52:27 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
-  date: 'Tue, 22 Mar 2016 00:27:43 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjstesteastus2.eastus2.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
+  date: 'Mon, 11 Apr 2016 18:52:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%5CtaskOut.txt?api-version=2015-12-01.2.2&timeout=30')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .head('/jobs/xplatJobForFileTests/tasks/xplatTask/files/wd%2FtaskOut.txt?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'content-length': '7',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'last-modified': 'Mon, 11 Apr 2016 18:52:27 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '35d8c3e3-493d-4e4e-aae8-6ee2b2bdf42f',
+  'request-id': '36fcb02b-593c-451b-8fe3-4444c78b3d79',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '24842fb3-f994-4419-ab74-640b2c5ef043',
+  'client-request-id': 'b3c71a92-c6c1-4411-9c4a-6a628be16f4a',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Tue, 22 Mar 2016 00:27:41 GMT',
+  'ocp-creation-time': 'Mon, 11 Apr 2016 18:52:27 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Fjsxplat.centralus.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
-  date: 'Tue, 22 Mar 2016 00:27:43 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Fjstesteastus2.eastus2.batch.azure.com%2Fjobs%2FxplatJobForFileTests%2Ftasks%2FxplatTask%2Ffiles%2Fwd%2FtaskOut.txt',
+  date: 'Mon, 11 Apr 2016 18:52:34 GMT',
   connection: 'close' });
  return result; }]];

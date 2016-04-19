@@ -23,8 +23,10 @@ var fs = require('fs');
 var moment = require('moment');
 
 var poolId = 'xplatTestPool';
+var linuxPoolId = 'xplatTestLinuxPool';
 var computeNodeId;
 var computeNodeId2;
+var linuxComputeNodeId;
 var userName = "xplatUser";
 var downloadLocation = "node.rdp";
 
@@ -83,7 +85,15 @@ describe('cli', function () {
         nodes.length.should.be.above(1);
         computeNodeId = nodes[0].id;
         computeNodeId2 = nodes[1].id;
-        done();
+        suite.execute('batch node list %s --account-name %s --account-key %s --account-endpoint %s --json', 
+          linuxPoolId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var linuxNodes = JSON.parse(result.text);
+          linuxNodes.should.not.be.null;
+          linuxNodes.length.should.be.above(0);
+          linuxComputeNodeId = linuxNodes[0].id;
+          done();
+        });
       });
     });
     
@@ -105,11 +115,23 @@ describe('cli', function () {
       });
     });
     
-    it('should create a user on a compute node', function (done) {
-      suite.execute('batch node-user create %s %s %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
-        poolId, computeNodeId, userName, "Password1234!", batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+    it('should get the node remote login settings', function (done) {
+      suite.execute('batch node remote-login-settings show %s %s --account-name %s --account-key %s --account-endpoint %s --json',
+        linuxPoolId, linuxComputeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
+        var settings = JSON.parse(result.text);
+        settings.should.not.be.null;
+        settings.remoteLoginIPAddress.should.not.be.null;
+        settings.remoteLoginPort.should.not.be.null;
+        done();
+      });
+    });
+    
+    it('should create a user on a compute node', function (done) {
+      suite.execute('batch node-user create %s %s %s --user-password %s --ssh-public-key %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        linuxPoolId, linuxComputeNodeId, userName, "Password1234!", "dummykey", batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         // The service provides no way to list users, so we just depend on the successful return value.
+        result.exitStatus.should.equal(0);
         done();
       });
     });
@@ -117,8 +139,8 @@ describe('cli', function () {
     it('should update the compute node node user', function (done) {
       var expiryTime = "2021-01-02T03:04:05";
 
-      suite.execute('batch node-user set %s %s %s --user-password %s --expiry-time %s --account-name %s --account-key %s --account-endpoint %s --json',
-        poolId, computeNodeId, userName, "Password5678!", expiryTime, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+      suite.execute('batch node-user set %s %s %s --user-password %s --expiry-time %s --ssh-public-key %s --account-name %s --account-key %s --account-endpoint %s --json',
+        linuxPoolId, linuxComputeNodeId, userName, "Password5678!", expiryTime, "anotherkey", batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         // The service provides no way to list users, so we just depend on the successful return value.
         done();
@@ -127,7 +149,7 @@ describe('cli', function () {
     
     it('should delete the compute node user', function (done) {
       suite.execute('batch node-user delete %s %s %s --account-name %s --account-key %s --account-endpoint %s --json --quiet',  
-        poolId, computeNodeId, userName, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        linuxPoolId, linuxComputeNodeId, userName, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         // The service provides no way to list users, so we just depend on the successful return value.
         done();

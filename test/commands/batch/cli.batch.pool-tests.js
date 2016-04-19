@@ -157,5 +157,18 @@ describe('cli', function () {
         });
       });
     });
+
+    it('should list node agent skus', function (done) {
+      suite.execute('batch pool list-node-agent-skus --account-name %s --account-key %s --account-endpoint %s --json',  
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var skus = JSON.parse(result.text);
+        skus.should.not.be.null;
+        skus.length.should.be.above(0);
+        skus[0].id.should.not.be.null;
+        skus[0].osType.should.not.be.null;
+        done();
+      });
+    });
   });
 });

@@ -1,8 +1,10 @@
 {
   "id": "xplatCreatedPool",
   "vmSize": "small",
-  "osFamily": "4",
-  "targetOSVersion": "*",
+  "cloudServiceConfiguration": {
+    "osFamily": "4",
+    "targetOSVersion": "*" 
+  },
   "targetDedicated": 0,
   "startTask": {
     "commandLine": "cmd /c echo test",

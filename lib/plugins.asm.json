@@ -1835,6 +1835,859 @@
             }
           }
         },
+        "application": {
+          "name": "application",
+          "description": "Commands to manage your Batch Application",
+          "fullName": "batch application",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Adds an application to the specified Batch account",
+              "fullName": "batch application create",
+              "usage": "[options] [resource-group] [account-name] [application-id]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--account-name <account-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--account-name",
+                  "description": "the name of the Batch account"
+                },
+                {
+                  "flags": "--application-id <application-id>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--application-id",
+                  "description": "the id of the application"
+                },
+                {
+                  "flags": "--allow-updates <allow-updates>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--allow-updates",
+                  "description": "whether packages within the application may be overwritten using the same version string"
+                },
+                {
+                  "flags": "--display-name <display-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--display-name",
+                  "description": "the disaply name for the application"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Updates an application to the specified Batch account",
+              "fullName": "batch application set",
+              "usage": "[options] [resource-group] [account-name] [application-id]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--account-name <account-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--account-name",
+                  "description": "the name of the Batch account"
+                },
+                {
+                  "flags": "--application-id <application-id>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--application-id",
+                  "description": "the id of the application"
+                },
+                {
+                  "flags": "--allow-updates <allow-updates>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--allow-updates",
+                  "description": "whether packages within the application may be overwritten using the same version string"
+                },
+                {
+                  "flags": "--display-name <display-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--display-name",
+                  "description": "the disaply name for the application"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes an application",
+              "fullName": "batch application delete",
+              "usage": "[options] [resource-group] [account-name] [application-id]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--account-name <account-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--account-name",
+                  "description": "the name of the Batch account"
+                },
+                {
+                  "flags": "--application-id <application-id>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--application-id",
+                  "description": "the id of the application"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the specified application without confirmation"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the batch application",
+              "fullName": "batch application show",
+              "usage": "[options] [resource-group] [account-name] [application-id]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--account-name <account-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--account-name",
+                  "description": "the name of the Batch account"
+                },
+                {
+                  "flags": "--application-id <application-id>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--application-id",
+                  "description": "the id of the application"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Lists all of the applications in the specified account",
+              "fullName": "batch application list",
+              "usage": "[options] [resource-group] [account-name]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--account-name <account-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--account-name",
+                  "description": "the name of the Batch account"
+                },
+                {
+                  "flags": "-g, --resource-group <resourceGroup>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "list-summary",
+              "description": "Lists all of the applications available in the specified account",
+              "fullName": "batch application list-summary",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "show-summary",
+              "description": "Show details of the application in the specified account",
+              "fullName": "batch application show-summary",
+              "usage": "[options] [application-id]",
+              "filePath": "commands/batch/batch.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--application-id <application-id>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--application-id",
+                  "description": "the id of the application"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "package": {
+              "name": "package",
+              "description": "Commands to manage your Batch Application Package",
+              "fullName": "batch application package",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Creates an application package record",
+                  "fullName": "batch application package create",
+                  "usage": "[options] [resource-group] [account-name] [application-id] [version] [package-file]",
+                  "filePath": "commands/batch/batch.application._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--account-name <account-name>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--account-name",
+                      "description": "the name of the Batch account"
+                    },
+                    {
+                      "flags": "--application-id <application-id>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-id",
+                      "description": "the id of the application"
+                    },
+                    {
+                      "flags": "--version <version>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--version",
+                      "description": "the version of the application"
+                    },
+                    {
+                      "flags": "--package-file <package-file>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--package-file",
+                      "description": "the application package in zip format"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resourceGroup>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes an application package record",
+                  "fullName": "batch application package delete",
+                  "usage": "[options] [resource-group] [account-name] [application-id] [version]",
+                  "filePath": "commands/batch/batch.application._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--account-name <account-name>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--account-name",
+                      "description": "the name of the Batch account"
+                    },
+                    {
+                      "flags": "--application-id <application-id>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-id",
+                      "description": "the id of the application"
+                    },
+                    {
+                      "flags": "--version <version>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--version",
+                      "description": "the version of the application to delete"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "delete the specified application package without confirmation"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resourceGroup>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show details of the batch application package",
+                  "fullName": "batch application package show",
+                  "usage": "[options] [resource-group] [account-name] [application-id] [version]",
+                  "filePath": "commands/batch/batch.application._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--account-name <account-name>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--account-name",
+                      "description": "the name of the Batch account"
+                    },
+                    {
+                      "flags": "--application-id <application-id>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-id",
+                      "description": "the id of the application"
+                    },
+                    {
+                      "flags": "--version <version>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--version",
+                      "description": "the version of the application to show"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resourceGroup>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                },
+                {
+                  "name": "activate",
+                  "description": "Activate an application package",
+                  "fullName": "batch application package activate",
+                  "usage": "[options] [resource-group] [account-name] [application-id] [version] [format]",
+                  "filePath": "commands/batch/batch.application._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--account-name <account-name>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--account-name",
+                      "description": "the name of the Batch account"
+                    },
+                    {
+                      "flags": "--application-id <application-id>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-id",
+                      "description": "the id of the application"
+                    },
+                    {
+                      "flags": "--version <version>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--version",
+                      "description": "the version of the application to activate"
+                    },
+                    {
+                      "flags": "--format <format>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--format",
+                      "description": "the format of the application package binary file"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resourceGroup>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the resource group name"
+                    },
+                    {
+                      "flags": "-s, --subscription <id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription id"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
         "task-file": {
           "name": "task-file",
           "description": "Commands to manage your Batch task files",
@@ -4301,7 +5154,95 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "remote-login-settings": {
+              "name": "remote-login-settings",
+              "description": "The remote login settings for a Batch compute node",
+              "fullName": "batch node remote-login-settings",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the remote login settings for the specified node",
+                  "fullName": "batch node remote-login-settings show",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "node-user": {
           "name": "node-user",
@@ -4314,7 +5255,7 @@
               "name": "create",
               "description": "Adds a user account to the specified compute node",
               "fullName": "batch node-user create",
-              "usage": "[options] [pool-id] [node-id] [user-name] [user-password]",
+              "usage": "[options] [pool-id] [node-id] [user-name]",
               "filePath": "commands/batch/batch.node._js",
               "options": [
                 {
@@ -4367,12 +5308,20 @@
                   "description": "the name of the user account to be created"
                 },
                 {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
+                  "flags": "--user-password [user-password]",
+                  "required": 0,
+                  "optional": -17,
                   "bool": true,
                   "long": "--user-password",
                   "description": "the password of the user account"
+                },
+                {
+                  "flags": "--ssh-public-key [ssh-public-key]",
+                  "required": 0,
+                  "optional": -18,
+                  "bool": true,
+                  "long": "--ssh-public-key",
+                  "description": "the ssh public key that can be used for remote login to the compute node; can only be specified for Linux nodes"
                 },
                 {
                   "flags": "--admin",
@@ -4383,9 +5332,9 @@
                   "description": "whether the account should be an administrator on the compute node"
                 },
                 {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
+                  "flags": "--expiry-time [expiry-time]",
+                  "required": 0,
+                  "optional": -15,
                   "bool": true,
                   "long": "--expiry-time",
                   "description": "the time at which the account should expire"
@@ -4570,17 +5519,25 @@
                   "description": "the name of the user account to update"
                 },
                 {
-                  "flags": "--user-password <user-password>",
-                  "required": -17,
-                  "optional": 0,
+                  "flags": "--user-password [user-password]",
+                  "required": 0,
+                  "optional": -17,
                   "bool": true,
                   "long": "--user-password",
                   "description": "the password of the user account"
                 },
                 {
-                  "flags": "--expiry-time <expiry-time>",
-                  "required": -15,
-                  "optional": 0,
+                  "flags": "--ssh-public-key [ssh-public-key]",
+                  "required": 0,
+                  "optional": -18,
+                  "bool": true,
+                  "long": "--ssh-public-key",
+                  "description": "the ssh public key that can be used for remote login to the compute node; can only be specified for Linux nodes"
+                },
+                {
+                  "flags": "--expiry-time [expiry-time]",
+                  "required": 0,
+                  "optional": -15,
                   "bool": true,
                   "long": "--expiry-time",
                   "description": "the time at which the account should expire"
@@ -5096,6 +6053,75 @@
                   "bool": true,
                   "long": "--if-unmodified-since",
                   "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "list-node-agent-skus",
+              "description": "Lists the node agent SKUs supported by the Azure Batch service",
+              "fullName": "batch pool list-node-agent-skus",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",

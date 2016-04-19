@@ -119,7 +119,7 @@ describe('arm', function () {
 
       it('create should create vpn gateway', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createVpnGateway(gatewayProp, suite, function() {
+          networkUtil.createVpnGateway(gatewayProp, suite, function () {
             done();
           });
         });
@@ -185,7 +185,8 @@ describe('arm', function () {
         });
       });
       it('root-cert create should attach root certificate to vpn gateway', function (done) {
-        var cmd = 'network vpn-gateway root-cert create -g {group} -n {gatewayName} -c {name} -f {path} --json'.formatArgs(rootCertProp);
+        var cmd = 'network vpn-gateway root-cert create -g {group} -n {gatewayName} -c {name} -f {path} --json'
+          .formatArgs(rootCertProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vpnGateway = JSON.parse(result.text);
@@ -196,7 +197,8 @@ describe('arm', function () {
         });
       });
       it('root-cert delete should detach root certificate from vpn gateway', function (done) {
-        var cmd = 'network vpn-gateway root-cert delete -g {group} -n {gatewayName} -c {name} --quiet --json'.formatArgs(rootCertProp);
+        var cmd = 'network vpn-gateway root-cert delete -g {group} -n {gatewayName} -c {name} --quiet --json'
+          .formatArgs(rootCertProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vpnGateway = JSON.parse(result.text);
@@ -206,7 +208,8 @@ describe('arm', function () {
         });
       });
       it('revoked-cert create should attach revoked certificate to vpn gateway', function (done) {
-        var cmd = 'network vpn-gateway revoked-cert create -g {group} -n {gatewayName} -c {name} -f {thumbprint} --json'.formatArgs(revokedCertProp);
+        var cmd = 'network vpn-gateway revoked-cert create -g {group} -n {gatewayName} -c {name} -f {thumbprint} --json'
+          .formatArgs(revokedCertProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vpnGateway = JSON.parse(result.text);
@@ -217,7 +220,8 @@ describe('arm', function () {
         });
       });
       it('revoked-cert delete should detach revoked certificate from vpn gateway', function (done) {
-        var cmd = 'network vpn-gateway revoked-cert delete -g {group} -n {gatewayName} -c {name} --quiet --json'.formatArgs(revokedCertProp);
+        var cmd = 'network vpn-gateway revoked-cert delete -g {group} -n {gatewayName} -c {name} --quiet --json'
+          .formatArgs(revokedCertProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var vpnGateway = JSON.parse(result.text);

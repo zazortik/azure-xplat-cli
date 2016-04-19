@@ -23,7 +23,7 @@ This project provides a cross-platform command line interface for developers and
   * CDN
 * Key Vault
 
-For comdlets detail, type "azure" to navigate through the help system. Also, use `azure config mode` to switch between service management and resource management.
+Note: The list of features may not be up-to-date. For accurate command details, type `azure` | `azure -h` | `azure --help` to navigate through the help system. Also, use `azure config mode asm|arm` to switch between service management (Version V1)and resource management (Version V2) of the Azure REST API.
 
 ## Endpoints for Azure
 
@@ -47,42 +47,24 @@ If you need to create an automation account for non interactive or scripting sce
 And you should be good to go :). 
 Note: You may require admin prompt or sudo access to install via npm.
 
-### Install from npm
+### Installation from npm
 
 You can install the azure-cli npm package directly.
 ```bash
 npm install -g azure-cli
 ```
 
-### Install on Ubuntu
-The Xplat-CLI requires Node.js. Installation varies slightly by Ubuntu version.
+### Installing the latest version of node.js on different linux flavors
 
-**Ubuntu 14.04 Trusty Tahr**
+This [document](https://nodejs.org/en/download/package-manager/#installing-node-js-via-package-manager) provides simple steps to install the latest version of node.js on a linux system. After successful installation of node.js, you can install "azure-cli" via npm as decribed above.
 
-On Ubuntu 14, the Node.js package is called nodejs-legacy. The npm package is installed first to get the Node Package Manager used to install the CLI.
-
-```bash
-sudo apt-get install nodejs-legacy
-sudo apt-get install npm
-sudo npm install -g azure-cli
-```
-**Ubuntu 12.04 Precise Pangolin**
-
-On Ubuntu 12, the version of Node.js available in the default package manager is too old. You can use the Personal Package Archive feature to install the current binary distribution. First, install the curl package to easily retrieve the install script.
-
-```bash
-sudo apt-get install curl
-curl -sL https://deb.nodesource.com/setup | sudo bash -
-sudo apt-get install -y nodejs
-sudo npm install -g azure-cli
-```
-
-### Install on a Docker Host
+### Installation on a Docker Host
 
 In a Docker host, run:  
 ```bash
 sudo docker run -it microsoft/azure-cli 
 ```
+You can clone the repo and use the "Dockerfile" from master branch. It should install the last released version of azure-cli.
 
 ### Pre-compiled installers
 
@@ -116,7 +98,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 If you use both mechanisms on the same subscription, Azure Active Directory authentication will be used by default. If you want to go back to management certificate authentication, please use ``azure logout``, which will remove the Azure Active Directory information and bring management certificate authentication back in.
 
-#### Login directly from xplat-cli (Azure Active Directory authentication)
+#### Login directly from xplat-cli (Azure Active Directory authentication) - works with ARM & ASM (Version V2 & V1) of Azure API
 
 ```bash
 # This will output an url and a device code for you to use browser to login  
@@ -129,7 +111,7 @@ azure login -u <your organizational ID email address>
 azure login -u "<service-principal-id>" -p "<key>" --service-principal --tenant "<tenant-id>"
 ```
 
-#### Use publish settings file (Management certificate authentication)
+#### Use publish settings file (Management certificate authentication) - works only with ASM (Version V1) of Azure API
 
 ```bash
 # Download a file which contains the publish settings information of your subscription.
