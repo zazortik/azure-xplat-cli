@@ -6,15 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'e33f361b-53c2-4cc7-b829-78906708387b',
-    name: 'Microsoft Azure Internal Consumption',
+    id: '45b60d85-fd72-427a-a708-f994d26e593e',
+    name: 'Azure Storage DM Staging',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,9 +24,9 @@ exports.getMockedProfile = function () {
 
 exports.setEnvironment = function() {
   process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
-  process.env['SSHCERT'] = 'test/myCert.pem';
+  process.env['SSHCERT'] = 'D:\public.pem';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestVMSSCreate9802','xplattestnic993','xplatteststorage18589','xplatteststoragecnt13011','xplattestipdns3858'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestVMSSCreate5174','xplattestnic2494','xplatteststorage11879','xplatteststoragecnt19471','xplattestipdns2246'];};
