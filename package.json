@@ -69,7 +69,6 @@
     "azure-arm-batch": "0.1.0",
     "azure-batch": "0.3.0",
     "applicationinsights": "0.15.12",
-    "applicationinsights": "0.15.12",
     "caller-id": "0.1.x",
     "colors": "0.x.x",
     "commander": "1.0.4",
