@@ -126,6 +126,7 @@
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
     "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",
+    "unit-arm-vm-extension-live": "node scripts/unit.js testlist-arm-vm-extension-live.txt",
     "unit-arm-vmss": "node scripts/unit.js testlist-arm-vmss.txt",
     "unit-arm-container": "node scripts/unit.js testlist-arm-container.txt",
     "jshint": "jshint lib --jslint-reporter --extra-ext ._js",

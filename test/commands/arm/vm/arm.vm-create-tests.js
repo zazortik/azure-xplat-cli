@@ -350,7 +350,7 @@ describe('arm', function() {
 
       it('set should be able to update the VM size', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vm set -z %s %s --json', 'Standard_A1', groupName, vmPrefix).split(' ');
+        var cmd = util.format('vm set -z %s %s --json', 'Standard_DS2', groupName, vmPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();

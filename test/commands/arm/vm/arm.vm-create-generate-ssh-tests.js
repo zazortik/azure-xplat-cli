@@ -60,7 +60,7 @@ describe('arm', function() {
         vNetPrefix = suite.isMocked ? vNetPrefix : suite.generateId(vNetPrefix, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         publicipName = suite.isMocked ? publicipName : suite.generateId(publicipName, null);
-        dnsPrefix = suite.isMocked ? dnsPrefix : suite.generateId(dnsPrefix, null);
+        dnsPrefix = suite.generateId(dnsPrefix, null);
         homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
 
         done();

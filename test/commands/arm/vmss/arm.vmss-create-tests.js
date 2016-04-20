@@ -26,9 +26,6 @@ var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'southeastasia'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/myCert.pem'
 }];
 
 var groupName,
@@ -64,7 +61,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT;
+        sshcert = process.env.SSHCERT ? process.env.SSHCERT : 'test/myCert.pem';
         groupName = suite.generateId(groupPrefix, null);
         vmssPrefix = suite.isMocked ? vmssPrefix : suite.generateId(vmssPrefix, null);
         vmssPrefix2 = suite.isMocked ? vmssPrefix2 : suite.generateId(vmssPrefix2, null);
@@ -127,13 +124,13 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
           var cmd = util.format(
-            'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z Standard_D1 -C 5 --json',
+            'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z Standard_DS1 -C 5 --json',
             groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             vmTest.setGroup(groupName, suite, function(result) {
               var cmd = util.format(
-                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -z Standard_D1 -C 5 --json',
+                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -z Standard_DS1 -C 5 --json',
                 groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
@@ -212,7 +209,7 @@ describe('arm', function() {
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
             var cmd = util.format(
-              'vmss quick-create %s %s %s %s 5 %s %s --vm-size Standard_D1 --json',
+              'vmss quick-create %s %s %s %s 5 %s %s --vm-size Standard_DS1 --json',
               groupName, vmssPrefix2, location, imageUrn, username, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);

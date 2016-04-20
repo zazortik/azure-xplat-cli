@@ -27,9 +27,6 @@ var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'australiasoutheast'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/containerCert.pem'
 }];
 
 var groupName,
@@ -56,7 +53,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT;
+        sshcert = process.env.SSHCERT ? process.env.SSHCERT : 'test/containerCert.pem';
         keydata = fs.readFileSync(sshcert).toString();
         keydata = keydata.replace(' ', '').replace('\r', '').replace('\n', '');
         groupName = suite.generateId(groupPrefix, null);
