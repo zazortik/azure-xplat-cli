@@ -96,7 +96,7 @@ describe('arm', function() {
         });
       });
 
-      it.skip('list-available-sizes should list the available VM sizes in availability set', function (done) {
+      it('list-available-sizes should list the available VM sizes in availability set', function (done) {
         var cmd = util.format('availset list-available-sizes %s %s', groupName, availprefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
