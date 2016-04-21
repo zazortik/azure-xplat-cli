@@ -33247,6 +33247,14 @@
               "description": "the resource group name"
             },
             {
+              "flags": "--nowait",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--nowait",
+              "description": "does not wait for the delete operation to complete. Returns as soon as the intial request is received by the server."
+            },
+            {
               "flags": "-q, --quiet",
               "required": 0,
               "optional": 0,
