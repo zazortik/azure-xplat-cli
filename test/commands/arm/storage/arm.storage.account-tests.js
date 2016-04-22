@@ -153,7 +153,7 @@ describe('arm', function () {
       });
     })
     
-    it('should check the  storage account name', function(done) {
+    it('should check the storage account name', function(done) {
       suite.execute('storage account check %s --json', storageName, function (result) {
         var result = JSON.parse(result.text);
         result.nameAvailable.should.be.false;

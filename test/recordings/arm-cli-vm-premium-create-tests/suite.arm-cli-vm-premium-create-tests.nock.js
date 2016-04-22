@@ -6,12 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'e33f361b-53c2-4cc7-b829-78906708387b',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
     managementCertificate: {
       key: 'mockedKey',
       cert: 'mockedCert'
     },
-    name: 'Microsoft Azure Internal Consumption',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'servicePrincipal'
@@ -19,6 +19,7 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -32,4 +33,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestZVMCreate6381','xplatTestZVMAvail5992','xplatteststorage17059','xplatteststoragecnt11161','xplattestipdns6040','xplattestipdns27169'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestZVMCreate3719','xplatTestZVMAvail7125','xplatteststorage13672','xplatteststoragecnt12373','xplattestipdns2548','xplattestipdns29517'];};
