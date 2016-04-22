@@ -17302,17 +17302,17 @@
         }
       }
     },
-    "containerservice": {
-      "name": "containerservice",
+    "acs": {
+      "name": "acs",
       "description": "Commands to manage your container service.  ",
-      "fullName": "containerservice",
+      "fullName": "acs",
       "usage": "[options] [command]",
       "options": [],
       "commands": [
         {
           "name": "create",
           "description": "The operation to create or update a container service.",
-          "fullName": "containerservice create",
+          "fullName": "acs create",
           "usage": "[options] <resource-group> <name> <parameters>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17390,7 +17390,7 @@
         {
           "name": "delete",
           "description": "The operation to delete a container service.",
-          "fullName": "containerservice delete",
+          "fullName": "acs delete",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17451,7 +17451,7 @@
         {
           "name": "show",
           "description": "The operation to get a container service.",
-          "fullName": "containerservice show",
+          "fullName": "acs show",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17512,7 +17512,7 @@
         {
           "name": "list",
           "description": "The operation to list container services.",
-          "fullName": "containerservice list",
+          "fullName": "acs list",
           "usage": "[options] <resource-group>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17566,14 +17566,14 @@
         "config": {
           "name": "config",
           "description": "Commands to manage configuration of container-service in the parameter file.",
-          "fullName": "containerservice config",
+          "fullName": "acs config",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
               "description": "Generate containerServiceCreateOrUpdate parameter string or files.",
-              "fullName": "containerservice config create",
+              "fullName": "acs config create",
               "usage": "[options]",
               "filePath": "commands/arm/compute/compute._js",
               "options": [
@@ -17615,7 +17615,7 @@
             {
               "name": "patch",
               "description": "Command to patch containerServiceCreateOrUpdate parameter JSON file.",
-              "fullName": "containerservice config patch",
+              "fullName": "acs config patch",
               "usage": "[options]",
               "filePath": "commands/arm/compute/compute._js",
               "options": [
@@ -17690,15 +17690,15 @@
           "categories": {
             "container-service": {
               "name": "container-service",
-              "description": "Commands to configure container-service of containerservice in config file.",
-              "fullName": "containerservice config container-service",
+              "description": "Commands to configure container-service of acs in config file.",
+              "fullName": "acs config container-service",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set container-service in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config container-service set",
+                  "fullName": "acs config container-service set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -17844,7 +17844,7 @@
                 {
                   "name": "delete",
                   "description": "Remove container-service in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config container-service delete",
+                  "fullName": "acs config container-service delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -17984,15 +17984,15 @@
             },
             "orchestrator-profile": {
               "name": "orchestrator-profile",
-              "description": "Commands to configure orchestrator-profile of containerservice in config file.",
-              "fullName": "containerservice config orchestrator-profile",
+              "description": "Commands to configure orchestrator-profile of acs in config file.",
+              "fullName": "acs config orchestrator-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set orchestrator-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"orchestratorProfile\" : {\r\n             \"orchestratorType\":null\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config orchestrator-profile set",
+                  "fullName": "acs config orchestrator-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18050,7 +18050,7 @@
                 {
                   "name": "delete",
                   "description": "Remove orchestrator-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"orchestratorProfile\" : {\r\n             \"orchestratorType\":null\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config orchestrator-profile delete",
+                  "fullName": "acs config orchestrator-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18102,15 +18102,15 @@
             },
             "master-profile": {
               "name": "master-profile",
-              "description": "Commands to configure master-profile of containerservice in config file.",
-              "fullName": "containerservice config master-profile",
+              "description": "Commands to configure master-profile of acs in config file.",
+              "fullName": "acs config master-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set master-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"masterProfile\" : {\r\n             \"count\":null,\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config master-profile set",
+                  "fullName": "acs config master-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18184,7 +18184,7 @@
                 {
                   "name": "delete",
                   "description": "Remove master-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"masterProfile\" : {\r\n             \"count\":null,\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config master-profile delete",
+                  "fullName": "acs config master-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18252,15 +18252,15 @@
             },
             "agent-pool-profiles": {
               "name": "agent-pool-profiles",
-              "description": "Commands to configure agent-pool-profiles of containerservice in config file.",
-              "fullName": "containerservice config agent-pool-profiles",
+              "description": "Commands to configure agent-pool-profiles of acs in config file.",
+              "fullName": "acs config agent-pool-profiles",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set agent-pool-profiles in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"agentPoolProfiles\" : {\r\n             \"name\":\"\",\r\n             \"count\":null,\r\n             \"vmSize\":\"\",\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config agent-pool-profiles set",
+                  "fullName": "acs config agent-pool-profiles set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18366,7 +18366,7 @@
                 {
                   "name": "delete",
                   "description": "Remove agent-pool-profiles in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"agentPoolProfiles\" : {\r\n             \"name\":\"\",\r\n             \"count\":null,\r\n             \"vmSize\":\"\",\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config agent-pool-profiles delete",
+                  "fullName": "acs config agent-pool-profiles delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18458,15 +18458,15 @@
             },
             "windows-profile": {
               "name": "windows-profile",
-              "description": "Commands to configure windows-profile of containerservice in config file.",
-              "fullName": "containerservice config windows-profile",
+              "description": "Commands to configure windows-profile of acs in config file.",
+              "fullName": "acs config windows-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set windows-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"windowsProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"adminPassword\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config windows-profile set",
+                  "fullName": "acs config windows-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18532,7 +18532,7 @@
                 {
                   "name": "delete",
                   "description": "Remove windows-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"windowsProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"adminPassword\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config windows-profile delete",
+                  "fullName": "acs config windows-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18592,15 +18592,15 @@
             },
             "linux-profile": {
               "name": "linux-profile",
-              "description": "Commands to configure linux-profile of containerservice in config file.",
-              "fullName": "containerservice config linux-profile",
+              "description": "Commands to configure linux-profile of acs in config file.",
+              "fullName": "acs config linux-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set linux-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"linuxProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"ssh\":{\r\n               \"publicKeys\":[\r\n                 {\r\n                   \"keyData\":\"\"\r\n                 }\r\n               ]\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config linux-profile set",
+                  "fullName": "acs config linux-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18666,7 +18666,7 @@
                 {
                   "name": "delete",
                   "description": "Remove linux-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"linuxProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"ssh\":{\r\n               \"publicKeys\":[\r\n                 {\r\n                   \"keyData\":\"\"\r\n                 }\r\n               ]\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config linux-profile delete",
+                  "fullName": "acs config linux-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18726,15 +18726,15 @@
             },
             "ssh": {
               "name": "ssh",
-              "description": "Commands to configure ssh of containerservice in config file.",
-              "fullName": "containerservice config ssh",
+              "description": "Commands to configure ssh of acs in config file.",
+              "fullName": "acs config ssh",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set ssh in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"ssh\" : {\r\n             \"publicKeys\":[\r\n               {\r\n                 \"keyData\":\"\"\r\n               }\r\n             ]\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config ssh set",
+                  "fullName": "acs config ssh set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18792,7 +18792,7 @@
                 {
                   "name": "delete",
                   "description": "Remove ssh in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"ssh\" : {\r\n             \"publicKeys\":[\r\n               {\r\n                 \"keyData\":\"\"\r\n               }\r\n             ]\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config ssh delete",
+                  "fullName": "acs config ssh delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18844,15 +18844,15 @@
             },
             "public-keys": {
               "name": "public-keys",
-              "description": "Commands to configure public-keys of containerservice in config file.",
-              "fullName": "containerservice config public-keys",
+              "description": "Commands to configure public-keys of acs in config file.",
+              "fullName": "acs config public-keys",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set public-keys in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"publicKeys\" : {\r\n             \"keyData\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config public-keys set",
+                  "fullName": "acs config public-keys set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18926,7 +18926,7 @@
                 {
                   "name": "delete",
                   "description": "Remove public-keys in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"publicKeys\" : {\r\n             \"keyData\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config public-keys delete",
+                  "fullName": "acs config public-keys delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18986,15 +18986,15 @@
             },
             "diagnostics-profile": {
               "name": "diagnostics-profile",
-              "description": "Commands to configure diagnostics-profile of containerservice in config file.",
-              "fullName": "containerservice config diagnostics-profile",
+              "description": "Commands to configure diagnostics-profile of acs in config file.",
+              "fullName": "acs config diagnostics-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set diagnostics-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"diagnosticsProfile\" : {\r\n             \"vmDiagnostics\":{\r\n               \"enabled\":null,\r\n               \"storageUri\":\"\"\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config diagnostics-profile set",
+                  "fullName": "acs config diagnostics-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19052,7 +19052,7 @@
                 {
                   "name": "delete",
                   "description": "Remove diagnostics-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"diagnosticsProfile\" : {\r\n             \"vmDiagnostics\":{\r\n               \"enabled\":null,\r\n               \"storageUri\":\"\"\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config diagnostics-profile delete",
+                  "fullName": "acs config diagnostics-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19104,15 +19104,15 @@
             },
             "vm-diagnostics": {
               "name": "vm-diagnostics",
-              "description": "Commands to configure vm-diagnostics of containerservice in config file.",
-              "fullName": "containerservice config vm-diagnostics",
+              "description": "Commands to configure vm-diagnostics of acs in config file.",
+              "fullName": "acs config vm-diagnostics",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set vm-diagnostics in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"vmDiagnostics\" : {\r\n             \"enabled\":null,\r\n             \"storageUri\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config vm-diagnostics set",
+                  "fullName": "acs config vm-diagnostics set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19178,7 +19178,7 @@
                 {
                   "name": "delete",
                   "description": "Remove vm-diagnostics in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"vmDiagnostics\" : {\r\n             \"enabled\":null,\r\n             \"storageUri\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "containerservice config vm-diagnostics delete",
+                  "fullName": "acs config vm-diagnostics delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
