@@ -2089,7 +2089,7 @@
             },
             {
               "name": "show",
-              "description": "Show details of the batch application",
+              "description": "Show details of the Batch application",
               "fullName": "batch application show",
               "usage": "[options] [resource-group] [account-name] [application-id]",
               "filePath": "commands/batch/batch.application._js",
@@ -2525,7 +2525,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Show details of the batch application package",
+                  "description": "Show details of the Batch application package",
                   "fullName": "batch application package show",
                   "usage": "[options] [resource-group] [account-name] [application-id] [version]",
                   "filePath": "commands/batch/batch.application._js",
@@ -2757,7 +2757,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--password",
-                  "description": "password for PFX file"
+                  "description": "the password to access the certificate's private key"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -2790,7 +2790,7 @@
             },
             {
               "name": "delete",
-              "description": "Delete the specified batch certificate",
+              "description": "Delete the specified Batch certificate",
               "fullName": "batch certificate delete",
               "usage": "[options] [thumbprint]",
               "filePath": "commands/batch/batch.certificate._js",
@@ -2884,7 +2884,7 @@
             },
             {
               "name": "show",
-              "description": "Show details of the batch certificate",
+              "description": "Show details of the Batch certificate",
               "fullName": "batch certificate show",
               "usage": "[options] [thumbprint]",
               "filePath": "commands/batch/batch.certificate._js",
@@ -2969,7 +2969,7 @@
             },
             {
               "name": "list",
-              "description": "List batch certificates",
+              "description": "List Batch certificates",
               "fullName": "batch certificate list",
               "usage": "[options]",
               "filePath": "commands/batch/batch.certificate._js",
@@ -5946,7 +5946,7 @@
             },
             {
               "name": "disable-scheduling",
-              "description": "Disable scheduling on the batch compute node",
+              "description": "Disable scheduling on the Batch compute node",
               "fullName": "batch node disable-scheduling",
               "usage": "[options] [pool-id] [node-id]",
               "filePath": "commands/batch/batch.node._js",
@@ -5982,7 +5982,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--pool-id",
-                  "description": "the Batch pool id"
+                  "description": "the id of the pool that contains the compute node"
                 },
                 {
                   "flags": "--node-id <node-Id>",
@@ -5990,7 +5990,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--node-id",
-                  "description": "the batch compute node id"
+                  "description": "the id of the compute node that you want to disable scheduling"
                 },
                 {
                   "flags": "--disable-option <disable-option>",
@@ -6031,7 +6031,7 @@
             },
             {
               "name": "enable-scheduling",
-              "description": "Enable scheduling on the batch compute node",
+              "description": "Enable scheduling on the Batch compute node",
               "fullName": "batch node enable-scheduling",
               "usage": "[options] [pool-id] [node-id]",
               "filePath": "commands/batch/batch.node._js",
@@ -6067,7 +6067,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--pool-id",
-                  "description": "the Batch pool id"
+                  "description": "the id of the pool that contains the compute node"
                 },
                 {
                   "flags": "--node-id <node-Id>",
@@ -6075,7 +6075,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--node-id",
-                  "description": "the batch compute node id"
+                  "description": "the id of the compute node that you want to enable scheduling"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
