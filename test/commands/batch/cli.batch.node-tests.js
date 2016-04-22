@@ -156,6 +156,37 @@ describe('cli', function () {
       });
     });
 
+    it('should disable scheduling at the compute node', function (done) {
+      suite.execute('batch node disable-scheduling %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var node = JSON.parse(result.text);
+          node.should.not.be.null;
+          node.schedulingState.should.equal('disabled');
+          node.state.should.equal('offline');
+          done();
+        });
+      });
+    });
+
+    it('should enable scheduling at the compute node', function (done) {
+      suite.execute('batch node enable-scheduling %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var node = JSON.parse(result.text);
+          node.should.not.be.null;
+          node.schedulingState.should.equal('enabled');
+          done();
+        });
+      });
+    });
+
     it('should reboot the compute node', function (done) {
       suite.execute('batch node reboot %s %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', 
         poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
