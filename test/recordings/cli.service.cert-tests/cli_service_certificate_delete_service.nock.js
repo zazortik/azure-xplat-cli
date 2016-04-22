@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '4d368445-cbb1-42a7-97a6-6850ab99f48e',
-    name: 'Internal Consumption',
+    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
+    name: 'node',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -15,6 +15,7 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,26 +29,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .delete('/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/clitestcert9491')
+  .delete('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services/hostedservices/clitestcert4113')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '1.0.6198.287 (rd_rdfe_stable.151030-2057) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8252ba68ccaa31e4bf45bf3c2d41fd0b',
-  date: 'Tue, 10 Nov 2015 02:13:47 GMT',
+  'x-ms-request-id': '5dce309496ed920d927d2b30e114c0f0',
+  date: 'Wed, 20 Apr 2016 20:56:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/clitestcert9491')
+  .delete('/00977cdb-163f-435f-9c32-39ec8ae61f4d/services/hostedservices/clitestcert4113')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '1.0.6198.287 (rd_rdfe_stable.151030-2057) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8252ba68ccaa31e4bf45bf3c2d41fd0b',
-  date: 'Tue, 10 Nov 2015 02:13:47 GMT',
+  'x-ms-request-id': '5dce309496ed920d927d2b30e114c0f0',
+  date: 'Wed, 20 Apr 2016 20:56:11 GMT',
   connection: 'close' });
  return result; }]];
