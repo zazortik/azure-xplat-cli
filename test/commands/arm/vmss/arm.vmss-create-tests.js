@@ -26,9 +26,6 @@ var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'southeastasia'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/myCert.pem'
 }];
 
 var groupName,
@@ -64,7 +61,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT;
+        sshcert = process.env.SSHCERT ? process.env.SSHCERT : 'test/myCert.pem';
         groupName = suite.generateId(groupPrefix, null);
         vmssPrefix = suite.isMocked ? vmssPrefix : suite.generateId(vmssPrefix, null);
         vmssPrefix2 = suite.isMocked ? vmssPrefix2 : suite.generateId(vmssPrefix2, null);
@@ -88,6 +85,7 @@ describe('arm', function() {
       });
     });
     after(function(done) {
+      this.timeout(vmTest.timeoutLarge * 10);
       vmTest.deleteUsedGroup(groupName, suite, function(result) {
         suite.teardownSuite(done);
       });
@@ -112,7 +110,7 @@ describe('arm', function() {
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 // Create the parameter file
-                cmd = util.format('vmss config generate --parameter-file %s --json', paramFileName).split(' ');
+                cmd = util.format('vmss config create --parameter-file %s --json', paramFileName).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   done();
@@ -127,13 +125,13 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
           var cmd = util.format(
-            'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z Standard_D1 -C 5 --json',
+            'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z Standard_DS1 -C 5 --json',
             groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             vmTest.setGroup(groupName, suite, function(result) {
               var cmd = util.format(
-                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -z Standard_D1 -C 5 --json',
+                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -z Standard_DS1 -C 5 --json',
                 groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
@@ -147,30 +145,30 @@ describe('arm', function() {
       it('vmssvm operations should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var id0 = '0';
-        var cmd = util.format('vmssvm get --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+        var cmd = util.format('vmssvm show --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql(vmssPrefix + '_' + id0);
-          var cmd = util.format('vmssvm power-off --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+          var cmd = util.format('vmssvm power-off --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            var cmd = util.format('vmssvm get-instance-view --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+            var cmd = util.format('vmssvm get-instance-view --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               result.text.should.containEql('PowerState/stopped');
-              var cmd = util.format('vmssvm start --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+              var cmd = util.format('vmssvm start --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('vmssvm restart --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+                var cmd = util.format('vmssvm restart --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
-                  var cmd = util.format('vmssvm deallocate --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+                  var cmd = util.format('vmssvm deallocate --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
-                    var cmd = util.format('vmssvm delete --resource-group-name %s --vm-scale-set-name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
+                    var cmd = util.format('vmssvm delete --resource-group %s --name %s --instance-id %s', groupName, vmssPrefix, id0).split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
                       result.exitStatus.should.equal(0);
-                      var cmd = util.format('vmssvm list --resource-group-name %s --virtual-machine-scale-set-name %s', groupName, vmssPrefix).split(' ');
+                      var cmd = util.format('vmssvm list --resource-group %s --name %s', groupName, vmssPrefix).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                         result.exitStatus.should.equal(0);
                         result.text.should.not.containEql(vmssPrefix + '_' + id0);
@@ -187,7 +185,7 @@ describe('arm', function() {
 
       it('vmss update instances should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
-        var cmd = util.format('vmss update-instances --resource-group-name %s --vm-scale-set-name %s --instance-ids 0,1 --json', groupName, vmssPrefix1).split(' ');
+        var cmd = util.format('vmss update-instances --resource-group %s --name %s --instance-ids 0,1 --json', groupName, vmssPrefix1).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -196,10 +194,10 @@ describe('arm', function() {
 
       it('vmss delete should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vmss delete --resource-group-name %s --vm-scale-set-name %s --json', groupName, vmssPrefix).split(' ');
+        var cmd = util.format('vmss delete --resource-group %s --name %s --json', groupName, vmssPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('vmss delete --resource-group-name %s --vm-scale-set-name %s --json', groupName, vmssPrefix1).split(' ');
+          var cmd = util.format('vmss delete --resource-group %s --name %s --json', groupName, vmssPrefix1).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -212,7 +210,7 @@ describe('arm', function() {
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
             var cmd = util.format(
-              'vmss quick-create %s %s %s %s 5 %s %s --vm-size Standard_D1 --json',
+              'vmss quick-create %s %s %s %s 5 %s %s --vm-size Standard_DS1 --json',
               groupName, vmssPrefix2, location, imageUrn, username, password).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
@@ -224,7 +222,7 @@ describe('arm', function() {
 
       it('vmss get instance view should pass', function(done) {
         this.timeout(vmTest.timeoutLarge);
-        var cmd = util.format('vmss get-instance-view --resource-group-name %s --vm-scale-set-name %s --json', groupName, vmssPrefix2).split(' ');
+        var cmd = util.format('vmss get-instance-view --resource-group %s --name %s --json', groupName, vmssPrefix2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
@@ -233,7 +231,7 @@ describe('arm', function() {
       
       it('vmss delete 2 should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vmss delete --resource-group-name %s --vm-scale-set-name %s --json', groupName, vmssPrefix2).split(' ');
+        var cmd = util.format('vmss delete --resource-group %s --name %s --json', groupName, vmssPrefix2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
