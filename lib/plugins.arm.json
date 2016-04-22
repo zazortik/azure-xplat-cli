@@ -15352,7 +15352,7 @@
           "name": "list-available-sizes",
           "description": "Lists all available virtual machine sizes that can be used to create a new virtual machine in an existing availability set.",
           "fullName": "availset list-available-sizes",
-          "usage": "[options] <resource-group-name> <availability-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -15381,29 +15381,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "--availability-set-name <availability-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
-              "long": "--availability-set-name",
-              "description": "availability-set-name"
-            },
-            {
-              "flags": "--parameter-file <parameter-file>",
-              "required": -18,
-              "optional": 0,
-              "bool": true,
-              "long": "--parameter-file",
-              "description": "the input parameter file"
+              "short": "-n",
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -15412,7 +15405,7 @@
               "bool": true,
               "short": "-s",
               "long": "--subscription",
-              "description": "the subscription identifier"
+              "description": "The subscription identifier"
             }
           ]
         }
@@ -17309,17 +17302,17 @@
         }
       }
     },
-    "container": {
-      "name": "container",
+    "container-service": {
+      "name": "container-service",
       "description": "Commands to manage your container service.  ",
-      "fullName": "container",
+      "fullName": "container-service",
       "usage": "[options] [command]",
       "options": [],
       "commands": [
         {
           "name": "create",
           "description": "The operation to create or update a container service.",
-          "fullName": "container create",
+          "fullName": "container-service create",
           "usage": "[options] <resource-group> <name> <parameters>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17397,7 +17390,7 @@
         {
           "name": "delete",
           "description": "The operation to delete a container service.",
-          "fullName": "container delete",
+          "fullName": "container-service delete",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17458,7 +17451,7 @@
         {
           "name": "show",
           "description": "The operation to get a container service.",
-          "fullName": "container show",
+          "fullName": "container-service show",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17519,7 +17512,7 @@
         {
           "name": "list",
           "description": "The operation to list container services.",
-          "fullName": "container list",
+          "fullName": "container-service list",
           "usage": "[options] <resource-group>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
@@ -17573,14 +17566,14 @@
         "config": {
           "name": "config",
           "description": "Commands to manage configuration of container-service in the parameter file.",
-          "fullName": "container config",
+          "fullName": "container-service config",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
               "description": "Generate containerServiceCreateOrUpdate parameter string or files.",
-              "fullName": "container config create",
+              "fullName": "container-service config create",
               "usage": "[options]",
               "filePath": "commands/arm/compute/compute._js",
               "options": [
@@ -17622,7 +17615,7 @@
             {
               "name": "patch",
               "description": "Command to patch containerServiceCreateOrUpdate parameter JSON file.",
-              "fullName": "container config patch",
+              "fullName": "container-service config patch",
               "usage": "[options]",
               "filePath": "commands/arm/compute/compute._js",
               "options": [
@@ -17695,17 +17688,17 @@
             }
           ],
           "categories": {
-            "container-service": {
-              "name": "container-service",
-              "description": "Commands to configure container-service of container in config file.",
-              "fullName": "container config container-service",
+            "containerservice": {
+              "name": "containerservice",
+              "description": "Commands to configure containerservice of container-service in config file.",
+              "fullName": "container-service config containerservice",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
-                  "description": "Set container-service in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config container-service set",
+                  "description": "Set containerservice in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
+                  "fullName": "container-service config containerservice set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -17850,8 +17843,8 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Remove container-service in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config container-service delete",
+                  "description": "Remove containerservice in config string or files, e.g. \r\n{\r\n  \"provisioningState\":\"\",\r\n  \"orchestratorProfile\":{\r\n    \"orchestratorType\":null\r\n  },\r\n  \"masterProfile\":{\r\n    \"count\":null,\r\n    \"dnsPrefix\":\"\",\r\n    \"fqdn\":\"\"\r\n  },\r\n  \"agentPoolProfiles\":[\r\n    {\r\n      \"name\":\"\",\r\n      \"count\":null,\r\n      \"vmSize\":\"\",\r\n      \"dnsPrefix\":\"\",\r\n      \"fqdn\":\"\"\r\n    }\r\n  ],\r\n  \"windowsProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"adminPassword\":\"\"\r\n  },\r\n  \"linuxProfile\":{\r\n    \"adminUsername\":\"\",\r\n    \"ssh\":{\r\n      \"publicKeys\":[\r\n        {\r\n          \"keyData\":\"\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"diagnosticsProfile\":{\r\n    \"vmDiagnostics\":{\r\n      \"enabled\":null,\r\n      \"storageUri\":\"\"\r\n    }\r\n  },\r\n  \"id\":null,\r\n  \"name\":null,\r\n  \"type\":null,\r\n  \"location\":\"\",\r\n  \"tags\":{\r\n  }\r\n}\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
+                  "fullName": "container-service config containerservice delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -17991,15 +17984,15 @@
             },
             "orchestrator-profile": {
               "name": "orchestrator-profile",
-              "description": "Commands to configure orchestrator-profile of container in config file.",
-              "fullName": "container config orchestrator-profile",
+              "description": "Commands to configure orchestrator-profile of container-service in config file.",
+              "fullName": "container-service config orchestrator-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set orchestrator-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"orchestratorProfile\" : {\r\n             \"orchestratorType\":null\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config orchestrator-profile set",
+                  "fullName": "container-service config orchestrator-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18057,7 +18050,7 @@
                 {
                   "name": "delete",
                   "description": "Remove orchestrator-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"orchestratorProfile\" : {\r\n             \"orchestratorType\":null\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config orchestrator-profile delete",
+                  "fullName": "container-service config orchestrator-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18109,15 +18102,15 @@
             },
             "master-profile": {
               "name": "master-profile",
-              "description": "Commands to configure master-profile of container in config file.",
-              "fullName": "container config master-profile",
+              "description": "Commands to configure master-profile of container-service in config file.",
+              "fullName": "container-service config master-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set master-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"masterProfile\" : {\r\n             \"count\":null,\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config master-profile set",
+                  "fullName": "container-service config master-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18191,7 +18184,7 @@
                 {
                   "name": "delete",
                   "description": "Remove master-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"masterProfile\" : {\r\n             \"count\":null,\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config master-profile delete",
+                  "fullName": "container-service config master-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18259,15 +18252,15 @@
             },
             "agent-pool-profiles": {
               "name": "agent-pool-profiles",
-              "description": "Commands to configure agent-pool-profiles of container in config file.",
-              "fullName": "container config agent-pool-profiles",
+              "description": "Commands to configure agent-pool-profiles of container-service in config file.",
+              "fullName": "container-service config agent-pool-profiles",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set agent-pool-profiles in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"agentPoolProfiles\" : {\r\n             \"name\":\"\",\r\n             \"count\":null,\r\n             \"vmSize\":\"\",\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config agent-pool-profiles set",
+                  "fullName": "container-service config agent-pool-profiles set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18373,7 +18366,7 @@
                 {
                   "name": "delete",
                   "description": "Remove agent-pool-profiles in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"agentPoolProfiles\" : {\r\n             \"name\":\"\",\r\n             \"count\":null,\r\n             \"vmSize\":\"\",\r\n             \"dnsPrefix\":\"\",\r\n             \"fqdn\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config agent-pool-profiles delete",
+                  "fullName": "container-service config agent-pool-profiles delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18465,15 +18458,15 @@
             },
             "windows-profile": {
               "name": "windows-profile",
-              "description": "Commands to configure windows-profile of container in config file.",
-              "fullName": "container config windows-profile",
+              "description": "Commands to configure windows-profile of container-service in config file.",
+              "fullName": "container-service config windows-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set windows-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"windowsProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"adminPassword\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config windows-profile set",
+                  "fullName": "container-service config windows-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18539,7 +18532,7 @@
                 {
                   "name": "delete",
                   "description": "Remove windows-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"windowsProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"adminPassword\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config windows-profile delete",
+                  "fullName": "container-service config windows-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18599,15 +18592,15 @@
             },
             "linux-profile": {
               "name": "linux-profile",
-              "description": "Commands to configure linux-profile of container in config file.",
-              "fullName": "container config linux-profile",
+              "description": "Commands to configure linux-profile of container-service in config file.",
+              "fullName": "container-service config linux-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set linux-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"linuxProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"ssh\":{\r\n               \"publicKeys\":[\r\n                 {\r\n                   \"keyData\":\"\"\r\n                 }\r\n               ]\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config linux-profile set",
+                  "fullName": "container-service config linux-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18673,7 +18666,7 @@
                 {
                   "name": "delete",
                   "description": "Remove linux-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"linuxProfile\" : {\r\n             \"adminUsername\":\"\",\r\n             \"ssh\":{\r\n               \"publicKeys\":[\r\n                 {\r\n                   \"keyData\":\"\"\r\n                 }\r\n               ]\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config linux-profile delete",
+                  "fullName": "container-service config linux-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18733,15 +18726,15 @@
             },
             "ssh": {
               "name": "ssh",
-              "description": "Commands to configure ssh of container in config file.",
-              "fullName": "container config ssh",
+              "description": "Commands to configure ssh of container-service in config file.",
+              "fullName": "container-service config ssh",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set ssh in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"ssh\" : {\r\n             \"publicKeys\":[\r\n               {\r\n                 \"keyData\":\"\"\r\n               }\r\n             ]\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config ssh set",
+                  "fullName": "container-service config ssh set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18799,7 +18792,7 @@
                 {
                   "name": "delete",
                   "description": "Remove ssh in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"ssh\" : {\r\n             \"publicKeys\":[\r\n               {\r\n                 \"keyData\":\"\"\r\n               }\r\n             ]\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config ssh delete",
+                  "fullName": "container-service config ssh delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18851,15 +18844,15 @@
             },
             "public-keys": {
               "name": "public-keys",
-              "description": "Commands to configure public-keys of container in config file.",
-              "fullName": "container config public-keys",
+              "description": "Commands to configure public-keys of container-service in config file.",
+              "fullName": "container-service config public-keys",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set public-keys in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"publicKeys\" : {\r\n             \"keyData\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config public-keys set",
+                  "fullName": "container-service config public-keys set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18933,7 +18926,7 @@
                 {
                   "name": "delete",
                   "description": "Remove public-keys in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"publicKeys\" : {\r\n             \"keyData\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config public-keys delete",
+                  "fullName": "container-service config public-keys delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -18993,15 +18986,15 @@
             },
             "diagnostics-profile": {
               "name": "diagnostics-profile",
-              "description": "Commands to configure diagnostics-profile of container in config file.",
-              "fullName": "container config diagnostics-profile",
+              "description": "Commands to configure diagnostics-profile of container-service in config file.",
+              "fullName": "container-service config diagnostics-profile",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set diagnostics-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"diagnosticsProfile\" : {\r\n             \"vmDiagnostics\":{\r\n               \"enabled\":null,\r\n               \"storageUri\":\"\"\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config diagnostics-profile set",
+                  "fullName": "container-service config diagnostics-profile set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19059,7 +19052,7 @@
                 {
                   "name": "delete",
                   "description": "Remove diagnostics-profile in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"diagnosticsProfile\" : {\r\n             \"vmDiagnostics\":{\r\n               \"enabled\":null,\r\n               \"storageUri\":\"\"\r\n             }\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config diagnostics-profile delete",
+                  "fullName": "container-service config diagnostics-profile delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19111,15 +19104,15 @@
             },
             "vm-diagnostics": {
               "name": "vm-diagnostics",
-              "description": "Commands to configure vm-diagnostics of container in config file.",
-              "fullName": "container config vm-diagnostics",
+              "description": "Commands to configure vm-diagnostics of container-service in config file.",
+              "fullName": "container-service config vm-diagnostics",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
                   "description": "Set vm-diagnostics in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"vmDiagnostics\" : {\r\n             \"enabled\":null,\r\n             \"storageUri\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config vm-diagnostics set",
+                  "fullName": "container-service config vm-diagnostics set",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19185,7 +19178,7 @@
                 {
                   "name": "delete",
                   "description": "Remove vm-diagnostics in config string or files, e.g. \r\n         {\r\n           ...\r\n           \"vmDiagnostics\" : {\r\n             \"enabled\":null,\r\n             \"storageUri\":\"\"\r\n           }\r\n           ...\r\n         }\r\n\r\n         There are two sets of commands:\r\n           1) function commands that are used to manage Azure resources in the cloud, and \r\n           2) parameter commands that generate & edit input files for the other set of commands.\r\n         For example, 'vmss show/list/stop' are the function commands that call get, list and stop operations of \r\n         virtual machine scale set, whereas 'vmss config * generate/create/set/delete/add' commands \r\n         are used to configure the input parameter file. The 'vmss config' command takes a parameter \r\n         file as for the VM scale set configuration, and creates it online.",
-                  "fullName": "container config vm-diagnostics delete",
+                  "fullName": "container-service config vm-diagnostics delete",
                   "usage": "[options]",
                   "filePath": "commands/arm/compute/compute._js",
                   "options": [
@@ -19255,10 +19248,10 @@
       "options": [],
       "commands": [
         {
-          "name": "create-or-update",
+          "name": "create",
           "description": "The operation to create or update a virtual machine scale set.",
-          "fullName": "vmss create-or-update",
-          "usage": "[options] <resource-group-name> <name> <parameters>",
+          "fullName": "vmss create",
+          "usage": "[options] <resource-group> <name> <parameters>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19287,13 +19280,13 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
               "flags": "-n, --name <name>",
@@ -19336,7 +19329,7 @@
           "name": "deallocate",
           "description": "The operation to deallocate virtual machines in a virtual machine scale set.",
           "fullName": "vmss deallocate",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19365,22 +19358,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -19405,7 +19398,7 @@
           "name": "delete",
           "description": "The operation to delete a virtual machine scale set.",
           "fullName": "vmss delete",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19434,22 +19427,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19466,7 +19459,7 @@
           "name": "delete-instances",
           "description": "The operation to delete virtual machines in a virtual machine scale set.",
           "fullName": "vmss delete-instances",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19495,22 +19488,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -19532,10 +19525,10 @@
           ]
         },
         {
-          "name": "get",
+          "name": "show",
           "description": "The operation to get a virtual machine scale set.",
-          "fullName": "vmss get",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name>",
+          "fullName": "vmss show",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19564,22 +19557,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19596,7 +19589,7 @@
           "name": "get-instance-view",
           "description": "The operation to get a virtual machine scale set instance view.",
           "fullName": "vmss get-instance-view",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19625,22 +19618,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19657,7 +19650,7 @@
           "name": "list",
           "description": "The operation to list virtual machine scale sets under a resource group.",
           "fullName": "vmss list",
-          "usage": "[options] <resource-group-name>",
+          "usage": "[options] <resource-group>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19686,13 +19679,13 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19752,7 +19745,7 @@
           "name": "list-skus",
           "description": "The operation to list available skus for a virtual machine scale set.",
           "fullName": "vmss list-skus",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19781,22 +19774,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19813,7 +19806,7 @@
           "name": "power-off",
           "description": "The operation to power off (stop) virtual machines in a virtual machine scale set.",
           "fullName": "vmss power-off",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19842,22 +19835,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -19882,7 +19875,7 @@
           "name": "reimage",
           "description": "The operation to re-image virtual machines in a virtual machine scale set.",
           "fullName": "vmss reimage",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19911,22 +19904,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -19943,7 +19936,7 @@
           "name": "restart",
           "description": "The operation to restart virtual machines in a virtual machine scale set.",
           "fullName": "vmss restart",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -19972,22 +19965,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -20012,7 +20005,7 @@
           "name": "start",
           "description": "The operation to start virtual machines in a virtual machine scale set.",
           "fullName": "vmss start",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -20041,22 +20034,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -20081,7 +20074,7 @@
           "name": "update-instances",
           "description": "The operation to manually upgrade virtual machines in a virtual machine scale set.",
           "fullName": "vmss update-instances",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-ids>",
+          "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -20110,22 +20103,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "--instance-ids <instance-ids>",
@@ -20289,9 +20282,9 @@
           "options": [],
           "commands": [
             {
-              "name": "generate",
+              "name": "create",
               "description": "Generate virtualMachineScaleSetsCreateOrUpdate parameter string or files.",
-              "fullName": "vmss config generate",
+              "fullName": "vmss config create",
               "usage": "[options]",
               "filePath": "commands/arm/compute/compute._js",
               "options": [
@@ -25203,7 +25196,7 @@
           "name": "deallocate",
           "description": "The operation to deallocate a virtual machine scale set.",
           "fullName": "vmssvm deallocate",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25232,22 +25225,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25273,7 +25266,7 @@
           "name": "delete",
           "description": "The operation to delete a virtual machine scale set.",
           "fullName": "vmssvm delete",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25302,22 +25295,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25340,10 +25333,10 @@
           ]
         },
         {
-          "name": "get",
+          "name": "show",
           "description": "The operation to get a virtual machine scale set virtual machine.",
-          "fullName": "vmssvm get",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "fullName": "vmssvm show",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25372,22 +25365,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25413,7 +25406,7 @@
           "name": "get-instance-view",
           "description": "The operation to get a virtual machine scale set virtual machine.",
           "fullName": "vmssvm get-instance-view",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25442,22 +25435,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25483,7 +25476,7 @@
           "name": "list",
           "description": "The operation to list virtual machine scale sets VMs.",
           "fullName": "vmssvm list",
-          "usage": "[options] <resource-group-name> <virtual-machine-scale-set-name>",
+          "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25512,22 +25505,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --virtual-machine-scale-set-name <virtual-machine-scale-set-name>",
-              "required": -38,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--virtual-machine-scale-set-name",
-              "description": "virtual-machine-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -25544,7 +25537,7 @@
           "name": "power-off",
           "description": "The operation to power off (stop) a virtual machine scale set.",
           "fullName": "vmssvm power-off",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25573,22 +25566,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25614,7 +25607,7 @@
           "name": "reimage",
           "description": "The operation to re-image a virtual machine scale set instance.",
           "fullName": "vmssvm reimage",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25643,22 +25636,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25684,7 +25677,7 @@
           "name": "restart",
           "description": "The operation to restart a virtual machine scale set.",
           "fullName": "vmssvm restart",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25713,22 +25706,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25754,7 +25747,7 @@
           "name": "start",
           "description": "The operation to start a virtual machine scale set.",
           "fullName": "vmssvm start",
-          "usage": "[options] <resource-group-name> <vm-scale-set-name> <instance-id>",
+          "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25783,22 +25776,22 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
-              "flags": "-n, --vm-scale-set-name <vm-scale-set-name>",
-              "required": -25,
+              "flags": "-n, --name <name>",
+              "required": -12,
               "optional": 0,
               "bool": true,
               "short": "-n",
-              "long": "--vm-scale-set-name",
-              "description": "vm-scale-set-name"
+              "long": "--name",
+              "description": "name"
             },
             {
               "flags": "-d, --instance-id <instance-id>",
@@ -25834,7 +25827,7 @@
           "name": "redeploy",
           "description": "The operation to redeploy a virtual machine.",
           "fullName": "vm redeploy",
-          "usage": "[options] <resource-group-name> <vm-name>",
+          "usage": "[options] <resource-group> <vm-name>",
           "filePath": "commands/arm/compute/compute._js",
           "options": [
             {
@@ -25863,13 +25856,13 @@
               "description": "use json output"
             },
             {
-              "flags": "-g, --resource-group-name <resource-group-name>",
-              "required": -27,
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
               "optional": 0,
               "bool": true,
               "short": "-g",
-              "long": "--resource-group-name",
-              "description": "resource-group-name"
+              "long": "--resource-group",
+              "description": "resource-group"
             },
             {
               "flags": "-n, --vm-name <vm-name>",
