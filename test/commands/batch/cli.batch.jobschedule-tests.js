@@ -95,6 +95,36 @@ describe('cli', function () {
         done();
       });
     });
+    
+    it('should disable the job schedule', function (done) {
+      suite.execute('batch job-schedule disable %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobScheduleId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var jobSchedule = JSON.parse(result.text);
+          jobSchedule.should.not.be.null;
+          jobSchedule.state.should.equal('disabled');
+          done();
+        });
+      });
+    });
+    
+    it('should enable the job schedule', function (done) {
+      suite.execute('batch job-schedule enable %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobScheduleId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var jobSchedule = JSON.parse(result.text);
+          jobSchedule.should.not.be.null;
+          jobSchedule.state.should.equal('active');
+          done();
+        });
+      });
+    });
 
     it('should update the job schedule using a json file', function (done) {
       // The update JSON should change the job manager task id, so we store the original, perform the update,
@@ -122,6 +152,21 @@ describe('cli', function () {
       });
     });
     
+    it('should stop the job schedule', function (done) {
+      suite.execute('batch job-schedule stop %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobScheduleId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job-schedule show %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var jobSchedule = JSON.parse(result.text);
+          jobSchedule.should.not.be.null;
+          jobSchedule.state.should.equal('completed');
+          done();
+        });
+      });
+    });
+
     it('should delete the job schedule', function (done) {
       suite.execute('batch job-schedule delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', jobScheduleId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {

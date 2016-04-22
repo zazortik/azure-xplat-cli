@@ -90,6 +90,11 @@
               "subnet": {
                 "id": ""
               },
+              "applicationGatewayBackendAddressPools": [
+                {
+                  "id": ""
+                }
+              ],
               "loadBalancerBackendAddressPools": [
                 {
                   "id": ""

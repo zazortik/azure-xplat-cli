@@ -27,33 +27,33 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .delete('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser?api-version=2015-12-01.2.2&timeout=30')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a1e2b5ff-8f16-41ec-84a8-9c4dad305a07',
+  'request-id': 'd18f1a22-9c22-4972-be3e-bf356220f2d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8c354736-75b8-4ec6-b196-f2fc26927812',
+  'client-request-id': '71d5ec5b-a95a-4e3a-b8b7-ae189c0df63e',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 20:34:11 GMT',
+  date: 'Sat, 09 Apr 2016 00:21:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .delete('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser?api-version=2015-12-01.2.2&timeout=30')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .delete('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a1e2b5ff-8f16-41ec-84a8-9c4dad305a07',
+  'request-id': 'd18f1a22-9c22-4972-be3e-bf356220f2d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8c354736-75b8-4ec6-b196-f2fc26927812',
+  'client-request-id': '71d5ec5b-a95a-4e3a-b8b7-ae189c0df63e',
   dataserviceversion: '3.0',
-  date: 'Tue, 22 Mar 2016 20:34:11 GMT',
+  date: 'Sat, 09 Apr 2016 00:21:26 GMT',
   connection: 'close' });
  return result; }]];

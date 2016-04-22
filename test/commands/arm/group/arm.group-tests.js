@@ -104,8 +104,14 @@ describe('arm', function () {
               var results = JSON.parse(listResult.text);
               results.length.should.be.above(0);
 
-              suite.execute('group delete %s --json --quiet', groupName, function () {
-                done();
+              suite.execute('group delete --nowait %s --json --quiet', groupName, function (deleteResult) {
+                  deleteResult.exitStatus.should.equal(0);
+                  suite.execute('group list --json', function(result){
+                    result.exitStatus.should.equal(0);
+                    var output = JSON.parse(result.text);
+                    output.some(function (g) { return (g.name === groupName && g.location === normalizedTestLocation && g.properties.provisioningState === 'Deleting'); }).should.be.true;
+                    done();
+                });
               });
             });
           });
@@ -286,7 +292,7 @@ describe('arm', function () {
       }
 
       function cleanupForLogShow (done) {
-        suite.execute('group delete %s --json --quiet', groupName, function () {
+        suite.execute('group delete %s --nowait --json --quiet', groupName, function () {
           console.log('  . Performing cleanup of group log show tests')
           done();
         });

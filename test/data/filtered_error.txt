@@ -1,0 +1,20 @@
+Error: Virtual network "hybrid-vnet" already exists in resource group "hybrid-dev-rg"
+  <<< async stack >>>
+    at ___ (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:38:20)
+    at ___ (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\node_modules\streamline\lib\callbacks\runtime.js:111:13)
+    at ___ (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:336:17)
+    at __tryCatch (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\node_modules\streamline\lib\callbacks\runtime.js:150:4)
+    at ___ (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:332:13)
+    at get__6 (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:329:15)
+  at __1 (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\network._js:64:22)
+  <<< raw stack >>>
+    at ___ (C:/Users/***/AppData/Roaming/npm/node_modules/azure-cli/lib/commands/arm/network/virtualNetwork._js:38:20)
+    at ___ (C:/Users/***/AppData/Roaming/npm/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:111:13)
+    at ___ (C:/Users/***/AppData/Roaming/npm/node_modules/azure-cli/lib/commands/arm/network/virtualNetwork._js:336:17)
+    at __tryCatch (C:/Users/***/AppData/Roaming/npm/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:150:4)
+    at ___ (C:/Users\***/AppData/Roaming/npm/node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:332:13)
+    at __$get__6 (C:\Users/***/AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:329:15)
+    at __tryCatch (C:\Users/***\AppData\Roaming\npm\node_modules\azure-cli\node_modules\streamline\lib\callbacks\runtime.js:150:4)
+    at ___ (C:\Users/***/AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:327:13)
+    at ___ (C:/Users\***/AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:331:13)
+    at __$get__6 (C:\Users\***\AppData\Roaming\npm\node_modules\azure-cli\lib\commands\arm\network\virtualNetwork._js:314:21)

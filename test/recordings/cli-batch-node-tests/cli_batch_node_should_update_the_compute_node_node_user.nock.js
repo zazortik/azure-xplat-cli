@@ -27,37 +27,37 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser?api-version=2015-12-01.2.2&timeout=30', '*')
+.put('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7e506f2-c4de-4a6a-b71c-b8915e1ddab5',
+  'request-id': '5ff952b1-c04b-4f73-afc8-3afe07cd5c7e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8701358f-b00a-4d07-8d63-1c8d5cf6174c',
+  'client-request-id': '626da87e-161b-405c-bab9-781691dc1091',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jsxplat.centralus.batch.azure.com/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser',
-  date: 'Tue, 22 Mar 2016 20:34:10 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser',
+  date: 'Sat, 09 Apr 2016 00:21:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser?api-version=2015-12-01.2.2&timeout=30', '*')
+.put('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7e506f2-c4de-4a6a-b71c-b8915e1ddab5',
+  'request-id': '5ff952b1-c04b-4f73-afc8-3afe07cd5c7e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8701358f-b00a-4d07-8d63-1c8d5cf6174c',
+  'client-request-id': '626da87e-161b-405c-bab9-781691dc1091',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jsxplat.centralus.batch.azure.com/pools/xplatTestPool/nodes/tvm-4036039286_1-20160321t221745z/users/xplatUser',
-  date: 'Tue, 22 Mar 2016 20:34:10 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160408t230251z/users/xplatUser',
+  date: 'Sat, 09 Apr 2016 00:21:26 GMT',
   connection: 'close' });
  return result; }]];
