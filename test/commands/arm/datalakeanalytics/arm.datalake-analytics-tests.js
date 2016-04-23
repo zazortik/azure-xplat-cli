@@ -314,7 +314,17 @@ describe('arm', function () {
         result.exitStatus.should.be.equal(0);
         var jobList = JSON.parse(result.text);
         jobList.length.should.be.above(0);
-        done();
+        suite.execute('datalake analytics job list --accountName %s -a 2016-04-22 --json', jobAndCatalogAccountName, function (result) {
+          result.exitStatus.should.be.equal(0);
+          var jobList = JSON.parse(result.text);
+          jobList.length.should.be.above(0);
+          suite.execute('datalake analytics job list --accountName %s -b 2016-04-21 --json', jobAndCatalogAccountName, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var jobList = JSON.parse(result.text);
+            jobList.length.should.be.equal(0);
+            done();
+          });
+        });
       });
     });
   });
