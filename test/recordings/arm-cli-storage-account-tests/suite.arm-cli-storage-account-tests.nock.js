@@ -23,7 +23,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'EastUS2(Stage)';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'East US';
   process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_STORAGE_TEST_KIND'] = 'storage';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
