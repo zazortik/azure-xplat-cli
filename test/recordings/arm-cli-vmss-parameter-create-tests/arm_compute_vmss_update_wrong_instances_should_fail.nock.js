@@ -10,7 +10,7 @@ exports.getMockedProfile = function () {
     name: 'Azure Storage DM Staging',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -30,39 +30,39 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTstVmssGCreate1303/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5/manualupgrade?api-version=2016-03-30', '*')
+.post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTstVmssGCreate2980/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5/manualupgrade?api-version=2016-03-30', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"InvalidParameter\",\r\n    \"target\": \"upgradePolicies.instanceIds\",\r\n    \"message\": \"The provided instanceId 999 is not an active Virtual Machine Scale Set VM instanceId.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '206',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': 'cf8f3094-e980-4933-b4a0-1fcf396a973c_131020318719022909',
-  'x-ms-request-id': '2ba70120-d221-43c0-bbd0-c4fbbb2ad10f',
+  'x-ms-served-by': 'cf8f3094-e980-4933-b4a0-1fcf396a973c_131058622357232507',
+  'x-ms-request-id': '532ddf5e-27fb-4e9e-b654-cb44f9a96414',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '0ca2871e-4179-41b0-8665-d4d3de455d42',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160422T092345Z:0ca2871e-4179-41b0-8665-d4d3de455d42',
-  date: 'Fri, 22 Apr 2016 09:23:45 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-correlation-request-id': '42944ec8-3ee0-4d0a-8fa9-8d0073b6a320',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T091355Z:42944ec8-3ee0-4d0a-8fa9-8d0073b6a320',
+  date: 'Mon, 25 Apr 2016 09:13:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTstVmssGCreate1303/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5/manualupgrade?api-version=2016-03-30', '*')
+.post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/xplatTstVmssGCreate2980/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5/manualupgrade?api-version=2016-03-30', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"InvalidParameter\",\r\n    \"target\": \"upgradePolicies.instanceIds\",\r\n    \"message\": \"The provided instanceId 999 is not an active Virtual Machine Scale Set VM instanceId.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '206',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': 'cf8f3094-e980-4933-b4a0-1fcf396a973c_131020318719022909',
-  'x-ms-request-id': '2ba70120-d221-43c0-bbd0-c4fbbb2ad10f',
+  'x-ms-served-by': 'cf8f3094-e980-4933-b4a0-1fcf396a973c_131058622357232507',
+  'x-ms-request-id': '532ddf5e-27fb-4e9e-b654-cb44f9a96414',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': '0ca2871e-4179-41b0-8665-d4d3de455d42',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160422T092345Z:0ca2871e-4179-41b0-8665-d4d3de455d42',
-  date: 'Fri, 22 Apr 2016 09:23:45 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-correlation-request-id': '42944ec8-3ee0-4d0a-8fa9-8d0073b6a320',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T091355Z:42944ec8-3ee0-4d0a-8fa9-8d0073b6a320',
+  date: 'Mon, 25 Apr 2016 09:13:54 GMT',
   connection: 'close' });
  return result; }]];

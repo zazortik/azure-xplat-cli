@@ -10,7 +10,7 @@ exports.getMockedProfile = function () {
     name: 'Azure Storage DM Staging',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate1303','xplattestnic5469','xplatteststorage15676','xplatteststorage22897','xplatteststorage38835','xplatteststoragecnt15693','xplatteststoragecnt28197','xplatteststoragecnt37619','xplattestvnet8662','xplattestsubnet9928','xplattestipdns6586'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate2980','xplattestnic9499','xplatteststorage17016','xplatteststorage23686','xplatteststorage31694','xplatteststoragecnt19891','xplatteststoragecnt26138','xplatteststoragecnt3869','xplattestvnet6049','xplattestsubnet969','xplattestipdns1528'];};
