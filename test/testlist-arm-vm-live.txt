@@ -3,6 +3,7 @@
 include:./testlist-arm-vmss.txt
 include:./testlist-arm-container.txt
 include:./testlist-arm-vm.txt
+commands/arm/vm/arm.vm-premium-create-tests.js
 commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
