@@ -53,16 +53,11 @@ commands/cli.network.application-gateway.js
 commands/cli.network.application.gateway-config.js
 commands/cli.network.route-table.js
 commands/cli.network.traffic-manager-profile.js
-commands/cli.vm.create_vnet_multi_nic-tests.js
-commands/cli.vm.capture-tests.js
-commands/cli.vm.acl-tests.js
-commands/cli.vm.pip-tests.js
-commands/cli.vm.create_affin_vnet_vm-tests.js
+include:./testlist-vm.txt
 commands/cli.vm.create_loc_vnet_vm-tests.js
 # TODO: The test should be able to create a vm and delete it. It expects a vm is already there.
 # The number of tests can be reduced by creating a vm and then doing different disk list and show test.
 commands/cli.vm.disk-tests.js
-commands/cli.vm.list_show-tests.js
 commands/cli.vm.endpoint-tests.js
 commands/cli.vm.shutdown_restart-tests.js
 commands/cli.vm.image-tests.js
@@ -73,19 +68,12 @@ commands/cli.vm.extension_get-chef-tests.js
 commands/cli.vm.extension_set-tests.js
 commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.extension_set-chef.js
-commands/cli.vm.create_custom-tests.js
-commands/cli.vm.create_comm-tests.js
-commands/cli.vm.negative-tests.js
 commands/cli.vm.loadbalancer-tests.js
-commands/cli.vm.create_win_rdp-tests.js
-commands/cli.vm.disk.attachDetach-tests.js
-commands/cli.vm.disk.attachnew-tests.js
 commands/cli.vm.export_create_from-tests.js
 commands/cli.vm.create_staticvm-tests.js
 commands/cli.vm.staticvm_create-from-tests.js
 commands/cli.vm.staticvm_docker-tests.js
 commands/cli.vm.create_docker-tests.js
-commands/cli.vm.create_ssh-tests.js
 commands/cli.sql-tests.js
 commands/cli.storage.account-tests.js
 commands/cli.storage.blob-tests.js
