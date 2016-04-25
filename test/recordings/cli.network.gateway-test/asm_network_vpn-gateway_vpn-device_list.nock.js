@@ -6,13 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
     },
-    name: 'CollaberaInteropTest',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -27,26 +30,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/supporteddevices')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/supporteddevices')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><VpnDeviceList version=\"1.0\"><Vendor name=\"Cisco Systems, Inc.\"><Platform name=\"ASA 5500 Series Adaptive Security Appliances\"><OSFamily name=\"ASA Software 8.3\" /></Platform><Platform name=\"ASR 1000 Series Aggregation Services Routers\"><OSFamily name=\"IOS XE 15.1\" /></Platform><Platform name=\"ASR 1000 Series Aggregation Services Routers - Dynamic Routing\"><OSFamily name=\"IOS XE 15.2\" /></Platform><Platform name=\"ISR Series Integrated Services Routers\"><OSFamily name=\"IOS 15.0\" /></Platform><Platform name=\"ISR Series Integrated Services Routers - Dynamic Routing\"><OSFamily name=\"IOS 15.1\" /></Platform></Vendor><Vendor name=\"Juniper Networks, Inc.\"><Platform name=\"SRX Series Routers\"><OSFamily name=\"JunOS 10.2\" /></Platform><Platform name=\"SRX Series Routers - Dynamic Routing\"><OSFamily name=\"JunOS 11.4\" /></Platform><Platform name=\"J Series Routers\"><OSFamily name=\"JunOS 10.4\" /></Platform><Platform name=\"J Series Routers - Dynamic Routing\"><OSFamily name=\"JunOS 11.4\" /></Platform><Platform name=\"ISG Series Routers\"><OSFamily name=\"ScreenOS 6.3\" /></Platform><Platform name=\"ISG Series Routers - Dynamic Routing\"><OSFamily name=\"ScreenOS 6.3\" /></Platform><Platform name=\"SSG Series Routers\"><OSFamily name=\"ScreenOS 6.2\" /></Platform><Platform name=\"SSG Series Routers - Dynamic Routing\"><OSFamily name=\"ScreenOS 6.2\" /></Platform></Vendor><Vendor name=\"Microsoft Corporation\"><Platform name=\"RRAS\"><OSFamily name=\"Windows Server 2012\" /><OSFamily name=\"Windows Server 2012 R2\" /></Platform></Vendor></VpnDeviceList>", { 'cache-control': 'no-cache',
   'content-length': '1572',
   'content-type': 'application/octet-stream',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '4416ee3b33bfb159bb6f8b4b4cc68ac2',
-  date: 'Fri, 26 Jun 2015 06:45:45 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '7cc07fc3a5d59c94a778443188778412',
+  date: 'Mon, 25 Apr 2016 09:29:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/supporteddevices')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/supporteddevices')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><VpnDeviceList version=\"1.0\"><Vendor name=\"Cisco Systems, Inc.\"><Platform name=\"ASA 5500 Series Adaptive Security Appliances\"><OSFamily name=\"ASA Software 8.3\" /></Platform><Platform name=\"ASR 1000 Series Aggregation Services Routers\"><OSFamily name=\"IOS XE 15.1\" /></Platform><Platform name=\"ASR 1000 Series Aggregation Services Routers - Dynamic Routing\"><OSFamily name=\"IOS XE 15.2\" /></Platform><Platform name=\"ISR Series Integrated Services Routers\"><OSFamily name=\"IOS 15.0\" /></Platform><Platform name=\"ISR Series Integrated Services Routers - Dynamic Routing\"><OSFamily name=\"IOS 15.1\" /></Platform></Vendor><Vendor name=\"Juniper Networks, Inc.\"><Platform name=\"SRX Series Routers\"><OSFamily name=\"JunOS 10.2\" /></Platform><Platform name=\"SRX Series Routers - Dynamic Routing\"><OSFamily name=\"JunOS 11.4\" /></Platform><Platform name=\"J Series Routers\"><OSFamily name=\"JunOS 10.4\" /></Platform><Platform name=\"J Series Routers - Dynamic Routing\"><OSFamily name=\"JunOS 11.4\" /></Platform><Platform name=\"ISG Series Routers\"><OSFamily name=\"ScreenOS 6.3\" /></Platform><Platform name=\"ISG Series Routers - Dynamic Routing\"><OSFamily name=\"ScreenOS 6.3\" /></Platform><Platform name=\"SSG Series Routers\"><OSFamily name=\"ScreenOS 6.2\" /></Platform><Platform name=\"SSG Series Routers - Dynamic Routing\"><OSFamily name=\"ScreenOS 6.2\" /></Platform></Vendor><Vendor name=\"Microsoft Corporation\"><Platform name=\"RRAS\"><OSFamily name=\"Windows Server 2012\" /><OSFamily name=\"Windows Server 2012 R2\" /></Platform></Vendor></VpnDeviceList>", { 'cache-control': 'no-cache',
   'content-length': '1572',
   'content-type': 'application/octet-stream',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '4416ee3b33bfb159bb6f8b4b4cc68ac2',
-  date: 'Fri, 26 Jun 2015 06:45:45 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '7cc07fc3a5d59c94a778443188778412',
+  date: 'Mon, 25 Apr 2016 09:29:42 GMT',
   connection: 'close' });
  return result; }]];
