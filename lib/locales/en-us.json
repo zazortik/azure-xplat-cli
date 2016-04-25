@@ -1288,6 +1288,7 @@
   "The resource %s already exists. Update ? [y/n] ": "The resource %s already exists. Update ? [y/n] ",
   "The resource group %s already exists. Update ? [y/n] ": "The resource group %s already exists. Update ? [y/n] ",
   "The scheduled job settings already match the requested settings. No changes made": "The scheduled job settings already match the requested settings. No changes made",
+  "The scheduling property for a Batch compute node": "The scheduling property for a Batch compute node",
   "The static address %s doesn't belong to the address space defined by the role's subnets.": "The static address %s doesn't belong to the address space defined by the role's subnets.",
   "The subnet is not in the address space": "The subnet is not in the address space",
   "The valid address space ranges are:": "The valid address space ranges are:",

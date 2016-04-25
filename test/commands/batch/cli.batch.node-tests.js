@@ -157,7 +157,7 @@ describe('cli', function () {
     });
 
     it('should disable scheduling at the compute node', function (done) {
-      suite.execute('batch node disable-scheduling %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch node scheduling disable %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
         poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
@@ -173,7 +173,7 @@ describe('cli', function () {
     });
 
     it('should enable scheduling at the compute node', function (done) {
-      suite.execute('batch node enable-scheduling %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch node scheduling enable %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
         poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 

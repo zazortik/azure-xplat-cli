@@ -5563,168 +5563,6 @@
               ]
             },
             {
-              "name": "disable-scheduling",
-              "description": "Disable scheduling on the Batch compute node",
-              "fullName": "batch node disable-scheduling",
-              "usage": "[options] [pool-id] [node-id]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the id of the pool that contains the compute node"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the id of the compute node that you want to disable scheduling"
-                },
-                {
-                  "flags": "--disable-option <disable-option>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--disable-option",
-                  "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the Batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the Batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the Batch account URL"
-                }
-              ]
-            },
-            {
-              "name": "enable-scheduling",
-              "description": "Enable scheduling on the Batch compute node",
-              "fullName": "batch node enable-scheduling",
-              "usage": "[options] [pool-id] [node-id]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the id of the pool that contains the compute node"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the id of the compute node that you want to enable scheduling"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the Batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the Batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the Batch account URL"
-                }
-              ]
-            },
-            {
               "name": "get-remote-desktop",
               "description": "Gets the Remote Desktop Protocol file for the specified compute node",
               "fullName": "batch node get-remote-desktop",
@@ -6010,6 +5848,178 @@
                       "bool": true,
                       "long": "--node-id",
                       "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "scheduling": {
+              "name": "scheduling",
+              "description": "The scheduling property for a Batch compute node",
+              "fullName": "batch node scheduling",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "disable",
+                  "description": "Disable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling disable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to disable scheduling"
+                    },
+                    {
+                      "flags": "--disable-option <disable-option>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--disable-option",
+                      "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "enable",
+                  "description": "Enable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling enable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to enable scheduling"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",
