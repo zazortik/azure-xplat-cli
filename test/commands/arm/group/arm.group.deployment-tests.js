@@ -382,6 +382,23 @@ describe('arm', function () {
         });
       });
 
+      it('should show nested error messages when deployment fails', function (done) {
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateUri = 'https://raw.githubusercontent.com/vivsriaus/armtemplates/master/testnestederror.json';
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s',
+            templateUri, groupName, deploymentName);
+
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.match(/.*Storage account name must be between 3 and 24 characters*/i);
+            cleanup(done);
+          });
+        });
+      });
+
       it('should show nested error messages when deployments with nested templates fail', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/nestedTemplate-parameters.json');
         setUniqParameterNames(suite, parameterFile);
