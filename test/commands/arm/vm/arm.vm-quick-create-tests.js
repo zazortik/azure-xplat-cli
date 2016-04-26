@@ -78,7 +78,7 @@ describe('arm', function() {
           if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
             vmTest.GetLinuxSkusList(location, suite, function(result) {
               vmTest.GetLinuxImageList(location, suite, function(result) {
-                var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
+                var latestLinuxImageUrn = 'UbuntuLTS';
                 var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z Standard_D1',
                   groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -90,7 +90,7 @@ describe('arm', function() {
             });
           }
           else {
-            var latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
+            var latestLinuxImageUrn = 'UbuntuLTS';
             var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z Standard_D1',
               groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {

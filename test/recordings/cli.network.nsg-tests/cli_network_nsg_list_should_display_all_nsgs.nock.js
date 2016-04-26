@@ -6,17 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'CollaberaInteropTest',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -30,26 +29,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/networksecuritygroups')
-  .reply(200, "<NetworkSecurityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><NetworkSecurityGroup><Name>CliTestNsg7549</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>nsg151</Name><Label>nsglabel</Label><Location>East US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg1</Name><Label>Testing</Label><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg2</Name><Label>Testing</Label><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg1451</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>XplatTestNsg2</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg2307</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg2727</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNSGNic</Name><Location>West US</Location></NetworkSecurityGroup></NetworkSecurityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1195',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/networksecuritygroups')
+  .reply(200, "<NetworkSecurityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><NetworkSecurityGroup><Name>xplatTestNSGNic</Name><Location>West US</Location><State>Created</State></NetworkSecurityGroup></NetworkSecurityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '272',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '7275df297dcdb8149f620e57f5bc2c01',
-  date: 'Fri, 12 Jun 2015 12:48:27 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '9f6afc9cad6f9241940747272ba594ae',
+  date: 'Mon, 25 Apr 2016 08:41:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/networksecuritygroups')
-  .reply(200, "<NetworkSecurityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><NetworkSecurityGroup><Name>CliTestNsg7549</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>nsg151</Name><Label>nsglabel</Label><Location>East US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg1</Name><Label>Testing</Label><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>Testnsg2</Name><Label>Testing</Label><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg1451</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>XplatTestNsg2</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg2307</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNsg2727</Name><Location>West US</Location></NetworkSecurityGroup><NetworkSecurityGroup><Name>xplatTestNSGNic</Name><Location>West US</Location></NetworkSecurityGroup></NetworkSecurityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1195',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/networksecuritygroups')
+  .reply(200, "<NetworkSecurityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><NetworkSecurityGroup><Name>xplatTestNSGNic</Name><Location>West US</Location><State>Created</State></NetworkSecurityGroup></NetworkSecurityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '272',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '7275df297dcdb8149f620e57f5bc2c01',
-  date: 'Fri, 12 Jun 2015 12:48:27 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '9f6afc9cad6f9241940747272ba594ae',
+  date: 'Mon, 25 Apr 2016 08:41:06 GMT',
   connection: 'close' });
  return result; }]];
