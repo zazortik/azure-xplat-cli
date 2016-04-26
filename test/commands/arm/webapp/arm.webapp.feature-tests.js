@@ -79,7 +79,7 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  describe.only('webapp', function () {
+  describe('webapp', function () {
 
     it('create should work', function (done) {
       suite.execute('webapp create --resource-group %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
