@@ -79,7 +79,7 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  describe('webapp', function () {
+  describe.only('webapp', function () {
 
     it('create should work', function (done) {
       suite.execute('webapp create --resource-group %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
@@ -130,13 +130,6 @@ describe('arm', function () {
     it('delete should work', function (done) {
       suite.execute('webapp delete --resource-group %s --name %s -q --json', groupName, createdSites[0], function (result) {
         result.exitStatus.should.equal(0);
-        done();
-      });
-    });
-
-    it('missing required arguments should result in error', function (done) {
-      suite.execute('webapp delete --resource-group %s -q --json', groupName, function (result) {
-        result.exitStatus.should.equal(1);
         done();
       });
     });
