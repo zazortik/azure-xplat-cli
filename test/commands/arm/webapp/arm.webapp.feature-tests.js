@@ -156,7 +156,7 @@ describe('arm', function () {
 
     var planParameters = {
       properties: {
-        sku: 'Free',
+        sku: 'Standard',
         numberOfWorkers: 1,
         workerSize: 'Small',
         hostingPlanName: hostingPlanName
@@ -164,8 +164,9 @@ describe('arm', function () {
       location: location
     };
 
-    resourceClient.resources.createOrUpdate(groupName, planToCreate, planParameters, function (err, planResource) {
-      return done(err, planResource.resource.id);
+    resourceClient.resources.createOrUpdate(groupName, planToCreate.resourceProviderNamespace, '', planToCreate.resourceType, 
+      planToCreate.resourceName, planToCreate.resourceProviderApiVersion, planParameters, function (err, planResource) {
+      return done(err, planResource.id);
     });
   }
 });
