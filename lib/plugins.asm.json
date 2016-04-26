@@ -2089,7 +2089,7 @@
             },
             {
               "name": "show",
-              "description": "Show details of the batch application",
+              "description": "Show details of the Batch application",
               "fullName": "batch application show",
               "usage": "[options] [resource-group] [account-name] [application-id]",
               "filePath": "commands/batch/batch.application._js",
@@ -2525,7 +2525,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Show details of the batch application package",
+                  "description": "Show details of the Batch application package",
                   "fullName": "batch application package show",
                   "usage": "[options] [resource-group] [account-name] [application-id] [version]",
                   "filePath": "commands/batch/batch.application._js",
@@ -2687,6 +2687,365 @@
               "categories": {}
             }
           }
+        },
+        "certificate": {
+          "name": "certificate",
+          "description": "Commands to manage your Batch certificate",
+          "fullName": "batch certificate",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Add a certificate",
+              "fullName": "batch certificate create",
+              "usage": "[options] [thumbprint] [cert-file]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--cert-file <cert-file>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--cert-file",
+                  "description": "the certificate file: cer file or pfx file"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--password <password>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--password",
+                  "description": "the password to access the certificate's private key"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the specified Batch certificate",
+              "fullName": "batch certificate delete",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--abort",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--abort",
+                  "description": "cancel the deletion"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the specified certificate without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the Batch certificate",
+              "fullName": "batch certificate show",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List Batch certificates",
+              "fullName": "batch certificate list",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "task-file": {
           "name": "task-file",
@@ -5586,100 +5945,6 @@
               ]
             },
             {
-              "name": "get-remote-desktop",
-              "description": "Gets the Remote Desktop Protocol file for the specified compute node",
-              "fullName": "batch node get-remote-desktop",
-              "usage": "[options] [pool-id] [node-id] [rdp-file]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the id of the pool that contains the compute node"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "--rdp-file <rdp-file>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--rdp-file",
-                  "description": "the path where you would like to save the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the Batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the Batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the Batch account URL"
-                }
-              ]
-            },
-            {
               "name": "delete",
               "description": "Remove nodes from the Batch pool",
               "fullName": "batch node delete",
@@ -5871,6 +6136,282 @@
                       "bool": true,
                       "long": "--node-id",
                       "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "remote-desktop": {
+              "name": "remote-desktop",
+              "description": "The remote desktop protocol for a Batch compute node",
+              "fullName": "batch node remote-desktop",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the Remote Desktop Protocol file for the specified compute node",
+                  "fullName": "batch node remote-desktop show",
+                  "usage": "[options] [pool-id] [node-id] [rdp-file]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "--rdp-file <rdp-file>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--rdp-file",
+                      "description": "the path where you would like to save the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "scheduling": {
+              "name": "scheduling",
+              "description": "The scheduling property for a Batch compute node",
+              "fullName": "batch node scheduling",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "disable",
+                  "description": "Disable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling disable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to disable scheduling"
+                    },
+                    {
+                      "flags": "--disable-option <disable-option>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--disable-option",
+                      "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "enable",
+                  "description": "Enable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling enable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to enable scheduling"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",
@@ -14562,6 +15103,239 @@
         }
       }
     },
+    "compute": {
+      "name": "compute",
+      "description": "Commands to invoke service management operations.",
+      "fullName": "compute",
+      "usage": "[options]",
+      "options": [],
+      "commands": [],
+      "categories": {
+        "deployment": {
+          "name": "deployment",
+          "description": "Commands to manage your deployment.  ",
+          "fullName": "compute deployment",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "abort-migration",
+              "description": "The Abort Deployment Operation validates and aborts your deployment for IaaS Classic to ARM migration.",
+              "fullName": "compute deployment abort-migration",
+              "usage": "[options] <service-name> <name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "The Commit Deployment Operation validates and commits your deployment for IaaS Classic to ARM migration.",
+              "fullName": "compute deployment commit-migration",
+              "usage": "[options] <service-name> <name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "The Prepare Deployment Operation validates and prepares your deployment for IaaS Classic to ARM migration.",
+              "fullName": "compute deployment prepare-migration",
+              "usage": "[options] <service-name> <name> <destination-virtual-network> <resource-group-name> <subnet-name> <virtual-network-name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "--destination-virtual-network <destination-virtual-network>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--destination-virtual-network",
+                  "description": "destination-virtual-network"
+                },
+                {
+                  "flags": "-g, --resource-group-name <resource-group-name>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group-name",
+                  "description": "resource-group-name"
+                },
+                {
+                  "flags": "--subnet-name <subnet-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subnet-name",
+                  "description": "subnet-name"
+                },
+                {
+                  "flags": "--virtual-network-name <virtual-network-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--virtual-network-name",
+                  "description": "virtual-network-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
     "hdinsight": {
       "name": "hdinsight",
       "description": "Commands to manage HDInsight clusters and jobs",
@@ -19911,190 +20685,6 @@
         }
       ],
       "categories": {
-        "dns-server": {
-          "name": "dns-server",
-          "description": "Commands to manage your DNS servers",
-          "fullName": "network dns-server",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List DNS servers registered in network",
-              "fullName": "network dns-server list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "register",
-              "description": "Register a DNS server with network",
-              "fullName": "network dns-server register",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "unregister",
-              "description": "Unregister a DNS server registered in the current network",
-              "fullName": "network dns-server unregister",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for unregister confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
         "vnet": {
           "name": "vnet",
           "description": "Commands to manage your virtual networks",
@@ -20102,6 +20692,162 @@
           "usage": "[options] [command]",
           "options": [],
           "commands": [
+            {
+              "name": "abort-migration",
+              "description": "Abort Virtual Network migration api validates and aborts the given virtual network for IaaS Classic to ARM migration.",
+              "fullName": "network vnet abort-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "Commit Virtual Network migration api validates and commits the given virtual network for IaaS Classic to ARM migration.",
+              "fullName": "network vnet commit-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "Prepare Virtual Network migration api validates and prepare the given virtual network for IaaS Classic to ARM migration.",
+              "fullName": "network vnet prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
             {
               "name": "create",
               "description": "Create a virtual network",
@@ -21166,6 +21912,190 @@
               }
             }
           }
+        },
+        "dns-server": {
+          "name": "dns-server",
+          "description": "Commands to manage your DNS servers",
+          "fullName": "network dns-server",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List DNS servers registered in network",
+              "fullName": "network dns-server list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "register",
+              "description": "Register a DNS server with network",
+              "fullName": "network dns-server register",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "unregister",
+              "description": "Unregister a DNS server registered in the current network",
+              "fullName": "network dns-server unregister",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "reserved-ip": {
           "name": "reserved-ip",

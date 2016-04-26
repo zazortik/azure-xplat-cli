@@ -6,16 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
+    id: 'e33f361b-53c2-4cc7-b829-78906708387b',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    state: 'Enabled',
+    name: 'Microsoft Azure Internal Consumption',
     registeredProviders: [],
-    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,8 +20,8 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'test1';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://test1.westus.batch.azure.com';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
+  process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];
