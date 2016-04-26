@@ -1707,7 +1707,7 @@
             },
             {
               "name": "show",
-              "description": "Show details of the batch application",
+              "description": "Show details of the Batch application",
               "fullName": "batch application show",
               "usage": "[options] [resource-group] [account-name] [application-id]",
               "filePath": "commands/batch/batch.application._js",
@@ -2143,7 +2143,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Show details of the batch application package",
+                  "description": "Show details of the Batch application package",
                   "fullName": "batch application package show",
                   "usage": "[options] [resource-group] [account-name] [application-id] [version]",
                   "filePath": "commands/batch/batch.application._js",
@@ -2305,6 +2305,365 @@
               "categories": {}
             }
           }
+        },
+        "certificate": {
+          "name": "certificate",
+          "description": "Commands to manage your Batch certificate",
+          "fullName": "batch certificate",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Add a certificate",
+              "fullName": "batch certificate create",
+              "usage": "[options] [thumbprint] [cert-file]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--cert-file <cert-file>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--cert-file",
+                  "description": "the certificate file: cer file or pfx file"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--password <password>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--password",
+                  "description": "the password to access the certificate's private key"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the specified Batch certificate",
+              "fullName": "batch certificate delete",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--abort",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--abort",
+                  "description": "cancel the deletion"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the specified certificate without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the Batch certificate",
+              "fullName": "batch certificate show",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List Batch certificates",
+              "fullName": "batch certificate list",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "task-file": {
           "name": "task-file",
@@ -5204,100 +5563,6 @@
               ]
             },
             {
-              "name": "get-remote-desktop",
-              "description": "Gets the Remote Desktop Protocol file for the specified compute node",
-              "fullName": "batch node get-remote-desktop",
-              "usage": "[options] [pool-id] [node-id] [rdp-file]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the id of the pool that contains the compute node"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "--rdp-file <rdp-file>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--rdp-file",
-                  "description": "the path where you would like to save the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the Batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the Batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the Batch account URL"
-                }
-              ]
-            },
-            {
               "name": "delete",
               "description": "Remove nodes from the Batch pool",
               "fullName": "batch node delete",
@@ -5489,6 +5754,282 @@
                       "bool": true,
                       "long": "--node-id",
                       "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "remote-desktop": {
+              "name": "remote-desktop",
+              "description": "The remote desktop protocol for a Batch compute node",
+              "fullName": "batch node remote-desktop",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the Remote Desktop Protocol file for the specified compute node",
+                  "fullName": "batch node remote-desktop show",
+                  "usage": "[options] [pool-id] [node-id] [rdp-file]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "--rdp-file <rdp-file>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--rdp-file",
+                      "description": "the path where you would like to save the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "scheduling": {
+              "name": "scheduling",
+              "description": "The scheduling property for a Batch compute node",
+              "fullName": "batch node scheduling",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "disable",
+                  "description": "Disable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling disable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to disable scheduling"
+                    },
+                    {
+                      "flags": "--disable-option <disable-option>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--disable-option",
+                      "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "enable",
+                  "description": "Enable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling enable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to enable scheduling"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",

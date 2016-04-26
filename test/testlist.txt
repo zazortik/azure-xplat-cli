@@ -81,6 +81,7 @@ commands/cli.storage.file-tests.js
 commands/cli.storage.table-tests.js
 commands/cli.storage.queue-tests.js
 commands/cli.storage.service-tests.js
+commands/batch/cli.batch.certificate-tests.js
 commands/batch/cli.batch.job-tests.js
 commands/batch/cli.batch.jobschedule-tests.js
 commands/batch/cli.batch.task-tests.js
