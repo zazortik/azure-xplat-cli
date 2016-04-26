@@ -79,7 +79,7 @@ describe('arm', function () {
     suite.teardownTest(done);
   });
 
-  describe('webapp', function () {
+  describe.only('webapp', function () {
 
     it('create should work', function (done) {
       suite.execute('webapp create --resource-group %s --name %s --location %s --plan %s --json', groupName, sitename, location, hostingPlanName, function (result) {
@@ -133,6 +133,13 @@ describe('arm', function () {
         done();
       });
     });
+
+    it('missing required arguments should result in error', function (done) {
+      suite.execute('webapp delete --resource-group %s -q --json', groupName, function (result) {
+        result.exitStatus.should.equal(1);
+        done();
+      });
+    });
   });
 
   function createGroupAndPlan(done) {
@@ -156,7 +163,7 @@ describe('arm', function () {
 
     var planParameters = {
       properties: {
-        sku: 'Free',
+        sku: 'Standard',
         numberOfWorkers: 1,
         workerSize: 'Small',
         hostingPlanName: hostingPlanName
@@ -164,8 +171,9 @@ describe('arm', function () {
       location: location
     };
 
-    resourceClient.resources.createOrUpdate(groupName, planToCreate, planParameters, function (err, planResource) {
-      return done(err, planResource.resource.id);
+    resourceClient.resources.createOrUpdate(groupName, planToCreate.resourceProviderNamespace, '', planToCreate.resourceType, 
+      planToCreate.resourceName, planToCreate.resourceProviderApiVersion, planParameters, function (err, planResource) {
+      return done(err, planResource.id);
     });
   }
 });
