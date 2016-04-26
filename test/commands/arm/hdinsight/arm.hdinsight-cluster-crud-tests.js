@@ -17,6 +17,7 @@
 var should = require('should');
 var path = require('path');
 var fs = require('fs');
+var assert = require('assert');
 var util = require('util');
 var utils = require('../../../../lib/util/utils');
 var testUtils = require('../../../util/util');
@@ -40,6 +41,7 @@ var timeBeforeClusterAvailable;
 var groupName;
 var clusterNameWindows;
 var clusterNameLinux;
+var customConfigClusterNameLinux;
 var clusterNamePremium;
 var createdResources = [];
 var scriptActionName;
@@ -82,6 +84,7 @@ describe('arm', function() {
         clusterNameWindows = suite.generateId(clusterNamePrefix, createdResources);
         clusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
         clusterNamePremium = suite.generateId(clusterNamePrefix, createdResources)+ 'Premium';
+		customConfigClusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
         tags = 'a=b;b=c;d=';
         rdpExpiryDate = '12/12/2025';
         timeBeforeClusterAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
@@ -446,9 +449,120 @@ describe('arm', function() {
         });
       });
 
-      it('delete should delete hdinsight linux cluster', function(done) {
+      it('config create should create a Azure HDinsight cluster configuration', function(done) {
+		this.timeout(hdinsightTest.timeoutLarge);
+		var cmd = util.format('hdinsight config create %s --json', configFile).split(' ');
+		suite.execute(cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			if (!suite.isPlayback()) {
+				setTimeout(function () {
+					done();
+				}, HdinsightTestUtil.timeoutMedium);
+			} else {
+				done();
+			}
+		});
+	  });
+	  
+	  it('config create overwrite should overwrite if config file already exists', function(done) {
+		this.timeout(hdinsightTest.timeoutLarge);
+		var beforetimestamp;
+		fs.stat(configFile, function(err, stat1) {
+			beforetimestamp = stat1.mtime.getTime();
+		});
+		var cmd = util.format('hdinsight config create %s --overwrite overwrite --json', configFile).split(' ');
+		suite.execute(cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			fs.stat(configFile, function(err, stat2) {
+				assert.notEqual(stat2.mtime.getTime(), beforetimestamp);
+			});
+		    if (!suite.isPlayback()) {
+				setTimeout(function () {
+					done();
+				}, HdinsightTestUtil.timeoutLarge);
+			} else {
+				done();
+			}
+		});  
+	  });
+	  
+	  it('add script action to config file', function(done) {
+		this.timeout(hdinsightTest.timeoutLarge);
+		var cmdAddScriptAction = util.format('hdinsight config add-script-action ' +
+		  '--configFilePath %s ' +
+		  '--nodeType HeadNode ' +
+		  '--uri %s ' +
+		  '--name %s ' +
+		  '--parameters %s ',
+		  configFile, scriptActionUri, scriptActionName, null).split(' ');
+		suite.execute(cmdAddScriptAction, function(result) {
+			result.exitStatus.should.equal(0);
+			if (!suite.isPlayback()) {
+			setTimeout(function () {
+				done();
+				}, HdinsightTestUtil.timeoutLarge);
+			} else {
+				done();
+			}
+		});
+	  });
+	  
+	  it('create a custom cluster using config file', function(done) {
+		this.timeout(hdinsightTest.timeoutLarge);
+        var cmdCreateCustomCluster = util.format('hdinsight cluster create ' +
+		  '--resource-group %s ' +
+		  '--clusterName %s ' +
+		  '--location %s ' +
+		  '--osType %s ' +
+		  '--defaultStorageAccountName %s.blob.core.windows.net ' +
+		  '--defaultStorageAccountKey %s ' +
+		  '--defaultStorageContainer %s ' +
+		  '--headNodeSize %s ' +
+		  '--workerNodeCount %s ' +
+		  '--workerNodeSize %s ' +
+		  '--zookeeperNodeSize %s ' +
+		  '--userName %s --password %s ' +
+		  '--sshUserName %s --sshPassword %s ' +
+		  '--clusterType %s ' +
+		  '--version %s ' +
+		  '--configurationPath %s ' +
+		  '--json ',
+		  groupName, customConfigClusterNameLinux, location, 'Linux',
+		  defaultStorageAccount, defaultStorageAccountKey, defaultStorageContainer,
+		  headNodeSize, workerNodeCount, workerNodeSize, zookeeperNodeSize,
+		  username, password, sshUserName, sshPassword,
+		  'Hadoop', 'default', configFile).split(' ');
+		  suite.execute(cmdCreateCustomCluster, function(result) {
+			  result.text.should.containEql('');
+			  result.exitStatus.should.equal(0);
+				if (!suite.isPlayback()) {
+					setTimeout(function() {
+					done();
+					}, HdinsightTestUtil.timeoutLarge);
+				} else {
+					done();
+				}
+		  });
+	  });
+	  
+	  it('delete should delete hdinsight linux cluster', function(done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, clusterNameLinux).split(' ');
+        suite.execute(cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          if (!suite.isPlayback()) {
+            setTimeout(function() {
+              done();
+            }, HdinsightTestUtil.timeoutLarge);
+          } else {
+            done();
+          }
+        });
+      });
+	  
+	  it('delete should delete the custom hdinsight linux cluster', function(done) {
+        this.timeout(hdinsightTest.timeoutLarge);
+        var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, customConfigClusterNameLinux).split(' ');
         suite.execute(cmd, function(result) {
           result.exitStatus.should.equal(0);
           if (!suite.isPlayback()) {
