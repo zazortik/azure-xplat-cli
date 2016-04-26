@@ -1283,6 +1283,7 @@
   "The name can contain only letters, numbers and hyphens with no more than 63 characters. It must start with a letter or number": "The name can contain only letters, numbers and hyphens with no more than 63 characters. It must start with a letter or number",
   "The operation is cancelled": "The operation is cancelled",
   "The permissions for this custom API cannot be changed because the metadata file has been edited directly. To change the permissions and overwrite the existing metadata use the '--force' option.": "The permissions for this custom API cannot be changed because the metadata file has been edited directly. To change the permissions and overwrite the existing metadata use the '--force' option.",
+  "The remote desktop protocol for a Batch compute node": "The remote desktop protocol for a Batch compute node",
   "The request failed. Please contact support for more information": "The request failed. Please contact support for more information",
   "The requested cluster already exists": "The requested cluster already exists",
   "The resource %s already exists. Update ? [y/n] ": "The resource %s already exists. Update ? [y/n] ",

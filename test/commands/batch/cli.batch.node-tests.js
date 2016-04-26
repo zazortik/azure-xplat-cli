@@ -103,7 +103,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var node = JSON.parse(result.text);
         node.should.not.be.null;
-        suite.execute('batch node get-remote-desktop %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
+        suite.execute('batch node remote-desktop show %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
           poolId, computeNodeId, downloadLocation, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var downloadedContent = fs.readFileSync(downloadLocation).toString();
