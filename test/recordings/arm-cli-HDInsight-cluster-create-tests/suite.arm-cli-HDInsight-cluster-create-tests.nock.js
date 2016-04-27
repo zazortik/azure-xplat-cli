@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate5','xplatTestHDInsightClusterCreate1617','xplatTestHDInsightClusterCreate7796','xplatTestHDInsightClusterCreate8197','xplatTestHDInsightClusterCreate4442'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate195','xplatTestHDInsightClusterCreate378','xplatTestHDInsightClusterCreate7427','xplatTestHDInsightClusterCreate8303','xplatTestHDInsightClusterCreate6396'];};
