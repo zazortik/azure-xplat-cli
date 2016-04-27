@@ -124,18 +124,20 @@ describe('arm', function() {
       it('vmss quick-create should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
-          var cmd = util.format(
-            'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z Standard_DS1 -C 5 --json',
-            groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert).split(' ');
-          testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            vmTest.setGroup(groupName, suite, function(result) {
-              var cmd = util.format(
-                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -z Standard_DS1 -C 5 --json',
-                groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
-              testUtils.executeCommand(suite, retry, cmd, function(result) {
-                result.exitStatus.should.equal(0);
-                done();
+          vmTest.getVMSize(location, suite, function() {
+            var cmd = util.format(
+              'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z %s -a Standard_GRS -C 5 --json',
+              groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert, VMTestUtil.vmSize).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              vmTest.setGroup(groupName, suite, function(result) {
+                var cmd = util.format(
+                  'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -C 5 --json',
+                  groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function(result) {
+                  result.exitStatus.should.equal(0);
+                  done();
+                });
               });
             });
           });
@@ -210,8 +212,8 @@ describe('arm', function() {
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
             var cmd = util.format(
-              'vmss quick-create %s %s %s %s 5 %s %s --vm-size Standard_DS1 --json',
-              groupName, vmssPrefix2, location, imageUrn, username, password).split(' ');
+              'vmss quick-create %s %s %s %s 5 %s %s --vm-size %s --json',
+              groupName, vmssPrefix2, location, imageUrn, username, password, VMTestUtil.vmSize).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               done();

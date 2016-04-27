@@ -41,7 +41,7 @@ var groupName = 'xplatTestGSz',
   subnetName = 'xplattestsubnetsz',
   publicipName = 'xplattestipsz',
   dnsPrefix = 'xplattestdnssz',
-  vmSize = 'Standard_A1',
+  vmSize = 'Standard_A0',
   sshcert;
 
 describe('arm', function() {
@@ -114,25 +114,17 @@ describe('arm', function() {
       });
 
       it('sizes should list available virtual machine sizes for the previous created VM', function(done) {
-        vmTest.getVMSize(location, suite, function(result) {
-          suite.execute('vm sizes -g %s -n %s --json', groupName, vmPrefix, function(result) {
-            result.exitStatus.should.equal(0);
-            var allResources = JSON.parse(result.text);
-            allResources.some(function(res) {
-              return res.name === vmSize;
-            }).should.be.true;
-            done();
-          });
+        suite.execute('vm sizes -g %s -n %s --json', groupName, vmPrefix, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('Standard_');
+          done();
         });
       });
 
       it('sizes should list VM sizes available in given location ', function(done) {
         suite.execute('vm sizes -l %s --json', location, function(result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
-            return res.name === vmSize;
-          }).should.be.true;
+          result.text.should.containEql(vmSize);
           done();
         });
       });
