@@ -63,7 +63,7 @@ var requiredEnvironment = [{
   defaultValue: 'cliTestCustomDomain01',
 }, {
   name: 'AZURE_ARM_TEST_CUSTOM_DOMAIN_HOST_NAME_1',
-  defaultValue: 'cli-1-406f580d-a634-4077-9b11-216a70c5998d.azureedge-test.net',
+  defaultValue: 'cli-1-80dc366f-ad8a-4e7b-b441-31a932df02e9.azureedge-test.net',
 }];
 
 var suite;
@@ -142,7 +142,7 @@ describe('arm', function() {
     });
 
     it('create command should success', function(done) {
-      suite.execute('cdn profile create %s %s %s %s --json', testProfileName_1, testResourceGroup_1, "westus", "Standard", function(result) {
+      suite.execute('cdn profile create %s %s %s %s --json', testProfileName_1, testResourceGroup_1, "westus", "Standard_Verizon", function(result) {
         result.exitStatus.should.be.equal(0);
         var profileJson = JSON.parse(result.text);
         profileJson.name.should.be.equal(testProfileName_1);
@@ -160,8 +160,8 @@ describe('arm', function() {
       });
     });
 
-    it('create command should success with tags', function(done) {
-      suite.execute("cdn profile create %s %s %s %s -t tag1=val1;tag2=val2 --json", testProfileName_2, testResourceGroup_2, "westus", "Standard", function(result) {
+    it('create command should success with tags in Akamai', function(done) {
+      suite.execute("cdn profile create %s %s %s %s -t tag1=val1;tag2=val2 --json", testProfileName_2, testResourceGroup_2, "westus", "Standard_Akamai", function(result) {
         result.exitStatus.should.be.equal(0);
         var profileJson = JSON.parse(result.text);
         profileJson.name.should.be.equal(testProfileName_2);
@@ -205,7 +205,17 @@ describe('arm', function() {
         var profileJson = JSON.parse(result.text);
         profileJson.name.should.be.equal(testProfileName_1);
         profileJson.tags.tag1.should.equal('val1');
-        profileJson.sku.name.should.equal('Standard');
+        profileJson.sku.name.should.equal('Standard_Verizon');
+        done();
+      });
+    });
+	
+	it('show command should get the second profile info', function(done) {
+      suite.execute('cdn profile show %s %s --json', testProfileName_2, testResourceGroup_2, function(result) {
+        result.exitStatus.should.be.equal(0);
+        var profileJson = JSON.parse(result.text);
+        profileJson.name.should.be.equal(testProfileName_2);
+        profileJson.sku.name.should.equal('Standard_Akamai');
         done();
       });
     });

@@ -55,46 +55,44 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://api-dogfood.resources.windows-int.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
-  .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg02/providers/Microsoft.Cdn/profiles/cliTestProfile02?api-version=2016-04-02')
+  .reply(200, "{\r\n  \"name\":\"cliTestProfile02\",\"id\":\"/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourcegroups/xplattestadlsrg02/providers/Microsoft.Cdn/profiles/cliTestProfile02\",\"type\":\"Microsoft.Cdn/profiles\",\"tags\":{\r\n    \"tag1\":\"val1\",\"tag2\":\"val2\"\r\n  },\"location\":\"WestUs\",\"sku\":{\r\n    \"name\":\"Standard_Akamai\"\r\n  },\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '272',
-  'content-type': 'application/json; odata.metadata=minimal',
+  'content-length': '399',
+  'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'aa265d97-ae67-4633-bdad-0768f3de8a3f',
-  'x-ms-client-request-id': '5e86fc13-809a-48cb-bdec-6d669cd14e72',
+  'x-ms-request-id': '2a6f3a7e-1dc8-444b-b29c-04f93de5d48b',
+  'x-ms-client-request-id': '87bd2026-a1a3-4aff-968b-3ff79918aa20',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1178',
-  'x-ms-correlation-request-id': '6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  'x-ms-routing-request-id': 'CENTRALUS:20160427T221412Z:6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  date: 'Wed, 27 Apr 2016 22:14:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14823',
+  'x-ms-correlation-request-id': '53a1ddf3-ce46-4ea9-8a48-bb3a85e70406',
+  'x-ms-routing-request-id': 'CENTRALUS:20160427T220848Z:53a1ddf3-ce46-4ea9-8a48-bb3a85e70406',
+  date: 'Wed, 27 Apr 2016 22:08:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://api-dogfood.resources.windows-int.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
-  .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg02/providers/Microsoft.Cdn/profiles/cliTestProfile02?api-version=2016-04-02')
+  .reply(200, "{\r\n  \"name\":\"cliTestProfile02\",\"id\":\"/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourcegroups/xplattestadlsrg02/providers/Microsoft.Cdn/profiles/cliTestProfile02\",\"type\":\"Microsoft.Cdn/profiles\",\"tags\":{\r\n    \"tag1\":\"val1\",\"tag2\":\"val2\"\r\n  },\"location\":\"WestUs\",\"sku\":{\r\n    \"name\":\"Standard_Akamai\"\r\n  },\"properties\":{\r\n    \"provisioningState\":\"Succeeded\",\"resourceState\":\"Active\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '272',
-  'content-type': 'application/json; odata.metadata=minimal',
+  'content-length': '399',
+  'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'aa265d97-ae67-4633-bdad-0768f3de8a3f',
-  'x-ms-client-request-id': '5e86fc13-809a-48cb-bdec-6d669cd14e72',
+  'x-ms-request-id': '2a6f3a7e-1dc8-444b-b29c-04f93de5d48b',
+  'x-ms-client-request-id': '87bd2026-a1a3-4aff-968b-3ff79918aa20',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1178',
-  'x-ms-correlation-request-id': '6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  'x-ms-routing-request-id': 'CENTRALUS:20160427T221412Z:6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  date: 'Wed, 27 Apr 2016 22:14:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14823',
+  'x-ms-correlation-request-id': '53a1ddf3-ce46-4ea9-8a48-bb3a85e70406',
+  'x-ms-routing-request-id': 'CENTRALUS:20160427T220848Z:53a1ddf3-ce46-4ea9-8a48-bb3a85e70406',
+  date: 'Wed, 27 Apr 2016 22:08:47 GMT',
   connection: 'close' });
  return result; }]];
