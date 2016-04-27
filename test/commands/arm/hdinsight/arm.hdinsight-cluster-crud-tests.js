@@ -104,9 +104,12 @@ describe('arm', function() {
 
     after(function(done) {
       suite.teardownSuite(function() {
+		fs.unlinkSync(configFile);
         if (!suite.isPlayback()) {
           hdinsightTest.deleteUsedGroup(groupName, suite, function(result) {
-            suite.teardownSuite(done);
+			setTimeout(function() {
+				suite.teardownSuite(done);
+			}, HdinsightTestUtil.timeoutMedium);
           });
         } else {
           done();
@@ -469,21 +472,23 @@ describe('arm', function() {
 		var beforetimestamp;
 		fs.stat(configFile, function(err, stat1) {
 			beforetimestamp = stat1.mtime.getTime();
-		});
-		var cmd = util.format('hdinsight config create %s --overwrite overwrite --json', configFile).split(' ');
-		suite.execute(cmd, function(result) {
-			result.exitStatus.should.equal(0);
-			fs.stat(configFile, function(err, stat2) {
-				assert.notEqual(stat2.mtime.getTime(), beforetimestamp);
-			});
-		    if (!suite.isPlayback()) {
-				setTimeout(function () {
+
+			var cmd = util.format('hdinsight config create %s --overwrite overwrite --json', configFile).split(' ');
+			suite.execute(cmd, function(result) {
+				result.exitStatus.should.equal(0);
+				fs.stat(configFile, function(err, stat2) {
+					assert.notEqual(stat2.mtime.getTime(), beforetimestamp);
+				});
+				if (!suite.isPlayback()) {
+					setTimeout(function () {
+						done();
+					}, HdinsightTestUtil.timeoutLarge);
+				} else {
 					done();
-				}, HdinsightTestUtil.timeoutLarge);
-			} else {
-				done();
-			}
-		});  
+				}
+			}); 
+		});
+ 
 	  });
 	  
 	  it('add script action to config file', function(done) {
