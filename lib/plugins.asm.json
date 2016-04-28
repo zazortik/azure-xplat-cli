@@ -21842,7 +21842,7 @@
           "commands": [
             {
               "name": "abort-migration",
-              "description": "Abort Virtual Network migration api validates and aborts the given virtual network for IaaS Classic to ARM migration.",
+              "description": "Abort IaaS Classic to ARM migration for a virtual network.",
               "fullName": "network vnet abort-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -21894,7 +21894,7 @@
             },
             {
               "name": "commit-migration",
-              "description": "Commit Virtual Network migration api validates and commits the given virtual network for IaaS Classic to ARM migration.",
+              "description": "Commit IaaS Classic to ARM migration for a virtual network.",
               "fullName": "network vnet commit-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -21946,7 +21946,7 @@
             },
             {
               "name": "prepare-migration",
-              "description": "Prepare Virtual Network migration api validates and prepare the given virtual network for IaaS Classic to ARM migration.",
+              "description": "Prepare IaaS Classic to ARM migration for a virtual network.",
               "fullName": "network vnet prepare-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
