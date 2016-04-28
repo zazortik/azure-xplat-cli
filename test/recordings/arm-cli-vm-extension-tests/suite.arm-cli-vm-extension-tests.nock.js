@@ -26,9 +26,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension5780','xplatstoragext9957','xplatstoragecntext5328','xplatdnsext8065'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension8895','xplatstoragext3626','xplatstoragecntext6121','xplatdnsext2352'];};
