@@ -104,7 +104,6 @@ describe('arm', function() {
 
     after(function(done) {
       suite.teardownSuite(function() {
-		fs.unlinkSync(configFile);
         if (!suite.isPlayback()) {
           hdinsightTest.deleteUsedGroup(groupName, suite, function(result) {
           });
