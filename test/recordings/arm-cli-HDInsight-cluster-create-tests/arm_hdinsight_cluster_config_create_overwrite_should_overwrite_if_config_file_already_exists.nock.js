@@ -27,6 +27,4 @@ exports.setEnvironment = function() {
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
-exports.scopes = [];
-
- exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate5099','xplatTestHDInsightClusterCreate3438','xplatTestHDInsightClusterCreate1537','xplatTestHDInsightClusterCreate6128','xplatTestHDInsightClusterCreate7999'];};
+exports.scopes = [[]];
