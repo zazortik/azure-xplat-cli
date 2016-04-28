@@ -26,236 +26,236 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'southindia';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate9885/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5?api-version=2016-03-30')
+  .delete('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate6772/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5?api-version=2016-03-30')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?monitor=true&api-version=2016-03-30',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30',
+  location: 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?monitor=true&api-version=2016-03-30',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '7494bf22-b176-498c-9db9-965ea693ec0b',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '15ef381a-a1a8-4819-a282-c7f25cf19ce4',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '6b1ad3aa-630f-4d75-bda6-cc89547489b6',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080206Z:6b1ad3aa-630f-4d75-bda6-cc89547489b6',
-  date: 'Mon, 25 Apr 2016 08:02:05 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '3037c95d-ed55-4e4f-8aed-3e489a8780b1',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102000Z:3037c95d-ed55-4e4f-8aed-3e489a8780b1',
+  date: 'Thu, 28 Apr 2016 10:20:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate9885/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5?api-version=2016-03-30')
+  .delete('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate6772/providers/Microsoft.Compute/virtualMachineScaleSets/xplattestvmss5?api-version=2016-03-30')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?monitor=true&api-version=2016-03-30',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30',
+  location: 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?monitor=true&api-version=2016-03-30',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '7494bf22-b176-498c-9db9-965ea693ec0b',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '15ef381a-a1a8-4819-a282-c7f25cf19ce4',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '6b1ad3aa-630f-4d75-bda6-cc89547489b6',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080206Z:6b1ad3aa-630f-4d75-bda6-cc89547489b6',
-  date: 'Mon, 25 Apr 2016 08:02:05 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '3037c95d-ed55-4e4f-8aed-3e489a8780b1',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102000Z:3037c95d-ed55-4e4f-8aed-3e489a8780b1',
+  date: 'Thu, 28 Apr 2016 10:20:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '141',
+  'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '41698039-904d-4a17-9fc5-b589715269e7',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '3c75af72-bcbe-4a6f-acd4-359c3d9b8ba8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': 'bf66a1a7-4165-4818-b982-dc82859bef71',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080237Z:bf66a1a7-4165-4818-b982-dc82859bef71',
-  date: 'Mon, 25 Apr 2016 08:02:36 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': 'd68cd55e-2d32-4570-9de6-ea9b53976212',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102031Z:d68cd55e-2d32-4570-9de6-ea9b53976212',
+  date: 'Thu, 28 Apr 2016 10:20:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '141',
+  'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '41698039-904d-4a17-9fc5-b589715269e7',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '3c75af72-bcbe-4a6f-acd4-359c3d9b8ba8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': 'bf66a1a7-4165-4818-b982-dc82859bef71',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080237Z:bf66a1a7-4165-4818-b982-dc82859bef71',
-  date: 'Mon, 25 Apr 2016 08:02:36 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': 'd68cd55e-2d32-4570-9de6-ea9b53976212',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102031Z:d68cd55e-2d32-4570-9de6-ea9b53976212',
+  date: 'Thu, 28 Apr 2016 10:20:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '141',
+  'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': 'bc1a9f1f-a4e0-4b92-8430-77643c3ce12c',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14902',
-  'x-ms-correlation-request-id': '5234674c-6f69-4df1-a5ab-48150096864b',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080308Z:5234674c-6f69-4df1-a5ab-48150096864b',
-  date: 'Mon, 25 Apr 2016 08:03:07 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '141',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': 'bc1a9f1f-a4e0-4b92-8430-77643c3ce12c',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14902',
-  'x-ms-correlation-request-id': '5234674c-6f69-4df1-a5ab-48150096864b',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080308Z:5234674c-6f69-4df1-a5ab-48150096864b',
-  date: 'Mon, 25 Apr 2016 08:03:07 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '141',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': 'cb27b98f-1950-4826-b853-6d5d1afbba35',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '24d9d8ad-cc46-473f-90b8-31d6d7b33729',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080339Z:24d9d8ad-cc46-473f-90b8-31d6d7b33729',
-  date: 'Mon, 25 Apr 2016 08:03:39 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '141',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': 'cb27b98f-1950-4826-b853-6d5d1afbba35',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '24d9d8ad-cc46-473f-90b8-31d6d7b33729',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080339Z:24d9d8ad-cc46-473f-90b8-31d6d7b33729',
-  date: 'Mon, 25 Apr 2016 08:03:39 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '141',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '7dadee1c-f521-4970-ac27-99980a84350b',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14986',
-  'x-ms-correlation-request-id': '89ffd2b3-2bb1-485c-8f13-5f1f21e79238',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080410Z:89ffd2b3-2bb1-485c-8f13-5f1f21e79238',
-  date: 'Mon, 25 Apr 2016 08:04:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"status\": \"InProgress\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '141',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '7dadee1c-f521-4970-ac27-99980a84350b',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14986',
-  'x-ms-correlation-request-id': '89ffd2b3-2bb1-485c-8f13-5f1f21e79238',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080410Z:89ffd2b3-2bb1-485c-8f13-5f1f21e79238',
-  date: 'Mon, 25 Apr 2016 08:04:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"endTime\": \"2016-04-25T08:04:18.3513892+00:00\",\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '191',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '719e4fa8-9210-491a-ae01-45c4e672e0f2',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': 'c4d01509-6d3b-4972-a44f-455f46f1c043',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': 'dd6b2019-0fb1-42ff-adea-90a80a3f3bc5',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080441Z:dd6b2019-0fb1-42ff-adea-90a80a3f3bc5',
-  date: 'Mon, 25 Apr 2016 08:04:41 GMT',
+  'x-ms-correlation-request-id': '219b2359-52f4-4e4b-b694-7b44b1d10510',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102103Z:219b2359-52f4-4e4b-b694-7b44b1d10510',
+  date: 'Thu, 28 Apr 2016 10:21:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/SouthIndia/operations/7494bf22-b176-498c-9db9-965ea693ec0b?api-version=2016-03-30')
-  .reply(200, "{\r\n  \"operationId\": \"7494bf22-b176-498c-9db9-965ea693ec0b\",\r\n  \"startTime\": \"2016-04-25T08:02:05.3431377+00:00\",\r\n  \"endTime\": \"2016-04-25T08:04:18.3513892+00:00\",\r\n  \"status\": \"Succeeded\"\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '191',
+  'content-length': '134',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-served-by': '7974355c-dcc0-40b6-8fa9-fc4b3ae58965_131018842240091119',
-  'x-ms-request-id': '719e4fa8-9210-491a-ae01-45c4e672e0f2',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': 'c4d01509-6d3b-4972-a44f-455f46f1c043',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': 'dd6b2019-0fb1-42ff-adea-90a80a3f3bc5',
-  'x-ms-routing-request-id': 'WESTUS:20160425T080441Z:dd6b2019-0fb1-42ff-adea-90a80a3f3bc5',
-  date: 'Mon, 25 Apr 2016 08:04:41 GMT',
+  'x-ms-correlation-request-id': '219b2359-52f4-4e4b-b694-7b44b1d10510',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102103Z:219b2359-52f4-4e4b-b694-7b44b1d10510',
+  date: 'Thu, 28 Apr 2016 10:21:02 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '134',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': 'b6977208-0f29-49a3-811f-6de016bc669b',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': 'a2fc4611-c61b-4544-a4e3-516462d59e13',
+  'x-ms-routing-request-id': 'WESTUS:20160428T102134Z:a2fc4611-c61b-4544-a4e3-516462d59e13',
+  date: 'Thu, 28 Apr 2016 10:21:33 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '134',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': 'b6977208-0f29-49a3-811f-6de016bc669b',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': 'a2fc4611-c61b-4544-a4e3-516462d59e13',
+  'x-ms-routing-request-id': 'WESTUS:20160428T102134Z:a2fc4611-c61b-4544-a4e3-516462d59e13',
+  date: 'Thu, 28 Apr 2016 10:21:33 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '134',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '8fa14dbd-1933-48ac-84d4-2fd1435fdce8',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': 'd4ed36f9-234e-4337-8686-ebbd7eea818a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102204Z:d4ed36f9-234e-4337-8686-ebbd7eea818a',
+  date: 'Thu, 28 Apr 2016 10:22:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '134',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '8fa14dbd-1933-48ac-84d4-2fd1435fdce8',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': 'd4ed36f9-234e-4337-8686-ebbd7eea818a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102204Z:d4ed36f9-234e-4337-8686-ebbd7eea818a',
+  date: 'Thu, 28 Apr 2016 10:22:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"endTime\": \"2016-04-28T10:22:15.4976279+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '184',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '25b80440-4c11-48b1-8369-94399ff1c9c9',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': '01c932a5-1521-4ba1-b6d7-b6029fd1ddbe',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102236Z:01c932a5-1521-4ba1-b6d7-b6029fd1ddbe',
+  date: 'Thu, 28 Apr 2016 10:22:35 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/providers/Microsoft.Compute/locations/southeastasia/operations/15ef381a-a1a8-4819-a282-c7f25cf19ce4?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"startTime\": \"2016-04-28T10:20:00.1686338+00:00\",\r\n  \"endTime\": \"2016-04-28T10:22:15.4976279+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"15ef381a-a1a8-4819-a282-c7f25cf19ce4\"\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '184',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-served-by': 'dce02487-9cda-4782-8138-773eb1573792_131052441155687091',
+  'x-ms-request-id': '25b80440-4c11-48b1-8369-94399ff1c9c9',
+  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14993',
+  'x-ms-correlation-request-id': '01c932a5-1521-4ba1-b6d7-b6029fd1ddbe',
+  'x-ms-routing-request-id': 'CENTRALUS:20160428T102236Z:01c932a5-1521-4ba1-b6d7-b6029fd1ddbe',
+  date: 'Thu, 28 Apr 2016 10:22:35 GMT',
   connection: 'close' });
  return result; }]];

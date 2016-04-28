@@ -1,6 +1,6 @@
 {
   "sku": {
-    "name": "Standard_D1_v2",
+    "name": "Standard_DS1",
     "tier": "Standard",
     "capacity": 10
   },
@@ -25,9 +25,9 @@
         "caching": "None",
         "createOption": "fromImage",
         "vhdContainers": [
-          "https://xplatteststorage136.blob.core.windows.net/xplatteststoragecnt12553",
-          "https://xplatteststorage2469.blob.core.windows.net/xplatteststoragecnt23020",
-          "https://xplatteststorage36631.blob.core.windows.net/xplatteststoragecnt39470"
+          "https://xplatteststorage11105.blob.core.windows.net/xplatteststoragecnt17212",
+          "https://xplatteststorage27834.blob.core.windows.net/xplatteststoragecnt26767",
+          "https://xplatteststorage32415.blob.core.windows.net/xplatteststoragecnt3389"
         ]
       }
     },
@@ -40,7 +40,7 @@
             {
               "name": "test",
               "subnet": {
-                "id": "/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate9885/providers/Microsoft.Network/VirtualNetworks/xplattestvnet7289/subnets/xplattestsubnet7947"
+                "id": "/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate6772/providers/Microsoft.Network/VirtualNetworks/xplattestvnet7471/subnets/xplattestsubnet8996"
               },
               "id": ""
             }
@@ -75,5 +75,5 @@
   "overProvision": false,
   "id": null,
   "name": "xplattestvmss5",
-  "location": "southindia"
+  "location": "southeastasia"
 }

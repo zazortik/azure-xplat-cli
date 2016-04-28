@@ -26,9 +26,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'southindia';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate9885','xplattestnic8769','xplatteststorage136','xplatteststorage2469','xplatteststorage36631','xplatteststoragecnt12553','xplatteststoragecnt23020','xplatteststoragecnt39470','xplattestvnet7289','xplattestsubnet7947','xplattestipdns224'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate6772','xplattestnic5272','xplatteststorage11105','xplatteststorage27834','xplatteststorage32415','xplatteststoragecnt17212','xplatteststoragecnt26767','xplatteststoragecnt3389','xplattestvnet7471','xplattestsubnet8996','xplattestipdns8261'];};
