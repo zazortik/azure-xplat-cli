@@ -7872,6 +7872,54 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--sku-name <skuName>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sku-name",
+                  "description": "the SKU name (LRS/ZRS/GRS/RAGRS/PLRS)"
+                },
+                {
+                  "flags": "--kind <kind>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--kind",
+                  "description": "the account kind"
+                },
+                {
+                  "flags": "--access-tier <accessTier>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--access-tier",
+                  "description": "the access tier (Hot/Cool)"
+                },
+                {
+                  "flags": "--enable-encryption-service <enableEncryptionService>",
+                  "required": -29,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--enable-encryption-service",
+                  "description": "specifies the service which needs to enable encryption settings"
+                },
+                {
+                  "flags": "--custom-domain <customDomain>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--custom-domain",
+                  "description": "the custom domain"
+                },
+                {
+                  "flags": "--subdomain",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subdomain",
+                  "description": "whether uses the 'asverify' subdomain to preregister the custom domain"
+                },
+                {
                   "flags": "--tags <tags>",
                   "required": -8,
                   "optional": 0,
@@ -7887,14 +7935,6 @@
                   "short": "-l",
                   "long": "--location",
                   "description": "the location"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
                 },
                 {
                   "flags": "-g, --resource-group <resourceGroup>",
@@ -7918,7 +7958,7 @@
             },
             {
               "name": "set",
-              "description": "Update a storage account (Only one property can be updated at a time)",
+              "description": "Update a storage account",
               "fullName": "storage account set",
               "usage": "[options] <name>",
               "filePath": "commands/storage/storage.account._js",
@@ -7949,6 +7989,38 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--sku-name <skuName>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sku-name",
+                  "description": "the SKU name (LRS/GRS/RAGRS)"
+                },
+                {
+                  "flags": "--access-tier <accessTier>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--access-tier",
+                  "description": "the access tier (Hot/Cool)"
+                },
+                {
+                  "flags": "--enable-encryption-service <enableEncryptionService>",
+                  "required": -29,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--enable-encryption-service",
+                  "description": "specifies the service which needs to enable encryption settings"
+                },
+                {
+                  "flags": "--disable-encryption-service <disableEncryptionService>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--disable-encryption-service",
+                  "description": "specifies the service which needs to disable encryption settings"
+                },
+                {
                   "flags": "--custom-domain <customDomain>",
                   "required": -17,
                   "optional": 0,
@@ -7971,14 +8043,6 @@
                   "bool": true,
                   "long": "--tags",
                   "description": "the account tags. Tags are key=value pairs and separated with semicolon(;)"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/GRS/RAGRS)"
                 },
                 {
                   "flags": "-g, --resource-group <resourceGroup>",

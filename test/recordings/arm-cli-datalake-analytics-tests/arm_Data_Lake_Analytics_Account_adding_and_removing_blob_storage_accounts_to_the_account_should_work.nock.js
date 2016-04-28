@@ -30,8 +30,8 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.Storage/storageAccounts/xplattestadls1446/listKeys?api-version=2015-06-15')
-  .reply(200, "{\"key1\":\"8lCsbmF+O9qGqi8CWeJ5f/on+SqXEg2CyYwZhkb6agp4SNmCUZwGrVTyO6Dv2ujopefZgMoZByBUuRgyXL90Zw==\",\"key2\":\"uIxCBK7jXOa0WObPHmCZM6Nvwm6cO2WHJIhlQ0mszy3Mc5zl85ixhSTMkMmjnhzvsA6Ola8mX/LnW4mzy3v1bA==\"}\n", { 'cache-control': 'no-cache',
+  .post('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.Storage/storageAccounts/xplattestadls1446/listKeys?api-version=2016-01-01')
+  .reply(200, "{\"keys\":[{\"keyName\":\"key1\",\"permissions\":\"Full\",\"value\":\"0fX3Qfy83zlevTMjuwZylaK9mkgS97yYpeYcUX38piJryP5k1c7wWbwLAlzmiyQVNSilQBj0z2rtK421RayruA==\"},{\"keyName\":\"key2\",\"permissions\":\"Full\",\"value\":\"1WaxCX7667RuxYtUhMxJwrvsxD34IRmFSUFS9L7sbQsIcKfdbxqAQA9xg9b3hXEgw6U/lmJG/1vvAr6zFQm0OA==\"}]}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',
@@ -48,8 +48,8 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.Storage/storageAccounts/xplattestadls1446/listKeys?api-version=2015-06-15')
-  .reply(200, "{\"key1\":\"8lCsbmF+O9qGqi8CWeJ5f/on+SqXEg2CyYwZhkb6agp4SNmCUZwGrVTyO6Dv2ujopefZgMoZByBUuRgyXL90Zw==\",\"key2\":\"uIxCBK7jXOa0WObPHmCZM6Nvwm6cO2WHJIhlQ0mszy3Mc5zl85ixhSTMkMmjnhzvsA6Ola8mX/LnW4mzy3v1bA==\"}\n", { 'cache-control': 'no-cache',
+  .post('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.Storage/storageAccounts/xplattestadls1446/listKeys?api-version=2016-01-01')
+  .reply(200, "{\"keys\":[{\"keyName\":\"key1\",\"permissions\":\"Full\",\"value\":\"0fX3Qfy83zlevTMjuwZylaK9mkgS97yYpeYcUX38piJryP5k1c7wWbwLAlzmiyQVNSilQBj0z2rtK421RayruA==\"},{\"keyName\":\"key2\",\"permissions\":\"Full\",\"value\":\"1WaxCX7667RuxYtUhMxJwrvsxD34IRmFSUFS9L7sbQsIcKfdbxqAQA9xg9b3hXEgw6U/lmJG/1vvAr6zFQm0OA==\"}]}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '198',
   'content-type': 'application/json',

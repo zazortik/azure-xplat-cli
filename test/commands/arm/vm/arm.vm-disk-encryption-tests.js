@@ -105,7 +105,7 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge);
         vmTest.createGroup(groupName, location, suite, function(result) {
           var cmd = util.format(
-            'storage account create %s --resource-group %s --type %s --location %s --json',
+            'storage account create %s --resource-group %s --sku-name %s --kind Storage --location %s --json',
             storageAccount, groupName, stoType, location).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);

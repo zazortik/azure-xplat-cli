@@ -121,13 +121,13 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
-            var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount).split(' ');
+            var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount2).split(' ');
+              var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount2).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount3).split(' ');
+                var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount3).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   var cmd = util.format('network vnet create %s %s %s -a 10.0.0.0/16 --json', groupName, vNetPrefix, location).split(' ');

@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -30,28 +30,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway/publicdiagnostics')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway/publicdiagnostics')
   .reply(200, "<GatewayPublicDiagnosticsStatus xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><PublicDiagnosticsUrl/><State>StopInProgress</State></GatewayPublicDiagnosticsStatus>", { 'cache-control': 'no-cache',
   'content-length': '219',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '237d0f7d059e90009caee0b1ed3e8a67',
-  date: 'Mon, 25 Apr 2016 09:31:18 GMT',
+  'x-ms-request-id': 'ea466ff490db9a90b44bb1d402e6e1e5',
+  date: 'Fri, 22 Apr 2016 10:28:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway/publicdiagnostics')
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway/publicdiagnostics')
   .reply(200, "<GatewayPublicDiagnosticsStatus xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><PublicDiagnosticsUrl/><State>StopInProgress</State></GatewayPublicDiagnosticsStatus>", { 'cache-control': 'no-cache',
   'content-length': '219',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '237d0f7d059e90009caee0b1ed3e8a67',
-  date: 'Mon, 25 Apr 2016 09:31:18 GMT',
+  'x-ms-request-id': 'ea466ff490db9a90b44bb1d402e6e1e5',
+  date: 'Fri, 22 Apr 2016 10:28:53 GMT',
   connection: 'close' });
  return result; }]];

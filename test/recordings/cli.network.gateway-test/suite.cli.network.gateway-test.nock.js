@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['CliGtTestVnet9897','CliGtTestLocNetwork5468','clivpnstorage4285','clivpncont5072'];};
+ exports.randomTestIdsGenerated = function() { return ['CliGtTestVnet3384','CliGtTestLocNetwork8695','clivpnstorage8516','clivpncont4613'];};

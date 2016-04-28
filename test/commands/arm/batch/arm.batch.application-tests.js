@@ -62,7 +62,7 @@ describe('arm', function () {
             result.exitStatus.should.equal(0);
 
             setTimeout(function () {
-              suite.execute('storage account create %s --resource-group %s --location %s --type LRS --json', autoStorageAccountName, resourceGroupName, location, function (result) {
+              suite.execute('storage account create %s --resource-group %s --location %s --sku-name LRS --kind Storage --json', autoStorageAccountName, resourceGroupName, location, function (result) {
                 result.exitStatus.should.equal(0);
                   
                 suite.execute('storage account show %s --resource-group %s --json', autoStorageAccountName, resourceGroupName, function (result) {

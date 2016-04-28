@@ -8236,6 +8236,14 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--type <type>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--type",
+                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
+                },
+                {
                   "flags": "-e, --label <label>",
                   "required": -13,
                   "optional": 0,
@@ -8270,14 +8278,6 @@
                   "short": "-l",
                   "long": "--location",
                   "description": "the location"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -8323,6 +8323,14 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--type <type>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--type",
+                  "description": "the account type(LRS/GRS/RAGRS)"
+                },
+                {
                   "flags": "-e, --label <label>",
                   "required": -13,
                   "optional": 0,
@@ -8339,14 +8347,6 @@
                   "short": "-d",
                   "long": "--description",
                   "description": "the storage account description"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/GRS/RAGRS)"
                 },
                 {
                   "flags": "-s, --subscription <id>",
