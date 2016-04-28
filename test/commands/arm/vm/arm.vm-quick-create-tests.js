@@ -110,7 +110,9 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm redeploy %s %s', groupName, vm1Prefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
+          if (result.exitStatus !== 0) {
+            result.text.should.containEql('redeployment failed due to an internal error. Please retry later.');
+          }
           done();
         });
       });
