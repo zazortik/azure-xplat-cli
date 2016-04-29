@@ -8023,7 +8023,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the single task or multiple tasks object to create in JSON format"
+                  "description": "the file containing either a single task object or an array of task objects in JSON format"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -8201,7 +8201,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--subtasks",
-                  "description": "to show the subtasks information"
+                  "description": "display information about the subtasks of a multi-instance task"
                 },
                 {
                   "flags": "--select-clause <selectClause>",
