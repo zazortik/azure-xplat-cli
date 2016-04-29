@@ -3902,7 +3902,7 @@
             },
             {
               "name": "set",
-              "description": "Update the properties of a job",
+              "description": "Patch/Update the properties of a job",
               "fullName": "batch job set",
               "usage": "[options] [jobId] [json-file]",
               "filePath": "commands/batch/batch.job._js",
@@ -3939,7 +3939,7 @@
                   "bool": true,
                   "short": "-i",
                   "long": "--id",
-                  "description": "the id of the job whose properties you want to update"
+                  "description": "the id of the job whose properties you want to patch/update"
                 },
                 {
                   "flags": "-f, --json-file <json-file>",
@@ -3948,16 +3948,16 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job properties to update in JSON format"
+                  "description": "the file containing the job properties to patch/update in JSON format"
                 },
                 {
-                  "flags": "-p, --patch",
+                  "flags": "-r, --replace",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "short": "-p",
-                  "long": "--patch",
-                  "description": "uses patch instead of update"
+                  "short": "-r",
+                  "long": "--replace",
+                  "description": "uses update instead of patch"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -4797,7 +4797,7 @@
             },
             {
               "name": "set",
-              "description": "Update the properties of the specified job schedule",
+              "description": "Patch/Update the properties of the specified job schedule",
               "fullName": "batch job-schedule set",
               "usage": "[options] [jobScheduleId] [json-file]",
               "filePath": "commands/batch/batch.jobSchedule._js",
@@ -4834,7 +4834,7 @@
                   "bool": true,
                   "short": "-i",
                   "long": "--id",
-                  "description": "the id of the job schedule to update"
+                  "description": "the id of the job schedule to patch/update"
                 },
                 {
                   "flags": "-f, --json-file <json-file>",
@@ -4843,16 +4843,16 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job schedule properties to update in JSON format"
+                  "description": "the file containing the job schedule properties to patch/update in JSON format"
                 },
                 {
-                  "flags": "-p, --patch",
+                  "flags": "-r, --replace",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "short": "-p",
-                  "long": "--patch",
-                  "description": "uses patch instead of update"
+                  "short": "-r",
+                  "long": "--replace",
+                  "description": "uses update instead of patch"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -6558,6 +6558,91 @@
               ]
             },
             {
+              "name": "list-usage-metrics",
+              "description": "List Batch pool usage metrics",
+              "fullName": "batch pool list-usage-metrics",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--start-time <start-time>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-time",
+                  "description": "the earliest time from which to include metrics"
+                },
+                {
+                  "flags": "--end-time <end-time>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-time",
+                  "description": "the latest time from which to include metrics"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
               "name": "show",
               "description": "Show information about the specified Batch pool",
               "fullName": "batch pool show",
@@ -6644,6 +6729,67 @@
                   "bool": true,
                   "long": "--if-unmodified-since",
                   "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "show-all-stats",
+              "description": "Show lifetime summary statistics for all of the pools",
+              "fullName": "batch pool show-all-stats",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -6786,7 +6932,7 @@
             },
             {
               "name": "set",
-              "description": "Update the properties of the specified Batch pool",
+              "description": "Patch/Update the properties of the specified Batch pool",
               "fullName": "batch pool set",
               "usage": "[options] [pool-id] [json-file]",
               "filePath": "commands/batch/batch.pool._js",
@@ -6832,16 +6978,16 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the updated pool properties to apply in JSON format"
+                  "description": "the file containing the patch/update pool properties to apply in JSON format"
                 },
                 {
-                  "flags": "-p, --patch",
+                  "flags": "-r, --replace",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "short": "-p",
-                  "long": "--patch",
-                  "description": "uses patch instead of update"
+                  "short": "-r",
+                  "long": "--replace",
+                  "description": "uses update instead of patch"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -6972,9 +7118,421 @@
                   "description": "the Batch account URL"
                 }
               ]
+            },
+            {
+              "name": "resize",
+              "description": "Resize (or stop resizing) the Batch pool",
+              "fullName": "batch pool resize",
+              "usage": "[options] [pool-id] [target-dedicated]",
+              "filePath": "commands/batch/batch.pool._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch pool id"
+                },
+                {
+                  "flags": "--abort",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--abort",
+                  "description": "stop resizing"
+                },
+                {
+                  "flags": "--target-dedicated <target-dedicated>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--target-dedicated",
+                  "description": "the dedicated VM count to resize"
+                },
+                {
+                  "flags": "--resize-timeout <resize-timeout>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--resize-timeout",
+                  "description": "the timeout for allocation of compute nodes to the pool or removal of compute nodes from the pool"
+                },
+                {
+                  "flags": "--deallocate-option <deallocate-option>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--deallocate-option",
+                  "description": "sets when nodes may be removed from the pool, if the pool size is decreasing"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "autoscale": {
+              "name": "autoscale",
+              "description": "Commands to manage autoscale of your Batch pools",
+              "fullName": "batch pool autoscale",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "disable",
+                  "description": "Disable autoscale at the Batch pool",
+                  "fullName": "batch pool autoscale disable",
+                  "usage": "[options] [pool-id]",
+                  "filePath": "commands/batch/batch.pool._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --id <pool-id>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--id",
+                      "description": "the Batch pool id"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "enable",
+                  "description": "Enable autoscale at the Batch pool",
+                  "fullName": "batch pool autoscale enable",
+                  "usage": "[options] [pool-id]",
+                  "filePath": "commands/batch/batch.pool._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --id <pool-id>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--id",
+                      "description": "the Batch pool id"
+                    },
+                    {
+                      "flags": "--autoscale-formula <autoscale-formula>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--autoscale-formula",
+                      "description": "the autoscale formula"
+                    },
+                    {
+                      "flags": "--autoscale-evaluation-interval <autoscale-evaluation-interval>",
+                      "required": -33,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--autoscale-evaluation-interval",
+                      "description": "the time interval for the desired autoscale evaluation period"
+                    },
+                    {
+                      "flags": "--if-match <if-match>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--if-match",
+                      "description": "only perform if resource's ETag is an exact match to the specified value"
+                    },
+                    {
+                      "flags": "--if-none-match <if-none-match>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--if-none-match",
+                      "description": "only perform if resource's ETag does not match the specified value"
+                    },
+                    {
+                      "flags": "--if-modified-since <if-modified-since>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--if-modified-since",
+                      "description": "only perform if the resource has been modified since the specified time"
+                    },
+                    {
+                      "flags": "--if-unmodified-since <if-unmodified-since>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--if-unmodified-since",
+                      "description": "only perform if the resource has not been modified since the specified time"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "evaluate",
+                  "description": "Evaluate autoscale at the Batch pool",
+                  "fullName": "batch pool autoscale evaluate",
+                  "usage": "[options] [pool-id] [autoscale-formula]",
+                  "filePath": "commands/batch/batch.pool._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --id <pool-id>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--id",
+                      "description": "the Batch pool id"
+                    },
+                    {
+                      "flags": "-f, --autoscale-formula <autoscale-formula>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--autoscale-formula",
+                      "description": "the autoscale formula"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "subscription": {
           "name": "subscription",
@@ -7083,7 +7641,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the task object to create in JSON format"
+                  "description": "the file containing the single task or multiple tasks object to create in JSON format"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -7254,6 +7812,14 @@
                   "bool": true,
                   "long": "--id",
                   "description": "the Batch task id"
+                },
+                {
+                  "flags": "--subtasks",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subtasks",
+                  "description": "to show the subtasks information"
                 },
                 {
                   "flags": "--select-clause <selectClause>",
@@ -7507,6 +8073,124 @@
                   "short": "-f",
                   "long": "--json-file",
                   "description": "the file containing the updated task properties to apply in JSON format"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "stop",
+              "description": "Terminate the specified Batch task",
+              "fullName": "batch task stop",
+              "usage": "[options] [jobId] [taskId]",
+              "filePath": "commands/batch/batch.task._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--job-id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--job-id",
+                  "description": "the Batch job id"
+                },
+                {
+                  "flags": "--id <taskId>",
+                  "required": -6,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--id",
+                  "description": "the Batch task id"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "terminate the specified Batch task without confirmation"
                 },
                 {
                   "flags": "--if-match <if-match>",
