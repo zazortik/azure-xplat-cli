@@ -16,7 +16,8 @@
   * Updated `azure-asm-network` package to 0.11.0
 * ResourceManager
   * Fixed #2810 - Prettify json output before writing to file for RG export and deployment save commands
-  * Added support to display nested error message when template deployment fails via `azure group deployment create/validate` command
+  * Policy commands added for: creating, updating, deleting and getting policy definitions and policy assignments
+  * Fixed the issue related to bubbling up nested error messages for the deployments. With this fix, user will get more meaningful error messages when the deployment fails.
 * Compute
   * Update Tests
   * AVSet Command
