@@ -97,7 +97,7 @@
     "through": "2.3.4",
     "tunnel": "0.0.2",
     "underscore": "1.4.x",
-    "validator": "~3.1.0",
+    "validator": "5.2.0",
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",
