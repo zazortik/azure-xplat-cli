@@ -289,7 +289,7 @@ describe('arm', function () {
           });
         });
       });
-      it('delete should delete micrsoft express-route peering', function (done) {
+      it('delete should delete microsoft express-route peering', function (done) {
         var cmd = 'network express-route peering delete {group} {expressRCName} {peeringName} -q --json'.formatArgs(microsoftPeeringProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
