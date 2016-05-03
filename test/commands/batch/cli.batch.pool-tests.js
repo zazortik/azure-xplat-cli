@@ -186,7 +186,7 @@ describe('cli', function () {
     });
 
     it('should list usage metrics on the pools under the account', function (done) {
-      suite.execute('batch pool list-usage-metrics --account-name %s --account-key %s --account-endpoint %s --json', 
+      suite.execute('batch pool usage-metrics list --account-name %s --account-key %s --account-endpoint %s --json', 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
       {
         result.exitStatus.should.equal(0);
@@ -265,7 +265,7 @@ describe('cli', function () {
     });
 
     it('should list node agent skus', function (done) {
-      suite.execute('batch pool list-node-agent-skus --account-name %s --account-key %s --account-endpoint %s --json',  
+      suite.execute('batch pool node-agent-skus list --account-name %s --account-key %s --account-endpoint %s --json',  
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
         result.exitStatus.should.equal(0);
         var skus = JSON.parse(result.text);
