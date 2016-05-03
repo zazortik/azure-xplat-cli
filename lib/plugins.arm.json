@@ -6186,11 +6186,11 @@
                   "description": "the name of the user account to be created"
                 },
                 {
-                  "flags": "-p, --user-password [user-password]",
+                  "flags": "-w, --user-password [user-password]",
                   "required": 0,
                   "optional": -21,
                   "bool": true,
-                  "short": "-p",
+                  "short": "-w",
                   "long": "--user-password",
                   "description": "the password of the user account"
                 },
@@ -6404,11 +6404,11 @@
                   "description": "the name of the user account to update"
                 },
                 {
-                  "flags": "-p, --user-password [user-password]",
+                  "flags": "-w, --user-password [user-password]",
                   "required": 0,
                   "optional": -21,
                   "bool": true,
-                  "short": "-p",
+                  "short": "-w",
                   "long": "--user-password",
                   "description": "the password of the user account"
                 },
