@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '4be8920b-2978-43d7-ab14-04d8549c1d05',
+    name: 'OSTC Shanghai Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension4496','xplatstoragext1374','xplatstoragecntext932','xplatdnsext7212'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension531','xplatstoragext46','xplatstoragecntext9249','xplatdnsext5311'];};

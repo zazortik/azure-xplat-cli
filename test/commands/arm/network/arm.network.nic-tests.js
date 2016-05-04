@@ -108,8 +108,8 @@ describe('arm', function () {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createVnet(groupName, vnetName, location, vnetAddressSpace, suite, function () {
             networkUtil.createSubnet(groupName, vnetName, subnetName, subnetAddressPrefix, suite, function (subnet) {
-              var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIP} -r {internalDns} -f {disForward} -t {tags} -u {1} --json'
-                .formatArgs(nicProp, subnet.id);
+              var cmd = util.format('network nic create -g {group} -n {name} -l {location} -a {privateIP} -r {internalDns} ' +
+                '-f {disForward} -t {tags} -u {1} --json').formatArgs(nicProp, subnet.id);
 
               testUtils.executeCommand(suite, retry, cmd, function (result) {
                 result.exitStatus.should.equal(0);
@@ -128,8 +128,8 @@ describe('arm', function () {
       it('set should modify nic with nsg and public ip by ids', function (done) {
         networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
           networkUtil.createNSG(groupName, nsgName, location, suite, function (nsg) {
-            var cmd = 'network nic set -g {group} -n {name} -a {newPrivateIP} -r {newInternalDns} -f {enabForward} -t {newTags} -i {1} -w {2} --json'
-              .formatArgs(nicProp, publicIp.id, nsg.id);
+            var cmd = util.format('network nic set -g {group} -n {name} -a {newPrivateIP} -r {newInternalDns} -f {enabForward} ' +
+              '-t {newTags} -i {1} -w {2} --json').formatArgs(nicProp, publicIp.id, nsg.id);
 
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
@@ -212,8 +212,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('address-pool add should attach address pool by name', function (done) {
-        var cmd = 'network nic address-pool add -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
+      it('address-pool create should attach address pool by name', function (done) {
+        var cmd = 'network nic address-pool create -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -224,8 +224,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('address-pool remove should detach address-pool by name', function (done) {
-        var cmd = 'network nic address-pool remove -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
+      it('address-pool delete should detach address-pool by name', function (done) {
+        var cmd = 'network nic address-pool delete -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -236,7 +236,8 @@ describe('arm', function () {
         });
       });
       it('set should attach inbound nat rule by id', function (done) {
-        networkUtil.createInboundNatRule(groupName, lbName, inboundRuleName, protocol, frontendPort, backendPort, enableIp, idleTimeout, fipName, suite, function (natRule) {
+        networkUtil.createInboundNatRule(groupName, lbName, inboundRuleName, protocol, frontendPort, backendPort, enableIp, 
+          idleTimeout, fipName, suite, function (natRule) {
           var cmd = 'network nic set -g {group} -n {name} -e {1} --json'.formatArgs(nicProp, natRule.id);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -260,8 +261,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('inbound-nat-rule add should attach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule add -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+      it('inbound-nat-rule create should attach inbound nat rule by name', function (done) {
+        var cmd = 'network nic inbound-nat-rule create -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
@@ -272,8 +273,8 @@ describe('arm', function () {
           done();
         });
       });
-      it('inbound-nat-rule remove should detach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule remove -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+      it('inbound-nat-rule delete should detach inbound nat rule by name', function (done) {
+        var cmd = 'network nic inbound-nat-rule delete -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);

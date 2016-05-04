@@ -13,8 +13,7 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
-    registeredResourceNamespaces: [],
+    registeredProviders: ['website'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -22,42 +21,39 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION'] = 'South Central US';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/mytestrg005/providers/microsoft.insights/alertrules/chiricutin?api-version=2014-04-01')
+  .delete('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas?api-version=2016-03-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'dc7d8d22-2eeb-4d8d-9469-a92b7476fdfd',
+  'x-ms-request-id': 'e9f8fc23-bc88-4fdf-b716-685d5f6890fe',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-writes': '1176',
-  'x-ms-correlation-request-id': '61ad9a32-8e41-4b92-86d4-90994733152f',
-  'x-ms-routing-request-id': 'WESTUS:20150416T213014Z:61ad9a32-8e41-4b92-86d4-90994733152f',
-  date: 'Thu, 16 Apr 2015 21:30:14 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '9f7e7ec2-fff4-4e8e-a19f-aa2f6acb9336',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160317T170548Z:9f7e7ec2-fff4-4e8e-a19f-aa2f6acb9336',
+  date: 'Thu, 17 Mar 2016 17:05:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/mytestrg005/providers/microsoft.insights/alertrules/chiricutin?api-version=2014-04-01')
+  .delete('/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/alertrules/requestignhas?api-version=2016-03-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'dc7d8d22-2eeb-4d8d-9469-a92b7476fdfd',
+  'x-ms-request-id': 'e9f8fc23-bc88-4fdf-b716-685d5f6890fe',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-ratelimit-remaining-subscription-writes': '1176',
-  'x-ms-correlation-request-id': '61ad9a32-8e41-4b92-86d4-90994733152f',
-  'x-ms-routing-request-id': 'WESTUS:20150416T213014Z:61ad9a32-8e41-4b92-86d4-90994733152f',
-  date: 'Thu, 16 Apr 2015 21:30:14 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '9f7e7ec2-fff4-4e8e-a19f-aa2f6acb9336',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160317T170548Z:9f7e7ec2-fff4-4e8e-a19f-aa2f6acb9336',
+  date: 'Thu, 17 Mar 2016 17:05:48 GMT',
   connection: 'close' });
  return result; }]];

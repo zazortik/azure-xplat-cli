@@ -445,16 +445,7 @@ describe('arm', function () {
             result.exitStatus.should.be.equal(0);
             var permissionJson = JSON.parse(result.text);
             permissionJson.entries.length.should.be.above(initialEntryNum);
-            // now attempt to remove the default permissions from the ACL spec. This is not currently allowed and should fail.
-            suite.execute('datalake store permissions delete --accountName %s --path %s --defaultAcl --quiet --json', filesystemAccountName, permissionFolder, function (result) {
-              result.exitStatus.should.be.equal(1);
-              // now we remove the entire ACL. Currently, we do not have ACLs that are inherited since we only support one root ACL.
-              // as such, this will currently fail/be prevented.
-              suite.execute('datalake store permissions delete --accountName %s --path %s --quiet --json', filesystemAccountName, permissionFolder, function (result) {
-                result.exitStatus.should.be.equal(1);
-                done();            
-             });
-           });
+            done();            
           });
         });
       });

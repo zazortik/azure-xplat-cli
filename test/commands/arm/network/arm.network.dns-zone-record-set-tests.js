@@ -140,7 +140,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(aProp, suite, done);
       });
       it('set should modify a record-set', function (done) {
-        var cmd = 'network dns record-set set -g {group} -z {zoneName} -n {name} -y {type} -l {newTtl} -t {newTags} --json'.formatArgs(aProp);
+        var cmd = 'network dns record-set set -g {group} -z {zoneName} -n {name} -y {type} -l {newTtl} -t {newTags} --json'
+          .formatArgs(aProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var aSet = JSON.parse(result.text);

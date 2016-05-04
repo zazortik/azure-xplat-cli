@@ -1,3 +1,96 @@
+##2016-04-19 Version 0.9.20
+* Fix computer name prefix issue in vmss quick-create command
+* Fix FD/UD parameter issue in availset create command
+* Added Azure Container Service set of CLI commands.
+  * container config create/patch
+  * container config parameter [options] set/delete
+  * container create [options] <resource-group> <name>
+  * container delete [options] <resource-group> <name>
+  * container show [options] <resource-group> <name>
+  * container list [options] <resource-group>
+* Enabled Telemetry for data-collection for command usage and exception tracking
+* Fixed issues #2274 #2731, #2732, #2747, #2754 and updated node.js installation steps on linux systems
+* Fixed structuring of cdn commands
+* Added BlackForest Environment to the list of supported environments
+* Network
+  * Added --gateway-type option to create VPN or ExpressRoute gateways, 
+  * Renamed --type option  to --vpn-type in `network vpn-gateway create` command
+  * Used dedicated verbs for consistency
+    * azure network nic address-pool add/remove -> create/delete
+    * azure network nic inbound-nat-rule add/remove -> create/delete
+    * azure network vpn-gateway root-cert add/remove -> create/delete
+    * azure network vpn-gateway revoked-cert add/remove -> create/delete
+  * Added ARM application gateways URL path maps support
+  * Added ARM app gateways url path map rules modifications support
+  * Improved network tests
+* Batch
+  * Added support for creating and displaying Batch Linux pools
+  * Updated the batch node-user create and set commands to support SSH keys for Linux users
+  * Added the batch pool list-node-agent-skus command
+  * Added the batch node get-remote-login-settings command
+  * Added the batch application package related commands
+* ResourceManager
+  * Add policy definition commands
+  * Add policy assignment commands
+* Improved insight commands in the PR #2721 and #2716
+* Backup
+  * Added command remove-backup [resource-group] [name] to remove VM backups
+  * VM backup creation for Linux VMs
+  * Added new command disable-disk-encryption that disables encryption on Windows VMs, there's no support for Linux VMs
+  * Enable and disable encryption commands now use version 1.1.. of the AzureDiskEncryption extension
+  * Enable and disable commands support now --disable-auto-upgrade-minor-version switch
+  * Enable/Disable encryption and show status commands now support new encryption setting: ‘enabled’
+  * Enable encryption command only allows encryption of data volumes for Linux VMs
+* Added --platform-update-domain-count, --platform-fault-domain-count options to availset create command in asm
+
+##2016-03-30 Version 0.9.19
+* Graph-RBAC
+  * RBAC cmdlets consuming new graph version
+* Batch
+  * Added batch management and service commands
+* HDInsight
+  * Added commands for managing HDInsight script actions: create, persisted, and history.
+* CDN
+  * Added commands for CDN Management in ARM mode
+* Insights
+  * Introduced log profiles commands for CLI
+  * Introducing actions and webhooks to alerts and autoscale
+  * Splitting alert creation command into three separate commands: one for metrics, one for logs, one for webtest
+  * Using latest version of Insights SDK
+* DataLake
+  * Migrated to Autorest generated node sdk
+* ResourceManager
+  * Added debugSetting parameter for group deployment create
+  * Added group export command
+  * Added group deployment template download command
+  * Brought back the validation step when submitting an ARM deployment
+  * Fixed tests
+* VM
+  * Added more tests for command "azure vm enable-aem"
+  * Fixed storage account name case sensitive issue for command "azure vm enable-aem"
+  * Updated vm commands to consume Compute API Version to 2016-03-30
+  * Updated Linux Diagnostic version to 2.3
+  * Added VMSS Commands
+  * Added VM Redeploy Command
+* Network 
+  * vnet/lb/publicip/nic/nsg/traffic-manager profile/express-route circuit list commands now support --resource-group as optional parameter for backward compatibility
+  * Removed extra-error message when authorization item was not found
+  * Fixed network dns zone import for record sets with multiple records of type A
+  * Fixed dns record-set create regression issue which throws exception 'The record set of type '<...>' cannot be null'
+  * Fixed 'azure network public-ip list' command  to output 'IP Address' column
+  * Added support for --default-site-id and --default-site-name options to attach Local Network Gateway as Default Site for VPN Gateway in 'azure network vpn-gateway create/set' commands
+  * Added prompt for --priority if not specified
+  * Changed default values to '*''network nsg rule create'
+  * Added support for --sku-name option in 'network vpn-gateway create/set' commands
+  * Added support for --address-prefixes option in 'network vpn-gateway create/set'
+  * Implemented commands for vpn gateways to manage Root/Revoked Certificates
+  * Fixed incorrect properties of provider in the listProviders method #2667
+* General
+  * Fixed #2619, #2579
+  * Improved warn output to respect --json option
+  * Implemented ARM network application gateways commands
+  * Fixed silly logging of Buffer types in the cli 
+
 ##2016-03-11 Version 0.9.18
 * Upgraded Graph to 1.6-internal api-version and consumed it in ad commands
 * Fixed issue #2619, #2616

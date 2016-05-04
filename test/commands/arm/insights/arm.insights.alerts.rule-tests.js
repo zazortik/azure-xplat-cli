@@ -41,10 +41,15 @@ describe('arm', function () {
         var location;
         var description;
         var windowSize;
+        var operationName;
+        var actions;
 
         before(function(done) {
           suite = new CLITest(this, testprefix, requiredEnvironment);
           suite.setupSuite(done);
+          
+          // suite.execute('insights alerts rule metric set CPU westus %s 00:05:00 GreaterThan 1 %s %s Total', 'Default-Web-WestUS', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2', 'CPU Time', function (result) { });
+          // suite.execute('insights alerts rule metric set requestignhas westus %s 00:05:00 GreaterThan 5 %s Requests Total', 'Default-Web-WestUS', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2', function (result) { });
         });
 
         after(function(done) {
@@ -53,10 +58,12 @@ describe('arm', function () {
 
         beforeEach(function(done) {
           suite.setupTest(function () {
-            resourceId = '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/mytestrg005/providers/Microsoft.Web/sites/mytestweb005';
-            location = 'East US';
+            resourceId = '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2';
+            location = 'westus';
             description = 'Pura vida';
             windowSize = '00:05:00';
+            operationName = 'microsoft.web/sites/delete';
+            actions = '[{\"customEmails\":[\"gu@ms.com\"],\"type\":\"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\"}, {\"serviceUri\":\"http://foo.com\",\"properties\":{\"key1\":\"value1\"},\"type\":\"Microsoft.Azure.Management.Insights.Models.RuleWebhookAction\"}]';
             done();
           });
         });
@@ -67,21 +74,21 @@ describe('arm', function () {
 
         describe('list', function() {
           it('should work with rg only', function(done) {
-            suite.execute('insights alerts rule list %s --json', 'mytestrg005', function(result) {
+            suite.execute('insights alerts rule list %s --json', 'Default-Web-WestUS', function(result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
               if (suite.isPlayback()) {
-                      response.length.should.equal(5);
+                      response.length.should.equal(7);
 
-                      response[0].name.should.equal('CPUHigh mytestwhp005');
+                      response[1].name.should.equal('CPU');
               }
 
               __.each(response, function(record) {
                 record.should.have.property('properties');
                 record.should.have.property('tags');
 
-                record.properties.should.have.property('action');
+                record.properties.should.have.property('actions');
                 record.properties.should.have.property('condition');
               });
 
@@ -90,21 +97,22 @@ describe('arm', function () {
           });
       
           it('should work with target resource id', function (done) {
-            suite.execute('insights alerts rule list %s -i %s --json', 'mytestrg005', resourceId, function (result) {
+            suite.execute('insights alerts rule list %s -i %s --json', 'Default-Web-WestUS', resourceId, function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
               if (suite.isPlayback()) {
-                      response.length.should.equal(3);
-                    
-                      response[0].name.should.equal('ForbiddenRequests mytestweb005');
+                response.length.should.equal(2);
+
+                response[1].should.have.property('name');
+                response[1].name.should.equal('requestignhas');
               }
               
               __.each(response, function (record) {
                 record.should.have.property('properties');
                 record.should.have.property('tags');
                 
-                record.properties.should.have.property('action');
+                record.properties.should.have.property('actions');
                 record.properties.should.have.property('condition');
               });
 
@@ -113,17 +121,17 @@ describe('arm', function () {
           });
       
           it('should work with target rule name', function (done) {
-            suite.execute('insights alerts rule list %s -n %s --json', 'mytestrg005', 'requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda', function (result) {
+            suite.execute('insights alerts rule list %s -n %s --json', 'Default-Web-WestUS', 'requestignhas', function (result) {
               result.exitStatus.should.equal(0);
 
               var response = JSON.parse(result.text);
               if (suite.isPlayback()) {
                       response.length.should.equal(1);
                    
-                      response[0].name.should.equal('requestignhas-7c5d03cd-6715-4a7e-9eee-639a8fa38eda');
+                      response[0].name.should.equal('requestignhas');
                       response[0].should.have.property('properties');
                       // response[0].should.have.property('tags');
-                      response[0].properties.should.have.property('action');
+                      response[0].properties.should.have.property('actions');
                       response[0].properties.should.have.property('condition');
               }
 
@@ -134,7 +142,7 @@ describe('arm', function () {
 
         describe('set', function () {
           it('should work for metric rules', function (done) {
-            suite.execute('insights alerts rule set Metric chiricutin %s mytestrg005 -o GreaterThan --threshold 2 --windowSize %s --resourceId %s --metricName Requests --description %s --timeAggregationOperator Total --json', location, windowSize, resourceId, description, function (result) {
+            suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --description %s --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', description, function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
@@ -142,15 +150,14 @@ describe('arm', function () {
               response.should.have.property('statusCode');
               response.should.have.property('requestId');
               
-              response.statusCode.should.equal(201);
-              response.requestId.should.equal('9d77e298-b3ac-4b1a-b3d8-54f6cb6776cd');
+              response.statusCode.should.equal(200);
 
               done();
             });
           });
 
-          it('should disable a rule', function (done) {
-            suite.execute('insights alerts rule set Metric chiricutin %s mytestrg005 -o GreaterThan --threshold 2 --windowSize %s --resourceId %s --metricName Requests --description %s --timeAggregationOperator Total --disable --json', location, windowSize, resourceId, description, function (result) {
+          it('should disable a metric rule', function (done) {
+            suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --description %s --disable --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', description, function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
@@ -159,8 +166,98 @@ describe('arm', function () {
               response.should.have.property('requestId');
               
               response.statusCode.should.equal(200);
-              response.requestId.should.equal('ce9ed823-9658-4d5e-bca8-8a261d042522');
 
+              done();
+            });
+          });
+          
+          it('should work for metric rules with actions', function (done) {
+            suite.execute('insights alerts rule metric set requestignhas %s %s %s GreaterThan 1 %s %s Total --actions %s --description %s --json', location, 'Default-Web-WestUS', windowSize, resourceId, 'Requests', actions, description, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(201);
+              
+              done();
+            });
+          });
+
+          it('should work for log rules', function (done) {
+            suite.execute('insights alerts rule log set logRule %s mytestrg005 create -d %s --json', 'East US', description, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
+              done();
+            });
+          });
+          
+          it('should work for log rules with actions', function (done) {
+            suite.execute('insights alerts rule log set logRuleActions %s mytestrg005 create --actions %s -d %s --json', 'East US', actions, description, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
+              done();
+            });
+          });
+
+          it('should disable a log rule', function (done) {
+            suite.execute('insights alerts rule log set logRule %s mytestrg005 create -d %s --disable --json', 'East US', description, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
+              done();
+            });
+          });
+
+          it.skip('should work for webtest rules', function (done) {
+            suite.execute('insights alerts rule webtest set %s %s %s %s %s %s %s --json', 'leowebtestr1-webtestr1', 'eastus', 'Default-Web-WestUS', windowSize, 1, 'GSMT_AvRaw', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1', function (result) {
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
+              done();
+            });
+          });
+          
+          it.skip('should disable a webtest rule', function (done) {
+            suite.execute('insights alerts rule webtest set %s %s %s %s %s %s %s --disable --json', 'leowebtestr1-webtestr1', '"East US"', 'Default-Web-WestUS', windowSize, 1, 'GSMT_AvRaw', '/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1', function (result) {
+
+              result.exitStatus.should.equal(0);
+              
+              var response = JSON.parse(result.text);
+              
+              response.should.have.property('statusCode');
+              response.should.have.property('requestId');
+              
+              response.statusCode.should.equal(200);
+              
               done();
             });
           });
@@ -168,7 +265,11 @@ describe('arm', function () {
 
         describe('delete', function () {
           it('should work', function (done) {
-            suite.execute('insights alerts rule delete mytestrg005 chiricutin --json', function (result) {
+            // NOTE: this must be executed before all the tests (it is not working in 'before')
+            // 'node bin\azure insights alerts rule metric set CPU westus Default-Web-WestUS 00:05:00 GreaterThan 1 /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2 CpuTime Total'
+            // 'node bin\azure insights alerts rule metric set requestignhas westus Default-Web-WestUS 00:05:00 GreaterThan 5 /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web/sites/minuevositio2 Requests Total
+
+            suite.execute('insights alerts rule delete %s requestignhas --json', 'Default-Web-WestUS', function (result) {
               result.exitStatus.should.equal(0);
               
               var response = JSON.parse(result.text);
@@ -177,7 +278,6 @@ describe('arm', function () {
               response.should.have.property('requestId');
 
               response.statusCode.should.equal(200);
-              response.requestId.should.equal('dc7d8d22-2eeb-4d8d-9469-a92b7476fdfd');
 
               done();
             });

@@ -39,7 +39,7 @@ describe('arm', function () {
     var testLocation;
     var normalizedTestLocation;
     var originalSetTimeout = setTimeout;
-
+    
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       if (suite.isPlayback()) {
@@ -49,7 +49,7 @@ describe('arm', function () {
       }
       suite.setupSuite(done);
     });
-
+    
     after(function (done) {
       if (suite.isPlayback()) {
         setTimeout = originalSetTimeout;
@@ -64,11 +64,11 @@ describe('arm', function () {
         done();
       });
     });
-
+    
     afterEach(function (done) {
       suite.teardownTest(done);
     });
-
+    
     function cleanup(done) {
       function deleteGroups(index, callback) {
         if (index === createdGroups.length) {
@@ -78,23 +78,30 @@ describe('arm', function () {
           deleteGroups(index + 1, callback);
         });
       }
-
+      
       deleteGroups(cleanedUpGroups, function () {
         cleanedUpGroups = createdGroups.length;
         done();
       });
     }
-
+    
     function setUniqParameterNames(suite, filename) {
       //no need to create unique parameter values in playbackmode
       var deploymentParameters = JSON.parse(fs.readFileSync(filename).toString());
       if (deploymentParameters.parameters) {
         deploymentParameters = deploymentParameters.parameters;
       }
-      var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
-      var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
-      deploymentParameters.siteName.value = siteName;
-      deploymentParameters.hostingPlanName.value = hostingPlanName;
+      
+      if (filename.indexOf('nested') > -1) {
+        var storageAccountName = suite.generateId('sdkdeploymenttest', [], suite.isMocked);
+        deploymentParameters.StorageAccountName.value = storageAccountName;
+      } else {
+        var siteName = suite.generateId('xDeploymentTestSite1', [], suite.isMocked);
+        var hostingPlanName = suite.generateId('xDeploymentTestHost2', [], suite.isMocked);
+        deploymentParameters.siteName.value = siteName;
+        deploymentParameters.hostingPlanName.value = hostingPlanName;
+      }
+      
       if (!suite.isPlayback()) {
         fs.writeFileSync(filename, JSON.stringify(deploymentParameters, null, 2));
       }
@@ -268,7 +275,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -m Complete -q --json',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s -m Complete -d All -q --json',
             templateFile, groupName, deploymentName, parameterFile);
         var templateContent = JSON.parse(testUtil.stripBOM(fs.readFileSync(templateFile)));
         var outputTextToValidate = Object.keys(templateContent.outputs)[0];
@@ -278,16 +285,23 @@ describe('arm', function () {
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
             result.text.indexOf(outputTextToValidate).should.be.above(-1);
+            
+            suite.execute('group deployment template download -g %s -n %s -q', groupName, deploymentName, function (result) {
+              result.exitStatus.should.equal(0);
+              result.text.indexOf('Deployment template downloaded to').should.be.above(-1);
 
-            suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
-              showResult.exitStatus.should.equal(0);
-              showResult.text.indexOf(deploymentName).should.be.above(-1);
-              showResult.text.indexOf('Complete').should.be.above(-1);
+              suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
+                showResult.exitStatus.should.equal(0);
+                showResult.text.indexOf(deploymentName).should.be.above(-1);
+                showResult.text.indexOf('Complete').should.be.above(-1);
+                showResult.text.indexOf('RequestContent').should.be.above(-1);
+                
+                suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
+                  listResult.exitStatus.should.equal(0);
+                  listResult.text.indexOf(deploymentName).should.be.above(-1);
+                  cleanup(done);
+                });
 
-              suite.execute('group deployment list -g %s --json', groupName, function (listResult) {
-                listResult.exitStatus.should.equal(0);
-                listResult.text.indexOf(deploymentName).should.be.above(-1);
-                cleanup(done);
               });
             });
           });
@@ -363,6 +377,26 @@ describe('arm', function () {
           suite.execute('group deployment create -f %s -g %s -n %s -p %s --json', templateFile, groupName, deploymentName, parameterString, function (result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.match(/.*Deployment template validation failed.*/i);
+            cleanup(done);
+          });
+        });
+      });
+
+      it('should show nested error messages when deployments with nested templates fail', function (done) {
+        var parameterFile = path.join(__dirname, '../../../data/nestedTemplate-parameters.json');
+        setUniqParameterNames(suite, parameterFile);
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
+        var templateUri = 'https://raw.githubusercontent.com/vivsriaus/armtemplates/master/testNestedTemplateFail.json';
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s',
+            templateUri, groupName, deploymentName, parameterFile);
+        
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(0);
+            result.text.indexOf('RequestDisallowedByPolicy').should.be.below(0);
             cleanup(done);
           });
         });

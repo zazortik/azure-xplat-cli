@@ -74,6 +74,7 @@ popd
 
 # generate command metadata file
 pushd /tmp/azureInstallerTemporary
+echo "{\"telemetry\": true}" > ~/.azure/telemetry.json
 node bin/azure --gen
 popd
 

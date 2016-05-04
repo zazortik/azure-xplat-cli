@@ -1,0 +1,55 @@
+{
+  "schedule": {
+    "startWindow": "P2D",
+    "recurrenceInterval": "P1D"
+  },
+  "jobSpecification": {
+    "priority": 1,
+    "displayName": "jobSpecDisplayName2",
+    "constraints": {
+      "maxWallClockTime": "P1D",
+      "maxTaskRetryCount": 5
+    },
+    "jobManagerTask": {
+      "id": "jobManager2",
+      "displayName": "jobManagerDisplay",
+      "commandLine": "cmd /c dir /s",
+      "resourceFiles": [
+        {
+          "blobSource": "https://testacct.blob.core.windows.net/",
+          "filePath": "filePath"
+        }
+      ],
+      "killJobOnCompletion": false,
+      "runElevated": false
+    },
+    "poolInfo": {
+      "autoPoolSpecification": {
+        "autoPoolIdPrefix": "TestSpecPrefix",
+        "poolLifetimeOption": "jobschedule",
+        "keepAlive": false,
+        "pool": {
+          "vmSize": "small",
+		  "cloudServiceConfiguration": { 
+            "osFamily": "4",
+            "targetOSVersion": "*"
+		  },
+          "targetDedicated": 3,
+          "startTask": {
+            "commandLine": "cmd /c dir /s"
+          }
+        }
+      }
+    }
+  },
+  "metadata": [
+    {
+      "name": "meta3",
+      "value": "value3"
+    },
+    {
+      "name": "meta4",
+      "value": "value4"
+    }
+  ]
+}
