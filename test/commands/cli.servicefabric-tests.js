@@ -16,9 +16,9 @@
 'use strict';
 
 var should = require('should');
-var CLITest = require('../../../framework/arm-cli-test');
-var testUtil = require('../../../util/util');
-var utils = require('../../../../lib/util/utils');
+var CLITest = require('../framework/arm-cli-test');
+var testUtil = require('../util/util');
+var utils = require('../../lib/util/utils');
 
 
 var testprefix = 'arm-cli-servicefabric-tests';
@@ -26,7 +26,7 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
 ];
-var httpEndpoint = 'http://127.0.0.1:10550';
+var httpEndpoint = 'http://10.91.140.195:10550';
 var applicationPackagePath = '/media/share/StatelessPi';
 var applicationPackageName = 'StatelessPi';
 var applicationTypeName = 'StatelessPiServiceApp';

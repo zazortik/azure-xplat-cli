@@ -1486,7 +1486,7 @@
             },
             {
               "name": "create",
-              "description": "Create application",
+              "description": "Create application, Example: azure servicefabric application create --application-name fabric:/app --application-type-name type1 --application-type-version 1.0",
               "fullName": "servicefabric application create",
               "usage": "[options] [applicationName] [applicationTypeName] [applicationTypeVersion] [applicationParameter]",
               "filePath": "commands/serviceFabricApplication._js",
@@ -1714,7 +1714,7 @@
                 },
                 {
                   "name": "register",
-                  "description": "Register application type",
+                  "description": "Register application type, Example: azure servicefabric application type register --application-type-build-path Package1",
                   "fullName": "servicefabric application type register",
                   "usage": "[options] [applicationTypeBuildPath]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -3489,7 +3489,7 @@
           "commands": [
             {
               "name": "copy",
-              "description": "Copy application package",
+              "description": "Copy application package, Example: azure servicefabric application-package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
               "fullName": "servicefabric application-package copy",
               "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
               "filePath": "commands/serviceFabricPackage._js",
@@ -3520,27 +3520,27 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationPackagePath <applicationPackagePath>",
-                  "required": -26,
+                  "flags": "--application-package-path <applicationPackagePath>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePath",
+                  "long": "--application-package-path",
                   "description": "the path of the application package"
                 },
                 {
-                  "flags": "--imageStoreConnectionString <imageStoreConnectionString>",
-                  "required": -30,
+                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--imageStoreConnectionString",
+                  "long": "--image-store-connection-string",
                   "description": "the string of the image store connection"
                 },
                 {
-                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
-                  "required": -38,
+                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                  "required": -43,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePathInImageStore",
+                  "long": "--application-package-path-in-image-store",
                   "description": "the path of the application package in image store"
                 }
               ]
@@ -3578,27 +3578,27 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationPackagePath <applicationPackagePath>",
-                  "required": -26,
+                  "flags": "--application-package-path <applicationPackagePath>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePath",
+                  "long": "--application-package-path",
                   "description": "the path of the application package"
                 },
                 {
-                  "flags": "--imageStoreConnectionString <imageStoreConnectionString>",
-                  "required": -30,
+                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--imageStoreConnectionString",
+                  "long": "--image-store-connection-string",
                   "description": "the string of the image store connection"
                 },
                 {
-                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
-                  "required": -38,
+                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                  "required": -43,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePathInImageStore",
+                  "long": "--application-package-path-in-image-store",
                   "description": "the path of the application package in image store"
                 }
               ]
@@ -3636,27 +3636,19 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationPackagePath <applicationPackagePath>",
-                  "required": -26,
+                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                  "required": -33,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePath",
-                  "description": "the path of the application package"
-                },
-                {
-                  "flags": "--imageStoreConnectionString <imageStoreConnectionString>",
-                  "required": -30,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--imageStoreConnectionString",
+                  "long": "--image-store-connection-string",
                   "description": "the string of the image store connection"
                 },
                 {
-                  "flags": "--applicationPackagePathInImageStore <applicationPackagePathInImageStore>",
-                  "required": -38,
+                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                  "required": -43,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationPackagePathInImageStore",
+                  "long": "--application-package-path-in-image-store",
                   "description": "the path of the application package in image store"
                 }
               ]
@@ -4946,7 +4938,7 @@
             },
             {
               "name": "create",
-              "description": "Create service",
+              "description": "Create service, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
               "fullName": "servicefabric service create",
               "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [hasPersistedState] [partitionScheme] [partitionCount] [partitionNames] [partitionLowKey] [partitionHighKey] [placementConstraints] [correlationSchema] [serviceLoadMetrics] [servicePlacementPolicyDescription]",
               "filePath": "commands/serviceFabricService._js",
