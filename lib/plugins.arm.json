@@ -54016,7 +54016,7 @@
                   "name": "create",
                   "description": "Create express route peering",
                   "fullName": "network express-route peering create",
-                  "usage": "[options] <resource-group> <circuit-name> <peering-name>",
+                  "usage": "[options] <resource-group> <circuit-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -54063,12 +54063,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --peering-name <peering-name>",
-                      "required": -20,
+                      "flags": "-n, --name <name>",
+                      "required": -12,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--peering-name",
+                      "long": "--name",
                       "description": "the name of the express route circuit peering"
                     },
                     {
@@ -54203,7 +54203,7 @@
                   "name": "set",
                   "description": "Set express route peering",
                   "fullName": "network express-route peering set",
-                  "usage": "[options] <resource-group> <circuit-name> <peering-name>",
+                  "usage": "[options] <resource-group> <circuit-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -54250,12 +54250,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --peering-name <peering-name>",
-                      "required": -20,
+                      "flags": "-n, --name <name>",
+                      "required": -12,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--peering-name",
+                      "long": "--name",
                       "description": "the name of the express route circuit peering"
                     },
                     {
@@ -54381,7 +54381,7 @@
                   "name": "show",
                   "description": "Get peering details",
                   "fullName": "network express-route peering show",
-                  "usage": "[options] <resource-group> <circuit-name> <peering-name>",
+                  "usage": "[options] <resource-group> <circuit-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -54428,12 +54428,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --peering-name <peering-name>",
-                      "required": -20,
+                      "flags": "-n, --name <name>",
+                      "required": -12,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--peering-name",
+                      "long": "--name",
                       "description": "the name of the express route circuit express route peering"
                     },
                     {
@@ -54512,7 +54512,7 @@
                   "name": "delete",
                   "description": "Delete express route peering",
                   "fullName": "network express-route peering delete",
-                  "usage": "[options] <resource-group> <circuit-name> <peering-name>",
+                  "usage": "[options] <resource-group> <circuit-name> <name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -54559,12 +54559,12 @@
                       "description": "the name of the express route circuit"
                     },
                     {
-                      "flags": "-n, --peering-name <peering-name>",
-                      "required": -20,
+                      "flags": "-n, --name <name>",
+                      "required": -12,
                       "optional": 0,
                       "bool": true,
                       "short": "-n",
-                      "long": "--peering-name",
+                      "long": "--name",
                       "description": "the name of the express route circuit express route peering"
                     },
                     {
