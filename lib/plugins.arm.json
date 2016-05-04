@@ -40084,7 +40084,15 @@
               "bool": true,
               "short": "-s",
               "long": "--subscription",
-              "description": "the subscription identifier"
+              "description": "The subscription identifier"
+            },
+            {
+              "flags": "--no-self-perms",
+              "required": 0,
+              "optional": 0,
+              "bool": false,
+              "long": "--no-self-perms",
+              "description": "If specified, don't add permissions for the current user in the new vault"
             }
           ]
         },
