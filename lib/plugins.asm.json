@@ -17281,7 +17281,7 @@
     },
     "hdinsight": {
       "name": "hdinsight",
-      "description": "Commands to manage HDInsight clusters and jobs",
+      "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters and jobs",
       "fullName": "hdinsight",
       "usage": "[options]",
       "options": [],
@@ -17289,14 +17289,14 @@
       "categories": {
         "cluster": {
           "name": "cluster",
-          "description": "Commands to manage HDInsight clusters",
+          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters",
           "fullName": "hdinsight cluster",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "Create a cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCreate a cluster",
               "fullName": "hdinsight cluster create",
               "usage": "[options] <clusterName> <osType> <storageAccountName> <storageAccountKey> <storageContainer> <dataNodeCount> <headNodeSize> <dataNodeSize> <location> <userName> <password> <sshUserName> <sshPassword>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17443,7 +17443,7 @@
             },
             {
               "name": "delete",
-              "description": "Delete a cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nDelete a cluster",
               "fullName": "hdinsight cluster delete",
               "usage": "[options] <clusterName> <location> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17510,7 +17510,7 @@
             },
             {
               "name": "show",
-              "description": "Show cluster details",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nShow cluster details",
               "fullName": "hdinsight cluster show",
               "usage": "[options] <clusterName> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17569,7 +17569,7 @@
             },
             {
               "name": "list",
-              "description": "List the clusters",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nList the clusters",
               "fullName": "hdinsight cluster list",
               "usage": "[options]",
               "filePath": "commands/asm/hdinsight._js",
@@ -17606,14 +17606,14 @@
         },
         "job": {
           "name": "job",
-          "description": "Commands to manage HDInsight jobs",
+          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight jobs",
           "fullName": "hdinsight job",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "hive_create",
-              "description": "Submits a Hive job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Hive job to an HdInsight cluster",
               "fullName": "hdinsight job hive_create",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17720,7 +17720,7 @@
             },
             {
               "name": "mr_create",
-              "description": "Submits a MapReduce job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a MapReduce job to an HdInsight cluster",
               "fullName": "hdinsight job mr_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <className> <jarFile>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17835,7 +17835,7 @@
             },
             {
               "name": "mr_streaming_create",
-              "description": "Submits a Streaming MapReduce job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Streaming MapReduce job to an HdInsight cluster",
               "fullName": "hdinsight job mr_streaming_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <mapper> <reducer>",
               "filePath": "commands/asm/hdinsight._js",
@@ -17974,7 +17974,7 @@
             },
             {
               "name": "show",
-              "description": "Retrieves the details of the specified job from an HDInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the details of the specified job from an HDInsight cluster",
               "fullName": "hdinsight job show",
               "usage": "[options] <clusterDnsName> <userName> <password> <jobId>",
               "filePath": "commands/asm/hdinsight._js",
@@ -18049,7 +18049,7 @@
             },
             {
               "name": "list",
-              "description": "Retrieves the list of jobs from the specified HDInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the list of jobs from the specified HDInsight cluster",
               "fullName": "hdinsight job list",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
