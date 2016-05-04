@@ -78,6 +78,7 @@
     "github": "0.1.6",
     "fast-json-patch": "0.5.6",
     "js2xmlparser": "1.0.0",
+    "jsonlint": "1.6.2",
     "jsrsasign": "4.8.2 ",
     "kuduscript": "1.0.6",
     "moment": "^2.8.0",
