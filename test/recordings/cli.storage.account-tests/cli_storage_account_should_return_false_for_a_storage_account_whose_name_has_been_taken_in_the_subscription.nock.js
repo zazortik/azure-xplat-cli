@@ -13,7 +13,9 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -33,10 +35,10 @@ nock('http://management.core.windows.net:443')
   .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>A storage account named 'xplat' already exists in the subscription.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
   'content-length': '253',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '8ee8d994b4a20751bd34b0893752595f',
-  date: 'Mon, 17 Aug 2015 08:34:06 GMT',
+  'x-ms-request-id': 'a5557bfb78dba25cba4be5185d36f235',
+  date: 'Fri, 22 Apr 2016 14:11:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,9 +48,9 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>A storage account named 'xplat' already exists in the subscription.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
   'content-length': '253',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '8ee8d994b4a20751bd34b0893752595f',
-  date: 'Mon, 17 Aug 2015 08:34:06 GMT',
+  'x-ms-request-id': 'a5557bfb78dba25cba4be5185d36f235',
+  date: 'Fri, 22 Apr 2016 14:11:08 GMT',
   connection: 'close' });
  return result; }]];

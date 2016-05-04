@@ -6,13 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    name: 'CollaberaInteropTest',
-    user: {
-      name: 'user@domain.example',
-      type: 'user'
+    id: 'e33f361b-53c2-4cc7-b829-78906708387b',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    name: 'Microsoft Azure Internal Consumption',
     registeredProviders: [],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -21,9 +20,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'West US';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'East US';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [[]];
- exports.randomTestIdsGenerated = function() { return ['clitestvm606'];};
+ exports.randomTestIdsGenerated = function() { return ['clitestvm4476'];};

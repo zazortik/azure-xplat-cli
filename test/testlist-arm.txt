@@ -31,29 +31,24 @@ commands/arm/insights/arm.insights.usage-tests.js
 #commands/arm/keyvault/arm.keyvault-tests.js
 #commands/arm/keyvault/arm.keyvault-key-tests.js
 #commands/arm/keyvault/arm.keyvault-secret-tests.js
-commands/arm/vm/arm.vm-create-tests.js
-commands/arm/vm/arm.vm-quick-create-tests.js
+# START - Compute Tests
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
 commands/arm/vm/arm.vm-docker-tests.js
 commands/arm/vm/arm.vm-docker-ssh-tests.js
 commands/arm/vm/arm.vm-create-generate-ssh-tests.js
-commands/arm/vm/arm.vm.extension-tests.js
-commands/arm/vm/arm.vm.size-tests.js
-commands/arm/vm/arm.vm-image-list-tests.js
-commands/arm/vm/arm.vm-usage-tests.js
-commands/arm/vm/arm.availset-tests.js
-commands/arm/batch/arm.batch.account-tests.js
-commands/arm/batch/arm.batch.subscription-tests.js
-commands/arm/batch/arm.batch.application-tests.js
-# Extension Tests
-commands/arm/vm/arm.vm.enable-aem-tests.js
-commands/arm/vm/arm.vm.enable-aem-tests.no-wad.js
-commands/arm/vm/arm.vm-disk-encryption-tests.js
-commands/arm/vm/arm.vm-disk-encryption-extension-tests.js
 include:./testlist-arm-vm.txt
 include:./testlist-arm-vmss.txt
 include:./testlist-arm-container.txt
+# Extension Tests
+commands/arm/vm/arm.vm.extension-tests.js
+commands/arm/vm/arm.vm.enable-aem-tests.js
+commands/arm/vm/arm.vm.enable-aem-tests.no-wad.js
+commands/arm/vm/arm.vm-disk-encryption-extension-tests.js
+# END - Compute Tests
+commands/arm/batch/arm.batch.account-tests.js
+commands/arm/batch/arm.batch.subscription-tests.js
+commands/arm/batch/arm.batch.application-tests.js
 commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js

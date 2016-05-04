@@ -6,11 +6,11 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '4be8920b-2978-43d7-ab14-04d8549c1d05',
-    name: 'OSTC Shanghai Test',
+    id: '45b60d85-fd72-427a-a708-f994d26e593e',
+    name: 'Azure Storage DM Staging',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension531','xplatstoragext46','xplatstoragecntext9249','xplatdnsext5311'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension9100','xplatstoragext2451','xplatstoragecntext4381','xplatdnsext7473'];};
