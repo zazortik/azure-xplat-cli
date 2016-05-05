@@ -47163,7 +47163,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--priority",
-                      "description": "the priority [100-4096]"
+                      "description": "the priority [undefined-undefined]"
                     },
                     {
                       "flags": "-r, --direction <direction>",
