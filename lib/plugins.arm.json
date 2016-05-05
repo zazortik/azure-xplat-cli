@@ -53061,20 +53061,20 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-n, --gateway-name <gateway-name>",
+                      "flags": "-w, --gateway-name <gateway-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
-                      "short": "-n",
+                      "short": "-w",
                       "long": "--gateway-name",
                       "description": "the name of the application gateway"
                     },
                     {
-                      "flags": "-c, --name <name>",
+                      "flags": "-n, --name <name>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
-                      "short": "-c",
+                      "short": "-n",
                       "long": "--name",
                       "description": "the name of the certificate"
                     },
@@ -53149,20 +53149,20 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-n, --gateway-name <gateway-name>",
+                      "flags": "-w, --gateway-name <gateway-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
-                      "short": "-n",
+                      "short": "-w",
                       "long": "--gateway-name",
                       "description": "the name of the application gateway"
                     },
                     {
-                      "flags": "-c, --name <name>",
+                      "flags": "-n, --name <name>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
-                      "short": "-c",
+                      "short": "-n",
                       "long": "--name",
                       "description": "the name of the certificate"
                     },
@@ -53787,20 +53787,20 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-n, --gateway-name <gateway-name>",
+                      "flags": "-w, --gateway-name <gateway-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
-                      "short": "-n",
+                      "short": "-w",
                       "long": "--gateway-name",
                       "description": "the name of the application gateway"
                     },
                     {
-                      "flags": "-b, --name <name>",
+                      "flags": "-n, --name <name>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
-                      "short": "-b",
+                      "short": "-n",
                       "long": "--name",
                       "description": "the name of the HTTP settings"
                     },
@@ -53884,20 +53884,20 @@
                       "description": "the name of the resource group"
                     },
                     {
-                      "flags": "-n, --gateway-name <gateway-name>",
+                      "flags": "-w, --gateway-name <gateway-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
-                      "short": "-n",
+                      "short": "-w",
                       "long": "--gateway-name",
                       "description": "the name of the application gateway"
                     },
                     {
-                      "flags": "-b, --name <name>",
+                      "flags": "-n, --name <name>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
-                      "short": "-b",
+                      "short": "-n",
                       "long": "--name",
                       "description": "the name of the HTTP settings"
                     },
@@ -54909,7 +54909,7 @@
                           "bool": true,
                           "short": "-n",
                           "long": "--name",
-                          "description": "the name of the map"
+                          "description": "the name of the map rule"
                         },
                         {
                           "flags": "-q, --quiet",
