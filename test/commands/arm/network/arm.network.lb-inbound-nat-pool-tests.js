@@ -82,8 +82,8 @@ describe('arm', function () {
     describe('lb-inbound-nat-pool', function () {
       it('create should create inbound nat pool in load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
                 var cmd = util.format('network lb inbound-nat-pool create -g {group} -l {lbName} -n {name} -p {protocol} ' +
                   '-f {frontendPortRangeStart} -e {frontendPortRangeEnd} -b {backendPort} -i {1} --json').formatArgs(poolProp, fip.name);
