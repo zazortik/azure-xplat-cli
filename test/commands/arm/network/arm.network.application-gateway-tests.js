@@ -210,7 +210,7 @@ describe('arm', function () {
         });
       });
 
-      it('frontend-ip create should create public frontend ip in application gateway ', function (done) {
+      it('frontend-ip create should create public frontend ip in application gateway', function (done) {
         networkUtil.createPublicIpLegacy(gatewayProp.group, gatewayProp.publicIpName, gatewayProp.location, suite, function () {
           var cmd = 'network application-gateway frontend-ip create {group} {name} {frontendIpName} -p {publicIpName} --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -312,7 +312,7 @@ describe('arm', function () {
         });
       });
 
-      it('probe create should create probe in application gateway ', function (done) {
+      it('probe create should create probe in application gateway', function (done) {
         networkUtil.createPublicIpLegacy(groupName, gatewayProp.probePublicIpName, gatewayProp.location, suite, function () {
           var cmd = util.format('network application-gateway probe create {group} {name} {probeName} -o {port} -p {httpProtocol} ' +
             '-d {hostName} -f {path} -i {interval} -u {timeout} -e {unhealthyThreshold} --json').formatArgs(gatewayProp);
