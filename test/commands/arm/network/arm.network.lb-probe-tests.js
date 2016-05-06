@@ -86,8 +86,8 @@ describe('arm', function () {
     describe('lb probe', function () {
       it('create should create probe', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function () {
                 var cmd = util.format('network lb probe create -g {group} -l {lbName} -n {name} -p {protocol} -o {port} ' +
                   '-f {requestPath} -i {intervalInSeconds} -c {numberOfProbes} --json').formatArgs(probeProp);
