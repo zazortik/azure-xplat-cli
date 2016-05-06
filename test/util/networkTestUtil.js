@@ -233,23 +233,24 @@ _.extend(NetworkTestUtil.prototype, {
       callback(circuit);
     });
   },
-  setExpressRoute: function (expressRouteCircuitProps, suite, callback) {
+  setExpressRoute: function (circuitProps, suite, callback) {
     var self = this;
-    var cmd = util.format('network express-route circuit set {group} {expressRCName} {location} -e {skuTier} --json').formatArgs(expressRouteCircuitProps);
+    var cmd = util.format('network express-route circuit set {group} {name} {location} -e {skuTier} --json').formatArgs(circuitProps);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
 
-      var expressRouteCircuit = JSON.parse(result.text);
-      expressRouteCircuit.name.should.equal(expressRouteCircuitProps.expressRCName);
-      expressRouteCircuit.serviceProviderProperties.serviceProviderName.should.equal(expressRouteCircuitProps.serviceProvider);
-      expressRouteCircuit.serviceProviderProperties.peeringLocation.should.equal(expressRouteCircuitProps.peeringLocation);
-      expressRouteCircuit.serviceProviderProperties.bandwidthInMbps.should.equal(expressRouteCircuitProps.bandwidth);
-      expressRouteCircuit.sku.tier.should.equal(expressRouteCircuitProps.skuTier);
-      expressRouteCircuit.sku.family.should.equal(expressRouteCircuitProps.skuFamily);
-      self.shouldHaveTags(expressRouteCircuit);
-      self.shouldBeSucceeded(expressRouteCircuit);
+      var circuit = JSON.parse(result.text);
+      circuit.name.should.equal(circuitProps.name);
+      var provider = circuit.serviceProviderProperties;
+      provider.serviceProviderName.should.equal(circuitProps.serviceProviderName);
+      provider.peeringLocation.should.equal(circuitProps.peeringLocation);
+      provider.bandwidthInMbps.should.equal(circuitProps.bandwidthInMbps);
+      var sku = circuit.sku;
+      sku.tier.should.equal(circuitProps.skuTier);
+      sku.family.should.equal(circuitProps.skuFamily);
+      self.shouldHaveTags(circuit);
 
-      callback(expressRouteCircuit);
+      callback(circuit);
     });
   },
   createVpnGateway: function (gatewayProp, suite, callback) {

@@ -11,12 +11,12 @@ var _ = require('underscore');
 
 var groupName = 'xplatTestGroupERPeering',
   circuitProp = {
-    expressRCName: 'xplatExpressRouteCircuit',
-    serviceProvider: 'Interxion',
+    name: 'xplatExpressRouteCircuit',
+    serviceProviderName: 'Interxion',
     peeringLocation: 'London',
     skuTier: "Standard",
     skuFamily: 'MeteredData',
-    bandwidth: 50,
+    bandwidthInMbps: 50,
     tags: networkUtil.tags
   },
   privatePeeringProp = {
@@ -77,7 +77,7 @@ describe('arm', function () {
       suite.setupSuite(function () {
         circuitProp.location = process.env.AZURE_VM_TEST_LOCATION;
         circuitProp.group = suite.isMocked ? groupName : suite.generateId(groupName, null);
-        circuitProp.expressRCName = suite.isMocked ? circuitProp.expressRCName : suite.generateId(circuitProp.expressRCName, null);
+        circuitProp.name = suite.isMocked ? circuitProp.name : suite.generateId(circuitProp.name, null);
         privatePeeringProp.peeringName = suite.isMocked ? privatePeeringProp.peeringName : suite.generateId(privatePeeringProp.peeringName, null);
         done();
       });
@@ -97,7 +97,7 @@ describe('arm', function () {
     describe('express-route peering', function () {
       it('create private peering should pass', function (done) {
         networkUtil.createGroup(circuitProp.group, circuitProp.location, suite, function () {
-          networkUtil.createExpressRoute(circuitProp, suite, function () {
+          networkUtil.createExpressRouteCircuit(circuitProp, suite, function () {
             var cmd = util.format('network express-route peering create {group} {expressRCName} {peeringName} -y {type} ' +
                 '-p {peerAsn} -r {primaryAddress} -o {secondaryAddress} -i {vlanId} --json')
               .formatArgs(privatePeeringProp);
@@ -250,7 +250,7 @@ describe('arm', function () {
       });
 
       it('list should display all express-routes peerings from resource group', function (done) {
-        var cmd = 'network express-route peering list {group} {expressRCName} --json'.formatArgs(circuitProp);
+        var cmd = 'network express-route peering list {group} {name} --json'.formatArgs(circuitProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var allPeering = JSON.parse(result.text);
