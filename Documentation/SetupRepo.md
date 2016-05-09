@@ -1,7 +1,7 @@
 Setting up the Xplat CLI repo
 
 
-* Create a fork from the [repo](https://github.com/Azure/azure-xplat-cli)
+* Create a fork from the [repo](https://github.com/Azure/azure-xplat-cli). You will see a Fork button on the top right hand side of the repo page
 * Clone the forked repo at a location say “D:\sdk”
 ```
 git clone git@github.com:your-github-username/azure-xplat-cli.git
