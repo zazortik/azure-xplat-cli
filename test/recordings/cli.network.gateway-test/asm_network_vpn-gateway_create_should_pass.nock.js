@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -30,1988 +30,1904 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '3817',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1491',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '007028c4fbbba1bcb3e04db11f9ec0fa',
-  date: 'Mon, 25 Apr 2016 08:55:15 GMT',
+  'x-ms-request-id': 'db3e6eba24769e9582270cc7fcbdb01f',
+  date: 'Fri, 22 Apr 2016 09:51:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '3817',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1491',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '007028c4fbbba1bcb3e04db11f9ec0fa',
-  date: 'Mon, 25 Apr 2016 08:55:15 GMT',
+  'x-ms-request-id': 'db3e6eba24769e9582270cc7fcbdb01f',
+  date: 'Fri, 22 Apr 2016 09:51:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/locations')
-  .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Central US</Name><DisplayName>Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East US 2</Name><DisplayName>East US 2</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location></Locations>", { 'cache-control': 'no-cache',
-  'content-length': '34071',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/locations')
+  .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Central US</Name><DisplayName>Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East US 2</Name><DisplayName>East US 2</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location></Locations>", { 'cache-control': 'no-cache',
+  'content-length': '31403',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '41feb51b0db9aeccbd05845a1705c8f9',
-  date: 'Mon, 25 Apr 2016 08:55:17 GMT',
+  'x-ms-request-id': 'c4212a94260998ebb4ece71363a2e551',
+  date: 'Fri, 22 Apr 2016 09:51:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/locations')
-  .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Central US</Name><DisplayName>Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East US 2</Name><DisplayName>East US 2</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location></Locations>", { 'cache-control': 'no-cache',
-  'content-length': '34071',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/locations')
+  .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Central US</Name><DisplayName>Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East US 2</Name><DisplayName>East US 2</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location></Locations>", { 'cache-control': 'no-cache',
+  'content-length': '31403',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '41feb51b0db9aeccbd05845a1705c8f9',
-  date: 'Mon, 25 Apr 2016 08:55:17 GMT',
+  'x-ms-request-id': 'c4212a94260998ebb4ece71363a2e551',
+  date: 'Fri, 22 Apr 2016 09:51:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f5729c3e50cd9057acbd662360f13556',
-  date: 'Mon, 25 Apr 2016 08:55:19 GMT',
+  'x-ms-request-id': '6c8039e527b7950390d9627dfff6bde0',
+  date: 'Fri, 22 Apr 2016 09:51:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f5729c3e50cd9057acbd662360f13556',
-  date: 'Mon, 25 Apr 2016 08:55:19 GMT',
+  'x-ms-request-id': '6c8039e527b7950390d9627dfff6bde0',
+  date: 'Fri, 22 Apr 2016 09:51:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/f5729c3e50cd9057acbd662360f13556')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f5729c3e-50cd-9057-acbd-662360f13556</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/6c8039e527b7950390d9627dfff6bde0')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>6c8039e5-27b7-9503-90d9-627dfff6bde0</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a0099b7b8d80a78383fc5e2e3a42c624',
-  date: 'Mon, 25 Apr 2016 08:55:50 GMT',
+  'x-ms-request-id': '383b0b39b6eca4b9992494a1d16cb394',
+  date: 'Fri, 22 Apr 2016 09:52:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/f5729c3e50cd9057acbd662360f13556')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f5729c3e-50cd-9057-acbd-662360f13556</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/6c8039e527b7950390d9627dfff6bde0')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>6c8039e5-27b7-9503-90d9-627dfff6bde0</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a0099b7b8d80a78383fc5e2e3a42c624',
-  date: 'Mon, 25 Apr 2016 08:55:50 GMT',
+  'x-ms-request-id': '383b0b39b6eca4b9992494a1d16cb394',
+  date: 'Fri, 22 Apr 2016 09:52:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4173',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1847',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a2bac7b1c56c9889ac193968efe6c07b',
-  date: 'Mon, 25 Apr 2016 08:55:56 GMT',
+  'x-ms-request-id': '5f5cccc346c6a6ea88b06cd93e4f1dc4',
+  date: 'Fri, 22 Apr 2016 09:52:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4173',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1847',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a2bac7b1c56c9889ac193968efe6c07b',
-  date: 'Mon, 25 Apr 2016 08:55:56 GMT',
+  'x-ms-request-id': '5f5cccc346c6a6ea88b06cd93e4f1dc4',
+  date: 'Fri, 22 Apr 2016 09:52:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '4b12d5e21b44a70ab261b3e9049c6cde',
-  date: 'Mon, 25 Apr 2016 08:55:58 GMT',
+  'x-ms-request-id': '573aaa3dd9969081a7b2806453f084e8',
+  date: 'Fri, 22 Apr 2016 09:52:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '4b12d5e21b44a70ab261b3e9049c6cde',
-  date: 'Mon, 25 Apr 2016 08:55:58 GMT',
+  'x-ms-request-id': '573aaa3dd9969081a7b2806453f084e8',
+  date: 'Fri, 22 Apr 2016 09:52:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/4b12d5e21b44a70ab261b3e9049c6cde')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>4b12d5e2-1b44-a70a-b261-b3e9049c6cde</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/573aaa3dd9969081a7b2806453f084e8')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>573aaa3d-d996-9081-a7b2-806453f084e8</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '08e5498fdf61960c8980cc063e99a4ba',
-  date: 'Mon, 25 Apr 2016 08:56:29 GMT',
+  'x-ms-request-id': 'ff3d39d0502ca678a984a4298fb4a4eb',
+  date: 'Fri, 22 Apr 2016 09:52:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/4b12d5e21b44a70ab261b3e9049c6cde')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>4b12d5e2-1b44-a70a-b261-b3e9049c6cde</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/573aaa3dd9969081a7b2806453f084e8')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>573aaa3d-d996-9081-a7b2-806453f084e8</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '08e5498fdf61960c8980cc063e99a4ba',
-  date: 'Mon, 25 Apr 2016 08:56:29 GMT',
+  'x-ms-request-id': 'ff3d39d0502ca678a984a4298fb4a4eb',
+  date: 'Fri, 22 Apr 2016 09:52:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4292',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1966',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'bb53f29898c89f18bd7edb64f3619ef1',
-  date: 'Mon, 25 Apr 2016 08:56:30 GMT',
+  'x-ms-request-id': '85cf3d7d6cf99db2bd51cf9fe4010d50',
+  date: 'Fri, 22 Apr 2016 09:52:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4292',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1966',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'bb53f29898c89f18bd7edb64f3619ef1',
-  date: 'Mon, 25 Apr 2016 08:56:30 GMT',
+  'x-ms-request-id': '85cf3d7d6cf99db2bd51cf9fe4010d50',
+  date: 'Fri, 22 Apr 2016 09:52:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4292',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1966',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0318fad1ff55a8efa3833c65fb9faa9f',
-  date: 'Mon, 25 Apr 2016 08:56:37 GMT',
+  'x-ms-request-id': '73859031f57293ff9fd37b504f714904',
+  date: 'Fri, 22 Apr 2016 09:53:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4292',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '1966',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0318fad1ff55a8efa3833c65fb9faa9f',
-  date: 'Mon, 25 Apr 2016 08:56:37 GMT',
+  'x-ms-request-id': '73859031f57293ff9fd37b504f714904',
+  date: 'Fri, 22 Apr 2016 09:53:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2c5e5f2422afa47ab6b29d09fb802688',
-  date: 'Mon, 25 Apr 2016 08:56:39 GMT',
+  'x-ms-request-id': '939d36fed6b6900fb88546b57f14a38d',
+  date: 'Fri, 22 Apr 2016 09:53:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2c5e5f2422afa47ab6b29d09fb802688',
-  date: 'Mon, 25 Apr 2016 08:56:39 GMT',
+  'x-ms-request-id': '939d36fed6b6900fb88546b57f14a38d',
+  date: 'Fri, 22 Apr 2016 09:53:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/2c5e5f2422afa47ab6b29d09fb802688')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>2c5e5f24-22af-a47a-b6b2-9d09fb802688</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/939d36fed6b6900fb88546b57f14a38d')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>939d36fe-d6b6-900f-b885-46b57f14a38d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fd054584133aa9678a141868bd08b5a6',
-  date: 'Mon, 25 Apr 2016 08:57:10 GMT',
+  'x-ms-request-id': '2a5b3a1d2707a45596f4433233d90649',
+  date: 'Fri, 22 Apr 2016 09:53:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/2c5e5f2422afa47ab6b29d09fb802688')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>2c5e5f24-22af-a47a-b6b2-9d09fb802688</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/939d36fed6b6900fb88546b57f14a38d')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>939d36fe-d6b6-900f-b885-46b57f14a38d</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fd054584133aa9678a141868bd08b5a6',
-  date: 'Mon, 25 Apr 2016 08:57:10 GMT',
+  'x-ms-request-id': '2a5b3a1d2707a45596f4433233d90649',
+  date: 'Fri, 22 Apr 2016 09:53:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork5468\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4543',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork8695\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '2268',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '55d036f16370a78c8f1bd4d22d0f00f4',
-  date: 'Mon, 25 Apr 2016 08:57:12 GMT',
+  'x-ms-request-id': 'bea17f8fd4c9a09c82e525da2dab785f',
+  date: 'Fri, 22 Apr 2016 09:53:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork5468\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4543',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork8695\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '2268',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '55d036f16370a78c8f1bd4d22d0f00f4',
-  date: 'Mon, 25 Apr 2016 08:57:12 GMT',
+  'x-ms-request-id': 'bea17f8fd4c9a09c82e525da2dab785f',
+  date: 'Fri, 22 Apr 2016 09:53:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork5468\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4543',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork8695\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '2268',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c112275b22619e2aa54b53c6e627c717',
-  date: 'Mon, 25 Apr 2016 08:57:18 GMT',
+  'x-ms-request-id': '2f3cb53335e79007a046eb8328783df4',
+  date: 'Fri, 22 Apr 2016 09:53:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers>\r\n        <DnsServer name=\"dns-cli-1\" IPAddress=\"66.77.88.98\" />\r\n      </DnsServers>\r\n    </Dns>\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork5468\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"LocalNet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n      <LocalNetworkSite name=\"tryaVnet\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.1.0/11</AddressPrefix>\r\n        </AddressSpace>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"classic-cli-vnet2\" Location=\"South Central US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.2.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"backend\">\r\n            <AddressPrefix>192.168.2.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet9897\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"MyNetwork\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-2\">\r\n            <AddressPrefix>10.32.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"NetForGateway2\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"testnetwork1\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"tryaVnet\" Location=\"East US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/8</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/11</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"VnetForGateway\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <Gateway>\r\n          <ConnectionsToLocalNetwork>\r\n            <LocalNetworkSiteRef name=\"LocalNet\">\r\n              <Connection type=\"IPsec\" />\r\n            </LocalNetworkSiteRef>\r\n          </ConnectionsToLocalNetwork>\r\n        </Gateway>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
-  'content-length': '4543',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <LocalNetworkSites>\r\n      <LocalNetworkSite name=\"CliGtTestLocNetwork8695\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <VPNGatewayAddress>200.200.200.200</VPNGatewayAddress>\r\n      </LocalNetworkSite>\r\n    </LocalNetworkSites>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"CliGtTestVnet3384\" Location=\"West US\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/19</AddressPrefix>\r\n          </Subnet>\r\n          <Subnet name=\"GatewaySubnet\">\r\n            <AddressPrefix>10.1.32.0/29</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group emmasrp linuxa4\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.0.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group emma2012\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.1.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.1.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n      <VirtualNetworkSite name=\"Group Group-1 ubuntu14\" Location=\"East Asia\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.2.0.0/16</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"Subnet-1\">\r\n            <AddressPrefix>10.2.0.0/24</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '2268',
   'content-type': 'text/plain',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c112275b22619e2aa54b53c6e627c717',
-  date: 'Mon, 25 Apr 2016 08:57:18 GMT',
+  'x-ms-request-id': '2f3cb53335e79007a046eb8328783df4',
+  date: 'Fri, 22 Apr 2016 09:53:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '3bceeb2d933c992b95c83f51e7ad7eee',
-  date: 'Mon, 25 Apr 2016 08:57:20 GMT',
+  'x-ms-request-id': 'abdce07b3405985d836e911ca8f3c981',
+  date: 'Fri, 22 Apr 2016 09:53:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/media', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '3bceeb2d933c992b95c83f51e7ad7eee',
-  date: 'Mon, 25 Apr 2016 08:57:20 GMT',
+  'x-ms-request-id': 'abdce07b3405985d836e911ca8f3c981',
+  date: 'Fri, 22 Apr 2016 09:53:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/3bceeb2d933c992b95c83f51e7ad7eee')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>3bceeb2d-933c-992b-95c8-3f51e7ad7eee</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/abdce07b3405985d836e911ca8f3c981')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>abdce07b-3405-985d-836e-911ca8f3c981</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f7a2224501f39baba1449ef6fed7736c',
-  date: 'Mon, 25 Apr 2016 08:57:51 GMT',
+  'x-ms-request-id': '9b10302c33e69f3f9017d8748c6630a3',
+  date: 'Fri, 22 Apr 2016 09:54:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/3bceeb2d933c992b95c83f51e7ad7eee')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>3bceeb2d-933c-992b-95c8-3f51e7ad7eee</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/operations/abdce07b3405985d836e911ca8f3c981')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>abdce07b-3405-985d-836e-911ca8f3c981</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f7a2224501f39baba1449ef6fed7736c',
-  date: 'Mon, 25 Apr 2016 08:57:51 GMT',
+  'x-ms-request-id': '9b10302c33e69f3f9017d8748c6630a3',
+  date: 'Fri, 22 Apr 2016 09:54:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway', '*')
-  .reply(201, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway', '*')
+  .reply(201, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
   'content-length': '210',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5d4fe608f23f9f7eb1b22a9fbf8c66f2',
-  date: 'Mon, 25 Apr 2016 08:58:07 GMT',
+  'x-ms-request-id': '8a03457d288a9c9e9e8072a71cc5d08d',
+  date: 'Fri, 22 Apr 2016 09:54:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway', '*')
-  .reply(201, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
+.post('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway', '*')
+  .reply(201, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
   'content-length': '210',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5d4fe608f23f9f7eb1b22a9fbf8c66f2',
-  date: 'Mon, 25 Apr 2016 08:58:07 GMT',
+  'x-ms-request-id': '8a03457d288a9c9e9e8072a71cc5d08d',
+  date: 'Fri, 22 Apr 2016 09:54:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8bf9ec5c81c993258c21c00b9f81541e',
-  date: 'Mon, 25 Apr 2016 08:58:40 GMT',
+  'x-ms-request-id': '77ca7ea7f10fa1968de86fe9e018cc06',
+  date: 'Fri, 22 Apr 2016 09:55:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8bf9ec5c81c993258c21c00b9f81541e',
-  date: 'Mon, 25 Apr 2016 08:58:40 GMT',
+  'x-ms-request-id': '77ca7ea7f10fa1968de86fe9e018cc06',
+  date: 'Fri, 22 Apr 2016 09:55:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f940e647e7bfa811a54a3cf0be04af7d',
-  date: 'Mon, 25 Apr 2016 08:59:11 GMT',
+  'x-ms-request-id': '8b11d2c800b69bd1a4e86538855e8dc2',
+  date: 'Fri, 22 Apr 2016 09:55:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f940e647e7bfa811a54a3cf0be04af7d',
-  date: 'Mon, 25 Apr 2016 08:59:11 GMT',
+  'x-ms-request-id': '8b11d2c800b69bd1a4e86538855e8dc2',
+  date: 'Fri, 22 Apr 2016 09:55:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5a7bc309c9e192c5817c8862f2412eec',
-  date: 'Mon, 25 Apr 2016 08:59:42 GMT',
+  'x-ms-request-id': '0f66084522e69d1394e4efa5899668a3',
+  date: 'Fri, 22 Apr 2016 09:56:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5a7bc309c9e192c5817c8862f2412eec',
-  date: 'Mon, 25 Apr 2016 08:59:42 GMT',
+  'x-ms-request-id': '0f66084522e69d1394e4efa5899668a3',
+  date: 'Fri, 22 Apr 2016 09:56:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0555918a820caec09703806426fed128',
-  date: 'Mon, 25 Apr 2016 09:00:13 GMT',
+  'x-ms-request-id': '4b302a98bec8ac3eb4719b79b0874184',
+  date: 'Fri, 22 Apr 2016 09:56:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0555918a820caec09703806426fed128',
-  date: 'Mon, 25 Apr 2016 09:00:13 GMT',
+  'x-ms-request-id': '4b302a98bec8ac3eb4719b79b0874184',
+  date: 'Fri, 22 Apr 2016 09:56:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '85753f263234a723a1782d5b59e9c89e',
-  date: 'Mon, 25 Apr 2016 09:00:46 GMT',
+  'x-ms-request-id': '27476dfab0949220844a1ee280fddcb3',
+  date: 'Fri, 22 Apr 2016 09:57:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '85753f263234a723a1782d5b59e9c89e',
-  date: 'Mon, 25 Apr 2016 09:00:46 GMT',
+  'x-ms-request-id': '27476dfab0949220844a1ee280fddcb3',
+  date: 'Fri, 22 Apr 2016 09:57:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '6b70f7a2ae5599b09eec5849bca67e1d',
-  date: 'Mon, 25 Apr 2016 09:01:17 GMT',
+  'x-ms-request-id': 'c59eeab0afb39440b05f0a0523012093',
+  date: 'Fri, 22 Apr 2016 09:57:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '6b70f7a2ae5599b09eec5849bca67e1d',
-  date: 'Mon, 25 Apr 2016 09:01:17 GMT',
+  'x-ms-request-id': 'c59eeab0afb39440b05f0a0523012093',
+  date: 'Fri, 22 Apr 2016 09:57:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '478f1d54ae9e915c96a5b3dc60e899f6',
-  date: 'Mon, 25 Apr 2016 09:01:48 GMT',
+  'x-ms-request-id': 'd2704c653348ac309a39fbf2c027b4ad',
+  date: 'Fri, 22 Apr 2016 09:58:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '478f1d54ae9e915c96a5b3dc60e899f6',
-  date: 'Mon, 25 Apr 2016 09:01:48 GMT',
+  'x-ms-request-id': 'd2704c653348ac309a39fbf2c027b4ad',
+  date: 'Fri, 22 Apr 2016 09:58:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7421f393e8a290d2a1b07b293b371f78',
-  date: 'Mon, 25 Apr 2016 09:02:20 GMT',
+  'x-ms-request-id': '145fe047c938aa2e8c899873e3102a87',
+  date: 'Fri, 22 Apr 2016 09:59:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7421f393e8a290d2a1b07b293b371f78',
-  date: 'Mon, 25 Apr 2016 09:02:20 GMT',
+  'x-ms-request-id': '145fe047c938aa2e8c899873e3102a87',
+  date: 'Fri, 22 Apr 2016 09:59:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2aa8a73ad9259f579c6c279756670e7d',
-  date: 'Mon, 25 Apr 2016 09:02:51 GMT',
+  'x-ms-request-id': '3a157293a361957c9718c2b539fd594d',
+  date: 'Fri, 22 Apr 2016 09:59:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2aa8a73ad9259f579c6c279756670e7d',
-  date: 'Mon, 25 Apr 2016 09:02:51 GMT',
+  'x-ms-request-id': '3a157293a361957c9718c2b539fd594d',
+  date: 'Fri, 22 Apr 2016 09:59:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fbc204c2d45ba624bb4c75148cafbc4f',
-  date: 'Mon, 25 Apr 2016 09:03:22 GMT',
+  'x-ms-request-id': '2929bf372d9d9eedb209ec2160d2333c',
+  date: 'Fri, 22 Apr 2016 10:00:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fbc204c2d45ba624bb4c75148cafbc4f',
-  date: 'Mon, 25 Apr 2016 09:03:22 GMT',
+  'x-ms-request-id': '2929bf372d9d9eedb209ec2160d2333c',
+  date: 'Fri, 22 Apr 2016 10:00:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0ddcbf7e9177acd49fc73946ccf3de6e',
-  date: 'Mon, 25 Apr 2016 09:03:54 GMT',
+  'x-ms-request-id': 'a14d9bba78fc9f06938be2baaa70f54c',
+  date: 'Fri, 22 Apr 2016 10:00:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0ddcbf7e9177acd49fc73946ccf3de6e',
-  date: 'Mon, 25 Apr 2016 09:03:54 GMT',
+  'x-ms-request-id': 'a14d9bba78fc9f06938be2baaa70f54c',
+  date: 'Fri, 22 Apr 2016 10:00:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7e523ed7884f93ea8af4af464f3c0737',
-  date: 'Mon, 25 Apr 2016 09:04:26 GMT',
+  'x-ms-request-id': 'f72b2bbbc3aa9dd4af274cae2f99c971',
+  date: 'Fri, 22 Apr 2016 10:01:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7e523ed7884f93ea8af4af464f3c0737',
-  date: 'Mon, 25 Apr 2016 09:04:26 GMT',
+  'x-ms-request-id': 'f72b2bbbc3aa9dd4af274cae2f99c971',
+  date: 'Fri, 22 Apr 2016 10:01:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'de2f87d9e1cca660a979198b70331a58',
-  date: 'Mon, 25 Apr 2016 09:04:58 GMT',
+  'x-ms-request-id': '746b51de0e3a9ba7ac8b4a6be9c9158b',
+  date: 'Fri, 22 Apr 2016 10:01:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'de2f87d9e1cca660a979198b70331a58',
-  date: 'Mon, 25 Apr 2016 09:04:58 GMT',
+  'x-ms-request-id': '746b51de0e3a9ba7ac8b4a6be9c9158b',
+  date: 'Fri, 22 Apr 2016 10:01:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ffb7b206f921a5f4bbe12e09ece57be3',
-  date: 'Mon, 25 Apr 2016 09:05:29 GMT',
+  'x-ms-request-id': '5b9f739e25709308b6ffce626917d0ba',
+  date: 'Fri, 22 Apr 2016 10:02:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ffb7b206f921a5f4bbe12e09ece57be3',
-  date: 'Mon, 25 Apr 2016 09:05:29 GMT',
+  'x-ms-request-id': '5b9f739e25709308b6ffce626917d0ba',
+  date: 'Fri, 22 Apr 2016 10:02:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8ea620461876a01c8a36350e9c82e8b1',
-  date: 'Mon, 25 Apr 2016 09:06:01 GMT',
+  'x-ms-request-id': 'fb7e1b9785aa9f3da689c98678860f35',
+  date: 'Fri, 22 Apr 2016 10:02:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8ea620461876a01c8a36350e9c82e8b1',
-  date: 'Mon, 25 Apr 2016 09:06:01 GMT',
+  'x-ms-request-id': 'fb7e1b9785aa9f3da689c98678860f35',
+  date: 'Fri, 22 Apr 2016 10:02:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '3e041cdf1ce2a1d89cdd3532b7bba82f',
-  date: 'Mon, 25 Apr 2016 09:06:33 GMT',
+  'x-ms-request-id': 'e039a4a197f297f786d0612b3626a2ff',
+  date: 'Fri, 22 Apr 2016 10:03:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '3e041cdf1ce2a1d89cdd3532b7bba82f',
-  date: 'Mon, 25 Apr 2016 09:06:33 GMT',
+  'x-ms-request-id': 'e039a4a197f297f786d0612b3626a2ff',
+  date: 'Fri, 22 Apr 2016 10:03:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '4283208ef879af6eb335ad24e0c7f787',
-  date: 'Mon, 25 Apr 2016 09:07:04 GMT',
+  'x-ms-request-id': '16acdc13cce4950f9376a94712b3d0bd',
+  date: 'Fri, 22 Apr 2016 10:03:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '4283208ef879af6eb335ad24e0c7f787',
-  date: 'Mon, 25 Apr 2016 09:07:04 GMT',
+  'x-ms-request-id': '16acdc13cce4950f9376a94712b3d0bd',
+  date: 'Fri, 22 Apr 2016 10:03:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7e1e2e59ba60ac1c8302d8d883abe90a',
-  date: 'Mon, 25 Apr 2016 09:07:36 GMT',
+  'x-ms-request-id': '2e813d23aa9291558f5d37753fdc343c',
+  date: 'Fri, 22 Apr 2016 10:04:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7e1e2e59ba60ac1c8302d8d883abe90a',
-  date: 'Mon, 25 Apr 2016 09:07:36 GMT',
+  'x-ms-request-id': '2e813d23aa9291558f5d37753fdc343c',
+  date: 'Fri, 22 Apr 2016 10:04:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a770b97e37a092ba8505ea0d7c3e1945',
-  date: 'Mon, 25 Apr 2016 09:08:08 GMT',
+  'x-ms-request-id': '07ee7e62a54d9b88b3c0b2aa1f43a767',
+  date: 'Fri, 22 Apr 2016 10:04:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a770b97e37a092ba8505ea0d7c3e1945',
-  date: 'Mon, 25 Apr 2016 09:08:08 GMT',
+  'x-ms-request-id': '07ee7e62a54d9b88b3c0b2aa1f43a767',
+  date: 'Fri, 22 Apr 2016 10:04:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ac5322097faca941b276479a16f04d10',
-  date: 'Mon, 25 Apr 2016 09:08:40 GMT',
+  'x-ms-request-id': 'f5b813de31309f688fafb0fab27bf53b',
+  date: 'Fri, 22 Apr 2016 10:05:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ac5322097faca941b276479a16f04d10',
-  date: 'Mon, 25 Apr 2016 09:08:40 GMT',
+  'x-ms-request-id': 'f5b813de31309f688fafb0fab27bf53b',
+  date: 'Fri, 22 Apr 2016 10:05:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a1c77d9bb7eba09f9fcece91e5d6014c',
-  date: 'Mon, 25 Apr 2016 09:09:12 GMT',
+  'x-ms-request-id': '3b7633e126e99da4b809ed72f74ddbc4',
+  date: 'Fri, 22 Apr 2016 10:06:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'a1c77d9bb7eba09f9fcece91e5d6014c',
-  date: 'Mon, 25 Apr 2016 09:09:12 GMT',
+  'x-ms-request-id': '3b7633e126e99da4b809ed72f74ddbc4',
+  date: 'Fri, 22 Apr 2016 10:06:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '080e08251948972a84533883dbea20f2',
-  date: 'Mon, 25 Apr 2016 09:09:44 GMT',
+  'x-ms-request-id': '762e5b10a654967aa7dbf9b2030592fd',
+  date: 'Fri, 22 Apr 2016 10:06:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '080e08251948972a84533883dbea20f2',
-  date: 'Mon, 25 Apr 2016 09:09:44 GMT',
+  'x-ms-request-id': '762e5b10a654967aa7dbf9b2030592fd',
+  date: 'Fri, 22 Apr 2016 10:06:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c7a3335f5ec29282a0ab0d169edf16a1',
-  date: 'Mon, 25 Apr 2016 09:10:16 GMT',
+  'x-ms-request-id': '0e191746ce86a4eb833ee63cbadd0475',
+  date: 'Fri, 22 Apr 2016 10:07:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c7a3335f5ec29282a0ab0d169edf16a1',
-  date: 'Mon, 25 Apr 2016 09:10:16 GMT',
+  'x-ms-request-id': '0e191746ce86a4eb833ee63cbadd0475',
+  date: 'Fri, 22 Apr 2016 10:07:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '940d48e527c19e5a9bbe3e15a0439bdf',
-  date: 'Mon, 25 Apr 2016 09:10:47 GMT',
+  'x-ms-request-id': '820afc1941949526bdc79f8939c2f194',
+  date: 'Fri, 22 Apr 2016 10:07:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '940d48e527c19e5a9bbe3e15a0439bdf',
-  date: 'Mon, 25 Apr 2016 09:10:47 GMT',
+  'x-ms-request-id': '820afc1941949526bdc79f8939c2f194',
+  date: 'Fri, 22 Apr 2016 10:07:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '96521fe21e609a88aad8b492126976ed',
-  date: 'Mon, 25 Apr 2016 09:11:19 GMT',
+  'x-ms-request-id': '75145e7e37c09c2aad198441889321a9',
+  date: 'Fri, 22 Apr 2016 10:08:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '96521fe21e609a88aad8b492126976ed',
-  date: 'Mon, 25 Apr 2016 09:11:19 GMT',
+  'x-ms-request-id': '75145e7e37c09c2aad198441889321a9',
+  date: 'Fri, 22 Apr 2016 10:08:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'bee5b8d96443991ba415ee04de43010c',
-  date: 'Mon, 25 Apr 2016 09:11:50 GMT',
+  'x-ms-request-id': '26bfe65abff691daaf0dd2ce44f29acd',
+  date: 'Fri, 22 Apr 2016 10:08:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'bee5b8d96443991ba415ee04de43010c',
-  date: 'Mon, 25 Apr 2016 09:11:50 GMT',
+  'x-ms-request-id': '26bfe65abff691daaf0dd2ce44f29acd',
+  date: 'Fri, 22 Apr 2016 10:08:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'd294e84718109905acdfc19956c415be',
-  date: 'Mon, 25 Apr 2016 09:12:21 GMT',
+  'x-ms-request-id': 'f265fb10b870a8d4982cbea4d872112d',
+  date: 'Fri, 22 Apr 2016 10:09:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'd294e84718109905acdfc19956c415be',
-  date: 'Mon, 25 Apr 2016 09:12:21 GMT',
+  'x-ms-request-id': 'f265fb10b870a8d4982cbea4d872112d',
+  date: 'Fri, 22 Apr 2016 10:09:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '130d726a5f7e980187825cbbeea61585',
-  date: 'Mon, 25 Apr 2016 09:12:53 GMT',
+  'x-ms-request-id': '9a8487e6c27d93d1b90b1e77c5957ae3',
+  date: 'Fri, 22 Apr 2016 10:09:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '130d726a5f7e980187825cbbeea61585',
-  date: 'Mon, 25 Apr 2016 09:12:53 GMT',
+  'x-ms-request-id': '9a8487e6c27d93d1b90b1e77c5957ae3',
+  date: 'Fri, 22 Apr 2016 10:09:47 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'b0a00c2f547b9ccb9c114dd0bb7a914f',
-  date: 'Mon, 25 Apr 2016 09:13:24 GMT',
+  'x-ms-request-id': 'be1ccf052b2e993289b27d206a385c52',
+  date: 'Fri, 22 Apr 2016 10:10:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'b0a00c2f547b9ccb9c114dd0bb7a914f',
-  date: 'Mon, 25 Apr 2016 09:13:24 GMT',
+  'x-ms-request-id': 'be1ccf052b2e993289b27d206a385c52',
+  date: 'Fri, 22 Apr 2016 10:10:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '22fa6e7df148904bafa180802d600fff',
-  date: 'Mon, 25 Apr 2016 09:13:56 GMT',
+  'x-ms-request-id': 'a003b7ea48439fa683fa79417612e01e',
+  date: 'Fri, 22 Apr 2016 10:10:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '22fa6e7df148904bafa180802d600fff',
-  date: 'Mon, 25 Apr 2016 09:13:56 GMT',
+  'x-ms-request-id': 'a003b7ea48439fa683fa79417612e01e',
+  date: 'Fri, 22 Apr 2016 10:10:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'dbfc93cec106964897914e66515da5b3',
-  date: 'Mon, 25 Apr 2016 09:14:26 GMT',
+  'x-ms-request-id': '0b4e907bc0199e168aaa1f4b1ba89b2e',
+  date: 'Fri, 22 Apr 2016 10:11:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'dbfc93cec106964897914e66515da5b3',
-  date: 'Mon, 25 Apr 2016 09:14:26 GMT',
+  'x-ms-request-id': '0b4e907bc0199e168aaa1f4b1ba89b2e',
+  date: 'Fri, 22 Apr 2016 10:11:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ea41dd14216b9caea41e1c27f024c121',
-  date: 'Mon, 25 Apr 2016 09:14:58 GMT',
+  'x-ms-request-id': '032700987772aaf986a51aa78a40734e',
+  date: 'Fri, 22 Apr 2016 10:11:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ea41dd14216b9caea41e1c27f024c121',
-  date: 'Mon, 25 Apr 2016 09:14:58 GMT',
+  'x-ms-request-id': '032700987772aaf986a51aa78a40734e',
+  date: 'Fri, 22 Apr 2016 10:11:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ca6bae5b72b89c53a0aa6a854c68e74f',
-  date: 'Mon, 25 Apr 2016 09:15:30 GMT',
+  'x-ms-request-id': '1553e8d56a79af79a54214ef61bfb922',
+  date: 'Fri, 22 Apr 2016 10:12:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ca6bae5b72b89c53a0aa6a854c68e74f',
-  date: 'Mon, 25 Apr 2016 09:15:30 GMT',
+  'x-ms-request-id': '1553e8d56a79af79a54214ef61bfb922',
+  date: 'Fri, 22 Apr 2016 10:12:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9c111bfd4c619caa933d7a93e387ed06',
-  date: 'Mon, 25 Apr 2016 09:16:01 GMT',
+  'x-ms-request-id': '1c8302f9b4939de3ab1372f52902a1b1',
+  date: 'Fri, 22 Apr 2016 10:13:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9c111bfd4c619caa933d7a93e387ed06',
-  date: 'Mon, 25 Apr 2016 09:16:01 GMT',
+  'x-ms-request-id': '1c8302f9b4939de3ab1372f52902a1b1',
+  date: 'Fri, 22 Apr 2016 10:13:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'd7a0d565c455939cb50b0edf363aa056',
-  date: 'Mon, 25 Apr 2016 09:16:32 GMT',
+  'x-ms-request-id': 'fc3d3524b1909c428a0fc1420631dfad',
+  date: 'Fri, 22 Apr 2016 10:13:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'd7a0d565c455939cb50b0edf363aa056',
-  date: 'Mon, 25 Apr 2016 09:16:32 GMT',
+  'x-ms-request-id': 'fc3d3524b1909c428a0fc1420631dfad',
+  date: 'Fri, 22 Apr 2016 10:13:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c65a08907460a628b85e62626dc27314',
-  date: 'Mon, 25 Apr 2016 09:17:04 GMT',
+  'x-ms-request-id': 'ba9cbe5c9085983dab9a15f354d015b7',
+  date: 'Fri, 22 Apr 2016 10:14:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c65a08907460a628b85e62626dc27314',
-  date: 'Mon, 25 Apr 2016 09:17:04 GMT',
+  'x-ms-request-id': 'ba9cbe5c9085983dab9a15f354d015b7',
+  date: 'Fri, 22 Apr 2016 10:14:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0f4d8fe0cbaaa52aacb77e7d1e7b1106',
-  date: 'Mon, 25 Apr 2016 09:17:35 GMT',
+  'x-ms-request-id': '9eeccd9e0ab0a8e6be519b94c09dc89b',
+  date: 'Fri, 22 Apr 2016 10:14:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0f4d8fe0cbaaa52aacb77e7d1e7b1106',
-  date: 'Mon, 25 Apr 2016 09:17:35 GMT',
+  'x-ms-request-id': '9eeccd9e0ab0a8e6be519b94c09dc89b',
+  date: 'Fri, 22 Apr 2016 10:14:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c3d7aafaecf7a2b8963a0090694f4e9e',
-  date: 'Mon, 25 Apr 2016 09:18:07 GMT',
+  'x-ms-request-id': 'd886127ca76da2adb455b1b628f1bf31',
+  date: 'Fri, 22 Apr 2016 10:15:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c3d7aafaecf7a2b8963a0090694f4e9e',
-  date: 'Mon, 25 Apr 2016 09:18:07 GMT',
+  'x-ms-request-id': 'd886127ca76da2adb455b1b628f1bf31',
+  date: 'Fri, 22 Apr 2016 10:15:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '96a9088fcdd0a24bbb10917a353ae15f',
-  date: 'Mon, 25 Apr 2016 09:18:38 GMT',
+  'x-ms-request-id': '7b0ef990883b9bd6896500e8e1642309',
+  date: 'Fri, 22 Apr 2016 10:15:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '96a9088fcdd0a24bbb10917a353ae15f',
-  date: 'Mon, 25 Apr 2016 09:18:38 GMT',
+  'x-ms-request-id': '7b0ef990883b9bd6896500e8e1642309',
+  date: 'Fri, 22 Apr 2016 10:15:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2ebc2b991227a640b90d102768b4038c',
-  date: 'Mon, 25 Apr 2016 09:19:11 GMT',
+  'x-ms-request-id': '4b8030449dbf979b88f0401893bc211b',
+  date: 'Fri, 22 Apr 2016 10:16:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2ebc2b991227a640b90d102768b4038c',
-  date: 'Mon, 25 Apr 2016 09:19:11 GMT',
+  'x-ms-request-id': '4b8030449dbf979b88f0401893bc211b',
+  date: 'Fri, 22 Apr 2016 10:16:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'cda5a5afeb8598178970370e0c497a89',
-  date: 'Mon, 25 Apr 2016 09:19:42 GMT',
+  'x-ms-request-id': '9542c48f1037aa13992069d3f1c5c790',
+  date: 'Fri, 22 Apr 2016 10:17:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'cda5a5afeb8598178970370e0c497a89',
-  date: 'Mon, 25 Apr 2016 09:19:42 GMT',
+  'x-ms-request-id': '9542c48f1037aa13992069d3f1c5c790',
+  date: 'Fri, 22 Apr 2016 10:17:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '732bda01bf1a93d3ae567501e5233c7f',
-  date: 'Mon, 25 Apr 2016 09:20:55 GMT',
+  'x-ms-request-id': '04b29a66d5919b80bfd9099061e276a5',
+  date: 'Fri, 22 Apr 2016 10:17:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '732bda01bf1a93d3ae567501e5233c7f',
-  date: 'Mon, 25 Apr 2016 09:20:55 GMT',
+  'x-ms-request-id': '04b29a66d5919b80bfd9099061e276a5',
+  date: 'Fri, 22 Apr 2016 10:17:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fa79313f129f9fbfb7f2882803159dc8',
-  date: 'Mon, 25 Apr 2016 09:21:26 GMT',
+  'x-ms-request-id': '6adf9654491093de99b708ecb1d54253',
+  date: 'Fri, 22 Apr 2016 10:18:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'fa79313f129f9fbfb7f2882803159dc8',
-  date: 'Mon, 25 Apr 2016 09:21:26 GMT',
+  'x-ms-request-id': '6adf9654491093de99b708ecb1d54253',
+  date: 'Fri, 22 Apr 2016 10:18:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9ca160ba113a9f14abb7befbac828f73',
-  date: 'Mon, 25 Apr 2016 09:21:58 GMT',
+  'x-ms-request-id': '4354a8d33c7e96f799dcfc5b16c3b7d7',
+  date: 'Fri, 22 Apr 2016 10:18:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '9ca160ba113a9f14abb7befbac828f73',
-  date: 'Mon, 25 Apr 2016 09:21:58 GMT',
+  'x-ms-request-id': '4354a8d33c7e96f799dcfc5b16c3b7d7',
+  date: 'Fri, 22 Apr 2016 10:18:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c9a74281ff059d00b113f3a0a810e0b5',
-  date: 'Mon, 25 Apr 2016 09:22:29 GMT',
+  'x-ms-request-id': '31b221d713b5908e983d4014056c4594',
+  date: 'Fri, 22 Apr 2016 10:19:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'c9a74281ff059d00b113f3a0a810e0b5',
-  date: 'Mon, 25 Apr 2016 09:22:29 GMT',
+  'x-ms-request-id': '31b221d713b5908e983d4014056c4594',
+  date: 'Fri, 22 Apr 2016 10:19:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2a405f902563a0968f476bcbad31ae00',
-  date: 'Mon, 25 Apr 2016 09:23:01 GMT',
+  'x-ms-request-id': 'b5be85be9a689f37acedee50c6f85bc6',
+  date: 'Fri, 22 Apr 2016 10:19:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '2a405f902563a0968f476bcbad31ae00',
-  date: 'Mon, 25 Apr 2016 09:23:01 GMT',
+  'x-ms-request-id': 'b5be85be9a689f37acedee50c6f85bc6',
+  date: 'Fri, 22 Apr 2016 10:19:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f85bf0a379c8a1939e364d46a011d6a4',
-  date: 'Mon, 25 Apr 2016 09:23:32 GMT',
+  'x-ms-request-id': '0cc69803354ba39e8b42e18c5b9adfc7',
+  date: 'Fri, 22 Apr 2016 10:20:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f85bf0a379c8a1939e364d46a011d6a4',
-  date: 'Mon, 25 Apr 2016 09:23:32 GMT',
+  'x-ms-request-id': '0cc69803354ba39e8b42e18c5b9adfc7',
+  date: 'Fri, 22 Apr 2016 10:20:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7c833484257c9bef95b344201f04ecec',
-  date: 'Mon, 25 Apr 2016 09:24:03 GMT',
+  'x-ms-request-id': '81a47f54077f93099576db03160a9b60',
+  date: 'Fri, 22 Apr 2016 10:21:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7c833484257c9bef95b344201f04ecec',
-  date: 'Mon, 25 Apr 2016 09:24:03 GMT',
+  'x-ms-request-id': '81a47f54077f93099576db03160a9b60',
+  date: 'Fri, 22 Apr 2016 10:21:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '11973ee8e4a0a3779409650c350519d9',
-  date: 'Mon, 25 Apr 2016 09:24:35 GMT',
+  'x-ms-request-id': '56532e01ba2b91ec9044401dfa6e5a1b',
+  date: 'Fri, 22 Apr 2016 10:22:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '11973ee8e4a0a3779409650c350519d9',
-  date: 'Mon, 25 Apr 2016 09:24:35 GMT',
+  'x-ms-request-id': '56532e01ba2b91ec9044401dfa6e5a1b',
+  date: 'Fri, 22 Apr 2016 10:22:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '393360c46bce9ed6adc769b9a665503f',
-  date: 'Mon, 25 Apr 2016 09:25:06 GMT',
+  'x-ms-request-id': '5cef23ec99689031a299810cbbc1b781',
+  date: 'Fri, 22 Apr 2016 10:22:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '349',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '393360c46bce9ed6adc769b9a665503f',
-  date: 'Mon, 25 Apr 2016 09:25:06 GMT',
+  'x-ms-request-id': '5cef23ec99689031a299810cbbc1b781',
+  date: 'Fri, 22 Apr 2016 10:22:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ee7882d634fc990087ff49f5dbd1c6dd',
-  date: 'Mon, 25 Apr 2016 09:25:37 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'ee7882d634fc990087ff49f5dbd1c6dd',
-  date: 'Mon, 25 Apr 2016 09:25:37 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e37903684e53a9e5893f75cd27c49084',
-  date: 'Mon, 25 Apr 2016 09:26:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e37903684e53a9e5893f75cd27c49084',
-  date: 'Mon, 25 Apr 2016 09:26:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '316a4163dcbe978f84f4408a3a80fae3',
-  date: 'Mon, 25 Apr 2016 09:26:41 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '349',
-  'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth3',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '316a4163dcbe978f84f4408a3a80fae3',
-  date: 'Mon, 25 Apr 2016 09:26:41 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationCompletedTime>2016-04-25T09:26:43.5028477</OperationCompletedTime><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationCompletedTime>2016-04-22T10:23:08.9163567</OperationCompletedTime><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '460',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f83791c67dc9a1d4a18fb753b656f6f5',
-  date: 'Mon, 25 Apr 2016 09:27:12 GMT',
+  'x-ms-request-id': '5e5e6338a55daec48072ce68f507be50',
+  date: 'Fri, 22 Apr 2016 10:23:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/operation/f733e363-5d98-48ff-9493-9fb0fe66cd51')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>f733e363-5d98-48ff-9493-9fb0fe66cd51</ID><OperationCompletedTime>2016-04-25T09:26:43.5028477</OperationCompletedTime><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-25T08:58:06.8343441</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/49624576-d6f2-4302-81c8-8f8fdbd981d2')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>49624576-d6f2-4302-81c8-8f8fdbd981d2</ID><OperationCompletedTime>2016-04-22T10:23:08.9163567</OperationCompletedTime><OperationName>CreateGateway</OperationName><OperationStartedTime>2016-04-22T09:54:42.7402282</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
   'content-length': '460',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f83791c67dc9a1d4a18fb753b656f6f5',
-  date: 'Mon, 25 Apr 2016 09:27:12 GMT',
+  'x-ms-request-id': '5e5e6338a55daec48072ce68f507be50',
+  date: 'Fri, 22 Apr 2016 10:23:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway')
-  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet9897</Message><Timestamp>2016-04-25T09:26:42.1434752Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>40.112.188.197</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>b3a88d95-29fb-4354-b158-649963d19f90</GatewayId></Gateway>", { 'cache-control': 'no-cache',
-  'content-length': '525',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway')
+  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet3384</Message><Timestamp>2016-04-22T10:23:08.221678Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>13.91.109.112</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>bfe462d6-90ec-447b-bb8b-87079075a210</GatewayId></Gateway>", { 'cache-control': 'no-cache',
+  'content-length': '523',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f7b265759c29a95c8c59a18363ce31dc',
-  date: 'Mon, 25 Apr 2016 09:27:14 GMT',
+  'x-ms-request-id': 'b0a0700edbb29174ae2e56b107797c8a',
+  date: 'Fri, 22 Apr 2016 10:23:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/CliGtTestVnet9897/gateway')
-  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet9897</Message><Timestamp>2016-04-25T09:26:42.1434752Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>40.112.188.197</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>b3a88d95-29fb-4354-b158-649963d19f90</GatewayId></Gateway>", { 'cache-control': 'no-cache',
-  'content-length': '525',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway')
+  .reply(200, "<Gateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><GatewayType>DynamicRouting</GatewayType><LastEvent><Id>23002</Id><Message>Successfully created a gateway for the following virtual network: CliGtTestVnet3384</Message><Timestamp>2016-04-22T10:23:08.221678Z</Timestamp></LastEvent><State>Provisioned</State><VIPAddress>13.91.109.112</VIPAddress><DefaultSites/><GatewaySize>Default</GatewaySize><GatewayId>bfe462d6-90ec-447b-bb8b-87079075a210</GatewayId></Gateway>", { 'cache-control': 'no-cache',
+  'content-length': '523',
   'content-type': 'application/xml; charset=utf-8',
   server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'f7b265759c29a95c8c59a18363ce31dc',
-  date: 'Mon, 25 Apr 2016 09:27:14 GMT',
+  'x-ms-request-id': 'b0a0700edbb29174ae2e56b107797c8a',
+  date: 'Fri, 22 Apr 2016 10:23:23 GMT',
   connection: 'close' });
  return result; }]];

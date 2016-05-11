@@ -53,7 +53,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT ? process.env.SSHCERT : 'test/containerCert.pem';
+        sshcert = 'test/containerCert.pem';
         keydata = fs.readFileSync(sshcert).toString();
         keydata = keydata.replace(' ', '').replace('\r', '').replace('\n', '');
         groupName = suite.generateId(groupPrefix, null);

@@ -121,13 +121,13 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
-            var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount).split(' ');
+            var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount2).split(' ');
+              var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount2).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('storage account create -g %s --type GRS --location %s %s --json', groupName, location, storageAccount3).split(' ');
+                var cmd = util.format('storage account create -g %s --sku-name GRS --kind Storage --location %s %s --json', groupName, location, storageAccount3).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
                   var cmd = util.format('network vnet create %s %s %s -a 10.0.0.0/16 --json', groupName, vNetPrefix, location).split(' ');
@@ -154,73 +154,75 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         var subnetId = '/subscriptions/' + subscription.id + '/resourceGroups/' + groupName + '/providers/Microsoft.Network/VirtualNetworks/' + vNetPrefix + '/subnets/' + subnetName;
-        var cmd = util.format('vmss config create --parameter-file %s', paramFileName).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          var cmd = makeCommandStr('virtual-machine-scale-set', 'set', paramFileName, util.format('--name %s --location %s --over-provision false', vmssPrefix5, location)).split(' ');
+        vmTest.getVMSize(location, suite, function() {
+          var cmd = util.format('vmss config create --parameter-file %s', paramFileName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
-            var cmd = makeCommandStr('virtual-machine-scale-set', 'delete', paramFileName, '--type --tags --provisioning-state').split(' ');
+            var cmd = makeCommandStr('virtual-machine-scale-set', 'set', paramFileName, util.format('--name %s --location %s --over-provision false', vmssPrefix5, location)).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              var cmd = makeCommandStr('sku', 'set', paramFileName, '--capacity ' + vmssCapacity + ' --name Standard_DS1 --tier Standard').split(' ');
+              var cmd = makeCommandStr('virtual-machine-scale-set', 'delete', paramFileName, '--type --tags --provisioning-state').split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = makeCommandStr('upgrade-policy', 'set', paramFileName, '--mode Manual').split(' ');
+                var cmd = makeCommandStr('sku', 'set', paramFileName, '--capacity ' + vmssCapacity + ' --name ' + VMTestUtil.vmSize + ' --tier Standard').split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                   result.exitStatus.should.equal(0);
-                  var cmd = makeCommandStr('network-interface-configurations', 'set', paramFileName, '--index 0 --name test --primary true').split(' ');
+                  var cmd = makeCommandStr('upgrade-policy', 'set', paramFileName, '--mode Manual').split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
-                    var cmd = makeCommandStr('ip-configurations', 'set', paramFileName, '--network-interface-configurations-index 0 --index 0 --name test').split(' ');
+                    var cmd = makeCommandStr('network-interface-configurations', 'set', paramFileName, '--index 0 --name test --primary true').split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                       result.exitStatus.should.equal(0);
-                      var cmd = makeCommandStr('subnet', 'set', paramFileName, util.format('--network-interface-configurations-index 0 --ip-configurations-index 0 --id %s', subnetId)).split(' ');
+                      var cmd = makeCommandStr('ip-configurations', 'set', paramFileName, '--network-interface-configurations-index 0 --index 0 --name test').split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
                         result.exitStatus.should.equal(0);
-                        var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --load-balancer-backend-address-pools').split(' ');
+                        var cmd = makeCommandStr('subnet', 'set', paramFileName, util.format('--network-interface-configurations-index 0 --ip-configurations-index 0 --id %s', subnetId)).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                           result.exitStatus.should.equal(0);
-                          var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --load-balancer-inbound-nat-pools').split(' ');
+                          var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --load-balancer-backend-address-pools').split(' ');
                           testUtils.executeCommand(suite, retry, cmd, function(result) {
                             result.exitStatus.should.equal(0);
-                            var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --application-gateway-backend-address-pools').split(' ');
+                            var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --load-balancer-inbound-nat-pools').split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
                               result.exitStatus.should.equal(0);
-                              var cmd = makeCommandStr('os-profile', 'delete', paramFileName, '--secrets --linux-configuration --windows-configuration --custom-data').split(' ');
+                              var cmd = makeCommandStr('ip-configurations', 'delete', paramFileName, '--network-interface-configurations-index 0 --index 0 --application-gateway-backend-address-pools').split(' ');
                               testUtils.executeCommand(suite, retry, cmd, function(result) {
                                 result.exitStatus.should.equal(0);
-                                var cmd = makeCommandStr('os-profile', 'set', paramFileName, util.format('--computer-name-prefix test --admin-username %s --admin-password %s', username, password)).split(' ');
+                                var cmd = makeCommandStr('os-profile', 'delete', paramFileName, '--secrets --linux-configuration --windows-configuration --custom-data').split(' ');
                                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                                   result.exitStatus.should.equal(0);
-                                  var cmd = makeCommandStr('image-reference', 'set', paramFileName, '--publisher MicrosoftWindowsServer --offer WindowsServer --sku 2012-R2-Datacenter --version latest').split(' ');
+                                  var cmd = makeCommandStr('os-profile', 'set', paramFileName, util.format('--computer-name-prefix test --admin-username %s --admin-password %s', username, password)).split(' ');
                                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                                     result.exitStatus.should.equal(0);
-                                    var cmd = makeCommandStr('os-disk', 'set', paramFileName, '--caching None --create-option fromImage --name test').split(' ');
+                                    var cmd = makeCommandStr('image-reference', 'set', paramFileName, '--publisher MicrosoftWindowsServer --offer WindowsServer --sku 2012-R2-Datacenter --version latest').split(' ');
                                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                                       result.exitStatus.should.equal(0);
-                                      var cmd = makeCommandStr('os-disk', 'delete', paramFileName, '--os-type --image').split(' ');
+                                      var cmd = makeCommandStr('os-disk', 'set', paramFileName, '--caching None --create-option fromImage --name test').split(' ');
                                       testUtils.executeCommand(suite, retry, cmd, function(result) {
                                         result.exitStatus.should.equal(0);
-                                        var cmd = makeCommandStr('vhd-containers', 'delete', paramFileName, '--index 0').split(' ');
+                                        var cmd = makeCommandStr('os-disk', 'delete', paramFileName, '--os-type --image').split(' ');
                                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                                           result.exitStatus.should.equal(0);
-                                          var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 0 --value https://%s.blob.core.windows.net/%s', storageAccount, storageCont)).split(' ');
-                                            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                          var cmd = makeCommandStr('vhd-containers', 'delete', paramFileName, '--index 0').split(' ');
+                                          testUtils.executeCommand(suite, retry, cmd, function(result) {
                                             result.exitStatus.should.equal(0);
-                                            var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 1 --value https://%s.blob.core.windows.net/%s', storageAccount2, storageCont2)).split(' ');
-                                            testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                            var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 0 --value https://%s.blob.core.windows.net/%s', storageAccount, storageCont)).split(' ');
+                                              testUtils.executeCommand(suite, retry, cmd, function(result) {
                                               result.exitStatus.should.equal(0);
-                                              var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 2 --value https://%s.blob.core.windows.net/%s', storageAccount3, storageCont3)).split(' ');
+                                              var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 1 --value https://%s.blob.core.windows.net/%s', storageAccount2, storageCont2)).split(' ');
                                               testUtils.executeCommand(suite, retry, cmd, function(result) {
                                                 result.exitStatus.should.equal(0);
-                                                var cmd = makeCommandStr('extensions', 'set', paramFileName, util.format('--index 0 --name test --publisher %s --type %s --type-handler-version %s --auto-upgrade-minor-version true', publisher, vmaExtName, vmaExtVer)).split(' ');
+                                                var cmd = makeCommandStr('vhd-containers', 'set', paramFileName, util.format('--index 2 --value https://%s.blob.core.windows.net/%s', storageAccount3, storageCont3)).split(' ');
                                                 testUtils.executeCommand(suite, retry, cmd, function(result) {
                                                   result.exitStatus.should.equal(0);
-                                                  var cmd = util.format('vmss create -g %s -n %s --parameter-file %s --json', groupName, vmssPrefix5, paramFileName).split(' ');
+                                                  var cmd = makeCommandStr('extensions', 'set', paramFileName, util.format('--index 0 --name test --publisher %s --type %s --type-handler-version %s --auto-upgrade-minor-version true', publisher, vmaExtName, vmaExtVer)).split(' ');
                                                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                                                     result.exitStatus.should.equal(0);
-                                                    done();
+                                                    var cmd = util.format('vmss create -g %s -n %s --parameter-file %s --json', groupName, vmssPrefix5, paramFileName).split(' ');
+                                                    testUtils.executeCommand(suite, retry, cmd, function(result) {
+                                                      result.exitStatus.should.equal(0);
+                                                      done();
+                                                    });
                                                   });
                                                 });
                                               });

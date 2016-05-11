@@ -37,6 +37,7 @@ var groupName,
   location,
   username = 'azureuser',
   password = 'Brillio@2016',
+  vmSize,
   sshcert;
 
 describe('arm', function() {
@@ -74,31 +75,34 @@ describe('arm', function() {
 
       it('quick create with non-existing group should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        vmTest.checkImagefile(function() {
-          if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
-            vmTest.GetLinuxSkusList(location, suite, function(result) {
-              vmTest.GetLinuxImageList(location, suite, function(result) {
-                var latestLinuxImageUrn = 'UbuntuLTS';
-                var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z Standard_D1',
-                  groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                  result.exitStatus.should.equal(0);
-                  result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
-                  done();
+        vmTest.getVMSize(location, suite, function() {
+          vmSize = VMTestUtil.vmSize;
+          vmTest.checkImagefile(function() {
+            if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
+              vmTest.GetLinuxSkusList(location, suite, function(result) {
+                vmTest.GetLinuxImageList(location, suite, function(result) {
+                  var latestLinuxImageUrn = 'UbuntuLTS';
+                  var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s',
+                    groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize).split(' ');
+                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    result.exitStatus.should.equal(0);
+                    result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                    done();
+                  });
                 });
               });
-            });
-          }
-          else {
-            var latestLinuxImageUrn = 'UbuntuLTS';
-            var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z Standard_D1',
-              groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
-              done();
-            });
-          }
+            }
+            else {
+              var latestLinuxImageUrn = 'UbuntuLTS';
+              var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s',
+                groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                done();
+              });
+            }
+          });
         });
       });
 
@@ -106,7 +110,9 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm redeploy %s %s', groupName, vm1Prefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
+          if (result.exitStatus !== 0) {
+            result.text.should.containEql('redeployment failed due to an internal error. Please retry later.');
+          }
           done();
         });
       });

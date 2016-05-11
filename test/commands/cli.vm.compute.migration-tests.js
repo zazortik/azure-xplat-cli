@@ -81,15 +81,15 @@ describe('cli', function() {
     describe('migration', function() {
       it('negative tests on compute deployment migration should pass', function(done) {
         var rn = '123';
-        var cmd = util.format('compute deployment prepare-migration %s %s %s %s %s %s --json --verbose', rn, rn, rn, rn, rn, rn).split(' ');
+        var cmd = util.format('service deployment prepare-migration %s %s %s %s %s %s --json --verbose', rn, rn, rn, rn, rn, rn).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(1);
           result.text.should.containEql('The deployment name \'' + rn + '\' does not exist.');
-          var cmd = util.format('compute deployment commit-migration %s %s --json --verbose', rn, rn).split(' ');
+          var cmd = util.format('service deployment commit-migration %s %s --json --verbose', rn, rn).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(1);
             result.text.should.containEql('The deployment name \'' + rn + '\' does not exist.');
-            var cmd = util.format('compute deployment abort-migration %s %s --json --verbose', rn, rn).split(' ');
+            var cmd = util.format('service deployment abort-migration %s %s --json --verbose', rn, rn).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(1);
               result.text.should.containEql('The deployment name \'' + rn + '\' does not exist.');

@@ -181,8 +181,27 @@ _.extend(NetworkTestUtil.prototype, {
   },
   createExpressRoute: function (expressRouteCircuitProps, suite, callback) {
     var self = this;
-    var cmd = util.format('network express-route circuit create {group} {expressRCName} {location} -p {serviceProvider} ' + 
-      '-i {peeringLocation} -b 50 -e {skuTier} -f {skuFamily} -t {tags} --json').formatArgs(expressRouteCircuitProps);
+    var cmd = util.format('network express-route circuit create {group} {expressRCName} {location} -p {serviceProvider} ' +
+      '-i {peeringLocation} -b {bandwidth} -e {skuTier} -f {skuFamily} -t {tags} --json').formatArgs(expressRouteCircuitProps);
+    testUtils.executeCommand(suite, retry, cmd, function (result) {
+      result.exitStatus.should.equal(0);
+
+      var expressRouteCircuit = JSON.parse(result.text);
+      expressRouteCircuit.name.should.equal(expressRouteCircuitProps.expressRCName);
+      expressRouteCircuit.serviceProviderProperties.serviceProviderName.should.equal(expressRouteCircuitProps.serviceProvider);
+      expressRouteCircuit.serviceProviderProperties.peeringLocation.should.equal(expressRouteCircuitProps.peeringLocation);
+      expressRouteCircuit.serviceProviderProperties.bandwidthInMbps.should.equal(expressRouteCircuitProps.bandwidth);
+      expressRouteCircuit.sku.tier.should.equal(expressRouteCircuitProps.skuTier);
+      expressRouteCircuit.sku.family.should.equal(expressRouteCircuitProps.skuFamily);
+      self.shouldHaveTags(expressRouteCircuit);
+      self.shouldBeSucceeded(expressRouteCircuit);
+
+      callback(expressRouteCircuit);
+    });
+  },
+  setExpressRoute: function (expressRouteCircuitProps, suite, callback) {
+    var self = this;
+    var cmd = util.format('network express-route circuit set {group} {expressRCName} {location} -e {skuTier} --json').formatArgs(expressRouteCircuitProps);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
 

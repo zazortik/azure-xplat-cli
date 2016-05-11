@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -27,65 +23,61 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'test1';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://test1.westus.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+nock('http://test1.westus.batch.azure.com:443')
   .delete('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a750cf48-4637-4181-8142-a3b038128bb6',
+  'request-id': '03bfec18-b15b-497d-9c9c-b207ceece75c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'e4864eef-a8a7-4a40-bf8f-c2ed2ade2a47',
+  'client-request-id': '19fd7586-ab46-4bde-a9ba-d75f6ee19735',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:08:54 GMT',
+  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+nock('https://test1.westus.batch.azure.com:443')
   .delete('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a750cf48-4637-4181-8142-a3b038128bb6',
+  'request-id': '03bfec18-b15b-497d-9c9c-b207ceece75c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'e4864eef-a8a7-4a40-bf8f-c2ed2ade2a47',
+  'client-request-id': '19fd7586-ab46-4bde-a9ba-d75f6ee19735',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:08:54 GMT',
+  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+nock('http://test1.westus.batch.azure.com:443')
   .get('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\"id\":\"xplatCreatedPool\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/pools/xplatCreatedPool\",\"eTag\":\"0x8D3600B223C2A0A\",\"lastModified\":\"2016-04-09T00:08:52.4646922Z\",\"creationTime\":\"2016-04-09T00:08:49.4519354Z\",\"state\":\"deleting\",\"stateTransitionTime\":\"2016-04-09T00:08:52.4646922Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-04-09T00:08:49.6063845Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":0,\"targetDedicated\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo updated\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":true\r\n  },\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:16011b22-d698-44af-b161-f1e73b142812\\nTime:2016-04-29T22:50:04.6969980Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sat, 09 Apr 2016 00:08:52 GMT',
-  etag: '0x8D3600B223C2A0A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8126e5d6-26ee-413b-9a77-612c63d703e8',
+  'request-id': '16011b22-d698-44af-b161-f1e73b142812',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'e77cda11-0734-455e-948d-ef2fcd54940c',
+  'client-request-id': 'ff5f3ea4-a53b-45a4-947c-15d399942e9e',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:08:54 GMT',
+  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+nock('https://test1.westus.batch.azure.com:443')
   .get('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#pools/@Element\",\"id\":\"xplatCreatedPool\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/pools/xplatCreatedPool\",\"eTag\":\"0x8D3600B223C2A0A\",\"lastModified\":\"2016-04-09T00:08:52.4646922Z\",\"creationTime\":\"2016-04-09T00:08:49.4519354Z\",\"state\":\"deleting\",\"stateTransitionTime\":\"2016-04-09T00:08:52.4646922Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-04-09T00:08:49.6063845Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":0,\"targetDedicated\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo updated\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":true\r\n  },\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:16011b22-d698-44af-b161-f1e73b142812\\nTime:2016-04-29T22:50:04.6969980Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sat, 09 Apr 2016 00:08:52 GMT',
-  etag: '0x8D3600B223C2A0A',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8126e5d6-26ee-413b-9a77-612c63d703e8',
+  'request-id': '16011b22-d698-44af-b161-f1e73b142812',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'e77cda11-0734-455e-948d-ef2fcd54940c',
+  'client-request-id': 'ff5f3ea4-a53b-45a4-947c-15d399942e9e',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:08:54 GMT',
+  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
   connection: 'close' });
  return result; }]];
