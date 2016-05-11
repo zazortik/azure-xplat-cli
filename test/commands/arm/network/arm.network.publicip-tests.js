@@ -32,8 +32,9 @@ var publicIpProp = {
   name: 'test-ip',
   domainName: 'foo-domain',
   newDomainName: 'bar-domain',
-  staticMethod: 'Static',
-  dynamicMethod: 'Dynamic',
+  allocationMethod: 'Static',
+  newAllocationMethod: 'Dynamic',
+  ipVersion: 'IPv4',
   idleTimeout: 4,
   newIdleTimeout: 15,
   tags: networkUtil.tags,
@@ -79,31 +80,21 @@ describe('arm', function () {
     describe('publicip', function () {
       it('create should create publicip', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network public-ip create -g {group} -n {name} -l {location} -d {domainName} -a {staticMethod} ' +
-            '-i {idleTimeout} -t {tags} --json').formatArgs(publicIpProp);
-
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var ip = JSON.parse(result.text);
-            ip.name.should.equal(publicIpProp.name);
-            ip.publicIPAllocationMethod.should.equal(publicIpProp.staticMethod);
-            ip.idleTimeoutInMinutes.should.equal(publicIpProp.idleTimeout);
-            ip.dnsSettings.domainNameLabel.should.equal(publicIpProp.domainName);
-            networkUtil.shouldHaveTags(ip);
+          networkUtil.createPublicIp(publicIpProp, suite, function (ip) {
             networkUtil.shouldBeSucceeded(ip);
             done();
           });
         });
       });
       it('set should modify publicip', function (done) {
-        var cmd = util.format('network public-ip set -g {group} -n {name} -d {newDomainName} -a {dynamicMethod} -i {newIdleTimeout} ' +
-          '-t {newTags} --json').formatArgs(publicIpProp);
+        var cmd = 'network public-ip set -g {group} -n {name} -d {newDomainName} -a {newAllocationMethod} -i {newIdleTimeout} -t {newTags} --json'
+          .formatArgs(publicIpProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var ip = JSON.parse(result.text);
           ip.name.should.equal(publicIpProp.name);
-          ip.publicIPAllocationMethod.should.equal(publicIpProp.dynamicMethod);
+          ip.publicIPAllocationMethod.should.equal(publicIpProp.newAllocationMethod);
           ip.idleTimeoutInMinutes.should.equal(publicIpProp.newIdleTimeout);
           ip.dnsSettings.domainNameLabel.should.equal(publicIpProp.newDomainName);
           networkUtil.shouldAppendTags(ip);
