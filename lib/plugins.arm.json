@@ -59457,6 +59457,971 @@
         }
       }
     },
+    "servermanagement": {
+      "name": "servermanagement",
+      "description": "Commands to manage Azure Server Managment resources",
+      "fullName": "servermanagement",
+      "usage": "[options]",
+      "options": [],
+      "commands": [],
+      "categories": {
+        "gateway": {
+          "name": "gateway",
+          "description": "Commands to manage Azure Server Management Tools Gateway instances",
+          "fullName": "servermanagement gateway",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a server management gateway",
+              "fullName": "servermanagement gateway create",
+              "usage": "[options] <resource-group> <location> <gateway-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location"
+                },
+                {
+                  "flags": "-w, --gateway-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--gateway-name",
+                  "description": "the name of the server management gateway"
+                },
+                {
+                  "flags": "-a --auto-upgrade",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--auto-upgrade",
+                  "description": "set the gateway to automatically upgrade."
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List registered gateways",
+              "fullName": "servermanagement gateway list",
+              "usage": "[options] [resource-group]",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show detailed gateway information",
+              "fullName": "servermanagement gateway show",
+              "usage": "[options] <resource-group> <gateway-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-w, --gateway-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--gateway-name",
+                  "description": "the name of the server management gateway"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete a gateway",
+              "fullName": "servermanagement gateway delete",
+              "usage": "[options] <resource-group> <gateway-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-w, --gateway-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--gateway-name",
+                  "description": "the name of the server management gateway"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "node": {
+          "name": "node",
+          "description": "Commands to manage Azure Server Management Tools Node instances",
+          "fullName": "servermanagement node",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a server management node",
+              "fullName": "servermanagement node create",
+              "usage": "[options] <resource-group> <location> <gateway-name> <node-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location"
+                },
+                {
+                  "flags": "-w, --gateway-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--gateway-name",
+                  "description": "the name of the server management gateway"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-u, --user-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--user-name",
+                  "description": "the account user name to use to connect to the node"
+                },
+                {
+                  "flags": "-p, --password <name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "the account password to use to connect to the node"
+                },
+                {
+                  "flags": "-c, --connection-name <name>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-name",
+                  "description": "the connection name of the server management node (host name)"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List registered nodes",
+              "fullName": "servermanagement node list",
+              "usage": "[options] [resource-group]",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show node information",
+              "fullName": "servermanagement node show",
+              "usage": "[options] <resource-group> <node-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete a node",
+              "fullName": "servermanagement node delete",
+              "usage": "[options] <resource-group> <node-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "session": {
+          "name": "session",
+          "description": "Commands to manage Azure Server Management Tools Sessions",
+          "fullName": "servermanagement session",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a server management session",
+              "fullName": "servermanagement session create",
+              "usage": "[options] <resource-group> <node-name> <session-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-s, --session-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--session-name",
+                  "description": "the name of the session on the node"
+                },
+                {
+                  "flags": "-u, --user-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--user-name",
+                  "description": "the account user name to use to connect to the node"
+                },
+                {
+                  "flags": "-p, --password <name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "the account password to use to connect to the node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show detailed session information",
+              "fullName": "servermanagement session show",
+              "usage": "[options] <resource-group> <session-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-s, --session-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--session-name",
+                  "description": "the name of the session on the node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete a session",
+              "fullName": "servermanagement session delete",
+              "usage": "[options] <resource-group> <session-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-s, --session-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--session-name",
+                  "description": "the name of the session on the node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "powershell": {
+          "name": "powershell",
+          "description": "Commands to invoke powershelll commands on a Azure Server Management Tools node",
+          "fullName": "servermanagement powershell",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Create a powershell session",
+              "fullName": "servermanagement powershell create",
+              "usage": "[options] <resource-group> <node-name> <session-name>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-s, --session-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--session-name",
+                  "description": "the name of the session on the node"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "invoke",
+              "description": "Invoke a powershell script on a session",
+              "fullName": "servermanagement powershell invoke",
+              "usage": "[options] <resource-group> <node-name> <session-name> <powershell-sessionid>",
+              "filePath": "commands/arm/servermanagement/servermanagement._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-s, --session-name <name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--session-name",
+                  "description": "the name of the session on the node"
+                },
+                {
+                  "flags": "-p, --powershell-session-id <id>",
+                  "required": -29,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--powershell-session-id",
+                  "description": "the id of the powershell session on the node"
+                },
+                {
+                  "flags": "-c, --command <command>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--command",
+                  "description": "the powershell command or script to invoke"
+                },
+                {
+                  "flags": "--subscription <subscription>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
     "tag": {
       "name": "tag",
       "description": "Commands to manage your resource manager tags",
