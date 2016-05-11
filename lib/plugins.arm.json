@@ -60046,10 +60046,11 @@
                   "description": "set the gateway to automatically upgrade."
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 },
@@ -60106,10 +60107,11 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60166,10 +60168,11 @@
                   "description": "the name of the server management gateway"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60226,10 +60229,11 @@
                   "description": "the name of the server management gateway"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60350,10 +60354,11 @@
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60401,10 +60406,11 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60461,10 +60467,11 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60521,10 +60528,11 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60591,11 +60599,11 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-s, --session-name <name>",
+                  "flags": "-e, --session-name <name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-e",
                   "long": "--session-name",
                   "description": "the name of the session on the node"
                 },
@@ -60618,10 +60626,11 @@
                   "description": "the account password to use to connect to the node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60678,19 +60687,20 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-s, --session-name <name>",
+                  "flags": "-e, --session-name <name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-e",
                   "long": "--session-name",
                   "description": "the name of the session on the node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60738,19 +60748,20 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-s, --session-name <name>",
+                  "flags": "-e, --session-name <name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-e",
                   "long": "--session-name",
                   "description": "the name of the session on the node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60817,19 +60828,20 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-s, --session-name <name>",
+                  "flags": "-e, --session-name <name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-e",
                   "long": "--session-name",
                   "description": "the name of the session on the node"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
@@ -60886,11 +60898,11 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-s, --session-name <name>",
+                  "flags": "-e, --session-name <name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-e",
                   "long": "--session-name",
                   "description": "the name of the session on the node"
                 },
@@ -60913,10 +60925,11 @@
                   "description": "the powershell command or script to invoke"
                 },
                 {
-                  "flags": "--subscription <subscription>",
-                  "required": -16,
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
                 }
