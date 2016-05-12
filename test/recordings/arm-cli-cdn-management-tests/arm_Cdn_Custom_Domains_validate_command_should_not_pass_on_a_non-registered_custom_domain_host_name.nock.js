@@ -5,34 +5,19 @@ var profile = require('../../../lib/util/profile');
 exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
-  newProfile.addEnvironment(new profile.Environment({
-    name: 'dogfood',
-    portalUrl: 'https://windows.azure-test.net/',
-    publishingProfileUrl: 'https://windows.azure-test.net/publishsettings/index',
-    managementEndpointUrl: 'https://management-preview.core.windows-int.net/',
-    resourceManagerEndpointUrl: 'https://api-dogfood.resources.windows-int.net/',
-    sqlManagementEndpointUrl: 'haha.haha.com',
-    hostNameSuffix: 'undefined',
-    sqlServerHostNameSuffix: 'haha',
-    activeDirectoryEndpointUrl: 'https://login.windows-ppe.net',
-    commonTenantName: 'undefined',
-    storageEndpoint: 'undefined',
-    galleryEndpointUrl: 'https://df.gallery.azure-test.net/'
-  }));
-
   newProfile.addSubscription(new profile.Subscription({
-    id: '06adb0b3-baaa-4e5f-9df6-ca770f7902cd',
-    name: 'adminDogfood204',
+    id: 'bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b',
+    name: 'KasotaTest-001',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '39cfad8b-7464-4273-a578-97f439ecf0ed',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
-  }, newProfile.environments['dogfood']));
+  }, newProfile.environments['AzureCloud']));
 
   return newProfile;
 };
@@ -49,52 +34,52 @@ exports.setEnvironment = function() {
   process.env['AZURE_ARM_TEST_CDN_ORIGIN_2'] = 'cliTestOrigin02';
   process.env['AZURE_ARM_TEST_ENDPOINT_TEST_LOCATION_1'] = 'eastus';
   process.env['AZURE_ARM_TEST_CUSTOM_DOMAIN_NAME_1'] = 'cliTestCustomDomain01';
-  process.env['AZURE_ARM_TEST_CUSTOM_DOMAIN_HOST_NAME_1'] = 'cli-1-80dc366f-ad8a-4e7b-b441-31a932df02e9.azureedge-test.net';
+  process.env['AZURE_ARM_TEST_CUSTOM_DOMAIN_HOST_NAME_1'] = 'cli-0a51dd4a-33ca-4c25-91d7-42ae35c12cdd.azureedge-test.net';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://api-dogfood.resources.windows-int.net:443')
+nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
+.post('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
   .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '272',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'aa265d97-ae67-4633-bdad-0768f3de8a3f',
-  'x-ms-client-request-id': '5e86fc13-809a-48cb-bdec-6d669cd14e72',
+  'x-ms-request-id': '56857805-f170-4ea7-b3af-8ee76b811fe3',
+  'x-ms-client-request-id': '98a6ffbe-d699-4ae9-9f0e-479eba7d2b7f',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1178',
-  'x-ms-correlation-request-id': '6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  'x-ms-routing-request-id': 'CENTRALUS:20160427T221412Z:6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  date: 'Wed, 27 Apr 2016 22:14:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '20f41782-edc1-492b-92b2-40a755d809cf',
+  'x-ms-routing-request-id': 'CENTRALUS:20160512T180259Z:20f41782-edc1-492b-92b2-40a755d809cf',
+  date: 'Thu, 12 May 2016 18:02:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://api-dogfood.resources.windows-int.net:443')
+nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
+.post('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/validateCustomDomain?api-version=2016-04-02', '*')
   .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '272',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'aa265d97-ae67-4633-bdad-0768f3de8a3f',
-  'x-ms-client-request-id': '5e86fc13-809a-48cb-bdec-6d669cd14e72',
+  'x-ms-request-id': '56857805-f170-4ea7-b3af-8ee76b811fe3',
+  'x-ms-client-request-id': '98a6ffbe-d699-4ae9-9f0e-479eba7d2b7f',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1178',
-  'x-ms-correlation-request-id': '6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  'x-ms-routing-request-id': 'CENTRALUS:20160427T221412Z:6cf071b7-a5c3-4f7a-bc81-549aa6bf75a3',
-  date: 'Wed, 27 Apr 2016 22:14:11 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '20f41782-edc1-492b-92b2-40a755d809cf',
+  'x-ms-routing-request-id': 'CENTRALUS:20160512T180259Z:20f41782-edc1-492b-92b2-40a755d809cf',
+  date: 'Thu, 12 May 2016 18:02:58 GMT',
   connection: 'close' });
  return result; }]];

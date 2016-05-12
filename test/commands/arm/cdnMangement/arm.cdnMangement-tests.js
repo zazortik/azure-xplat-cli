@@ -63,7 +63,7 @@ var requiredEnvironment = [{
   defaultValue: 'cliTestCustomDomain01',
 }, {
   name: 'AZURE_ARM_TEST_CUSTOM_DOMAIN_HOST_NAME_1',
-  defaultValue: 'cli-1-80dc366f-ad8a-4e7b-b441-31a932df02e9.azureedge-test.net',
+  defaultValue: 'cli-0a51dd4a-33ca-4c25-91d7-42ae35c12cdd.azureedge-test.net',
 }];
 
 var suite;
@@ -305,22 +305,21 @@ describe('arm', function() {
       });
     });
 
-    //TODO: There is a bug in the SDK that makes async patch not available, un-comment this test once that is fixed
-    //it('set command should update the endpoint', function (done) {
-    //    suite.execute('cdn endpoint set %s %s %s -w false --tags tag1=val1 --json', testEndpointName_1, testProfileName_1, testResourceGroup_1, function (result) {
-    //        result.exitStatus.should.be.equal(0);
-    //        var endpointJson = JSON.parse(result.text);
-    //        endpointJson.name.should.equal(testEndpointName_1);
-    //        endpointJson.isHttpAllowed.should.equal(true);
-    //        endpointJson.isHttpsAllowed.should.equal(false);
-    //        endpointJson.resourceState.should.equal("Running");
-    //        endpointJson.location.should.equal("EastUs");
-    //        endpointJson.origins[0].name.should.equal(testOriginName_1);
-    //        endpointJson.tags.tag1.should.equal("val1");
-    //        endpointJson.tags.should.not.have.property('tag2');
-    //        done();
-    //    });
-    //});
+    it('set command should update the endpoint', function (done) {
+        suite.execute('cdn endpoint set %s %s %s -w false --tags tag1=val1 --json', testEndpointName_1, testProfileName_1, testResourceGroup_1, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var endpointJson = JSON.parse(result.text);
+            endpointJson.name.should.equal(testEndpointName_1);
+            endpointJson.isHttpAllowed.should.equal(true);
+            endpointJson.isHttpsAllowed.should.equal(false);
+            endpointJson.resourceState.should.equal("Running");
+            endpointJson.location.should.equal("EastUs");
+            endpointJson.origins[0].name.should.equal(testOriginName_1);
+            endpointJson.tags.tag1.should.equal("val1");
+            endpointJson.tags.should.not.have.property('tag2');
+            done();
+        });
+    });
 
     it('purge command should purge the content with out error', function(done) {
       suite.execute('cdn endpoint purge %s %s %s /movies/*,/pictures/pic1.jpg --json', testEndpointName_1, testProfileName_1, testResourceGroup_1, function(result) {
