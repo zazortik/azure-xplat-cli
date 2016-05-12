@@ -108,7 +108,7 @@ describe('cli', function () {
 
         suite.execute('storage account create %s --type %s --json -a %s',
           storageName,
-          accountType,          
+          accountType,
           affinityGroupName,
           function (result) {
           result.text.should.equal('');
@@ -178,7 +178,7 @@ describe('cli', function () {
     });
 
     it('should return false for a storage account whose name has been taken in another subscription', function (done) {
-      var accountName = 'azure';
+      var accountName = 'azcopyperf1';
       suite.execute('storage account check %s --json', accountName, function (result) {
         result.exitStatus.should.equal(0);
         var availability = JSON.parse(result.text);

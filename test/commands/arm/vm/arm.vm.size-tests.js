@@ -41,6 +41,7 @@ var groupName = 'xplatTestGSz',
   subnetName = 'xplattestsubnetsz',
   publicipName = 'xplattestipsz',
   dnsPrefix = 'xplattestdnssz',
+  vmSize = 'Standard_A0',
   sshcert;
 
 describe('arm', function() {
@@ -90,9 +91,9 @@ describe('arm', function() {
             if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
-                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json',
+                  var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -z %s --json',
                     groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+                    vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, vmSize).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
                     done();
@@ -100,9 +101,9 @@ describe('arm', function() {
                 });
               });
             } else {
-              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --json',
+              var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s -z %s --json',
                 groupName, vmPrefix, location, nicName, VMTestUtil.linuxImageUrn, username, password, storageAccount, storageCont,
-                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert).split(' ');
+                vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, vmSize).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 done();
@@ -113,25 +114,17 @@ describe('arm', function() {
       });
 
       it('sizes should list available virtual machine sizes for the previous created VM', function(done) {
-        vmTest.getVMSize(location, suite, function(result) {
-          suite.execute('vm sizes -g %s -n %s --json', groupName, vmPrefix, function(result) {
-            result.exitStatus.should.equal(0);
-            var allResources = JSON.parse(result.text);
-            allResources.some(function(res) {
-              return res.name === VMTestUtil.vmSize;
-            }).should.be.true;
-            done();
-          });
+        suite.execute('vm sizes -g %s -n %s --json', groupName, vmPrefix, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('Standard_');
+          done();
         });
       });
 
       it('sizes should list VM sizes available in given location ', function(done) {
         suite.execute('vm sizes -l %s --json', location, function(result) {
           result.exitStatus.should.equal(0);
-          var allResources = JSON.parse(result.text);
-          allResources.some(function(res) {
-            return res.name === VMTestUtil.vmSize;
-          }).should.be.true;
+          result.text.should.containEql(vmSize);
           done();
         });
       });

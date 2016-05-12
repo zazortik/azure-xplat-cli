@@ -31,4 +31,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate8014','xplattestnic9491','xplatteststorage1670','xplatteststorage29743','xplatteststorage32005','xplatteststoragecnt1170','xplatteststoragecnt2598','xplatteststoragecnt37154','xplattestvnet2306','xplattestsubnet6220','xplattestipdns398'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTstVmssGCreate974','xplattestnic8003','xplatteststorage16170','xplatteststorage25809','xplatteststorage32749','xplatteststoragecnt1101','xplatteststoragecnt24945','xplatteststoragecnt34050','xplattestvnet7958','xplattestsubnet74','xplattestipdns91'];};

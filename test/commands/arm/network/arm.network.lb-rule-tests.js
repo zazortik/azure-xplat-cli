@@ -92,8 +92,8 @@ describe('arm', function () {
     describe('lb rule', function () {
       it('create should create rule using fip and address pool', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
                 networkUtil.createAddressPool(groupName, lbName, poolName, suite, function (pool) {
                   var cmd = util.format('network lb rule create -g {group} -l {lbName} -n {name} -p {protocol} -f {frontendPort} ' +

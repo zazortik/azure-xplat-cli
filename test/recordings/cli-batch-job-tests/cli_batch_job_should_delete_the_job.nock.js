@@ -37,11 +37,11 @@ nock('http://jstesteastus2.eastus2.batch.azure.com:443')
   .delete('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7dd9f77e-29c9-479c-8e1e-922ab41d877d',
+  'request-id': '04b16eb8-181e-4527-a36e-6cbb8d090c97',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '9bcae1fa-ef55-4381-9121-0f8bb36a1cfe',
+  'client-request-id': '3fa1de2d-12b8-428f-97fa-fadd8405f8e4',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:03:11 GMT',
+  date: 'Fri, 15 Apr 2016 20:14:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -50,38 +50,42 @@ nock('https://jstesteastus2.eastus2.batch.azure.com:443')
   .delete('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7dd9f77e-29c9-479c-8e1e-922ab41d877d',
+  'request-id': '04b16eb8-181e-4527-a36e-6cbb8d090c97',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '9bcae1fa-ef55-4381-9121-0f8bb36a1cfe',
+  'client-request-id': '3fa1de2d-12b8-428f-97fa-fadd8405f8e4',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:03:11 GMT',
+  date: 'Fri, 15 Apr 2016 20:14:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://jstesteastus2.eastus2.batch.azure.com:443')
   .get('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:2c9d9904-4488-4624-9664-267a34be6392\\nTime:2016-04-09T00:03:12.4721398Z\"\r\n  }\r\n}", { 'content-length': '333',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"xplatJob\",\"displayName\":\"displayName\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobs/xplatJob\",\"eTag\":\"0x8D3656A5962608C\",\"lastModified\":\"2016-04-15T20:13:02.9930124Z\",\"creationTime\":\"2016-04-15T20:12:56.4274996Z\",\"state\":\"deleting\",\"stateTransitionTime\":\"2016-04-15T20:14:06.8776137Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2016-04-15T20:14:03.7170008Z\",\"priority\":5,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n  },\"jobManagerTask\":{\r\n    \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"name1\",\"value\":\"value1\"\r\n      },{\r\n        \"name\":\"name2\",\"value\":\"value2\"\r\n      }\r\n    ],\"constraints\":{\r\n      \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n    },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n  },\"jobPreparationTask\":{\r\n    \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n      },{\r\n        \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n      }\r\n    ],\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n    },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n  },\"jobReleaseTask\":{\r\n    \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n      },{\r\n        \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n      }\r\n    ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n  },\"commonEnvironmentSettings\":[\r\n    {\r\n      \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n    },{\r\n      \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n    }\r\n  ],\"poolInfo\":{\r\n    \"poolId\":\"xplatTestPool\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta3\",\"value\":\"value3\"\r\n    },{\r\n      \"name\":\"meta4\",\"value\":\"value4\"\r\n    }\r\n  ],\"executionInfo\":{\r\n    \"startTime\":\"2016-04-15T20:12:56.6736392Z\",\"endTime\":\"2016-04-15T20:14:03.7170008Z\",\"poolId\":\"xplatTestPool\",\"terminateReason\":\"done\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
+  'last-modified': 'Fri, 15 Apr 2016 20:13:02 GMT',
+  etag: '0x8D3656A5962608C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2c9d9904-4488-4624-9664-267a34be6392',
+  'request-id': '5de4041a-bcab-4892-9dfc-8e96cc00dffc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '56a8467f-fbb6-491a-a89b-e2c860d94524',
+  'client-request-id': '3baa9e01-5e46-42f6-951c-6d11cfb0a38e',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:03:12 GMT',
+  date: 'Fri, 15 Apr 2016 20:14:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://jstesteastus2.eastus2.batch.azure.com:443')
   .get('/jobs/xplatJob?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not exist.\\nRequestId:2c9d9904-4488-4624-9664-267a34be6392\\nTime:2016-04-09T00:03:12.4721398Z\"\r\n  }\r\n}", { 'content-length': '333',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobs/@Element\",\"id\":\"xplatJob\",\"displayName\":\"displayName\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobs/xplatJob\",\"eTag\":\"0x8D3656A5962608C\",\"lastModified\":\"2016-04-15T20:13:02.9930124Z\",\"creationTime\":\"2016-04-15T20:12:56.4274996Z\",\"state\":\"deleting\",\"stateTransitionTime\":\"2016-04-15T20:14:06.8776137Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2016-04-15T20:14:03.7170008Z\",\"priority\":5,\"usesTaskDependencies\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n  },\"jobManagerTask\":{\r\n    \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"name1\",\"value\":\"value1\"\r\n      },{\r\n        \"name\":\"name2\",\"value\":\"value2\"\r\n      }\r\n    ],\"constraints\":{\r\n      \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n    },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n  },\"jobPreparationTask\":{\r\n    \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n      },{\r\n        \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n      }\r\n    ],\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n    },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n  },\"jobReleaseTask\":{\r\n    \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n      {\r\n        \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n      }\r\n    ],\"environmentSettings\":[\r\n      {\r\n        \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n      },{\r\n        \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n      }\r\n    ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n  },\"commonEnvironmentSettings\":[\r\n    {\r\n      \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n    },{\r\n      \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n    }\r\n  ],\"poolInfo\":{\r\n    \"poolId\":\"xplatTestPool\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta3\",\"value\":\"value3\"\r\n    },{\r\n      \"name\":\"meta4\",\"value\":\"value4\"\r\n    }\r\n  ],\"executionInfo\":{\r\n    \"startTime\":\"2016-04-15T20:12:56.6736392Z\",\"endTime\":\"2016-04-15T20:14:03.7170008Z\",\"poolId\":\"xplatTestPool\",\"terminateReason\":\"done\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
+  'last-modified': 'Fri, 15 Apr 2016 20:13:02 GMT',
+  etag: '0x8D3656A5962608C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2c9d9904-4488-4624-9664-267a34be6392',
+  'request-id': '5de4041a-bcab-4892-9dfc-8e96cc00dffc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '56a8467f-fbb6-491a-a89b-e2c860d94524',
+  'client-request-id': '3baa9e01-5e46-42f6-951c-6d11cfb0a38e',
   dataserviceversion: '3.0',
-  date: 'Sat, 09 Apr 2016 00:03:12 GMT',
+  date: 'Fri, 15 Apr 2016 20:14:06 GMT',
   connection: 'close' });
  return result; }]];

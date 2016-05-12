@@ -214,20 +214,20 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources[0].location.should.equal(locationStr);
+          allResources[0].location.toLowerCase().should.equal(locationStr);
           allResources[0].publisher.should.equal(publisher);
           allResources[0].typeName.should.equal(type);
           var cmd = util.format('vm extension-image list %s %s --json', location, publisher).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var allResources = JSON.parse(result.text);
-            allResources[0].location.should.equal(locationStr);
+            allResources[0].location.toLowerCase().should.equal(locationStr);
             allResources[0].publisher.should.equal(publisher);
             var cmd = util.format('vm extension-image list %s --json', location).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               var allResources = JSON.parse(result.text);
-              allResources[0].location.should.equal(locationStr);
+              allResources[0].location.toLowerCase().should.equal(locationStr);
               done();
             });
           });
