@@ -79,18 +79,7 @@ describe('arm', function () {
     describe('express-route', function () {
       it('create should create express route circuit', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          var cmd = util.format('network express-route circuit create -g {group} -n {name} -l {location} -p {serviceProviderName} ' +
-            '-i {peeringLocation} -b {bandwidthInMbps} -e {skuTier} -f {skuFamily} -t {tags} --json').formatArgs(circuitProp);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var circuit = JSON.parse(result.text);
-            circuit.name.should.equal(circuitProp.name);
-            circuit.serviceProviderProperties.serviceProviderName.should.equal(circuitProp.serviceProviderName);
-            circuit.serviceProviderProperties.peeringLocation.should.equal(circuitProp.peeringLocation);
-            circuit.serviceProviderProperties.bandwidthInMbps.should.equal(circuitProp.bandwidthInMbps);
-            circuit.sku.tier.should.equal(circuitProp.skuTier);
-            circuit.sku.family.should.equal(circuitProp.skuFamily);
-            networkUtil.shouldHaveTags(circuit);
+          networkUtil.createExpressRouteCircuit(circuitProp, suite, function (circuit) {
             networkUtil.shouldBeSucceeded(circuit);
             done();
           });
@@ -106,8 +95,7 @@ describe('arm', function () {
         });
       });
       it('set should modify express route circuit', function (done) {
-        var cmd = util.format('network express-route circuit set -g {group} -n {name} -b {newBandwidthInMbps} ' +
-          '-e {newSkuTier} -f {newSkuFamily} -t {newTags} --json').formatArgs(circuitProp);
+        var cmd = 'network express-route circuit set -g {group} -n {name} -b {newBandwidthInMbps} -e {newSkuTier} -f {newSkuFamily} -t {newTags} --json'.formatArgs(circuitProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var circuit = JSON.parse(result.text);

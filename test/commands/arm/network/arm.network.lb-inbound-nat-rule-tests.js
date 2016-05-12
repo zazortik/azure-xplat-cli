@@ -85,8 +85,8 @@ describe('arm', function () {
     describe('lb-inbound-nat-rule', function () {
       it('create should create inbound nat rule in in load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
                 var cmd = util.format('network lb inbound-nat-rule create -g {group} -l {lbName} -n {name} -p {protocol} ' +
                   '-f {frontendPort} -b {backendPort} -e {enableFloatingIP} -i {idleTimeoutInMinutes} -t {1} --json')
