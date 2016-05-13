@@ -36776,6 +36776,15 @@
                   "description": "Specifies the nodes on which this cmdlet applies the action separated by \";\". For example, \"headnode;workernode\" is a valid input."
                 },
                 {
+                  "flags": "-a, --applicationName <applicationName>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--applicationName",
+                  "description": "Application name. When application name is specified, persistOnSuccess cannot be specified, and nodeTypes must contain only \"edgenode\""
+                },
+                {
                   "flags": "--persistOnSuccess",
                   "required": 0,
                   "optional": 0,
