@@ -26,10 +26,10 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestDiskEncrypt9946','xplatteststorage1274','xplatteststoragecnt14390','xplattestipdns4428'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestDiskEncrypt1629','xplatteststorage12853','xplatteststoragecnt17726','xplattestipdns6041'];};

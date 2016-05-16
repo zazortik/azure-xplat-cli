@@ -12,7 +12,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.20",
+  "version": "0.10.0",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -28,7 +28,7 @@
   "main": "./lib/cli.js",
   "preferGlobal": "true",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4.2.4"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -42,7 +42,7 @@
     "azure-arm-hdinsight": "0.2.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
     "azure-arm-insights": "0.11.1",
-    "azure-arm-network": "0.13.1",
+    "azure-arm-network": "0.13.2",
     "azure-arm-trafficmanager": "0.10.5",
     "azure-arm-dns": "0.10.1",
     "azure-arm-website": "0.10.0",
@@ -78,6 +78,7 @@
     "github": "0.1.6",
     "fast-json-patch": "0.5.6",
     "js2xmlparser": "1.0.0",
+    "jsonlint": "1.6.2",
     "jsrsasign": "4.8.2 ",
     "kuduscript": "1.0.6",
     "moment": "^2.8.0",
@@ -85,7 +86,6 @@
     "ms-rest-azure": "^1.12.0",
     "node-forge": "0.6.23",
     "node-uuid": "1.2.0",
-    "number-is-nan": "1.0.0",
     "omelette": "0.1.0",
     "openssl-wrapper": "0.2.1",
     "readable-stream": "~1.0.0",
@@ -97,7 +97,7 @@
     "through": "2.3.4",
     "tunnel": "0.0.2",
     "underscore": "1.4.x",
-    "validator": "~3.1.0",
+    "validator": "5.2.0",
     "winston": "0.6.x",
     "wordwrap": "0.0.2",
     "xml2js": "0.1.x",

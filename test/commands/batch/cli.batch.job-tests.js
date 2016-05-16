@@ -183,7 +183,7 @@ describe('cli', function () {
         var originalJob = JSON.parse(result.text);
         originalJob.priority.should.not.be.null;
 
-        suite.execute('batch job set %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, updateJsonFilePath, 
+        suite.execute('batch job set %s %s --account-name %s --account-key %s --account-endpoint %s --json --replace', jobId, updateJsonFilePath, 
           batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedJob = JSON.parse(result.text);

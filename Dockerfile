@@ -2,7 +2,7 @@ FROM debian:jessie
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-ENV AZURE_CLI_VERSION "0.9.20"
+ENV AZURE_CLI_VERSION "0.10.0"
 ENV NODEJS_APT_ROOT "node_4.x"
 ENV NODEJS_VERSION "4.2.4"
 

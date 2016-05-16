@@ -138,7 +138,7 @@ describe('cli', function () {
         originalJobSchedule.jobSpecification.jobManagerTask.should.not.be.null;
         originalJobSchedule.jobSpecification.jobManagerTask.id.should.not.be.null;
 
-        suite.execute('batch job-schedule set %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobScheduleId, updateJsonFilePath, 
+        suite.execute('batch job-schedule set %s %s --account-name %s --account-key %s --account-endpoint %s --json --replace', jobScheduleId, updateJsonFilePath, 
           batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedJobSchedule = JSON.parse(result.text);
