@@ -59981,7 +59981,7 @@
               "name": "create",
               "description": "Create a server management gateway",
               "fullName": "servermanagement gateway create",
-              "usage": "[options] <resource-group> <location> <gateway-name>",
+              "usage": "[options] <resource-group> <location> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60028,12 +60028,12 @@
                   "description": "the location"
                 },
                 {
-                  "flags": "-w, --gateway-name <name>",
-                  "required": -20,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-w",
-                  "long": "--gateway-name",
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the server management gateway"
                 },
                 {
@@ -60121,7 +60121,7 @@
               "name": "show",
               "description": "Show detailed gateway information",
               "fullName": "servermanagement gateway show",
-              "usage": "[options] <resource-group> <gateway-name>",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60159,12 +60159,12 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-w, --gateway-name <name>",
-                  "required": -20,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-w",
-                  "long": "--gateway-name",
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the server management gateway"
                 },
                 {
@@ -60182,7 +60182,7 @@
               "name": "delete",
               "description": "Delete a gateway",
               "fullName": "servermanagement gateway delete",
-              "usage": "[options] <resource-group> <gateway-name>",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60220,12 +60220,12 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-w, --gateway-name <name>",
-                  "required": -20,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-w",
-                  "long": "--gateway-name",
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the server management gateway"
                 },
                 {
@@ -60253,7 +60253,7 @@
               "name": "create",
               "description": "Create a server management node",
               "fullName": "servermanagement node create",
-              "usage": "[options] <resource-group> <location> <gateway-name> <node-name>",
+              "usage": "[options] <resource-group> <location> <gateway-name> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60309,12 +60309,12 @@
                   "description": "the name of the server management gateway"
                 },
                 {
-                  "flags": "-n, --node-name <name>",
-                  "required": -17,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-n",
-                  "long": "--node-name",
+                  "long": "--name",
                   "description": "the name of the server management node"
                 },
                 {
@@ -60420,7 +60420,7 @@
               "name": "show",
               "description": "Show node information",
               "fullName": "servermanagement node show",
-              "usage": "[options] <resource-group> <node-name>",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60458,12 +60458,12 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-n, --node-name <name>",
-                  "required": -17,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-n",
-                  "long": "--node-name",
+                  "long": "--name",
                   "description": "the name of the server management node"
                 },
                 {
@@ -60481,7 +60481,7 @@
               "name": "delete",
               "description": "Delete a node",
               "fullName": "servermanagement node delete",
-              "usage": "[options] <resource-group> <node-name>",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60519,12 +60519,12 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-n, --node-name <name>",
-                  "required": -17,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-n",
-                  "long": "--node-name",
+                  "long": "--name",
                   "description": "the name of the server management node"
                 },
                 {
@@ -60552,7 +60552,7 @@
               "name": "create",
               "description": "Create a server management session",
               "fullName": "servermanagement session create",
-              "usage": "[options] <resource-group> <node-name> <session-name>",
+              "usage": "[options] <resource-group> <node-name> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60599,12 +60599,12 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-e, --session-name <name>",
-                  "required": -20,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-e",
-                  "long": "--session-name",
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the session on the node"
                 },
                 {
@@ -60640,7 +60640,7 @@
               "name": "show",
               "description": "Show detailed session information",
               "fullName": "servermanagement session show",
-              "usage": "[options] <resource-group> <session-name>",
+              "usage": "[options] <resource-group> <node-name> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60687,12 +60687,12 @@
                   "description": "the name of the server management node"
                 },
                 {
-                  "flags": "-e, --session-name <name>",
-                  "required": -20,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-e",
-                  "long": "--session-name",
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the session on the node"
                 },
                 {
@@ -60710,7 +60710,7 @@
               "name": "delete",
               "description": "Delete a session",
               "fullName": "servermanagement session delete",
-              "usage": "[options] <resource-group> <session-name>",
+              "usage": "[options] <resource-group> <node-name> <name>",
               "filePath": "commands/arm/servermanagement/servermanagement._js",
               "options": [
                 {
@@ -60748,12 +60748,21 @@
                   "description": "the name of the resource group"
                 },
                 {
-                  "flags": "-e, --session-name <name>",
-                  "required": -20,
+                  "flags": "-n, --node-name <name>",
+                  "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "short": "-e",
-                  "long": "--session-name",
+                  "short": "-n",
+                  "long": "--node-name",
+                  "description": "the name of the server management node"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
                   "description": "the name of the session on the node"
                 },
                 {
