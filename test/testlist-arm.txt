@@ -6,6 +6,7 @@ commands/arm/location/arm.location-tests.js
 commands/arm/tag/arm.tag-tests.js
 commands/arm/tag/arm.resourcetag-tests.js
 commands/arm/tag/arm.resourcegrouptag-tests.js
+commands/arm/servermanagement/arm.servermanagement-crud-tests.js
 #commands/arm/role/arm.role-tests.js
 #commands/arm/role/arm.role.assignment.audit-tests.js
 commands/arm/ad/arm.ad-tests.js
@@ -79,7 +80,6 @@ commands/arm/usage/arm.usage.feature-tests.js
 commands/arm/rediscache/arm.rediscache-tests.js
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
 commands/arm/datalakestore/arm.datalake-store-tests.js
-commands/arm/servermanagement/arm.servermanagement-crud-tests.js
 #please put the following group tests to the last, as it uses the different subscription
 #and it exposes a test framework bug which failed vm tests randomly
 commands/arm/group/arm.group-tests.js
