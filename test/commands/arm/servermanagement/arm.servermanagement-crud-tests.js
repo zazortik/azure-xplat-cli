@@ -76,12 +76,6 @@ describe('arm', function() {
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
 
-      // for interactive debugging
-      suite._execute = suite.execute;
-      suite.execute = function(cmd, fn) {
-        log('\n executing "' + cmd + '"');
-        return suite._execute(cmd, fn);
-      };
       suite.setupSuite(done);
     });
 
