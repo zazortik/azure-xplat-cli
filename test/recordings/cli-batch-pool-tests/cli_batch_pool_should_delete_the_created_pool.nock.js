@@ -33,11 +33,11 @@ nock('http://test1.westus.batch.azure.com:443')
   .delete('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '03bfec18-b15b-497d-9c9c-b207ceece75c',
+  'request-id': '8a6360a5-bce6-42bf-88d5-bed377e57d11',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '19fd7586-ab46-4bde-a9ba-d75f6ee19735',
+  'client-request-id': 'f954d577-a226-4ac3-a128-a3ad9435c863',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
+  date: 'Fri, 20 May 2016 05:36:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,38 +46,38 @@ nock('https://test1.westus.batch.azure.com:443')
   .delete('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '03bfec18-b15b-497d-9c9c-b207ceece75c',
+  'request-id': '8a6360a5-bce6-42bf-88d5-bed377e57d11',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '19fd7586-ab46-4bde-a9ba-d75f6ee19735',
+  'client-request-id': 'f954d577-a226-4ac3-a128-a3ad9435c863',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
+  date: 'Fri, 20 May 2016 05:36:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://test1.westus.batch.azure.com:443')
   .get('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:16011b22-d698-44af-b161-f1e73b142812\\nTime:2016-04-29T22:50:04.6969980Z\"\r\n  }\r\n}", { 'content-length': '326',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:65a41f13-4745-4a69-8c46-ccf03a6df0f8\\nTime:2016-05-20T05:36:40.5823861Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '16011b22-d698-44af-b161-f1e73b142812',
+  'request-id': '65a41f13-4745-4a69-8c46-ccf03a6df0f8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ff5f3ea4-a53b-45a4-947c-15d399942e9e',
+  'client-request-id': 'ac5039f9-f203-4be1-84eb-ea2d9df583f4',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
+  date: 'Fri, 20 May 2016 05:36:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test1.westus.batch.azure.com:443')
   .get('/pools/xplatCreatedPool?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:16011b22-d698-44af-b161-f1e73b142812\\nTime:2016-04-29T22:50:04.6969980Z\"\r\n  }\r\n}", { 'content-length': '326',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool does not exist.\\nRequestId:65a41f13-4745-4a69-8c46-ccf03a6df0f8\\nTime:2016-05-20T05:36:40.5823861Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '16011b22-d698-44af-b161-f1e73b142812',
+  'request-id': '65a41f13-4745-4a69-8c46-ccf03a6df0f8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ff5f3ea4-a53b-45a4-947c-15d399942e9e',
+  'client-request-id': 'ac5039f9-f203-4be1-84eb-ea2d9df583f4',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:04 GMT',
+  date: 'Fri, 20 May 2016 05:36:40 GMT',
   connection: 'close' });
  return result; }]];
