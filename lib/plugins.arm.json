@@ -53602,12 +53602,12 @@
                       "description": "the full path to the certificate in pfx format"
                     },
                     {
-                      "flags": "-p, --password <password>",
-                      "required": -16,
+                      "flags": "-p, --cert-password <cert-password>",
+                      "required": -21,
                       "optional": 0,
                       "bool": true,
                       "short": "-p",
-                      "long": "--password",
+                      "long": "--cert-password",
                       "description": "the certificate password"
                     },
                     {

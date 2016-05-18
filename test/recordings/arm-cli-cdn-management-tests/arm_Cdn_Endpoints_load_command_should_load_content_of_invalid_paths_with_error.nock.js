@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4',
+    name: 'Visual Studio Enterprise with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'ed912eac-e7c1-43f8-a91f-ef14a7879293',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -41,77 +41,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-<<<<<<< HEAD
-.post('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2016-04-02', '*')
-=======
-.post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2015-06-01', '*')
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-<<<<<<< HEAD
-  'x-ms-request-id': '0e511cf9-813f-4fc7-b6bf-c39e6a203d39',
-  'x-ms-client-request-id': '5d119537-ddc0-45d7-8bbd-8dd0611673aa',
-=======
-  'x-ms-request-id': '202ec5c1-73c8-45eb-8dd0-120d600a6466',
-  'x-ms-client-request-id': '0b8941d7-429d-469b-872f-2d46e6d6325b',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-request-id': '5ee9fd0a-68f3-4c5d-96ef-f66717b7aad8',
+  'x-ms-client-request-id': '11492390-b5e0-4970-8876-71f6c17429fd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-<<<<<<< HEAD
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'ca781b9d-9a81-4f5a-9b0a-06240c7b328f',
-  'x-ms-routing-request-id': 'CENTRALUS:20160512T180109Z:ca781b9d-9a81-4f5a-9b0a-06240c7b328f',
-  date: 'Thu, 12 May 2016 18:01:08 GMT',
-=======
-  'x-ms-ratelimit-remaining-subscription-writes': '1192',
-  'x-ms-correlation-request-id': '20c15d2d-e5e7-482b-b7b1-e4d5b8342094',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160518T122439Z:20c15d2d-e5e7-482b-b7b1-e4d5b8342094',
-  date: 'Wed, 18 May 2016 12:24:39 GMT',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-correlation-request-id': '1491af5c-2653-4b90-97d9-95a452d39386',
+  'x-ms-routing-request-id': 'CENTRALUS:20160518T214708Z:1491af5c-2653-4b90-97d9-95a452d39386',
+  date: 'Wed, 18 May 2016 21:47:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-<<<<<<< HEAD
-.post('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2016-04-02', '*')
-=======
-.post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2015-06-01', '*')
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint01/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-<<<<<<< HEAD
-  'x-ms-request-id': '0e511cf9-813f-4fc7-b6bf-c39e6a203d39',
-  'x-ms-client-request-id': '5d119537-ddc0-45d7-8bbd-8dd0611673aa',
-=======
-  'x-ms-request-id': '202ec5c1-73c8-45eb-8dd0-120d600a6466',
-  'x-ms-client-request-id': '0b8941d7-429d-469b-872f-2d46e6d6325b',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-request-id': '5ee9fd0a-68f3-4c5d-96ef-f66717b7aad8',
+  'x-ms-client-request-id': '11492390-b5e0-4970-8876-71f6c17429fd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-<<<<<<< HEAD
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'ca781b9d-9a81-4f5a-9b0a-06240c7b328f',
-  'x-ms-routing-request-id': 'CENTRALUS:20160512T180109Z:ca781b9d-9a81-4f5a-9b0a-06240c7b328f',
-  date: 'Thu, 12 May 2016 18:01:08 GMT',
-=======
-  'x-ms-ratelimit-remaining-subscription-writes': '1192',
-  'x-ms-correlation-request-id': '20c15d2d-e5e7-482b-b7b1-e4d5b8342094',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160518T122439Z:20c15d2d-e5e7-482b-b7b1-e4d5b8342094',
-  date: 'Wed, 18 May 2016 12:24:39 GMT',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-correlation-request-id': '1491af5c-2653-4b90-97d9-95a452d39386',
+  'x-ms-routing-request-id': 'CENTRALUS:20160518T214708Z:1491af5c-2653-4b90-97d9-95a452d39386',
+  date: 'Wed, 18 May 2016 21:47:08 GMT',
   connection: 'close' });
  return result; }]];

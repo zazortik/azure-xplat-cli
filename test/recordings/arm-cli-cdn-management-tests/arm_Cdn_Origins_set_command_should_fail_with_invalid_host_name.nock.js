@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4',
+    name: 'Visual Studio Enterprise with MSDN',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'ed912eac-e7c1-43f8-a91f-ef14a7879293',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -41,77 +41,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-<<<<<<< HEAD
-.patch('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2016-04-02', '*')
-=======
-.patch('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2015-06-01', '*')
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"HostName \\\"testtest\\\" is invalid. It must be a valid domain name, IP version 4, or IP version 6.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '165',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-<<<<<<< HEAD
-  'x-ms-request-id': 'e92d5556-6fb3-4470-b7c3-8d8f2eda956e',
-  'x-ms-client-request-id': '4b0eb92d-943c-4b00-8e20-9a162c605847',
-=======
-  'x-ms-request-id': 'cfd18056-8b21-46ef-b41f-98913109d339',
-  'x-ms-client-request-id': '3e8616ba-0032-4d48-9de3-0bd56a4518ba',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-request-id': 'cbc0a462-50bc-4674-9b35-01cd678204d2',
+  'x-ms-client-request-id': 'f5ff4d8a-45c2-47d9-a007-15db391025ba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-<<<<<<< HEAD
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'e6eff152-2800-46fe-aeaf-2b3562dc8d5b',
-  'x-ms-routing-request-id': 'CENTRALUS:20160512T180256Z:e6eff152-2800-46fe-aeaf-2b3562dc8d5b',
-  date: 'Thu, 12 May 2016 18:02:55 GMT',
-=======
-  'x-ms-ratelimit-remaining-subscription-writes': '1193',
-  'x-ms-correlation-request-id': 'c681fd7d-b2d4-46a1-9127-0a89d78c3ae7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160518T122647Z:c681fd7d-b2d4-46a1-9127-0a89d78c3ae7',
-  date: 'Wed, 18 May 2016 12:26:46 GMT',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': 'd82386f8-62ef-4276-853f-d1859b4da847',
+  'x-ms-routing-request-id': 'WESTUS:20160518T214851Z:d82386f8-62ef-4276-853f-d1859b4da847',
+  date: 'Wed, 18 May 2016 21:48:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-<<<<<<< HEAD
-.patch('/subscriptions/bab71ab8-daff-4f58-8dfc-ed0d61a3fa6b/resourceGroups/xplattestadlsrg01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2016-04-02', '*')
-=======
-.patch('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2015-06-01', '*')
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+.patch('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/xplattestadlsrgr01/providers/Microsoft.Cdn/profiles/cliTestProfile01/endpoints/cliTestEndpoint02/origins/cliTestOrigin02?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"HostName \\\"testtest\\\" is invalid. It must be a valid domain name, IP version 4, or IP version 6.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '165',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-<<<<<<< HEAD
-  'x-ms-request-id': 'e92d5556-6fb3-4470-b7c3-8d8f2eda956e',
-  'x-ms-client-request-id': '4b0eb92d-943c-4b00-8e20-9a162c605847',
-=======
-  'x-ms-request-id': 'cfd18056-8b21-46ef-b41f-98913109d339',
-  'x-ms-client-request-id': '3e8616ba-0032-4d48-9de3-0bd56a4518ba',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-request-id': 'cbc0a462-50bc-4674-9b35-01cd678204d2',
+  'x-ms-client-request-id': 'f5ff4d8a-45c2-47d9-a007-15db391025ba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-<<<<<<< HEAD
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'e6eff152-2800-46fe-aeaf-2b3562dc8d5b',
-  'x-ms-routing-request-id': 'CENTRALUS:20160512T180256Z:e6eff152-2800-46fe-aeaf-2b3562dc8d5b',
-  date: 'Thu, 12 May 2016 18:02:55 GMT',
-=======
-  'x-ms-ratelimit-remaining-subscription-writes': '1193',
-  'x-ms-correlation-request-id': 'c681fd7d-b2d4-46a1-9127-0a89d78c3ae7',
-  'x-ms-routing-request-id': 'WESTEUROPE:20160518T122647Z:c681fd7d-b2d4-46a1-9127-0a89d78c3ae7',
-  date: 'Wed, 18 May 2016 12:26:46 GMT',
->>>>>>> c4f17632f7ab041ad57b28406843793290310fac
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': 'd82386f8-62ef-4276-853f-d1859b4da847',
+  'x-ms-routing-request-id': 'WESTUS:20160518T214851Z:d82386f8-62ef-4276-853f-d1859b4da847',
+  date: 'Wed, 18 May 2016 21:48:51 GMT',
   connection: 'close' });
  return result; }]];
