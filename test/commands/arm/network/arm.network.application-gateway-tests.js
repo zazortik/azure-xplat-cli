@@ -126,7 +126,7 @@ describe('arm', function () {
 
     describe('application-gateway', function () {
       this.timeout(hour);
-/*
+
       it('create should pass', function (done) {
         networkUtil.createGroup(gatewayProp.group, gatewayProp.location, suite, function () {
           networkUtil.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddress, suite, function () {
@@ -161,8 +161,8 @@ describe('arm', function () {
             });
           });
         });
-      });*/
-/*
+      });
+
       it('set should modify application gateway', function (done) {
         var cmd = 'network application-gateway set {group} {name} -z {newCapacity} -t {newTags} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -265,7 +265,7 @@ describe('arm', function () {
           done();
         });
       });
-*/
+
       it('ssl cert create should create ssl certificate in application gateway', function (done) {
         var cmd = util.format('network application-gateway ssl-cert create {group} {name} {sslCertName} ' +
           '-f {sslFile} -p {sslPassword} --json').formatArgs(gatewayProp);
@@ -296,7 +296,7 @@ describe('arm', function () {
           done();
         });
       });
-/*
+
       it('address-pool create command should create new address pool in application gateway', function (done) {
         var cmd = 'network application-gateway address-pool create {group} {name} {poolName} -r {poolServers} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -424,9 +424,7 @@ describe('arm', function () {
           done();
         });
       });
-*/
 
-/*
       // Changed application gateway state to "Stopped" in this test case.
       it('url path map rule delete should remove map rule in application gateway', function (done) {
         networkUtil.stopAppGateway(gatewayProp, suite, function () {
@@ -583,7 +581,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           done();
         });
-      });*/
+      });
     });
   });
 });
