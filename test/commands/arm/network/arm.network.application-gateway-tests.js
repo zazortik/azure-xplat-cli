@@ -24,7 +24,7 @@ var testUtils = require('../../../util/util');
 var testPrefix = 'arm-network-application-gateway-tests';
 var util = require('util');
 
-var location, groupName = 'xplatTestGroupCreateAppGw',
+var location, groupName = 'xplatTestGroupCreateAppGw3',
   gatewayProp = {
     name: 'xplatTestAppGw',
     vnetName: 'xplatTestVnet',
@@ -32,6 +32,15 @@ var location, groupName = 'xplatTestGroupCreateAppGw',
     subnetName: 'xplatTestSubnet',
     subnetAddress: '10.0.0.0/11',
     servers: '1.1.1.1',
+    defaultSslCertPath: 'test/data/sslCert.pfx',
+    httpSettingsProtocol: constants.appGateway.settings.protocol[0],
+    httpSettingsPortAddress: 111,
+    portValue: 112,
+    httpListenerProtocol: 'Https',
+    ruleType: constants.appGateway.routingRule.type[0],
+    skuName: 'Standard_Small',
+    skuTier: 'Standard',
+    capacity: 2,
     tags: networkUtil.tags,
     newCapacity: 5,
     newTags: networkUtil.newTags,
@@ -63,8 +72,8 @@ var location, groupName = 'xplatTestGroupCreateAppGw',
     mapPath: '/test',
     newUrlMapRuleName: 'rule01',
     newMapPath: '/test01',
-    sslCertName: 'cert01',
-    sslFile: 'test/sslCert.pfx',
+    sslCertName: 'cert02',
+    sslFile: 'test/data/cert02.pfx',
     sslPassword: 'pswd'
   };
 
@@ -123,12 +132,28 @@ describe('arm', function () {
           networkUtil.createVnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.location, gatewayProp.vnetAddress, suite, function () {
             networkUtil.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddress, suite, function () {
               var cmd = util.format('network application-gateway create {group} {name} -l {location} -e {vnetName} -m {subnetName} ' +
-                '-r {servers} -t {tags} --json').formatArgs(gatewayProp);
+                '-r {servers} -y {defaultSslCertPath} -x {sslPassword} -i {httpSettingsProtocol} -o {httpSettingsPortAddress} -f {cookieBasedAffinity} ' +
+                '-j {portValue} -b {httpListenerProtocol} -w {ruleType} -a {skuName} -u {skuTier} -z {capacity} -t {tags} --json').formatArgs(gatewayProp);
               testUtils.executeCommand(suite, retry, cmd, function (result) {
                 result.exitStatus.should.equal(0);
                 var appGateway = JSON.parse(result.text);
                 appGateway.name.should.equal(gatewayProp.name);
                 appGateway.location.should.equal(gatewayProp.location);
+                appGateway.sku.name.should.equal(gatewayProp.skuName);
+                appGateway.sku.tier.should.equal(gatewayProp.skuTier);
+                appGateway.sku.capacity.should.equal(gatewayProp.capacity);
+
+                var frontendPort = appGateway.frontendPorts[0];
+                frontendPort.port.should.equal(gatewayProp.portValue);
+
+                var backendHttpSettings = appGateway.backendHttpSettingsCollection[0];
+                backendHttpSettings.port.should.equal(gatewayProp.httpSettingsPortAddress);
+                backendHttpSettings.protocol.toLowerCase().should.equal(gatewayProp.httpSettingsProtocol.toLowerCase());
+                backendHttpSettings.cookieBasedAffinity.should.equal(gatewayProp.cookieBasedAffinity);
+
+                var httpListener = appGateway.httpListeners[0];
+                httpListener.protocol.toLowerCase().should.equal(gatewayProp.httpListenerProtocol.toLowerCase());
+
                 networkUtil.shouldHaveTags(appGateway);
                 networkUtil.shouldBeSucceeded(appGateway);
                 done();
@@ -237,6 +262,37 @@ describe('arm', function () {
           frontendPort.name.should.equal(gatewayProp.portName);
           frontendPort.port.should.equal(gatewayProp.portAddress);
           networkUtil.shouldBeSucceeded(frontendPort);
+          done();
+        });
+      });
+
+      it('ssl cert create should create ssl certificate in application gateway', function (done) {
+        var cmd = util.format('network application-gateway ssl-cert create {group} {name} {sslCertName} ' +
+          '-f {sslFile} -p {sslPassword} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var sslCert = appGateway.sslCertificates[1];
+          sslCert.name.should.equal(gatewayProp.sslCertName);
+          networkUtil.shouldBeSucceeded(sslCert);
+          done();
+        });
+      });
+
+      it('ssl cert delete should delete ssl certificate from application gateway', function (done) {
+        var cmd = util.format('network application-gateway ssl-cert delete {group} {name} {sslCertName} -q --json')
+          .formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var sslCertificates = appGateway.sslCertificates;
+          _.some(sslCertificates, function (cert) {
+            return cert.name === gatewayProp.sslCertName;
+          }).should.be.false;
           done();
         });
       });
@@ -369,21 +425,6 @@ describe('arm', function () {
         });
       });
 
-      it('ssl cert create should create ssl certificate in application gateway', function (done) {
-        var cmd = util.format('network application-gateway ssl-cert create {group} {name} {sslCertName} ' +
-          '-f {sslFile} -p {sslPassword} --json').formatArgs(gatewayProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(gatewayProp.name);
-
-          var sslCert = appGateway.sslCertificates[0];
-          sslCert.name.should.equal(gatewayProp.sslCertName);
-          networkUtil.shouldBeSucceeded(sslCert);
-          done();
-        });
-      });
-
       // Changed application gateway state to "Stopped" in this test case.
       it('url path map rule delete should remove map rule in application gateway', function (done) {
         networkUtil.stopAppGateway(gatewayProp, suite, function () {
@@ -402,22 +443,6 @@ describe('arm', function () {
             networkUtil.shouldBeSucceeded(urlPathMap);
             done();
           });
-        });
-      });
-
-      it('ssl cert delete should delete ssl certificate from application gateway', function (done) {
-        var cmd = util.format('network application-gateway ssl-cert delete {group} {name} {sslCertName} -q --json')
-          .formatArgs(gatewayProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var appGateway = JSON.parse(result.text);
-          appGateway.name.should.equal(gatewayProp.name);
-
-          var sslCertificates = appGateway.sslCertificates;
-          _.some(sslCertificates, function (cert) {
-            return cert.name === gatewayProp.sslCertName;
-          }).should.be.false;
-          done();
         });
       });
 

@@ -33,13 +33,13 @@ var requiredEnvironment = [{
   defaultValue: 'East US 2'
 }, {
   name: 'AZURE_ARM_TEST_RESOURCE_GROUP_1',
-  defaultValue: 'xplattestadlsrg01'
+  defaultValue: 'xplattestadlsrgr01'
 }, {
   name: 'AZURE_ARM_TEST_CDN_PROFILE_1',
   defaultValue: 'cliTestProfile01'
 }, {
   name: 'AZURE_ARM_TEST_RESOURCE_GROUP_2',
-  defaultValue: 'xplattestadlsrg02'
+  defaultValue: 'xplattestadlsrgr02'
 }, {
   name: 'AZURE_ARM_TEST_CDN_PROFILE_2',
   defaultValue: 'cliTestProfile02'
