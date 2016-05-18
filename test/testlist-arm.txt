@@ -42,7 +42,7 @@ include:./testlist-arm-vmss.txt
 include:./testlist-arm-container.txt
 # Extension Tests
 #commands/arm/vm/arm.vm.extension-tests.js
-commands/arm/vm/arm.vm.enable-aem-tests.js
+#commands/arm/vm/arm.vm.enable-aem-tests.js
 commands/arm/vm/arm.vm.enable-aem-tests.no-wad.js
 commands/arm/vm/arm.vm-disk-encryption-extension-tests.js
 # END - Compute Tests
