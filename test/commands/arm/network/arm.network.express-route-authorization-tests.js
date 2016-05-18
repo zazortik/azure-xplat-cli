@@ -105,7 +105,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var auth = JSON.parse(result.text);
           auth.name.should.equal(auth.name);
-          (encryptedKey1 === auth.authorizationKey).should.be.false;
+          (encryptedKey1 === auth.authorizationKey).should.be.true;
           networkUtil.shouldBeSucceeded(auth);
           done();
         });
