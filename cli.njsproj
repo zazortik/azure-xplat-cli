@@ -51,7 +51,7 @@
     <Content Include="lib\commands\arm\rediscache\rediscache._js" />
     <Content Include="lib\commands\arm\rediscache\rediscacheUtils._js" />
     <Content Include="lib\commands\arm\cdnmanagement\cdnmanagement._js" />
-    <Compile Include="lib\commands\arm\cdnmanagement\cdnmanagement.utils.js" />
+    <Content Include="lib\commands\arm\cdnmanagement\cdnmanagement.utils.js" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -72,10 +72,10 @@
     <Content Include="Documentation\Writing-Test.md" />
     <Content Include="lib\plugins.arm.json" />
     <Content Include="lib\plugins.asm.json" />
-    <Compile Include="lib\autocomplete.js" />
-    <Compile Include="lib\cli.js" />
-    <Compile Include="lib\cmdLoader.js" />
-    <Compile Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
+    <Content Include="lib\autocomplete.js" />
+    <Content Include="lib\cli.js" />
+    <Content Include="lib\cmdLoader.js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -93,8 +93,8 @@
     <Compile Include="features\support\hooks.js" />
     <Compile Include="features\support\scriptrunner.js" />
     <Compile Include="features\support\website-world.js" />
-    <Compile Include="lib\commands\config.js" />
-    <Compile Include="lib\commands\help.js" />
+    <Content Include="lib\commands\config.js" />
+    <Content Include="lib\commands\help.js" />
     <Content Include="lib\locales\en-us.json" />
     <Compile Include="lib\util\bitArray.js" />
     <Compile Include="lib\util\blobUtils.js" />
@@ -117,9 +117,9 @@
     <Compile Include="lib\commands\arm\armsdk\dns.js" />
     <Compile Include="lib\commands\arm\armsdk\dnsManagementClient.js" />
     <Compile Include="lib\commands\arm\armsdk\storageManagementClient.js" />
-    <Compile Include="lib\commands\arm\insights\insights.autoscale.profile.js" />
-    <Compile Include="lib\commands\arm\insights\insights.autoscale.rule.js" />
-    <Compile Include="lib\commands\arm\insights\insights.utils.js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.profile.js" />
+    <Content Include="lib\commands\arm\insights\insights.autoscale.rule.js" />
+    <Content Include="lib\commands\arm\insights\insights.utils.js" />
     <Compile Include="lib\commands\arm\keyvault\kv-legacy.js" />
     <Compile Include="lib\commands\arm\keyvault\kv-utils.js" />
     <Compile Include="lib\commands\arm\resource\resourceUtils.js" />
