@@ -25,6 +25,7 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-HDInsight-cluster-create-tests';
 var groupPrefix = 'xplatTestRgHDInsightClusterCreate';
 var clusterNamePrefix = 'xplatTestHDInsightClusterCreate';
+var appNamePrefix = "xplatSampleApp";
 var HdinsightTestUtil = require('../../../util/hdinsightTestUtil');
 var requiredEnvironment = [
   {
@@ -46,6 +47,7 @@ var clusterNamePremium;
 var createdResources = [];
 var scriptActionName;
 var scriptActionUri;
+var appName;
 
 var location = "East US",
     username = 'azureuser',
@@ -85,6 +87,7 @@ describe('arm', function () {
         clusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
         clusterNamePremium = suite.generateId(clusterNamePrefix, createdResources) + 'Premium';
         customConfigClusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
+        appName = suite.generateId(appNamePrefix, createdResources);
         tags = 'a=b;b=c;d=';
         rdpExpiryDate = '12/12/2025';
         timeBeforeClusterAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
@@ -357,7 +360,52 @@ describe('arm', function () {
           }
         });
       });
-      
+
+      it('script action should not succeed on hdinsight linux cluster with wrong appName', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action create %s --resource-group %s -n %s -u %s --applicationName %s -t edgenode --json', clusterNameLinux, groupName, scriptActionName, scriptActionUri, appName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(1);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
+      it('script action should not succeed on hdinsight linux cluster with appName when persisitOnSuccess is true', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action create %s --resource-group %s -n %s -u %s --applicationName %s -t edgenode --persistOnSuccess --json', clusterNameLinux, groupName, scriptActionName, scriptActionUri, appName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(1);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
+      it('script action should not succeed on hdinsight linux cluster with appName when roles list contains nodetype other than edgenode', function (done) {
+        this.timeout(hdinsightTest.timeoutMedium);
+        var cmd = util.format('hdinsight script-action create %s --resource-group %s -n %s -u %s --applicationName %s -t headnode --json', clusterNameLinux, groupName, scriptActionName, scriptActionUri, appName).split(' ');
+        suite.execute(cmd, function (result) {
+          result.exitStatus.should.equal(1);
+          if (!suite.isPlayback()) {
+            setTimeout(function () {
+              done();
+            }, HdinsightTestUtil.timeoutMedium);
+          } else {
+            done();
+          }
+        });
+      });
+
       it('script action list persisted should list persisted scripts on the cluster', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action persisted list %s --resource-group %s --json', clusterNameLinux, groupName).split(' ');
@@ -372,7 +420,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action show persisted should show persisted script on the cluster', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action persisted show %s %s --resource-group %s --json', clusterNameLinux, scriptActionName, groupName).split(' ');
