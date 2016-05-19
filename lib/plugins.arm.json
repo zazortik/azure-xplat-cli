@@ -57567,6 +57567,469 @@
         }
       }
     },
+    "powerbi": {
+      "name": "powerbi",
+      "description": "Commands to manage your Azure Power BI Embedded Workspace Collections",
+      "fullName": "powerbi",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create a new workspace collection",
+          "fullName": "powerbi create",
+          "usage": "[options] <resourceGroup> <name> [location] [tags]",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the new workspace collection"
+            },
+            {
+              "flags": "-l --location [location]>",
+              "required": 0,
+              "optional": -15,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "The location (azure region/datacenter) where the workspace collection will be provisioned"
+            },
+            {
+              "flags": "-t --tags [tags]",
+              "required": 0,
+              "optional": -11,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "Tags to set to the resource group. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, -t 'tag1=value1;tag2'. Providing an empty string '' will delete the tags."
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update a workspace collection's tags",
+          "fullName": "powerbi set",
+          "usage": "[options] <resourceGroup> <name> <tags>",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of workspace collection"
+            },
+            {
+              "flags": "-t --tags <tags>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "Tags to set to the resource group. Can be multiple. In the format of 'name=value'. Name is required and value is optional. For example, -t 'tag1=value1;tag2'. Providing an empty string '' will delete the tags."
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Create a sample",
+          "fullName": "powerbi delete",
+          "usage": "[options] [resourceGroup] [name]",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of workspace collection"
+            },
+            {
+              "flags": "--subscription [subscription]",
+              "required": 0,
+              "optional": -16,
+              "bool": true,
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List workspace collections within subscription or within resource group",
+          "fullName": "powerbi list",
+          "usage": "[options] [resourceGroup]",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group [resourceGroup]",
+              "required": 0,
+              "optional": -21,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "get-keys",
+          "description": "Get access keys for a workspace collection",
+          "fullName": "powerbi get-keys",
+          "usage": "[options] <resourceGroup> <name>",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of workspace collection"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "regenerate-key",
+          "description": "Get access keys for a workspace collection",
+          "fullName": "powerbi regenerate-key",
+          "usage": "[options] <resourceGroup> <name> <keyName>",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of workspace collection"
+            },
+            {
+              "flags": "-k --keyName <keyName>",
+              "required": -14,
+              "optional": 0,
+              "bool": true,
+              "short": "-k",
+              "long": "--keyName",
+              "description": "Name of key you would like to regenerate. Accepted values: \"key1\" (Primary) or \"key2\" (Secondary)"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list-workspaces",
+          "description": "Get workspaces within given workspace collection",
+          "fullName": "powerbi list-workspaces",
+          "usage": "[options] <resourceGroup> <name>",
+          "filePath": "commands/arm/powerbiembedded/powerbiembedded._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "Name of workspace collection"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "provider": {
       "name": "provider",
       "description": "Commands to manage resource provider registrations",

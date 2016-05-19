@@ -31,6 +31,7 @@ commands/arm/insights/arm.insights.usage-tests.js
 #commands/arm/keyvault/arm.keyvault-tests.js
 #commands/arm/keyvault/arm.keyvault-key-tests.js
 #commands/arm/keyvault/arm.keyvault-secret-tests.js
+commands/arm/powerbiembedded/arm.powerbiembedded-tests.js
 # START - Compute Tests
 commands/arm/vm/arm.vm-stop-restart-tests.js
 commands/arm/vm/arm.vm.disk-attachnew-detach-test.js
