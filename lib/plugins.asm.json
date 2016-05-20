@@ -9730,6 +9730,116 @@
             }
           }
         },
+        "text": {
+          "name": "text",
+          "description": "Commands to manage your text",
+          "fullName": "servicefabric text",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "encrypt",
+              "description": "Encrypt text",
+              "fullName": "servicefabric text encrypt",
+              "usage": "[options] [text] [path] [algorithmOid]",
+              "filePath": "commands/serviceFabricCrypto._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--text <text>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--text",
+                  "description": "the text"
+                },
+                {
+                  "flags": "--path <path>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--path",
+                  "description": "the path"
+                },
+                {
+                  "flags": "--algorithm-oid <algorithmOid>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--algorithm-oid",
+                  "description": "the algorithm oid"
+                }
+              ]
+            },
+            {
+              "name": "decrypt",
+              "description": "Decrypt text",
+              "fullName": "servicefabric text decrypt",
+              "usage": "[options] [text] [path] [algorithmOid]",
+              "filePath": "commands/serviceFabricCrypto._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--cipher-text <cipherText>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--cipher-text",
+                  "description": "the cipher text"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
         "node": {
           "name": "node",
           "description": "Commands to manage your node",
