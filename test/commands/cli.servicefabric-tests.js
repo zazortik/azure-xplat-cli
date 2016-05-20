@@ -26,12 +26,12 @@ var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
 ];
-var httpEndpoint = 'http://10.91.140.195:10550';
-var applicationPackagePath = '/media/share/StatelessPi';
-var applicationPackageName = 'StatelessPi';
-var applicationTypeName = 'StatelessPiServiceApp';
+var httpEndpoint = 'http://10.91.140.221:10550';
+var applicationPackagePath = '/media/share/CounterActorApplication';
+var applicationPackageName = 'CounterActorApplication';
+var applicationTypeName = 'CounterActorApplicationType';
 var applicationTypeVersion = '1.0';
-var serviceTypeName = 'StatelessPiServiceType';
+var serviceTypeName = 'CounterActor.CounterServiceType';
 
 describe('Service Fabric', function () {
   describe('create service to remove service', function () {
