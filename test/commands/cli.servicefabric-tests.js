@@ -100,7 +100,7 @@ describe('Service Fabric', function () {
     });
     
     it('should create service', function (done) {
-      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name ' + serviceTypeName + ' --service-kind Stateless --instance-count 1 --partition-scheme Singleton --json', function (result) {
+      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name ' + serviceTypeName + ' --service-kind Stateful --target-replica-set-size 1 --min-replica-set-size 1 --partition-scheme Singleton --has-persisted-state true --json', function (result) {
         setTimeout(function () {
           result.exitStatus.should.equal(0);
           done();
