@@ -13,7 +13,9 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -33,10 +35,10 @@ nock('http://management.core.windows.net:443')
   .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>true</Result><Reason i:nil=\"true\"/></AvailabilityResponse>", { 'cache-control': 'no-cache',
   'content-length': '190',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '17959e085bdc0852a8993a966d26969e',
-  date: 'Mon, 17 Aug 2015 08:34:03 GMT',
+  'x-ms-request-id': 'ef9265c8ee95af3d8dedad0aabe701bf',
+  date: 'Fri, 22 Apr 2016 14:11:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,9 +48,9 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>true</Result><Reason i:nil=\"true\"/></AvailabilityResponse>", { 'cache-control': 'no-cache',
   'content-length': '190',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '17959e085bdc0852a8993a966d26969e',
-  date: 'Mon, 17 Aug 2015 08:34:03 GMT',
+  'x-ms-request-id': 'ef9265c8ee95af3d8dedad0aabe701bf',
+  date: 'Fri, 22 Apr 2016 14:11:03 GMT',
   connection: 'close' });
  return result; }]];

@@ -129,6 +129,50 @@ describe('cli', function () {
         done();
       });
     });
+    
+    it('should disable the job', function (done) {
+      suite.execute('batch job disable %s --disable-option %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobId, 'requeue', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job show %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var job = JSON.parse(result.text);
+          job.should.not.be.null;
+          (job.state === 'disabling' || job.state === 'disabled').should.be.true;
+          done();
+        });
+      });
+    });
+    
+    it('should list job prep and release status for the job', function (done) {
+      suite.execute('batch job prep-release-status list %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var jobPrepAndReleaseInfo = JSON.parse(result.text);
+        jobPrepAndReleaseInfo.should.not.be.null;
+        jobPrepAndReleaseInfo.every(function (info) {
+          return info.poolId != null && info.nodeId != null;
+        }).should.be.true;
+        
+        done();
+      });
+    });
+    
+    it('should enable the job', function (done) {
+      suite.execute('batch job enable %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job show %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var job = JSON.parse(result.text);
+          job.should.not.be.null;
+          job.state.should.equal('active');
+          done();
+        });
+      });
+    });
 
     it('should update the job using a json file', function (done) {
       // The update JSON should change the priority, so we store the original, perform the update,
@@ -146,6 +190,21 @@ describe('cli', function () {
           updatedJob.priority.should.not.be.null;
           updatedJob.priority.should.not.equal(originalJob.priority);
 
+          done();
+        });
+      });
+    });
+    
+    it('should stop the job', function (done) {
+      suite.execute('batch job stop %s --reason %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        jobId, 'done', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch job show %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var job = JSON.parse(result.text);
+          job.should.not.be.null;
+          (job.state === 'terminating' || job.state === 'completed').should.be.true;
           done();
         });
       });

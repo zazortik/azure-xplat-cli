@@ -1,0 +1,5 @@
+#owner @huangpf 
+# Extension Tests
+commands/arm/vm/arm.vm.enable-aem-tests.js
+commands/arm/vm/arm.vm-disk-encryption-tests.js
+commands/arm/vm/arm.vm-disk-encryption-extension-tests.js

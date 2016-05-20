@@ -13,7 +13,9 @@ exports.getMockedProfile = function () {
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -29,26 +31,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/operations/isavailable/azure')
-  .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>The storage account named 'azure' is already taken.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
-  'content-length': '237',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/operations/isavailable/azcopyperf1')
+  .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>The storage account named 'azcopyperf1' is already taken.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
+  'content-length': '243',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '264fea9e1adb08abbfcf729f6fcb319b',
-  date: 'Mon, 17 Aug 2015 08:34:08 GMT',
+  'x-ms-request-id': '30d851c5e8e395e09bae4cbba644d968',
+  date: 'Fri, 22 Apr 2016 14:11:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/operations/isavailable/azure')
-  .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>The storage account named 'azure' is already taken.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
-  'content-length': '237',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/operations/isavailable/azcopyperf1')
+  .reply(200, "<AvailabilityResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>false</Result><Reason>The storage account named 'azcopyperf1' is already taken.</Reason></AvailabilityResponse>", { 'cache-control': 'no-cache',
+  'content-length': '243',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.254 (rd_rdfe_stable.150807-1029) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
-  'x-ms-request-id': '264fea9e1adb08abbfcf729f6fcb319b',
-  date: 'Mon, 17 Aug 2015 08:34:08 GMT',
+  'x-ms-request-id': '30d851c5e8e395e09bae4cbba644d968',
+  date: 'Fri, 22 Apr 2016 14:11:10 GMT',
   connection: 'close' });
  return result; }]];

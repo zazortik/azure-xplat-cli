@@ -95,7 +95,7 @@
           "bool": true,
           "short": "-e",
           "long": "--environment",
-          "description": "Environment to authenticate against, such as AzureChinaCloud; must support active directory."
+          "description": "Environment to authenticate against, such as AzureChinaCloud; must support Active Directory."
         },
         {
           "flags": "-p --password <password>",
@@ -2089,7 +2089,7 @@
             },
             {
               "name": "show",
-              "description": "Show details of the batch application",
+              "description": "Show details of the Batch application",
               "fullName": "batch application show",
               "usage": "[options] [resource-group] [account-name] [application-id]",
               "filePath": "commands/batch/batch.application._js",
@@ -2525,7 +2525,7 @@
                 },
                 {
                   "name": "show",
-                  "description": "Show details of the batch application package",
+                  "description": "Show details of the Batch application package",
                   "fullName": "batch application package show",
                   "usage": "[options] [resource-group] [account-name] [application-id] [version]",
                   "filePath": "commands/batch/batch.application._js",
@@ -2687,6 +2687,365 @@
               "categories": {}
             }
           }
+        },
+        "certificate": {
+          "name": "certificate",
+          "description": "Commands to manage your Batch certificate",
+          "fullName": "batch certificate",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "create",
+              "description": "Add a certificate",
+              "fullName": "batch certificate create",
+              "usage": "[options] [thumbprint] [cert-file]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--cert-file <cert-file>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--cert-file",
+                  "description": "the certificate file: cer file or pfx file"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--password <password>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--password",
+                  "description": "the password to access the certificate's private key"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete the specified Batch certificate",
+              "fullName": "batch certificate delete",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--abort",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--abort",
+                  "description": "cancel the deletion"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "delete the specified certificate without confirmation"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show details of the Batch certificate",
+              "fullName": "batch certificate show",
+              "usage": "[options] [thumbprint]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the certificate thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the certificate thumbprint algorithm"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "List Batch certificates",
+              "fullName": "batch certificate list",
+              "usage": "[options]",
+              "filePath": "commands/batch/batch.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--select-clause <selectClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--select-clause",
+                  "description": "list of a subset of properties to select"
+                },
+                {
+                  "flags": "--filter-clause <filterClause>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--filter-clause",
+                  "description": "an OData expression by which the results will be filtered"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "task-file": {
           "name": "task-file",
@@ -4042,9 +4401,392 @@
                   "description": "the Batch account URL"
                 }
               ]
+            },
+            {
+              "name": "enable",
+              "description": "Enables the specified job, allowing new tasks to run",
+              "fullName": "batch job enable",
+              "usage": "[options] <jobId>",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "disable",
+              "description": "Disables the specified job.  Disabled jobs do not run new tasks, but may be re-enabled later.",
+              "fullName": "batch job disable",
+              "usage": "[options] <jobId>",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--disable-option <disableOption>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--disable-option",
+                  "description": "specifies what to do with active tasks during a disable job operation, available options include \"requeue\", \"terminate\", and \"wait\""
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "stop",
+              "description": "Terminates the specified job, marking it as completed",
+              "fullName": "batch job stop",
+              "usage": "[options] <jobId>",
+              "filePath": "commands/batch/batch.job._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--reason [reason]",
+                  "required": 0,
+                  "optional": -10,
+                  "bool": true,
+                  "long": "--reason",
+                  "description": "the text you want to appear as the job's terminate reason"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "prep-release-status": {
+              "name": "prep-release-status",
+              "description": "Commands to manage the status of your job preparation and release tasks",
+              "fullName": "batch job prep-release-status",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists the execution status of the job preparation and job release task for the specified job across the compute nodes where the job has run",
+                  "fullName": "batch job prep-release-status list",
+                  "usage": "[options] <jobId>",
+                  "filePath": "commands/batch/batch.job._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--select-clause <selectClause>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--select-clause",
+                      "description": "list of a subset of properties to select"
+                    },
+                    {
+                      "flags": "--filter-clause <filterClause>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--filter-clause",
+                      "description": "an OData expression by which the results will be filtered"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         },
         "job-schedule": {
           "name": "job-schedule",
@@ -4554,6 +5296,285 @@
                   "description": "the Batch account URL"
                 }
               ]
+            },
+            {
+              "name": "enable",
+              "description": "Enables the specified job schedule, allowing jobs to be created according to its schedule",
+              "fullName": "batch job-schedule enable",
+              "usage": "[options] <jobScheduleId>",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "disable",
+              "description": "Disables the specified job schedule. Disabled schedules do not create new jobs, but may be re-enabled later.",
+              "fullName": "batch job-schedule disable",
+              "usage": "[options] <jobScheduleId>",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "stop",
+              "description": "Terminates the specified job schedule",
+              "fullName": "batch job-schedule stop",
+              "usage": "[options] <jobScheduleId>",
+              "filePath": "commands/batch/batch.jobSchedule._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
             }
           ],
           "categories": {}
@@ -4924,100 +5945,6 @@
               ]
             },
             {
-              "name": "get-remote-desktop",
-              "description": "Gets the Remote Desktop Protocol file for the specified compute node",
-              "fullName": "batch node get-remote-desktop",
-              "usage": "[options] [pool-id] [node-id] [rdp-file]",
-              "filePath": "commands/batch/batch.node._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--pool-id <pool-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--pool-id",
-                  "description": "the id of the pool that contains the compute node"
-                },
-                {
-                  "flags": "--node-id <node-Id>",
-                  "required": -11,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--node-id",
-                  "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "--rdp-file <rdp-file>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--rdp-file",
-                  "description": "the path where you would like to save the Remote Desktop Protocol file"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--account-name",
-                  "description": "the Batch account name"
-                },
-                {
-                  "flags": "-k, --account-key <accountKey>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--account-key",
-                  "description": "the Batch account key"
-                },
-                {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--account-endpoint",
-                  "description": "the Batch account URL"
-                }
-              ]
-            },
-            {
               "name": "delete",
               "description": "Remove nodes from the Batch pool",
               "fullName": "batch node delete",
@@ -5209,6 +6136,282 @@
                       "bool": true,
                       "long": "--node-id",
                       "description": "the id of the compute node for which you want to get the remote login settings"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "remote-desktop": {
+              "name": "remote-desktop",
+              "description": "The remote desktop protocol for a Batch compute node",
+              "fullName": "batch node remote-desktop",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Gets the Remote Desktop Protocol file for the specified compute node",
+                  "fullName": "batch node remote-desktop show",
+                  "usage": "[options] [pool-id] [node-id] [rdp-file]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node for which you want to get the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "--rdp-file <rdp-file>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--rdp-file",
+                      "description": "the path where you would like to save the Remote Desktop Protocol file"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "scheduling": {
+              "name": "scheduling",
+              "description": "The scheduling property for a Batch compute node",
+              "fullName": "batch node scheduling",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "disable",
+                  "description": "Disable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling disable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to disable scheduling"
+                    },
+                    {
+                      "flags": "--disable-option <disable-option>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--disable-option",
+                      "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the Batch account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the Batch account key"
+                    },
+                    {
+                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--account-endpoint",
+                      "description": "the Batch account URL"
+                    }
+                  ]
+                },
+                {
+                  "name": "enable",
+                  "description": "Enable scheduling on the Batch compute node",
+                  "fullName": "batch node scheduling enable",
+                  "usage": "[options] [pool-id] [node-id]",
+                  "filePath": "commands/batch/batch.node._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--pool-id <pool-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--pool-id",
+                      "description": "the id of the pool that contains the compute node"
+                    },
+                    {
+                      "flags": "--node-id <node-Id>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-id",
+                      "description": "the id of the compute node that you want to enable scheduling"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",
@@ -12004,6 +13207,14 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--type <type>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--type",
+                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
+                },
+                {
                   "flags": "-e, --label <label>",
                   "required": -13,
                   "optional": 0,
@@ -12038,14 +13249,6 @@
                   "short": "-l",
                   "long": "--location",
                   "description": "the location"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/ZRS/GRS/RAGRS/PLRS)"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -12091,6 +13294,14 @@
                   "description": "use json output"
                 },
                 {
+                  "flags": "--type <type>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--type",
+                  "description": "the account type(LRS/GRS/RAGRS)"
+                },
+                {
                   "flags": "-e, --label <label>",
                   "required": -13,
                   "optional": 0,
@@ -12107,14 +13318,6 @@
                   "short": "-d",
                   "long": "--description",
                   "description": "the storage account description"
-                },
-                {
-                  "flags": "--type <type>",
-                  "required": -8,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--type",
-                  "description": "the account type(LRS/GRS/RAGRS)"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -18871,9 +20074,1390 @@
         }
       }
     },
+    "service": {
+      "name": "service",
+      "description": "Commands to manage your Cloud Services",
+      "fullName": "service",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create a cloud service",
+          "fullName": "service create",
+          "usage": "[options] <serviceName>",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--serviceName <serviceName>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--serviceName",
+              "description": "the cloud service name"
+            },
+            {
+              "flags": "--description <description>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--description",
+              "description": "the description. Defaults to 'Service host'"
+            },
+            {
+              "flags": "--location <location>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "long": "--location",
+              "description": "the location. Optional if affinitygroup is specified"
+            },
+            {
+              "flags": "--affinitygroup <affinitygroup>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--affinitygroup",
+              "description": "the affinity group. Optional if location is specified"
+            },
+            {
+              "flags": "--label <label>",
+              "required": -9,
+              "optional": 0,
+              "bool": true,
+              "long": "--label",
+              "description": "the label. Defaults to serviceName"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List Azure cloud services",
+          "fullName": "service list",
+          "usage": "[options]",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Show Azure cloud service. Provides detailed information about deployments when used with --json option.",
+          "fullName": "service show",
+          "usage": "[options] <serviceName>",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--serviceName <serviceName>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--serviceName",
+              "description": "the cloud service name"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete a cloud service",
+          "fullName": "service delete",
+          "usage": "[options] <serviceName>",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--serviceName <serviceName>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "long": "--serviceName",
+              "description": "the cloud service name"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for delete confirmation"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        },
+        {
+          "name": "get-deployment-event",
+          "description": "Get details of deployment events.",
+          "fullName": "service get-deployment-event",
+          "usage": "[options] <serviceName> <startTime> <endTime>",
+          "filePath": "commands/asm/service._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "--service-name <service-name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "long": "--service-name",
+              "description": "the cloud service name"
+            },
+            {
+              "flags": "-d, --deployment-name <deployment-name>",
+              "required": -23,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--deployment-name",
+              "description": "the deployment name"
+            },
+            {
+              "flags": "-t, --start-time <start-time>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--start-time",
+              "description": "the start time specified in UTC e.g. 2015-06-17T17:58:50.4290652Z, 2015-06-17"
+            },
+            {
+              "flags": "-e, --end-time <end-time>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-e",
+              "long": "--end-time",
+              "description": "the end time specified in UTC"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
+            }
+          ]
+        }
+      ],
+      "categories": {
+        "deployment": {
+          "name": "deployment",
+          "description": "Commands to manage your deployment.  ",
+          "fullName": "service deployment",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "abort-migration",
+              "description": "The Abort Deployment Operation validates and aborts your deployment for IaaS Classic to ARM migration.",
+              "fullName": "service deployment abort-migration",
+              "usage": "[options] <service-name> <name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "The Commit Deployment Operation validates and commits your deployment for IaaS Classic to ARM migration.",
+              "fullName": "service deployment commit-migration",
+              "usage": "[options] <service-name> <name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "The Prepare Deployment Operation validates and prepares your deployment for IaaS Classic to ARM migration.",
+              "fullName": "service deployment prepare-migration",
+              "usage": "[options] <service-name> <name> <destination-virtual-network> <resource-group-name> <subnet-name> <virtual-network-name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "--destination-virtual-network <destination-virtual-network>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--destination-virtual-network",
+                  "description": "destination-virtual-network"
+                },
+                {
+                  "flags": "-g, --resource-group-name <resource-group-name>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group-name",
+                  "description": "resource-group-name"
+                },
+                {
+                  "flags": "--subnet-name <subnet-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subnet-name",
+                  "description": "subnet-name"
+                },
+                {
+                  "flags": "--virtual-network-name <virtual-network-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--virtual-network-name",
+                  "description": "virtual-network-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "cert": {
+          "name": "cert",
+          "description": "Commands to manage your Cloud Services certificates",
+          "fullName": "service cert",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List Azure certificates",
+              "fullName": "service cert list",
+              "usage": "[options]",
+              "filePath": "commands/asm/service.cert._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--serviceName <serviceName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--serviceName",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Get Azure certificate",
+              "fullName": "service cert get",
+              "usage": "[options]",
+              "filePath": "commands/asm/service.cert._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "--thumbprint <thumbprint>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint",
+                  "description": "the thumbprint"
+                },
+                {
+                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--thumbprint-algorithm",
+                  "description": "the thumbprint algorithm"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Upload certificate",
+              "fullName": "service cert create",
+              "usage": "[options] <dns-name> <file> [password]",
+              "filePath": "commands/asm/service.cert._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete certificate",
+              "fullName": "service cert delete",
+              "usage": "[options] <thumbprint>",
+              "filePath": "commands/asm/service.cert._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-d, --dns-name <name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--dns-name",
+                  "description": "indicates to only look for certs for this DNS name"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "internal-load-balancer": {
+          "name": "internal-load-balancer",
+          "description": "Commands to manage internal load balancers for your Cloud Service Deployment",
+          "fullName": "service internal-load-balancer",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List internal load balancers for a cloud service deployment",
+              "fullName": "service internal-load-balancer list",
+              "usage": "[options] [serviceName]",
+              "filePath": "commands/asm/service.internallb._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-r, --serviceName <serviceName>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--serviceName",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "add",
+              "description": "Add an internal load balancer for a cloud service deployment",
+              "fullName": "service internal-load-balancer add",
+              "usage": "[options] [serviceName] [internalLBName]",
+              "filePath": "commands/asm/service.internallb._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-r, --serviceName <serviceName>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--serviceName",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-n, --internalLBName <internalLBName>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--internalLBName",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-t, --subnet-name <name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--subnet-name",
+                  "description": "the name of the subnet in the virtual network that the load balancer uses"
+                },
+                {
+                  "flags": "-a, --static-virtualnetwork-ipaddress <ip-address>",
+                  "required": -39,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--static-virtualnetwork-ipaddress",
+                  "description": "specific virtual IP address that the load balancer uses from the subnet in the virtual network"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete an internal load balancer for a cloud service deployment",
+              "fullName": "service internal-load-balancer delete",
+              "usage": "[options] [serviceName] [internalLBName]",
+              "filePath": "commands/asm/service.internallb._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-r, --serviceName <serviceName>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--serviceName",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-n, --internalLBName <internalLBName>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--internalLBName",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update internal load balancer of a cloud service deployment",
+              "fullName": "service internal-load-balancer set",
+              "usage": "[options] [serviceName] [internalLBName]",
+              "filePath": "commands/asm/service.internallb._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-r, --serviceName <serviceName>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--serviceName",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-n, --internalLBName <internalLBName>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--internalLBName",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-t, --subnet-name <name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--subnet-name",
+                  "description": "the name of the subnet in the virtual network that the load balancer uses"
+                },
+                {
+                  "flags": "-a, --static-virtualnetwork-ipaddress <ip-address>",
+                  "required": -39,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--static-virtualnetwork-ipaddress",
+                  "description": "specific virtual IP address that the load balancer uses from the subnet in the virtual network"
+                },
+                {
+                  "flags": "-d, --remove-subnet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--remove-subnet",
+                  "description": "remove subnet entry if it is already defined for the internal load balancer"
+                },
+                {
+                  "flags": "-e, --remove-vnetip",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--remove-vnetip",
+                  "description": "remove virtual network IP address if it is already defined for the internal load balancer"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "load-balanced-set": {
+          "name": "load-balanced-set",
+          "description": "Commands to manage load balanced set for a Cloud Service Deployment",
+          "fullName": "service load-balanced-set",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "Get all load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set list",
+              "usage": "[options] <serviceName>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get a load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set show",
+              "usage": "[options] <serviceName>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load balanced set name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set load balanced set for a cloud service deployment",
+              "fullName": "service load-balanced-set set",
+              "usage": "[options] <serviceName> <load-balanced-set-name>",
+              "filePath": "commands/asm/service.lbset._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --service-name <service-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--service-name",
+                  "description": "the cloud service name"
+                },
+                {
+                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--load-balanced-set-name",
+                  "description": "the load balanced set name"
+                },
+                {
+                  "flags": "-l, --public-port <public-port>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--public-port",
+                  "description": "the load balanced endpoint public port"
+                },
+                {
+                  "flags": "-k, --local-port <local-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--local-port",
+                  "description": "the load balanced endpoint local port"
+                },
+                {
+                  "flags": "-o, --protocol <protocol>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--protocol",
+                  "description": "the transport layer protocol for the load balanced set endpoint (tcp or udp)"
+                },
+                {
+                  "flags": "-m, --idle-timeout <idle-timeout>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--idle-timeout",
+                  "description": "load balanced set endpoint connection timeout for tcp idle connection, specified in minutes"
+                },
+                {
+                  "flags": "-t, --probe-port <probe-port>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--probe-port",
+                  "description": "the virtual machine port to use to inspect the availability status"
+                },
+                {
+                  "flags": "-r, --probe-protocol <probe-protocol>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--probe-protocol",
+                  "description": "the protocol to use to inspect the availability status"
+                },
+                {
+                  "flags": "-p, --probe-path <probe-path>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--probe-path",
+                  "description": "the relative path to inspect the availability status"
+                },
+                {
+                  "flags": "-e, --probe-interval <probe-interval>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--probe-interval",
+                  "description": "the availability status check interval specified in seconds"
+                },
+                {
+                  "flags": "-f, --probe-timeout <probe-timeout>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--probe-timeout",
+                  "description": "the availability status check timeout specified in seconds"
+                },
+                {
+                  "flags": "-u, --direct-server-return <direct-server-return>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--direct-server-return",
+                  "description": "enable or disable direct server return on the load balanced set endpoint, valid values are [Enabled, Disabled] Disabled by default"
+                },
+                {
+                  "flags": "-i, --internal-load-balancer-name <internal-load-balancer-name>",
+                  "required": -35,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--internal-load-balancer-name",
+                  "description": "the internal load balancer name"
+                },
+                {
+                  "flags": "-a, --load-balancer-distribution <load-balancer-distribution>",
+                  "required": -34,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--load-balancer-distribution",
+                  "description": "the load balancer distribution, valid values are [sourceIP, sourceIPProtocol, None]"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
     "hdinsight": {
       "name": "hdinsight",
-      "description": "Commands to manage HDInsight clusters and jobs",
+      "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters and jobs",
       "fullName": "hdinsight",
       "usage": "[options]",
       "options": [],
@@ -18881,14 +21465,14 @@
       "categories": {
         "cluster": {
           "name": "cluster",
-          "description": "Commands to manage HDInsight clusters",
+          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters",
           "fullName": "hdinsight cluster",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "Create a cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCreate a cluster",
               "fullName": "hdinsight cluster create",
               "usage": "[options] <clusterName> <osType> <storageAccountName> <storageAccountKey> <storageContainer> <dataNodeCount> <headNodeSize> <dataNodeSize> <location> <userName> <password> <sshUserName> <sshPassword>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19035,7 +21619,7 @@
             },
             {
               "name": "delete",
-              "description": "Delete a cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nDelete a cluster",
               "fullName": "hdinsight cluster delete",
               "usage": "[options] <clusterName> <location> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19102,7 +21686,7 @@
             },
             {
               "name": "show",
-              "description": "Show cluster details",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nShow cluster details",
               "fullName": "hdinsight cluster show",
               "usage": "[options] <clusterName> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19161,7 +21745,7 @@
             },
             {
               "name": "list",
-              "description": "List the clusters",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nList the clusters",
               "fullName": "hdinsight cluster list",
               "usage": "[options]",
               "filePath": "commands/asm/hdinsight._js",
@@ -19198,14 +21782,14 @@
         },
         "job": {
           "name": "job",
-          "description": "Commands to manage HDInsight jobs",
+          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight jobs",
           "fullName": "hdinsight job",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "hive_create",
-              "description": "Submits a Hive job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Hive job to an HdInsight cluster",
               "fullName": "hdinsight job hive_create",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19312,7 +21896,7 @@
             },
             {
               "name": "mr_create",
-              "description": "Submits a MapReduce job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a MapReduce job to an HdInsight cluster",
               "fullName": "hdinsight job mr_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <className> <jarFile>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19427,7 +22011,7 @@
             },
             {
               "name": "mr_streaming_create",
-              "description": "Submits a Streaming MapReduce job to an HdInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Streaming MapReduce job to an HdInsight cluster",
               "fullName": "hdinsight job mr_streaming_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <mapper> <reducer>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19566,7 +22150,7 @@
             },
             {
               "name": "show",
-              "description": "Retrieves the details of the specified job from an HDInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the details of the specified job from an HDInsight cluster",
               "fullName": "hdinsight job show",
               "usage": "[options] <clusterDnsName> <userName> <password> <jobId>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19641,7 +22225,7 @@
             },
             {
               "name": "list",
-              "description": "Retrieves the list of jobs from the specified HDInsight cluster",
+              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the list of jobs from the specified HDInsight cluster",
               "fullName": "hdinsight job list",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -22286,14 +24870,14 @@
             },
             "aad": {
               "name": "aad",
-              "description": "Manage azure active directory settings for mobile service",
+              "description": "Manage azure Active Directory settings for mobile service",
               "fullName": "mobile auth aad",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "get",
-                  "description": "Get azure active directory identity settings for mobile service",
+                  "description": "Get azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad get",
                   "usage": "[options] [servicename]",
                   "filePath": "commands/asm/mobile._js",
@@ -22336,7 +24920,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Set azure active directory identity settings for mobile service",
+                  "description": "Set azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad set",
                   "usage": "[options] [servicename] [clientId]",
                   "filePath": "commands/asm/mobile._js",
@@ -22379,7 +24963,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete azure active directory identity settings for mobile service",
+                  "description": "Delete azure Active Directory identity settings for mobile service",
                   "fullName": "mobile auth aad delete",
                   "usage": "[options] [servicename]",
                   "filePath": "commands/asm/mobile._js",
@@ -22424,14 +25008,14 @@
               "categories": {
                 "tenant": {
                   "name": "tenant",
-                  "description": "Manage azure active directory tenants for mobile service",
+                  "description": "Manage azure Active Directory tenants for mobile service",
                   "fullName": "mobile auth aad tenant",
                   "usage": "[options] [command]",
                   "options": [],
                   "commands": [
                     {
                       "name": "list",
-                      "description": "List azure active directory tenants for mobile service",
+                      "description": "List azure Active Directory tenants for mobile service",
                       "fullName": "mobile auth aad tenant list",
                       "usage": "[options] [servicename]",
                       "filePath": "commands/asm/mobile._js",
@@ -22474,7 +25058,7 @@
                     },
                     {
                       "name": "add",
-                      "description": "Add azure active directory tenant for mobile service",
+                      "description": "Add azure Active Directory tenant for mobile service",
                       "fullName": "mobile auth aad tenant add",
                       "usage": "[options] [servicename] [tenant]",
                       "filePath": "commands/asm/mobile._js",
@@ -22517,7 +25101,7 @@
                     },
                     {
                       "name": "delete",
-                      "description": "Remove azure active directory tenant for mobile service",
+                      "description": "Remove azure Active Directory tenant for mobile service",
                       "fullName": "mobile auth aad tenant delete",
                       "usage": "[options] [servicename] [tenant]",
                       "filePath": "commands/asm/mobile._js",
@@ -24220,190 +26804,6 @@
         }
       ],
       "categories": {
-        "dns-server": {
-          "name": "dns-server",
-          "description": "Commands to manage your DNS servers",
-          "fullName": "network dns-server",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List DNS servers registered in network",
-              "fullName": "network dns-server list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "register",
-              "description": "Register a DNS server with network",
-              "fullName": "network dns-server register",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "unregister",
-              "description": "Unregister a DNS server registered in the current network",
-              "fullName": "network dns-server unregister",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for unregister confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
         "vnet": {
           "name": "vnet",
           "description": "Commands to manage your virtual networks",
@@ -24411,6 +26811,162 @@
           "usage": "[options] [command]",
           "options": [],
           "commands": [
+            {
+              "name": "abort-migration",
+              "description": "Abort IaaS Classic to ARM migration for a virtual network.",
+              "fullName": "network vnet abort-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "Commit IaaS Classic to ARM migration for a virtual network.",
+              "fullName": "network vnet commit-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "Prepare IaaS Classic to ARM migration for a virtual network.",
+              "fullName": "network vnet prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
             {
               "name": "create",
               "description": "Create a virtual network",
@@ -25475,6 +28031,190 @@
               }
             }
           }
+        },
+        "dns-server": {
+          "name": "dns-server",
+          "description": "Commands to manage your DNS servers",
+          "fullName": "network dns-server",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List DNS servers registered in network",
+              "fullName": "network dns-server list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "register",
+              "description": "Register a DNS server with network",
+              "fullName": "network dns-server register",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "unregister",
+              "description": "Unregister a DNS server registered in the current network",
+              "fullName": "network dns-server unregister",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "reserved-ip": {
           "name": "reserved-ip",
@@ -31107,1164 +33847,6 @@
               "categories": {}
             }
           }
-        }
-      }
-    },
-    "service": {
-      "name": "service",
-      "description": "Commands to manage your Cloud Services",
-      "fullName": "service",
-      "usage": "[options] [command]",
-      "options": [],
-      "commands": [
-        {
-          "name": "create",
-          "description": "Create a cloud service",
-          "fullName": "service create",
-          "usage": "[options] <serviceName>",
-          "filePath": "commands/asm/service._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "--serviceName <serviceName>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "long": "--serviceName",
-              "description": "the cloud service name"
-            },
-            {
-              "flags": "--description <description>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "long": "--description",
-              "description": "the description. Defaults to 'Service host'"
-            },
-            {
-              "flags": "--location <location>",
-              "required": -12,
-              "optional": 0,
-              "bool": true,
-              "long": "--location",
-              "description": "the location. Optional if affinitygroup is specified"
-            },
-            {
-              "flags": "--affinitygroup <affinitygroup>",
-              "required": -17,
-              "optional": 0,
-              "bool": true,
-              "long": "--affinitygroup",
-              "description": "the affinity group. Optional if location is specified"
-            },
-            {
-              "flags": "--label <label>",
-              "required": -9,
-              "optional": 0,
-              "bool": true,
-              "long": "--label",
-              "description": "the label. Defaults to serviceName"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        },
-        {
-          "name": "list",
-          "description": "List Azure cloud services",
-          "fullName": "service list",
-          "usage": "[options]",
-          "filePath": "commands/asm/service._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        },
-        {
-          "name": "show",
-          "description": "Show Azure cloud service. Provides detailed information about deployments when used with --json option.",
-          "fullName": "service show",
-          "usage": "[options] <serviceName>",
-          "filePath": "commands/asm/service._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "--serviceName <serviceName>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "long": "--serviceName",
-              "description": "the cloud service name"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        },
-        {
-          "name": "delete",
-          "description": "Delete a cloud service",
-          "fullName": "service delete",
-          "usage": "[options] <serviceName>",
-          "filePath": "commands/asm/service._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "--serviceName <serviceName>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "long": "--serviceName",
-              "description": "the cloud service name"
-            },
-            {
-              "flags": "-q, --quiet",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-q",
-              "long": "--quiet",
-              "description": "quiet mode, do not ask for delete confirmation"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        },
-        {
-          "name": "get-deployment-event",
-          "description": "Get details of deployment events.",
-          "fullName": "service get-deployment-event",
-          "usage": "[options] <serviceName> <startTime> <endTime>",
-          "filePath": "commands/asm/service._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "--service-name <service-name>",
-              "required": -16,
-              "optional": 0,
-              "bool": true,
-              "long": "--service-name",
-              "description": "the cloud service name"
-            },
-            {
-              "flags": "-d, --deployment-name <deployment-name>",
-              "required": -23,
-              "optional": 0,
-              "bool": true,
-              "short": "-d",
-              "long": "--deployment-name",
-              "description": "the deployment name"
-            },
-            {
-              "flags": "-t, --start-time <start-time>",
-              "required": -18,
-              "optional": 0,
-              "bool": true,
-              "short": "-t",
-              "long": "--start-time",
-              "description": "the start time specified in UTC e.g. 2015-06-17T17:58:50.4290652Z, 2015-06-17"
-            },
-            {
-              "flags": "-e, --end-time <end-time>",
-              "required": -16,
-              "optional": 0,
-              "bool": true,
-              "short": "-e",
-              "long": "--end-time",
-              "description": "the end time specified in UTC"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        }
-      ],
-      "categories": {
-        "cert": {
-          "name": "cert",
-          "description": "Commands to manage your Cloud Services certificates",
-          "fullName": "service cert",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List Azure certificates",
-              "fullName": "service cert list",
-              "usage": "[options]",
-              "filePath": "commands/asm/service.cert._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--serviceName <serviceName>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--serviceName",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "get",
-              "description": "Get Azure certificate",
-              "fullName": "service cert get",
-              "usage": "[options]",
-              "filePath": "commands/asm/service.cert._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--service-name <serviceName>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--service-name",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "--thumbprint <thumbprint>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--thumbprint",
-                  "description": "the thumbprint"
-                },
-                {
-                  "flags": "--thumbprint-algorithm <thumbprint-algorithm>",
-                  "required": -24,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--thumbprint-algorithm",
-                  "description": "the thumbprint algorithm"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "create",
-              "description": "Upload certificate",
-              "fullName": "service cert create",
-              "usage": "[options] <dns-name> <file> [password]",
-              "filePath": "commands/asm/service.cert._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete certificate",
-              "fullName": "service cert delete",
-              "usage": "[options] <thumbprint>",
-              "filePath": "commands/asm/service.cert._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-d, --dns-name <name>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--dns-name",
-                  "description": "indicates to only look for certs for this DNS name"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
-        "internal-load-balancer": {
-          "name": "internal-load-balancer",
-          "description": "Commands to manage internal load balancers for your Cloud Service Deployment",
-          "fullName": "service internal-load-balancer",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List internal load balancers for a cloud service deployment",
-              "fullName": "service internal-load-balancer list",
-              "usage": "[options] [serviceName]",
-              "filePath": "commands/asm/service.internallb._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-r, --serviceName <serviceName>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--serviceName",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "add",
-              "description": "Add an internal load balancer for a cloud service deployment",
-              "fullName": "service internal-load-balancer add",
-              "usage": "[options] [serviceName] [internalLBName]",
-              "filePath": "commands/asm/service.internallb._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-r, --serviceName <serviceName>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--serviceName",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-n, --internalLBName <internalLBName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--internalLBName",
-                  "description": "the internal load balancer name"
-                },
-                {
-                  "flags": "-t, --subnet-name <name>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--subnet-name",
-                  "description": "the name of the subnet in the virtual network that the load balancer uses"
-                },
-                {
-                  "flags": "-a, --static-virtualnetwork-ipaddress <ip-address>",
-                  "required": -39,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--static-virtualnetwork-ipaddress",
-                  "description": "specific virtual IP address that the load balancer uses from the subnet in the virtual network"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete an internal load balancer for a cloud service deployment",
-              "fullName": "service internal-load-balancer delete",
-              "usage": "[options] [serviceName] [internalLBName]",
-              "filePath": "commands/asm/service.internallb._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-r, --serviceName <serviceName>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--serviceName",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-n, --internalLBName <internalLBName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--internalLBName",
-                  "description": "the internal load balancer name"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "set",
-              "description": "Update internal load balancer of a cloud service deployment",
-              "fullName": "service internal-load-balancer set",
-              "usage": "[options] [serviceName] [internalLBName]",
-              "filePath": "commands/asm/service.internallb._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-r, --serviceName <serviceName>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--serviceName",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-n, --internalLBName <internalLBName>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--internalLBName",
-                  "description": "the internal load balancer name"
-                },
-                {
-                  "flags": "-t, --subnet-name <name>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--subnet-name",
-                  "description": "the name of the subnet in the virtual network that the load balancer uses"
-                },
-                {
-                  "flags": "-a, --static-virtualnetwork-ipaddress <ip-address>",
-                  "required": -39,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--static-virtualnetwork-ipaddress",
-                  "description": "specific virtual IP address that the load balancer uses from the subnet in the virtual network"
-                },
-                {
-                  "flags": "-d, --remove-subnet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--remove-subnet",
-                  "description": "remove subnet entry if it is already defined for the internal load balancer"
-                },
-                {
-                  "flags": "-e, --remove-vnetip",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--remove-vnetip",
-                  "description": "remove virtual network IP address if it is already defined for the internal load balancer"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
-        "load-balanced-set": {
-          "name": "load-balanced-set",
-          "description": "Commands to manage load balanced set for a Cloud Service Deployment",
-          "fullName": "service load-balanced-set",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "Get all load balanced set for a cloud service deployment",
-              "fullName": "service load-balanced-set list",
-              "usage": "[options] <serviceName>",
-              "filePath": "commands/asm/service.lbset._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --service-name <service-name>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--service-name",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "show",
-              "description": "Get a load balanced set for a cloud service deployment",
-              "fullName": "service load-balanced-set show",
-              "usage": "[options] <serviceName>",
-              "filePath": "commands/asm/service.lbset._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --service-name <service-name>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--service-name",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
-                  "required": -30,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--load-balanced-set-name",
-                  "description": "the load balanced set name"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "set",
-              "description": "Set load balanced set for a cloud service deployment",
-              "fullName": "service load-balanced-set set",
-              "usage": "[options] <serviceName> <load-balanced-set-name>",
-              "filePath": "commands/asm/service.lbset._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --service-name <service-name>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--service-name",
-                  "description": "the cloud service name"
-                },
-                {
-                  "flags": "-b, --load-balanced-set-name <load-balanced-set-name>",
-                  "required": -30,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--load-balanced-set-name",
-                  "description": "the load balanced set name"
-                },
-                {
-                  "flags": "-l, --public-port <public-port>",
-                  "required": -19,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--public-port",
-                  "description": "the load balanced endpoint public port"
-                },
-                {
-                  "flags": "-k, --local-port <local-port>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-k",
-                  "long": "--local-port",
-                  "description": "the load balanced endpoint local port"
-                },
-                {
-                  "flags": "-o, --protocol <protocol>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-o",
-                  "long": "--protocol",
-                  "description": "the transport layer protocol for the load balanced set endpoint (tcp or udp)"
-                },
-                {
-                  "flags": "-m, --idle-timeout <idle-timeout>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-m",
-                  "long": "--idle-timeout",
-                  "description": "load balanced set endpoint connection timeout for tcp idle connection, specified in minutes"
-                },
-                {
-                  "flags": "-t, --probe-port <probe-port>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--probe-port",
-                  "description": "the virtual machine port to use to inspect the availability status"
-                },
-                {
-                  "flags": "-r, --probe-protocol <probe-protocol>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--probe-protocol",
-                  "description": "the protocol to use to inspect the availability status"
-                },
-                {
-                  "flags": "-p, --probe-path <probe-path>",
-                  "required": -18,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--probe-path",
-                  "description": "the relative path to inspect the availability status"
-                },
-                {
-                  "flags": "-e, --probe-interval <probe-interval>",
-                  "required": -22,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--probe-interval",
-                  "description": "the availability status check interval specified in seconds"
-                },
-                {
-                  "flags": "-f, --probe-timeout <probe-timeout>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-f",
-                  "long": "--probe-timeout",
-                  "description": "the availability status check timeout specified in seconds"
-                },
-                {
-                  "flags": "-u, --direct-server-return <direct-server-return>",
-                  "required": -28,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-u",
-                  "long": "--direct-server-return",
-                  "description": "enable or disable direct server return on the load balanced set endpoint, valid values are [Enabled, Disabled] Disabled by default"
-                },
-                {
-                  "flags": "-i, --internal-load-balancer-name <internal-load-balancer-name>",
-                  "required": -35,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--internal-load-balancer-name",
-                  "description": "the internal load balancer name"
-                },
-                {
-                  "flags": "-a, --load-balancer-distribution <load-balancer-distribution>",
-                  "required": -34,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--load-balancer-distribution",
-                  "description": "the load balancer distribution, valid values are [sourceIP, sourceIPProtocol, None]"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
         }
       }
     },
