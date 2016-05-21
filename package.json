@@ -128,7 +128,6 @@
     "unit-arm": "node scripts/unit.js testlist-arm.txt",
     "unit-vm": "node scripts/unit.js testlist-vm.txt",
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
-    "unit-arm-powerbiembedded": "node scripts/unit.js testlist-arm-powerbiembedded.txt",
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",
     "unit-arm-vm-extension-live": "node scripts/unit.js testlist-arm-vm-extension-live.txt",
