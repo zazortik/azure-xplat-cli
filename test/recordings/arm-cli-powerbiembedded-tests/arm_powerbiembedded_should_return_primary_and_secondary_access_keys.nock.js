@@ -31,38 +31,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup9953/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection1902/listKeys?api-version=2016-01-29')
-  .reply(200, "{\"key1\":\"APiz/nZUIrHxWGQDgNrkZ7sIAdvCz6M51IO6HKuHYUM9QOdECMVTVkweCufFLi5CV8mnsW6SW3WJBvyR/BUfkA==\",\"key2\":\"bK3XzyoCNVM1TsmSY6+/ZJR8g9RtVLdB5oARnYtBKWY8LS5WVgAJJ4DA/3JPys0WEaVF8rAizEo1lxDvgmmW/Q==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
+  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup3498/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection6437/listKeys?api-version=2016-01-29')
+  .reply(200, "{\"key1\":\"uoYIv3+ArDuoGPDuHW26AFyBp13WhHrhqV+34o0NaoU0aE6vyk8kavkBusSZMi6gPjqSW5DJe6ZzFAlg2KA52Q==\",\"key2\":\"rMCuJ9TkwIuVc7ZNo0wHISpSwxMrqWT1b5wuwv6hAP/TM2/4HWzLx+EJOKhwvUrDg7+es9RINqpkyWi/oKhRAA==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
   'content-length': '197',
   'content-type': 'application/json; charset=utf-8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-frame-options': 'deny',
   'x-content-type-options': 'nosniff',
-  requestid: '2c41f68c-0923-48be-bf5f-f5ba16995fb1',
+  requestid: 'e64dae39-2ef2-41ed-9b2c-3390d06c1188',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': '8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  'x-ms-correlation-request-id': '8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  'x-ms-routing-request-id': 'WESTUS:20160521T012222Z:8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  date: 'Sat, 21 May 2016 01:22:22 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-request-id': '9ecf9997-ce00-432d-95aa-469a9d29e196',
+  'x-ms-correlation-request-id': '9ecf9997-ce00-432d-95aa-469a9d29e196',
+  'x-ms-routing-request-id': 'WESTUS:20160521T015421Z:9ecf9997-ce00-432d-95aa-469a9d29e196',
+  date: 'Sat, 21 May 2016 01:54:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup9953/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection1902/listKeys?api-version=2016-01-29')
-  .reply(200, "{\"key1\":\"APiz/nZUIrHxWGQDgNrkZ7sIAdvCz6M51IO6HKuHYUM9QOdECMVTVkweCufFLi5CV8mnsW6SW3WJBvyR/BUfkA==\",\"key2\":\"bK3XzyoCNVM1TsmSY6+/ZJR8g9RtVLdB5oARnYtBKWY8LS5WVgAJJ4DA/3JPys0WEaVF8rAizEo1lxDvgmmW/Q==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
+  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup3498/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection6437/listKeys?api-version=2016-01-29')
+  .reply(200, "{\"key1\":\"uoYIv3+ArDuoGPDuHW26AFyBp13WhHrhqV+34o0NaoU0aE6vyk8kavkBusSZMi6gPjqSW5DJe6ZzFAlg2KA52Q==\",\"key2\":\"rMCuJ9TkwIuVc7ZNo0wHISpSwxMrqWT1b5wuwv6hAP/TM2/4HWzLx+EJOKhwvUrDg7+es9RINqpkyWi/oKhRAA==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
   'content-length': '197',
   'content-type': 'application/json; charset=utf-8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-frame-options': 'deny',
   'x-content-type-options': 'nosniff',
-  requestid: '2c41f68c-0923-48be-bf5f-f5ba16995fb1',
+  requestid: 'e64dae39-2ef2-41ed-9b2c-3390d06c1188',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': '8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  'x-ms-correlation-request-id': '8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  'x-ms-routing-request-id': 'WESTUS:20160521T012222Z:8e27092d-8d35-4dbc-ae7f-fd98ddfccb78',
-  date: 'Sat, 21 May 2016 01:22:22 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-request-id': '9ecf9997-ce00-432d-95aa-469a9d29e196',
+  'x-ms-correlation-request-id': '9ecf9997-ce00-432d-95aa-469a9d29e196',
+  'x-ms-routing-request-id': 'WESTUS:20160521T015421Z:9ecf9997-ce00-432d-95aa-469a9d29e196',
+  date: 'Sat, 21 May 2016 01:54:20 GMT',
   connection: 'close' });
  return result; }]];

@@ -30,4 +30,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['azureXplatCliTestResourceGroup9953'];};
+ exports.randomTestIdsGenerated = function() { return ['azureXplatCliTestResourceGroup3498'];};
