@@ -37,16 +37,23 @@ describe('arm', function () {
     var resourceGroupName;
     var workspaceCollection;
     var workspaceCollectionName;
-    var accountLcation = process.env.AZURE_POWERBIEMBEDDED_TEST_LOCATION;
-    var accountSku = process.env.AZURE_POWERBIEMBEDDED_TEST_SKU;
-    var accountTier = process.env.AZURE_POWERBIEMBEDDED_TEST_TIER;
+    var accountLcation;
+    var accountSku;
+    var accountTier;
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
+      
+      // set defaults from environment variables
+      accountLcation = process.env.AZURE_POWERBIEMBEDDED_TEST_LOCATION || "southcentralus";
+      accountSku = process.env.AZURE_POWERBIEMBEDDED_TEST_SKU;
+      accountTier = process.env.AZURE_POWERBIEMBEDDED_TEST_TIER;
+      
       suite.setupSuite(function () {
         resourceGroupName = suite.generateId(resourceGroupPrefix, createdResourceGroups);
-
-        suite.execute('group create %s --json', resourceGroupName, function () {
+        suite.execute('group create %s %s --json', resourceGroupName, accountLcation, function (result) {
+          result.exitStatus.should.equal(0);
+          
           done();
         });
       });
@@ -68,22 +75,19 @@ describe('arm', function () {
 
     it('can create a workspace collection in resource group', function (done) {
       workspaceCollectionName = suite.generateId(workspaceCollectionPrefix, createdWorkspaceCollections);
-
-      suite.execute('powerbi create %s %s --json', resourceGroupName, workspaceCollectionName, function (result) {
-        console.log(result);
+      
+      suite.execute('powerbi create %s %s %s --json', resourceGroupName, workspaceCollectionName, accountLcation, function (result) {
         result.exitStatus.should.equal(0);
-        // result.text.should.containEql('Succeeded');
 
         done();
       });
     });
 
-    it('can create a workspace collection in resource group at specific location with tags', function (done) {
-      workspaceCollectionName = suite.generateId(workspaceCollectionPrefix, createdWorkspaceCollections);
+    it('can create a workspace collection in resource group with tags', function (done) {
+      var newWorkspaceCollectionName = suite.generateId(workspaceCollectionPrefix, createdWorkspaceCollections);
       var tagsString = "tag1=value1;tag2=value2";
 
-      suite.execute('powerbi create %s %s --location %s --tags %s --json', resourceGroupName, workspaceCollectionName, tagsString, function (result) {
-        //result.text.should.containEql('Succeeded');
+      suite.execute('powerbi create %s %s %s --tags %s --json', resourceGroupName, newWorkspaceCollectionName, accountLcation, tagsString, function (result) {
         result.exitStatus.should.equal(0);
 
         done();
@@ -106,7 +110,6 @@ describe('arm', function () {
 
     it('should list workspace collections within subscription', function (done) {
       suite.execute('powerbi list --json', function (result) {
-        //result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
 
         done();
@@ -115,7 +118,6 @@ describe('arm', function () {
 
     it('should list workspace collections within subscription and within resource group', function (done) {
       suite.execute('powerbi list %s --json', resourceGroupName, function (result) {
-        //result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
 
         done();
@@ -143,7 +145,7 @@ describe('arm', function () {
     });
     
     it('should list the workspaces within the workspace collection', function (done) {
-      suite.execute('powerbi list-workspace', function (result) {
+      suite.execute('powerbi list-workspaces %s %s', resourceGroupName, workspaceCollectionName, function (result) {
         //result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
 
