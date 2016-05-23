@@ -3608,7 +3608,57 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job object to create in JSON format"
+                  "description": "the file containing the job object to create in JSON format; if this parameter is specified, all other job parameters are ignored."
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch job id"
+                },
+                {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job as metadata, ex: name1=value1;name2=value2"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the job, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -3972,13 +4022,54 @@
                   "description": "the id of the job whose properties you want to patch/update"
                 },
                 {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job as metadata, ex: name1=value1;name2=value2"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the job, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
                   "flags": "-f, --json-file <json-file>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job properties to patch/update in JSON format"
+                  "description": "the file containing the job properties to patch/update in JSON format; if this parameter is specified, all other job parameters are ignored."
                 },
                 {
                   "flags": "-r, --replace",
@@ -4484,7 +4575,89 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job schedule object to create in JSON format"
+                  "description": "the file containing the job schedule object to create in JSON format; if this parameter is specified, all other job schedule parameters are ignored."
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch job schedule id"
+                },
+                {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the jobs created under this schedule, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job created under this schedule may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
+                  "flags": "--do-not-run-until <do-not-run-until>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-until",
+                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                },
+                {
+                  "flags": "--do-not-run-after <do-not-run-after>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-after",
+                  "description": "the time after which no job will be created under this job schedule; if you do not specify a time, and you are creating a recurring job schedule, the job schedule will remain active until you explicitly terminate it."
+                },
+                {
+                  "flags": "--start-window <start-window>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-window",
+                  "description": "the time interval, starting from the time at which the schedule indicates a job should be created, within which a job must be created, specified in ISO 8601 duration format."
+                },
+                {
+                  "flags": "--recurrence-interval <recurrence-interval>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--recurrence-interval",
+                  "description": "the time interval between the start times of two successive jobs under the job schedule, specified in ISO 8601 duration format; the default is that the schedule does not recur."
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job schedule as metadata, ex: name1=value1;name2=value2"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4871,13 +5044,78 @@
                   "description": "the id of the job schedule to patch/update"
                 },
                 {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the jobs created under this schedule, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job created under this schedule may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
+                  "flags": "--do-not-run-until <do-not-run-until>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-until",
+                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                },
+                {
+                  "flags": "--do-not-run-after <do-not-run-after>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-after",
+                  "description": "the time after which no job will be created under this job schedule; if you do not specify a time, and you are creating a recurring job schedule, the job schedule will remain active until you explicitly terminate it."
+                },
+                {
+                  "flags": "--start-window <start-window>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-window",
+                  "description": "the time interval, starting from the time at which the schedule indicates a job should be created, within which a job must be created, specified in ISO 8601 duration format."
+                },
+                {
+                  "flags": "--recurrence-interval <recurrence-interval>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--recurrence-interval",
+                  "description": "the time interval between the start times of two successive jobs under the job schedule, specified in ISO 8601 duration format; the default is that the schedule does not recur."
+                },
+                {
                   "flags": "-f, --json-file <json-file>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job schedule properties to patch/update in JSON format"
+                  "description": "the file containing the job schedule properties to patch/update in JSON format; if this parameter is specified, all other job schedule parameters are ignored."
                 },
                 {
                   "flags": "-r, --replace",
