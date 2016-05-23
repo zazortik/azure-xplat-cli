@@ -6518,11 +6518,11 @@
                   "description": "the Batch pool id"
                 },
                 {
-                  "flags": "-s, --vm-size <vm-size>",
+                  "flags": "-S, --vm-size <vm-size>",
                   "required": -15,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
+                  "short": "-S",
                   "long": "--vm-size",
                   "description": "the size of virtual machines in the pool, ex: small, Standard_D14"
                 },
@@ -6572,11 +6572,11 @@
                   "description": "the offer type of the Azure Virtual Machines Marketplace image, ex: UbuntuServer or WindowsServer"
                 },
                 {
-                  "flags": "-S, --image-sku <image-sku>",
+                  "flags": "-K, --image-sku <image-sku>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "short": "-S",
+                  "short": "-K",
                   "long": "--image-sku",
                   "description": "the SKU of the Azure Virtual Machines Marketplace image, ex: 14.04.0-LTS or 2012-R2-Datacenter"
                 },
@@ -7925,7 +7925,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--affinity-id",
-                  "description": "the opaque string representing the location of compute node or a task that has run previously. "
+                  "description": "the opaque string representing the location of compute node or a task that has run previously"
                 },
                 {
                   "flags": "--max-wall-clock-time <max-wall-clock-time>",
@@ -7952,20 +7952,20 @@
                   "description": "the time in which the working directory for the task is retained, in ISO 8601 duration formation"
                 },
                 {
-                  "flags": "-es, --environment-settings <environment-settings>",
-                  "required": -29,
+                  "flags": "-e, --environment-settings <environment-settings>",
+                  "required": -28,
                   "optional": 0,
                   "bool": true,
-                  "short": "-es",
+                  "short": "-e",
                   "long": "--environment-settings",
                   "description": "the semicolon separated list of environment variable settings for the task, ex: name1=value1;name2=value2"
                 },
                 {
-                  "flags": "-rf, --resources-files <resources-files>",
-                  "required": -24,
+                  "flags": "-r, --resources-files <resources-files>",
+                  "required": -23,
                   "optional": 0,
                   "bool": true,
-                  "short": "-rf",
+                  "short": "-r",
                   "long": "--resources-files",
                   "description": "the semicolon separated list of files that Batch will download to the compute node before running the command line, ex: blob1=file1;blob2=file2"
                 },

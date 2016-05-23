@@ -271,7 +271,7 @@ describe('cli', function () {
     });
 
     it('should create a pool from parameters', function (done) {
-      suite.execute('batch pool create -i testpool -s standard_d14 -p Canonical -O UbuntuServer -S 14.04.4-LTS -F $TargetDedicated=0 -n %s --account-name %s --account-key %s --account-endpoint %s --json',  
+      suite.execute('batch pool create -i testpool -S standard_d14 -p Canonical -O UbuntuServer -K 14.04.4-LTS -F $TargetDedicated=0 -n %s --account-name %s --account-key %s --account-endpoint %s --json',  
         'batch.node.ubuntu 14.04', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
       {
         result.exitStatus.should.equal(0);
