@@ -34245,6 +34245,1075 @@
         }
       }
     },
+    "lab": {
+      "name": "lab",
+      "description": "Commands to manage your DevTest Labs",
+      "fullName": "lab",
+      "usage": "[options]",
+      "options": [],
+      "commands": [],
+      "categories": {
+        "vms-per-lab-policy": {
+          "name": "vms-per-lab-policy",
+          "fullName": "lab vms-per-lab-policy",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set allowed virtual machines per lab policy.",
+              "fullName": "lab vms-per-lab-policy set",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-c, --vm-count <vm-count>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--vm-count",
+                  "description": "the total vms allowed in the lab"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get allowed virtual machines per lab policy.",
+              "fullName": "lab vms-per-lab-policy show",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete allowed virtual machines per lab policy.",
+              "fullName": "lab vms-per-lab-policy delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "vms-per-user-policy": {
+          "name": "vms-per-user-policy",
+          "fullName": "lab vms-per-user-policy",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set allowed virtual machines per user policy.",
+              "fullName": "lab vms-per-user-policy set",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-c, --vm-count <vm-count>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--vm-count",
+                  "description": "the total vms allowed in the lab"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get allowed virtual machines per user policy.",
+              "fullName": "lab vms-per-user-policy show",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete allowed virtual machines per user policy.",
+              "fullName": "lab vms-per-user-policy delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "vm-size-policy": {
+          "name": "vm-size-policy",
+          "fullName": "lab vm-size-policy",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set allowed virtual machine sizes policy.",
+              "fullName": "lab vm-size-policy set",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-z, --vm-sizes <vm-sizes>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--vm-sizes",
+                  "description": "allowed virtual machine sizes"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get allowed virtual machine sizes policy.",
+              "fullName": "lab vm-size-policy show",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete allowed virtual machine sizes policy.",
+              "fullName": "lab vm-size-policy delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "auto-shutdown-policy": {
+          "name": "auto-shutdown-policy",
+          "fullName": "lab auto-shutdown-policy",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set virtual machine auto-shutdown policy.",
+              "fullName": "lab auto-shutdown-policy set",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-w, --weekly [weekly]",
+                  "required": 0,
+                  "optional": -14,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--weekly",
+                  "description": "weekly schedule"
+                },
+                {
+                  "flags": "-d, --daily",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--daily",
+                  "description": "daily schedule"
+                },
+                {
+                  "flags": "-t, --time <time>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--time",
+                  "description": "the time to shutdown virtual machines, example format: 7pm -> 1900 "
+                },
+                {
+                  "flags": "-z, --time-zone-id [time-zone-id]",
+                  "required": 0,
+                  "optional": -20,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--time-zone-id",
+                  "description": "time zone id"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get virtual machine auto-shutdown policy.",
+              "fullName": "lab auto-shutdown-policy show",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete virtual machine auto-shutdown policy.",
+              "fullName": "lab auto-shutdown-policy delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "auto-start-policy": {
+          "name": "auto-start-policy",
+          "fullName": "lab auto-start-policy",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set virtual machine auto-start policy.",
+              "fullName": "lab auto-start-policy set",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-w, --weekly [weekly]",
+                  "required": 0,
+                  "optional": -14,
+                  "bool": true,
+                  "short": "-w",
+                  "long": "--weekly",
+                  "description": "weekly schedule"
+                },
+                {
+                  "flags": "-d, --daily",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--daily",
+                  "description": "daily schedule"
+                },
+                {
+                  "flags": "-t, --time <time>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--time",
+                  "description": "the time to start virtual machines, example format: 7pm -> 1900 "
+                },
+                {
+                  "flags": "-z, --time-zone-id [time-zone-id]",
+                  "required": 0,
+                  "optional": -20,
+                  "bool": true,
+                  "short": "-z",
+                  "long": "--time-zone-id",
+                  "description": "time zone id"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get virtual machine auto-start policy.",
+              "fullName": "lab auto-start-policy show",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete virtual machine auto-start policy.",
+              "fullName": "lab auto-start-policy delete",
+              "usage": "[options]",
+              "filePath": "commands/arm/devtestlabs/devTestLabs._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the resource group name of the lab"
+                },
+                {
+                  "flags": "-l, --lab-name <lab-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--lab-name",
+                  "description": "the lab name"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
     "feature": {
       "name": "feature",
       "description": "Commands to manage your features",
