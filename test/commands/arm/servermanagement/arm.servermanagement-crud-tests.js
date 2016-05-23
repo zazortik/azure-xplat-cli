@@ -299,8 +299,8 @@ describe('arm', function() {
 
         function executePowershellTest() {
           var sessionName = suite.generateId("session_", sessions);
-          var nodeName = require('os')
-            .hostname();
+          // var nodeName = require('os').hostname();
+           var nodeName = "saddlebags";
           suite.execute('servermanagement session create ' + resourceGroupName + ' ' + nodeName + ' ' +
             sessionName + ' --user-name ' + process.env.AZURE_ARM_SMT_NODE_USERNAME + ' --password ' +
             process.env.AZURE_ARM_SMT_NODE_PASSWORD + ' --json',
