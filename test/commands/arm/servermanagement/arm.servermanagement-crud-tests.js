@@ -92,18 +92,6 @@ describe('arm', function() {
     });
 
     afterEach(function(done) {
-      // remove any test nodes
-      /*
-      for(var each in nodes) {
-         suite.execute(`servermanagement node show ${resourceGroupName} ${nodes[each]} --json`, (result) => {
-           if( result.exitStatus === 0 ) { 
-            suite.execute(`servermanagement node show ${resourceGroupName} ${nodes[each]} --json`, (result) => {
-           }
-         });
-      }
-      */
-
-      // remove any test gateways
 
       suite.teardownTest(done);
     });
