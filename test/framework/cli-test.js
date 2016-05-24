@@ -360,10 +360,12 @@ _.extend(CLITest.prototype, {
             // Requests to logging service contain timestamps in url query params, filter them out too
             line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
-            if (line.match(/\/oauth2\/token\//ig) === null && 
+            if (line.match(/\/oauth2\/token\//ig) === null &&
               line.match(/login\.windows\.net/ig) === null && 
-							line.match(/login\.windows-ppe\.net/ig) === null && 
-							line.match(/login\.microsoftonline\.com/ig) === null) {
+              line.match(/login\.windows-ppe\.net/ig) === null &&
+              line.match(/login\.microsoftonline\.com/ig) === null &&
+              line.match(/login\.chinacloudapi\.cn/ig) === null &&
+              line.match(/login\.microsoftonline\.de/ig) === null) {
               scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
                 'var result = ' + line + ' return result; }';
               lineWritten = true;

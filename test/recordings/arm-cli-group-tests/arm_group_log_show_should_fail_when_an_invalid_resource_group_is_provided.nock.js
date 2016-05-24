@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '3ca49042-782a-4cc9-89b5-ee1b487fe115',
+    name: 'AzSdkCore1',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '1449d5b7-8a83-47db-ae4c-9b03e888bad0',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -29,36 +29,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/random_group_name/providers/Microsoft.Resources/deployments/?$top=1&api-version=2016-02-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/random_group_name/providers/Microsoft.Resources/deployments/?$top=1&api-version=2016-02-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'random_group_name' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-request-id': 'ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
-  'x-ms-correlation-request-id': 'ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
-  'x-ms-routing-request-id': 'WESTUS:20160130T204522Z:ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': 'f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
+  'x-ms-correlation-request-id': 'f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
+  'x-ms-routing-request-id': 'CENTRALUS:20160421T032943Z:f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 20:45:21 GMT',
+  date: 'Thu, 21 Apr 2016 03:29:43 GMT',
   connection: 'close',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/random_group_name/providers/Microsoft.Resources/deployments/?$top=1&api-version=2016-02-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/random_group_name/providers/Microsoft.Resources/deployments/?$top=1&api-version=2016-02-01')
   .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'random_group_name' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-ratelimit-remaining-subscription-reads': '14992',
-  'x-ms-request-id': 'ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
-  'x-ms-correlation-request-id': 'ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
-  'x-ms-routing-request-id': 'WESTUS:20160130T204522Z:ea1218ee-19ae-4d81-b0f8-f3370e4548d2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-request-id': 'f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
+  'x-ms-correlation-request-id': 'f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
+  'x-ms-routing-request-id': 'CENTRALUS:20160421T032943Z:f4a5817d-78f4-4781-af8c-2f2ffa88bca4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 20:45:21 GMT',
+  date: 'Thu, 21 Apr 2016 03:29:43 GMT',
   connection: 'close',
   'content-length': '109' });
  return result; }]];

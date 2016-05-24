@@ -6,18 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'CollaberaInteropTest',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -32,103 +30,111 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips', '*')
+.post('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '533d2ec73de5be59b01b2a0f667e5767',
-  date: 'Wed, 24 Jun 2015 08:29:12 GMT',
+  'content-length': '0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'ea8ac8578fe3908bb08ac9b6a0976ec5',
+  date: 'Mon, 25 Apr 2016 08:39:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips', '*')
+.post('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
-  'transfer-encoding': 'chunked',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '533d2ec73de5be59b01b2a0f667e5767',
-  date: 'Wed, 24 Jun 2015 08:29:12 GMT',
+  'content-length': '0',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'ea8ac8578fe3908bb08ac9b6a0976ec5',
+  date: 'Mon, 25 Apr 2016 08:39:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/533d2ec73de5be59b01b2a0f667e5767')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>533d2ec7-3de5-be59-b01b-2a0f667e5767</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/ea8ac8578fe3908bb08ac9b6a0976ec5')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>ea8ac857-8fe3-908b-b08a-c9b6a0976ec5</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '75e8adb8ef05bb6ea7988479a2b6f02c',
-  date: 'Wed, 24 Jun 2015 08:29:44 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1c88d5da221fa079816097b19bc84422',
+  date: 'Mon, 25 Apr 2016 08:39:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/operations/533d2ec73de5be59b01b2a0f667e5767')
-  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>533d2ec7-3de5-be59-b01b-2a0f667e5767</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/operations/ea8ac8578fe3908bb08ac9b6a0976ec5')
+  .reply(200, "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>ea8ac857-8fe3-908b-b08a-c9b6a0976ec5</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>", { 'cache-control': 'no-cache',
   'content-length': '232',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '75e8adb8ef05bb6ea7988479a2b6f02c',
-  date: 'Wed, 24 Jun 2015 08:29:44 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1c88d5da221fa079816097b19bc84422',
+  date: 'Mon, 25 Apr 2016 08:39:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips')
-  .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>191.236.113.45</Address><Id>9440d0e0-630b-43eb-ad53-263e2a3beb61</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>reservIP</Name><Address>191.236.108.245</Address><Id>a9da2757-fa1f-439e-ae58-fcc7722b2f11</Id><Label>label1</Label><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>testresip3</Name><Address>23.100.101.79</Address><Id>7c432b31-5eb8-4efc-b066-c38ecfa114dc</Id><Label>JapanEastReservedIP</Label><State>Created</State><Location>Japan East</Location></ReservedIP><ReservedIP><Name>testresip4</Name><Address>23.100.44.3</Address><Id>b4148f22-9f32-479a-bc3b-16bad33a1a47</Id><Label>WestUSDuplicateReservedIP</Label><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>testresip5</Name><Address>23.101.18.178</Address><Id>1395bcde-3d90-4a74-9370-402309b85db7</Id><Label>SoutheastAsiaReservedIP</Label><State>Created</State><Location>Southeast Asia</Location></ReservedIP><ReservedIP><Name>testresip6</Name><Address>191.237.249.203</Address><Id>70a69b0f-3516-4c5e-b8ba-2e5256b88733</Id><Label>BrazilSouthReservedIP</Label><State>Created</State><Location>Brazil South</Location></ReservedIP><ReservedIP><Name>testresip7</Name><Address>23.101.53.247</Address><Id>9f454c53-4077-4623-a6f7-931f6c055240</Id><Label>NorthEuropeReservedIP</Label><State>Created</State><Location>North Europe</Location></ReservedIP><ReservedIP><Name>todelete</Name><Address>104.45.211.238</Address><Id>9774b967-8000-4068-b9f0-7935650ebe5e</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>xplatresIp</Name><Address>104.40.60.85</Address><Id>c2a8a9b3-0be0-488b-a3f8-d66e7bae1ca0</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>xplatrip</Name><Address>23.101.200.161</Address><Id>e0b7b14b-7696-40de-8d1e-5e1430a7241d</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>XplatTestRIP</Name><Address>104.40.52.38</Address><Id>6961661f-9e47-4a59-b9bd-f0df926b8ec5</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>XplatTestRIP6</Name><Address>104.40.93.208</Address><Id>e5a2beeb-fb4c-4da0-9b0c-5a499884d0cb</Id><State>Created</State><Location>West US</Location></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
-  'content-length': '2456',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips')
+  .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>13.88.27.75</Address><Id>1ea5427f-c6b4-45c9-876d-49263310722f</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>MyReservedIP</Name><Address>23.99.48.225</Address><Id>7bcaca1f-e506-4d11-841d-6e8d6a6c6a12</Id><State>Created</State><InUse>true</InUse><ServiceName>mywin1</ServiceName><DeploymentName>mywin1</DeploymentName><Location>West US</Location><VirtualIPName>MyReservedIP</VirtualIPName></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
+  'content-length': '612',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'ce07f1d91ecdbe55ade87a9af48167fc',
-  date: 'Wed, 24 Jun 2015 08:29:46 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1974b3c03be4915699df939104464338',
+  date: 'Mon, 25 Apr 2016 08:39:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips')
-  .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>191.236.113.45</Address><Id>9440d0e0-630b-43eb-ad53-263e2a3beb61</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>reservIP</Name><Address>191.236.108.245</Address><Id>a9da2757-fa1f-439e-ae58-fcc7722b2f11</Id><Label>label1</Label><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>testresip3</Name><Address>23.100.101.79</Address><Id>7c432b31-5eb8-4efc-b066-c38ecfa114dc</Id><Label>JapanEastReservedIP</Label><State>Created</State><Location>Japan East</Location></ReservedIP><ReservedIP><Name>testresip4</Name><Address>23.100.44.3</Address><Id>b4148f22-9f32-479a-bc3b-16bad33a1a47</Id><Label>WestUSDuplicateReservedIP</Label><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>testresip5</Name><Address>23.101.18.178</Address><Id>1395bcde-3d90-4a74-9370-402309b85db7</Id><Label>SoutheastAsiaReservedIP</Label><State>Created</State><Location>Southeast Asia</Location></ReservedIP><ReservedIP><Name>testresip6</Name><Address>191.237.249.203</Address><Id>70a69b0f-3516-4c5e-b8ba-2e5256b88733</Id><Label>BrazilSouthReservedIP</Label><State>Created</State><Location>Brazil South</Location></ReservedIP><ReservedIP><Name>testresip7</Name><Address>23.101.53.247</Address><Id>9f454c53-4077-4623-a6f7-931f6c055240</Id><Label>NorthEuropeReservedIP</Label><State>Created</State><Location>North Europe</Location></ReservedIP><ReservedIP><Name>todelete</Name><Address>104.45.211.238</Address><Id>9774b967-8000-4068-b9f0-7935650ebe5e</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>xplatresIp</Name><Address>104.40.60.85</Address><Id>c2a8a9b3-0be0-488b-a3f8-d66e7bae1ca0</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>xplatrip</Name><Address>23.101.200.161</Address><Id>e0b7b14b-7696-40de-8d1e-5e1430a7241d</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>XplatTestRIP</Name><Address>104.40.52.38</Address><Id>6961661f-9e47-4a59-b9bd-f0df926b8ec5</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>XplatTestRIP6</Name><Address>104.40.93.208</Address><Id>e5a2beeb-fb4c-4da0-9b0c-5a499884d0cb</Id><State>Created</State><Location>West US</Location></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
-  'content-length': '2456',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips')
+  .reply(200, "<ReservedIPs xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ReservedIP><Name>clitestrip</Name><Address>13.88.27.75</Address><Id>1ea5427f-c6b4-45c9-876d-49263310722f</Id><State>Created</State><Location>West US</Location></ReservedIP><ReservedIP><Name>MyReservedIP</Name><Address>23.99.48.225</Address><Id>7bcaca1f-e506-4d11-841d-6e8d6a6c6a12</Id><State>Created</State><InUse>true</InUse><ServiceName>mywin1</ServiceName><DeploymentName>mywin1</DeploymentName><Location>West US</Location><VirtualIPName>MyReservedIP</VirtualIPName></ReservedIP></ReservedIPs>", { 'cache-control': 'no-cache',
+  'content-length': '612',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'ce07f1d91ecdbe55ade87a9af48167fc',
-  date: 'Wed, 24 Jun 2015 08:29:46 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '1974b3c03be4915699df939104464338',
+  date: 'Mon, 25 Apr 2016 08:39:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips/clitestrip')
-  .reply(200, "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestrip</Name><Address>191.236.113.45</Address><Id>9440d0e0-630b-43eb-ad53-263e2a3beb61</Id><State>Created</State><Location>West US</Location></ReservedIP>", { 'cache-control': 'no-cache',
-  'content-length': '278',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips/clitestrip')
+  .reply(200, "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestrip</Name><Address>13.88.27.75</Address><Id>1ea5427f-c6b4-45c9-876d-49263310722f</Id><State>Created</State><Location>West US</Location></ReservedIP>", { 'cache-control': 'no-cache',
+  'content-length': '275',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'bd0ee1047a16b6569d49a8ddbbf80a41',
-  date: 'Wed, 24 Jun 2015 08:29:49 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'b7b00ec61b319f6abb57b7323e0c9d56',
+  date: 'Mon, 25 Apr 2016 08:39:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/reservedips/clitestrip')
-  .reply(200, "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestrip</Name><Address>191.236.113.45</Address><Id>9440d0e0-630b-43eb-ad53-263e2a3beb61</Id><State>Created</State><Location>West US</Location></ReservedIP>", { 'cache-control': 'no-cache',
-  'content-length': '278',
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/reservedips/clitestrip')
+  .reply(200, "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>clitestrip</Name><Address>13.88.27.75</Address><Id>1ea5427f-c6b4-45c9-876d-49263310722f</Id><State>Created</State><Location>West US</Location></ReservedIP>", { 'cache-control': 'no-cache',
+  'content-length': '275',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'bd0ee1047a16b6569d49a8ddbbf80a41',
-  date: 'Wed, 24 Jun 2015 08:29:49 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'b7b00ec61b319f6abb57b7323e0c9d56',
+  date: 'Mon, 25 Apr 2016 08:39:57 GMT',
   connection: 'close' });
  return result; }]];

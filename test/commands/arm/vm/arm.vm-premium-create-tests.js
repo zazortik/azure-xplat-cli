@@ -115,7 +115,7 @@ describe('arm', function() {
       it('create premium storage account should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('storage account create %s -g %s --location %s --type %s --json', storageAccount, groupName, location, storageType).split(' ');
+          var cmd = util.format('storage account create %s -g %s --location %s --sku-name %s --kind Storage --json', storageAccount, groupName, location, storageType).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();

@@ -26,6 +26,7 @@ var path = require('path');
 var createJobJsonFilePath = path.resolve(__dirname, '../../data/batchCreateJobForTaskTests.json');
 var createJsonFilePath = path.resolve(__dirname, '../../data/batchCreateTask.json');
 var updateJsonFilePath = path.resolve(__dirname, '../../data/batchUpdateTask.json');
+var createMultipleJsonFilePath = path.resolve(__dirname, '../../data/batchCreateMultiTasks.json');
 
 var requiredEnvironment = [
   { name: 'AZURE_BATCH_ACCOUNT', defaultValue: 'defaultaccount' },
@@ -100,7 +101,7 @@ describe('cli', function () {
         done();
       });
     });
-    
+
     it('should list tasks under a job', function (done) {
       suite.execute('batch task list %s --account-name %s --account-key %s --account-endpoint %s --json', 
         jobId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
@@ -113,7 +114,7 @@ describe('cli', function () {
       });
     });
 
-    it('should update the task using a json file', function (done) {
+    it('should update the task', function (done) {
       // The update JSON should change the constraints.maxTaskRetryCount, so we store the original, perform the update,
       // and then ensure that the property was in fact changed.
       suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, taskId,
@@ -123,14 +124,46 @@ describe('cli', function () {
         originalTask.constraints.should.not.be.null;
         originalTask.constraints.maxTaskRetryCount.should.not.be.null;
 
-        suite.execute('batch task set %s %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, taskId,
-          updateJsonFilePath, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        suite.execute('batch task set %s %s --max-wall-clock-time P1D --max-task-retry-count 5 --account-name %s --account-key %s --account-endpoint %s --json', jobId, taskId,
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedTask = JSON.parse(result.text);
           updatedTask.constraints.should.not.be.null;
           updatedTask.constraints.maxTaskRetryCount.should.not.be.null;
           updatedTask.constraints.maxTaskRetryCount.should.not.equal(originalTask.constraints.maxTaskRetryCount);
 
+          done();
+        });
+      });
+    });
+
+    it('should show subtasks with a task', function (done) {
+      function waitForTaskComplete(callback) {
+        suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, taskId,
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+
+          result.exitStatus.should.equal(0);
+          var task = JSON.parse(result.text);
+          if (task.state != 'completed') {
+            setTimeout(waitForTaskComplete.bind(null, callback), suite.isPlayback() ? 0 : 5000);
+          } else {
+            callback();
+          }
+        });
+      }
+      
+      waitForTaskComplete(function () {
+        suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json --subtasks', jobId, taskId,
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var task = JSON.parse(result.text);
+          task.task.id.should.equal(taskId);
+          task.subTasks.should.not.be.null;
+          task.subTasks.value.should.not.be.null;
+          task.subTasks.value.length.should.equal(2);
+          task.subTasks.value.some(function (task) {
+            return task.id === 1;
+          }).should.be.true;
           done();
         });
       });
@@ -149,5 +182,53 @@ describe('cli', function () {
         });
       });
     });
+
+    it('should create the task by parameterized', function (done) {
+      suite.execute('batch task create %s -i aaa -c %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+        'echo hello', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var createdTask = JSON.parse(result.text);
+        createdTask.should.not.be.null;
+        createdTask.id.should.equal('aaa');
+        createdTask.commandLine.should.equal('echo hello');
+
+        suite.execute('batch task delete %s aaa --account-name %s --account-key %s --account-endpoint %s --json --quiet', jobId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          // Tasks don't have a deleting state, so no need to check for it.
+          result.text.should.equal('');     
+          done();
+        });
+      });
+    });
+    
+    it('should create multiple tasks from a json file', function (done) {
+      suite.execute('batch task create %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+        createMultipleJsonFilePath, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var createdTasks = JSON.parse(result.text);
+        createdTasks.should.not.be.null;
+        createdTasks.length.should.equal(3);
+        createdTasks.some(function (task) {
+          return task.taskId === 'xplatTask1';
+        }).should.be.true;
+        done();
+      });
+    });
+   
+    it('should terminate the task', function (done) {
+      suite.execute('batch task stop %s %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', jobId, 
+        'xplatTask1', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+
+        suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 'xplatTask1',
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var originalTask = JSON.parse(result.text);
+          originalTask.state.should.equal('completed');
+          done();
+        });
+      });
+    });
+    
   });
 });

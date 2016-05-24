@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'd66b1168-d835-4066-8c45-7d2ed713c082',
-    name: 'BDHadoopTeamPMTestDemo',
+    id: '26d6d535-5164-443d-82f6-4c695caf7688',
+    name: 'BDHadoopHumboldtCRPAdhocTestShortTerm',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,45 +23,45 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'westus';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'NorthCentralUS';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate2519?api-version=2015-03-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate2519\",\"name\":\"xplatTestHDInsightClusterCreate2519\",\"type\":\"Microsoft.HDInsight/clusters\",\"location\":\"West US\",\"etag\":\"f8d66015-775d-4420-b3e9-d7218b0e2626\",\"tags\":null,\"properties\":{\"clusterVersion\":\"3.2.7.859\",\"osType\":\"Windows\",\"clusterDefinition\":{\"kind\":\"Hadoop\"},\"computeProfile\":{\"roles\":[{\"name\":\"HeadNode\",\"targetInstanceCount\":2,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}},\"linuxOperatingSystemProfile\":null}},{\"name\":\"workernode\",\"targetInstanceCount\":3,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}},\"linuxOperatingSystemProfile\":null}}]},\"provisioningState\":\"Succeeded\",\"clusterState\":\"Running\",\"createdDate\":\"2016-03-21T23:38:05.95\",\"quotaInfo\":{\"coresUsed\":20},\"connectivityEndpoints\":[{\"name\":\"HTTPS\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate2519.azurehdinsight.net\",\"port\":443},{\"name\":\"RDP\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate2519.azurehdinsight.net\",\"port\":3389}],\"tier\":\"standard\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate9269?api-version=2015-03-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate9269\",\"name\":\"xplatTestHDInsightClusterCreate9269\",\"type\":\"Microsoft.HDInsight/clusters\",\"location\":\"North Central US\",\"etag\":\"921f2188-4a13-42b4-b950-56614e7c785a\",\"tags\":null,\"properties\":{\"clusterVersion\":\"3.2.7.922\",\"osType\":\"Windows\",\"clusterDefinition\":{\"kind\":\"Hadoop\"},\"computeProfile\":{\"roles\":[{\"name\":\"HeadNode\",\"targetInstanceCount\":2,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}}}},{\"name\":\"workernode\",\"targetInstanceCount\":3,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}}}}]},\"provisioningState\":\"Succeeded\",\"clusterState\":\"Running\",\"createdDate\":\"2016-05-18T00:19:57.353\",\"quotaInfo\":{\"coresUsed\":20},\"connectivityEndpoints\":[{\"name\":\"HTTPS\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate9269.azurehdinsight.net\",\"port\":443},{\"name\":\"RDP\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate9269.azurehdinsight.net\",\"port\":3389}],\"tier\":\"standard\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1378',
+  'content-length': '1318',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'efa36a29-1925-44e0-9bc2-d6fec9fc91b8',
+  'x-ms-request-id': '99a8132d-dfb1-45a6-b68d-229872677a08',
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14228',
-  'x-ms-correlation-request-id': 'becd9bd7-698c-4d29-9fc4-76bdc7b5ef08',
-  'x-ms-routing-request-id': 'WESTUS:20160322T002303Z:becd9bd7-698c-4d29-9fc4-76bdc7b5ef08',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': 'ff910a64-e5ee-44d1-b87c-dc84bd69a358',
+  'x-ms-routing-request-id': 'WESTUS:20160518T004658Z:ff910a64-e5ee-44d1-b87c-dc84bd69a358',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 22 Mar 2016 00:23:03 GMT',
+  date: 'Wed, 18 May 2016 00:46:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate2519?api-version=2015-03-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/d66b1168-d835-4066-8c45-7d2ed713c082/resourceGroups/xplatTestRgHDInsightClusterCreate4179/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate2519\",\"name\":\"xplatTestHDInsightClusterCreate2519\",\"type\":\"Microsoft.HDInsight/clusters\",\"location\":\"West US\",\"etag\":\"f8d66015-775d-4420-b3e9-d7218b0e2626\",\"tags\":null,\"properties\":{\"clusterVersion\":\"3.2.7.859\",\"osType\":\"Windows\",\"clusterDefinition\":{\"kind\":\"Hadoop\"},\"computeProfile\":{\"roles\":[{\"name\":\"HeadNode\",\"targetInstanceCount\":2,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}},\"linuxOperatingSystemProfile\":null}},{\"name\":\"workernode\",\"targetInstanceCount\":3,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}},\"linuxOperatingSystemProfile\":null}}]},\"provisioningState\":\"Succeeded\",\"clusterState\":\"Running\",\"createdDate\":\"2016-03-21T23:38:05.95\",\"quotaInfo\":{\"coresUsed\":20},\"connectivityEndpoints\":[{\"name\":\"HTTPS\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate2519.azurehdinsight.net\",\"port\":443},{\"name\":\"RDP\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate2519.azurehdinsight.net\",\"port\":3389}],\"tier\":\"standard\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate9269?api-version=2015-03-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate9269\",\"name\":\"xplatTestHDInsightClusterCreate9269\",\"type\":\"Microsoft.HDInsight/clusters\",\"location\":\"North Central US\",\"etag\":\"921f2188-4a13-42b4-b950-56614e7c785a\",\"tags\":null,\"properties\":{\"clusterVersion\":\"3.2.7.922\",\"osType\":\"Windows\",\"clusterDefinition\":{\"kind\":\"Hadoop\"},\"computeProfile\":{\"roles\":[{\"name\":\"HeadNode\",\"targetInstanceCount\":2,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}}}},{\"name\":\"workernode\",\"targetInstanceCount\":3,\"hardwareProfile\":{\"vmSize\":\"Standard_D3\"},\"osProfile\":{\"windowsOperatingSystemProfile\":{\"rdpSettings\":{\"username\":\"xplattestrdpuser\",\"expiryDate\":\"2025-12-12T00:00:00\"}}}}]},\"provisioningState\":\"Succeeded\",\"clusterState\":\"Running\",\"createdDate\":\"2016-05-18T00:19:57.353\",\"quotaInfo\":{\"coresUsed\":20},\"connectivityEndpoints\":[{\"name\":\"HTTPS\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate9269.azurehdinsight.net\",\"port\":443},{\"name\":\"RDP\",\"protocol\":\"TCP\",\"location\":\"xplatTestHDInsightClusterCreate9269.azurehdinsight.net\",\"port\":3389}],\"tier\":\"standard\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1378',
+  'content-length': '1318',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'efa36a29-1925-44e0-9bc2-d6fec9fc91b8',
+  'x-ms-request-id': '99a8132d-dfb1-45a6-b68d-229872677a08',
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14228',
-  'x-ms-correlation-request-id': 'becd9bd7-698c-4d29-9fc4-76bdc7b5ef08',
-  'x-ms-routing-request-id': 'WESTUS:20160322T002303Z:becd9bd7-698c-4d29-9fc4-76bdc7b5ef08',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': 'ff910a64-e5ee-44d1-b87c-dc84bd69a358',
+  'x-ms-routing-request-id': 'WESTUS:20160518T004658Z:ff910a64-e5ee-44d1-b87c-dc84bd69a358',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 22 Mar 2016 00:23:03 GMT',
+  date: 'Wed, 18 May 2016 00:46:57 GMT',
   connection: 'close' });
  return result; }]];

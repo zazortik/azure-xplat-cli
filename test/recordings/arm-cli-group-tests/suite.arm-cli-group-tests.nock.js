@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '3ca49042-782a-4cc9-89b5-ee1b487fe115',
+    name: 'AzSdkCore1',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: '1449d5b7-8a83-47db-ae4c-9b03e888bad0',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',

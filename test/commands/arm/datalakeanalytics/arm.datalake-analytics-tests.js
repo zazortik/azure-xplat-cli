@@ -96,7 +96,7 @@ describe('arm', function () {
           suite.execute('group create %s --location %s --json', secondResourceGroup, testLocation, function () {
             suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', storeAccountName, testResourceGroup, testLocation, function () {
               suite.execute('datalake store account create --accountName %s --resource-group %s --location %s --json', additionalStoreAccountName, testResourceGroup, testLocation, function () {
-                suite.execute('storage account create %s --resource-group %s --location %s --type GRS --json', azureBlobAccountName, testResourceGroup, testLocation, function () {
+                suite.execute('storage account create %s --resource-group %s --location %s --sku-name GRS --kind Storage --json', azureBlobAccountName, testResourceGroup, testLocation, function () {
                   // create an account for job and catalog operations
                   suite.execute('datalake analytics account create --accountName %s --resource-group %s --location %s --defaultDataLakeStore %s --json', jobAndCatalogAccountName, testResourceGroup, testLocation, storeAccountName, function () {
                       setTimeout(function () {
@@ -229,7 +229,7 @@ describe('arm', function () {
     it('adding and removing blob storage accounts to the account should work', function (done) {
       suite.execute('storage account keys list %s --resource-group %s --json', azureBlobAccountName, testResourceGroup, testLocation, function (result) {
         var keyJson = JSON.parse(result.text);
-        azureBlobAccountKey = keyJson.key1;
+        azureBlobAccountKey = keyJson[0].value;
         suite.execute('datalake analytics account datasource add --accountName %s --azureBlob %s --accessKey %s --json', accountName, azureBlobAccountName, azureBlobAccountKey, function (result) {
           result.exitStatus.should.be.equal(0);
           suite.execute('datalake analytics account show --accountName %s --json', accountName, function (result) {
@@ -314,7 +314,17 @@ describe('arm', function () {
         result.exitStatus.should.be.equal(0);
         var jobList = JSON.parse(result.text);
         jobList.length.should.be.above(0);
-        done();
+        suite.execute('datalake analytics job list --accountName %s -a 2016-04-22 --json', jobAndCatalogAccountName, function (result) {
+          result.exitStatus.should.be.equal(0);
+          var jobList = JSON.parse(result.text);
+          jobList.length.should.be.above(0);
+          suite.execute('datalake analytics job list --accountName %s -b 2016-04-21 --json', jobAndCatalogAccountName, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var jobList = JSON.parse(result.text);
+            jobList.length.should.be.equal(0);
+            done();
+          });
+        });
       });
     });
   });
@@ -415,46 +425,59 @@ describe('arm', function () {
       var setSecretPwd = 'clitestsetsecretpwd';
       var databaseName = 'master';
       var scriptToRun = 'USE ' + databaseName + '; CREATE CREDENTIAL ' + credName + ' WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "' + secretName + '";';
+      var secondSecretName = secretName + 'dup';
       suite.execute('datalake analytics catalog secret create --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secretName, hostUri, secretPwd, function (result) {
         result.exitStatus.should.be.equal(0);
-        // update the secret's password
-        suite.execute('datalake analytics catalog secret set --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secretName, hostUri, setSecretPwd, function (result) {
+        // create a second secret for testing deletion of all secrets
+        suite.execute('datalake analytics catalog secret create --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secondSecretName, hostUri, secretPwd, function (result) {
           result.exitStatus.should.be.equal(0);
-          // Create a credential that uses the secret
-          suite.execute('datalake analytics job create --accountName %s --jobName %s --script %s --json', jobAndCatalogAccountName, jobName, scriptToRun, function (result) {
+          // update the secret's password
+          suite.execute('datalake analytics catalog secret set --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secretName, hostUri, setSecretPwd, function (result) {
             result.exitStatus.should.be.equal(0);
-            var jobJson = JSON.parse(result.text);
-            jobJson.jobId.should.not.be.empty;
-            jobJson.name.should.be.equal(jobName);
-            var jobId = jobJson.jobId;
-            listPoll(suite, 10, jobAndCatalogAccountName, jobId, function (result) {
-              suite.execute('datalake analytics job show --accountName %s --jobId %s --includeStatistics --json', jobAndCatalogAccountName, jobId, function (result) {
-                result.exitStatus.should.be.equal(0);
-                var jobJson = JSON.parse(result.text);
-                jobJson.result.should.be.equal('Succeeded');
-                // list all credentials in the db and confirm that there is one entry.
-                suite.execute('datalake analytics catalog list --accountName %s --itemType credential --itemPath %s --json', jobAndCatalogAccountName, databaseName, function (result) {
+            // Create a credential that uses the secret
+            suite.execute('datalake analytics job create --accountName %s --jobName %s --script %s --json', jobAndCatalogAccountName, jobName, scriptToRun, function (result) {
+              result.exitStatus.should.be.equal(0);
+              var jobJson = JSON.parse(result.text);
+              jobJson.jobId.should.not.be.empty;
+              jobJson.name.should.be.equal(jobName);
+              var jobId = jobJson.jobId;
+              listPoll(suite, 10, jobAndCatalogAccountName, jobId, function (result) {
+                suite.execute('datalake analytics job show --accountName %s --jobId %s --includeStatistics --json', jobAndCatalogAccountName, jobId, function (result) {
                   result.exitStatus.should.be.equal(0);
-                  var catalogItemJson = JSON.parse(result.text);
-                  catalogItemJson.length.should.be.equal(1);
-                  // now get the specific credential we created
-                  suite.execute('datalake analytics catalog list --accountName %s --itemType credential --itemPath ' + databaseName + '.' + credName + ' --json', jobAndCatalogAccountName, function (result) {
+                  var jobJson = JSON.parse(result.text);
+                  jobJson.result.should.be.equal('Succeeded');
+                  // list all credentials in the db and confirm that there is one entry.
+                  suite.execute('datalake analytics catalog list --accountName %s --itemType credential --itemPath %s --json', jobAndCatalogAccountName, databaseName, function (result) {
                     result.exitStatus.should.be.equal(0);
                     var catalogItemJson = JSON.parse(result.text);
                     catalogItemJson.length.should.be.equal(1);
-                    catalogItemJson[0].name.should.be.equal(credName);
-                    // get the secret
-                    suite.execute('datalake analytics catalog list --accountName %s --itemType secret --itemPath ' + databaseName + '.' + secretName + ' --json', jobAndCatalogAccountName, function (result) {
+                    // now get the specific credential we created
+                    suite.execute('datalake analytics catalog list --accountName %s --itemType credential --itemPath ' + databaseName + '.' + credName + ' --json', jobAndCatalogAccountName, function (result) {
                       result.exitStatus.should.be.equal(0);
                       var catalogItemJson = JSON.parse(result.text);
-                      catalogItemJson[0].creationTime.should.not.be.empty;
-                      // delete the secret
-                      suite.execute('datalake analytics catalog secret delete --accountName %s --databaseName %s --secretName %s --quiet --json', jobAndCatalogAccountName, databaseName, secretName, function (result) {
+                      catalogItemJson.length.should.be.equal(1);
+                      catalogItemJson[0].name.should.be.equal(credName);
+                      // get the secret
+                      suite.execute('datalake analytics catalog list --accountName %s --itemType secret --itemPath ' + databaseName + '.' + secretName + ' --json', jobAndCatalogAccountName, function (result) {
                         result.exitStatus.should.be.equal(0);
-                        // try to set the secret again (should fail)
-                        suite.execute('datalake analytics catalog secret set --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secretName, hostUri, setSecretPwd, function (result) {
-                          result.exitStatus.should.be.equal(1);
-                          done();
+                        var catalogItemJson = JSON.parse(result.text);
+                        catalogItemJson[0].creationTime.should.not.be.empty;
+                        // delete the secret
+                        suite.execute('datalake analytics catalog secret delete --accountName %s --databaseName %s --secretName %s --quiet --json', jobAndCatalogAccountName, databaseName, secretName, function (result) {
+                          result.exitStatus.should.be.equal(0);
+                          // try to set the secret again (should fail)
+                          suite.execute('datalake analytics catalog secret set --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secretName, hostUri, setSecretPwd, function (result) {
+                            result.exitStatus.should.be.equal(1);
+                            // delete all the secrets in the db.
+                            suite.execute('datalake analytics catalog secret delete --accountName %s --databaseName %s --quiet --json', jobAndCatalogAccountName, databaseName, function (result) {
+                              result.exitStatus.should.be.equal(0);
+                              // try to set the secret again (should fail)
+                              suite.execute('datalake analytics catalog secret set --accountName %s --databaseName %s --secretName %s --hostUri %s --password %s --json', jobAndCatalogAccountName, databaseName, secondSecretName, hostUri, setSecretPwd, function (result) {
+                                result.exitStatus.should.be.equal(1);
+                                done();
+                              });
+                            });
+                          });
                         });
                       });
                     });

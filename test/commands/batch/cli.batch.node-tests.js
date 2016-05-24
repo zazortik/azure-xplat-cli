@@ -103,7 +103,7 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         var node = JSON.parse(result.text);
         node.should.not.be.null;
-        suite.execute('batch node get-remote-desktop %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
+        suite.execute('batch node remote-desktop show %s %s %s --account-name %s --account-key %s --account-endpoint %s --json -q',
           poolId, computeNodeId, downloadLocation, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var downloadedContent = fs.readFileSync(downloadLocation).toString();
@@ -153,6 +153,37 @@ describe('cli', function () {
         result.exitStatus.should.equal(0);
         // The service provides no way to list users, so we just depend on the successful return value.
         done();
+      });
+    });
+
+    it('should disable scheduling at the compute node', function (done) {
+      suite.execute('batch node scheduling disable %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var node = JSON.parse(result.text);
+          node.should.not.be.null;
+          node.schedulingState.should.equal('disabled');
+          node.state.should.equal('offline');
+          done();
+        });
+      });
+    });
+
+    it('should enable scheduling at the compute node', function (done) {
+      suite.execute('batch node scheduling enable %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        suite.execute('batch node show %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        poolId, computeNodeId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var node = JSON.parse(result.text);
+          node.should.not.be.null;
+          node.schedulingState.should.equal('enabled');
+          done();
+        });
       });
     });
 

@@ -79,8 +79,8 @@ describe('arm', function () {
     describe('lb frontend-ip', function () {
       it('create should create fip using public ip id', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               var cmd = 'network lb frontend-ip create -g {group} -l {lbName} -n {name} -u {1} --json'
                 .formatArgs(fipProp, publicIp.id);
 
@@ -97,7 +97,7 @@ describe('arm', function () {
         });
       });
       it('create should create fip using public ip name', function (done) {
-        networkUtil.createLB(groupName, lbName, location, suite, function () {
+        networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
           var cmd = 'network lb frontend-ip create -g {group} -l {lbName} -n {name} -i {1} --json'
             .formatArgs(fipProp, publicIpName);
 
@@ -112,7 +112,7 @@ describe('arm', function () {
         });
       });
       it('create should create fip using subnet id', function (done) {
-        networkUtil.createLB(groupName, lbName, location, suite, function () {
+        networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
           networkUtil.createVnet(groupName, vnetName, location, vnetAddressSpace, suite, function (vnet) {
             networkUtil.createSubnet(groupName, vnetName, subnetName, subnetAddressPrefix, suite, function (subnet) {
               var cmd = 'network lb frontend-ip create -g {group} -l {lbName} -n {name} -a {privateIp} -b {1} --json'
@@ -131,7 +131,7 @@ describe('arm', function () {
         });
       });
       it('create should create fip using subnet name and vnet name', function (done) {
-        networkUtil.createLB(groupName, lbName, location, suite, function () {
+        networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
           var cmd = 'network lb frontend-ip create -g {group} -l {lbName} -n {name} -a {privateIp} -e {1} -m {2} --json'
             .formatArgs(fipProp, subnetName, vnetName);
 

@@ -27,9 +27,6 @@ var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'australiasoutheast'
-}, {
-  name: 'SSHCERT',
-  defaultValue: 'test/containerCert.pem'
 }];
 
 var groupName,
@@ -44,7 +41,7 @@ var groupName,
   sshcert;
 
 var makeCommandStr = function(component, verb, file, others) {
-  var cmdFormat = 'container config %s %s --parameter-file %s %s --json';
+  var cmdFormat = 'acs config %s %s --parameter-file %s %s --json';
   return util.format(cmdFormat, component, verb, file, others ? others : '');
 };
 
@@ -56,7 +53,7 @@ describe('arm', function() {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        sshcert = process.env.SSHCERT;
+        sshcert = 'test/containerCert.pem';
         keydata = fs.readFileSync(sshcert).toString();
         keydata = keydata.replace(' ', '').replace('\r', '').replace('\n', '');
         groupName = suite.generateId(groupPrefix, null);
@@ -87,7 +84,7 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('container config generate --parameter-file %s --json', paramFileName).split(' ');
+          var cmd = util.format('acs config create --parameter-file %s --json', paramFileName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var cmd = makeCommandStr('container-service', 'set', paramFileName, util.format('--name %s --location %s', containerPrefix, location)).split(' ');
@@ -114,7 +111,7 @@ describe('arm', function() {
                           var cmd = makeCommandStr('public-keys', 'set', paramFileName, util.format('--index 0 --key-data %s', keydata)).split(' ');
                           testUtils.executeCommand(suite, retry, cmd, function(result) {
                             result.exitStatus.should.equal(0);
-                            var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
+                            var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
                               result.exitStatus.should.equal(0);
                               done();
@@ -137,7 +134,7 @@ describe('arm', function() {
         var cmd = makeCommandStr('agent-pool-profiles', 'set', paramFileName, util.format('--index 0 --count %s --parse', updateCount)).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
+          var cmd = util.format('acs create --resource-group %s --name %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -145,11 +142,11 @@ describe('arm', function() {
         });
       });
 
-      it('container config set and create SwarmPreview should pass', function(done) {
+      it('container config set and create Swarm should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var subscription = profile.current.getSubscription();
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('container config generate --parameter-file %s --json', paramFileName2).split(' ');
+          var cmd = util.format('acs config create --parameter-file %s --json', paramFileName2).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var cmd = makeCommandStr('container-service', 'set', paramFileName2, util.format('--name %s --location %s', containerPrefix2, location)).split(' ');
@@ -167,7 +164,7 @@ describe('arm', function() {
                     var cmd = makeCommandStr('agent-pool-profiles', 'set', paramFileName2, util.format('--index 0 --name %s --vm-size Standard_A1 --dns-prefix %s', containerPrefix2 + 'a1', containerPrefix2 + 'a2')).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
                       result.exitStatus.should.equal(0);
-                      var cmd = makeCommandStr('orchestrator-profile', 'set', paramFileName2, util.format('--orchestrator-type %s', 'SwarmPreview', location)).split(' ');
+                      var cmd = makeCommandStr('orchestrator-profile', 'set', paramFileName2, util.format('--orchestrator-type %s', 'Swarm', location)).split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
                         result.exitStatus.should.equal(0);
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName2, util.format('--admin-username %s', username)).split(' ');
@@ -176,7 +173,7 @@ describe('arm', function() {
                           var cmd = makeCommandStr('public-keys', 'set', paramFileName2, util.format('--index 0 --key-data %s', keydata)).split(' ');
                           testUtils.executeCommand(suite, retry, cmd, function(result) {
                             result.exitStatus.should.equal(0);
-                            var cmd = util.format('container create-or-update -g %s --container-service-name %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
+                            var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
                               result.exitStatus.should.equal(0);
                               done();
@@ -195,20 +192,20 @@ describe('arm', function() {
 
       it('container non-empty list should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container list -g %s --json', groupName).split(' ');
+        var cmd = util.format('acs list -g %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql(containerPrefix);
           result.text.should.containEql('DCOS');
           result.text.should.containEql(containerPrefix2);
-          result.text.should.containEql('SwarmPreview');
+          result.text.should.containEql('Swarm');
           done();
         });
       });
       
       it('container get should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container get -g %s --container-service-name %s --json', groupName, containerPrefix).split(' ');
+        var cmd = util.format('acs show -g %s --name %s --json', groupName, containerPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql(containerPrefix);
@@ -219,10 +216,10 @@ describe('arm', function() {
 
       it('container delete should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container delete -g %s --container-service-name %s --json', groupName, containerPrefix).split(' ');
+        var cmd = util.format('acs delete -g %s --name %s --json', groupName, containerPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
-          var cmd = util.format('container delete -g %s --container-service-name %s --json', groupName, containerPrefix2).split(' ');
+          var cmd = util.format('acs delete -g %s --name %s --json', groupName, containerPrefix2).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -232,7 +229,7 @@ describe('arm', function() {
       
       it('container empty list should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('container list -g %s --json', groupName).split(' ');
+        var cmd = util.format('acs list -g %s --json', groupName).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql('[]');

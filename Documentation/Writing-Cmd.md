@@ -24,6 +24,8 @@ Depends on what mode your cmds in choose appropriate folder:
   * --json: please always verify your command's output format is valid json when this flag is on, so that your tests have a reliable way to assert.
 
 ## Command Design Guidelines
+* Please try to follow the noun verb pattern
+  * azure (one or more **noun**) **verb** 
 * Please strictly adhere to this verb usage for basic [CRUD] operations: 
   * create - create a new entity
   * set - update an existing enity
@@ -31,6 +33,7 @@ Depends on what mode your cmds in choose appropriate folder:
   * show - provide more information about the specified entity
   * delete - delete the specified entity
 * While creating arguments/parameters for your command, please make sure that the switch name (long version "--username" and short version "-u") does not conflict with already used switches in the same command
+* Every command should use -n and --name as a parameter for the artifact that is being manipulated.
 
 ## Specifying Required or Optional parameters for a cmdlet
 CLI uses [commander](https://github.com/tj/commander.js?utm_source=jobboleblog) for defining the cmdlets. Please read the commander documentation for proper understanding. Commander treats a parameter as a **required parameter** when it is specified with **angle brackets '< >'** in it's definition and it treats a parameter as an **optional parameter** when it is specified with **square brackets '[ ]'** in it's definition. Please take a look at an example here
