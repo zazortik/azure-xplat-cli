@@ -51,18 +51,27 @@ describe('arm', function () {
       
       suite.setupSuite(function () {
         resourceGroupName = suite.generateId(resourceGroupPrefix, createdResourceGroups);
-        suite.execute('group create %s %s --json', resourceGroupName, accountLcation, function (result) {
-          result.exitStatus.should.equal(0);
-          
+        if (!suite.isPlayback()) {
+          suite.execute('group create %s %s --json', resourceGroupName, accountLcation, function (result) {
+            result.exitStatus.should.equal(0);
+            
+            done();
+          });
+        } else {
           done();
-        });
+        }
       });
     });
 
     after(function (done) {
-      suite.execute('group delete %s --quiet --json', resourceGroupName, function () {
+      if (!suite.isPlayback()) {
+        suite.execute('group delete %s --quiet --json', resourceGroupName, function () {
+          suite.teardownSuite(done);
+        });
+      }
+      else {
         suite.teardownSuite(done);
-      });
+      }
     });
 
     beforeEach(function (done) {
