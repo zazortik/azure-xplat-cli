@@ -3758,15 +3758,15 @@
                   "description": "use verbose output"
                 },
                 {
-                  "flags": "--range <range>",
-                  "required": -9,
+                  "flags": "-vv",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--range",
-                  "description": "the byte range to be retrieved, the default is to retrieve the entire file"
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
-                  "flags": "-q, --quiet",
+                  "flags": "--json",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
@@ -4256,25 +4256,32 @@
                   "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "short": "-i",
-                  "long": "--id",
-                  "description": "the id of the job"
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--if-none-match <if-none-match>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "long": "--select-clause",
-                  "description": "list of a subset of properties to select"
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
-                  "required": -17,
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
                   "optional": 0,
                   "bool": true,
-                  "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4898,102 +4905,6 @@
               "filePath": "commands/batch/batch.jobSchedule._js",
               "options": [
                 {
-                  "name": "list",
-                  "description": "Lists the execution status of the job preparation and job release task for the specified job across the compute nodes where the job has run",
-                  "fullName": "batch job prep-release-status list",
-                  "usage": "[options] <jobId>",
-                  "filePath": "commands/batch/batch.job._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--select-clause <selectClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--select-clause",
-                      "description": "list of a subset of properties to select"
-                    },
-                    {
-                      "flags": "--filter-clause <filterClause>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--filter-clause",
-                      "description": "an OData expression by which the results will be filtered"
-                    },
-                    {
-                      "flags": "-a, --account-name <accountName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--account-name",
-                      "description": "the Batch account name"
-                    },
-                    {
-                      "flags": "-k, --account-key <accountKey>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--account-key",
-                      "description": "the Batch account key"
-                    },
-                    {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-u",
-                      "long": "--account-endpoint",
-                      "description": "the Batch account URL"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            }
-          }
-        },
-        "job-schedule": {
-          "name": "job-schedule",
-          "description": "Commands to manage your Batch job schedules",
-          "fullName": "batch job-schedule",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "create",
-              "description": "Adds a job schedule to the specified account",
-              "fullName": "batch job-schedule create",
-              "usage": "[options] [json-file]",
-              "filePath": "commands/batch/batch.jobSchedule._js",
-              "options": [
-                {
                   "flags": "-v, --verbose",
                   "required": 0,
                   "optional": 0,
@@ -5141,24 +5052,24 @@
                   "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "long": "--select-clause",
-                  "description": "list of a subset of properties to select"
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
-                  "required": -17,
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
                   "optional": 0,
                   "bool": true,
-                  "long": "--filter-clause",
-                  "description": "an OData expression by which the results will be filtered"
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
-                  "required": -17,
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
                   "optional": 0,
                   "bool": true,
-                  "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -5393,30 +5304,6 @@
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-none-match",
-                  "description": "only perform if resource's ETag does not match the specified value"
-                },
-                {
-                  "flags": "--if-modified-since <if-modified-since>",
-                  "required": -21,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-modified-since",
-                  "description": "only perform if the resource has been modified since the specified time"
-                },
-                {
-                  "flags": "--if-unmodified-since <if-unmodified-since>",
-                  "required": -23,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--if-unmodified-since",
-                  "description": "only perform if the resource has not been modified since the specified time"
-                },
-                {
-                  "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5819,17 +5706,7 @@
                   "description": "the Batch account URL"
                 }
               ]
-            }
-          ],
-          "categories": {}
-        },
-        "node": {
-          "name": "node",
-          "description": "Commands to manage your Batch compute nodes",
-          "fullName": "batch node",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
+            },
             {
               "name": "list",
               "description": "Lists the compute nodes in the specified pool",
@@ -8881,8 +8758,8 @@
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-j, --job-id <jobId>",
@@ -8995,12 +8872,13 @@
               "filePath": "commands/batch/batch.task._js",
               "options": [
                 {
-                  "flags": "--if-unmodified-since <if-unmodified-since>",
-                  "required": -23,
+                  "flags": "-v, --verbose",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--if-unmodified-since",
-                  "description": "only perform if the resource has not been modified since the specified time"
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
                   "flags": "-vv",
@@ -9037,7 +8915,7 @@
                   "description": "the Batch task id"
                 },
                 {
-                  "flags": "-v, --verbose",
+                  "flags": "-q, --quiet",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
@@ -12083,6 +11961,14 @@
                       "description": "the existing lease ID"
                     },
                     {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
                       "flags": "-a, --account-name <accountName>",
                       "required": -20,
                       "optional": 0,
@@ -14936,20 +14822,21 @@
               "filePath": "commands/storage/storage.queue._js",
               "options": [
                 {
-                  "flags": "--read",
+                  "flags": "-v, --verbose",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--read",
-                  "description": "enable logging for read requests"
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
                   "flags": "--json",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--write",
-                  "description": "enable logging for write requests"
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "--queue <queue>",
@@ -14995,17 +14882,7 @@
                   "description": "run storage command in debug mode"
                 }
               ]
-            }
-          ],
-          "categories": {}
-        },
-        "metrics": {
-          "name": "metrics",
-          "description": "Commands to manage your Storage metrics properties",
-          "fullName": "storage metrics",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
+            },
             {
               "name": "list",
               "description": "List storage queues with wildcard",
@@ -15027,8 +14904,8 @@
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--blob",
-                  "description": "show metrics properties for blob service"
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-p, --prefix <prefix>",
@@ -15067,8 +14944,8 @@
                   "description": "the storage connection string"
                 },
                 {
-                  "flags": "-c, --connection-string <connectionString>",
-                  "required": -25,
+                  "flags": "-vv",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
                   "long": "-vv",
@@ -15152,17 +15029,7 @@
                   "description": "run storage command in debug mode"
                 }
               ]
-            }
-          ],
-          "categories": {}
-        },
-        "cors": {
-          "name": "cors",
-          "description": "Commands to manage your Storage CORS (Cross-Origin Resource Sharing)",
-          "fullName": "storage cors",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
+            },
             {
               "name": "delete",
               "description": "Delete the specified storage queue",
@@ -17020,7 +16887,8 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "categories": {}
             },
             "policy": {
               "name": "policy",
@@ -17823,26 +17691,7 @@
                   "bool": true,
                   "long": "--json",
                   "description": "use json output"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
-        "job": {
-          "name": "job",
-          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight jobs",
-          "fullName": "hdinsight job",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "hive_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Hive job to an HdInsight cluster",
-              "fullName": "hdinsight job hive_create",
-              "usage": "[options] <clusterDnsName> <userName> <password>",
-              "filePath": "commands/asm/hdinsight._js",
-              "options": [
+                },
                 {
                   "flags": "--service-name <service-name>",
                   "required": -16,
@@ -17943,24 +17792,25 @@
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--query",
-                  "description": "The Hive query string to be executed"
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
-                  "flags": "--queryFile <queryFile>",
-                  "required": -13,
+                  "flags": "-vv",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--queryFile",
-                  "description": "The path to a file that contains the Hive query to be executed; this parameter and the [query] parameter are mutually exclusive"
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
-                  "flags": "--arguments <arguments>",
-                  "required": -13,
+                  "flags": "--json",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--arguments",
-                  "description": "A comma separated string of arguments to be passed to the Hive job. For example: \"a1,a2,a3\""
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "--service-name <service-name>",
@@ -18202,28 +18052,29 @@
               "filePath": "commands/asm/service.cert._js",
               "options": [
                 {
-                  "flags": "--password <password>",
-                  "required": -12,
+                  "flags": "-v, --verbose",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--password",
-                  "description": "Password for the cluster"
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
-                  "flags": "--arguments <arguments>",
-                  "required": -13,
+                  "flags": "-vv",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--arguments",
-                  "description": "A comma separated string of arguments to be passed to the Streaming MapReduce job. For example: \"a1,a2,a3\""
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
-                  "flags": "--cmdenv <cmdEnv>",
-                  "required": -10,
+                  "flags": "--json",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--cmdenv",
-                  "description": "Comma separated key/value pairs of environment variables that should be set during the Streaming MapReduce job execution on data nodes"
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-d, --dns-name <name>",
@@ -18244,8 +18095,8 @@
                   "description": "quiet mode, do not ask for delete confirmation"
                 },
                 {
-                  "flags": "--reducer <reducer>",
-                  "required": -11,
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
                   "short": "-s",
@@ -18272,44 +18123,29 @@
               "filePath": "commands/asm/service.internallb._js",
               "options": [
                 {
-                  "flags": "--combiner <combiner>",
-                  "required": -12,
+                  "flags": "-v, --verbose",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--combiner",
-                  "description": "Combiner executable name for the Streaming MapReduce job"
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
                 },
                 {
-                  "flags": "--defines <defines>",
-                  "required": -11,
+                  "flags": "-vv",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--defines",
-                  "description": "A comma separated key/value pair of Hadoop configuration values to be set during the Streaming MapReduce job execution. For example: \"k1=v1,k2=v2\""
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
                 },
                 {
-                  "flags": "--files <files>",
-                  "required": -9,
+                  "flags": "--json",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "long": "--files",
-                  "description": "A comma separated string of file paths required for the Streaming MapReduce job to execute. For example: \"f1/f2/f3,f4/f5,f6\""
-                },
-                {
-                  "flags": "--inputPath <inputPath>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--inputPath",
-                  "description": "Location of the input files for the Streaming MapReduce job"
-                },
-                {
-                  "flags": "--outputPath <outputPath>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--outputPath",
-                  "description": "Location of the output files for the Streaming MapReduce job"
+                  "long": "--json",
+                  "description": "use json output"
                 },
                 {
                   "flags": "-r, --serviceName <serviceName>",
@@ -18479,189 +18315,6 @@
                   "description": "the subscription id"
                 }
               ]
-            }
-          ],
-          "categories": {}
-        }
-      }
-    },
-    "mobile": {
-      "name": "mobile",
-      "description": "Commands to manage your Mobile Services",
-      "fullName": "mobile",
-      "usage": "[options] [command]",
-      "options": [],
-      "commands": [
-        {
-          "name": "locations",
-          "description": "List available mobile service locations",
-          "fullName": "mobile locations",
-          "usage": "[options]",
-          "filePath": "commands/asm/mobile._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            }
-          ]
-        },
-        {
-          "name": "create",
-          "description": "Create a new mobile service",
-          "fullName": "mobile create",
-          "usage": "[options] [servicename] [sqlAdminUsername] [sqlAdminPassword]",
-          "filePath": "commands/asm/mobile._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-r, --sqlServer <sqlServer>",
-              "required": -17,
-              "optional": 0,
-              "bool": true,
-              "short": "-r",
-              "long": "--sqlServer",
-              "description": "use existing SQL server"
-            },
-            {
-              "flags": "-d, --sqlDb <sqlDb>",
-              "required": -13,
-              "optional": 0,
-              "bool": true,
-              "short": "-d",
-              "long": "--sqlDb",
-              "description": "use existing SQL database"
-            },
-            {
-              "flags": "-l, --location <location>",
-              "required": -16,
-              "optional": 0,
-              "bool": true,
-              "short": "-l",
-              "long": "--location",
-              "description": "create the service in a particular location; run azure mobile locations to get available locations"
-            },
-            {
-              "flags": "--sqlLocation <location>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "long": "--sqlLocation",
-              "description": "create the SQL server in a particular location; defaults to mobile service location"
-            },
-            {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription id"
-            },
-            {
-              "flags": "-b, --backend <backend>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "short": "-b",
-              "long": "--backend",
-              "description": "backend of mobile service. \"node\" and \"dotnet\" are examples."
-            },
-            {
-              "flags": "-p, --push <push>",
-              "required": -12,
-              "optional": 0,
-              "bool": true,
-              "short": "-p",
-              "long": "--push",
-              "description": "type of push; \"nh\" or \"legacy\" are allowed. \"nh\" will soon be the default for node service. ignored for dotnet services."
-            }
-          ]
-        },
-        {
-          "name": "delete",
-          "description": "Delete a mobile service",
-          "fullName": "mobile delete",
-          "usage": "[options] [servicename] [username] [password]",
-          "filePath": "commands/asm/mobile._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
             },
             {
               "name": "set",
@@ -18760,7 +18413,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "categories": {}
         },
         "load-balanced-set": {
           "name": "load-balanced-set",
@@ -19378,7 +19032,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "categories": {}
         },
         "job": {
           "name": "job",
@@ -19813,60 +19468,16 @@
                   "description": "The Id of the job for which the details need to be retrieved"
                 },
                 {
-                  "name": "disable",
-                  "description": "Disable SSL for domain by detaching SSL Certificate.",
-                  "fullName": "mobile domain ssl disable",
-                  "usage": "[options] [servicename] [domain] [thumbprint]",
-                  "filePath": "commands/asm/mobile._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-s, --subscription <id>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription id"
-                    }
-                  ]
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
                 }
-              ],
-              "categories": {}
-            }
-          }
-        },
-        "cert": {
-          "name": "cert",
-          "description": "Commands to manage your Mobile Service Certificates for Domains",
-          "fullName": "mobile cert",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
+              ]
+            },
             {
               "name": "list",
               "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the list of jobs from the specified HDInsight cluster",
@@ -21308,17 +20919,7 @@
                       "description": "Do not wait for push operation to complete"
                     }
                   ]
-                }
-              ],
-              "categories": {}
-            },
-            "apns": {
-              "name": "apns",
-              "description": "Manage APNS settings for mobile service",
-              "fullName": "mobile push apns",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
+                },
                 {
                   "name": "disable",
                   "description": "Create notification hub for mobile service",
@@ -21412,15 +21013,6 @@
                       "short": "-s",
                       "long": "--subscription",
                       "description": "the subscription id"
-                    },
-                    {
-                      "flags": "-f, --file <file>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-f",
-                      "long": "--file",
-                      "description": "save the certificate to file"
                     }
                   ]
                 },
@@ -21507,15 +21099,6 @@
                       "short": "-s",
                       "long": "--subscription",
                       "description": "the subscription id"
-                    },
-                    {
-                      "flags": "-p, --password <password>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--password",
-                      "description": "password for certificateFile"
                     }
                   ]
                 }
