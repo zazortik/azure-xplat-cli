@@ -101,7 +101,6 @@ describe('arm', function () {
       var tagsString = "newTag=newValue;tag1=updatedValue;tag2=";
 
       suite.execute('powerbi update %s %s --tags %s --json', resourceGroupName, workspaceCollectionName, tagsString, function (result) {
-        //result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
 
         done();
@@ -125,8 +124,7 @@ describe('arm', function () {
     });
 
     it('should return primary and secondary access keys', function (done) {
-      suite.execute('powerbi get-keys %s %s --json', resourceGroupName, workspaceCollectionName, function (result) {
-        //result.text.should.containEql('Succeeded');
+      suite.execute('powerbi keys list %s %s --json', resourceGroupName, workspaceCollectionName, function (result) {
         result.exitStatus.should.equal(0);
 
         done();
@@ -134,10 +132,7 @@ describe('arm', function () {
     })
 
     it('should regenerate one of the keys for the workspace collection', function (done) {
-      var keyName = "key1";
-
-      suite.execute('powerbi regenerate-key %s %s %s --json', resourceGroupName, workspaceCollectionName, keyName, function (result) {
-        //result.text.should.containEql('Succeeded');
+      suite.execute('powerbi keys renew %s %s --primary --json', resourceGroupName, workspaceCollectionName, function (result) {
         result.exitStatus.should.equal(0);
 
         done();
@@ -145,8 +140,7 @@ describe('arm', function () {
     });
     
     it('should list the workspaces within the workspace collection', function (done) {
-      suite.execute('powerbi list-workspaces %s %s', resourceGroupName, workspaceCollectionName, function (result) {
-        //result.text.should.containEql('Succeeded');
+      suite.execute('powerbi workspaces list %s %s', resourceGroupName, workspaceCollectionName, function (result) {
         result.exitStatus.should.equal(0);
 
         done();
@@ -158,7 +152,6 @@ describe('arm', function () {
      */
     it.skip('should delete workspace collection', function (done) {
       suite.execute('powerbi delete %s %s', resourceGroupName, workspaceCollectionName, function (result) {
-        //result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
 
         done();
