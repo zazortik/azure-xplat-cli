@@ -21,7 +21,8 @@ This project provides a cross-platform command line interface for developers and
   * Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc.
   * Datalake
   * CDN
-* Key Vault
+  * HDInsight (Note: The HDInsight commands in ASM mode are deprecated and will be removed by Jan. 2017)
+  * Key Vault
 
 Note: The list of features may not be up-to-date. For accurate command details, type `azure` | `azure -h` | `azure --help` to navigate through the help system. Also, use `azure config mode asm|arm` to switch between service management (Version V1)and resource management (Version V2) of the Azure REST API.
 
@@ -30,7 +31,7 @@ Note: The list of features may not be up-to-date. For accurate command details, 
 The CLI targets **"Public Azure Cloud"** by default. You can get more information about the endpoints supported in different environments from [here](./Documentation/Endpoints.md).
 
 ## Non-Interactive Authentication
-If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md).
+If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md).
 
 
 ## Installation

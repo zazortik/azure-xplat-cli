@@ -136,7 +136,22 @@ VMTestUtil.prototype.getVMSize = function(location, suite, callback) {
   suite.execute('vm sizes -l %s --json', location, function(result) {
     result.exitStatus.should.equal(0);
     var allResources = JSON.parse(result.text);
-    VMTestUtil.vmSize = allResources[0].name;
+    VMTestUtil.vmSize = null;
+    var setVmSizeIfExists = function(allResources, querySizeStr) {
+      if (!VMTestUtil.vmSize) {
+        for (var i in allResources) {
+          if (allResources[i].name.toLowerCase() === querySizeStr.toLowerCase()) {
+            VMTestUtil.vmSize = allResources[i].name;
+            break;
+          }
+        }
+      }
+    }
+    
+    setVmSizeIfExists(allResources, 'Standard_DS1');
+    setVmSizeIfExists(allResources, 'Standard_D1');
+    setVmSizeIfExists(allResources, 'Standard_D1_v2');
+    VMTestUtil.vmSize = VMTestUtil.vmSize ? VMTestUtil.vmSize : 'Standard_A0';
     callback();
   });
 };

@@ -1,6 +1,6 @@
 {
   "sku": {
-    "name": "Standard_A1",
+    "name": "Standard_DS1",
     "tier": "Standard",
     "capacity": 10
   },
@@ -25,9 +25,9 @@
         "caching": "None",
         "createOption": "fromImage",
         "vhdContainers": [
-          "https://xplatteststorage19497.blob.core.windows.net/xplatteststoragecnt11727",
-          "https://xplatteststorage29681.blob.core.windows.net/xplatteststoragecnt26329",
-          "https://xplatteststorage32441.blob.core.windows.net/xplatteststoragecnt31039"
+          "https://xplatteststorage16018.blob.core.windows.net/xplatteststoragecnt12103",
+          "https://xplatteststorage26659.blob.core.windows.net/xplatteststoragecnt24121",
+          "https://xplatteststorage37766.blob.core.windows.net/xplatteststoragecnt39401"
         ]
       }
     },
@@ -40,7 +40,7 @@
             {
               "name": "test",
               "subnet": {
-                "id": "/subscriptions/e33f361b-53c2-4cc7-b829-78906708387b/resourceGroups/xplatTstVmssGCreate8758/providers/Microsoft.Network/VirtualNetworks/xplattestvnet9669/subnets/xplattestsubnet2600"
+                "id": "/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTstVmssGCreate1093/providers/Microsoft.Network/VirtualNetworks/xplattestvnet5583/subnets/xplattestsubnet7518"
               },
               "id": ""
             }

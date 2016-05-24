@@ -6,13 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
     },
-    name: 'CollaberaInteropTest',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,79 +31,85 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet8230/gateway/connection/CliGtTestLocNetwork5435/sharedkey', '*')
-  .reply(202, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway/connection/CliGtTestLocNetwork8695/sharedkey', '*')
+  .reply(202, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
   'content-length': '210',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '3016730634f1b4afb7ed7b4eb1f5e822',
-  date: 'Fri, 26 Jun 2015 06:44:32 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'dc5a70ecd8879d4e95387eece6f20526',
+  date: 'Fri, 22 Apr 2016 10:25:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/CliGtTestVnet8230/gateway/connection/CliGtTestLocNetwork5435/sharedkey', '*')
-  .reply(202, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/CliGtTestVnet3384/gateway/connection/CliGtTestLocNetwork8695/sharedkey', '*')
+  .reply(202, "<GatewayOperationAsyncResponse xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID></GatewayOperationAsyncResponse>", { 'cache-control': 'no-cache',
   'content-length': '210',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '3016730634f1b4afb7ed7b4eb1f5e822',
-  date: 'Fri, 26 Jun 2015 06:44:32 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'dc5a70ecd8879d4e95387eece6f20526',
+  date: 'Fri, 22 Apr 2016 10:25:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/operation/b61584b3-38b4-441e-926f-58c79b1d4137')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2015-06-26T06:44:32.8551265</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '335',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/7687864f-e360-40bc-98ec-8142100fdd3a')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2016-04-22T10:25:46.0091381</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  'content-length': '350',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78cf4066137fba768ddc175238e51877',
-  date: 'Fri, 26 Jun 2015 06:45:05 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '30d3a09ff70f98379fc0938f454a7d47',
+  date: 'Fri, 22 Apr 2016 10:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/operation/b61584b3-38b4-441e-926f-58c79b1d4137')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2015-06-26T06:44:32.8551265</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '335',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/7687864f-e360-40bc-98ec-8142100fdd3a')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2016-04-22T10:25:46.0091381</OperationStartedTime><Status>InProgress</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  'content-length': '350',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78cf4066137fba768ddc175238e51877',
-  date: 'Fri, 26 Jun 2015 06:45:05 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '30d3a09ff70f98379fc0938f454a7d47',
+  date: 'Fri, 22 Apr 2016 10:26:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/operation/b61584b3-38b4-441e-926f-58c79b1d4137')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HttpStatusCode>OK</HttpStatusCode><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID><OperationCompletedTime>2015-06-26T06:45:14.0578016</OperationCompletedTime><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2015-06-26T06:44:32.8551265</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '446',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/7687864f-e360-40bc-98ec-8142100fdd3a')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID><OperationCompletedTime>2016-04-22T10:26:40.2091835</OperationCompletedTime><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2016-04-22T10:25:46.0091381</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  'content-length': '461',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78a37b06f083bd56859678f52d37ca9e',
-  date: 'Fri, 26 Jun 2015 06:45:39 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '557c4c82a9cc9545ad413016eb69ebb6',
+  date: 'Fri, 22 Apr 2016 10:26:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/operation/b61584b3-38b4-441e-926f-58c79b1d4137')
-  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HttpStatusCode>OK</HttpStatusCode><ID>b61584b3-38b4-441e-926f-58c79b1d4137</ID><OperationCompletedTime>2015-06-26T06:45:14.0578016</OperationCompletedTime><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2015-06-26T06:44:32.8551265</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
-  'content-length': '446',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/networking/operation/7687864f-e360-40bc-98ec-8142100fdd3a')
+  .reply(200, "<GatewayOperation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Data/><HealthStatus/><HttpStatusCode>OK</HttpStatusCode><ID>7687864f-e360-40bc-98ec-8142100fdd3a</ID><OperationCompletedTime>2016-04-22T10:26:40.2091835</OperationCompletedTime><OperationName>ResetSharedKey</OperationName><OperationStartedTime>2016-04-22T10:25:46.0091381</OperationStartedTime><Status>Successful</Status></GatewayOperation>", { 'cache-control': 'no-cache',
+  'content-length': '461',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.243 (rd_rdfe_stable.150618-1025) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '78a37b06f083bd56859678f52d37ca9e',
-  date: 'Fri, 26 Jun 2015 06:45:39 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '557c4c82a9cc9545ad413016eb69ebb6',
+  date: 'Fri, 22 Apr 2016 10:26:52 GMT',
   connection: 'close' });
  return result; }]];

@@ -6,18 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'CollaberaInteropTest',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    registeredProviders: ['website'],
-    registeredResourceNamespaces: [],
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
+    registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -31,52 +29,56 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/virtualnetwork/CliTestVnet/subnets/CliTestSubnet/routetables')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/virtualnetwork/CliTestVnet/subnets/CliTestSubnet/routetables')
   .reply(200, "<RouteTableAssociation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RouteTableName>CliTestRouTab</RouteTableName></RouteTableAssociation>", { 'cache-control': 'no-cache',
   'content-length': '195',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '8a50cada3e72b199b95906b46e349f84',
-  date: 'Wed, 17 Jun 2015 06:52:21 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'e29af3ff558d972498e6ed2c162fe4d7',
+  date: 'Mon, 25 Apr 2016 09:58:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/virtualnetwork/CliTestVnet/subnets/CliTestSubnet/routetables')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/virtualnetwork/CliTestVnet/subnets/CliTestSubnet/routetables')
   .reply(200, "<RouteTableAssociation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RouteTableName>CliTestRouTab</RouteTableName></RouteTableAssociation>", { 'cache-control': 'no-cache',
   'content-length': '195',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': '8a50cada3e72b199b95906b46e349f84',
-  date: 'Wed, 17 Jun 2015 06:52:21 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': 'e29af3ff558d972498e6ed2c162fe4d7',
+  date: 'Mon, 25 Apr 2016 09:58:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/routetables/CliTestRouTab?detailLevel=5')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/routetables/CliTestRouTab?detailLevel=5')
   .reply(200, "<RouteTable xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>CliTestRouTab</Name><Label>Route</Label><Location>West US</Location></RouteTable>", { 'cache-control': 'no-cache',
   'content-length': '201',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'd9867e6d2154b86fa0acdc8c64758daf',
-  date: 'Wed, 17 Jun 2015 06:52:24 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '2b45f03d62959ebaa17af62716f6e2b4',
+  date: 'Mon, 25 Apr 2016 09:58:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/bfb5e0bf-124b-4d0c-9352-7c0a9f4d9948/services/networking/routetables/CliTestRouTab?detailLevel=5')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/routetables/CliTestRouTab?detailLevel=5')
   .reply(200, "<RouteTable xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>CliTestRouTab</Name><Label>Route</Label><Location>West US</Location></RouteTable>", { 'cache-control': 'no-cache',
   'content-length': '201',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.240 (rd_rdfe_stable.150608-1900) Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'usnorth2',
-  'x-ms-request-id': 'd9867e6d2154b86fa0acdc8c64758daf',
-  date: 'Wed, 17 Jun 2015 06:52:24 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  'x-ms-request-id': '2b45f03d62959ebaa17af62716f6e2b4',
+  date: 'Mon, 25 Apr 2016 09:58:24 GMT',
   connection: 'close' });
  return result; }]];

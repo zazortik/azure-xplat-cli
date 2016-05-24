@@ -6,14 +6,16 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'e1b1b954-c500-427b-8cb1-ff8d47c39c17',
-    name: 'Visual Studio Ultimate with MSDN',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '82dc2e83-ff62-4cea-bc70-15c9386f0d72',
-    registeredProviders: ['website'],
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
+    registeredProviders: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -25,4 +27,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['webappclitest3619','testrg13424'];};
+ exports.randomTestIdsGenerated = function() { return ['webappclitest9281','testrg18540'];};

@@ -221,5 +221,15 @@ describe('arm', function () {
         }
       );
     });
+
+    it('should show the account usage', function (done) {
+      suite.execute('storage account usage show --json', function(result) {
+        var usage = JSON.parse(result.text);
+        usage.subscriptionId.should.not.be.null;
+        usage.used.should.be.above(-1);
+        usage.limit.should.be.above(50);
+        done();
+      });
+    });
   });
 });

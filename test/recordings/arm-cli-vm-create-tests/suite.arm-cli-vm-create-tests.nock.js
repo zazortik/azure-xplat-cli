@@ -6,11 +6,11 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '45b60d85-fd72-427a-a708-f994d26e593e',
-    name: 'Azure Storage DM Staging',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGVMCreate6597','xplatTestaAvail7837','xplatteststorage16877','xplatteststoragecnt17926','xplattestipdns4636','xplattestipdns24420'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGVMCreate5176','xplatTestaAvail5541','xplatteststorage15289','xplatteststoragecnt13225','xplattestipdns8219','xplattestipdns27605'];};

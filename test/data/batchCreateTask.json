@@ -16,5 +16,9 @@
       "value": "value2"
     }
   ],
+  "multiInstanceSettings": {
+    "numberOfInstances": 3,
+    "coordinationCommandLine": "cmd /c echo hello"
+  },
   "runElevated": false
 }

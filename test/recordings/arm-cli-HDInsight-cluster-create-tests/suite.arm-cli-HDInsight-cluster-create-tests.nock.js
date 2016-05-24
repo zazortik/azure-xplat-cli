@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '12f44720-8952-422c-bb7d-28831c2de639',
-    name: 'BDHadoopHumboltCRUDReliability',
+    id: '26d6d535-5164-443d-82f6-4c695caf7688',
+    name: 'BDHadoopHumboldtCRPAdhocTestShortTerm',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,10 +23,10 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'westus';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'NorthCentralUS';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate1069','xplatTestHDInsightClusterCreate3257','xplatTestHDInsightClusterCreate2050','xplatTestHDInsightClusterCreate3731'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestRgHDInsightClusterCreate4390','xplatTestHDInsightClusterCreate9269','xplatTestHDInsightClusterCreate5904','xplatTestHDInsightClusterCreate3171','xplatTestHDInsightClusterCreate6224','xplatSampleApp8928'];};

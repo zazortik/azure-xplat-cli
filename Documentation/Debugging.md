@@ -146,7 +146,7 @@ Runner.prototype.runTest = function(fn){
 
 
 ## Using Visual Studio
-The Visual Studio plugin for node.js can be downloaded from [here](http://nodejstools.codeplex.com/).
+The Visual Studio plugin for node.js can be downloaded from [here](https://github.com/Microsoft/nodejstools/releases). Download the latest version for the version of VS you are using.
 
 ### Setting up the project
 * File --> New --> Project

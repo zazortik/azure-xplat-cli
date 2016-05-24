@@ -23,7 +23,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'EastUS2(Stage)';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'East US 2 (Stage)';
   process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_STORAGE_TEST_KIND'] = 'storage';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
@@ -34,18 +34,18 @@ var result =
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/checkNameAvailability?api-version=2016-01-01', '*')
-  .reply(200, "{\"message\":\"The storage account named armclistorageaccount9838 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
+  .reply(200, "{\"message\":\"The storage account named armclistorageaccount5743 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '130',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
+  'x-ms-request-id': '80402dec-8586-4529-8cbe-046428a26d78',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160422T014605Z:4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-correlation-request-id': '80402dec-8586-4529-8cbe-046428a26d78',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062533Z:80402dec-8586-4529-8cbe-046428a26d78',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 22 Apr 2016 01:46:04 GMT',
+  date: 'Mon, 25 Apr 2016 06:25:33 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -53,17 +53,17 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/checkNameAvailability?api-version=2016-01-01', '*')
-  .reply(200, "{\"message\":\"The storage account named armclistorageaccount9838 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
+  .reply(200, "{\"message\":\"The storage account named armclistorageaccount5743 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '130',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
+  'x-ms-request-id': '80402dec-8586-4529-8cbe-046428a26d78',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14987',
-  'x-ms-correlation-request-id': '4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160422T014605Z:4be9fa3e-9c1a-403f-a029-2b5c1a718b84',
+  'x-ms-ratelimit-remaining-subscription-reads': '14972',
+  'x-ms-correlation-request-id': '80402dec-8586-4529-8cbe-046428a26d78',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062533Z:80402dec-8586-4529-8cbe-046428a26d78',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 22 Apr 2016 01:46:04 GMT',
+  date: 'Mon, 25 Apr 2016 06:25:33 GMT',
   connection: 'close' });
  return result; }]];
