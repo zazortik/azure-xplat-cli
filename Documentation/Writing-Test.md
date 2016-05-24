@@ -60,16 +60,19 @@ describe('arm', function () {
           createdSites /*An array to maintain the list of created sites. 
                        This is useful to delete the list of created sites in teardown*/ );
         
-        suite.execute("site create --location %s %s --json" /*Azure command to execute*/, 
-              process.env.AZURE_SITE_TEST_LOCATION, 
-              sitename, 
-              function (result) {
-          //test to verify the successful execution of the command
-          result.exitStatus.should.equal(0);
-          //done is an important callback that signals mocha that the current phase in the 
-          //test is complete and the mocha runner should move to the next phase in the test 
+        //We dont record the commands that are executed in before and after section as they are not required. 
+        //We are only interested in the name of the artifacts created in this section, so that tests can get 
+        //those names in playback mode. In this case the name of the site. The suite.execute must be wrapped 
+        //in an if condition that runs the command if the mode is not playback
+        if (!suite.isPlayback()) {
+          suite.execute("site create --location %s %s --json", process.env.AZURE_SITE_TEST_LOCATION, 
+            sitename, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        } else {
           done();
-        });
+        }
       });
     });
     
@@ -85,12 +88,17 @@ describe('arm', function () {
       //Then we shall do something like this:
       suite.teardownSuite(function () {
         //delete all the artifacts that were created during setup
-        createdSites.forEach(function (item) {
-          suite.execute('site delete %s -q --json', item, function (result) {
-            result.exitStatus.should.equal(0);
+        // We don't need to run the cleanup in playback mode. This reduces the playback time.
+        if (!suite.isPlayback()) {
+          createdSites.forEach(function (item) {
+            suite.execute('site delete %s -q --json', item, function (result) {
+              result.exitStatus.should.equal(0);
+            });
           });
-        });
-        done();
+          done();
+        } else {
+          done();
+        }
       });
     });
 
