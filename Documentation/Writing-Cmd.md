@@ -25,7 +25,7 @@ Depends on what mode your cmds in choose appropriate folder:
 
 ## Command Design Guidelines
 * Please try to follow the noun verb pattern
-  * azure (one or more) **noun** **verb** 
+  * azure (one or more **noun**) **verb** 
 * Please strictly adhere to this verb usage for basic [CRUD] operations: 
   * create - create a new entity
   * set - update an existing enity
