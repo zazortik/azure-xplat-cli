@@ -33,16 +33,16 @@ nock('http://test1.westus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 28 Apr 2016 18:33:28 GMT',
-  etag: '0x8D36F939787DF4C',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   location: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60853601-59a6-4892-a10b-0da200d00d9e',
+  'request-id': 'f3ef61cf-1965-4a20-bc05-b0f3af2a024c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '0d3db1b7-e376-4e6b-8b95-8d3d13c92d1e',
+  'client-request-id': '7ad48620-953c-4ddc-b920-48294eb8a6a9',
   dataserviceversion: '3.0',
   dataserviceid: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
-  date: 'Thu, 28 Apr 2016 18:33:28 GMT',
+  date: 'Fri, 20 May 2016 05:36:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -51,47 +51,47 @@ nock('https://test1.westus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 28 Apr 2016 18:33:28 GMT',
-  etag: '0x8D36F939787DF4C',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   location: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60853601-59a6-4892-a10b-0da200d00d9e',
+  'request-id': 'f3ef61cf-1965-4a20-bc05-b0f3af2a024c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '0d3db1b7-e376-4e6b-8b95-8d3d13c92d1e',
+  'client-request-id': '7ad48620-953c-4ddc-b920-48294eb8a6a9',
   dataserviceversion: '3.0',
   dataserviceid: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
-  date: 'Thu, 28 Apr 2016 18:33:28 GMT',
+  date: 'Fri, 20 May 2016 05:36:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://test1.westus.batch.azure.com:443')
   .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D36F939787DF4C\",\"creationTime\":\"2016-04-28T18:33:28.2511692Z\",\"lastModified\":\"2016-04-28T18:33:28.2511692Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-28T18:33:28.2511692Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 28 Apr 2016 18:33:28 GMT',
-  etag: '0x8D36F939787DF4C',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '33f6074c-7915-45be-a51e-a42108f9f5aa',
+  'request-id': '9559a3c8-4da4-4814-9c31-ec06738d453d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '0326f3f7-d48d-4514-a581-1d0a6e32014c',
+  'client-request-id': 'e62fde6b-8453-4024-a99c-4d01ed4b2ea7',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:28 GMT',
+  date: 'Fri, 20 May 2016 05:36:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test1.westus.batch.azure.com:443')
   .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D36F939787DF4C\",\"creationTime\":\"2016-04-28T18:33:28.2511692Z\",\"lastModified\":\"2016-04-28T18:33:28.2511692Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-28T18:33:28.2511692Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Thu, 28 Apr 2016 18:33:28 GMT',
-  etag: '0x8D36F939787DF4C',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '33f6074c-7915-45be-a51e-a42108f9f5aa',
+  'request-id': '9559a3c8-4da4-4814-9c31-ec06738d453d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '0326f3f7-d48d-4514-a581-1d0a6e32014c',
+  'client-request-id': 'e62fde6b-8453-4024-a99c-4d01ed4b2ea7',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:28 GMT',
+  date: 'Fri, 20 May 2016 05:36:01 GMT',
   connection: 'close' });
  return result; }]];

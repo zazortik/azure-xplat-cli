@@ -990,7 +990,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -999,7 +999,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1042,7 +1042,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1051,7 +1051,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1119,7 +1119,7 @@
                   "description": "the resource id of the storage account to be used for auto storage"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1128,7 +1128,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1187,7 +1187,7 @@
                   "description": "the resource id of the storage account to be used for auto storage"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1196,7 +1196,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1239,7 +1239,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1248,7 +1248,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1300,7 +1300,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1309,7 +1309,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1361,7 +1361,7 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -1370,7 +1370,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -1429,7 +1429,7 @@
                       "description": "Update the secondary key"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -1438,7 +1438,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -1525,7 +1525,7 @@
                   "description": "the disaply name for the application"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1534,7 +1534,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1609,7 +1609,7 @@
                   "description": "the disaply name for the application"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1618,7 +1618,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1686,7 +1686,7 @@
                   "description": "delete the specified application without confirmation"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1695,7 +1695,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1754,7 +1754,7 @@
                   "description": "the id of the application"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1763,7 +1763,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1814,7 +1814,7 @@
                   "description": "the name of the Batch account"
                 },
                 {
-                  "flags": "-g, --resource-group <resourceGroup>",
+                  "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,
                   "bool": true,
@@ -1823,7 +1823,7 @@
                   "description": "the resource group name"
                 },
                 {
-                  "flags": "-s, --subscription <id>",
+                  "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1866,7 +1866,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1875,7 +1875,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -1884,7 +1884,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -1935,7 +1935,7 @@
                   "description": "the id of the application"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -1944,7 +1944,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -1953,7 +1953,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2037,7 +2037,7 @@
                       "description": "the application package in zip format"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -2046,7 +2046,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -2122,7 +2122,7 @@
                       "description": "delete the specified application package without confirmation"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -2131,7 +2131,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -2198,7 +2198,7 @@
                       "description": "the version of the application to show"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -2207,7 +2207,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -2282,7 +2282,7 @@
                       "description": "the format of the application package binary file"
                     },
                     {
-                      "flags": "-g, --resource-group <resourceGroup>",
+                      "flags": "-g, --resource-group <resource-group>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
@@ -2291,7 +2291,7 @@
                       "description": "the resource group name"
                     },
                     {
-                      "flags": "-s, --subscription <id>",
+                      "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -2381,7 +2381,7 @@
                   "description": "the password to access the certificate's private key"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2390,7 +2390,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2399,7 +2399,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2476,7 +2476,7 @@
                   "description": "delete the specified certificate without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2485,7 +2485,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2494,7 +2494,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2554,7 +2554,7 @@
                   "description": "the certificate thumbprint algorithm"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -2562,7 +2562,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2571,7 +2571,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2580,7 +2580,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2623,7 +2623,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -2631,7 +2631,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -2639,7 +2639,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2648,7 +2648,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2657,7 +2657,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2755,7 +2755,7 @@
                   "description": "delete file(s) without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2764,7 +2764,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2773,7 +2773,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2885,7 +2885,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2894,7 +2894,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -2903,7 +2903,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -2989,7 +2989,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -2998,7 +2998,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3007,7 +3007,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3077,7 +3077,7 @@
                   "description": "whether to list children of a directory"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3085,7 +3085,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3094,7 +3094,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3103,7 +3103,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3201,7 +3201,7 @@
                   "description": "delete file(s) without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3210,7 +3210,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3219,7 +3219,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3331,7 +3331,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3340,7 +3340,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3349,7 +3349,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3435,7 +3435,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3444,7 +3444,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3453,7 +3453,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3523,7 +3523,7 @@
                   "description": "whether to list children of a directory"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3531,7 +3531,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3540,7 +3540,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3549,7 +3549,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3611,7 +3611,7 @@
                   "description": "the file containing the job object to create in JSON format"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3620,7 +3620,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3629,7 +3629,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3681,7 +3681,7 @@
                   "description": "the id of the job schedule from which you want to get a list of jobs"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3689,7 +3689,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3697,7 +3697,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3705,7 +3705,7 @@
                   "description": "list of related entites by which the results can be expanded"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3714,7 +3714,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3723,7 +3723,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3775,7 +3775,7 @@
                   "description": "the id of the job"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3783,7 +3783,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -3791,7 +3791,7 @@
                   "description": "list of related entites by which the results can be expanded"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3800,7 +3800,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3809,7 +3809,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -3902,7 +3902,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -3911,7 +3911,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -3920,7 +3920,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4022,7 +4022,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4031,7 +4031,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4040,7 +4040,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4115,7 +4115,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4124,7 +4124,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4133,7 +4133,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4217,7 +4217,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4226,7 +4226,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4235,7 +4235,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4319,7 +4319,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4328,7 +4328,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4337,7 +4337,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4389,7 +4389,7 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--select-clause <selectClause>",
+                      "flags": "--select-clause <select-clause>",
                       "required": -17,
                       "optional": 0,
                       "bool": true,
@@ -4397,7 +4397,7 @@
                       "description": "list of a subset of properties to select"
                     },
                     {
-                      "flags": "--filter-clause <filterClause>",
+                      "flags": "--filter-clause <filter-clause>",
                       "required": -17,
                       "optional": 0,
                       "bool": true,
@@ -4405,7 +4405,7 @@
                       "description": "an OData expression by which the results will be filtered"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -4414,7 +4414,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -4423,7 +4423,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -4487,7 +4487,7 @@
                   "description": "the file containing the job schedule object to create in JSON format"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4496,7 +4496,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4505,7 +4505,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4548,7 +4548,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -4556,7 +4556,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -4564,7 +4564,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -4572,7 +4572,7 @@
                   "description": "list of related entites by which the results can be expanded"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4581,7 +4581,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4590,7 +4590,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4642,7 +4642,7 @@
                   "description": "the id of the job schedule to get"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -4650,7 +4650,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -4690,7 +4690,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4699,7 +4699,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4708,7 +4708,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4801,7 +4801,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4810,7 +4810,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4819,7 +4819,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -4921,7 +4921,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -4930,7 +4930,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -4939,7 +4939,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5014,7 +5014,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5023,7 +5023,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5032,7 +5032,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5107,7 +5107,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5116,7 +5116,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5125,7 +5125,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5200,7 +5200,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5209,7 +5209,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5218,7 +5218,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5289,7 +5289,7 @@
                   "description": "the id of the compute node that you want to get information about"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -5297,7 +5297,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5306,7 +5306,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5315,7 +5315,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5367,7 +5367,7 @@
                   "description": "the id of the pool from which you want to list nodes"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -5375,7 +5375,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -5383,7 +5383,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5392,7 +5392,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5401,7 +5401,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5480,7 +5480,7 @@
                   "description": "reboot the specified compute node without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5489,7 +5489,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5498,7 +5498,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5577,7 +5577,7 @@
                   "description": "reimage the specified compute node without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5586,7 +5586,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5595,7 +5595,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5714,7 +5714,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -5723,7 +5723,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -5732,7 +5732,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -5802,7 +5802,7 @@
                       "description": "the id of the compute node for which you want to get the remote login settings"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -5811,7 +5811,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -5820,7 +5820,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -5909,7 +5909,7 @@
                       "description": "overwrite the destination Remote Desktop Protocol file without confirmation"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -5918,7 +5918,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -5927,7 +5927,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -6007,7 +6007,7 @@
                       "description": "option of what to do with currently running tasks when to disable scheduling on the compute node"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -6016,7 +6016,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -6025,7 +6025,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -6086,7 +6086,7 @@
                       "description": "the id of the compute node that you want to enable scheduling"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -6095,7 +6095,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -6104,7 +6104,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -6219,7 +6219,7 @@
                   "description": "the time at which the account should expire"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6228,7 +6228,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6237,7 +6237,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6316,7 +6316,7 @@
                   "description": "remove the specified user without confirmation"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6325,7 +6325,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6334,7 +6334,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6429,7 +6429,7 @@
                   "description": "the time at which the account should expire"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6438,7 +6438,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6447,7 +6447,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6506,10 +6506,132 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the pool object to create in JSON format"
+                  "description": "the file containing the pool object to create in JSON format, if this parameter is specified, all other pool parameters are ignored"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-i, --id <pool-id>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch pool id"
+                },
+                {
+                  "flags": "-S, --vm-size <vm-size>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-S",
+                  "long": "--vm-size",
+                  "description": "the size of virtual machines in the pool, ex: small, Standard_D14"
+                },
+                {
+                  "flags": "-t, --target-dedicated <target-dedicated>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--target-dedicated",
+                  "description": "the desired number of compute nodes in the pool"
+                },
+                {
+                  "flags": "-F, --autoscale-formula <autoscale-formula>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-F",
+                  "long": "--autoscale-formula",
+                  "description": "the formula for the desired number of compute nodes in the pool, see https://azure.microsoft.com/en-us/documentation/articles/batch-automatic-scaling/ for more detail"
+                },
+                {
+                  "flags": "-o, --os-family <os-family>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--os-family",
+                  "description": "the Azure Guest OS family to be installed on the virtual machines in the pool, this parameter cannot be used with the --image-publisher, --image-offer, --image-sku and --node-agent-id parameters"
+                },
+                {
+                  "flags": "-p, --image-publisher <image-publisher>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--image-publisher",
+                  "description": "the publisher of the Azure Virtual Machines Marketplace image, ex: Canonical or MicrosoftWindowsServer"
+                },
+                {
+                  "flags": "-O, --image-offer <image-offer>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-O",
+                  "long": "--image-offer",
+                  "description": "the offer type of the Azure Virtual Machines Marketplace image, ex: UbuntuServer or WindowsServer"
+                },
+                {
+                  "flags": "-K, --image-sku <image-sku>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-K",
+                  "long": "--image-sku",
+                  "description": "the SKU of the Azure Virtual Machines Marketplace image, ex: 14.04.0-LTS or 2012-R2-Datacenter"
+                },
+                {
+                  "flags": "-n, --node-agent-id <node-agent-id>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--node-agent-id",
+                  "description": "the SKU of Batch Node Agent to be provisioned on the compute node"
+                },
+                {
+                  "flags": "--resize-timeout <resize-timeout>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--resize-timeout",
+                  "description": "the timeout for allocation of compute nodes to the pool, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "-c, --start-task-cmd <start-task-cmd>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--start-task-cmd",
+                  "description": "the command line of the start task"
+                },
+                {
+                  "flags": "--certificate-ref <certificate-ref>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--certificate-ref",
+                  "description": "the semicolon separated list of thumbprints specifying the certificates to be installed on each compute node in the pool"
+                },
+                {
+                  "flags": "--app-package-ref <app-package-ref>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--app-package-ref",
+                  "description": "the semicolon separated list of ids specifying the application packages to be installed on each compute node in the pool"
+                },
+                {
+                  "flags": "--metadata <metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the pool as metadata, ex: name1=value1;name2=value"
+                },
+                {
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6518,7 +6640,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6527,7 +6649,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6570,7 +6692,7 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -6578,7 +6700,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -6586,7 +6708,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -6594,7 +6716,7 @@
                   "description": "list of related entites by which the results can be expanded"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6603,7 +6725,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6612,7 +6734,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6664,7 +6786,7 @@
                   "description": "the Batch pool id"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -6672,7 +6794,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -6712,7 +6834,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6721,7 +6843,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6730,7 +6852,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6823,7 +6945,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6832,7 +6954,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6841,7 +6963,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -6899,7 +7021,40 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the patch/update pool properties to apply in JSON format"
+                  "description": "the file containing the patch/update pool properties to apply in JSON format, if this parameter is specified, all other pool property parameters are ignored"
+                },
+                {
+                  "flags": "-c, --start-task-cmd <start-task-cmd>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--start-task-cmd",
+                  "description": "the command line of the start task"
+                },
+                {
+                  "flags": "--certificate-ref <certificate-ref>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--certificate-ref",
+                  "description": "the semicolon separated list of thumbprints specifying the certificates to be installed on each compute node in the pool"
+                },
+                {
+                  "flags": "--app-package-ref <app-package-ref>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--app-package-ref",
+                  "description": "the semicolon separated list of ids specifying the application packages to be installed on each compute node in the pool"
+                },
+                {
+                  "flags": "--metadata <metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the pool as metadata, ex: name1=value1;name2=value"
                 },
                 {
                   "flags": "-r, --replace",
@@ -6943,7 +7098,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -6952,7 +7107,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -6961,7 +7116,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -7079,7 +7234,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -7088,7 +7243,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -7097,7 +7252,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -7158,7 +7313,7 @@
                       "description": "the Batch pool id"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7167,7 +7322,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7176,7 +7331,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7277,7 +7432,7 @@
                       "description": "only perform if the resource has not been modified since the specified time"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7286,7 +7441,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7295,7 +7450,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7356,7 +7511,7 @@
                       "description": "the autoscale formula, see https://azure.microsoft.com/en-us/documentation/articles/batch-automatic-scaling/ for more detail"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7365,7 +7520,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7374,7 +7529,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7427,7 +7582,7 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7436,7 +7591,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7445,7 +7600,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7516,7 +7671,7 @@
                       "description": "the latest time from which to include metrics"
                     },
                     {
-                      "flags": "--filter-clause <filterClause>",
+                      "flags": "--filter-clause <filter-clause>",
                       "required": -17,
                       "optional": 0,
                       "bool": true,
@@ -7524,7 +7679,7 @@
                       "description": "an OData expression by which the results will be filtered"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7533,7 +7688,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7542,7 +7697,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7595,7 +7750,7 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--filter-clause <filterClause>",
+                      "flags": "--filter-clause <filter-clause>",
                       "required": -17,
                       "optional": 0,
                       "bool": true,
@@ -7603,7 +7758,7 @@
                       "description": "an OData expression by which the results will be filtered"
                     },
                     {
-                      "flags": "-a, --account-name <accountName>",
+                      "flags": "-a, --account-name <account-name>",
                       "required": -20,
                       "optional": 0,
                       "bool": true,
@@ -7612,7 +7767,7 @@
                       "description": "the Batch account name"
                     },
                     {
-                      "flags": "-k, --account-key <accountKey>",
+                      "flags": "-k, --account-key <account-key>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
@@ -7621,7 +7776,7 @@
                       "description": "the Batch account key"
                     },
                     {
-                      "flags": "-u, --account-endpoint <endpointUrlString>",
+                      "flags": "-u, --account-endpoint <account-endpoint>",
                       "required": -24,
                       "optional": 0,
                       "bool": true,
@@ -7744,10 +7899,78 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing either a single task object or an array of task objects in JSON format"
+                  "description": "the file containing either a single task object or an array of task objects in JSON format, if this parameter is specified, --id and --command-line parameters are ignored"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-i, --id <taskId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch task id"
+                },
+                {
+                  "flags": "-c, --command-line <command-line>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--command-line",
+                  "description": "the command line of the task"
+                },
+                {
+                  "flags": "--affinity-id <affinity-id>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--affinity-id",
+                  "description": "the opaque string representing the location of compute node or a task that has run previously"
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that the task may run, measured from the time the task starts, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times the task may be retried"
+                },
+                {
+                  "flags": "--retention-time <retention-time>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--retention-time",
+                  "description": "the time in which the working directory for the task is retained, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "-e, --environment-settings <environment-settings>",
+                  "required": -28,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--environment-settings",
+                  "description": "the semicolon separated list of environment variable settings for the task, ex: name1=value1;name2=value2"
+                },
+                {
+                  "flags": "-r, --resources-files <resources-files>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--resources-files",
+                  "description": "the semicolon separated list of files that Batch will download to the compute node before running the command line, ex: blob1=file1;blob2=file2"
+                },
+                {
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -7756,7 +7979,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -7765,7 +7988,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -7817,7 +8040,7 @@
                   "description": "the id of the job from which you want to get a list of tasks"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -7825,7 +8048,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--filter-clause <filterClause>",
+                  "flags": "--filter-clause <filter-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -7833,7 +8056,7 @@
                   "description": "an OData expression by which the results will be filtered"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -7841,7 +8064,7 @@
                   "description": "list of related entites by which the results can be expanded"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -7850,7 +8073,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -7859,7 +8082,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -7928,7 +8151,7 @@
                   "description": "display information about the subtasks of a multi-instance task"
                 },
                 {
-                  "flags": "--select-clause <selectClause>",
+                  "flags": "--select-clause <select-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -7936,7 +8159,7 @@
                   "description": "list of a subset of properties to select"
                 },
                 {
-                  "flags": "--expand-clause <expandClause>",
+                  "flags": "--expand-clause <expand-clause>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
@@ -7976,7 +8199,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -7985,7 +8208,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -7994,7 +8217,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -8096,7 +8319,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -8105,7 +8328,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -8114,7 +8337,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -8128,7 +8351,7 @@
               "name": "set",
               "description": "Update the properties of the specified Batch task",
               "fullName": "batch task set",
-              "usage": "[options] [jobId] [taskId] [json-file]",
+              "usage": "[options] [jobId] [taskId]",
               "filePath": "commands/batch/batch.task._js",
               "options": [
                 {
@@ -8175,13 +8398,28 @@
                   "description": "the Batch task id"
                 },
                 {
-                  "flags": "-f, --json-file <json-file>",
-                  "required": -17,
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
                   "optional": 0,
                   "bool": true,
-                  "short": "-f",
-                  "long": "--json-file",
-                  "description": "the file containing the updated task properties to apply in JSON format"
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that the task may run, measured from the time the task starts, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times the task may be retried"
+                },
+                {
+                  "flags": "--retention-time <retention-time>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--retention-time",
+                  "description": "the time in which the working directory for the task is retained, in ISO 8601 duration formation"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -8216,7 +8454,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -8225,7 +8463,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -8234,7 +8472,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,
@@ -8336,7 +8574,7 @@
                   "description": "only perform if the resource has not been modified since the specified time"
                 },
                 {
-                  "flags": "-a, --account-name <accountName>",
+                  "flags": "-a, --account-name <account-name>",
                   "required": -20,
                   "optional": 0,
                   "bool": true,
@@ -8345,7 +8583,7 @@
                   "description": "the Batch account name"
                 },
                 {
-                  "flags": "-k, --account-key <accountKey>",
+                  "flags": "-k, --account-key <account-key>",
                   "required": -19,
                   "optional": 0,
                   "bool": true,
@@ -8354,7 +8592,7 @@
                   "description": "the Batch account key"
                 },
                 {
-                  "flags": "-u, --account-endpoint <endpointUrlString>",
+                  "flags": "-u, --account-endpoint <account-endpoint>",
                   "required": -24,
                   "optional": 0,
                   "bool": true,

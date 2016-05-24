@@ -72,7 +72,7 @@ describe('cli', function () {
     afterEach(function (done) {
       suite.teardownTest(done);
     });
-    
+
     it('should create a pool from a json file', function (done) {
       suite.execute('batch pool create %s --account-name %s --account-key %s --account-endpoint %s --json', createJsonFilePath, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
@@ -227,6 +227,30 @@ describe('cli', function () {
       });
     });
     
+    it('should update the created pool using parameter', function (done) {
+      // The update JSON should change the start task command line, so we store the original, perform the update,
+      // and then ensure that the start task was in fact changed.
+      suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', createdPoolId, 
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var originalPool = JSON.parse(result.text);
+        originalPool.startTask.should.not.be.null;
+        originalPool.startTask.commandLine.should.not.be.null;
+
+        suite.execute('batch pool set %s -c hostname --account-name %s --account-key %s --account-endpoint %s --json --replace', createdPoolId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var updatedPool = JSON.parse(result.text);
+          updatedPool.startTask.should.not.be.null;
+          updatedPool.startTask.commandLine.should.not.be.null;
+          updatedPool.startTask.commandLine.should.not.equal(originalPool.startTask.commandLine);
+
+          done();
+        });
+      });
+    });
+        
     it('should delete the created pool', function (done) {
       suite.execute('batch pool delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', createdPoolId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
@@ -241,6 +265,24 @@ describe('cli', function () {
             result.text.should.equal('');
           }
           
+          done();
+        });
+      });
+    });
+
+    it('should create a pool from parameters', function (done) {
+      suite.execute('batch pool create -i testpool -S standard_d14 -p Canonical -O UbuntuServer -K 14.04.4-LTS -F $TargetDedicated=0 -n %s --account-name %s --account-key %s --account-endpoint %s --json',  
+        'batch.node.ubuntu 14.04', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var createdPool = JSON.parse(result.text);
+        createdPool.should.not.be.null;
+        createdPool.id.should.equal("testpool");
+        createdPool.virtualMachineConfiguration.should.not.be.null;
+
+        suite.execute('batch pool delete testpool --account-name %s --account-key %s --account-endpoint %s --json --quiet',  
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
           done();
         });
       });
