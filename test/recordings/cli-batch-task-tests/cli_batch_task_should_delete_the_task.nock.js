@@ -33,11 +33,11 @@ nock('http://test1.westus.batch.azure.com:443')
   .delete('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f4a0c877-b622-483b-bd19-1e119c8aef09',
+  'request-id': '738f5b6b-44f0-44b9-b972-12115f637fbe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '99394860-96d7-404a-83ed-dde8d75f6791',
+  'client-request-id': '54c4b49e-571d-41a9-af67-171014ed6162',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:34 GMT',
+  date: 'Fri, 20 May 2016 05:36:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,38 +46,38 @@ nock('https://test1.westus.batch.azure.com:443')
   .delete('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f4a0c877-b622-483b-bd19-1e119c8aef09',
+  'request-id': '738f5b6b-44f0-44b9-b972-12115f637fbe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '99394860-96d7-404a-83ed-dde8d75f6791',
+  'client-request-id': '54c4b49e-571d-41a9-af67-171014ed6162',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:34 GMT',
+  date: 'Fri, 20 May 2016 05:36:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://test1.westus.batch.azure.com:443')
   .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:b7bc2b12-2ee5-48f8-b649-39775debf291\\nTime:2016-04-28T18:33:34.8072618Z\"\r\n  }\r\n}", { 'content-length': '326',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:32040c17-6b24-4934-b9fb-cc91f7867b50\\nTime:2016-05-20T05:36:11.9559414Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7bc2b12-2ee5-48f8-b649-39775debf291',
+  'request-id': '32040c17-6b24-4934-b9fb-cc91f7867b50',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'c2163caf-a2e4-48f2-88f3-85fd80c9e38f',
+  'client-request-id': '288eaae8-f235-4cae-b390-aaec990dff5c',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:34 GMT',
+  date: 'Fri, 20 May 2016 05:36:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test1.westus.batch.azure.com:443')
   .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
-  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:b7bc2b12-2ee5-48f8-b649-39775debf291\\nTime:2016-04-28T18:33:34.8072618Z\"\r\n  }\r\n}", { 'content-length': '326',
+  .reply(404, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TaskNotFound\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified task does not exist.\\nRequestId:32040c17-6b24-4934-b9fb-cc91f7867b50\\nTime:2016-05-20T05:36:11.9559414Z\"\r\n  }\r\n}", { 'content-length': '326',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7bc2b12-2ee5-48f8-b649-39775debf291',
+  'request-id': '32040c17-6b24-4934-b9fb-cc91f7867b50',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'c2163caf-a2e4-48f2-88f3-85fd80c9e38f',
+  'client-request-id': '288eaae8-f235-4cae-b390-aaec990dff5c',
   dataserviceversion: '3.0',
-  date: 'Thu, 28 Apr 2016 18:33:34 GMT',
+  date: 'Fri, 20 May 2016 05:36:11 GMT',
   connection: 'close' });
  return result; }]];

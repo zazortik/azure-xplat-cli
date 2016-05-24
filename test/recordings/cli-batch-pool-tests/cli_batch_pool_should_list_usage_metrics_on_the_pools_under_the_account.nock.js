@@ -31,27 +31,27 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://test1.westus.batch.azure.com:443')
   .get('/poolusagemetrics?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"xingwu-pool1test\",\"startTime\":\"2016-04-29T19:00:00Z\",\"endTime\":\"2016-04-29T19:30:00Z\",\"vmSize\":\"standard_d1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-04-29T19:00:00Z\",\"endTime\":\"2016-04-29T19:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":4.5006163418293E-05,\"dataEgressGiB\":1.328345388174057E-05\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"xingwu-pool1test\",\"startTime\":\"2016-05-17T22:30:00Z\",\"endTime\":\"2016-05-17T23:00:00Z\",\"vmSize\":\"standard_d1\",\"totalCoreHours\":0.075731165555555549,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-05-17T22:30:00Z\",\"endTime\":\"2016-05-17T23:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.017914414944444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '21884b13-e6c1-43aa-b0c0-7fa2e912ab4c',
+  'request-id': 'e8f757bb-f82e-43a1-8143-53bdb14fcefe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ae11a37b-e873-45bb-a114-c947eb120202',
+  'client-request-id': '6188c998-fbf8-44ca-a19b-40e2bc0b48ef',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:02 GMT',
+  date: 'Fri, 20 May 2016 05:36:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://test1.westus.batch.azure.com:443')
   .get('/poolusagemetrics?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"xingwu-pool1test\",\"startTime\":\"2016-04-29T19:00:00Z\",\"endTime\":\"2016-04-29T19:30:00Z\",\"vmSize\":\"standard_d1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-04-29T19:00:00Z\",\"endTime\":\"2016-04-29T19:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":4.5006163418293E-05,\"dataEgressGiB\":1.328345388174057E-05\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"xingwu-pool1test\",\"startTime\":\"2016-05-17T22:30:00Z\",\"endTime\":\"2016-05-17T23:00:00Z\",\"vmSize\":\"standard_d1\",\"totalCoreHours\":0.075731165555555549,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-05-17T22:30:00Z\",\"endTime\":\"2016-05-17T23:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.017914414944444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '21884b13-e6c1-43aa-b0c0-7fa2e912ab4c',
+  'request-id': 'e8f757bb-f82e-43a1-8143-53bdb14fcefe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ae11a37b-e873-45bb-a114-c947eb120202',
+  'client-request-id': '6188c998-fbf8-44ca-a19b-40e2bc0b48ef',
   dataserviceversion: '3.0',
-  date: 'Fri, 29 Apr 2016 22:50:02 GMT',
+  date: 'Fri, 20 May 2016 05:36:36 GMT',
   connection: 'close' });
  return result; }]];
