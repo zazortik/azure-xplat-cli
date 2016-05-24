@@ -34255,13 +34255,14 @@
       "categories": {
         "vms-per-lab-policy": {
           "name": "vms-per-lab-policy",
+          "description": "Commands to manage total allowed virtual machines per lab policy",
           "fullName": "lab vms-per-lab-policy",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "set",
-              "description": "Set allowed virtual machines per lab policy.",
+              "description": "Set max allowed virtual machines per lab policy.",
               "fullName": "lab vms-per-lab-policy set",
               "usage": "[options]",
               "filePath": "commands/arm/devtestlabs/devTestLabs._js",
@@ -34456,6 +34457,7 @@
         },
         "vms-per-user-policy": {
           "name": "vms-per-user-policy",
+          "description": "Commands to manage max allowed virtual machines per user policy",
           "fullName": "lab vms-per-user-policy",
           "usage": "[options] [command]",
           "options": [],
@@ -34657,6 +34659,7 @@
         },
         "vm-size-policy": {
           "name": "vm-size-policy",
+          "description": "Commands to manage allowed virtual machine sizes policy",
           "fullName": "lab vm-size-policy",
           "usage": "[options] [command]",
           "options": [],
@@ -34718,7 +34721,7 @@
                   "bool": true,
                   "short": "-z",
                   "long": "--vm-sizes",
-                  "description": "allowed virtual machine sizes"
+                  "description": "allowed virtual machine sizes, example value: Standard_A0,StandardA1"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -34858,13 +34861,14 @@
         },
         "auto-shutdown-policy": {
           "name": "auto-shutdown-policy",
+          "description": "Commands to manage auto-shutdown policy",
           "fullName": "lab auto-shutdown-policy",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "set",
-              "description": "Set virtual machine auto-shutdown policy.",
+              "description": "Set virtual machine daily auto-shutdown policy.",
               "fullName": "lab auto-shutdown-policy set",
               "usage": "[options]",
               "filePath": "commands/arm/devtestlabs/devTestLabs._js",
@@ -34913,40 +34917,13 @@
                   "description": "the lab name"
                 },
                 {
-                  "flags": "-w, --weekly [weekly]",
-                  "required": 0,
-                  "optional": -14,
-                  "bool": true,
-                  "short": "-w",
-                  "long": "--weekly",
-                  "description": "weekly schedule"
-                },
-                {
-                  "flags": "-d, --daily",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--daily",
-                  "description": "daily schedule"
-                },
-                {
                   "flags": "-t, --time <time>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "short": "-t",
                   "long": "--time",
-                  "description": "the time to shutdown virtual machines, example format: 7pm -> 1900 "
-                },
-                {
-                  "flags": "-z, --time-zone-id [time-zone-id]",
-                  "required": 0,
-                  "optional": -20,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--time-zone-id",
-                  "description": "time zone id"
+                  "description": "the time (in UTC) to shutdown virtual machines everyday, example: 1905 means 7:05pm"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -35086,6 +35063,7 @@
         },
         "auto-start-policy": {
           "name": "auto-start-policy",
+          "description": "Commands to manage auto-start policy",
           "fullName": "lab auto-start-policy",
           "usage": "[options] [command]",
           "options": [],
@@ -35141,22 +35119,13 @@
                   "description": "the lab name"
                 },
                 {
-                  "flags": "-w, --weekly [weekly]",
-                  "required": 0,
-                  "optional": -14,
+                  "flags": "-w, --weekly <weekly>.",
+                  "required": -14,
+                  "optional": 0,
                   "bool": true,
                   "short": "-w",
                   "long": "--weekly",
-                  "description": "weekly schedule"
-                },
-                {
-                  "flags": "-d, --daily",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-d",
-                  "long": "--daily",
-                  "description": "daily schedule"
+                  "description": "selected weekdays to start machines. example: Monday,Friday means start machines on Monday and Friday."
                 },
                 {
                   "flags": "-t, --time <time>",
@@ -35165,16 +35134,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--time",
-                  "description": "the time to start virtual machines, example format: 7pm -> 1900 "
-                },
-                {
-                  "flags": "-z, --time-zone-id [time-zone-id]",
-                  "required": 0,
-                  "optional": -20,
-                  "bool": true,
-                  "short": "-z",
-                  "long": "--time-zone-id",
-                  "description": "time zone id"
+                  "description": "the time (in UTC) to start virtual machines on the selected weekday, example: 0815 means 8:15am"
                 },
                 {
                   "flags": "-s, --subscription <id>",

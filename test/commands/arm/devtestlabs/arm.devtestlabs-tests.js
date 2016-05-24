@@ -57,7 +57,8 @@ describe('arm', function () {
   afterEach(function (done) {
     suite.teardownTest(done);
   });
-
+  
+  // vms-per-lab-policy
   describe('set vms per lab policy', function () {
     it('Set vms per lab policy command should work', function (done) {
       var vmCount = 10000;
@@ -69,6 +70,79 @@ describe('arm', function () {
 
     it('get vms per lab policy command should work', function (done) {
       suite.execute('lab vms-per-lab-policy show --resource-group %s --lab-name %s --subscription %s', testResourceGroup, testLabName, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+  });
+  
+  // vms-per-user-policy
+  describe('set vms per user policy', function () {
+    it('Set vms per user policy command should work', function (done) {
+      var vmCount = 10000;
+      suite.execute('lab vms-per-user-policy set --resource-group %s --lab-name %s --vm-count %s --subscription %s', testResourceGroup, testLabName, vmCount, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+    
+    it('get vms per lab policy command should work', function (done) {
+      suite.execute('lab vms-per-user-policy show --resource-group %s --lab-name %s --subscription %s', testResourceGroup, testLabName, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+  });
+
+  // vm-size-policy
+  describe('set vm size policy', function () {
+    it('set vm size policy command should work', function (done) {
+      var sizes = 'Standard_A0,Standard_A2';
+      suite.execute('lab vm-size-policy set --resource-group %s --lab-name %s --vm-sizes %s --subscription %s', testResourceGroup, testLabName, sizes, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+    
+    it('get vm size policy command should work', function (done) {
+      suite.execute('lab vm-size-policy show --resource-group %s --lab-name %s --subscription %s', testResourceGroup, testLabName, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+  });
+
+  // auto-shutdown-policy
+  describe('set auto-shutdown policy', function () {
+    it('set auto-shutdown policy command should work', function (done) {
+      var time = '1525';
+      suite.execute('lab auto-shutdown-policy set --resource-group %s --lab-name %s --time %s --subscription %s', testResourceGroup, testLabName, time, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+    
+    it('get auto-shutdown policy command should work', function (done) {
+      suite.execute('lab auto-shutdown-policy show --resource-group %s --lab-name %s --subscription %s', testResourceGroup, testLabName, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+  });
+
+  // auto-start-policy
+  describe('set auto-start policy', function () {
+    it('set auto-start policy command should work', function (done) {
+      var weekly = 'Monday,Friday';
+      var time = '1810';
+      suite.execute('lab auto-start-policy set --resource-group %s --lab-name %s --weekly %s --time %s --subscription %s', testResourceGroup, testLabName, weekly, time, testSubscription, function (result) {
+        result.exitStatus.should.be.equal(0);
+        done();
+      });
+    });
+    
+    it('get auto-start policy command should work', function (done) {
+      suite.execute('lab auto-start-policy show --resource-group %s --lab-name %s --subscription %s', testResourceGroup, testLabName, testSubscription, function (result) {
         result.exitStatus.should.be.equal(0);
         done();
       });
