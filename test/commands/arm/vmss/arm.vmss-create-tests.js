@@ -230,6 +230,26 @@ describe('arm', function() {
           done();
         });
       });
+            
+      it('vmss scale up should pass', function (done) {
+                this.timeout(vmTest.timeoutLarge * 10);
+                var cmd = util.format('vmss scale --resource-group %s --name %s --out 6', groupName, vmssPrefix2).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
+                    result.exitStatus.should.equal(0);
+                    done();
+         });
+       });
+            
+      it('vmss scale down should fail', function (done) {
+                this.timeout(vmTest.timeoutLarge * 10);
+                //var down = '4';
+                var cmd = util.format('vmss scale --resource-group %s --name %s --out 4', groupName, vmssPrefix2).split(' ');
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
+                    result.exitStatus.should.not.equal(0);
+                    result.errorText.should.containEql('The provided new capacity 4 is less than existing capacity and vmss does not allowed scale down.');
+                    done();
+          });
+        });
       
       it('vmss delete 2 should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
@@ -238,8 +258,8 @@ describe('arm', function() {
           result.exitStatus.should.equal(0);
           done();
         });
-      });
+            });
       
-    });
+      });
   });
 });

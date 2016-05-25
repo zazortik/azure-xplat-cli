@@ -23770,6 +23770,78 @@
             }
           ]
         },
+
+        {
+          "name": "scale",
+          "description": "The operation to Scale Up virtual machine scale set.",
+          "fullName": "vmss scale",
+          "usage": "[options] <resource-group> <name> <new capacity value>",
+          "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "resource-group"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "name"
+            },
+            {
+              "flags": "-i, --out <new capacity value>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--out",
+              "description": "New capacity value that is higher than the current value."
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+
         {
           "name": "update-instances",
           "description": "The operation to manually upgrade virtual machines in a virtual machine scale set.",
