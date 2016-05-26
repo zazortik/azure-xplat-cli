@@ -51,7 +51,8 @@ var groupName,
   IaasDiagExtName,
   IaasDiagVersion,
   datafile = 'test/data/testdata.json',
-  paramFileName = 'test/data/vmssParamTest.json';
+  paramFileName = 'test/data/vmssParamTest.json',
+  timeBeforeSetAvailable;
 
 describe('arm', function() {
   describe('compute', function() {
@@ -59,6 +60,7 @@ describe('arm', function() {
     var vmTest = new VMTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
+      timeBeforeSetAvailable = (!suite.isMocked || suite.isRecording) ? 30000 : 10;
       suite.setupSuite(function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         sshcert = process.env.SSHCERT ? process.env.SSHCERT : 'test/myCert.pem';
@@ -123,25 +125,27 @@ describe('arm', function() {
 
       it('vmss quick-create should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        vmTest.checkImagefile(function() {
-          vmTest.getVMSize(location, suite, function() {
-            var cmd = util.format(
-              'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z %s -a Standard_GRS -C 5 --json',
-              groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert, VMTestUtil.vmSize).split(' ');
-            testUtils.executeCommand(suite, retry, cmd, function(result) {
-              result.exitStatus.should.equal(0);
-              vmTest.setGroup(groupName, suite, function(result) {
-                var cmd = util.format(
-                  'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -C 5 --json',
-                  groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                  result.exitStatus.should.equal(0);
-                  done();
+        setTimeout(function () {
+          vmTest.checkImagefile(function() {
+            vmTest.getVMSize(location, suite, function() {
+              var cmd = util.format(
+                'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -M %s -z %s -a Standard_GRS -C 5 --json',
+                groupName, vmssPrefix1, location, linuxImageUrn, username, sshcert, VMTestUtil.vmSize).split(' ');
+              testUtils.executeCommand(suite, retry, cmd, function(result) {
+                result.exitStatus.should.equal(0);
+                vmTest.setGroup(groupName, suite, function(result) {
+                  var cmd = util.format(
+                    'vmss quick-create -g %s -n %s -l %s -Q %s -u %s -p %s -C 5 --json',
+                    groupName, vmssPrefix, location, imageUrn, username, password).split(' ');
+                  testUtils.executeCommand(suite, retry, cmd, function(result) {
+                    result.exitStatus.should.equal(0);
+                    done();
+                  });
                 });
               });
             });
           });
-        });
+        }, timeBeforeSetAvailable);
       });
 
       it('vmssvm operations should pass', function(done) {
@@ -222,16 +226,7 @@ describe('arm', function() {
         });
       });
 
-      it('vmss get instance view should pass', function(done) {
-        this.timeout(vmTest.timeoutLarge);
-        var cmd = util.format('vmss get-instance-view --resource-group %s --name %s --json', groupName, vmssPrefix2).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
-        });
-      });
-            
-      it.skip('vmss scale up should pass', function (done) {
+      it('vmss scale up should pass', function (done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vmss scale --resource-group %s --name %s --out 6', groupName, vmssPrefix2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -239,18 +234,29 @@ describe('arm', function() {
           done();
         });
       });
-            
-      it.skip('vmss scale down should fail', function (done) {
-        this.timeout(vmTest.timeoutLarge * 10);
-        //var down = '4';
-        var cmd = util.format('vmss scale --resource-group %s --name %s --out 4', groupName, vmssPrefix2).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.not.equal(0);
-          result.errorText.should.containEql('The provided new capacity 4 is less than existing capacity and vmss does not allowed scale down.');
+
+      it('vmss get instance view should pass', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vmss get-instance-view --resource-group %s --name %s --json', groupName, vmssPrefix2).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('count');
+          result.text.should.containEql('6');
           done();
         });
       });
-      
+
+      it('vmss scale down should fail', function (done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var down = 4;
+        var cmd = util.format('vmss scale --resource-group %s --name %s --out %s', groupName, vmssPrefix2, down).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.not.equal(0);
+          result.errorText.should.containEql('VMSS does not support scale down.');
+          done();
+        });
+      });
+
       it('vmss delete 2 should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vmss delete --resource-group %s --name %s --json', groupName, vmssPrefix2).split(' ');
