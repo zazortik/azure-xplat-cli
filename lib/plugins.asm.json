@@ -11628,7 +11628,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--delete-snapshots",
-                  "description": "delete the blob with snapshots or snapshots only (include/only)"
+                  "description": "'include' to delete the base blob and all of its snapshots. 'only' to delete only the blob's snapshots and not the blob itself"
                 },
                 {
                   "flags": "-q, --quiet",
