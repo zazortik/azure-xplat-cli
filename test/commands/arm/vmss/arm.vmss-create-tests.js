@@ -228,7 +228,7 @@ describe('arm', function() {
 
       it('vmss scale up should pass', function (done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vmss scale --resource-group %s --name %s --out 6', groupName, vmssPrefix2).split(' ');
+        var cmd = util.format('vmss scale --resource-group %s --name %s -C 6', groupName, vmssPrefix2).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           done();
@@ -248,11 +248,11 @@ describe('arm', function() {
 
       it('vmss scale down should fail', function (done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var down = 4;
-        var cmd = util.format('vmss scale --resource-group %s --name %s --out %s', groupName, vmssPrefix2, down).split(' ');
+        var cap = 6;
+        var cmd = util.format('vmss scale --resource-group %s --name %s --new-capacity %s', groupName, vmssPrefix2, cap).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.not.equal(0);
-          result.errorText.should.containEql('VMSS does not support scale down.');
+          result.errorText.should.containEql('New capacity value should not be the same as the existing capacity.');
           done();
         });
       });

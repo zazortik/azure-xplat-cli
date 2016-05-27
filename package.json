@@ -65,7 +65,7 @@
     "azure-arm-storage": "0.13.1-preview",
     "azure-asm-sb": "0.10.1",
     "azure-asm-sql": "0.10.1",
-    "azure-asm-storage": "0.10.1",
+    "azure-asm-storage": "0.11.0",
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.1",
     "azure-storage": "1.0.1",
