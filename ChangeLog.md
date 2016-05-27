@@ -46,7 +46,7 @@
   * Fixed issues #2876, #2877, #2878
 * Compute
   * Updated vm enable-diag command to use JSON config for Linux
-  * VMSS Scaleout Command
+  * VMSS scale out command
   * Fixed BGInfo's major version search issue
 * KeyVault
   * Fixed issues #2709, #2742 and #2800

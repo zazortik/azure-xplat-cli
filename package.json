@@ -10,9 +10,10 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Hao Chen <hach@microsoft.com>"
   ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
