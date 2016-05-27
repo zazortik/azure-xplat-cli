@@ -9375,7 +9375,7 @@
     },
     "storage": {
       "name": "storage",
-      "description": "Commands to manage your Storage objects",
+      "description": "Commands to invoke service management operations.",
       "fullName": "storage",
       "usage": "[options]",
       "options": [],
@@ -9383,7 +9383,7 @@
       "categories": {
         "account": {
           "name": "account",
-          "description": "Commands to manage your Storage accounts",
+          "description": "Commands to manage your storage account.  ",
           "fullName": "storage account",
           "usage": "[options] [command]",
           "options": [],
@@ -9713,6 +9713,159 @@
                   "bool": true,
                   "long": "--json",
                   "description": "use json output"
+                }
+              ]
+            },
+            {
+              "name": "abort-migration",
+              "description": "Abort storage account migration api validates and aborts the given storage account for IaaS Classic to ARM migration.",
+              "fullName": "storage account abort-migration",
+              "usage": "[options] <storage-account-name>",
+              "filePath": "commands/asm/storage.generated/storageAccount._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--storage-account-name <storage-account-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-account-name",
+                  "description": "storage-account-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "Commit storage account migration api validates and commits the given storage account for IaaS Classic to ARM migration.",
+              "fullName": "storage account commit-migration",
+              "usage": "[options] <storage-account-name>",
+              "filePath": "commands/asm/storage.generated/storageAccount._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--storage-account-name <storage-account-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-account-name",
+                  "description": "storage-account-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "Prepare storage account migration api validates and prepares the given storage account for IaaS Classic to ARM migration.",
+              "fullName": "storage account prepare-migration",
+              "usage": "[options] <storage-account-name>",
+              "filePath": "commands/asm/storage.generated/storageAccount._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--storage-account-name <storage-account-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--storage-account-name",
+                  "description": "storage-account-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
                 }
               ]
             }
