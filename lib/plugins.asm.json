@@ -9720,7 +9720,7 @@
               "name": "abort-migration",
               "description": "Abort storage account migration api validates and aborts the given storage account for IaaS Classic to ARM migration.",
               "fullName": "storage account abort-migration",
-              "usage": "[options] <storage-account-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/storage.generated/storageAccount._js",
               "options": [
                 {
@@ -9749,12 +9749,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--storage-account-name <storage-account-name>",
-                  "required": -24,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "long": "--storage-account-name",
-                  "description": "storage-account-name"
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -9771,7 +9772,7 @@
               "name": "commit-migration",
               "description": "Commit storage account migration api validates and commits the given storage account for IaaS Classic to ARM migration.",
               "fullName": "storage account commit-migration",
-              "usage": "[options] <storage-account-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/storage.generated/storageAccount._js",
               "options": [
                 {
@@ -9800,12 +9801,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--storage-account-name <storage-account-name>",
-                  "required": -24,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "long": "--storage-account-name",
-                  "description": "storage-account-name"
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -9822,7 +9824,7 @@
               "name": "prepare-migration",
               "description": "Prepare storage account migration api validates and prepares the given storage account for IaaS Classic to ARM migration.",
               "fullName": "storage account prepare-migration",
-              "usage": "[options] <storage-account-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/storage.generated/storageAccount._js",
               "options": [
                 {
@@ -9851,12 +9853,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--storage-account-name <storage-account-name>",
-                  "required": -24,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
-                  "long": "--storage-account-name",
-                  "description": "storage-account-name"
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",

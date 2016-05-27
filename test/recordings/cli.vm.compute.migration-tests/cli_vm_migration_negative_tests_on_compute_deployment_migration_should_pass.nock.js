@@ -32,11 +32,11 @@ nock('http://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0b55366e6323adcb96700f9e538f388a',
-  date: 'Mon, 25 Apr 2016 21:41:05 GMT',
+  'x-ms-request-id': 'cc8d8138012aa713ad14fd51c7ad3631',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -47,11 +47,11 @@ nock('https://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '0b55366e6323adcb96700f9e538f388a',
-  date: 'Mon, 25 Apr 2016 21:41:05 GMT',
+  'x-ms-request-id': 'cc8d8138012aa713ad14fd51c7ad3631',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -61,11 +61,11 @@ nock('http://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7ba7e5938ec7a2ec82dc9c150f995459',
-  date: 'Mon, 25 Apr 2016 21:41:06 GMT',
+  'x-ms-request-id': '9fb55ca37629abcbb6d3529170d234fb',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -75,11 +75,11 @@ nock('https://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '7ba7e5938ec7a2ec82dc9c150f995459',
-  date: 'Mon, 25 Apr 2016 21:41:06 GMT',
+  'x-ms-request-id': '9fb55ca37629abcbb6d3529170d234fb',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -89,11 +89,11 @@ nock('http://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '17f742d2d9d1a5beb78e0086757dc343',
-  date: 'Mon, 25 Apr 2016 21:41:05 GMT',
+  'x-ms-request-id': 'b087b8136605a340ba8b3213d99dd75d',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -103,11 +103,11 @@ nock('https://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The deployment name '123' does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '206',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '17f742d2d9d1a5beb78e0086757dc343',
-  date: 'Mon, 25 Apr 2016 21:41:05 GMT',
+  'x-ms-request-id': 'b087b8136605a340ba8b3213d99dd75d',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['cliVmMigr2787'];};
+ exports.randomTestIdsGenerated = function() { return ['cliVmMigr2099'];};
