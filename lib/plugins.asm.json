@@ -3990,7 +3990,57 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job object to create in JSON format"
+                  "description": "the file containing the job object to create in JSON format; if this parameter is specified, all other job parameters are ignored."
+                },
+                {
+                  "flags": "-i, --id <jobId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch job id"
+                },
+                {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job as metadata, ex: name1=value1;name2=value2"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the job, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4354,13 +4404,54 @@
                   "description": "the id of the job whose properties you want to patch/update"
                 },
                 {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job as metadata, ex: name1=value1;name2=value2"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the job, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
                   "flags": "-f, --json-file <json-file>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job properties to patch/update in JSON format"
+                  "description": "the file containing the job properties to patch/update in JSON format; if this parameter is specified, all other job parameters are ignored."
                 },
                 {
                   "flags": "-r, --replace",
@@ -4866,7 +4957,89 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job schedule object to create in JSON format"
+                  "description": "the file containing the job schedule object to create in JSON format; if this parameter is specified, all other job schedule parameters are ignored."
+                },
+                {
+                  "flags": "-i, --id <jobScheduleId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch job schedule id"
+                },
+                {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the jobs created under this schedule, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job created under this schedule may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
+                  "flags": "--do-not-run-until <do-not-run-until>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-until",
+                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                },
+                {
+                  "flags": "--do-not-run-after <do-not-run-after>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-after",
+                  "description": "the time after which no job will be created under this job schedule; if you do not specify a time, and you are creating a recurring job schedule, the job schedule will remain active until you explicitly terminate it."
+                },
+                {
+                  "flags": "--start-window <start-window>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-window",
+                  "description": "the time interval, starting from the time at which the schedule indicates a job should be created, within which a job must be created, specified in ISO 8601 duration format."
+                },
+                {
+                  "flags": "--recurrence-interval <recurrence-interval>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--recurrence-interval",
+                  "description": "the time interval between the start times of two successive jobs under the job schedule, specified in ISO 8601 duration format; the default is that the schedule does not recur."
+                },
+                {
+                  "flags": "--metadata <--metadata>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--metadata",
+                  "description": "the semicolon separated list of name-value pairs associated with the job schedule as metadata, ex: name1=value1;name2=value2"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -5253,13 +5426,78 @@
                   "description": "the id of the job schedule to patch/update"
                 },
                 {
+                  "flags": "-p, --pool-id <poolId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pool-id",
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                },
+                {
+                  "flags": "--priority <priority>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--priority",
+                  "description": "the priority of the jobs created under this schedule, ranging from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority; the default value is 0."
+                },
+                {
+                  "flags": "--max-wall-clock-time <max-wall-clock-time>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-wall-clock-time",
+                  "description": "the maximum elapsed time that a job created under this schedule may run, in ISO 8601 duration formation"
+                },
+                {
+                  "flags": "--max-task-retry-count <max-task-retry-count>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--max-task-retry-count",
+                  "description": "the maximum number of times each task may be retried"
+                },
+                {
+                  "flags": "--do-not-run-until <do-not-run-until>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-until",
+                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                },
+                {
+                  "flags": "--do-not-run-after <do-not-run-after>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--do-not-run-after",
+                  "description": "the time after which no job will be created under this job schedule; if you do not specify a time, and you are creating a recurring job schedule, the job schedule will remain active until you explicitly terminate it."
+                },
+                {
+                  "flags": "--start-window <start-window>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-window",
+                  "description": "the time interval, starting from the time at which the schedule indicates a job should be created, within which a job must be created, specified in ISO 8601 duration format."
+                },
+                {
+                  "flags": "--recurrence-interval <recurrence-interval>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--recurrence-interval",
+                  "description": "the time interval between the start times of two successive jobs under the job schedule, specified in ISO 8601 duration format; the default is that the schedule does not recur."
+                },
+                {
                   "flags": "-f, --json-file <json-file>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
                   "short": "-f",
                   "long": "--json-file",
-                  "description": "the file containing the job schedule properties to patch/update in JSON format"
+                  "description": "the file containing the job schedule properties to patch/update in JSON format; if this parameter is specified, all other job schedule parameters are ignored."
                 },
                 {
                   "flags": "-r, --replace",
@@ -9689,7 +9927,7 @@
         },
         "container": {
           "name": "container",
-          "description": "Commands to manage your Storage containers",
+          "description": "Commands to manage your storage containers",
           "fullName": "storage container",
           "usage": "[options] [command]",
           "options": [],
@@ -9795,6 +10033,14 @@
                   "bool": true,
                   "long": "--container",
                   "description": "the storage container name"
+                },
+                {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -9944,13 +10190,21 @@
                   "description": "the storage container name"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "-q, --quiet",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
                   "short": "-q",
                   "long": "--quiet",
-                  "description": "remove the specified Storage container without confirmation"
+                  "description": "remove the specified storage container without confirmation"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -10022,6 +10276,14 @@
                   "description": "the storage container name"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "-p, --permission <permission>",
                   "required": -18,
                   "optional": 0,
@@ -10069,9 +10331,460 @@
             }
           ],
           "categories": {
+            "lease": {
+              "name": "lease",
+              "description": "Commands to manage leases of your storage container",
+              "fullName": "storage container lease",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "acquire",
+                  "description": "Acquire a new lease against your storage container",
+                  "fullName": "storage container lease acquire",
+                  "usage": "[options] [container] [duration] [proposedId]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--duration <duration>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--duration",
+                      "description": "the lease duration in seconds (15-60) or not specify for a lease that never expires"
+                    },
+                    {
+                      "flags": "--proposed-id <proposedId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--proposed-id",
+                      "description": "the proposed lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "renew",
+                  "description": "Renew an existing lease against your storage container",
+                  "fullName": "storage container lease renew",
+                  "usage": "[options] [container] [lease]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "change",
+                  "description": "Change an existing lease against your storage container",
+                  "fullName": "storage container lease change",
+                  "usage": "[options] [container] [lease] [proposedId]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--proposed-id <proposedId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--proposed-id",
+                      "description": "the proposed lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "release",
+                  "description": "Release an existing lease against your storage container",
+                  "fullName": "storage container lease release",
+                  "usage": "[options] [container] [lease]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "break",
+                  "description": "Break an existing lease against your storage container",
+                  "fullName": "storage container lease break",
+                  "usage": "[options] [container] [duration]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--duration <duration>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--duration",
+                      "description": "the proposed duration the lease should continue before it is broken in seconds (0-60)"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "sas": {
               "name": "sas",
-              "description": "Commands to manage shared access signatures of your Storage container",
+              "description": "Commands to manage shared access signatures of your storage container",
               "fullName": "storage container sas",
               "usage": "[options] [command]",
               "options": [],
@@ -10182,7 +10895,7 @@
             },
             "policy": {
               "name": "policy",
-              "description": "Commands to manage stored access policies of your Storage container",
+              "description": "Commands to manage stored access policies of your storage container",
               "fullName": "storage container policy",
               "usage": "[options] [command]",
               "options": [],
@@ -10226,6 +10939,14 @@
                       "bool": true,
                       "long": "--name",
                       "description": "the policy name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID"
                     },
                     {
                       "flags": "--start <start>",
@@ -10329,6 +11050,14 @@
                       "description": "the policy name"
                     },
                     {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID"
+                    },
+                    {
                       "flags": "-a, --account-name <accountName>",
                       "required": -20,
                       "optional": 0,
@@ -10396,6 +11125,14 @@
                       "bool": true,
                       "long": "--container",
                       "description": "the storage container name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID"
                     },
                     {
                       "flags": "-a, --account-name <accountName>",
@@ -10473,6 +11210,14 @@
                       "bool": true,
                       "long": "--name",
                       "description": "the policy name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID"
                     },
                     {
                       "flags": "--start <start>",
@@ -10576,6 +11321,14 @@
                       "description": "the policy name"
                     },
                     {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID"
+                    },
+                    {
                       "flags": "-a, --account-name <accountName>",
                       "required": -20,
                       "optional": 0,
@@ -10619,7 +11372,7 @@
         },
         "blob": {
           "name": "blob",
-          "description": "Commands to manage your Storage blobs",
+          "description": "Commands to manage your storage blobs",
           "fullName": "storage blob",
           "usage": "[options] [command]",
           "options": [],
@@ -10671,7 +11424,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--sas",
-                  "description": "the shared access signature of the storage container"
+                  "description": "the shared access signature"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -10752,12 +11505,20 @@
                   "description": "the storage blob name"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
                   "bool": true,
                   "long": "--sas",
-                  "description": "the shared access signature of the storage container or blob"
+                  "description": "the shared access signature"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -10838,12 +11599,36 @@
                   "description": "the storage blob name"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
                   "bool": true,
                   "long": "--sas",
-                  "description": "the shared access signature of the storage container or blob"
+                  "description": "the shared access signature"
+                },
+                {
+                  "flags": "--delete-snapshots <deleteSnapshots>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--delete-snapshots",
+                  "description": "'include' to delete the base blob and all of its snapshots. 'only' to delete only the blob's snapshots and not the blob itself"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -10852,7 +11637,7 @@
                   "bool": true,
                   "short": "-q",
                   "long": "--quiet",
-                  "description": "remove the specified Storage blob without confirmation"
+                  "description": "remove the specified storage blob without confirmation"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -10977,13 +11762,21 @@
                   "description": "the maximum number of concurrent upload requests"
                 },
                 {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature"
+                },
+                {
                   "flags": "-q, --quiet",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
                   "short": "-q",
                   "long": "--quiet",
-                  "description": "overwrite the specified Storage blob without confirmation"
+                  "description": "overwrite the specified storage blob without confirmation"
                 },
                 {
                   "flags": "-a, --account-name <accountName>",
@@ -11064,6 +11857,14 @@
                   "description": "the storage blob name"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "-d, --destination [destination]",
                   "required": 0,
                   "optional": -19,
@@ -11095,7 +11896,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--sas",
-                  "description": "the shared access signature of the storage container or blob"
+                  "description": "the shared access signature"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -11142,9 +11943,599 @@
                   "description": "run storage command in debug mode"
                 }
               ]
+            },
+            {
+              "name": "snapshot",
+              "description": "Creates a read-only snapshot of the blob",
+              "fullName": "storage blob snapshot",
+              "usage": "[options] [container] [blob]",
+              "filePath": "commands/storage/storage.blob._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--container <container>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--container",
+                  "description": "the storage container name"
+                },
+                {
+                  "flags": "-b, --blob <blobName>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--blob",
+                  "description": "the storage blob name"
+                },
+                {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
             }
           ],
           "categories": {
+            "lease": {
+              "name": "lease",
+              "description": "Commands to manage leases of your storage blob",
+              "fullName": "storage blob lease",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "acquire",
+                  "description": "Acquire a new lease against your storage blob",
+                  "fullName": "storage blob lease acquire",
+                  "usage": "[options] [container] [blob] [duration] [proposedId]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "-b, --blob <blobName>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--blob",
+                      "description": "the storage blob name"
+                    },
+                    {
+                      "flags": "--duration <duration>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--duration",
+                      "description": "the lease duration in seconds (15-60) or negative one (-1) for a lease that never expires"
+                    },
+                    {
+                      "flags": "--proposed-id <proposedId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--proposed-id",
+                      "description": "the proposed lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "renew",
+                  "description": "Renew an existing lease against your storage blob",
+                  "fullName": "storage blob lease renew",
+                  "usage": "[options] [container] [blob] [lease]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "-b, --blob <blobName>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--blob",
+                      "description": "the storage blob name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "change",
+                  "description": "Change an existing lease against your storage blob",
+                  "fullName": "storage blob lease change",
+                  "usage": "[options] [container] [blob] [lease] [proposedId]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "-b, --blob <blobName>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--blob",
+                      "description": "the storage blob name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--proposed-id <proposedId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--proposed-id",
+                      "description": "the proposed lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "release",
+                  "description": "Release an existing lease against your storage blob",
+                  "fullName": "storage blob lease release",
+                  "usage": "[options] [container] [blob] [lease]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "-b, --blob <blobName>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--blob",
+                      "description": "the storage blob name"
+                    },
+                    {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the existing lease ID"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                },
+                {
+                  "name": "break",
+                  "description": "Break an existing lease against your storage blob",
+                  "fullName": "storage blob lease break",
+                  "usage": "[options] [container] [blob] [duration]",
+                  "filePath": "commands/storage/storage.blob._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--container <container>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--container",
+                      "description": "the storage container name"
+                    },
+                    {
+                      "flags": "-b, --blob <blobName>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-b",
+                      "long": "--blob",
+                      "description": "the storage blob name"
+                    },
+                    {
+                      "flags": "--duration <duration>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--duration",
+                      "description": "the proposed duration the lease should continue before it is broken in seconds (0-60)"
+                    },
+                    {
+                      "flags": "--sas <sas>",
+                      "required": -7,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sas",
+                      "description": "the shared access signature"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "run storage command in debug mode"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "copy": {
               "name": "copy",
               "description": "Commands to manage your blob copy operations",
@@ -11209,6 +12600,22 @@
                       "description": "the source storage blob name when copies a blob to a blob"
                     },
                     {
+                      "flags": "--snapshot <snapshot>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--snapshot",
+                      "description": "the snapshot id if source is a snapshot"
+                    },
+                    {
+                      "flags": "--source-lease <sourceLeaseId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-lease",
+                      "description": "the lease ID of the source blob "
+                    },
+                    {
                       "flags": "--source-share <sourceShare>",
                       "required": -16,
                       "optional": 0,
@@ -11271,6 +12678,14 @@
                       "bool": true,
                       "long": "--dest-blob",
                       "description": "the destination storage blob name"
+                    },
+                    {
+                      "flags": "--dest-lease <destLeaseId>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--dest-lease",
+                      "description": "the lease ID of the destination blob "
                     },
                     {
                       "flags": "-q, --quiet",
@@ -11359,6 +12774,14 @@
                       "description": "the destination blob in the blob copy start operation"
                     },
                     {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID of the destination blob "
+                    },
+                    {
                       "flags": "--sas <sas>",
                       "required": -7,
                       "optional": 0,
@@ -11444,6 +12867,14 @@
                       "description": "the destination blob in the blob copy start operation"
                     },
                     {
+                      "flags": "--lease <leaseId>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--lease",
+                      "description": "the lease ID of the destination blob "
+                    },
+                    {
                       "flags": "--copyid <copyid>",
                       "required": -10,
                       "optional": 0,
@@ -11493,7 +12924,7 @@
             },
             "sas": {
               "name": "sas",
-              "description": "Commands to manage shared access signature of your Storage blob",
+              "description": "Commands to manage shared access signature of your storage blob",
               "fullName": "storage blob sas",
               "usage": "[options] [command]",
               "options": [],

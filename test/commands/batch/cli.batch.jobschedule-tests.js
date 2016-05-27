@@ -20,6 +20,7 @@ var utils = require('../../../lib/util/utils');
 var CLITest = require('../../framework/arm-cli-test');
 
 var jobScheduleId = 'xplatJobSchedule';
+var createdWithParamsId = 'xplatParamsJobSchedule';
 
 var path = require('path');
 var createJsonFilePath = path.resolve(__dirname, '../../data/batchCreateJobSchedule.json');
@@ -79,6 +80,40 @@ describe('cli', function () {
         var createdSchedule = JSON.parse(result.text);
         createdSchedule.should.not.be.null;
         createdSchedule.id.should.equal(jobScheduleId);
+        done();
+      });
+    });
+    
+    it('should create a job schedule using parameters', function (done) {
+      var poolId = "pool1";
+      var priority = 1;
+      var maxWallClockTime = "PT12H";
+      var maxTaskRetryCount = Number(3);
+      var metadata = "meta1=value1;meta2=value2";
+      var doNotRunUntil = "2020-01-01T12:00:00.000Z";
+      var doNotRunAfter = "2021-01-01T12:00:00.000Z";
+      var startWindow = "PT1H";
+      var recurrence = "PT2H";
+      suite.execute('batch job-schedule create -i %s -p %s --metadata %s --priority %s --max-wall-clock-time %s --max-task-retry-count %s --do-not-run-until %s --do-not-run-after %s --start-window %s --recurrence-interval %s --account-name %s --account-key %s --account-endpoint %s --json',
+        createdWithParamsId, poolId, metadata, priority, maxWallClockTime, maxTaskRetryCount, doNotRunUntil, doNotRunAfter,
+        startWindow, recurrence, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var createdJobSchedule = JSON.parse(result.text);
+        createdJobSchedule.should.not.be.null;
+        createdJobSchedule.id.should.equal(createdWithParamsId);
+        createdJobSchedule.jobSpecification.poolInfo.poolId.should.equal(poolId);
+        createdJobSchedule.jobSpecification.priority.should.equal(priority);
+        createdJobSchedule.jobSpecification.constraints.maxWallClockTime.should.equal(maxWallClockTime);
+        createdJobSchedule.jobSpecification.constraints.maxTaskRetryCount.should.equal(maxTaskRetryCount);
+        createdJobSchedule.metadata.length.should.equal(2);
+        createdJobSchedule.metadata[0].name.should.equal("meta1");
+        createdJobSchedule.metadata[0].value.should.equal("value1");
+        createdJobSchedule.metadata[1].name.should.equal("meta2");
+        createdJobSchedule.metadata[1].value.should.equal("value2");
+        createdJobSchedule.schedule.doNotRunUntil.should.equal(doNotRunUntil);
+        createdJobSchedule.schedule.doNotRunAfter.should.equal(doNotRunAfter);
+        createdJobSchedule.schedule.startWindow.should.equal(startWindow);
+        createdJobSchedule.schedule.recurrenceInterval.should.equal(recurrence);
         done();
       });
     });
@@ -147,6 +182,39 @@ describe('cli', function () {
           updatedJobSchedule.jobSpecification.jobManagerTask.id.should.not.be.null;
           updatedJobSchedule.jobSpecification.jobManagerTask.id.should.not.equal(originalJobSchedule.jobSpecification.jobManagerTask.id);
 
+          done();
+        });
+      });
+    });
+    
+    it('should update a job schedule using parameters', function (done) {
+      var poolId = "pool1";
+      var priority = 3;
+      var maxWallClockTime = "PT10H";
+      var maxTaskRetryCount = Number(5);
+      var doNotRunUntil = "2020-01-01T06:00:00.000Z";
+      var doNotRunAfter = "2021-01-01T06:00:00.000Z";
+      var startWindow = "PT2H";
+      var recurrence = "PT4H";
+      suite.execute('batch job-schedule set -i %s -p %s --priority %s --max-wall-clock-time %s --max-task-retry-count %s --do-not-run-until %s --do-not-run-after %s --start-window %s --recurrence-interval %s --account-name %s --account-key %s --account-endpoint %s --json',
+        createdWithParamsId, poolId, priority, maxWallClockTime, maxTaskRetryCount, doNotRunUntil, doNotRunAfter,
+        startWindow, recurrence, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var updatedJobSchedule = JSON.parse(result.text);
+        updatedJobSchedule.should.not.be.null;
+        updatedJobSchedule.id.should.equal(createdWithParamsId);
+        updatedJobSchedule.jobSpecification.poolInfo.poolId.should.equal(poolId);
+        updatedJobSchedule.jobSpecification.priority.should.equal(priority);
+        updatedJobSchedule.jobSpecification.constraints.maxWallClockTime.should.equal(maxWallClockTime);
+        updatedJobSchedule.jobSpecification.constraints.maxTaskRetryCount.should.equal(maxTaskRetryCount);
+        updatedJobSchedule.schedule.doNotRunUntil.should.equal(doNotRunUntil);
+        updatedJobSchedule.schedule.doNotRunAfter.should.equal(doNotRunAfter);
+        updatedJobSchedule.schedule.startWindow.should.equal(startWindow);
+        updatedJobSchedule.schedule.recurrenceInterval.should.equal(recurrence);
+        
+        suite.execute('batch job-schedule delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', 
+          createdWithParamsId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
           done();
         });
       });

@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    name: 'Azure Storage DM Dev',
+    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
+    name: 'Azure SDK Powershell Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
+    registeredProviders: ['website'],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -21,17 +22,30 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=xplat;AccountKey=null';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplat.blob.core.windows.net:80')
+nock('http://xplat.blob.core.windows.net:443')
   .get('/storage-cli-blob-test?restype=container&comp=list&include=snapshots%2Cmetadata%2Ccopy')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"http://xplat.blob.core.windows.net/\" ContainerName=\"storage-cli-blob-test\"><Blobs><Blob><Name>appendblobname</Name><Properties><Last-Modified>Wed, 01 Jul 2015 06:34:38 GMT</Last-Modified><Etag>0x8D281DF2350FFCC</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>AppendBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>blockblobname</Name><Properties><Last-Modified>Wed, 01 Jul 2015 06:34:32 GMT</Last-Modified><Etag>0x8D281DF2023E6C2</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>pageblobname</Name><Properties><Last-Modified>Wed, 01 Jul 2015 06:34:35 GMT</Last-Modified><Etag>0x8D281DF219ADC41</Etag><Content-Length>512</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>OToPoPNI+wOHGrk3JgV93A==</Content-MD5><Cache-Control /><Content-Disposition /><x-ms-blob-sequence-number>0</x-ms-blob-sequence-number><BlobType>PageBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\" ContainerName=\"storage-cli-blob-test\"><Blobs><Blob><Name>appendblobname2855</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:58 GMT</Last-Modified><Etag>0x8D37FCC9DC5A6BB</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>AppendBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>blockblobname1025</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:53 GMT</Last-Modified><Etag>0x8D37FCC9A9F4618</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>pageblobname594</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:56 GMT</Last-Modified><Etag>0x8D37FCC9C520D7A</Etag><Content-Length>512</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>OToPoPNI+wOHGrk3JgV93A==</Content-MD5><Cache-Control /><Content-Disposition /><x-ms-blob-sequence-number>0</x-ms-blob-sequence-number><BlobType>PageBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b6071da8-0001-000a-63c8-b38f8e000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Wed, 01 Jul 2015 06:34:39 GMT' });
+  'x-ms-request-id': '138e87d0-0001-003d-2db5-b12321000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Thu, 19 May 2016 10:01:59 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.blob.core.windows.net:443')
+  .get('/storage-cli-blob-test?restype=container&comp=list&include=snapshots%2Cmetadata%2Ccopy')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\" ContainerName=\"storage-cli-blob-test\"><Blobs><Blob><Name>appendblobname2855</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:58 GMT</Last-Modified><Etag>0x8D37FCC9DC5A6BB</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>AppendBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>blockblobname1025</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:53 GMT</Last-Modified><Etag>0x8D37FCC9A9F4618</Etag><Content-Length>10</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>aOEJ8PQMpyoV4FzCJ4b45g==</Content-MD5><Cache-Control /><Content-Disposition /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob><Blob><Name>pageblobname594</Name><Properties><Last-Modified>Thu, 19 May 2016 10:01:56 GMT</Last-Modified><Etag>0x8D37FCC9C520D7A</Etag><Content-Length>512</Content-Length><Content-Type>text/plain</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>OToPoPNI+wOHGrk3JgV93A==</Content-MD5><Cache-Control /><Content-Disposition /><x-ms-blob-sequence-number>0</x-ms-blob-sequence-number><BlobType>PageBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '138e87d0-0001-003d-2db5-b12321000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Thu, 19 May 2016 10:01:59 GMT',
+  connection: 'close' });
  return result; }]];

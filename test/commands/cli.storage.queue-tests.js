@@ -102,11 +102,12 @@ describe('cli', function () {
         it('should create the queue policy with add and update permission', function (done) {
           suite.execute('storage queue policy create %s %s --permissions %s --start %s --expiry %s --json', queueName, policyName1, permissions, start, expiry, function (result) {
             var policies = JSON.parse(result.text);
-            policies.length.should.greaterThan(0);
+            var names = Object.keys(policies);
+            names.length.should.greaterThan(0);
 
             var found = false;
-            for (var index in policies) {
-              if (policies[index].Id === policyName1) {
+            for (var index in names) {
+              if (names[index] === policyName1) {
                 found = true;
                 break;
               }
@@ -120,19 +121,20 @@ describe('cli', function () {
           setTimeout(function() {
             suite.execute('storage queue policy show %s %s --json', queueName, policyName1, function (result) {
               var policies = JSON.parse(result.text);
-              policies.length.should.greaterThan(0);
+            var names = Object.keys(policies);
+            names.length.should.greaterThan(0);
 
               var policy;
-              for (var index in policies) {
-                policy = policies[index];
-                if (policy.Id === policyName1) {
+              for (var index in names) {
+                policy = policies[names[index]];
+                if (names[index] === policyName1) {
                   break;
                 }
               }
-              policy.Id.should.equal(policyName1);
-              policy.AccessPolicy.Permissions.should.equal(permissions);
-              policy.AccessPolicy.Start.should.equal(start);
-              policy.AccessPolicy.Expiry.should.equal(expiry);
+
+              policy.Permissions.should.equal(permissions);
+              policy.Start.should.equal(start);
+              policy.Expiry.should.equal(expiry);
               done();
             });
           } , aclTimeout);
@@ -143,7 +145,7 @@ describe('cli', function () {
             setTimeout(function() {
               suite.execute('storage queue policy list %s --json', queueName, function (result) {
                 var policies = JSON.parse(result.text);
-                policies.length.should.equal(2);
+                Object.keys(policies).length.should.equal(2);
                 done();
               });
             }, aclTimeout);
@@ -156,19 +158,20 @@ describe('cli', function () {
           var newExpiry = new Date('2100-12-31').toISOString();
           suite.execute('storage queue policy set %s %s --permissions %s --start %s --expiry %s --json', queueName, policyName1, newPermissions, newStart, newExpiry, function (result) {
             var policies = JSON.parse(result.text);
-            policies.length.should.greaterThan(0);
+            var names = Object.keys(policies);
+            names.length.should.greaterThan(0);
 
             var policy;
-            for (var index in policies) {
-              policy = policies[index];
-              if (policy.Id === policyName1) {
+            for (var index in names) {
+              policy = policies[names[index]];
+              if (names[index] === policyName1) {
                 break;
               }
             }
-            policy.Id.should.equal(policyName1);
-            policy.AccessPolicy.Permissions.should.equal(newPermissions);
-            policy.AccessPolicy.Start.should.equal(newStart);
-            policy.AccessPolicy.Expiry.should.equal(newExpiry);
+
+            policy.Permissions.should.equal(newPermissions);
+            policy.Start.should.equal(newStart);
+            policy.Expiry.should.equal(newExpiry);
             done();
           });
         });
@@ -176,7 +179,7 @@ describe('cli', function () {
         it('should delete the policy', function (done) {
           suite.execute('storage queue policy delete %s %s --json', queueName, policyName1, function (result) {
             var policies = JSON.parse(result.text);
-            policies.length.should.greaterThan(0);
+            Object.keys(policies).length.should.greaterThan(0);
             done();
           });
         });
