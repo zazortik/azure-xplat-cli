@@ -41759,9 +41759,62 @@
       "name": "network",
       "description": "Commands to manage network resources",
       "fullName": "network",
-      "usage": "[options]",
+      "usage": "[options] [command]",
       "options": [],
-      "commands": [],
+      "commands": [
+        {
+          "name": "list-usage",
+          "description": "Get usage of network resources.",
+          "fullName": "network list-usage",
+          "usage": "[options] <location>",
+          "filePath": "commands/arm/network/network._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "the location"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
       "categories": {
         "vnet": {
           "name": "vnet",
@@ -57847,6 +57900,68 @@
           "categories": {}
         }
       }
+    },
+    "quotas": {
+      "name": "quotas",
+      "description": "Command to view your aggregated Azure quotas",
+      "fullName": "quotas",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "show",
+          "description": "Show cores, storage account and network quotas for the current subscription",
+          "fullName": "quotas show",
+          "usage": "[options] <location>",
+          "filePath": "commands/arm/quotas/quotas._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-l, --location <location>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "the location"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
     },
     "rediscache": {
       "name": "rediscache",
