@@ -24029,7 +24029,7 @@
               "bool": true,
               "short": "-C",
               "long": "--new-capacity",
-              "description": "the new capacity value that is higher than the current value"
+              "description": "the new capacity value"
             },
             {
               "flags": "-s, --subscription <subscription>",
