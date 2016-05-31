@@ -20579,6 +20579,76 @@
           ]
         },
         {
+          "name": "scale",
+          "description": "The operation to scale a container service.",
+          "fullName": "acs scale",
+          "usage": "[options] <resource-group> <name> <new-agent-count>",
+          "filePath": "commands/arm/compute/containerService._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "resource-group"
+            },
+            {
+              "flags": "-n, --name <name>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "name"
+            },
+            {
+              "flags": "-o, --new-agent-count <new-agent-count>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--new-agent-count",
+              "description": "New agent count"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
           "name": "list",
           "description": "The operation to list container services.",
           "fullName": "acs list",
