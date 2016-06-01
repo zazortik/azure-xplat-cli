@@ -227,20 +227,20 @@ describe('arm', function() {
          });
        });
             
-            it('container acs scale should fail for same agent count', function (done) {
-                this.timeout(vmTest.timeoutLarge * 10);
-                var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function (result) {
-                    result.exitStatus.should.not.equal(0);
-                    result.errorText.should.containEql('New agent count must be greater than the existing one.');
-                    var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
-                    estUtils.executeCommand(suite, retry, cmd, function (result) {
-                        result.exitStatus.should.not.equal(0);
-                        result.errorText.should.containEql('New agent count must be greater than the existing one .');
-                        done();
-                    });
-                });
-            });
+      it('container acs scale should fail for same agent count', function (done) {
+           this.timeout(vmTest.timeoutLarge * 10);
+           var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
+           testUtils.executeCommand(suite, retry, cmd, function (result) {
+           result.exitStatus.should.not.equal(0);
+           result.errorText.should.containEql('New agent count should be greater than existing count.');
+           var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
+           testUtils.executeCommand(suite, retry, cmd, function (result) {
+           result.exitStatus.should.not.equal(0);
+           result.errorText.should.containEql('New agent count should be greater than existing count.');
+           done();
+         });
+       });
+   });
 
       it('container delete should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
