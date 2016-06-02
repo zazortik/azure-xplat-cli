@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2ee83a5c-bad2-4213-85d3-8c68a80fc359',
-    name: 'Windows Azure MSDN - Visual Studio Ultimate',
+    id: '04db7ed3-6ed9-4861-8b22-7c0c0c98490b',
+    name: 'AAPT Cache10',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: 'eed40b28-28f0-4583-bece-05a89fb86e85',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestCache5241','xplatTestCache6146'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestCache5287','xplatTestCache1228'];};

@@ -72,9 +72,6 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   } else {
     this.isMocked = this.testPrefix && !process.env.NOCK_OFF;
   }
-  
-  process.env.NOCK_OFF=''
-  process.env.AZURE_NOCK_RECORD = true
 
   this.suiteRecordingsFile = this.getRecordingsDirectory() + 'suite.' + this.testPrefix + '.nock.js';
   this.isRecording = process.env.AZURE_NOCK_RECORD;
