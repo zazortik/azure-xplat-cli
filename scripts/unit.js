@@ -76,4 +76,4 @@ process.on('exit', function (err) {
   console.log('End:' + new Date().toLocaleTimeString());
 })
 
-require('../node_modules/mocha/bin/mocha');
+require('../node_modules/mocha/bin/_mocha');
