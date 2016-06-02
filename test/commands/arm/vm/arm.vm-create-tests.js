@@ -121,7 +121,7 @@ describe('arm', function() {
                 vmTest.GetLinuxSkusList(location, suite, function(result) {
                   vmTest.GetLinuxImageList(location, suite, function(result) {
                     latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                       groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                       vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -132,7 +132,7 @@ describe('arm', function() {
                 });
               } else {
                 latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                   groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -161,7 +161,7 @@ describe('arm', function() {
               var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm3Prefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --license-type Windows_Server --json',
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --license-type Windows_Server --json',
                   groupName, vm4Prefix, location, nicName, userImage, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -175,7 +175,7 @@ describe('arm', function() {
                     allResources.licenseType.should.equal('Windows_Server');
                     var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm4Prefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
-                      var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
+                      var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
                         groupName, vmPrefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                         vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -197,7 +197,7 @@ describe('arm', function() {
           if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined) {
             vmTest.GetWindowsSkusList(location, suite, function(result) {
               vmTest.GetWindowsImageList(location, suite, function(result) {
-                var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
+                var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
                   groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -207,7 +207,7 @@ describe('arm', function() {
               });
             });
           } else {
-            var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
+            var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
               groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, availprefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
