@@ -248,7 +248,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
-        var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';       
+        var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';
         var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --nowait --json',
             templateUri, groupName, deploymentName, parameterFile);
         
@@ -314,14 +314,15 @@ describe('arm', function () {
         var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
-        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s --json',
+        var commandToCreateDeployment = util.format('group deployment create -f %s -g %s -n %s -e %s',
             templateFile, groupName, deploymentName, parameterFile);
         
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(0);
-            
+            result.text.indexOf('provisioning status is Succeeded').should.be.above(-1);
+
             suite.execute('group deployment show -g %s -n %s --json', groupName, deploymentName, function (showResult) {
               showResult.exitStatus.should.equal(0);
               showResult.text.indexOf(deploymentName).should.be.above(-1);
@@ -394,6 +395,23 @@ describe('arm', function () {
           suite.execute(commandToCreateDeployment, function (result) {
             result.exitStatus.should.equal(1);
             result.errorText.should.match(/.*Storage account name must be between 3 and 24 characters*/i);
+            cleanup(done);
+          });
+        });
+      });
+
+      it('should show error message with line number when jsonlint parse fails', function (done) {
+        var groupName = suite.generateId('xDeploymentTestGroup', createdGroups, suite.isMocked);
+        var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
+        var templateUri = 'https://raw.githubusercontent.com/vivsriaus/armtemplates/master/invalidJsonTemplate.json';
+        var commandToCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s',
+            templateUri, groupName, deploymentName);
+
+        suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          suite.execute(commandToCreateDeployment, function (result) {
+            result.exitStatus.should.equal(1);
+            result.errorText.should.match(/.*Parse error on line 29*/i);
             cleanup(done);
           });
         });

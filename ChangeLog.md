@@ -1,3 +1,75 @@
+##2016-06-01 Version 0.10.1
+* Storage
+  * Integrated with the GA version of Azure Storage Client Library for Node.js
+  * Added support for blob snapshot commands
+    * Added new commands `azure storage blob snapshot`
+    * Added new option `--snapshot` and `--delete-snapshots` for `azure storage blob delete` 
+  * Added support for blob/container lease commands
+    * Added new commands `azure storage blob/container lease acquire`
+    * Added new commands `azure storage blob/container lease renew`
+    * Added new commands `azure storage blob/container lease change`
+    * Added new commands `azure storage blob/container lease release`
+    * Added new commands `azure storage blob/container lease break`
+    * Added `--lease` option to existing commands which can be performed with a lease ID
+  * Added support for running CLI commands with Azure Storage emulator
+  * Improved option description for command `azure storage blob delete`
+* PowerBiEmbedded
+  * Added the following Power BI Embedded commands with tests
+    * `azure powerbi create`
+    * `azure powerbi set`
+    * `azure powerbi delete`
+    * `azure powerbi list`
+    * `azure powerbi get-keys`
+    * `azure powerbi regenerate-key`
+* HdInsight
+  * Added --applicationName to script-action create command for Edgenode customization
+  * Added randomly generated appName
+* DevTestLabs
+  * Added commands for Microsoft.DevTestLab provider
+* Network
+  * Updated validator package and improved common validation logic
+  * Added the following express-route peerings commands
+    * `azure network express-route peerings create`
+    * `azure network express-route peerings set`
+    * `azure network express-route peerings show`
+    * `azure network express-route peerings list`
+    * `azure network express-route peerings delete`
+  * Used new api version for networking commands: 2016-03-30 (azure-arm-network: 0.13.2)
+  * Added InternalDomainNameSuffix propert for `azure network nic show`
+  * Added --ip-version option to specify ip version of IPv4 or IPv6 for `azure network public-ip create`
+  * Added `azure network nic ip-config` to manage multiple ip configurations inside nic
+  * Used `azure network nic ip-config` instead of `azure network nic set` to modify ip configuration
+  * Changed `azure network nic address-pool/inbound-nat-rule` to `azure network nic ip-config address-pool/inbound-nat-rule`
+  * Renamed option `-n, --name` to `-c, --nic-name` in `azure network nic ip-config address-pool/inbound-nat-rule` commands
+  * Renamed app gateway option names to common style 
+  * Fixed issue with app gateway ssl cert modifications
+  * Fixed issues #2876, #2877, #2878
+* Compute
+  * Updated vm enable-diag command to use JSON config for Linux
+  * VMSS scale out command
+  * Fixed BGInfo's major version search issue
+* KeyVault
+  * Fixed issues #2709, #2742 and #2800
+* CDN
+  * Akamai integretion for Azure CDN
+* ResourceManager
+  * Display provisioning status message during create deployment
+  * Added jsonLint.js to display the line number in exception when parsing json fails
+  * Fixed issue #1956
+* ServerManagement
+  * Added commands for Server Management Tools service
+* Batch
+  * Add parameterized way to create/update batch entities
+  * Added the more parameters to the following commands to enable these operations without providing a JSON file
+    * `azure batch job create`
+    * `azure batch job set`
+    * `azure batch job-schedule create`
+    * `azure batch job-schedule set`
+  * Added more pool and task related commands
+  * Changed default entity update behavior to patch. *
+* General
+  * Removed buffer's encoding to fix issues #2820 #2825 #2827 #2829 #2846
+
 ##2016-05-04 Version 0.10.0
 * Storage
   * Updated dependency of 'azure-arm-storage' to '0.13.1-preview'

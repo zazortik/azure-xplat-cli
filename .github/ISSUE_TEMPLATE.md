@@ -4,6 +4,8 @@ Installation via:  npm / brew / win-or-mac installer / docker / github repo
 
 Mode: **ARM / ASM**
 
+Environment: **AzureCloud/Azure China Cloud/US Government/Blackforest/Azure Stack**
+
 Description:
 `azure vm show` command doesn't output VM name.
 
