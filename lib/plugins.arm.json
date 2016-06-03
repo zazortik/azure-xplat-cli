@@ -23974,9 +23974,9 @@
         },
         {
           "name": "scale",
-          "description": "The operation to scale out Virtual machine scale set",
+          "description": "The operation to scale virtual machine scale set",
           "fullName": "vmss scale",
-          "usage": "[options] <resource-group> <name> <out>",
+          "usage": "[options] <resource-group> <name> <new-capacity>",
           "filePath": "commands/arm/vmss/vmss._js",
           "options": [
             {
@@ -24023,13 +24023,13 @@
               "description": "name"
             },
             {
-              "flags": "-i, --out <out>",
-              "required": -11,
+              "flags": "-C, --new-capacity <new-capacity>",
+              "required": -20,
               "optional": 0,
               "bool": true,
-              "short": "-i",
-              "long": "--out",
-              "description": "the new capacity value that is higher than the current value"
+              "short": "-C",
+              "long": "--new-capacity",
+              "description": "the new capacity value"
             },
             {
               "flags": "-s, --subscription <subscription>",
