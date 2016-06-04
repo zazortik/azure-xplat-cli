@@ -41759,62 +41759,9 @@
       "name": "network",
       "description": "Commands to manage network resources",
       "fullName": "network",
-      "usage": "[options] [command]",
+      "usage": "[options]",
       "options": [],
-      "commands": [
-        {
-          "name": "list-usage",
-          "description": "Get usage of network resources.",
-          "fullName": "network list-usage",
-          "usage": "[options] <location>",
-          "filePath": "commands/arm/network/network._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-l, --location <location>",
-              "required": -16,
-              "optional": 0,
-              "bool": true,
-              "short": "-l",
-              "long": "--location",
-              "description": "the location"
-            },
-            {
-              "flags": "-s, --subscription <subscription>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "the subscription identifier"
-            }
-          ]
-        }
-      ],
+      "commands": [],
       "categories": {
         "vnet": {
           "name": "vnet",
@@ -42644,6 +42591,68 @@
               "categories": {}
             }
           }
+        },
+        "usage": {
+          "name": "usage",
+          "description": "Commands to manage network usage",
+          "fullName": "network usage",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List usage of network resources.",
+              "fullName": "network usage list",
+              "usage": "[options] <location>",
+              "filePath": "commands/arm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "lb": {
           "name": "lb",

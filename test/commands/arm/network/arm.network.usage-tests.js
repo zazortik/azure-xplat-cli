@@ -44,7 +44,7 @@ describe('arm', function () {
     describe('network', function () {
       
       it('should list usage correctly', function (done) {
-        suite.execute('network list-usage westus --json', function (result) {
+        suite.execute('network usage list westus --json', function (result) {
           result.exitStatus.should.equal(0);
           var usageInfo = JSON.parse(result.text);
           usageInfo.some(function (item) {
