@@ -22,7 +22,9 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=xplat;AccountKey=null';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
+  process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
+  process.env['AZURE_SITE_TEST_LOCATION'] = 'West Europe';
 };
 
-exports.scopes = [];
+exports.scopes = [[]];
