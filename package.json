@@ -10,9 +10,10 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Hao Chen <hach@microsoft.com>"
   ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -65,7 +66,7 @@
     "azure-arm-storage": "0.13.1-preview",
     "azure-asm-sb": "0.10.1",
     "azure-asm-sql": "0.10.1",
-    "azure-asm-storage": "0.10.1",
+    "azure-asm-storage": "0.11.0",
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.1",
     "azure-storage": "1.0.1",
@@ -132,6 +133,7 @@
     "unit-vm-live": "node scripts/unit.js testlist-vm-live.txt",
     "unit-arm-vm": "node scripts/unit.js testlist-arm-vm.txt",
     "unit-arm-vm-live": "node scripts/unit.js testlist-arm-vm-live.txt",
+    "unit-arm-vm-ping": "node scripts/unit.js testlist-arm-vm-ping.txt",
     "unit-arm-vm-extension-live": "node scripts/unit.js testlist-arm-vm-extension-live.txt",
     "unit-arm-vmss": "node scripts/unit.js testlist-arm-vmss.txt",
     "unit-arm-container": "node scripts/unit.js testlist-arm-container.txt",

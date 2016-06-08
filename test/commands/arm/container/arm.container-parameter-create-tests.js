@@ -78,7 +78,7 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('cs', function() {
+    describe('acs', function() {
 
       it('container config set and create DCOS should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
@@ -211,6 +211,34 @@ describe('arm', function() {
           result.text.should.containEql(containerPrefix);
           result.text.should.containEql('DCOS');
           done();
+        });
+      });
+
+      it('container acs scale up should pass', function (done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+            
+      it('container acs scale should fail for same agent count', function (done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.not.equal(0);
+          result.errorText.should.containEql('New agent count should be greater than existing count.');
+          var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.not.equal(0);
+            result.errorText.should.containEql('New agent count should be greater than existing count.');
+            done();
+          });
         });
       });
 

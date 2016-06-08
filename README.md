@@ -23,6 +23,7 @@ This project provides a cross-platform command line interface for developers and
   * CDN
   * HDInsight (Note: The HDInsight commands in ASM mode are deprecated and will be removed by Jan. 2017)
   * Key Vault
+  * Batch
 
 Note: The list of features may not be up-to-date. For accurate command details, type `azure` | `azure -h` | `azure --help` to navigate through the help system. Also, use `azure config mode asm|arm` to switch between service management (Version V1)and resource management (Version V2) of the Azure REST API.
 
