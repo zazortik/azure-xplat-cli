@@ -19764,6 +19764,109 @@
                   "description": "Search by display name which starts with the provided value"
                 }
               ]
+            },
+            {
+              "name": "create",
+              "description": "Creates an Active Directory group in the tenant.",
+              "fullName": "ad group create",
+              "usage": "[options] <display-name> <mail-nickname>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "The name to display in the address book for the group."
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "The mail alias for the group."
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes an Active Directory group.",
+              "fullName": "ad group delete",
+              "usage": "[options] <objectId>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--objectId <objectId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--objectId",
+                  "description": "the object Id of the group to delete"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
+                }
+              ]
             }
           ],
           "categories": {
@@ -20186,7 +20289,7 @@
             },
             {
               "name": "create",
-              "description": "Create Active Directory user (work or school account. Also known as org id).",
+              "description": "Create Active Directory user (work or school account. Also known as org-id).",
               "fullName": "ad user create",
               "usage": "[options] <upn> <display-name> <mail-nickname> <password>",
               "filePath": "commands/arm/ad/ad.users._js",
