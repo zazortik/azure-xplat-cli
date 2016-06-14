@@ -19467,7 +19467,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--reply-urls",
-                  "description": "the the comma-delimitied application reply urls"
+                  "description": "the comma-delimitied application reply urls"
                 },
                 {
                   "flags": "--key-value <key-value>",
@@ -19508,6 +19508,149 @@
                   "bool": true,
                   "long": "--end-date",
                   "description": "the end date till which password or key is valid. Default value is one year after current time"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Updates the properties of the created Active Directory application",
+              "fullName": "ad app set",
+              "usage": "[options]",
+              "filePath": "commands/arm/ad/ad.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--objectId <objectId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--objectId",
+                  "description": "the object id of the application to update. Either provide objectId or appId. objectId is more preferable."
+                },
+                {
+                  "flags": "--appId <appId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--appId",
+                  "description": "the applicationId of the application to update. If you have created a service principal using this application then this will be the spn of the service principal."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the new display name for the application."
+                },
+                {
+                  "flags": "--home-page <home-page>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--home-page",
+                  "description": "the new URL to the application homepage"
+                },
+                {
+                  "flags": "-a --available",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--available",
+                  "description": "indicates if the application will be available to other tenants (true/false)"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "new value for the password credential associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "-i --identifier-uris <identifier-uris>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--identifier-uris",
+                  "description": "new comma-delimitied URI values that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "new comma-delimitied application reply urls"
+                },
+                {
+                  "flags": "--key-value <key-value>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-value",
+                  "description": "new value for the key credentials associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "--key-type <key-type>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-type",
+                  "description": "new type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric. Default value: AsymmetricX509Cert"
+                },
+                {
+                  "flags": "--key-usage <key-usage>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-usage",
+                  "description": "new usage of the key credentials associated with the application. Acceptable values are Sign and Verify. Default value: Verify"
+                },
+                {
+                  "flags": "--start-date <start-date>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-date",
+                  "description": "new start date value after which password or key would be valid. Default value is current time"
+                },
+                {
+                  "flags": "--end-date <end-date>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-date",
+                  "description": "new end date value till which password or key is valid. Default value is one year after current time"
                 }
               ]
             },
