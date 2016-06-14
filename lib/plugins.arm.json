@@ -9156,7 +9156,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--kind",
-                  "description": "the account kind"
+                  "description": "the account kind (Storage/BlobStorage)"
                 },
                 {
                   "flags": "--access-tier <accessTier>",
@@ -9164,7 +9164,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
@@ -9273,7 +9273,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
