@@ -19461,6 +19461,15 @@
                   "description": "the comma-delimitied URIs that identify the application"
                 },
                 {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "the the comma-delimitied application reply urls"
+                },
+                {
                   "flags": "--key-value <key-value>",
                   "required": -13,
                   "optional": 0,
@@ -19753,6 +19762,109 @@
                   "bool": true,
                   "long": "--search",
                   "description": "Search by display name which starts with the provided value"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Creates an Active Directory group in the tenant.",
+              "fullName": "ad group create",
+              "usage": "[options] <display-name> <mail-nickname>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "The name to display in the address book for the group."
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "The mail alias for the group."
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes an Active Directory group.",
+              "fullName": "ad group delete",
+              "usage": "[options] <objectId>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--objectId <objectId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--objectId",
+                  "description": "the object Id of the group to delete"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
                 }
               ]
             }
@@ -20123,9 +20235,201 @@
                   "description": "search users with display name starting with the provided value"
                 }
               ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes Active Directory user",
+              "fullName": "ad user delete",
+              "usage": "[options] <upn>",
+              "filePath": "commands/arm/ad/ad.users._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--upn <upn>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--upn",
+                  "description": "the principal name of the user"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Create Active Directory user (work or school account. Also known as org-id).",
+              "fullName": "ad user create",
+              "usage": "[options] <upn> <display-name> <mail-nickname> <password>",
+              "filePath": "commands/arm/ad/ad.users._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u --upn <upn>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--upn",
+                  "description": "the user principal name. example - 'someuser@contoso.com'"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the name to display in the address book for the user. example 'Alex Wu'"
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "the mail alias for the user. example: 'Alexw'"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "The password for the user. It must meet the tenant's password complexity requirements. It is recommended to set a strong password."
+                },
+                {
+                  "flags": "-f --force-change-password-next-login <force-change-password-next-login>",
+                  "required": -39,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--force-change-password-next-login",
+                  "description": "true if the user must change his/her password on the next login; otherwise false. Default: false."
+                }
+              ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "memberGroups": {
+              "name": "memberGroups",
+              "description": "Commands to display member groups of the Active Directory user.",
+              "fullName": "ad user memberGroups",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Provides a lit of Object IDs of the groups of which the user is a member.",
+                  "fullName": "ad user memberGroups list",
+                  "usage": "[options] <objectId>",
+                  "filePath": "commands/arm/ad/ad.users._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--objectId <objectId>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--objectId",
+                      "description": "the objectId of the user"
+                    },
+                    {
+                      "flags": "-e --securityEnabledOnly <securityEnabledOnly>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--securityEnabledOnly",
+                      "description": "If true, only membership in security enabled groups will be checked. Otherwise membership in all groups will be checked. Default: false"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
