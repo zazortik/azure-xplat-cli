@@ -179,7 +179,7 @@ describe('arm', function() {
           allResources[1].publisher.should.equal(publisherExt);
           allResources[1].name.should.equal(extension);
           allResources[1].typeHandlerVersion.should.equal(version);
-		  allResources[1].autoUpgradeMinorVersion.should.be.false;
+	  allResources[1].autoUpgradeMinorVersion.should.be.false;
           done();
         });
       });
@@ -200,7 +200,7 @@ describe('arm', function() {
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-		  allResources[1].autoUpgradeMinorVersion.should.be.true;
+          allResources[1].autoUpgradeMinorVersion.should.be.true;
           done();
         });
       });
