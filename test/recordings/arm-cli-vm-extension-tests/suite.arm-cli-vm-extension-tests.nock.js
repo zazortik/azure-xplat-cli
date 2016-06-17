@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
-    name: 'Node CLI Test',
+    id: 'cffbd00f-9edf-41f9-8f74-4a6ec260dcb8',
+    name: 'VM Depot Main Subscription',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension7297','xplatstoragext8271','xplatstoragecntext8617','xplatdnsext1266'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGExtension3298','xplatstoragext6504','xplatstoragecntext92','xplatdnsext7245'];};
