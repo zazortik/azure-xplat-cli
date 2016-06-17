@@ -179,7 +179,7 @@ describe('arm', function() {
           allResources[1].publisher.should.equal(publisherExt);
           allResources[1].name.should.equal(extension);
           allResources[1].typeHandlerVersion.should.equal(version);
-	  allResources[1].autoUpgradeMinorVersion.should.be.false;
+	   allResources[1].autoUpgradeMinorVersion.should.be.false;
           done();
         });
       });
