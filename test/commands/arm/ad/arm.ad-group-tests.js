@@ -70,6 +70,56 @@ describe('arm', function () {
           });
         });
       });
+
+      it ('add list and remove member should work', function (done) {
+        var groupName = 'testGroup4301';
+        var mailNickname = 'testG4301';
+        var upn = 'testuser9007@AzureSDKTeam.onmicrosoft.com';
+        var userObjectId = '';
+        //Create Group
+        suite.execute('ad group create -d %s -m %s --json', groupName, mailNickname, function (result) {
+          result.exitStatus.should.equal(0);
+          var group = JSON.parse(result.text);
+          groupObjectId = group.objectId;
+          var displayName = 'test9007 user9007', mailNickname = 'testu9007', password = 'DummyM129007#';
+          //Create User
+          suite.execute('ad user create -u %s -d %s -m %s -p %s --json', upn, displayName, mailNickname, password, function (result) {
+            result.exitStatus.should.equal(0);
+            var user = JSON.parse(result.text);
+            userObjectId = user.objectId;
+            //Add user to group
+            suite.execute('ad group member add -o %s -m %s --json', groupObjectId, userObjectId, function (result) {
+              result.exitStatus.should.equal(0);
+              //Verify that the user has been added to the group
+              suite.execute('ad group member list -o %s --json', groupObjectId, function (result) {
+                result.exitStatus.should.equal(0);
+                var memberList = JSON.parse(result.text);
+                memberList.length.should.be.above(0);
+                memberList.some(function (member) { return member.objectId === userObjectId; }).should.be.true;
+                //Delete the member from the group
+                suite.execute('ad group member delete -q -o %s -m %s --json', groupObjectId, userObjectId, function (result) {
+                  result.exitStatus.should.equal(0);
+                  // Verify that the user is no longer a member of that group
+                  suite.execute('ad group member list -o %s --json', groupObjectId, function (result) {
+                    result.exitStatus.should.equal(0);
+                    var updatedMemberList = JSON.parse(result.text);
+                    updatedMemberList.some(function (member) { return member.objectId === userObjectId; }).should.be.false;
+                    //Delete the user
+                    suite.execute('ad user delete -q %s --json', upn, function (result) {
+                      result.exitStatus.should.equal(0);
+                      //Delete the group
+                      suite.execute('ad group delete -q %s --json', groupObjectId, function(result) {
+                        result.exitStatus.should.equal(0);
+                        done();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
     });
   });
 });
