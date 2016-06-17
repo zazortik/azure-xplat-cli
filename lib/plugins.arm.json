@@ -32105,6 +32105,15 @@
                   "description": "quiet mode, do not ask for uninstall confirmation"
                 },
                 {
+                  "flags": "-U, --auto-upgrade-minor-version",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-U",
+                  "long": "--auto-upgrade-minor-version",
+                  "description": "Enable auto-upgrade across minor version"
+                },
+                {
                   "flags": "-s, --subscription <id>",
                   "required": -20,
                   "optional": 0,
