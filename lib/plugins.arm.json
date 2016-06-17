@@ -20027,7 +20027,7 @@
                   "name": "list",
                   "description": "Provides an Active Directory sub group or member info",
                   "fullName": "ad group member list",
-                  "usage": "[options] [objectId]",
+                  "usage": "[options] <objectId>",
                   "filePath": "commands/arm/ad/ad.groups._js",
                   "options": [
                     {
@@ -20063,6 +20063,128 @@
                       "short": "-o",
                       "long": "--objectId",
                       "description": "Object id of group whose members to return."
+                    }
+                  ]
+                },
+                {
+                  "name": "add",
+                  "description": "Adds a member to an Active Directory group.",
+                  "fullName": "ad group member add",
+                  "usage": "[options] <objectId> <member-objectId>",
+                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "Object id of group to which the member needs to be added."
+                    },
+                    {
+                      "flags": "-m --member-objectId <member-objectId>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--member-objectId",
+                      "description": "Object id of the member (application, user, servicePrincipal, another-group) to be added to this group."
+                    },
+                    {
+                      "flags": "-t --tenant <tenant>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tenant",
+                      "description": "TenantId (in a GUID format) to which the member belongs. Default value is the current tenant of the logged in user/sp."
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a member from an Active Directory group.",
+                  "fullName": "ad group member delete",
+                  "usage": "[options] <objectId> <member-objectId>",
+                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "Object id of group from which the member needs to be deleted."
+                    },
+                    {
+                      "flags": "-m --member-objectId <member-objectId>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--member-objectId",
+                      "description": "Object id of the member (application, user, servicePrincipal, another-group) to be deleted from this group."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
                     }
                   ]
                 }
