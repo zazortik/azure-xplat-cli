@@ -19426,10 +19426,11 @@
                   "description": "the display name for the application"
                 },
                 {
-                  "flags": "--home-page <home-page>",
-                  "required": -13,
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
                   "optional": 0,
                   "bool": true,
+                  "short": "-m",
                   "long": "--home-page",
                   "description": "the URL to the application homepage"
                 },
@@ -19544,19 +19545,21 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
-                  "description": "the object id of the application to update. Either provide objectId or appId. objectId is more preferable."
+                  "description": "the object id of the application to update. Either provide objectId or applicationId. objectId is more preferable."
                 },
                 {
-                  "flags": "--appId <appId>",
-                  "required": -9,
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "long": "--appId",
+                  "short": "-a",
+                  "long": "--applicationId",
                   "description": "the applicationId of the application to update. If you have created a service principal using this application then this will be the spn of the service principal."
                 },
                 {
@@ -19569,10 +19572,11 @@
                   "description": "the new display name for the application."
                 },
                 {
-                  "flags": "--home-page <home-page>",
-                  "required": -13,
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
                   "optional": 0,
                   "bool": true,
+                  "short": "-m",
                   "long": "--home-page",
                   "description": "the new URL to the application homepage"
                 },
@@ -19678,10 +19682,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the application to remove"
                 },
@@ -19763,34 +19768,38 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--appId <appId>",
-                  "required": -9,
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "long": "--appId",
+                  "short": "-a",
+                  "long": "--applicationId",
                   "description": "the name of the application to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the application to return"
                 },
                 {
-                  "flags": "--identifierUri <identifierUri>",
-                  "required": -17,
+                  "flags": "-i --identifierUri <identifierUri>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-i",
                   "long": "--identifierUri",
                   "description": "the identifier uri of the application to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search display name of the application starting with the provided value"
                 }
@@ -19882,18 +19891,20 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object Id of the group to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "Search by display name which starts with the provided value"
                 }
@@ -19984,10 +19995,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object Id of the group to delete"
                 },
@@ -20044,10 +20056,11 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--objectId <objectId>",
-                      "required": -12,
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
                       "optional": 0,
                       "bool": true,
+                      "short": "-o",
                       "long": "--objectId",
                       "description": "Object id of group whose members to return."
                     }
@@ -20141,26 +20154,29 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--spn <spn>",
-                  "required": -7,
+                  "flags": "-n --spn <spn>",
+                  "required": -10,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--spn",
                   "description": "the name of the service principal to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the service principal to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search display name of the service principal starting with the provided value"
                 }
@@ -20199,12 +20215,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationId <applicationId>",
-                  "required": -17,
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-a",
                   "long": "--applicationId",
-                  "description": "the application Id for which service principal is created"
+                  "description": "The application Id for which service principal needs to be created."
                 }
               ]
             },
@@ -20241,10 +20258,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the service principal to delete"
                 },
@@ -20345,26 +20363,29 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "-u --upn <upn>",
+                  "required": -10,
                   "optional": 0,
                   "bool": true,
+                  "short": "-u",
                   "long": "--upn",
                   "description": "the principal name of the user to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the user to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search users with display name starting with the provided value"
                 }
@@ -20372,9 +20393,9 @@
             },
             {
               "name": "delete",
-              "description": "Deletes Active Directory user",
+              "description": "Deletes Active Directory user (work/school account also popularly known as org-id).",
               "fullName": "ad user delete",
-              "usage": "[options] <upn>",
+              "usage": "[options] <upn-or-objectId>",
               "filePath": "commands/arm/ad/ad.users._js",
               "options": [
                 {
@@ -20403,12 +20424,13 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "-u --upn-or-objectId <upn-or-objectId>",
+                  "required": -22,
                   "optional": 0,
                   "bool": true,
-                  "long": "--upn",
-                  "description": "the principal name of the user"
+                  "short": "-u",
+                  "long": "--upn-or-objectId",
+                  "description": "the user principal name or the objectId."
                 },
                 {
                   "flags": "-q, --quiet",
@@ -20417,7 +20439,7 @@
                   "bool": true,
                   "short": "-q",
                   "long": "--quiet",
-                  "description": "quiet mode (do not ask for delete confirmation)"
+                  "description": "quiet mode (do not ask for delete confirmation)."
                 }
               ]
             },
@@ -20639,10 +20661,11 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--objectId <objectId>",
-                      "required": -12,
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
                       "optional": 0,
                       "bool": true,
+                      "short": "-o",
                       "long": "--objectId",
                       "description": "the objectId of the user"
                     },

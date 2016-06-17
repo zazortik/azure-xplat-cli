@@ -45,24 +45,26 @@ describe('arm', function () {
     });
     
     describe('app', function () {
-      it('create and delete app should work', function (done) {
+      it('create set and delete app should work', function (done) {
         var appName = suite.generateId(appPrefix, createdApps);
         var idUri = 'https://' + appName + '.com/home';
-        suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s --json', idUri, function (result) {
+        var replyUrls = 'https://locahost:9090,https://localhost:8080';
+        suite.execute('ad app create -n %s --home-page http://www.bing.com --identifier-uris %s -r %s --json', appName, idUri, replyUrls, function (result) {
           result.exitStatus.should.equal(0);
           var application = JSON.parse(result.text);
           var appObjectId = application.objectId;
           var appId = application.appId;
-
-          suite.execute('ad sp create %s --json', appId, function (result) {
-            result.exitStatus.should.equal(0);
-            var sp = JSON.parse(result.text);
-            var spObjectId = sp.objectId;
-            suite.execute('ad sp delete %s -q', spObjectId, function (result) {
+          suite.execute('ad app set --objectId %s -n %s -r %s --json', appObjectId, 'testapp101', 'https://localhost:7878', function(result) {
+            suite.execute('ad sp create %s --json', appId, function (result) {
               result.exitStatus.should.equal(0);
-              suite.execute('ad app delete %s -q', appObjectId, function (result) {
+              var sp = JSON.parse(result.text);
+              var spObjectId = sp.objectId;
+              suite.execute('ad sp delete %s -q', spObjectId, function (result) {
                 result.exitStatus.should.equal(0);
-                done();
+                suite.execute('ad app delete %s -q', appObjectId, function (result) {
+                  result.exitStatus.should.equal(0);
+                  done();
+                });
               });
             });
           });
@@ -72,7 +74,7 @@ describe('arm', function () {
       it('get and list app should work', function (done) {
         var appName = suite.generateId(appPrefix, createdApps);
         var idUri = 'https://' + appName + '.com/home';
-        suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s --json', idUri, function (result) {
+        suite.execute('ad app create -n %s --home-page http://www.bing.com --identifier-uris %s --json', appName, idUri, function (result) {
           result.exitStatus.should.equal(0);
           var application = JSON.parse(result.text);
           var appObjectId = application.objectId;
@@ -88,7 +90,7 @@ describe('arm', function () {
               return (res.appId === appId);
             }).should.be.true;
 
-            suite.execute('ad app show --appId %s --json', appId, function (result) {
+            suite.execute('ad app show --applicationId %s --json', appId, function (result) {
               result.exitStatus.should.equal(0);
               var applications = JSON.parse(result.text);
               applications.length.should.equal(1);
@@ -113,7 +115,7 @@ describe('arm', function () {
                     var applications = JSON.parse(result.text);
                     applications.length.should.be.above(0);
                     applications.every(function (res) {
-                      return res.displayName.toLowerCase().indexOf(displayName) === 0;
+                      return res.displayName.toLowerCase().indexOf(displayName.toLowerCase()) === 0;
                     }).should.be.true;
                     
                     suite.execute('ad app delete %s -q', appObjectId, function (result) {
