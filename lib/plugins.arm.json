@@ -19388,7 +19388,7 @@
               "name": "create",
               "description": "Creates a new Active Directory application",
               "fullName": "ad app create",
-              "usage": "[options]",
+              "usage": "[options] <name> <home-page> <identifier-uris>",
               "filePath": "commands/arm/ad/ad.application._js",
               "options": [
                 {
@@ -20315,9 +20315,9 @@
             },
             {
               "name": "create",
-              "description": "Create Active Directory service principal",
+              "description": "Create Active Directory service principal.",
               "fullName": "ad sp create",
-              "usage": "[options] <applicationId>",
+              "usage": "[options]",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
               "options": [
                 {
@@ -20352,7 +20352,101 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--applicationId",
-                  "description": "The application Id for which service principal needs to be created."
+                  "description": "The application Id for which service principal needs to be created. If this is provided then everything else will be ignored. \nWhen the applicationId is provided it means that the application was already created and it needs to be used to create the service principal."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the display name for the application"
+                },
+                {
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--home-page",
+                  "description": "the URL to the application homepage"
+                },
+                {
+                  "flags": "-b --available",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--available",
+                  "description": "indicates if the application will be available to other tenants"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "the value for the password credential associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "-i --identifier-uris <identifier-uris>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--identifier-uris",
+                  "description": "the comma-delimitied URIs that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "the comma-delimitied application reply urls"
+                },
+                {
+                  "flags": "--key-value <key-value>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-value",
+                  "description": "the value for the key credentials associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "--key-type <key-type>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-type",
+                  "description": "the type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric"
+                },
+                {
+                  "flags": "--key-usage <key-usage>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-usage",
+                  "description": "the usage of the key credentials associated with the application. Acceptable values are Sign and Verify"
+                },
+                {
+                  "flags": "--start-date <start-date>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-date",
+                  "description": "the start date after which password or key would be valid. Default value is current time"
+                },
+                {
+                  "flags": "--end-date <end-date>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-date",
+                  "description": "the end date till which password or key is valid. Default value is one year after current time"
                 }
               ]
             },
@@ -20396,6 +20490,15 @@
                   "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the service principal to delete"
+                },
+                {
+                  "flags": "-p --preserve-application",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--preserve-application",
+                  "description": "Default value: false. If you do not want to delete the underlying application then set this flag."
                 },
                 {
                   "flags": "-q, --quiet",
