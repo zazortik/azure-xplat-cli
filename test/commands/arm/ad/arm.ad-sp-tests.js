@@ -50,34 +50,26 @@ describe('arm', function () {
         var appName = suite.generateId(appPrefix, createdApps);
         var idUri = 'https://' + appName + '.com/home';
         var replyUrls = 'https://locahost:9090,https://localhost:8080';
-        suite.execute('ad app create -n testapp --home-page http://www.bing.com --identifier-uris %s -r %s --json', idUri, replyUrls, function (result) {
+        suite.execute('ad sp create -n testapp --home-page http://www.bing.com --identifier-uris %s -r %s --json', idUri, replyUrls, function (result) {
           result.exitStatus.should.equal(0);
-          var application = JSON.parse(result.text);
-          var appObjectId = application.objectId;
-          var appId = application.appId;
-            suite.execute('ad sp create %s --json', appId, function (result) {
+          var sp = JSON.parse(result.text);
+          spObjectId = sp.objectId;
+          var appId = sp.appId;
+          result.exitStatus.should.equal(0);
+          suite.execute('ad sp show --spn %s --json', appId, function(result) {
             result.exitStatus.should.equal(0);
-            var sp = JSON.parse(result.text);
-            spObjectId = sp.objectId;
-            result.exitStatus.should.equal(0);
-            suite.execute('ad sp show --spn %s --json', appId, function(result) {
+            var showSp = JSON.parse(result.text);
+            showSp[0].objectId.should.equal(spObjectId);
+            suite.execute('ad sp list --json', function(result) {
               result.exitStatus.should.equal(0);
-              var showSp = JSON.parse(result.text);
-              showSp[0].objectId.should.equal(spObjectId);
-              suite.execute('ad sp list --json', function(result) {
+              var splist = JSON.parse(result.text);
+              splist.length.should.be.above(0);
+              splist.some(function(item) {
+                return item.objectId === spObjectId;
+              }).should.be.true;
+              suite.execute('ad sp delete --objectId %s -q --json', spObjectId, function(result) {
                 result.exitStatus.should.equal(0);
-                var splist = JSON.parse(result.text);
-                splist.length.should.be.above(0);
-                splist.some(function(item) {
-                  return item.objectId === spObjectId;
-                }).should.be.true;
-                suite.execute('ad sp delete --objectId %s -q --json', spObjectId, function(result) {
-                  result.exitStatus.should.equal(0);
-                  suite.execute('ad app delete --objectId %s -q --json', appObjectId, function(result) {
-                    result.exitStatus.should.equal(0);
-                    done();
-                  });
-                });
+                done();
               });
             });
           });

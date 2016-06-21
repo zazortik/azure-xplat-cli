@@ -55,11 +55,11 @@ describe('arm', function () {
           var appObjectId = application.objectId;
           var appId = application.appId;
           suite.execute('ad app set --objectId %s -n %s -r %s --json', appObjectId, 'testapp101', 'https://localhost:7878', function(result) {
-            suite.execute('ad sp create %s --json', appId, function (result) {
+            suite.execute('ad sp create -a %s --json', appId, function (result) {
               result.exitStatus.should.equal(0);
               var sp = JSON.parse(result.text);
               var spObjectId = sp.objectId;
-              suite.execute('ad sp delete %s -q', spObjectId, function (result) {
+              suite.execute('ad sp delete -p %s -q', spObjectId, function (result) {
                 result.exitStatus.should.equal(0);
                 suite.execute('ad app delete %s -q', appObjectId, function (result) {
                   result.exitStatus.should.equal(0);

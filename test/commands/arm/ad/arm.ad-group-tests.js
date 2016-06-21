@@ -71,7 +71,7 @@ describe('arm', function () {
         });
       });
 
-      it ('add list and remove member should work', function (done) {
+      it ('add list check and remove member should work', function (done) {
         var groupName = 'testGroup4301';
         var mailNickname = 'testG4301';
         var upn = 'testuser9007@AzureSDKTeam.onmicrosoft.com';
@@ -91,11 +91,10 @@ describe('arm', function () {
             suite.execute('ad group member add -o %s -m %s --json', groupObjectId, userObjectId, function (result) {
               result.exitStatus.should.equal(0);
               //Verify that the user has been added to the group
-              suite.execute('ad group member list -o %s --json', groupObjectId, function (result) {
+              suite.execute('ad group member check -o %s -m %s --json', groupObjectId, userObjectId, function (result) {
                 result.exitStatus.should.equal(0);
-                var memberList = JSON.parse(result.text);
-                memberList.length.should.be.above(0);
-                memberList.some(function (member) { return member.objectId === userObjectId; }).should.be.true;
+                var outcome = JSON.parse(result.text);
+                outcome.value.should.be.true;
                 //Delete the member from the group
                 suite.execute('ad group member delete -q -o %s -m %s --json', groupObjectId, userObjectId, function (result) {
                   result.exitStatus.should.equal(0);
