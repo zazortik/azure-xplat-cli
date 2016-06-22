@@ -76,8 +76,8 @@ describe('arm', function () {
     describe('lb address-pool', function () {
       it('create should create address pool in load balancer', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
-          networkUtil.createLB(groupName, lbName, location, suite, function () {
-            networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
+          networkUtil.createEmptyLB(groupName, lbName, location, suite, function () {
+            networkUtil.createPublicIpLegacy(groupName, publicIpName, location, suite, function (publicIp) {
               networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function () {
                 var cmd = 'network lb address-pool create -g {group} -l {lbName} -n {name} --json'.formatArgs(poolProp);
                 testUtils.executeCommand(suite, retry, cmd, function (result) {

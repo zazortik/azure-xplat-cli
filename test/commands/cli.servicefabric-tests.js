@@ -24,14 +24,15 @@ var utils = require('../../lib/util/utils');
 var testprefix = 'arm-cli-servicefabric-tests';
 var requiredEnvironment = [
   { name: 'AZURE_SITE_TEST_LOCATION', defaultValue: 'East US'},
-  { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: null}
+  { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: 'key'}
 ];
 var httpEndpoint = 'http://10.91.140.221:10550';
-var applicationPackagePath = '/media/share/CounterActorApplication';
-var applicationPackageName = 'CounterActorApplication';
-var applicationTypeName = 'CounterActorApplicationType';
-var applicationTypeVersion = '1.0';
-var serviceTypeName = 'CounterActor.CounterServiceType';
+var tcpEndpoint = '10.91.140.221:10549';
+var applicationPackagePath = '/media/share/EchoServerApplication3';
+var applicationPackageName = 'EchoServerApplication3';
+var applicationTypeName = 'EchoServerApp';
+var applicationTypeVersion = '3.0';
+var serviceTypeName = 'EchoServer.EchoServiceType';
 
 describe('Service Fabric', function () {
   describe('create service to remove service', function () {
@@ -54,7 +55,7 @@ describe('Service Fabric', function () {
     });
     
     it('should connect to cluster', function (done) {
-      suite.execute('servicefabric cluster connect ' + httpEndpoint + ' --json', function (result) {
+      suite.execute('servicefabric cluster connect ' + httpEndpoint + ' ' + tcpEndpoint + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
@@ -78,7 +79,7 @@ describe('Service Fabric', function () {
       suite.execute('servicefabric application type show ' + applicationTypeName + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         var res = JSON.parse(result.text);
-        res.should.containDeep([{name: applicationPackageName, version: applicationTypeVersion}]);
+        res.should.containDeep([{name: applicationTypeName, version: applicationTypeVersion}]);
         done();
       });
     });
@@ -100,7 +101,7 @@ describe('Service Fabric', function () {
     });
     
     it('should create service', function (done) {
-      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name ' + serviceTypeName + ' --service-kind Stateful --target-replica-set-size 1 --min-replica-set-size 1 --partition-scheme Singleton --has-persisted-state true --json', function (result) {
+      suite.execute('servicefabric service create --application-name fabric:/myapp --service-name fabric:/myapp/svc1 --service-type-name ' + serviceTypeName + ' --service-kind Stateless --instance-count 1 --partition-scheme Singleton --json', function (result) {
         setTimeout(function () {
           result.exitStatus.should.equal(0);
           done();

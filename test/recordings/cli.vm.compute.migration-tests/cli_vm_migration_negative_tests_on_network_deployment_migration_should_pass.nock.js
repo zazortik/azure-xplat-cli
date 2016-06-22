@@ -31,11 +31,11 @@ nock('http://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '38c395e69000a742954c0d18b2159d5c',
-  date: 'Mon, 25 Apr 2016 21:41:06 GMT',
+  'x-ms-request-id': '88cb4ce80fe5a6a69b911a3b154c7415',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -45,11 +45,11 @@ nock('https://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '38c395e69000a742954c0d18b2159d5c',
-  date: 'Mon, 25 Apr 2016 21:41:06 GMT',
+  'x-ms-request-id': '88cb4ce80fe5a6a69b911a3b154c7415',
+  date: 'Fri, 27 May 2016 06:15:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -59,11 +59,11 @@ nock('http://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '86a4285c669998498ec12ef3051586a4',
-  date: 'Mon, 25 Apr 2016 21:41:07 GMT',
+  'x-ms-request-id': 'd0fb420ae5b3aafb96d976aea10016e9',
+  date: 'Fri, 27 May 2016 06:15:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -73,11 +73,11 @@ nock('https://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '86a4285c669998498ec12ef3051586a4',
-  date: 'Mon, 25 Apr 2016 21:41:07 GMT',
+  'x-ms-request-id': 'd0fb420ae5b3aafb96d976aea10016e9',
+  date: 'Fri, 27 May 2016 06:15:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -87,11 +87,11 @@ nock('http://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '428e02302e2597509e9a483c2f4dfd73',
-  date: 'Mon, 25 Apr 2016 21:41:08 GMT',
+  'x-ms-request-id': '278165cf30e6a7d692d299a7a5e52459',
+  date: 'Fri, 27 May 2016 06:15:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -101,11 +101,11 @@ nock('https://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The virtual network 123 does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '198',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.387 (rd_rdfe_stable.160523-1235) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '428e02302e2597509e9a483c2f4dfd73',
-  date: 'Mon, 25 Apr 2016 21:41:08 GMT',
+  'x-ms-request-id': '278165cf30e6a7d692d299a7a5e52459',
+  date: 'Fri, 27 May 2016 06:15:22 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['cliVmMigr7682'];};
+ exports.randomTestIdsGenerated = function() { return ['cliVmMigr469'];};

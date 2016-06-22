@@ -6,6 +6,7 @@
     "targetOSVersion": "*" 
   },
   "targetDedicated": 3,
+  "enableInterNodeCommunication": true,
   "startTask": {
     "commandLine": "cmd /c echo test",
     "waitForSuccess": true

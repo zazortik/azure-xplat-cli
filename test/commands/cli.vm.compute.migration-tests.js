@@ -122,5 +122,26 @@ describe('cli', function() {
       });
     });
 
+    describe('migration', function() {
+      it('negative tests on storage deployment migration should pass', function(done) {
+        var rn = '123';
+        var cmd = util.format('storage account prepare-migration %s --json --verbose', rn).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(1);
+          result.text.should.containEql('The storage account \'' + rn + '\' was not found.');
+          var cmd = util.format('storage account commit-migration %s --json --verbose', rn).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(1);
+            result.text.should.containEql('The storage account \'' + rn + '\' was not found.');
+            var cmd = util.format('storage account abort-migration %s --json --verbose', rn).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(1);
+              result.text.should.containEql('The storage account \'' + rn + '\' was not found.');
+              done();
+            });
+          });
+        });
+      });
+    });
   });
 });

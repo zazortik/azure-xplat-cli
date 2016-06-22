@@ -21,6 +21,7 @@ var CLITest = require('../../framework/arm-cli-test');
 
 var jobScheduleId = 'xplatJobScheduleJobTests';
 var jobId = 'xplatJob';
+var createdWithParametersJobId = 'xplatParamJob';
 
 var path = require('path');
 var createJobScheduleJsonFilePath = path.resolve(__dirname, '../../data/batchCreateJobScheduleForJobTests.json');
@@ -97,6 +98,32 @@ describe('cli', function () {
         var createdJob = JSON.parse(result.text);
         createdJob.should.not.be.null;
         createdJob.id.should.equal(jobId);
+        done();
+      });
+    });
+    
+    it('should create a job using parameters', function (done) {
+      var poolId = "pool1";
+      var priority = 1;
+      var maxWallClockTime = "PT12H";
+      var maxTaskRetryCount = Number(3);
+      var metadata = "meta1=value1;meta2=value2";
+      suite.execute('batch job create -i %s -p %s --metadata %s --priority %s --max-wall-clock-time %s --max-task-retry-count %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        createdWithParametersJobId, poolId, metadata, priority, maxWallClockTime, maxTaskRetryCount,
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var createdJob = JSON.parse(result.text);
+        createdJob.should.not.be.null;
+        createdJob.id.should.equal(createdWithParametersJobId);
+        createdJob.poolInfo.poolId.should.equal(poolId);
+        createdJob.priority.should.equal(priority);
+        createdJob.constraints.maxWallClockTime.should.equal(maxWallClockTime);
+        createdJob.constraints.maxTaskRetryCount.should.equal(maxTaskRetryCount);
+        createdJob.metadata.length.should.equal(2);
+        createdJob.metadata[0].name.should.equal("meta1");
+        createdJob.metadata[0].value.should.equal("value1");
+        createdJob.metadata[1].name.should.equal("meta2");
+        createdJob.metadata[1].value.should.equal("value2");
         done();
       });
     });
@@ -183,13 +210,42 @@ describe('cli', function () {
         var originalJob = JSON.parse(result.text);
         originalJob.priority.should.not.be.null;
 
-        suite.execute('batch job set %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, updateJsonFilePath, 
+        suite.execute('batch job set %s %s --account-name %s --account-key %s --account-endpoint %s --json --replace', jobId, updateJsonFilePath, 
           batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedJob = JSON.parse(result.text);
           updatedJob.priority.should.not.be.null;
           updatedJob.priority.should.not.equal(originalJob.priority);
 
+          done();
+        });
+      });
+    });
+
+    it('should update a job using parameters', function (done) {
+      var poolId = "pool1";
+      var priority = 2;
+      var maxWallClockTime = "PT10H";
+      var maxTaskRetryCount = Number(5);
+      var metadata = "meta1=newValue";
+      suite.execute('batch job set -i %s -p %s --metadata %s --priority %s --max-wall-clock-time %s --max-task-retry-count %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        createdWithParametersJobId, poolId, metadata, priority, maxWallClockTime, maxTaskRetryCount,
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var updated = JSON.parse(result.text);
+        updated.should.not.be.null;
+        updated.id.should.equal(createdWithParametersJobId);
+        updated.poolInfo.poolId.should.equal(poolId);
+        updated.priority.should.equal(priority);
+        updated.constraints.maxWallClockTime.should.equal(maxWallClockTime);
+        updated.constraints.maxTaskRetryCount.should.equal(maxTaskRetryCount);
+        updated.metadata.length.should.equal(1);
+        updated.metadata[0].name.should.equal("meta1");
+        updated.metadata[0].value.should.equal("newValue");
+        
+        suite.execute('batch job delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', 
+          createdWithParametersJobId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
           done();
         });
       });

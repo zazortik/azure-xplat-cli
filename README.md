@@ -31,7 +31,7 @@ Note: The list of features may not be up-to-date. For accurate command details, 
 The CLI targets **"Public Azure Cloud"** by default. You can get more information about the endpoints supported in different environments from [here](./Documentation/Endpoints.md).
 
 ## Non-Interactive Authentication
-If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md).
+If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md).
 
 
 ## Installation

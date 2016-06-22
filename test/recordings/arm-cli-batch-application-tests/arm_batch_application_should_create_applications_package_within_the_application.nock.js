@@ -6,11 +6,11 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
+    id: '45b60d85-fd72-427a-a708-f994d26e593e',
+    name: 'Azure Storage DM Staging',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
@@ -29,68 +29,68 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .put('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications/armclibatchapp4948/versions/1.0?api-version=2015-12-01')
-  .reply(201, "{\"id\":\"armclibatchapp4948\",\"version\":\"1.0\",\"storageUrl\":\"https://armclibatch1951.blob.core.windows.net/app-armclibatchapp4948-597f8c27a7423ed70aa4ecef23864a84f4394acf/armclibatchapp4948-1.0-c0022681-d3ae-4fda-be08-61aa9535790a?sv=2014-02-14&sr=b&sig=95YPR6mRtIMRkk2eyjJNsvjpLO3wbI%2F6jPxUxB2GDG4%3D&st=2016-04-13T19%3A04%3A13Z&se=2016-04-13T23%3A09%3A13Z&sp=rw\",\"storageUrlExpiry\":\"2016-04-13T23:09:13.5374833Z\",\"state\":\"pending\"}", { 'cache-control': 'no-cache',
+  .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclibatchgroup8089/providers/Microsoft.Batch/batchAccounts/armclibatch7925/applications/armclibatchapp6526/versions/1.0?api-version=2015-12-01')
+  .reply(201, "{\"id\":\"armclibatchapp6526\",\"version\":\"1.0\",\"storageUrl\":\"https://armclibatch9667.blob.core.windows.net/app-armclibatchapp6526-e22f366b4387d478b75359fc56bb0f78354ac280/armclibatchapp6526-1.0-969dbe0d-3b67-4004-8f4d-d1cc048b884f?sv=2014-02-14&sr=b&sig=xg8QQMSN%2BEKndia70%2Fim%2F2PLHywWUAKyU1rOZyGH9ls%3D&st=2016-05-19T08%3A10%3A59Z&se=2016-05-19T12%3A15%3A59Z&sp=rw\",\"storageUrlExpiry\":\"2016-05-19T12:15:59.5638487Z\",\"state\":\"pending\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '430',
+  'content-length': '434',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': 'dffdb779-5427-431f-9dce-9f92496dbb9e',
+  'request-id': 'bfd694d3-a36f-48b6-a833-333b54a5dc49',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  'x-ms-correlation-request-id': 'da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190913Z:da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  date: 'Wed, 13 Apr 2016 19:09:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1170',
+  'x-ms-request-id': '3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  'x-ms-correlation-request-id': '3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160519T081600Z:3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  date: 'Thu, 19 May 2016 08:15:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .put('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications/armclibatchapp4948/versions/1.0?api-version=2015-12-01')
-  .reply(201, "{\"id\":\"armclibatchapp4948\",\"version\":\"1.0\",\"storageUrl\":\"https://armclibatch1951.blob.core.windows.net/app-armclibatchapp4948-597f8c27a7423ed70aa4ecef23864a84f4394acf/armclibatchapp4948-1.0-c0022681-d3ae-4fda-be08-61aa9535790a?sv=2014-02-14&sr=b&sig=95YPR6mRtIMRkk2eyjJNsvjpLO3wbI%2F6jPxUxB2GDG4%3D&st=2016-04-13T19%3A04%3A13Z&se=2016-04-13T23%3A09%3A13Z&sp=rw\",\"storageUrlExpiry\":\"2016-04-13T23:09:13.5374833Z\",\"state\":\"pending\"}", { 'cache-control': 'no-cache',
+  .put('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications/armclibatchapp4948/versions/1.0?api-version=2015-12-01')
+  .reply(201, "{\"id\":\"armclibatchapp6526\",\"version\":\"1.0\",\"storageUrl\":\"https://armclibatch9667.blob.core.windows.net/app-armclibatchapp6526-e22f366b4387d478b75359fc56bb0f78354ac280/armclibatchapp6526-1.0-969dbe0d-3b67-4004-8f4d-d1cc048b884f?sv=2014-02-14&sr=b&sig=xg8QQMSN%2BEKndia70%2Fim%2F2PLHywWUAKyU1rOZyGH9ls%3D&st=2016-05-19T08%3A10%3A59Z&se=2016-05-19T12%3A15%3A59Z&sp=rw\",\"storageUrlExpiry\":\"2016-05-19T12:15:59.5638487Z\",\"state\":\"pending\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '430',
+  'content-length': '434',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': 'dffdb779-5427-431f-9dce-9f92496dbb9e',
+  'request-id': 'bfd694d3-a36f-48b6-a833-333b54a5dc49',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  'x-ms-correlation-request-id': 'da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190913Z:da300ba6-ce50-4bfb-af02-bbaac31f846d',
-  date: 'Wed, 13 Apr 2016 19:09:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1170',
+  'x-ms-request-id': '3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  'x-ms-correlation-request-id': '3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160519T081600Z:3904e70b-a4d7-4a5f-9a69-e19d1fac2d96',
+  date: 'Thu, 19 May 2016 08:15:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://armclibatch1951.blob.core.windows.net:443')
+nock('http://armclibatch9667.blob.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/app-armclibatchapp4948-597f8c27a7423ed70aa4ecef23864a84f4394acf/armclibatchapp4948-1.0-c0022681-d3ae-4fda-be08-61aa9535790a?sv=2014-02-14&sr=b&sig=95YPR6mRtIMRkk2eyjJNsvjpLO3wbI%2F6jPxUxB2GDG4%3D&st=2016-04-13T19%3A04%3A13Z&se=2016-04-13T23%3A09%3A13Z&sp=rw&api-version=2015-02-21', '*')
+.put('/app-armclibatchapp6526-e22f366b4387d478b75359fc56bb0f78354ac280/armclibatchapp6526-1.0-969dbe0d-3b67-4004-8f4d-d1cc048b884f?sv=2014-02-14&sr=b&sig=xg8QQMSN%2BEKndia70%2Fim%2F2PLHywWUAKyU1rOZyGH9ls%3D&st=2016-05-19T08%3A10%3A59Z&se=2016-05-19T12%3A15%3A59Z&sp=rw&api-version=2015-04-05', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'aegW9zT5QEn52baYgZAWKQ==',
-  'last-modified': 'Wed, 13 Apr 2016 19:09:14 GMT',
-  etag: '"0x8D363CF1A9B4F04"',
+  'last-modified': 'Thu, 19 May 2016 08:16:01 GMT',
+  etag: '"0x8D37FBDD0E35AE7"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c719a055-0001-0048-1ab7-95b322000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Wed, 13 Apr 2016 19:09:14 GMT',
+  'x-ms-request-id': 'c7eb0242-0001-0056-1aa6-b169cf000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Thu, 19 May 2016 08:16:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://armclibatch1951.blob.core.windows.net:443')
+nock('https://armclibatch9667.blob.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/app-armclibatchapp4948-597f8c27a7423ed70aa4ecef23864a84f4394acf/armclibatchapp4948-1.0-c0022681-d3ae-4fda-be08-61aa9535790a?sv=2014-02-14&sr=b&sig=95YPR6mRtIMRkk2eyjJNsvjpLO3wbI%2F6jPxUxB2GDG4%3D&st=2016-04-13T19%3A04%3A13Z&se=2016-04-13T23%3A09%3A13Z&sp=rw&api-version=2015-02-21', '*')
+.put('/app-armclibatchapp6526-e22f366b4387d478b75359fc56bb0f78354ac280/armclibatchapp6526-1.0-969dbe0d-3b67-4004-8f4d-d1cc048b884f?sv=2014-02-14&sr=b&sig=xg8QQMSN%2BEKndia70%2Fim%2F2PLHywWUAKyU1rOZyGH9ls%3D&st=2016-05-19T08%3A10%3A59Z&se=2016-05-19T12%3A15%3A59Z&sp=rw&api-version=2015-04-05', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'aegW9zT5QEn52baYgZAWKQ==',
-  'last-modified': 'Wed, 13 Apr 2016 19:09:14 GMT',
-  etag: '"0x8D363CF1A9B4F04"',
+  'last-modified': 'Thu, 19 May 2016 08:16:01 GMT',
+  etag: '"0x8D37FBDD0E35AE7"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c719a055-0001-0048-1ab7-95b322000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Wed, 13 Apr 2016 19:09:14 GMT',
+  'x-ms-request-id': 'c7eb0242-0001-0056-1aa6-b169cf000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Thu, 19 May 2016 08:16:01 GMT',
   connection: 'close' });
  return result; }]];
