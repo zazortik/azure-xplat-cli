@@ -36371,6 +36371,75 @@
               "short": "-f",
               "long": "--nic-config",
               "description": "the NIC configuration, comma separated list of NIC definition      \n Each NIC definition will be in the form  \"<nicName>:<subnetName>:[vnetStaticIP]:[nsgName]:[ipForwarding]\"      \n The VM must be created in a virtual network using --virtual-network-name option      \n The subnetName in each NIC definition must be an existing subnet in this virtual network"
+            },
+            {
+              "flags": "--disable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-boot-diagnostics",
+              "description": "Disable boot diagnostics (enabled by default)."
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Enable or disable boot diagnostics for the VM",
+          "fullName": "vm set",
+          "usage": "[options] <name> <boot-diagnostics-enabled>",
+          "filePath": "commands/asm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-d, --dns-name <name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--dns-name",
+              "description": "only show VMs for this DNS name"
+            },
+            {
+              "flags": "-B, --boot-diagnostics-enabled <boot-diagnostics-enabled>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "short": "-B",
+              "long": "--boot-diagnostics-enabled",
+              "description": "true or false."
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
             }
           ]
         },

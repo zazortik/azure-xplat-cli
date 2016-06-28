@@ -104,6 +104,68 @@ describe('cli', function() {
       });
     });
 
+    //Show VM
+    describe('Extension', function() {
+      it('Show the created vm', function(done) {
+        var cmd = util.format('vm show %s --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('ConsoleScreenshotBlobUri');
+          result.text.should.containEql('SerialOutputBlobUri');
+          result.text.should.containEql('"BootDiagnosticsEnabled": true');
+          done();
+        });
+      });
+    });
+    
+    //Set VM with boot diagnostics false
+    describe('Extension', function() {
+      it('Set the created vm with boot diagnostics disabled', function(done) {
+        var cmd = util.format('vm set %s -B %s --json', vmName, 'false').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+    });
+    
+    describe('Extension', function() {
+      it('Show the created vm again with boot diagnostics disabled', function(done) {
+        var cmd = util.format('vm show %s --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('ConsoleScreenshotBlobUri');
+          result.text.should.containEql('SerialOutputBlobUri');
+          result.text.should.not.containEql('"BootDiagnosticsEnabled": true');
+          done();
+        });
+      });
+    });
+    
+    //Set VM with boot diagnostics true
+    describe('Extension', function() {
+      it('Set the created vm with boot diagnostics enabled', function(done) {
+        var cmd = util.format('vm set %s -B %s --json', vmName, 'true').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+    });
+    
+    describe('Extension', function() {
+      it('Show the created vm again with boot diagnostics enabled', function(done) {
+        var cmd = util.format('vm show %s --json', vmName).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('ConsoleScreenshotBlobUri');
+          result.text.should.containEql('SerialOutputBlobUri');
+          result.text.should.containEql('"BootDiagnosticsEnabled": true');
+          done();
+        });
+      });
+    });
+    
     // VM extension check
     describe('Extension', function() {
       it('Uninstall the set extension', function(done) {
