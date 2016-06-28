@@ -21560,18 +21560,18 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-n, --name [name]",
-                  "required": 0,
-                  "optional": -12,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
                   "description": "Name of the Cdn Profile"
                 },
                 {
-                  "flags": "-g, --resource-group [resource-group]",
-                  "required": 0,
-                  "optional": -22,
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
@@ -30332,6 +30332,14 @@
               "description": "the storage account name"
             },
             {
+              "flags": "--storage-account-type <storage-account-type>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "long": "--storage-account-type",
+              "description": "the storage account type for to-be-generated storage account, default Premium_LRS"
+            },
+            {
               "flags": "-R, --storage-account-container-name <storage-account-container-name>",
               "required": -38,
               "optional": 0,
@@ -34618,7 +34626,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--itemType",
-                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, secret, credential, assembly, externaldatasource, table, tablevaluedfunction, view, procedure, types or tablestatistics"
+                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, secret, credential, assembly, externaldatasource, table, tablevaluedfunction, view, procedure, types, tablepartition or tablestatistics"
                     },
                     {
                       "flags": "-p --itemPath <itemPath>",
