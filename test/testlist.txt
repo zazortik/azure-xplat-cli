@@ -65,7 +65,6 @@ commands/cli.vm.create_staticvm_neg-tests.js
 commands/cli.vm.extension-tests.js
 commands/cli.vm.extension_get-tests.js
 commands/cli.vm.extension_get-chef-tests.js
-commands/cli.vm.extension_set-tests.js
 commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.extension_set-chef.js
 commands/cli.vm.loadbalancer-tests.js
