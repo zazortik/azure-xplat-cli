@@ -9156,7 +9156,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--kind",
-                  "description": "the account kind"
+                  "description": "the account kind (Storage/BlobStorage)"
                 },
                 {
                   "flags": "--access-tier <accessTier>",
@@ -9164,7 +9164,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
@@ -9273,7 +9273,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
@@ -9432,6 +9432,133 @@
             }
           ],
           "categories": {
+            "sas": {
+              "name": "sas",
+              "description": "Commands to manage shared access signatures of your storage account",
+              "fullName": "storage account sas",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Generate shared access signature of storage account",
+                  "fullName": "storage account sas create",
+                  "usage": "[options] [services] [resourceTypes] [permissions] [expiry]",
+                  "filePath": "commands/storage/storage.account._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--services <services>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--services",
+                      "description": "the storage services accessible with the account SAS combining symbols of b(Blob)/f(File)/q(Queue)/t(Table)"
+                    },
+                    {
+                      "flags": "--resource-types <resourceTypes>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--resource-types",
+                      "description": "the storage resource types accessible with the account SAS combining symbols of s(Service)/c(Container/o(Object)"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)/a(Add)/c(Create)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the SAS becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the SAS expires"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "keys": {
               "name": "keys",
               "description": "Commands to manage your Storage account keys",
@@ -10622,6 +10749,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -12769,7 +12912,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--permissions",
-                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
+                      "description": "the operation permissions combining symbols of r(Read)/a(Add)/c(Create)/w(Write)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -13263,6 +13422,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -14583,6 +14758,22 @@
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
                     },
                     {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
                       "flags": "--start <start>",
                       "required": -9,
                       "optional": 0,
@@ -15188,6 +15379,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/a(Add)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -15990,6 +16197,14 @@
                   "description": "show metrics properties for queue service"
                 },
                 {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "show metrics properties for file service"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -16073,6 +16288,14 @@
                   "bool": true,
                   "long": "--queue",
                   "description": "set metrics properties for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "set metrics properties for file service"
                 },
                 {
                   "flags": "--version <version>",
@@ -16825,6 +17048,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Query)/a(Add)/u(Update)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",

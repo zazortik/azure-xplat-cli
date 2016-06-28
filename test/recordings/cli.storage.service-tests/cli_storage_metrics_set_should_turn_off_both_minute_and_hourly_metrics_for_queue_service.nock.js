@@ -6,18 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Azure Storage DM Dev',
+    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
+    name: 'Azure SDK Powershell Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: [],
+    registeredProviders: ['website'],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -25,41 +22,82 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=http;AccountName=xplat;AccountKey=null';
+  process.env['AZURE_STORAGE_CONNECTION_STRING'] = 'DefaultEndpointsProtocol=https;AccountName=xplat;AccountKey=null';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplat.queue.core.windows.net:80')
+nock('http://xplat.queue.core.windows.net:443')
   .get('/?comp=properties&restype=service')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>false</Read><Write>true</Write><Delete>true</Delete><RetentionPolicy><Enabled>true</Enabled><Days>5</Days></RetentionPolicy></Logging><HourMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></HourMetrics><MinuteMetrics><Version>1.0</Version><Enabled>true</Enabled><IncludeAPIs>true</IncludeAPIs><RetentionPolicy><Enabled>true</Enabled><Days>10</Days></RetentionPolicy></MinuteMetrics><Cors /></StorageServiceProperties>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6c5cdef2-0003-0042-3c62-81bd13000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Tue, 28 Apr 2015 03:23:54 GMT' });
+  'x-ms-request-id': '96e4cf56-0003-001c-74d2-bf4e10000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:44 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplat.queue.core.windows.net:80')
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/?comp=properties&restype=service')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>false</Read><Write>true</Write><Delete>true</Delete><RetentionPolicy><Enabled>true</Enabled><Days>5</Days></RetentionPolicy></Logging><HourMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></HourMetrics><MinuteMetrics><Version>1.0</Version><Enabled>true</Enabled><IncludeAPIs>true</IncludeAPIs><RetentionPolicy><Enabled>true</Enabled><Days>10</Days></RetentionPolicy></MinuteMetrics><Cors /></StorageServiceProperties>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '96e4cf56-0003-001c-74d2-bf4e10000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.queue.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/?comp=properties&restype=service', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b0376097-0003-0046-2d62-814891000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Tue, 28 Apr 2015 03:23:57 GMT' });
+  'x-ms-request-id': '5622da9b-0003-0011-23d2-bfa11c000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:44 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplat.queue.core.windows.net:80')
+nock('https://xplat.queue.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/?comp=properties&restype=service', '*')
+  .reply(202, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5622da9b-0003-0011-23d2-bfa11c000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:44 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://xplat.queue.core.windows.net:443')
   .get('/?comp=properties&restype=service')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>false</Read><Write>true</Write><Delete>true</Delete><RetentionPolicy><Enabled>true</Enabled><Days>5</Days></RetentionPolicy></Logging><HourMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></HourMetrics><MinuteMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>true</Enabled><Days>10</Days></RetentionPolicy></MinuteMetrics><Cors /></StorageServiceProperties>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f90f32dc-0003-0023-3762-81f9cc000000',
-  'x-ms-version': '2015-02-21',
-  date: 'Tue, 28 Apr 2015 03:23:58 GMT' });
+  'x-ms-request-id': '803859b8-0003-0043-33d2-bfbcee000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:45 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://xplat.queue.core.windows.net:443')
+  .get('/?comp=properties&restype=service')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>false</Read><Write>true</Write><Delete>true</Delete><RetentionPolicy><Enabled>true</Enabled><Days>5</Days></RetentionPolicy></Logging><HourMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></HourMetrics><MinuteMetrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>true</Enabled><Days>10</Days></RetentionPolicy></MinuteMetrics><Cors /></StorageServiceProperties>", { 'cache-control': 'no-cache',
+  'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '803859b8-0003-0043-33d2-bfbcee000000',
+  'x-ms-version': '2015-04-05',
+  date: 'Mon, 06 Jun 2016 09:03:45 GMT',
+  connection: 'close' });
  return result; }]];

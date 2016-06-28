@@ -188,6 +188,90 @@ describe('cli', function () {
         done();
       });
     });
+    
+    it('should create account sas with --account-name and --account-key', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        done();
+      });
+    });
+    
+    it('should create account sas with --connection-string', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z -c DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        done();
+      });
+    });
+    
+    it('should throw error when creating sas with both --account-name & --account-key and --connection-string', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= -c DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        
+        result.errorText.should.containEql('Please only define either: 1. --connection-string 2. --account-name and --account-key');
+        done();
+      });
+    });
+    
+    it('should throw error when creating sas with invalid service', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services xbqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        result.errorText.should.containEql('Given  "x" is invalid, supported values are: b, f, q, t');
+        done();
+      });
+    });
+    
+    it('should throw error when creating sas with invalid resource type', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types xsco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        result.errorText.should.containEql('Given  "x" is invalid, supported values are: s, c, o');
+        done();
+      });
+    });
+    
+    it('should throw error when creating sas with invalid permission', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions xacurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        result.errorText.should.containEql('Given  "x" is invalid, supported values are: r, a, c, u, p, w, d, l');
+        done();
+      });
+    });
+    
+    it('should throw error when creating sas with invalid ip range', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.a --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        result.errorText.should.containEql('Invalid ip range format');
+        done();
+      });
+    });
+    
+    it('should get sas without protocol when no --protocol provided', function(done) {
+      suite.execute('storage account sas create --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&sig=l7GqdatfCy2u7ecAugqMFklF65CqB5j2r7u3btzbGwc%3D');
+        done();
+      });
+    });
+    
+    it('should sort the service automatically creating sas with randomly-ordered services provided', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services tbfq --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= " --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        done();
+      });
+    });
+    
+    it('should sort the service automatically creating sas with randomly-ordered resource type provided', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services tbfq --resource-types ocs --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        done();
+      });
+    });
+    
+    it('should sort the service automatically creating sas with randomly-ordered permission provided', function(done) {
+      suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions ldwpruca --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
+        var sas = JSON.parse(result.text);
+        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        done();
+      });
+    });
 
     liveOnly('should renew storage keys', function(done) {
       suite.execute('storage account keys list %s --json', storageName, function (result) {
