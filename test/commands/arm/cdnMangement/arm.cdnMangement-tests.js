@@ -114,15 +114,18 @@ describe('arm', function() {
     });
   });
 
-
   after(function (done) {
-    if (!suite.isPlayback()) {
-      suite.execute('group delete %s --quiet --json', testResourceGroup_1, function () {
-        suite.execute('group delete %s --quiet --json', testResourceGroup_2, function () {
-          suite.teardownSuite(done);
-        });
-      });
-    }
+    suite.teardownSuite(function () {
+      if (!suite.isPlayback()) {
+        suite.execute('group delete %s --quiet --json', testResourceGroup_1, function () {
+          suite.execute('group delete %s --quiet --json', testResourceGroup_2, function () {
+            done();
+          });
+        });   
+      } else {
+        done();
+      }
+    })
   });
 
   beforeEach(function(done) {
