@@ -246,6 +246,19 @@ describe('arm', function() {
           done();
         });
       });
+      
+      it('list-ip-address should display all VMs and corrosponding public IP address in subscription', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('vm list-ip-address %s --json', '').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            return (res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name).indexOf(publicipName) !== -1;
+          }).should.be.true;
+          done();
+        });
+      });
 
       it('show should display details about VM', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
