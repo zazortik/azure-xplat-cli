@@ -65,7 +65,6 @@ commands/cli.vm.create_staticvm_neg-tests.js
 commands/cli.vm.extension-tests.js
 commands/cli.vm.extension_get-tests.js
 commands/cli.vm.extension_get-chef-tests.js
-commands/cli.vm.extension_set-tests.js
 commands/cli.vm.extension_set-custom_disable.js
 commands/cli.vm.extension_set-chef.js
 commands/cli.vm.loadbalancer-tests.js
@@ -109,3 +108,4 @@ util/authentication/win-credstore-parser-tests.js
 # Testing token cache class which works with adal-node
 util/authentication/token-cache-tests.js
 util/authentication/token-storage-tests.js
+util/interaction-tests.js

@@ -194,7 +194,7 @@ describe('cli', function () {
           suite.execute('storage metrics show --json', function(result) {
             result.errorText.should.be.empty;
             var properties = JSON.parse(result.text);
-            properties.length.should.equal(3);
+            properties.length.should.equal(4);
             properties.forEach(function(property) {
               property.type.should.not.be.empty;
               property.HourMetrics.length.should.equal(1);
@@ -207,7 +207,7 @@ describe('cli', function () {
               property.MinuteMetrics[0].should.be.an.Object;
               property.MinuteMetrics[0].Version.should.equal('1.0');
               property.MinuteMetrics[0].Enabled.should.be.a.Boolean;
-            });            
+            });
             done();
           });
         });
@@ -229,7 +229,7 @@ describe('cli', function () {
               property.MinuteMetrics[0].should.be.an.Object;
               property.MinuteMetrics[0].Version.should.equal('1.0');
               property.MinuteMetrics[0].Enabled.should.be.a.Boolean;
-            });            
+            });
             done();
           });
         });
@@ -251,7 +251,7 @@ describe('cli', function () {
               property.MinuteMetrics[0].should.be.an.Object;
               property.MinuteMetrics[0].Version.should.equal('1.0');
               property.MinuteMetrics[0].Enabled.should.be.a.Boolean;
-            });            
+            });
             done();
           });
         });
@@ -273,7 +273,29 @@ describe('cli', function () {
               property.MinuteMetrics[0].should.should.be.an.Object;
               property.MinuteMetrics[0].Version.should.equal('1.0');
               property.MinuteMetrics[0].Enabled.should.be.a.Boolean;
-            });            
+            });
+            done();
+          });
+        });
+
+        it('should show metrics properties for file service', function(done) {
+          suite.execute('storage metrics show --file --json', function(result) {
+            result.errorText.should.be.empty;
+            var properties = JSON.parse(result.text);
+            properties.length.should.greaterThan(0);
+            properties.forEach(function(property) {
+              property.type.should.not.be.empty;
+              property.HourMetrics.length.should.equal(1);
+              property.HourMetrics[0].should.be.an.Object;
+              property.HourMetrics[0].Version.should.equal('1.0');
+              property.HourMetrics[0].Enabled.should.be.a.Boolean;
+              property.HourMetrics[0].RetentionPolicy.should.be.an.Object;
+
+              property.MinuteMetrics.length.should.equal(1);
+              property.MinuteMetrics[0].should.should.be.an.Object;
+              property.MinuteMetrics[0].Version.should.equal('1.0');
+              property.MinuteMetrics[0].Enabled.should.be.a.Boolean;
+            });
             done();
           });
         });
@@ -364,6 +386,85 @@ describe('cli', function () {
             properties.length.should.equal(1);
             var property = properties[0];
             property.type.should.equal('queue');
+            property.HourMetrics.length.should.equal(1);
+            property.HourMetrics[0].should.be.an.Object;
+            property.HourMetrics[0].Version.should.equal('1.0');
+            property.HourMetrics[0].Enabled.should.be.false;
+            property.HourMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.HourMetrics[0].RetentionPolicy.Enabled.should.be.a.Boolean;
+
+            property.MinuteMetrics.length.should.equal(1);
+            property.MinuteMetrics[0].should.be.an.Object;
+            property.MinuteMetrics[0].Version.should.equal('1.0');
+            property.MinuteMetrics[0].Enabled.should.be.false;
+            property.MinuteMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.MinuteMetrics[0].RetentionPolicy.Enabled.should.be.a.Boolean;
+            done();
+          });
+        });
+    
+        it('should set minute metrics and hourly metrics properties for file service', function(done) {
+          var retention = 10;
+          suite.execute('storage metrics set --file --retention %s --hour-off --minute --api --json', retention, function(result) {
+            result.errorText.should.be.empty;
+            var properties = JSON.parse(result.text);
+            properties.length.should.equal(1);
+            var property = properties[0];
+            property.type.should.equal('file');
+            property.HourMetrics.length.should.equal(1);
+            property.HourMetrics[0].should.be.an.Object;
+            property.HourMetrics[0].Version.should.equal('1.0');
+            property.HourMetrics[0].Enabled.should.be.false;
+            property.HourMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.HourMetrics[0].RetentionPolicy.Enabled.should.be.a.Boolean;
+
+            property.MinuteMetrics.length.should.equal(1);
+            property.MinuteMetrics[0].should.be.an.Object;
+            property.MinuteMetrics[0].Version.should.equal('1.0');
+            property.MinuteMetrics[0].Enabled.should.be.true;
+            property.MinuteMetrics[0].IncludeAPIs.should.be.true;
+            property.MinuteMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.MinuteMetrics[0].RetentionPolicy.Enabled.should.be.true;
+            property.MinuteMetrics[0].RetentionPolicy.Days.should.equal(retention);
+            done();
+          });
+        });
+    
+        it('should set minute metrics properties and turn off hourly metrics for file service', function(done) {
+          var retention = 10;
+          suite.execute('storage metrics set --file --retention %s --hour-off --minute --api --json', retention, function(result) {
+            result.errorText.should.be.empty;
+            var properties = JSON.parse(result.text);
+            properties.length.should.equal(1);
+            var property = properties[0];
+            property.type.should.equal('file');
+            property.HourMetrics.length.should.equal(1);
+            property.HourMetrics[0].should.be.an.Object;
+            property.HourMetrics[0].Version.should.equal('1.0');
+            property.HourMetrics[0].Enabled.should.be.false;
+            property.HourMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.HourMetrics[0].RetentionPolicy.Enabled.should.be.a.Boolean;
+
+            property.MinuteMetrics.length.should.equal(1);
+            property.MinuteMetrics[0].should.be.an.Object;
+            property.MinuteMetrics[0].Version.should.equal('1.0');
+            property.MinuteMetrics[0].Enabled.should.be.true;
+            property.MinuteMetrics[0].IncludeAPIs.should.be.true;
+            property.MinuteMetrics[0].RetentionPolicy.should.be.an.Object;
+            property.MinuteMetrics[0].RetentionPolicy.Enabled.should.be.true;
+            property.MinuteMetrics[0].RetentionPolicy.Days.should.equal(retention);
+            done();
+          });
+        });
+
+        it('should turn off both minute and hourly metrics for file service', function(done) {
+          var retention = 10;
+          suite.execute('storage metrics set --file --retention %s --hour-off --minute-off --json', retention, function(result) {
+            result.errorText.should.be.empty;
+            var properties = JSON.parse(result.text);
+            properties.length.should.equal(1);
+            var property = properties[0];
+            property.type.should.equal('file');
             property.HourMetrics.length.should.equal(1);
             property.HourMetrics[0].should.be.an.Object;
             property.HourMetrics[0].Version.should.equal('1.0');
