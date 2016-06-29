@@ -36623,9 +36623,9 @@
         },
         {
           "name": "set",
-          "description": "Enable or disable boot diagnostics for the VM",
+          "description": "Update VM settings",
           "fullName": "vm set",
-          "usage": "[options] <name> <boot-diagnostics-enabled>",
+          "usage": "[options] <name>",
           "filePath": "commands/asm/vm._js",
           "options": [
             {
@@ -36669,7 +36669,7 @@
               "bool": true,
               "short": "-B",
               "long": "--boot-diagnostics-enabled",
-              "description": "true or false."
+              "description": "Input true/false to enable/disable boot diagnostics."
             },
             {
               "flags": "-s, --subscription <id>",
