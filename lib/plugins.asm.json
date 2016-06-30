@@ -37530,15 +37530,6 @@
                   "description": "chef client pem file path i.e required in validator less bootstrap"
                 },
                 {
-                  "flags": "-a, --auto-update-client",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--auto-update-client",
-                  "description": "auto update chef client"
-                },
-                {
                   "flags": "-j, --bootstrap-options <bootstrap-json-attribute>",
                   "required": -25,
                   "optional": 0,
@@ -37546,15 +37537,6 @@
                   "short": "-j",
                   "long": "--bootstrap-options",
                   "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}'"
-                },
-                {
-                  "flags": "-D, --delete-chef-config",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-D",
-                  "long": "--delete-chef-config",
-                  "description": "delete chef config files during update/uninstall extension"
                 },
                 {
                   "flags": "-v, --bootstrap-version <number>",
