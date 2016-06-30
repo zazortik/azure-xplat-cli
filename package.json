@@ -11,9 +11,9 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>",
-    "Hao Chen <hach@microsoft.com>"
+    "Chen, Hao <hach@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
