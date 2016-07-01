@@ -30933,6 +30933,58 @@
           ]
         },
         {
+          "name": "list-ip-address",
+          "description": "Get all virtual machines and their corresponding IP addresses in subscription. If a resource group is specified it will list virtual machines and their corresponding IP addresses in specified resource group.",
+          "fullName": "vm list-ip-address",
+          "usage": "[options] [resource-group]",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
           "name": "show",
           "description": "Get a virtual machine in a resource group",
           "fullName": "vm show",

@@ -73,6 +73,7 @@ describe('arm', function() {
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         vm2Prefix = suite.isMocked ? vm2Prefix : suite.generateId(vm2Prefix, null);
         vm3Prefix = suite.isMocked ? vm3Prefix : suite.generateId(vm3Prefix, null);
+        vm4Prefix = suite.isMocked ? vm4Prefix : suite.generateId(vm4Prefix, null); 
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         nic2Name = suite.isMocked ? nic2Name : suite.generateId(nic2Name, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -246,6 +247,20 @@ describe('arm', function() {
           done();
         });
       });
+      
+      it('list-ip-address should display all VMs and corrosponding public IP address in subscription', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('vm list-ip-address %s --json', '').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
+            return vmPublicIpName.indexOf(publicipName) !== -1;
+          }).should.be.true;
+          done();
+        });
+      });
 
       it('show should display details about VM', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
@@ -264,7 +279,9 @@ describe('arm', function() {
               result.exitStatus.should.equal(0);
               var avSetResult = JSON.parse(result.text);
               avSetResult.name.should.equal(availprefix);
-              avSetResult.virtualMachines[0].id.toLowerCase().should.containEql(vmPrefix.toLowerCase());
+              avSetResult.virtualMachines.some(function(res) {
+                return (res.id.toLowerCase()).indexOf(vmPrefix) !== -1;
+              }).should.be.true;
               done();
             });
           });
