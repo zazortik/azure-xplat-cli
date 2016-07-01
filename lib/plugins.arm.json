@@ -30697,7 +30697,7 @@
           "name": "list-ip-address",
           "description": "Get all virtual machines and their corresponding IP addresses in subscription. If a resource group is specified it will list virtual machines and their corresponding IP addresses in specified resource group.",
           "fullName": "vm list-ip-address",
-          "usage": "[options] <resource-group>",
+          "usage": "[options] [resource-group]",
           "filePath": "commands/arm/vm/vm._js",
           "options": [
             {
