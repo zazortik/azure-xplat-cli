@@ -1,9 +1,3 @@
-##For next release
-* Key Vault
-  * Added options to upload a file as a secret to `azure keyvault secret set`.
-  * Added new command `azure keyvault secret get` to download a secret as a file.
-  * The `azure keyvault secret` commands `set`, `set-attributes` and `delete` don't echo the secret contents by default anymore.
-
 ##2016-06-01 Version 0.10.1
 * Storage
   * Integrated with the GA version of Azure Storage Client Library for Node.js
