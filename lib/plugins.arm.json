@@ -24680,49 +24680,6 @@
           ]
         },
         {
-          "name": "list-all",
-          "description": "Lists all Virtual Machine Scale Sets in the subscription. Use nextLink property in the response to get the next page of Virtual Machine Scale Sets. Do this till nextLink is not null to fetch all the Virtual Machine Scale Sets.",
-          "fullName": "vmss list-all",
-          "usage": "[options]",
-          "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-s, --subscription <subscription>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "The subscription identifier"
-            }
-          ]
-        },
-        {
           "name": "list-skus",
           "description": "Displays available skus for your virtual machine scale set including the minimum and maximum vm instances allowed for a particular sku.",
           "fullName": "vmss list-skus",
