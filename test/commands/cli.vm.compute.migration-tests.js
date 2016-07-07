@@ -143,5 +143,41 @@ describe('cli', function() {
         });
       });
     });
+
+    describe('migration', function () {
+      it('negative test for validate deployment migration should pass', function (done) {
+        var rn = '123';
+        var cmd = util.format('service deployment validate-migration %s --json --verbose', rn, rn, rn, rn, rn, rn).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('The deployment name \'' + rn + '\' does not exist.');
+          done();
+        });
+      });
+    });
+
+    describe('migration', function () {
+      it('negative test for validate virtual network migration should pass', function (done) {
+        var rn = '123';
+        var cmd = util.format('network vnet validate-migration %s --json --verbose', rn).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('The virtual network ' + rn + ' does not exist.');
+          done();
+        });
+      });
+    });
+
+    describe('migration', function () {
+      it('negative test for validate storage account migration should pass', function (done) {
+        var rn = '123';
+        var cmd = util.format('storage account validate-migration %s --json --verbose', rn).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('The storage account \'' + rn + '\' was not found.');
+          done();
+        });
+      });
+    });
   });
 });
