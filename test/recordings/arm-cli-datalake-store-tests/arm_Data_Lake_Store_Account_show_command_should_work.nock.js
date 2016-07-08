@@ -30,120 +30,120 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"folderLevelAclState\":\"Disabled\",\"trustedTenants\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"trustedIdProviderState\":\"Disabled\",\"trustedIdProviders\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '662',
+  'content-length': '672',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'a80edd61-858a-45a3-b5bd-ba4fd2cdc805',
+  'x-ms-request-id': 'ea65307d-13f6-43f6-95a4-d96109feca36',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': '27537ba3-d34b-47a0-8ea3-7df8b63e3f92',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182914Z:27537ba3-d34b-47a0-8ea3-7df8b63e3f92',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'fc99fcd9-5a39-48cc-8e86-f5c53cb9d1ae',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214909Z:fc99fcd9-5a39-48cc-8e86-f5c53cb9d1ae',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:13 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"folderLevelAclState\":\"Disabled\",\"trustedTenants\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"trustedIdProviderState\":\"Disabled\",\"trustedIdProviders\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '662',
+  'content-length': '672',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'a80edd61-858a-45a3-b5bd-ba4fd2cdc805',
+  'x-ms-request-id': 'ea65307d-13f6-43f6-95a4-d96109feca36',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': '27537ba3-d34b-47a0-8ea3-7df8b63e3f92',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182914Z:27537ba3-d34b-47a0-8ea3-7df8b63e3f92',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'fc99fcd9-5a39-48cc-8e86-f5c53cb9d1ae',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214909Z:fc99fcd9-5a39-48cc-8e86-f5c53cb9d1ae',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:13 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/accounts?api-version=2015-10-01-preview')
-  .reply(200, "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testdatalake11362.azuredatalakestore.net\",\"accountId\":\"10fb07d1-7353-443f-b529-ceb233756312\",\"creationTime\":\"2016-04-28T01:04:09.0392712Z\",\"lastModifiedTime\":\"2016-04-28T01:04:09.0392712Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18242/providers/Microsoft.DataLakeStore/accounts/testdatalake11362\",\"name\":\"testdatalake11362\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testdatalake23104.azuredatalakestore.net\",\"accountId\":\"1c8b511a-6150-4485-b1b5-4f57febd18b5\",\"creationTime\":\"2016-04-28T01:04:46.0154923Z\",\"lastModifiedTime\":\"2016-04-28T01:04:46.0154923Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18242/providers/Microsoft.DataLakeStore/accounts/testdatalake23104\",\"name\":\"testdatalake23104\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls7064.azuredatalakestore.net\",\"accountId\":\"87439f8c-ff9c-4da6-9ea0-17b7f501f271\",\"creationTime\":\"2016-04-28T18:28:03.089248Z\",\"lastModifiedTime\":\"2016-04-28T18:28:03.089248Z\"},\"location\":\"eastus2\",\"tags\":{},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls7064\",\"name\":\"xplattestadls7064\",\"type\":\"Microsoft.DataLakeStore/accounts\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testadlfs17108.azuredatalakestore.net\",\"accountId\":\"1618ef65-9663-447a-af46-8b3756a2fb41\",\"creationTime\":\"2016-06-16T17:34:41.5045797Z\",\"lastModifiedTime\":\"2016-06-16T17:34:41.5045797Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/datalakerg16878/providers/Microsoft.DataLakeStore/accounts/testadlfs17108\",\"name\":\"testadlfs17108\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"javaadlsacct322.azuredatalakestore.net\",\"accountId\":\"aa30fb26-9d23-4390-a018-65038cd38e05\",\"creationTime\":\"2016-06-15T18:08:45.681629Z\",\"lastModifiedTime\":\"2016-06-15T18:08:45.681629Z\"},\"location\":\"eastus2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/javaadlsrg377/providers/Microsoft.DataLakeStore/accounts/javaadlsacct322\",\"name\":\"javaadlsacct322\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"ec2cf8ae-f6a2-4cb9-b1a7-3dbe423aeb18\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba13762/providers/Microsoft.DataLakeStore/accounts/testdatalake15719\",\"name\":\"testdatalake15719\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"d47fc8db-d80a-461a-a147-9971c0315695\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba1528/providers/Microsoft.DataLakeStore/accounts/testdatalake17538\",\"name\":\"testdatalake17538\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"2451d671-12b4-4679-852d-4d115dd06c29\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18088/providers/Microsoft.DataLakeStore/accounts/testdatalake11464\",\"name\":\"testdatalake11464\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"0f990f13-3e11-41a6-9615-53e650e98178\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18487/providers/Microsoft.DataLakeStore/accounts/testdatalake13363\",\"name\":\"testdatalake13363\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls3248.azuredatalakestore.net\",\"accountId\":\"b2c9ad47-18d8-4103-88fd-77218f91f9e4\",\"creationTime\":\"2016-06-16T21:48:04.3688984Z\",\"lastModifiedTime\":\"2016-06-16T21:48:04.3688984Z\"},\"location\":\"eastus2\",\"tags\":{},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls3248\",\"name\":\"xplattestadls3248\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2127',
+  'content-length': '3800',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '3ea6ddb7-1377-451e-8a3f-543ba3bec4c3',
+  'x-ms-request-id': '7250d68e-131f-4a0f-8bad-54e99cd9a8c6',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-correlation-request-id': 'aaf93e26-18f4-4c45-8b41-7eeef08f0418',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182914Z:aaf93e26-18f4-4c45-8b41-7eeef08f0418',
+  'x-ms-ratelimit-remaining-subscription-reads': '14995',
+  'x-ms-correlation-request-id': 'aad3a424-bb86-4ac9-b104-d5a9d68cae27',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214910Z:aad3a424-bb86-4ac9-b104-d5a9d68cae27',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:14 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/providers/Microsoft.DataLakeStore/accounts?api-version=2015-10-01-preview')
-  .reply(200, "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testdatalake11362.azuredatalakestore.net\",\"accountId\":\"10fb07d1-7353-443f-b529-ceb233756312\",\"creationTime\":\"2016-04-28T01:04:09.0392712Z\",\"lastModifiedTime\":\"2016-04-28T01:04:09.0392712Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18242/providers/Microsoft.DataLakeStore/accounts/testdatalake11362\",\"name\":\"testdatalake11362\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testdatalake23104.azuredatalakestore.net\",\"accountId\":\"1c8b511a-6150-4485-b1b5-4f57febd18b5\",\"creationTime\":\"2016-04-28T01:04:46.0154923Z\",\"lastModifiedTime\":\"2016-04-28T01:04:46.0154923Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18242/providers/Microsoft.DataLakeStore/accounts/testdatalake23104\",\"name\":\"testdatalake23104\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls7064.azuredatalakestore.net\",\"accountId\":\"87439f8c-ff9c-4da6-9ea0-17b7f501f271\",\"creationTime\":\"2016-04-28T18:28:03.089248Z\",\"lastModifiedTime\":\"2016-04-28T18:28:03.089248Z\"},\"location\":\"eastus2\",\"tags\":{},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls7064\",\"name\":\"xplattestadls7064\",\"type\":\"Microsoft.DataLakeStore/accounts\"}]}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"testadlfs17108.azuredatalakestore.net\",\"accountId\":\"1618ef65-9663-447a-af46-8b3756a2fb41\",\"creationTime\":\"2016-06-16T17:34:41.5045797Z\",\"lastModifiedTime\":\"2016-06-16T17:34:41.5045797Z\"},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/datalakerg16878/providers/Microsoft.DataLakeStore/accounts/testadlfs17108\",\"name\":\"testadlfs17108\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"javaadlsacct322.azuredatalakestore.net\",\"accountId\":\"aa30fb26-9d23-4390-a018-65038cd38e05\",\"creationTime\":\"2016-06-15T18:08:45.681629Z\",\"lastModifiedTime\":\"2016-06-15T18:08:45.681629Z\"},\"location\":\"eastus2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/javaadlsrg377/providers/Microsoft.DataLakeStore/accounts/javaadlsacct322\",\"name\":\"javaadlsacct322\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"ec2cf8ae-f6a2-4cb9-b1a7-3dbe423aeb18\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba13762/providers/Microsoft.DataLakeStore/accounts/testdatalake15719\",\"name\":\"testdatalake15719\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"d47fc8db-d80a-461a-a147-9971c0315695\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba1528/providers/Microsoft.DataLakeStore/accounts/testdatalake17538\",\"name\":\"testdatalake17538\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"2451d671-12b4-4679-852d-4d115dd06c29\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18088/providers/Microsoft.DataLakeStore/accounts/testdatalake11464\",\"name\":\"testdatalake11464\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Failed\",\"state\":null,\"endpoint\":null,\"accountId\":\"0f990f13-3e11-41a6-9615-53e650e98178\",\"creationTime\":null,\"lastModifiedTime\":null},\"location\":\"East US 2\",\"tags\":null,\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/rgaba18487/providers/Microsoft.DataLakeStore/accounts/testdatalake13363\",\"name\":\"testdatalake13363\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls3248.azuredatalakestore.net\",\"accountId\":\"b2c9ad47-18d8-4103-88fd-77218f91f9e4\",\"creationTime\":\"2016-06-16T21:48:04.3688984Z\",\"lastModifiedTime\":\"2016-06-16T21:48:04.3688984Z\"},\"location\":\"eastus2\",\"tags\":{},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls3248\",\"name\":\"xplattestadls3248\",\"type\":\"Microsoft.DataLakeStore/accounts\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '2127',
+  'content-length': '3800',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '3ea6ddb7-1377-451e-8a3f-543ba3bec4c3',
+  'x-ms-request-id': '7250d68e-131f-4a0f-8bad-54e99cd9a8c6',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-correlation-request-id': 'aaf93e26-18f4-4c45-8b41-7eeef08f0418',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182914Z:aaf93e26-18f4-4c45-8b41-7eeef08f0418',
+  'x-ms-ratelimit-remaining-subscription-reads': '14995',
+  'x-ms-correlation-request-id': 'aad3a424-bb86-4ac9-b104-d5a9d68cae27',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214910Z:aad3a424-bb86-4ac9-b104-d5a9d68cae27',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:14 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"folderLevelAclState\":\"Disabled\",\"trustedTenants\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"trustedIdProviderState\":\"Disabled\",\"trustedIdProviders\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '662',
+  'content-length': '672',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '28e0eea5-d224-405f-aff1-3d617b4e2efe',
+  'x-ms-request-id': '184a36d1-2e52-40e4-a95e-193e25604b13',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': 'ad933872-19f7-4dca-87f0-c56c8d87061b',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182915Z:ad933872-19f7-4dca-87f0-c56c8d87061b',
+  'x-ms-correlation-request-id': 'da2e85d6-a44b-4ad3-aa30-dcab55c55bb1',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214910Z:da2e85d6-a44b-4ad3-aa30-dcab55c55bb1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:15 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206?api-version=2015-10-01-preview')
-  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"folderLevelAclState\":\"Disabled\",\"trustedTenants\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls206.azuredatalakestore.net\",\"accountId\":\"2ad8ebd0-8eab-4a00-88cb-32afdac5687c\",\"creationTime\":\"2016-04-28T18:28:37.5441899Z\",\"lastModifiedTime\":\"2016-04-28T18:28:37.5441899Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls206\",\"name\":\"xplattestadls206\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918?api-version=2015-10-01-preview')
+  .reply(200, "{\"properties\":{\"firewallState\":\"Disabled\",\"firewallRules\":[],\"trustedIdProviderState\":\"Disabled\",\"trustedIdProviders\":[],\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"endpoint\":\"xplattestadls4918.azuredatalakestore.net\",\"accountId\":\"53d7a318-68a1-4f49-8a66-d71cad1f62aa\",\"creationTime\":\"2016-06-16T21:48:45.0299345Z\",\"lastModifiedTime\":\"2016-06-16T21:48:45.0299345Z\"},\"location\":\"eastus2\",\"tags\":{\"testtag1\":\"testvalue1\",\"testtag2\":\"testvalue2\"},\"id\":\"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeStore/accounts/xplattestadls4918\",\"name\":\"xplattestadls4918\",\"type\":\"Microsoft.DataLakeStore/accounts\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '662',
+  'content-length': '672',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '28e0eea5-d224-405f-aff1-3d617b4e2efe',
+  'x-ms-request-id': '184a36d1-2e52-40e4-a95e-193e25604b13',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14996',
-  'x-ms-correlation-request-id': 'ad933872-19f7-4dca-87f0-c56c8d87061b',
-  'x-ms-routing-request-id': 'WESTUS:20160428T182915Z:ad933872-19f7-4dca-87f0-c56c8d87061b',
+  'x-ms-correlation-request-id': 'da2e85d6-a44b-4ad3-aa30-dcab55c55bb1',
+  'x-ms-routing-request-id': 'CENTRALUS:20160616T214910Z:da2e85d6-a44b-4ad3-aa30-dcab55c55bb1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:15 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:10 GMT',
   connection: 'close' });
  return result; }]];

@@ -29,35 +29,37 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadls7064.azuredatalakestore.net:443')
+nock('http://xplattestadls3248.azuredatalakestore.net:443')
   .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
   .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   expires: '-1',
-  'x-ms-request-id': '76e9e878-db2c-4928-9440-0e472649f49c',
-  'server-perf': '[76e9e878-db2c-4928-9440-0e472649f49c][ AuthTime::570.545319860366::PostAuthTime::131.730103835827 ][FsOpenStream :: 00:00:031 ms]%0a[Open :: 00:00:031 ms]%0a[FsReadStream :: 00:00:025 ms]%0a[OPEN :: 00:00:057 ms]%0a',
+  'x-ms-request-id': '9bffddf8-c850-431e-8f61-3b2165565d28',
+  'server-perf': '[9bffddf8-c850-431e-8f61-3b2165565d28][ AuthTime::0::PostAuthTime::0 ][S-FsOpenStream :: 00:00:024 ms]%0a[S-FsReadStream :: 00:00:028 ms]%0a[OPEN :: 00:00:053 ms]%0a',
+  'x-ms-webhdfs-version': '16.05.18.00',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:41 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls7064.azuredatalakestore.net:443')
+nock('https://xplattestadls3248.azuredatalakestore.net:443')
   .get('/webhdfs/v1/adlsclifolder01%2Fconcatfile.txt?length=23&offset=0&op=OPEN&read=true&api-version=2015-10-01-preview')
   .reply(200, "adls cli test content!a", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   expires: '-1',
-  'x-ms-request-id': '76e9e878-db2c-4928-9440-0e472649f49c',
-  'server-perf': '[76e9e878-db2c-4928-9440-0e472649f49c][ AuthTime::570.545319860366::PostAuthTime::131.730103835827 ][FsOpenStream :: 00:00:031 ms]%0a[Open :: 00:00:031 ms]%0a[FsReadStream :: 00:00:025 ms]%0a[OPEN :: 00:00:057 ms]%0a',
+  'x-ms-request-id': '9bffddf8-c850-431e-8f61-3b2165565d28',
+  'server-perf': '[9bffddf8-c850-431e-8f61-3b2165565d28][ AuthTime::0::PostAuthTime::0 ][S-FsOpenStream :: 00:00:024 ms]%0a[S-FsReadStream :: 00:00:028 ms]%0a[OPEN :: 00:00:053 ms]%0a',
+  'x-ms-webhdfs-version': '16.05.18.00',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:29:41 GMT',
+  date: 'Thu, 16 Jun 2016 21:49:38 GMT',
   connection: 'close' });
  return result; }]];

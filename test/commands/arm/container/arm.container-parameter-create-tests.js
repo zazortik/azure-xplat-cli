@@ -55,7 +55,7 @@ describe('arm', function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         sshcert = 'test/containerCert.pem';
         keydata = fs.readFileSync(sshcert).toString();
-        keydata = keydata.replace(' ', '').replace('\r', '').replace('\n', '');
+        keydata = keydata.replace('\r', '').replace('\n', '');
         groupName = suite.generateId(groupPrefix, null);
         containerPrefix = suite.generateId(containerPrefix, null);
         containerPrefix2 = suite.generateId(containerPrefix2, null);
@@ -78,7 +78,7 @@ describe('arm', function() {
       suite.teardownTest(done);
     });
 
-    describe('cs', function() {
+    describe('acs', function() {
 
       it('container config set and create DCOS should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
@@ -108,8 +108,7 @@ describe('arm', function() {
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName, util.format('--admin-username %s', username)).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                           result.exitStatus.should.equal(0);
-                          var cmd = makeCommandStr('public-keys', 'set', paramFileName, util.format('--index 0 --key-data %s', keydata)).split(' ');
-                          testUtils.executeCommand(suite, retry, cmd, function(result) {
+                          suite.execute('acs config %s %s --parameter-file %s --index 0 --key-data %s --json', 'public-keys', 'set', paramFileName, keydata, function(result) {
                             result.exitStatus.should.equal(0);
                             var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -170,8 +169,7 @@ describe('arm', function() {
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName2, util.format('--admin-username %s', username)).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                           result.exitStatus.should.equal(0);
-                          var cmd = makeCommandStr('public-keys', 'set', paramFileName2, util.format('--index 0 --key-data %s', keydata)).split(' ');
-                          testUtils.executeCommand(suite, retry, cmd, function(result) {
+                          suite.execute('acs config %s %s --parameter-file %s --index 0 --key-data %s --json', 'public-keys', 'set', paramFileName2, keydata, function(result) {
                             result.exitStatus.should.equal(0);
                             var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -211,6 +209,34 @@ describe('arm', function() {
           result.text.should.containEql(containerPrefix);
           result.text.should.containEql('DCOS');
           done();
+        });
+      });
+
+      it('container acs scale up should pass', function (done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+            
+      it('container acs scale should fail for same agent count', function (done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.not.equal(0);
+          result.errorText.should.containEql('New agent count should be greater than existing count.');
+          var cmd = util.format('acs scale -g %s --name %s --new-agent-count 4 --json', groupName, containerPrefix2).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.not.equal(0);
+            result.errorText.should.containEql('New agent count should be greater than existing count.');
+            done();
+          });
         });
       });
 
