@@ -11,9 +11,9 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>",
-    "Hao Chen <hach@microsoft.com>"
+    "Chen, Hao <hach@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
@@ -33,7 +33,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "adal-node": "0.1.17",
+    "adal-node": "0.1.21",
     "async": "1.4.2",
     "azure-common": "0.9.16",
     "azure-arm-authorization": "2.0.0",
