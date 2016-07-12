@@ -30471,7 +30471,7 @@
               "bool": true,
               "short": "-S",
               "long": "--subnet-id",
-              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
+              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>\n     Use this parameter if specified subnet exists only to avoid other vnet parameters to specify vnet and subnet you use\n     If you need to use subnet and virtual network from another resource group (not the same as VM resource group), just enter appropriate subnet ID"
             },
             {
               "flags": "-F, --vnet-name <vnet-name>",
