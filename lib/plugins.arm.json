@@ -10204,6 +10204,182 @@
                 }
               ],
               "categories": {}
+            },
+            "package": {
+              "name": "package",
+              "description": "Commands to manage your application package",
+              "fullName": "servicefabric application package",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "copy",
+                  "description": "Copy application package, Example: azure servicefabric application-package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
+                  "fullName": "servicefabric application package copy",
+                  "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+                  "filePath": "commands/serviceFabricPackage._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--application-package-path <applicationPackagePath>",
+                      "required": -28,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-package-path",
+                      "description": "the path of the application package"
+                    },
+                    {
+                      "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                      "required": -33,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--image-store-connection-string",
+                      "description": "the string of the image store connection"
+                    },
+                    {
+                      "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                      "required": -43,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-package-path-in-image-store",
+                      "description": "the path of the application package in image store"
+                    }
+                  ]
+                },
+                {
+                  "name": "test",
+                  "description": "Test application package",
+                  "fullName": "servicefabric application package test",
+                  "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+                  "filePath": "commands/serviceFabricPackage._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--application-package-path <applicationPackagePath>",
+                      "required": -28,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-package-path",
+                      "description": "the path of the application package"
+                    },
+                    {
+                      "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                      "required": -33,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--image-store-connection-string",
+                      "description": "the string of the image store connection"
+                    },
+                    {
+                      "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                      "required": -43,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-package-path-in-image-store",
+                      "description": "the path of the application package in image store"
+                    }
+                  ]
+                },
+                {
+                  "name": "remove",
+                  "description": "Remove application package",
+                  "fullName": "servicefabric application package remove",
+                  "usage": "[options] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+                  "filePath": "commands/serviceFabricPackage._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--image-store-connection-string <imageStoreConnectionString>",
+                      "required": -33,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--image-store-connection-string",
+                      "description": "the string of the image store connection"
+                    },
+                    {
+                      "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
+                      "required": -43,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-package-path-in-image-store",
+                      "description": "the path of the application package in image store"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
             }
           }
         },
@@ -10218,7 +10394,7 @@
               "name": "connect",
               "description": "Connect cluster",
               "fullName": "servicefabric cluster connect",
-              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [caCertPath] [clientKeyPath] [clientCertPath]",
+              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath]",
               "filePath": "commands/serviceFabricCluster._js",
               "options": [
                 {
@@ -10263,14 +10439,6 @@
                   "description": "the endpoint of the client connection"
                 },
                 {
-                  "flags": "--ca-cert-path <caCertPath>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--ca-cert-path",
-                  "description": "the path of the ca cert"
-                },
-                {
                   "flags": "--client-key-path <clientKeyPath>",
                   "required": -19,
                   "optional": 0,
@@ -10285,6 +10453,14 @@
                   "bool": true,
                   "long": "--client-cert-path",
                   "description": "the path of the client cert"
+                },
+                {
+                  "flags": "--ca-cert-path <caCertPath>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ca-cert-path",
+                  "description": "the path of the ca cert"
                 }
               ]
             },
@@ -11163,349 +11339,34 @@
             }
           }
         },
-        "application-package": {
-          "name": "application-package",
-          "description": "Commands to manage your application package",
-          "fullName": "servicefabric application-package",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "copy",
-              "description": "Copy application package, Example: azure servicefabric application-package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
-              "fullName": "servicefabric application-package copy",
-              "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
-              "filePath": "commands/serviceFabricPackage._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--application-package-path <applicationPackagePath>",
-                  "required": -28,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--application-package-path",
-                  "description": "the path of the application package"
-                },
-                {
-                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--image-store-connection-string",
-                  "description": "the string of the image store connection"
-                },
-                {
-                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                  "required": -43,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--application-package-path-in-image-store",
-                  "description": "the path of the application package in image store"
-                }
-              ]
-            },
-            {
-              "name": "test",
-              "description": "Test application package",
-              "fullName": "servicefabric application-package test",
-              "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
-              "filePath": "commands/serviceFabricPackage._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--application-package-path <applicationPackagePath>",
-                  "required": -28,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--application-package-path",
-                  "description": "the path of the application package"
-                },
-                {
-                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--image-store-connection-string",
-                  "description": "the string of the image store connection"
-                },
-                {
-                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                  "required": -43,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--application-package-path-in-image-store",
-                  "description": "the path of the application package in image store"
-                }
-              ]
-            },
-            {
-              "name": "remove",
-              "description": "Remove application package",
-              "fullName": "servicefabric application-package remove",
-              "usage": "[options] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
-              "filePath": "commands/serviceFabricPackage._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--image-store-connection-string <imageStoreConnectionString>",
-                  "required": -33,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--image-store-connection-string",
-                  "description": "the string of the image store connection"
-                },
-                {
-                  "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                  "required": -43,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--application-package-path-in-image-store",
-                  "description": "the path of the application package in image store"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
-        "code-package": {
-          "name": "code-package",
-          "description": "Commands to manage your code package",
-          "fullName": "servicefabric code-package",
+        "code": {
+          "name": "code",
+          "description": "Commands to manage your code",
+          "fullName": "servicefabric code",
           "usage": "[options]",
           "options": [],
           "commands": [],
           "categories": {
-            "deployed": {
-              "name": "deployed",
-              "description": "Commands to manage your deployed code package",
-              "fullName": "servicefabric code-package deployed",
-              "usage": "[options] [command]",
+            "package": {
+              "name": "package",
+              "description": "Commands to manage your code package",
+              "fullName": "servicefabric code package",
+              "usage": "[options]",
               "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show deployed application health",
-                  "fullName": "servicefabric code-package deployed show",
-                  "usage": "[options] [nodeName] [applicationName]",
-                  "filePath": "commands/serviceFabricPackage._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--node-name <nodeName>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--node-name",
-                      "description": "the name of the node"
-                    },
-                    {
-                      "flags": "--application-name <applicationName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--application-name",
-                      "description": "the name of the application"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            }
-          }
-        },
-        "service-package": {
-          "name": "service-package",
-          "description": "Commands to send your service package health report",
-          "fullName": "servicefabric service-package",
-          "usage": "[options]",
-          "options": [],
-          "commands": [],
-          "categories": {
-            "deployed": {
-              "name": "deployed",
-              "description": "Commands to send your service package health report",
-              "fullName": "servicefabric service-package deployed",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show deployed service package",
-                  "fullName": "servicefabric service-package deployed show",
-                  "usage": "[options] [nodeName] [applicationName]",
-                  "filePath": "commands/serviceFabricPackage._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--node-name <nodeName>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--node-name",
-                      "description": "the name of the node"
-                    },
-                    {
-                      "flags": "--application-name <applicationName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--application-name",
-                      "description": "the name of the application"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                }
-              ],
+              "commands": [],
               "categories": {
-                "health": {
-                  "name": "health",
-                  "description": "Commands to manage your deployed service package health",
-                  "fullName": "servicefabric service-package deployed health",
+                "deployed": {
+                  "name": "deployed",
+                  "description": "Commands to manage your deployed code package",
+                  "fullName": "servicefabric code package deployed",
                   "usage": "[options] [command]",
                   "options": [],
                   "commands": [
                     {
                       "name": "show",
-                      "description": "Show deployed service package health",
-                      "fullName": "servicefabric service-package deployed health show",
-                      "usage": "[options] [nodeName] [applicationName] [servicePackageName] [eventsHealthStateFilter]",
+                      "description": "Show deployed application health",
+                      "fullName": "servicefabric code package deployed show",
+                      "usage": "[options] [nodeName] [applicationName]",
                       "filePath": "commands/serviceFabricPackage._js",
                       "options": [
                         {
@@ -11548,22 +11409,6 @@
                           "bool": true,
                           "long": "--application-name",
                           "description": "the name of the application"
-                        },
-                        {
-                          "flags": "--service-package-name <servicePackageName>",
-                          "required": -24,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--service-package-name",
-                          "description": "the name of the service package"
-                        },
-                        {
-                          "flags": "--events-health-state-filter <eventsHealthStateFilter>",
-                          "required": -30,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--events-health-state-filter",
-                          "description": "the filter of the events health state"
                         },
                         {
                           "flags": "-s --select <fields>",
@@ -11575,981 +11420,11 @@
                           "description": "select fields to show"
                         }
                       ]
-                    },
-                    {
-                      "name": "send",
-                      "description": "Send deployed service package health report",
-                      "fullName": "servicefabric service-package deployed health send",
-                      "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
-                      "filePath": "commands/serviceFabricPackage._js",
-                      "options": [
-                        {
-                          "flags": "-v, --verbose",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "short": "-v",
-                          "long": "--verbose",
-                          "description": "use verbose output"
-                        },
-                        {
-                          "flags": "-vv",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "-vv",
-                          "description": "more verbose with debug output"
-                        },
-                        {
-                          "flags": "--json",
-                          "required": 0,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--json",
-                          "description": "use json output"
-                        },
-                        {
-                          "flags": "--node-name <nodeName>",
-                          "required": -13,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--node-name",
-                          "description": "the name of the node"
-                        },
-                        {
-                          "flags": "--application-name <applicationName>",
-                          "required": -20,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--application-name",
-                          "description": "the name of the application"
-                        },
-                        {
-                          "flags": "--service-manifest-name <serviceManifestName>",
-                          "required": -25,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--service-manifest-name",
-                          "description": "the name of the service manifest"
-                        },
-                        {
-                          "flags": "--source-id <sourceId>",
-                          "required": -13,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--source-id",
-                          "description": "the id of the source"
-                        },
-                        {
-                          "flags": "--property <property>",
-                          "required": -12,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--property",
-                          "description": "the property"
-                        },
-                        {
-                          "flags": "--health-state <healthState>",
-                          "required": -16,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--health-state",
-                          "description": "the state of the health"
-                        },
-                        {
-                          "flags": "--description <description>",
-                          "required": -15,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--description",
-                          "description": "the description"
-                        },
-                        {
-                          "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
-                          "required": -32,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--time-to-live-in-milliseconds",
-                          "description": "the time in milliseconds for live"
-                        },
-                        {
-                          "flags": "--sequence-number <sequenceNumber>",
-                          "required": -19,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--sequence-number",
-                          "description": "the number of the sequence"
-                        },
-                        {
-                          "flags": "--remove-when-expired <removeWhenExpired>",
-                          "required": -23,
-                          "optional": 0,
-                          "bool": true,
-                          "long": "--remove-when-expired",
-                          "description": "the boolean of the remove when expired"
-                        }
-                      ]
                     }
                   ],
                   "categories": {}
                 }
               }
-            }
-          }
-        },
-        "partition": {
-          "name": "partition",
-          "description": "Commands to manage your partition",
-          "fullName": "servicefabric partition",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "show",
-              "description": "Show partition",
-              "fullName": "servicefabric partition show",
-              "usage": "[options] [serviceName] [partitionId]",
-              "filePath": "commands/serviceFabricPartition._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--service-name <serviceName>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--service-name",
-                  "description": "the name of the service"
-                },
-                {
-                  "flags": "--partition-id <partitionId>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--partition-id",
-                  "description": "the id of the partition"
-                },
-                {
-                  "flags": "-s --select <fields>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--select",
-                  "description": "select fields to show"
-                }
-              ]
-            },
-            {
-              "name": "repair",
-              "description": "Repair partition",
-              "fullName": "servicefabric partition repair",
-              "usage": "[options] [serviceName] [partitionId]",
-              "filePath": "commands/serviceFabricPartition._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--service-name <serviceName>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--service-name",
-                  "description": "the name of the service"
-                },
-                {
-                  "flags": "--partition-id <partitionId>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--partition-id",
-                  "description": "the id of the partition"
-                }
-              ]
-            }
-          ],
-          "categories": {
-            "health": {
-              "name": "health",
-              "description": "Commands to manage your partition health",
-              "fullName": "servicefabric partition health",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show partition health",
-                  "fullName": "servicefabric partition health show",
-                  "usage": "[options] [partitionId] [eventsHealthStateFilter] [replicasHealthStateFilter]",
-                  "filePath": "commands/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "--events-health-state-filter <eventsHealthStateFilter>",
-                      "required": -30,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--events-health-state-filter",
-                      "description": "the filter of the events health state"
-                    },
-                    {
-                      "flags": "--replicas-health-state-filter <replicasHealthStateFilter>",
-                      "required": -32,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--replicas-health-state-filter",
-                      "description": "the filter of the replicas health state"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                },
-                {
-                  "name": "send",
-                  "description": "Send partition health report",
-                  "fullName": "servicefabric partition health send",
-                  "usage": "[options] [partitionId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
-                  "filePath": "commands/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "--source-id <sourceId>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--source-id",
-                      "description": "the id of the source"
-                    },
-                    {
-                      "flags": "--property <property>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--property",
-                      "description": "the property"
-                    },
-                    {
-                      "flags": "--health-state <healthState>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--health-state",
-                      "description": "the state of the health"
-                    },
-                    {
-                      "flags": "--description <description>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--description",
-                      "description": "the description"
-                    },
-                    {
-                      "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
-                      "required": -32,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--time-to-live-in-milliseconds",
-                      "description": "the time in milliseconds for live"
-                    },
-                    {
-                      "flags": "--sequence-number <sequenceNumber>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--sequence-number",
-                      "description": "the number of the sequence"
-                    },
-                    {
-                      "flags": "--remove-when-expired <removeWhenExpired>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--remove-when-expired",
-                      "description": "the boolean of the remove when expired"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
-            "load": {
-              "name": "load",
-              "description": "Commands to manage your partition load information",
-              "fullName": "servicefabric partition load",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show partition load information",
-                  "fullName": "servicefabric partition load show",
-                  "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                },
-                {
-                  "name": "reset",
-                  "description": "Reset partition",
-                  "fullName": "servicefabric partition load reset",
-                  "usage": "[options] [serviceName] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            }
-          }
-        },
-        "replica": {
-          "name": "replica",
-          "description": "Commands to manage your replica",
-          "fullName": "servicefabric replica",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "show",
-              "description": "Show replica",
-              "fullName": "servicefabric replica show",
-              "usage": "[options] [partitionId] [replicaId]",
-              "filePath": "commands/serviceFabricReplica._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "--partition-id <partitionId>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--partition-id",
-                  "description": "the id of the partition"
-                },
-                {
-                  "flags": "--replica-id <replicaId>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--replica-id",
-                  "description": "the id of the replica"
-                },
-                {
-                  "flags": "-s --select <fields>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--select",
-                  "description": "select fields to show"
-                }
-              ]
-            }
-          ],
-          "categories": {
-            "deployed": {
-              "name": "deployed",
-              "description": "Commands to manage your deployed replica",
-              "fullName": "servicefabric replica deployed",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show deployed replica",
-                  "fullName": "servicefabric replica deployed show",
-                  "usage": "[options] [nodeName] [applicationName]",
-                  "filePath": "commands/serviceFabricReplica._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--node-name <nodeName>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--node-name",
-                      "description": "the name of the node"
-                    },
-                    {
-                      "flags": "--application-name <applicationName>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--application-name",
-                      "description": "the name of the application"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                },
-                {
-                  "name": "detail",
-                  "description": "Show deployed replica detail",
-                  "fullName": "servicefabric replica deployed detail",
-                  "usage": "[options] [nodeName] [partitionName] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--node-name <nodeName>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--node-name",
-                      "description": "the name of the node"
-                    },
-                    {
-                      "flags": "--partition-name <partitionName>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-name",
-                      "description": "the name of the partition"
-                    },
-                    {
-                      "flags": "--replica-id <replicaId>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--replica-id",
-                      "description": "the id of the replica"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
-            "health": {
-              "name": "health",
-              "description": "Commands to manage your replica health",
-              "fullName": "servicefabric replica health",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show replica health",
-                  "fullName": "servicefabric replica health show",
-                  "usage": "[options] [partitionId] [replicaId] [eventsHealthStateFilter]",
-                  "filePath": "commands/serviceFabricReplica._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "--replica-id <replicaId>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--replica-id",
-                      "description": "the id of the replicas"
-                    },
-                    {
-                      "flags": "--events-health-state-filter <eventsHealthStateFilter>",
-                      "required": -30,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--events-health-state-filter",
-                      "description": "the filter of the events health state"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                },
-                {
-                  "name": "send",
-                  "description": "Send replica health report",
-                  "fullName": "servicefabric replica health send",
-                  "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
-                  "filePath": "commands/serviceFabricReplica._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "--replica-id <replicaId>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--replica-id",
-                      "description": "the id of the replica"
-                    },
-                    {
-                      "flags": "--source-id <sourceId>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--source-id",
-                      "description": "the id of the source"
-                    },
-                    {
-                      "flags": "--property <property>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--property",
-                      "description": "the property"
-                    },
-                    {
-                      "flags": "--health-state <healthState>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--health-state",
-                      "description": "the state of the health"
-                    },
-                    {
-                      "flags": "--description <description>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--description",
-                      "description": "the description"
-                    },
-                    {
-                      "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
-                      "required": -32,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--time-to-live-in-milliseconds",
-                      "description": "the time in milliseconds for live"
-                    },
-                    {
-                      "flags": "--sequence-number <sequenceNumber>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--sequence-number",
-                      "description": "the number of the sequence"
-                    },
-                    {
-                      "flags": "--remove-when-expired <removeWhenExpired>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--remove-when-expired",
-                      "description": "the boolean of the remove when expired"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            },
-            "load": {
-              "name": "load",
-              "description": "Commands to manage your replica load information",
-              "fullName": "servicefabric replica load",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "show",
-                  "description": "Show replica load information",
-                  "fullName": "servicefabric replica load show",
-                  "usage": "[options] [partitionId] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "--partition-id <partitionId>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--partition-id",
-                      "description": "the id of the partition"
-                    },
-                    {
-                      "flags": "--replica-id <replicaId>",
-                      "required": -14,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--replica-id",
-                      "description": "the id of the replica"
-                    },
-                    {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--select",
-                      "description": "select fields to show"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
             }
           }
         },
@@ -13014,6 +11889,285 @@
             }
           ],
           "categories": {
+            "package": {
+              "name": "package",
+              "description": "Commands to send your service package",
+              "fullName": "servicefabric service package",
+              "usage": "[options]",
+              "options": [],
+              "commands": [],
+              "categories": {
+                "deployed": {
+                  "name": "deployed",
+                  "description": "Commands to send your service package health report",
+                  "fullName": "servicefabric service package deployed",
+                  "usage": "[options] [command]",
+                  "options": [],
+                  "commands": [
+                    {
+                      "name": "show",
+                      "description": "Show deployed service package",
+                      "fullName": "servicefabric service package deployed show",
+                      "usage": "[options] [nodeName] [applicationName]",
+                      "filePath": "commands/serviceFabricPackage._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "--node-name <nodeName>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--node-name",
+                          "description": "the name of the node"
+                        },
+                        {
+                          "flags": "--application-name <applicationName>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--application-name",
+                          "description": "the name of the application"
+                        },
+                        {
+                          "flags": "-s --select <fields>",
+                          "required": -13,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--select",
+                          "description": "select fields to show"
+                        }
+                      ]
+                    }
+                  ],
+                  "categories": {
+                    "health": {
+                      "name": "health",
+                      "description": "Commands to manage your deployed service package health",
+                      "fullName": "servicefabric service package deployed health",
+                      "usage": "[options] [command]",
+                      "options": [],
+                      "commands": [
+                        {
+                          "name": "show",
+                          "description": "Show deployed service package health",
+                          "fullName": "servicefabric service package deployed health show",
+                          "usage": "[options] [nodeName] [applicationName] [servicePackageName] [eventsHealthStateFilter]",
+                          "filePath": "commands/serviceFabricPackage._js",
+                          "options": [
+                            {
+                              "flags": "-v, --verbose",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "short": "-v",
+                              "long": "--verbose",
+                              "description": "use verbose output"
+                            },
+                            {
+                              "flags": "-vv",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "-vv",
+                              "description": "more verbose with debug output"
+                            },
+                            {
+                              "flags": "--json",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--json",
+                              "description": "use json output"
+                            },
+                            {
+                              "flags": "--node-name <nodeName>",
+                              "required": -13,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--node-name",
+                              "description": "the name of the node"
+                            },
+                            {
+                              "flags": "--application-name <applicationName>",
+                              "required": -20,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--application-name",
+                              "description": "the name of the application"
+                            },
+                            {
+                              "flags": "--service-package-name <servicePackageName>",
+                              "required": -24,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--service-package-name",
+                              "description": "the name of the service package"
+                            },
+                            {
+                              "flags": "--events-health-state-filter <eventsHealthStateFilter>",
+                              "required": -30,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--events-health-state-filter",
+                              "description": "the filter of the events health state"
+                            },
+                            {
+                              "flags": "-s --select <fields>",
+                              "required": -13,
+                              "optional": 0,
+                              "bool": true,
+                              "short": "-s",
+                              "long": "--select",
+                              "description": "select fields to show"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "send",
+                          "description": "Send deployed service package health report",
+                          "fullName": "servicefabric service package deployed health send",
+                          "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                          "filePath": "commands/serviceFabricPackage._js",
+                          "options": [
+                            {
+                              "flags": "-v, --verbose",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "short": "-v",
+                              "long": "--verbose",
+                              "description": "use verbose output"
+                            },
+                            {
+                              "flags": "-vv",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "-vv",
+                              "description": "more verbose with debug output"
+                            },
+                            {
+                              "flags": "--json",
+                              "required": 0,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--json",
+                              "description": "use json output"
+                            },
+                            {
+                              "flags": "--node-name <nodeName>",
+                              "required": -13,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--node-name",
+                              "description": "the name of the node"
+                            },
+                            {
+                              "flags": "--application-name <applicationName>",
+                              "required": -20,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--application-name",
+                              "description": "the name of the application"
+                            },
+                            {
+                              "flags": "--service-manifest-name <serviceManifestName>",
+                              "required": -25,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--service-manifest-name",
+                              "description": "the name of the service manifest"
+                            },
+                            {
+                              "flags": "--source-id <sourceId>",
+                              "required": -13,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--source-id",
+                              "description": "the id of the source"
+                            },
+                            {
+                              "flags": "--property <property>",
+                              "required": -12,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--property",
+                              "description": "the property"
+                            },
+                            {
+                              "flags": "--health-state <healthState>",
+                              "required": -16,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--health-state",
+                              "description": "the state of the health"
+                            },
+                            {
+                              "flags": "--description <description>",
+                              "required": -15,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--description",
+                              "description": "the description"
+                            },
+                            {
+                              "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
+                              "required": -32,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--time-to-live-in-milliseconds",
+                              "description": "the time in milliseconds for live"
+                            },
+                            {
+                              "flags": "--sequence-number <sequenceNumber>",
+                              "required": -19,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--sequence-number",
+                              "description": "the number of the sequence"
+                            },
+                            {
+                              "flags": "--remove-when-expired <removeWhenExpired>",
+                              "required": -23,
+                              "optional": 0,
+                              "bool": true,
+                              "long": "--remove-when-expired",
+                              "description": "the boolean of the remove when expired"
+                            }
+                          ]
+                        }
+                      ],
+                      "categories": {}
+                    }
+                  }
+                }
+              }
+            },
             "template": {
               "name": "template",
               "description": "Commands to manage your service template",
@@ -14067,6 +13221,862 @@
                   "categories": {}
                 }
               }
+            }
+          }
+        },
+        "partition": {
+          "name": "partition",
+          "description": "Commands to manage your partition",
+          "fullName": "servicefabric partition",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Show partition",
+              "fullName": "servicefabric partition show",
+              "usage": "[options] [serviceName] [partitionId]",
+              "filePath": "commands/serviceFabricPartition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the name of the service"
+                },
+                {
+                  "flags": "--partition-id <partitionId>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--partition-id",
+                  "description": "the id of the partition"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
+                }
+              ]
+            },
+            {
+              "name": "repair",
+              "description": "Repair partition",
+              "fullName": "servicefabric partition repair",
+              "usage": "[options] [serviceName] [partitionId]",
+              "filePath": "commands/serviceFabricPartition._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <serviceName>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "the name of the service"
+                },
+                {
+                  "flags": "--partition-id <partitionId>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--partition-id",
+                  "description": "the id of the partition"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "health": {
+              "name": "health",
+              "description": "Commands to manage your partition health",
+              "fullName": "servicefabric partition health",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show partition health",
+                  "fullName": "servicefabric partition health show",
+                  "usage": "[options] [partitionId] [eventsHealthStateFilter] [replicasHealthStateFilter]",
+                  "filePath": "commands/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "--events-health-state-filter <eventsHealthStateFilter>",
+                      "required": -30,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--events-health-state-filter",
+                      "description": "the filter of the events health state"
+                    },
+                    {
+                      "flags": "--replicas-health-state-filter <replicasHealthStateFilter>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--replicas-health-state-filter",
+                      "description": "the filter of the replicas health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                },
+                {
+                  "name": "send",
+                  "description": "Send partition health report",
+                  "fullName": "servicefabric partition health send",
+                  "usage": "[options] [partitionId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "filePath": "commands/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "--source-id <sourceId>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-id",
+                      "description": "the id of the source"
+                    },
+                    {
+                      "flags": "--property <property>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--property",
+                      "description": "the property"
+                    },
+                    {
+                      "flags": "--health-state <healthState>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--health-state",
+                      "description": "the state of the health"
+                    },
+                    {
+                      "flags": "--description <description>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--description",
+                      "description": "the description"
+                    },
+                    {
+                      "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--time-to-live-in-milliseconds",
+                      "description": "the time in milliseconds for live"
+                    },
+                    {
+                      "flags": "--sequence-number <sequenceNumber>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sequence-number",
+                      "description": "the number of the sequence"
+                    },
+                    {
+                      "flags": "--remove-when-expired <removeWhenExpired>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--remove-when-expired",
+                      "description": "the boolean of the remove when expired"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "load": {
+              "name": "load",
+              "description": "Commands to manage your partition load information",
+              "fullName": "servicefabric partition load",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show partition load information",
+                  "fullName": "servicefabric partition load show",
+                  "usage": "[options] [partitionId]",
+                  "filePath": "commands/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                },
+                {
+                  "name": "reset",
+                  "description": "Reset partition",
+                  "fullName": "servicefabric partition load reset",
+                  "usage": "[options] [serviceName] [partitionId]",
+                  "filePath": "commands/serviceFabricPartition._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
+        "replica": {
+          "name": "replica",
+          "description": "Commands to manage your replica",
+          "fullName": "servicefabric replica",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Show replica",
+              "fullName": "servicefabric replica show",
+              "usage": "[options] [partitionId] [replicaId]",
+              "filePath": "commands/serviceFabricReplica._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--partition-id <partitionId>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--partition-id",
+                  "description": "the id of the partition"
+                },
+                {
+                  "flags": "--replica-id <replicaId>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--replica-id",
+                  "description": "the id of the replica"
+                },
+                {
+                  "flags": "-s --select <fields>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--select",
+                  "description": "select fields to show"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "deployed": {
+              "name": "deployed",
+              "description": "Commands to manage your deployed replica",
+              "fullName": "servicefabric replica deployed",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show deployed replica",
+                  "fullName": "servicefabric replica deployed show",
+                  "usage": "[options] [nodeName] [applicationName]",
+                  "filePath": "commands/serviceFabricReplica._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--node-name <nodeName>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-name",
+                      "description": "the name of the node"
+                    },
+                    {
+                      "flags": "--application-name <applicationName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-name",
+                      "description": "the name of the application"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                },
+                {
+                  "name": "detail",
+                  "description": "Show deployed replica detail",
+                  "fullName": "servicefabric replica deployed detail",
+                  "usage": "[options] [nodeName] [partitionName] [replicaId]",
+                  "filePath": "commands/serviceFabricReplica._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--node-name <nodeName>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--node-name",
+                      "description": "the name of the node"
+                    },
+                    {
+                      "flags": "--partition-name <partitionName>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-name",
+                      "description": "the name of the partition"
+                    },
+                    {
+                      "flags": "--replica-id <replicaId>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--replica-id",
+                      "description": "the id of the replica"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "health": {
+              "name": "health",
+              "description": "Commands to manage your replica health",
+              "fullName": "servicefabric replica health",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show replica health",
+                  "fullName": "servicefabric replica health show",
+                  "usage": "[options] [partitionId] [replicaId] [eventsHealthStateFilter]",
+                  "filePath": "commands/serviceFabricReplica._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "--replica-id <replicaId>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--replica-id",
+                      "description": "the id of the replicas"
+                    },
+                    {
+                      "flags": "--events-health-state-filter <eventsHealthStateFilter>",
+                      "required": -30,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--events-health-state-filter",
+                      "description": "the filter of the events health state"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                },
+                {
+                  "name": "send",
+                  "description": "Send replica health report",
+                  "fullName": "servicefabric replica health send",
+                  "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "filePath": "commands/serviceFabricReplica._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "--replica-id <replicaId>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--replica-id",
+                      "description": "the id of the replica"
+                    },
+                    {
+                      "flags": "--source-id <sourceId>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--source-id",
+                      "description": "the id of the source"
+                    },
+                    {
+                      "flags": "--property <property>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--property",
+                      "description": "the property"
+                    },
+                    {
+                      "flags": "--health-state <healthState>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--health-state",
+                      "description": "the state of the health"
+                    },
+                    {
+                      "flags": "--description <description>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--description",
+                      "description": "the description"
+                    },
+                    {
+                      "flags": "--time-to-live-in-milliseconds <timeToLiveInMilliseconds>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--time-to-live-in-milliseconds",
+                      "description": "the time in milliseconds for live"
+                    },
+                    {
+                      "flags": "--sequence-number <sequenceNumber>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--sequence-number",
+                      "description": "the number of the sequence"
+                    },
+                    {
+                      "flags": "--remove-when-expired <removeWhenExpired>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--remove-when-expired",
+                      "description": "the boolean of the remove when expired"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "load": {
+              "name": "load",
+              "description": "Commands to manage your replica load information",
+              "fullName": "servicefabric replica load",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Show replica load information",
+                  "fullName": "servicefabric replica load show",
+                  "usage": "[options] [partitionId] [replicaId]",
+                  "filePath": "commands/serviceFabricReplica._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--partition-id <partitionId>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--partition-id",
+                      "description": "the id of the partition"
+                    },
+                    {
+                      "flags": "--replica-id <replicaId>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--replica-id",
+                      "description": "the id of the replica"
+                    },
+                    {
+                      "flags": "-s --select <fields>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--select",
+                      "description": "select fields to show"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
             }
           }
         }

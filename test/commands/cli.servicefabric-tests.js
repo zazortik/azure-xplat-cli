@@ -62,7 +62,7 @@ describe('Service Fabric', function () {
     });
     
     it('should copy application package', function (done) {
-      suite.execute('servicefabric application-package copy ' + applicationPackagePath + ' fabric:ImageStore' + ' --json', function (result) {
+      suite.execute('servicefabric application package copy ' + applicationPackagePath + ' fabric:ImageStore' + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
