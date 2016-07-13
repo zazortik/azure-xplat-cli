@@ -9,3 +9,7 @@ test/
 
 # Tools #
 tools/
+
+# Documentation #
+/Documentation/
+/features/
