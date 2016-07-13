@@ -10394,7 +10394,7 @@
               "name": "connect",
               "description": "Connect cluster",
               "fullName": "servicefabric cluster connect",
-              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath]",
+              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath] [strictSsl] [rejectUnauthorized]",
               "filePath": "commands/serviceFabricCluster._js",
               "options": [
                 {
@@ -10461,6 +10461,22 @@
                   "bool": true,
                   "long": "--ca-cert-path",
                   "description": "the path of the ca cert"
+                },
+                {
+                  "flags": "--strict-ssl <strictSsl>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--strict-ssl",
+                  "description": "the boolean of the strict ssl"
+                },
+                {
+                  "flags": "--reject-unauthorized <rejectUnauthorized>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--reject-unauthorized",
+                  "description": "the boolean of the reject unauthorized"
                 }
               ]
             },
