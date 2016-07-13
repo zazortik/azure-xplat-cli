@@ -29,91 +29,91 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-03-20-preview')
-  .reply(200, "{\"value\":[{\"jobId\":\"b2a1acfd-53a6-4e16-8143-0e347c835338\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:53:58.4032058+00:00\",\"endTime\":\"2016-04-28T18:54:00.5594793+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6781d22f-714c-4a36-9833-f49c37bac737\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:50.8713159+00:00\",\"startTime\":\"2016-04-28T18:53:30.715442+00:00\",\"endTime\":\"2016-04-28T18:53:36.9342564+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"ba6f57c8-e7a5-4209-853a-fad86348099a\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:48.8087978+00:00\",\"startTime\":\"2016-04-28T18:53:27.6216652+00:00\",\"endTime\":\"2016-04-28T18:53:33.8248483+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
+  .reply(200, "{\"value\":[{\"jobId\":\"b1ee2084-84c6-49a4-8932-57e66d54a1f0\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:15.0974265+00:00\",\"startTime\":\"2016-06-16T22:12:45.4570936+00:00\",\"endTime\":\"2016-06-16T22:12:58.4415963+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"4a5a0a0c-9307-4ced-bafe-972d0fea5b22\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:14:19.2861221+00:00\",\"endTime\":\"2016-06-16T22:14:27.629951+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6bd04ac5-c839-4741-9aa8-e945c2e70fd2\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:09.4254986+00:00\",\"startTime\":\"2016-06-16T22:12:48.6758757+00:00\",\"endTime\":\"2016-06-16T22:13:01.6603741+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7dd9ea4b-7f48-4960-83e7-be8443dc28c9',
+  'x-ms-request-id': '79a4929f-b5ba-44e2-a545-838a9d2ce640',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:03 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-03-20-preview')
-  .reply(200, "{\"value\":[{\"jobId\":\"b2a1acfd-53a6-4e16-8143-0e347c835338\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:53:58.4032058+00:00\",\"endTime\":\"2016-04-28T18:54:00.5594793+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6781d22f-714c-4a36-9833-f49c37bac737\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:50.8713159+00:00\",\"startTime\":\"2016-04-28T18:53:30.715442+00:00\",\"endTime\":\"2016-04-28T18:53:36.9342564+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"ba6f57c8-e7a5-4209-853a-fad86348099a\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:48.8087978+00:00\",\"startTime\":\"2016-04-28T18:53:27.6216652+00:00\",\"endTime\":\"2016-04-28T18:53:33.8248483+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
+  .reply(200, "{\"value\":[{\"jobId\":\"b1ee2084-84c6-49a4-8932-57e66d54a1f0\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:15.0974265+00:00\",\"startTime\":\"2016-06-16T22:12:45.4570936+00:00\",\"endTime\":\"2016-06-16T22:12:58.4415963+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"4a5a0a0c-9307-4ced-bafe-972d0fea5b22\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:14:19.2861221+00:00\",\"endTime\":\"2016-06-16T22:14:27.629951+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6bd04ac5-c839-4741-9aa8-e945c2e70fd2\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:09.4254986+00:00\",\"startTime\":\"2016-06-16T22:12:48.6758757+00:00\",\"endTime\":\"2016-06-16T22:13:01.6603741+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7dd9ea4b-7f48-4960-83e7-be8443dc28c9',
+  'x-ms-request-id': '79a4929f-b5ba-44e2-a545-838a9d2ce640',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:03 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?$filter=submitTime%20ge%20datetimeoffset%272016-04-22%27&api-version=2016-03-20-preview')
-  .reply(200, "{\"value\":[{\"jobId\":\"b2a1acfd-53a6-4e16-8143-0e347c835338\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:53:58.4032058+00:00\",\"endTime\":\"2016-04-28T18:54:00.5594793+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6781d22f-714c-4a36-9833-f49c37bac737\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:50.8713159+00:00\",\"startTime\":\"2016-04-28T18:53:30.715442+00:00\",\"endTime\":\"2016-04-28T18:53:36.9342564+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"ba6f57c8-e7a5-4209-853a-fad86348099a\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:48.8087978+00:00\",\"startTime\":\"2016-04-28T18:53:27.6216652+00:00\",\"endTime\":\"2016-04-28T18:53:33.8248483+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
+  .reply(200, "{\"value\":[{\"jobId\":\"b1ee2084-84c6-49a4-8932-57e66d54a1f0\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:15.0974265+00:00\",\"startTime\":\"2016-06-16T22:12:45.4570936+00:00\",\"endTime\":\"2016-06-16T22:12:58.4415963+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"4a5a0a0c-9307-4ced-bafe-972d0fea5b22\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:14:19.2861221+00:00\",\"endTime\":\"2016-06-16T22:14:27.629951+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6bd04ac5-c839-4741-9aa8-e945c2e70fd2\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:09.4254986+00:00\",\"startTime\":\"2016-06-16T22:12:48.6758757+00:00\",\"endTime\":\"2016-06-16T22:13:01.6603741+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '93fe6d51-9617-40a1-9e6b-2eccdee75eb6',
+  'x-ms-request-id': '1a783706-4369-4eac-924e-7faa7f058696',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:03 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?$filter=submitTime%20ge%20datetimeoffset%272016-04-22%27&api-version=2016-03-20-preview')
-  .reply(200, "{\"value\":[{\"jobId\":\"b2a1acfd-53a6-4e16-8143-0e347c835338\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:53:58.4032058+00:00\",\"endTime\":\"2016-04-28T18:54:00.5594793+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6781d22f-714c-4a36-9833-f49c37bac737\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:50.8713159+00:00\",\"startTime\":\"2016-04-28T18:53:30.715442+00:00\",\"endTime\":\"2016-04-28T18:53:36.9342564+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"ba6f57c8-e7a5-4209-853a-fad86348099a\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-04-28T18:52:48.8087978+00:00\",\"startTime\":\"2016-04-28T18:53:27.6216652+00:00\",\"endTime\":\"2016-04-28T18:53:33.8248483+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
+  .reply(200, "{\"value\":[{\"jobId\":\"b1ee2084-84c6-49a4-8932-57e66d54a1f0\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:15.0974265+00:00\",\"startTime\":\"2016-06-16T22:12:45.4570936+00:00\",\"endTime\":\"2016-06-16T22:12:58.4415963+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"},{\"jobId\":\"4a5a0a0c-9307-4ced-bafe-972d0fea5b22\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:14:19.2861221+00:00\",\"endTime\":\"2016-06-16T22:14:27.629951+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\"},{\"jobId\":\"6bd04ac5-c839-4741-9aa8-e945c2e70fd2\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-06-16T22:12:09.4254986+00:00\",\"startTime\":\"2016-06-16T22:12:48.6758757+00:00\",\"endTime\":\"2016-06-16T22:13:01.6603741+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\"}]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '93fe6d51-9617-40a1-9e6b-2eccdee75eb6',
+  'x-ms-request-id': '1a783706-4369-4eac-924e-7faa7f058696',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:03 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?$filter=submitTime%20lt%20datetimeoffset%272016-04-21%27&api-version=2016-03-20-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '241573db-d2a0-44b8-a2fd-238c59729162',
+  'x-ms-request-id': '5541321f-b7a4-4a42-a5aa-15df29264f6e',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:04 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla3882.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla5313.azuredatalakeanalytics.net:443')
   .get('/Jobs?$filter=submitTime%20lt%20datetimeoffset%272016-04-21%27&api-version=2016-03-20-preview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '241573db-d2a0-44b8-a2fd-238c59729162',
+  'x-ms-request-id': '5541321f-b7a4-4a42-a5aa-15df29264f6e',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 28 Apr 2016 18:54:04 GMT',
+  date: 'Thu, 16 Jun 2016 22:14:30 GMT',
   connection: 'close' });
  return result; }]];

@@ -330,7 +330,7 @@ describe('arm', function () {
   });
   describe('Data Lake Analytics Catalog', function () {
     it('list commands should work', function (done) {
-      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
+      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY BUCKETS (UserId) HASH (Region)); ALTER TABLE ' + dbName + '.dbo.' + tableName + ' ADD IF NOT EXISTS PARTITION (1); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
       // Get the default database (master) and all databases.
       suite.execute('datalake analytics catalog list --accountName %s --itemType database --itemPath master --json', jobAndCatalogAccountName, function (result) {
         result.exitStatus.should.be.equal(0);
@@ -370,40 +370,54 @@ describe('arm', function () {
                       var catalogItemJson = JSON.parse(result.text);
                       catalogItemJson.length.should.be.equal(1);
                       catalogItemJson[0].name.should.be.equal(tableName);
-                      // list all tvfs in the db and confirm that there is one entry.
-                      suite.execute('datalake analytics catalog list --accountName %s --itemType tablevaluedfunction --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
+                      // list all table partitions in the db and confirm that there is one entry.
+                      suite.execute('datalake analytics catalog list --accountName %s --itemType tablepartition --itemPath ' + dbName + '.dbo.' + tableName + ' --json', jobAndCatalogAccountName, function (result) {
                         result.exitStatus.should.be.equal(0);
                         var catalogItemJson = JSON.parse(result.text);
                         catalogItemJson.length.should.be.equal(1);
-                        // now get the specific tvf we created
-                        suite.execute('datalake analytics catalog list --accountName %s --itemType tablevaluedfunction --itemPath ' + dbName + '.dbo.' + tvfName + ' --json', jobAndCatalogAccountName, function (result) {
+                        var tablePartitionName = catalogItemJson[0].name;
+                        // now get the specific table partition we created
+                        suite.execute('datalake analytics catalog list --accountName %s --itemType tablepartition --itemPath ' + dbName + '.dbo.' + tableName + '.[' + tablePartitionName + '] --json', jobAndCatalogAccountName, function (result) {
                           result.exitStatus.should.be.equal(0);
                           var catalogItemJson = JSON.parse(result.text);
                           catalogItemJson.length.should.be.equal(1);
-                          catalogItemJson[0].name.should.be.equal(tvfName);
-                          // list all views in the db and confirm that there is one entry.
-                          suite.execute('datalake analytics catalog list --accountName %s --itemType view --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
+                          catalogItemJson[0].name.should.be.equal(tablePartitionName);
+                          // list all tvfs in the db and confirm that there is one entry.
+                          suite.execute('datalake analytics catalog list --accountName %s --itemType tablevaluedfunction --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                             result.exitStatus.should.be.equal(0);
                             var catalogItemJson = JSON.parse(result.text);
                             catalogItemJson.length.should.be.equal(1);
-                            // now get the specific view we created
-                            suite.execute('datalake analytics catalog list --accountName %s --itemType view --itemPath ' + dbName + '.dbo.' + viewName + ' --json', jobAndCatalogAccountName, function (result) {
+                            // now get the specific tvf we created
+                            suite.execute('datalake analytics catalog list --accountName %s --itemType tablevaluedfunction --itemPath ' + dbName + '.dbo.' + tvfName + ' --json', jobAndCatalogAccountName, function (result) {
                               result.exitStatus.should.be.equal(0);
                               var catalogItemJson = JSON.parse(result.text);
                               catalogItemJson.length.should.be.equal(1);
-                              catalogItemJson[0].name.should.be.equal(viewName);
-                              // list all procedures in the db and confirm that there is one entry.
-                              suite.execute('datalake analytics catalog list --accountName %s --itemType procedure --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
+                              catalogItemJson[0].name.should.be.equal(tvfName);
+                              // list all views in the db and confirm that there is one entry.
+                              suite.execute('datalake analytics catalog list --accountName %s --itemType view --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
                                 result.exitStatus.should.be.equal(0);
                                 var catalogItemJson = JSON.parse(result.text);
                                 catalogItemJson.length.should.be.equal(1);
-                                // now get the specific procedure we created
-                                suite.execute('datalake analytics catalog list --accountName %s --itemType procedure --itemPath ' + dbName + '.dbo.' + procName + ' --json', jobAndCatalogAccountName, function (result) {
+                                // now get the specific view we created
+                                suite.execute('datalake analytics catalog list --accountName %s --itemType view --itemPath ' + dbName + '.dbo.' + viewName + ' --json', jobAndCatalogAccountName, function (result) {
                                   result.exitStatus.should.be.equal(0);
                                   var catalogItemJson = JSON.parse(result.text);
                                   catalogItemJson.length.should.be.equal(1);
-                                  catalogItemJson[0].name.should.be.equal(procName);
-                                  done();
+                                  catalogItemJson[0].name.should.be.equal(viewName);
+                                  // list all procedures in the db and confirm that there is one entry.
+                                  suite.execute('datalake analytics catalog list --accountName %s --itemType procedure --itemPath ' + dbName + '.dbo --json', jobAndCatalogAccountName, function (result) {
+                                    result.exitStatus.should.be.equal(0);
+                                    var catalogItemJson = JSON.parse(result.text);
+                                    catalogItemJson.length.should.be.equal(1);
+                                    // now get the specific procedure we created
+                                    suite.execute('datalake analytics catalog list --accountName %s --itemType procedure --itemPath ' + dbName + '.dbo.' + procName + ' --json', jobAndCatalogAccountName, function (result) {
+                                      result.exitStatus.should.be.equal(0);
+                                      var catalogItemJson = JSON.parse(result.text);
+                                      catalogItemJson.length.should.be.equal(1);
+                                      catalogItemJson[0].name.should.be.equal(procName);
+                                      done();
+                                    });
+                                  });
                                 });
                               });
                             });
