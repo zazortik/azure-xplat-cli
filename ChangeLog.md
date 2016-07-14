@@ -1,3 +1,202 @@
+##2016-07-07 Version 0.10.2
+* Storage
+  * Added new command `azure storage account sas create`
+  * Added options `--protocol` and `--ip-range` for the service SAS commands
+	- `azure storage container sas create`
+	- `azure storage blob sas create`
+	- `azure storage queue sas create`
+	- `azure storage table sas create`
+	- `azure storage share sas create`
+	- `azure storage file sas create`
+  * Added support for permission `c` (Create) and `a` (Add) for the service SAS commands
+	- `azure storage container sas create`
+	- `azure storage blob sas create`
+  * Added support for permission `c` (Create) for the service SAS commands
+	- `azure storage share sas create`
+	- `azure storage file sas create`
+  * Added support for the option `--file` for `azure storage metrics set` and `azure storage metrics show` commands
+* Network
+  * Fixed issue importing record set in case when record name is equal to any record type
+* Compute
+  * Fixed VMSS Quick-Create issue
+  * Fixed issues #2717, #2767, #2879, #2926, #2960, #2961
+* General
+  * Added new commands
+	*  `azure ad app set`
+	*  `azure ad group member add | delete| check`
+	*  `azure ad sp set` 
+  * Added support for `ad user create|delete| memberGroups list` commands
+  * Added support for setting reply url for an application while creating it
+  * Added support for `ad group create|delete` commands
+  * Fixed issues #2919, #2937, #2939
+
+##2016-06-01 Version 0.10.1
+* Storage
+  * Integrated with the GA version of Azure Storage Client Library for Node.js
+  * Added support for blob snapshot commands
+    * Added new commands `azure storage blob snapshot`
+    * Added new option `--snapshot` and `--delete-snapshots` for `azure storage blob delete` 
+  * Added support for blob/container lease commands
+    * Added new commands `azure storage blob/container lease acquire`
+    * Added new commands `azure storage blob/container lease renew`
+    * Added new commands `azure storage blob/container lease change`
+    * Added new commands `azure storage blob/container lease release`
+    * Added new commands `azure storage blob/container lease break`
+    * Added `--lease` option to existing commands which can be performed with a lease ID
+  * Added support for running CLI commands with Azure Storage emulator
+  * Improved option description for command `azure storage blob delete`
+* PowerBiEmbedded
+  * Added the following Power BI Embedded commands with tests
+    * `azure powerbi create`
+    * `azure powerbi set`
+    * `azure powerbi delete`
+    * `azure powerbi list`
+    * `azure powerbi get-keys`
+    * `azure powerbi regenerate-key`
+* HdInsight
+  * Added --applicationName to script-action create command for Edgenode customization
+  * Added randomly generated appName
+* DevTestLabs
+  * Added commands for Microsoft.DevTestLab provider
+* Network
+  * Updated validator package and improved common validation logic
+  * Added the following express-route peerings commands
+    * `azure network express-route peerings create`
+    * `azure network express-route peerings set`
+    * `azure network express-route peerings show`
+    * `azure network express-route peerings list`
+    * `azure network express-route peerings delete`
+  * Used new api version for networking commands: 2016-03-30 (azure-arm-network: 0.13.2)
+  * Added InternalDomainNameSuffix propert for `azure network nic show`
+  * Added --ip-version option to specify ip version of IPv4 or IPv6 for `azure network public-ip create`
+  * Added `azure network nic ip-config` to manage multiple ip configurations inside nic
+  * Used `azure network nic ip-config` instead of `azure network nic set` to modify ip configuration
+  * Changed `azure network nic address-pool/inbound-nat-rule` to `azure network nic ip-config address-pool/inbound-nat-rule`
+  * Renamed option `-n, --name` to `-c, --nic-name` in `azure network nic ip-config address-pool/inbound-nat-rule` commands
+  * Renamed app gateway option names to common style 
+  * Fixed issue with app gateway ssl cert modifications
+  * Fixed issues #2876, #2877, #2878
+* Compute
+  * Updated vm enable-diag command to use JSON config for Linux
+  * VMSS scale out command
+  * Fixed BGInfo's major version search issue
+* KeyVault
+  * Fixed issues #2709, #2742 and #2800
+* CDN
+  * Akamai integretion for Azure CDN
+* ResourceManager
+  * Display provisioning status message during create deployment
+  * Added jsonLint.js to display the line number in exception when parsing json fails
+  * Fixed issue #1956
+* ServerManagement
+  * Added commands for Server Management Tools service
+* Batch
+  * Add parameterized way to create/update batch entities
+  * Added the more parameters to the following commands to enable these operations without providing a JSON file
+    * `azure batch job create`
+    * `azure batch job set`
+    * `azure batch job-schedule create`
+    * `azure batch job-schedule set`
+  * Added more pool and task related commands
+  * Changed default entity update behavior to patch. *
+* General
+  * Removed buffer's encoding to fix issues #2820 #2825 #2827 #2829 #2846
+
+##2016-05-04 Version 0.10.0
+* Storage
+  * Updated dependency of 'azure-arm-storage' to '0.13.1-preview'
+  * Replaced `--type` by `--sku-name` in `azure storage account create` and `azure storage account set`
+  * Added `--access-tier` to `azure storage account create` and `azure storage account set`
+  * Added `--enable-encryption-service` to `azure storage account create` and `azure storage account set`
+  * Added `--kind` to `azure storage account create`
+  * Added `--disable-encryption-service` to `azure storage account set`
+* HdInsight
+  * Added an option to provide `--clusterTier Standard|Premium` to `azure hdinsight cluster create` command
+  * Added options to `azure hdinsight config create` command
+  * Added deprecation warning message for ASM HDInsight commands
+* Network
+  * Fixed #2768 - ARM: Application gateway with custom backend port
+  * Updated help for azure network *-migration in ASM
+  * Updated `azure-asm-network` package to 0.11.0
+* ResourceManager
+  * Fixed #2810 - Prettify json output before writing to file for RG export and deployment save commands
+  * Policy commands added for: creating, updating, deleting and getting policy definitions and policy assignments
+  * Fixed the issue related to bubbling up nested error messages for the deployments. With this fix, user will get more meaningful error messages when the deployment fails.
+* Compute
+  * Update Tests
+  * AVSet Command
+  * Premium VM & VMSS Commands
+  * Update ARM ACS Commands
+  * Update ASM Migration Commands
+  * VM/SS Image Aliases
+* DataLake
+  * Fixed issue: #2798
+  * Updated ADL to the latest packages and fixed a bug with deleting all secrets under a database
+* Batch
+  * Changed the node scheduling related commands to sub category commands.
+  * Added certificate/compute node related commands
+  * Modified the structure of `azure batch node get-remote-desktop` to `azure batch node remote-desktop show`
+  * Added the following Batch job schedule commands
+    * `azure batch job-schedule enable`
+    * `azure batch job-schedule disable`
+    * `azure batch job-schedule terminate`
+  * Added the following Batch job commands
+    * `azure batch job enable`
+    * `azure batch job disable`
+    * `azure batch job terminate`
+azure batch job prep-and-release-task-status list
+* General
+  * Updated AzureGermanCloud AD Endpoint
+  * Fixed #2155, #2785
+  * Fixed help usage for webapp commands
+  * Fixed buffer creation under node v6 #2820
+  * Active Directory casing as per the brand name
+
+##2016-04-19 Version 0.9.20
+* Fix computer name prefix issue in vmss quick-create command
+* Fix FD/UD parameter issue in availset create command
+* Added Azure Container Service set of CLI commands.
+  * container config create/patch
+  * container config parameter [options] set/delete
+  * container create [options] <resource-group> <name>
+  * container delete [options] <resource-group> <name>
+  * container show [options] <resource-group> <name>
+  * container list [options] <resource-group>
+* Enabled Telemetry for data-collection for command usage and exception tracking
+* Fixed issues #2274 #2731, #2732, #2747, #2754 and updated node.js installation steps on linux systems
+* Fixed structuring of cdn commands
+* Added BlackForest Environment to the list of supported environments
+* Network
+  * Added --gateway-type option to create VPN or ExpressRoute gateways, 
+  * Renamed --type option  to --vpn-type in `network vpn-gateway create` command
+  * Used dedicated verbs for consistency
+    * azure network nic address-pool add/remove -> create/delete
+    * azure network nic inbound-nat-rule add/remove -> create/delete
+    * azure network vpn-gateway root-cert add/remove -> create/delete
+    * azure network vpn-gateway revoked-cert add/remove -> create/delete
+  * Added ARM application gateways URL path maps support
+  * Added ARM app gateways url path map rules modifications support
+  * Improved network tests
+* Batch
+  * Added support for creating and displaying Batch Linux pools
+  * Updated the batch node-user create and set commands to support SSH keys for Linux users
+  * Added the batch pool list-node-agent-skus command
+  * Added the batch node get-remote-login-settings command
+  * Added the batch application package related commands
+* ResourceManager
+  * Add policy definition commands
+  * Add policy assignment commands
+* Improved insight commands in the PR #2721 and #2716
+* Backup
+  * Added command remove-backup [resource-group] [name] to remove VM backups
+  * VM backup creation for Linux VMs
+  * Added new command disable-disk-encryption that disables encryption on Windows VMs, there's no support for Linux VMs
+  * Enable and disable encryption commands now use version 1.1.. of the AzureDiskEncryption extension
+  * Enable and disable commands support now --disable-auto-upgrade-minor-version switch
+  * Enable/Disable encryption and show status commands now support new encryption setting: ‘enabled’
+  * Enable encryption command only allows encryption of data volumes for Linux VMs
+* Added --platform-update-domain-count, --platform-fault-domain-count options to availset create command in asm
+
 ##2016-03-30 Version 0.9.19
 * Graph-RBAC
   * RBAC cmdlets consuming new graph version
@@ -9,6 +208,9 @@
   * Added commands for CDN Management in ARM mode
 * Insights
   * Introduced log profiles commands for CLI
+  * Introducing actions and webhooks to alerts and autoscale
+  * Splitting alert creation command into three separate commands: one for metrics, one for logs, one for webtest
+  * Using latest version of Insights SDK
 * DataLake
   * Migrated to Autorest generated node sdk
 * ResourceManager

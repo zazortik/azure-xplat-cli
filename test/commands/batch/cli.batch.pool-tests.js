@@ -21,6 +21,7 @@ var CLITest = require('../../framework/arm-cli-test');
 
 var createdPoolId = 'xplatCreatedPool';
 var sharedPoolId = 'xplatTestPool';
+var autoscaleFormula = '$TargetDedicated=3';
 
 var path = require('path');
 var createJsonFilePath = path.resolve(__dirname, '../../data/batchCreatePool.json');
@@ -71,7 +72,7 @@ describe('cli', function () {
     afterEach(function (done) {
       suite.teardownTest(done);
     });
-    
+
     it('should create a pool from a json file', function (done) {
       suite.execute('batch pool create %s --account-name %s --account-key %s --account-endpoint %s --json', createJsonFilePath, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
@@ -97,6 +98,111 @@ describe('cli', function () {
       });
     });
 
+    it('should resize the shared pool', function (done) {
+      suite.execute('batch pool resize %s 5 --account-name %s --account-key %s --account-endpoint %s --json', 
+        sharedPoolId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        
+        setTimeout(function() {
+          suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', sharedPoolId, 
+            batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+            var resizingPool = JSON.parse(result.text);
+            resizingPool.allocationState.should.equal('resizing');
+            done();
+          });
+        }, suite.isPlayback() ? 0 : 3000);
+      });
+    });
+
+    it('should stop resizing the shared pool', function (done) {
+      function waitForPoolResizeStop(callback) {
+        suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', sharedPoolId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+
+          result.exitStatus.should.equal(0);
+          var pool = JSON.parse(result.text);
+          if (pool.allocationState != 'steady') {
+            setTimeout(waitForPoolResizeStop.bind(null, callback), suite.isPlayback() ? 0 : 3000);
+          } else {
+            callback();
+          }
+        });
+      }
+      
+      suite.execute('batch pool resize %s --account-name %s --account-key %s --account-endpoint %s --json --abort', 
+        sharedPoolId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        
+        waitForPoolResizeStop(function() {
+          done();
+        });
+      });
+    });
+    
+    it('should enable autoscale on the pool under a batch account', function (done) {
+      suite.execute('batch pool autoscale enable %s --autoscale-formula %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        sharedPoolId, autoscaleFormula, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        
+        setTimeout(function() {
+          suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', sharedPoolId, 
+            batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+            var pool = JSON.parse(result.text);
+            pool.enableAutoScale.should.be.true;
+            pool.should.have.property('autoScaleFormula', autoscaleFormula);
+            done();
+          });
+        }, suite.isPlayback() ? 0 : 5000);
+      });
+    });
+
+    it('should evaluate autoscale on the pool under a batch account', function (done) {
+      suite.execute('batch pool autoscale evaluate %s %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        sharedPoolId, autoscaleFormula, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var autoscaleResult = JSON.parse(result.text);
+        autoscaleResult.results.indexOf(autoscaleFormula).should.greaterThan(-1);
+        done();
+      });
+    });
+
+    it('should disable autoscale on the pool under a batch account', function (done) {
+      suite.execute('batch pool autoscale disable %s --account-name %s --account-key %s --account-endpoint %s --json', 
+        sharedPoolId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        
+        setTimeout(function() {
+          suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', sharedPoolId, 
+            batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+            var pool = JSON.parse(result.text);
+            pool.enableAutoScale.should.be.false;
+            done();
+          });
+        }, suite.isPlayback() ? 0 : 1000);
+      });
+    });
+
+    it('should list usage metrics on the pools under the account', function (done) {
+      suite.execute('batch pool usage-metrics list --account-name %s --account-key %s --account-endpoint %s --json', 
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var metrics = JSON.parse(result.text);
+        metrics.some(function (metric) {
+          metric.should.have.property('vmSize');
+          metric.should.have.property('totalCoreHours');
+          metric.should.have.property('dataIngressGiB');
+          metric.should.have.property('poolId');
+          // This is caused by server FE bug, poolId becomes lower case
+          return String(metric.poolId).toLowerCase() === sharedPoolId.toLowerCase();
+        }).should.be.true;
+        done();
+      });
+    });
+    
     it('should update the created pool using a json file', function (done) {
       // The update JSON should change the start task command line, so we store the original, perform the update,
       // and then ensure that the start task was in fact changed.
@@ -108,7 +214,7 @@ describe('cli', function () {
         originalPool.startTask.should.not.be.null;
         originalPool.startTask.commandLine.should.not.be.null;
 
-        suite.execute('batch pool set %s %s --account-name %s --account-key %s --account-endpoint %s --json', createdPoolId, 
+        suite.execute('batch pool set %s %s --account-name %s --account-key %s --account-endpoint %s --json --replace', createdPoolId, 
           updateJsonFilePath, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
           result.exitStatus.should.equal(0);
           var updatedPool = JSON.parse(result.text);
@@ -121,6 +227,30 @@ describe('cli', function () {
       });
     });
     
+    it('should update the created pool using parameter', function (done) {
+      // The update JSON should change the start task command line, so we store the original, perform the update,
+      // and then ensure that the start task was in fact changed.
+      suite.execute('batch pool show %s --account-name %s --account-key %s --account-endpoint %s --json', createdPoolId, 
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var originalPool = JSON.parse(result.text);
+        originalPool.startTask.should.not.be.null;
+        originalPool.startTask.commandLine.should.not.be.null;
+
+        suite.execute('batch pool set %s -c hostname --account-name %s --account-key %s --account-endpoint %s --json --replace', createdPoolId, 
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
+          var updatedPool = JSON.parse(result.text);
+          updatedPool.startTask.should.not.be.null;
+          updatedPool.startTask.commandLine.should.not.be.null;
+          updatedPool.startTask.commandLine.should.not.equal(originalPool.startTask.commandLine);
+
+          done();
+        });
+      });
+    });
+        
     it('should delete the created pool', function (done) {
       suite.execute('batch pool delete %s --account-name %s --account-key %s --account-endpoint %s --json --quiet', createdPoolId, 
         batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
@@ -135,6 +265,24 @@ describe('cli', function () {
             result.text.should.equal('');
           }
           
+          done();
+        });
+      });
+    });
+
+    it('should create a pool from parameters', function (done) {
+      suite.execute('batch pool create -i testpool -S standard_d14 -p Canonical -O UbuntuServer -K 14.04.4-LTS -F $TargetDedicated=0 -n %s --account-name %s --account-key %s --account-endpoint %s --json',  
+        'batch.node.ubuntu 14.04', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) 
+      {
+        result.exitStatus.should.equal(0);
+        var createdPool = JSON.parse(result.text);
+        createdPool.should.not.be.null;
+        createdPool.id.should.equal("testpool");
+        createdPool.virtualMachineConfiguration.should.not.be.null;
+
+        suite.execute('batch pool delete testpool --account-name %s --account-key %s --account-endpoint %s --json --quiet',  
+          batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+          result.exitStatus.should.equal(0);
           done();
         });
       });
@@ -155,6 +303,19 @@ describe('cli', function () {
           // TODO: Pool state doesn't change to resizing immediately - we could poll with a timeout until the transition to verify the command worked.
           done();
         });
+      });
+    });
+
+    it('should list node agent skus', function (done) {
+      suite.execute('batch pool node-agent-skus list --account-name %s --account-key %s --account-endpoint %s --json',  
+        batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        var skus = JSON.parse(result.text);
+        skus.should.not.be.null;
+        skus.length.should.be.above(0);
+        skus[0].id.should.not.be.null;
+        skus[0].osType.should.not.be.null;
+        done();
       });
     });
   });

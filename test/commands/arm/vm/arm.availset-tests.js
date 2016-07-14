@@ -65,7 +65,7 @@ describe('arm', function() {
 
       it('create should pass', function(done) {
         vmTest.createGroup(groupName, location, suite, function(result) {
-          var cmd = util.format('availset create -g %s -n %s -l %s --json', groupName, availprefix, location).split(' ');
+          var cmd = util.format('availset create -g %s -n %s -l %s -a 3 -b 3 --json', groupName, availprefix, location).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             done();
@@ -90,19 +90,29 @@ describe('arm', function() {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
           allResources.name.should.equal(availprefix);
+          result.text.should.containEql('"platformUpdateDomainCount": 3,');
+          result.text.should.containEql('"platformFaultDomainCount": 3,');
           done();
         });
       });
 
+      it('list-available-sizes should list the available VM sizes in availability set', function (done) {
+        var cmd = util.format('availset list-available-sizes %s %s', groupName, availprefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          result.text.should.containEql('Standard_A1');
+          //result.text.should.containEql('Standard_D1');
+          done();
+        });
+      });
 
-      //Currently giving error :The api-version '2015-05-01-preview' is invalid.
-      // it('delete should delete the availability set', function (done) {
-      // var cmd = util.format('availset delete  %s %s --quiet --json', groupName,availprefix).split(' ');
-      // testUtils.executeCommand(suite, retry, cmd, function (result) {
-      // result.exitStatus.should.equal(0);
-      // done();
-      // });
-      // });
+      it('delete should delete the availability set', function (done) {
+        var cmd = util.format('availset delete %s %s --quiet --json', groupName, availprefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
 
     });
 

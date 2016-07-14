@@ -83,8 +83,8 @@ describe('arm', function () {
       it('create should create route in route table', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createRouteTable(groupName, tableName, location, suite, function () {
-            var cmd = 'network route-table route create -g {group} -r {tableName} -n {name} -a {addressPrefix} -y {nextHopType} --json'
-              .formatArgs(routeProp);
+            var cmd = util.format('network route-table route create -g {group} -r {tableName} -n {name} -a {addressPrefix} ' +
+              '-y {nextHopType} --json').formatArgs(routeProp);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
               result.exitStatus.should.equal(0);
               var route = JSON.parse(result.text);
@@ -98,8 +98,8 @@ describe('arm', function () {
         });
       });
       it('set should modify route in route table', function (done) {
-        var cmd = 'network route-table route set -g {group} -r {tableName} -n {name} -a {newAddressPrefix} -y {newNextHopType} -p {nextHopIpAddress} --json'
-          .formatArgs(routeProp);
+        var cmd = util.format('network route-table route set -g {group} -r {tableName} -n {name} -a {newAddressPrefix} ' +
+          '-y {newNextHopType} -p {nextHopIpAddress} --json').formatArgs(routeProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var route = JSON.parse(result.text);

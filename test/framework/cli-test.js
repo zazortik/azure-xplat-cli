@@ -26,6 +26,7 @@ var adalAuth = require('../../lib/util/authentication/adalAuth');
 var profile = require('../../lib/util/profile');
 var utils = require('../../lib/util/utils');
 var utilsCore = require('../../lib/util/utilsCore');
+var telemetry = require('../../lib/util/telemetry');
 
 
 var executeCommand = require('./cli-executor').execute;
@@ -86,6 +87,9 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
+
+  // disable telemetry in test
+  telemetry.init(false);
 
   this.randomTestIdsGenerated = [];
   this.numberOfRandomTestIdGenerated = 0;
@@ -356,10 +360,12 @@ _.extend(CLITest.prototype, {
             // Requests to logging service contain timestamps in url query params, filter them out too
             line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
-            if (line.match(/\/oauth2\/token\//ig) === null && 
+            if (line.match(/\/oauth2\/token\//ig) === null &&
               line.match(/login\.windows\.net/ig) === null && 
-							line.match(/login\.windows-ppe\.net/ig) === null && 
-							line.match(/login\.microsoftonline\.com/ig) === null) {
+              line.match(/login\.windows-ppe\.net/ig) === null &&
+              line.match(/login\.microsoftonline\.com/ig) === null &&
+              line.match(/login\.chinacloudapi\.cn/ig) === null &&
+              line.match(/login\.microsoftonline\.de/ig) === null) {
               scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
                 'var result = ' + line + ' return result; }';
               lineWritten = true;

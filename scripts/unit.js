@@ -67,6 +67,8 @@ allFiles.forEach(function (file) {
 
 args.push('-R');
 args.push(reporter);
+//for clean shutdown of the event loop, so silly log gets drained to disk.
+args.push('--no-exit');
 
 console.log('Start (' + testList + '):' + new Date().toLocaleTimeString());
 

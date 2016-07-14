@@ -18,6 +18,7 @@ var should = require('should');
 var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testUtils = require('../../../util/util');
+var VMTestUtil = require('../../../util/vmTestUtil');
 var testprefix = 'arm-cli-vm-image-list-tests';
 var canonicalPublisher = 'Canonical';
 var validPublisher = 'MicrosoftSQLServer';
@@ -32,6 +33,7 @@ var hasValue = false;
 describe('arm', function() {
   describe('compute', function() {
     var suite, retry = 5;
+    var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 5000;
 
     before(function(done) {
@@ -57,6 +59,7 @@ describe('arm', function() {
 
     describe('vm', function() {
       it('image list-publishers ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image list-publishers %s --json', location).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -73,6 +76,7 @@ describe('arm', function() {
       });
 
       it('image list-offers ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image list-offers %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -83,6 +87,7 @@ describe('arm', function() {
       });
 
       it('image list-skus ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image list-skus %s %s %s --json', location, publisher, offer).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -93,6 +98,7 @@ describe('arm', function() {
       });
 
       it('image list ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image list %s %s %s %s --json', location, publisher, offer, sku).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -103,6 +109,7 @@ describe('arm', function() {
       });
 
       it('image list and show by publisher offer sku and version', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image show %s %s %s %s %s --json', location, publisher, offer, sku, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -123,6 +130,7 @@ describe('arm', function() {
       });
 
       it('image list canonical images', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm image list %s %s --json', location, canonicalPublisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -151,6 +159,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-publishers ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm extension-image list-publishers %s --json', location).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -166,6 +175,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-types ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm extension-image list-types %s %s --json', location, publisher).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -177,6 +187,7 @@ describe('arm', function() {
       });
 
       it('extension list-image-versions ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm extension-image list-versions %s %s %s --json', location, publisher, type).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -188,6 +199,7 @@ describe('arm', function() {
       });
 
       it('extension get-image ', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm extension-image show %s %s %s %s --json', location, publisher, type, version).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
@@ -196,25 +208,26 @@ describe('arm', function() {
       });
 
       it('extension list images', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm extension-image list %s %s %s --json', location, publisher, type).split(' ');
         var locationStr = location.toLowerCase();
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
-          allResources[0].location.should.equal(locationStr);
+          allResources[0].location.toLowerCase().should.equal(locationStr);
           allResources[0].publisher.should.equal(publisher);
           allResources[0].typeName.should.equal(type);
           var cmd = util.format('vm extension-image list %s %s --json', location, publisher).split(' ');
           testUtils.executeCommand(suite, retry, cmd, function(result) {
             result.exitStatus.should.equal(0);
             var allResources = JSON.parse(result.text);
-            allResources[0].location.should.equal(locationStr);
+            allResources[0].location.toLowerCase().should.equal(locationStr);
             allResources[0].publisher.should.equal(publisher);
             var cmd = util.format('vm extension-image list %s --json', location).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               var allResources = JSON.parse(result.text);
-              allResources[0].location.should.equal(locationStr);
+              allResources[0].location.toLowerCase().should.equal(locationStr);
               done();
             });
           });

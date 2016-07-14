@@ -1,0 +1,4 @@
+#owner @huangpf
+commands/arm/usage/arm.usage.feature-tests.js
+commands/arm/vm/arm.availset-tests.js
+commands/arm/vm/arm.vm-disk-encryption-tests.js

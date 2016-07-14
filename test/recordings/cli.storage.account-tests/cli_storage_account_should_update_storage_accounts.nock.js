@@ -7,13 +7,15 @@ exports.getMockedProfile = function () {
 
   newProfile.addSubscription(new profile.Subscription({
     id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
     name: 'Azure Storage DM Dev',
+    user: {
+      name: 'user@domain.example',
+      type: 'user'
+    },
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    state: 'Enabled',
     registeredProviders: [],
-    registeredResourceNamespaces: [],
+    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -30,51 +32,51 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'c0c2fd6a08e289ff82ae22c31e612a64',
-  date: 'Fri, 03 Apr 2015 14:11:17 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'ba07adf2c1ae945793c1cc1cf3f23d8e',
+  date: 'Fri, 22 Apr 2016 14:10:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831', '*')
+.put('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910', '*')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'c0c2fd6a08e289ff82ae22c31e612a64',
-  date: 'Fri, 03 Apr 2015 14:11:17 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': 'ba07adf2c1ae945793c1cc1cf3f23d8e',
+  date: 'Fri, 22 Apr 2016 14:10:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831</Url><ServiceName>xcliaccount4831</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity4801</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount4831.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-04-03T14:10:37Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910</Url><ServiceName>xcliaccount7910</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity5646</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount7910.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2016-04-22T14:10:12Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '1312',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'd08a7e1512e98ed7a596d7d6117e31d0',
-  date: 'Fri, 03 Apr 2015 14:11:19 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '6df2ef1171449d25a01dafecff53b5b8',
+  date: 'Fri, 22 Apr 2016 14:11:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount4831</Url><ServiceName>xcliaccount4831</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity4801</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount4831.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount4831.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2015-04-03T14:10:37Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
+  .get('/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/a0d901ba-9956-4f7d-830c-2d7974c36666/services/storageservices/xcliaccount7910</Url><ServiceName>xcliaccount7910</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><AffinityGroup>xcliaffinity5646</AffinityGroup><Label>dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://xcliaccount7910.blob.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.queue.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.table.core.windows.net/</Endpoint><Endpoint>https://xcliaccount7910.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West Europe</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2016-04-22T14:10:12Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestEurope</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West Europe</Value></ExtendedProperty></ExtendedProperties><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '1312',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.208 (rd_rdfe_stable.150324-1051) Microsoft-HTTPAPI/2.0',
-  'x-ms-servedbyregion': 'ussouth2',
-  'x-ms-request-id': 'd08a7e1512e98ed7a596d7d6117e31d0',
-  date: 'Fri, 03 Apr 2015 14:11:19 GMT',
+  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth3',
+  'x-ms-request-id': '6df2ef1171449d25a01dafecff53b5b8',
+  date: 'Fri, 22 Apr 2016 14:11:01 GMT',
   connection: 'close' });
  return result; }]];

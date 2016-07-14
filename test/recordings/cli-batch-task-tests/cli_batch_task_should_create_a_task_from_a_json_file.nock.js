@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
+    name: 'Windows Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -27,75 +23,75 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jsxplat';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jsxplat.centralus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'test1';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://test1.westus.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
+nock('http://test1.westus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/xplatJobForTaskTests/tasks?api-version=2015-12-01.2.2&timeout=30', '*')
+.post('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 16:45:26 GMT',
-  etag: '0x8D351A83451CC4D',
-  location: 'https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
+  location: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '186dee71-c6b8-4eb3-bc02-b1de78600d46',
+  'request-id': 'f3ef61cf-1965-4a20-bc05-b0f3af2a024c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '3c8c49c9-295f-4ea8-ac66-c47a7a2cad86',
+  'client-request-id': '7ad48620-953c-4ddc-b920-48294eb8a6a9',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
-  date: 'Mon, 21 Mar 2016 16:45:26 GMT',
+  dataserviceid: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
+  date: 'Fri, 20 May 2016 05:36:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
+nock('https://test1.westus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/xplatJobForTaskTests/tasks?api-version=2015-12-01.2.2&timeout=30', '*')
+.post('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 21 Mar 2016 16:45:26 GMT',
-  etag: '0x8D351A83451CC4D',
-  location: 'https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
+  location: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '186dee71-c6b8-4eb3-bc02-b1de78600d46',
+  'request-id': 'f3ef61cf-1965-4a20-bc05-b0f3af2a024c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '3c8c49c9-295f-4ea8-ac66-c47a7a2cad86',
+  'client-request-id': '7ad48620-953c-4ddc-b920-48294eb8a6a9',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
-  date: 'Mon, 21 Mar 2016 16:45:26 GMT',
+  dataserviceid: 'https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask',
+  date: 'Fri, 20 May 2016 05:36:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D351A83451CC4D\",\"creationTime\":\"2016-03-21T16:45:26.3503437Z\",\"lastModified\":\"2016-03-21T16:45:26.3503437Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-03-21T16:45:26.3503437Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+nock('http://test1.westus.batch.azure.com:443')
+  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 21 Mar 2016 16:45:26 GMT',
-  etag: '0x8D351A83451CC4D',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '14b96b92-5c81-4dfd-9476-4351858b1f1f',
+  'request-id': '9559a3c8-4da4-4814-9c31-ec06738d453d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '580b155d-b034-43d2-96a2-e55f3e2d500c',
+  'client-request-id': 'e62fde6b-8453-4024-a99c-4d01ed4b2ea7',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:26 GMT',
+  date: 'Fri, 20 May 2016 05:36:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jsxplat.centralus.batch.azure.com:443')
-  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2015-12-01.2.2&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jsxplat.centralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://jsxplat.centralus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D351A83451CC4D\",\"creationTime\":\"2016-03-21T16:45:26.3503437Z\",\"lastModified\":\"2016-03-21T16:45:26.3503437Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-03-21T16:45:26.3503437Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+nock('https://test1.westus.batch.azure.com:443')
+  .get('/jobs/xplatJobForTaskTests/tasks/xplatTask?api-version=2016-02-01.3.0&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n    {\r\n      \"name\":\"env1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"env2\",\"value\":\"value2\"\r\n    }\r\n  ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n    \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 21 Mar 2016 16:45:26 GMT',
-  etag: '0x8D351A83451CC4D',
+  'last-modified': 'Fri, 20 May 2016 05:36:01 GMT',
+  etag: '0x8D38070A1226EC4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '14b96b92-5c81-4dfd-9476-4351858b1f1f',
+  'request-id': '9559a3c8-4da4-4814-9c31-ec06738d453d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '580b155d-b034-43d2-96a2-e55f3e2d500c',
+  'client-request-id': 'e62fde6b-8453-4024-a99c-4d01ed4b2ea7',
   dataserviceversion: '3.0',
-  date: 'Mon, 21 Mar 2016 16:45:26 GMT',
+  date: 'Fri, 20 May 2016 05:36:01 GMT',
   connection: 'close' });
  return result; }]];

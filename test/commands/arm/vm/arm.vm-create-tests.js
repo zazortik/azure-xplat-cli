@@ -73,6 +73,7 @@ describe('arm', function() {
         vmPrefix = suite.isMocked ? vmPrefix : suite.generateId(vmPrefix, null);
         vm2Prefix = suite.isMocked ? vm2Prefix : suite.generateId(vm2Prefix, null);
         vm3Prefix = suite.isMocked ? vm3Prefix : suite.generateId(vm3Prefix, null);
+        vm4Prefix = suite.isMocked ? vm4Prefix : suite.generateId(vm4Prefix, null); 
         nicName = suite.isMocked ? nicName : suite.generateId(nicName, null);
         nic2Name = suite.isMocked ? nic2Name : suite.generateId(nic2Name, null);
         storageAccount = suite.generateId(storageAccount, null);
@@ -121,7 +122,7 @@ describe('arm', function() {
                 vmTest.GetLinuxSkusList(location, suite, function(result) {
                   vmTest.GetLinuxImageList(location, suite, function(result) {
                     latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                       groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                       vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -132,7 +133,7 @@ describe('arm', function() {
                 });
               } else {
                 latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                   groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -161,7 +162,7 @@ describe('arm', function() {
               var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm3Prefix).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --license-type Windows_Server --json',
+                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --license-type Windows_Server --json',
                   groupName, vm4Prefix, location, nicName, userImage, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -175,7 +176,7 @@ describe('arm', function() {
                     allResources.licenseType.should.equal('Windows_Server');
                     var cmd = util.format('vm delete %s %s --quiet --json', groupName, vm4Prefix).split(' ');
                     testUtils.executeCommand(suite, retry, cmd, function(result) {
-                      var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
+                      var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s -r %s --json',
                         groupName, vmPrefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
                         vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, availprefix).split(' ');
                       testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -197,7 +198,7 @@ describe('arm', function() {
           if (VMTestUtil.winImageUrn === '' || VMTestUtil.winImageUrn === undefined) {
             vmTest.GetWindowsSkusList(location, suite, function(result) {
               vmTest.GetWindowsImageList(location, suite, function(result) {
-                var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
+                var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
                   groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
                   vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, availprefix).split(' ');
                 testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -207,7 +208,7 @@ describe('arm', function() {
               });
             });
           } else {
-            var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
+            var cmd = util.format('vm create %s %s %s Windows -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --disable-boot-diagnostics -r %s --json',
               groupName, vm2Prefix, location, nic2Name, VMTestUtil.winImageUrn, username, password, storageAccount, storageCont,
               vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicip2Name, dns2Prefix, sshcert, tags, availprefix).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -246,6 +247,20 @@ describe('arm', function() {
           done();
         });
       });
+      
+      it('list-ip-address should display all VMs and corrosponding public IP address in subscription', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('vm list-ip-address %s --json', '').split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources.some(function(res) {
+            var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
+            return vmPublicIpName.indexOf(publicipName) !== -1;
+          }).should.be.true;
+          done();
+        });
+      });
 
       it('show should display details about VM', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
@@ -264,7 +279,9 @@ describe('arm', function() {
               result.exitStatus.should.equal(0);
               var avSetResult = JSON.parse(result.text);
               avSetResult.name.should.equal(availprefix);
-              avSetResult.virtualMachines[0].id.toLowerCase().should.containEql(vmPrefix.toLowerCase());
+              avSetResult.virtualMachines.some(function(res) {
+                return (res.id.toLowerCase()).indexOf(vmPrefix) !== -1;
+              }).should.be.true;
               done();
             });
           });
@@ -350,10 +367,12 @@ describe('arm', function() {
 
       it('set should be able to update the VM size', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vm set -z %s %s --json', 'Standard_A1', groupName, vmPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-          result.exitStatus.should.equal(0);
-          done();
+        vmTest.getVMSize(location, suite, function() {
+          var cmd = util.format('vm set -z %s %s --json', 'Standard_D2', groupName, vmPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
         });
       });
 

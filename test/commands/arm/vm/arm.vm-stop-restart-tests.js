@@ -48,7 +48,6 @@ describe('arm', function() {
     var suite, retry = 5;
     var vmTest = new VMTestUtil();
     testUtils.TIMEOUT_INTERVAL = 5000;
-
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function() {
@@ -83,7 +82,7 @@ describe('arm', function() {
 
     describe('vm', function() {
 
-      it('create should pass for stop start & restart', function(done) {
+      it('create should pass for stop start restart', function(done) {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {

@@ -1,0 +1,35 @@
+{
+  "provisioningState": "",
+  "orchestratorProfile": {
+    "orchestratorType": "Swarm"
+  },
+  "masterProfile": {
+    "count": 1,
+    "dnsPrefix": "xplatContainer22031master",
+    "fqdn": ""
+  },
+  "agentPoolProfiles": [
+    {
+      "name": "xplatContainer22031a1",
+      "count": null,
+      "vmSize": "Standard_A1",
+      "dnsPrefix": "xplatContainer22031a2",
+      "fqdn": ""
+    }
+  ],
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1J/ZLar7bMxCr0eN1yAkMM8B7Z6eQP2P0LG5W/ATM/c7r5voER2N/xJ2JMyKRM73zX83nyTroGRynFsLTaizSQ2hNCAs15oxwspnFrlBZVsNhNs6DvPUDosJ81/ud5Emle8VYAWCwtAl0BVx+fWCygqKTXcYznuHTwnxYyk5hgPno3YD7/mk2j53EN6iY+ua0FNnxPQAHIXxwREOWSTr4zp40vEpfbww2GuabdACh5gg7rxtjCb2NAIKBmn8Bm0fpKzwtaPA6ihFfUwpBvhihdn7OIpss7G50VplX+h3xdyx31TFJ7rcqlsSrwXI1SNic0WWjnU1j/6Ely4Z1HnCYQ=="
+        }
+      ]
+    }
+  },
+  "id": null,
+  "name": "xplatContainer22031",
+  "type": null,
+  "location": "australiasoutheast",
+  "tags": {}
+}

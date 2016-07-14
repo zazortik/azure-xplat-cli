@@ -51,6 +51,7 @@ var groupName,
   clientConfig = 'test/data/set-chef-extension-client-config.rb',
   validationPem = 'test/data/set-chef-extension-validation.pem',
   datafile = 'test/data/testdata.json';
+  
 
 describe('arm', function() {
   describe('compute', function() {
@@ -178,6 +179,28 @@ describe('arm', function() {
           allResources[1].publisher.should.equal(publisherExt);
           allResources[1].name.should.equal(extension);
           allResources[1].typeHandlerVersion.should.equal(version);
+	   allResources[1].autoUpgradeMinorVersion.should.be.false;
+          done();
+        });
+      });
+	  
+	  //Autoupgrade accross minor version
+      it('Autoupgrade extension accross minor version for the created vm', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension set %s %s %s %s %s -U --json', groupName, vmPrefix, extension, publisherExt, version).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+	  
+	  it('Extension Get should should give autoUpgradeMinorVersion=true ', function(done) {
+        this.timeout(vmTest.timeoutLarge);
+        var cmd = util.format('vm extension get %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var allResources = JSON.parse(result.text);
+          allResources[1].autoUpgradeMinorVersion.should.be.true;
           done();
         });
       });

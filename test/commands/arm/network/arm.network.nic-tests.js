@@ -31,32 +31,49 @@ var testPrefix = 'arm-network-nic-tests',
 var nicProp = {
   group: groupName,
   name: 'test-nic',
-  privateIP: '10.0.0.22',
-  newPrivateIP: '10.0.0.25',
-  internalDns: 'internal-dns-foo',
-  newInternalDns: 'internal-dns-bar',
-  disForward: false,
-  enabForward: true,
+  privateIPAddress: '10.0.0.22',
+  newPrivateIPAddress: '10.0.0.25',
+  privateIPAddressVersion: 'IPv4',
+  newPrivateIPAddressVersion: 'IPv6',
+  internalDnsNameLabel: 'internal-dns-foo',
+  newInternalDnsNameLabel: 'internal-dns-bar',
+  ipConfigName: 'another-ip-config',
+  enableIpForwarding: false,
+  newEnableIpForwarding: true,
   tags: networkUtil.tags,
   newTags: networkUtil.newTags
+};
+var publicIpProp = {
+  name: 'test-ip',
+  domainName: 'foo-domain',
+  allocationMethod: 'Static',
+  ipVersion: 'IPv4',
+  idleTimeout: 4,
+  tags: networkUtil.tags
+};
+var lbProp = {
+  name: 'test-lb',
+  fipName: 'test-fip',
+  publicIpProp: {
+    name: 'test-fip-ip',
+    domainName: 'baz-domain',
+    allocationMethod: 'Dynamic',
+    ipVersion: 'IPv4',
+    idleTimeout: 4,
+    tags: networkUtil.tags
+  }
 };
 
 var vnetName = 'test-vnet',
   vnetAddressSpace = '10.0.0.0/8',
   subnetName = 'test-subnet',
   subnetAddressPrefix = '10.0.0.0/24',
-  publicIpName = 'test-ip',
   nsgName = 'test-nsg',
-  lbName = 'test-lb',
-  fipName = 'test-fip',
-  fipIPName = 'test-ip-fip',
   poolName = 'test-pool',
   inboundRuleName = 'test-inbound-rule',
   protocol = 'tcp',
   frontendPort = '90',
-  backendPort = '90',
-  enableIp = true,
-  idleTimeout = 4;
+  backendPort = '90';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -71,6 +88,8 @@ describe('arm', function () {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
+        //location = 'WestUS';
+
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
 
         nicProp.location = location;
@@ -79,12 +98,18 @@ describe('arm', function () {
 
         vnetName = suite.isMocked ? vnetName : suite.generateId(vnetName, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
-
-        publicIpName = suite.isMocked ? publicIpName : suite.generateId(publicIpName, null);
         nsgName = suite.isMocked ? nsgName : suite.generateId(nsgName, null);
 
-        lbName = suite.isMocked ? lbName : suite.generateId(lbName, null);
-        fipName = suite.isMocked ? fipName : suite.generateId(fipName, null);
+        publicIpProp.location = location;
+        publicIpProp.group = groupName;
+        publicIpProp.name = suite.isMocked ? publicIpProp.name : suite.generateId(publicIpProp.name, null);
+
+        lbProp.location = location;
+        lbProp.group = groupName;
+        lbProp.name = suite.isMocked ? lbProp.name : suite.generateId(lbProp.name, null);
+        lbProp.publicIpProp.location = location;
+        lbProp.publicIpProp.group = groupName;
+
         poolName = suite.isMocked ? poolName : suite.generateId(poolName, null);
         inboundRuleName = suite.isMocked ? inboundRuleName : suite.generateId(inboundRuleName, null);
 
@@ -104,59 +129,74 @@ describe('arm', function () {
     });
 
     describe('nic', function () {
-      it('create should create nic using subnet', function (done) {
+      it('create should create nic with default ip configuration', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createVnet(groupName, vnetName, location, vnetAddressSpace, suite, function () {
             networkUtil.createSubnet(groupName, vnetName, subnetName, subnetAddressPrefix, suite, function (subnet) {
-              var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIP} -r {internalDns} -f {disForward} -t {tags} -u {1} --json'
-                .formatArgs(nicProp, subnet.id);
+              networkUtil.createPublicIp(publicIpProp, suite, function (publicIp) {
+                var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -r {internalDnsNameLabel} -f {enableIpForwarding} -t {tags} -u {1} -i {2} --json'
+                  .formatArgs(nicProp, subnet.id, publicIp.id);
 
-              testUtils.executeCommand(suite, retry, cmd, function (result) {
-                result.exitStatus.should.equal(0);
-                var nic = JSON.parse(result.text);
-                nic.name.should.equal(nicProp.name);
-                nic.ipConfigurations.length.should.equal(1);
-                nic.ipConfigurations[0].subnet.id.should.equal(subnet.id);
-                networkUtil.shouldHaveTags(nic);
-                networkUtil.shouldBeSucceeded(nic);
-                done();
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var nic = JSON.parse(result.text);
+                  nic.name.should.equal(nicProp.name);
+                  nic.enableIPForwarding.should.equal(nicProp.enableIpForwarding);
+                  var dnsSettings = nic.dnsSettings;
+                  dnsSettings.internalDnsNameLabel.should.equal(nicProp.internalDnsNameLabel);
+                  // dnsSettings.internalDomainNameSuffix.should.not.be.empty;
+                  nic.ipConfigurations.length.should.equal(1);
+                  var defaultIpConfig = nic.ipConfigurations[0];
+                  defaultIpConfig.subnet.id.should.equal(subnet.id);
+                  defaultIpConfig.publicIPAddress.id.should.equal(publicIp.id);
+                  defaultIpConfig.privateIPAddress.should.equal(nicProp.privateIPAddress);
+                  // defaultIpConfig.privateIPAddressVersion.should.equal(nicProp.privateIPAddressVersion);
+                  networkUtil.shouldBeSucceeded(defaultIpConfig);
+                  networkUtil.shouldHaveTags(nic);
+                  networkUtil.shouldBeSucceeded(nic);
+                  done();
+                });
               });
             });
           });
         });
       });
-      it('set should modify nic with nsg and public ip by ids', function (done) {
-        networkUtil.createPublicIp(groupName, publicIpName, location, suite, function (publicIp) {
-          networkUtil.createNSG(groupName, nsgName, location, suite, function (nsg) {
-            var cmd = 'network nic set -g {group} -n {name} -a {newPrivateIP} -r {newInternalDns} -f {enabForward} -t {newTags} -i {1} -w {2} --json'
-              .formatArgs(nicProp, publicIp.id, nsg.id);
+      it('set should modify nic', function (done) {
+        var cmd = 'network nic set -g {group} -n {name} -r {newInternalDnsNameLabel} -f {newEnableIpForwarding} -t {newTags} --json'
+          .formatArgs(nicProp);
 
-            testUtils.executeCommand(suite, retry, cmd, function (result) {
-              result.exitStatus.should.equal(0);
-              var nic = JSON.parse(result.text);
-              nic.name.should.equal(nicProp.name);
-              nic.ipConfigurations.length.should.equal(1);
-              nic.ipConfigurations[0].publicIPAddress.id.should.equal(publicIp.id);
-              nic.ipConfigurations[0].privateIPAddress.should.equal(nicProp.newPrivateIP);
-              nic.networkSecurityGroup.id.should.equal(nsg.id);
-              nic.enableIPForwarding.should.equal(nicProp.enabForward);
-              nic.dnsSettings.internalDnsNameLabel.should.equal(nicProp.newInternalDns);
-              networkUtil.shouldAppendTags(nic);
-              networkUtil.shouldBeSucceeded(nic);
-              done();
-            });
-          });
-        });
-      });
-      it('set should unset nsg and public ip from nic', function (done) {
-        var cmd = 'network nic set -g {group} -n {name} -p -o --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
+          nic.enableIPForwarding.should.equal(nicProp.newEnableIpForwarding);
+          var dnsSettings = nic.dnsSettings;
+          dnsSettings.internalDnsNameLabel.should.equal(nicProp.newInternalDnsNameLabel);
+          // dnsSettings.internalDomainNameSuffix.should.not.be.empty;
+          networkUtil.shouldAppendTags(nic);
+          networkUtil.shouldBeSucceeded(nic);
+          done();
+        });
+      });
+      it('set should attach nsg to nic', function (done) {
+        networkUtil.createNSG(groupName, nsgName, location, suite, function (nsg) {
+          var cmd = 'network nic set -g {group} -n {name} -w {1} --json'
+            .formatArgs(nicProp, nsg.id);
+
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var nic = JSON.parse(result.text);
+            nic.networkSecurityGroup.id.should.equal(nsg.id);
+            networkUtil.shouldBeSucceeded(nic);
+            done();
+          });
+        });
+      });
+      it('set should detach nsg from nic', function (done) {
+        var cmd = 'network nic set -g {group} -n {name} -o --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
           nic.should.not.have.property('networkSecurityGroup');
-          nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].should.not.have.property('publicIPAddress');
           networkUtil.shouldBeSucceeded(nic);
           done();
         });
@@ -181,108 +221,167 @@ describe('arm', function () {
           done();
         });
       });
-      it('set should attach address pool by id', function (done) {
-        networkUtil.createLB(groupName, lbName, location, suite, function () {
-          networkUtil.createPublicIp(groupName, fipIPName, location, suite, function (publicIp) {
-            networkUtil.createFIP(groupName, lbName, fipName, publicIp.id, suite, function (fip) {
-              networkUtil.createAddressPool(groupName, lbName, poolName, suite, function (pool) {
-                var cmd = 'network nic set -g {group} -n {name} -d {1} --json'.formatArgs(nicProp, pool.id);
-                testUtils.executeCommand(suite, retry, cmd, function (result) {
-                  result.exitStatus.should.equal(0);
-                  var nic = JSON.parse(result.text);
-                  nic.name.should.equal(nicProp.name);
-                  nic.ipConfigurations.length.should.equal(1);
-                  nic.ipConfigurations[0].loadBalancerBackendAddressPools.length.should.equal(1);
-                  nic.ipConfigurations[0].loadBalancerBackendAddressPools[0].id.should.equal(pool.id);
-                  done();
-                });
-              });
+
+      // TODO uncomment when IPv6 feature goes to public
+      /*it('ip-config create should should create another ip configuration', function (done) {
+        var cmd = 'network nic ip-config create -g {group} -c {name} -n {ipConfigName} -b {newPrivateIPAddressVersion} --json'.formatArgs(nicProp);
+
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          nic.ipConfigurations.length.should.equal(2);
+          var anotherIpConfig = nic.ipConfigurations[0];
+          anotherIpConfig.name.should.equal(nicProp.ipConfigName);
+          anotherIpConfig.privateIPAddressVersion.should.equal(nicProp.newPrivateIPAddressVersion);
+          networkUtil.shouldBeSucceeded(anotherIpConfig);
+          networkUtil.shouldBeSucceeded(nic);
+          done();
+        });
+      });
+      it('ip-config list should should list ip configurations in nic', function (done) {
+        var cmd = 'network nic ip-config list -g {group} -c {name} --json'.formatArgs(nicProp);
+
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var ipConfigurations = JSON.parse(result.text);
+          ipConfigurations.length.should.equal(2);
+          _.some(ipConfigurations, function (ipConfig) {
+            return ipConfig.name === nicProp.ipConfigName;
+          }).should.be.true;
+          done();
+        });
+      });
+      it('ip-config show should display details of ip configuration', function (done) {
+        var cmd = 'network nic ip-config show -g {group} -c {name} -n {ipConfigName} --json'.formatArgs(nicProp);
+
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var anotherIpConfig = JSON.parse(result.text);
+          anotherIpConfig.name.should.equal(nicProp.ipConfigName);
+          anotherIpConfig.privateIPAddressVersion.should.equal(nicProp.newPrivateIPAddressVersion);
+          done();
+        });
+      });
+      it('ip-config delete should delete ip configuration', function (done) {
+        var cmd = 'network nic ip-config delete -g {group} -c {name} -n {ipConfigName} --quiet --json'.formatArgs(nicProp);
+
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+
+          cmd = 'network nic ip-config show -g {group} -c {name} -n {ipConfigName} --json'.formatArgs(nicProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var anotherIpConfig = JSON.parse(result.text);
+            anotherIpConfig.should.be.empty;
+            done();
+          });
+        });
+      });*/
+
+      it('ip-config set should attach address pool to ip configuration', function (done) {
+        networkUtil.createLB(lbProp, suite, function () {
+          networkUtil.createAddressPool(groupName, lbProp.name, poolName, suite, function (pool) {
+            var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config -d {1} --json'.formatArgs(nicProp, pool.id);
+            testUtils.executeCommand(suite, retry, cmd, function (result) {
+              result.exitStatus.should.equal(0);
+              var nic = JSON.parse(result.text);
+              var defaultIpConfig = nic.ipConfigurations[0];
+              var pools = defaultIpConfig.loadBalancerBackendAddressPools;
+              pools.length.should.equal(1);
+              pools[0].id.should.equal(pool.id);
+              done();
             });
           });
         });
       });
-      it('set should detach address pool', function (done) {
-        var cmd = 'network nic set -g {group} -n {name} -d --json'.formatArgs(nicProp);
+      it('ip-config set should detach address pool from ip configuration', function (done) {
+        var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config -d --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
           nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].should.not.have.property('loadBalancerBackendAddressPools');
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('loadBalancerBackendAddressPools');
           done();
         });
       });
-      it('address-pool add should attach address pool by name', function (done) {
-        var cmd = 'network nic address-pool add -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
-          nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].loadBalancerBackendAddressPools.length.should.equal(1);
-          nic.ipConfigurations[0].loadBalancerBackendAddressPools[0].id.should.containEql(poolName);
-          done();
-        });
-      });
-      it('address-pool remove should detach address-pool by name', function (done) {
-        var cmd = 'network nic address-pool remove -g {group} -n {name} -l {1} -a {2} --json'.formatArgs(nicProp, lbName, poolName);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
-          nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].should.not.have.property('loadBalancerBackendAddressPools');
-          done();
-        });
-      });
-      it('set should attach inbound nat rule by id', function (done) {
-        networkUtil.createInboundNatRule(groupName, lbName, inboundRuleName, protocol, frontendPort, backendPort, enableIp, idleTimeout, fipName, suite, function (natRule) {
-          var cmd = 'network nic set -g {group} -n {name} -e {1} --json'.formatArgs(nicProp, natRule.id);
+
+      it('ip-config set should attach inbound nat rule to ip configuration', function (done) {
+        networkUtil.createInboundNatRule(groupName, lbProp.name, inboundRuleName, protocol, frontendPort, backendPort, 'true', 10, lbProp.fipName, suite, function (natRule) {
+          var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config -e {1} --json'.formatArgs(nicProp, natRule.id);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var nic = JSON.parse(result.text);
-            nic.name.should.equal(nicProp.name);
-            nic.ipConfigurations.length.should.equal(1);
-            nic.ipConfigurations[0].loadBalancerInboundNatRules.length.should.equal(1);
-            nic.ipConfigurations[0].loadBalancerInboundNatRules[0].id.should.equal(natRule.id);
+            var defaultIpConfig = nic.ipConfigurations[0];
+            var rules = defaultIpConfig.loadBalancerInboundNatRules;
+            rules.length.should.equal(1);
+            rules[0].id.should.equal(natRule.id);
             done();
           });
         });
       });
-      it('set should detach inbound nat rule', function (done) {
-        var cmd = 'network nic set -g {group} -n {name} -e --json'.formatArgs(nicProp);
+      it('ip-config set should detach inbound nat rule from ip configuration', function (done) {
+        var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config -e --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('loadBalancerInboundNatRules');
+          done();
+        });
+      });
+
+      it('ip-config address-pool create should attach address pool to ip configuration', function (done) {
+        var cmd = 'network nic ip-config address-pool create -g {group} -c {name} -n default-ip-config -l {1} -a {2} --json'.formatArgs(nicProp, lbProp.name, poolName);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          nic.ipConfigurations.length.should.equal(1);
+          var defaultIpConfig = nic.ipConfigurations[0];
+          var pools = defaultIpConfig.loadBalancerBackendAddressPools;
+          pools.length.should.equal(1);
+          pools[0].id.should.containEql(poolName);
+          done();
+        });
+      });
+      it('ip-config address-pool delete should detach address-pool from ip configuration', function (done) {
+        var cmd = 'network nic ip-config address-pool delete -g {group} -c {name} -n default-ip-config -l {1} -a {2} --json'.formatArgs(nicProp, lbProp.name, poolName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
           nic.name.should.equal(nicProp.name);
           nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].should.not.have.property('loadBalancerInboundNatRules');
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('loadBalancerBackendAddressPools');
           done();
         });
       });
-      it('inbound-nat-rule add should attach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule add -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+
+      it('ip-config inbound-nat-rule create should attach inbound nat rule to ip configuration', function (done) {
+        var cmd = 'network nic ip-config inbound-nat-rule create -g {group} -c {name} -n default-ip-config -l {1} -r {2} --json'.formatArgs(nicProp, lbProp.name, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
           nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].loadBalancerInboundNatRules.length.should.equal(1);
-          nic.ipConfigurations[0].loadBalancerInboundNatRules[0].id.should.containEql(inboundRuleName);
+          var defaultIpConfig = nic.ipConfigurations[0];
+          var rules = defaultIpConfig.loadBalancerInboundNatRules;
+          rules.length.should.equal(1);
+          rules[0].id.should.containEql(inboundRuleName);
           done();
         });
       });
-      it('inbound-nat-rule remove should detach inbound nat rule by name', function (done) {
-        var cmd = 'network nic inbound-nat-rule remove -g {group} -n {name} -l {1} -r {2} --json'.formatArgs(nicProp, lbName, inboundRuleName);
+      it('ip-config inbound-nat-rule delete should detach inbound nat rule from ip configuration', function (done) {
+        var cmd = 'network nic ip-config inbound-nat-rule delete -g {group} -c {name} -n default-ip-config -l {1} -r {2} --json'.formatArgs(nicProp, lbProp.name, inboundRuleName);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          nic.name.should.equal(nicProp.name);
           nic.ipConfigurations.length.should.equal(1);
-          nic.ipConfigurations[0].should.not.have.property('loadBalancerInboundNatRules');
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('loadBalancerInboundNatRules');
           done();
         });
       });
+
       it('delete should delete nic', function (done) {
         var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
