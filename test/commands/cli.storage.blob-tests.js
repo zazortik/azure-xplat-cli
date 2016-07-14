@@ -15,6 +15,7 @@
 //
 
 var storage = require('azure-storage');
+var crypto = require('crypto');
 var should = require('should');
 var fs = require('fs');
 var util = require('util');
@@ -27,7 +28,7 @@ var CLITest = require('../framework/cli-test');
 var suite;
 var aclTimeout;
 var testPrefix = 'cli.storage.blob-tests';
-var crypto = require('crypto');
+var liveOnly = process.env.NOCK_OFF ? it : it.skip;
 
 function stripAccessKey(connectionString) {
   return connectionString.replace(/AccountKey=[^;]+/, 'AccountKey=null');
@@ -40,6 +41,42 @@ function fetchAccountName(connectionString) {
 var requiredEnvironment = [
   { name: 'AZURE_STORAGE_CONNECTION_STRING', secure: stripAccessKey }
 ];
+
+function generateTempFile (fileName, size, hasEmptyBlock, callback) {
+  var blockSize = 4 * 1024 * 1024;
+  var fileInfo = { name: fileName, contentMD5: '', size: size, content: '' };
+
+  var md5hash = crypto.createHash('md5');
+  var offset = 0;
+  var file = fs.openSync(fileName, 'w');
+  var saveContent = size <= blockSize;
+
+  do {
+    var value = crypto.randomBytes(1);
+    var zero = hasEmptyBlock ? (parseInt(value[0], 10) >= 64) : false;
+    var writeSize = Math.min(blockSize, size);
+    var buffer;
+
+    if (zero) {
+      buffer = new Buffer(writeSize);
+      buffer.fill(0);
+    } else {
+      buffer = crypto.randomBytes(writeSize);
+    }
+
+    fs.writeSync(file, buffer, 0, buffer.length, offset);
+    size -= buffer.length;
+    offset += buffer.length;
+    md5hash.update(buffer);
+
+    if (saveContent) {
+      fileInfo.content += buffer.toString();
+    }
+  } while (size > 0);
+
+  fileInfo.contentMD5 = md5hash.digest('base64');
+  callback(fileInfo);
+};
 
 /**
 * Convert a cmd to azure storge cli
@@ -426,6 +463,8 @@ describe('cli', function () {
       var blockBlobName = 'blockblobname';
       var pageBlobName = 'pageblobname';
       var appendBlobName = 'appendblobname';
+      var publicContainerName = 'storage-cli-blob-test-public';
+      var publicBlobName = 'publicblob';
       before(function(done) {
         var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
         blobService.createContainer(containerName, function(){done();});
@@ -563,6 +602,32 @@ describe('cli', function () {
             done();
           });
         });
+        
+        liveOnly('should download blob in public container with anonymous credential', function(done) {
+          var blobService = storage.createBlobService(process.env.AZURE_STORAGE_CONNECTION_STRING);
+          blobService.createContainer(publicContainerName, { publicAccessLevel: 'container'}, function(err) {
+            publicBlobName = suite.generateId(publicBlobName);
+            var fileName = 'hello.block.anonymous.txt';
+            var downloadFileName = 'hello.block.anonymous.download.txt';
+            generateTempFile(fileName, 65 * 1024 * 1024, false, function (fileInfo) {
+              suite.execute('storage blob upload %s %s %s --json', fileName, publicContainerName, publicBlobName, function (result) {
+                var blob = JSON.parse(result.text);
+                blob.name.should.equal(publicBlobName);
+                blob.contentSettings.contentMD5.should.equal(fileInfo.contentMD5);
+                fs.unlinkSync(fileName);
+
+                var anonymousConnectionString = 'BlobEndpoint=' + blobService.host.primaryHost;
+                suite.execute('storage blob download %s %s %s -q -c %s --json', publicContainerName, publicBlobName, downloadFileName, anonymousConnectionString, function (result) {
+                  var blob = JSON.parse(result.text);
+                  blob.name.should.equal(publicBlobName);
+                  blob.fileName.should.equal(downloadFileName);
+                  fs.unlinkSync(downloadFileName);
+                  blobService.deleteContainer(publicContainerName, function(){done();});
+                });
+              });
+            })
+          });
+        })
 
         it('should download the specified page blob', function (done) {
           var fileName = 'hello.download.page.txt';
@@ -837,7 +902,7 @@ describe('cli', function () {
               var account = fetchAccountName(process.env.AZURE_STORAGE_CONNECTION_STRING);
               suite.execute('storage blob list %s -a %s --sas %s --json', containerName, account, sas.sas, function (listResult) {
                 var blob = JSON.parse(listResult.text);
-                blob.length.should.equal(1);
+                (blob.length > 1).should.be.ok;
                 listResult.errorText.should.be.empty;
                 done();
               });
