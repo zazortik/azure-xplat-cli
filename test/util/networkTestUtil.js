@@ -34,6 +34,7 @@ function NetworkTestUtil() {
   this.tags = 'tag1=aaa;tag2=bbb';
   this.newTags = 'tag3=ccc';
   this.stateSucceeded = 'Succeeded';
+  this.stateDeleted = 'Deleting';
 }
 
 _.extend(NetworkTestUtil.prototype, {
@@ -402,6 +403,9 @@ _.extend(NetworkTestUtil.prototype, {
   },
   shouldBeSucceeded: function (obj) {
     obj.provisioningState.should.equal(this.stateSucceeded);
+  },
+  shouldBeDeleted: function (obj) {
+    obj.provisioningState.should.equal(this.stateDeleted);
   }
 });
 
