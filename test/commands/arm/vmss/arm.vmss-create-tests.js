@@ -105,7 +105,7 @@ describe('arm', function() {
         this.timeout(vmTest.timeoutLarge);
         vmTest.checkImagefile(function() {
           vmTest.createGroup(groupName, location, suite, function(result) {
-            var cmd = util.format('vmss list-all --json').split(' ');
+            var cmd = util.format('vmss list --json').split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
               cmd = util.format('provider list --json').split(' ');

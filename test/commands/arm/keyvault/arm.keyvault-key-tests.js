@@ -27,16 +27,16 @@ var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 var profile = require('../../../../lib/util/profile');
 
-var testprefix = 'arm-cli-keyvault-tests';
-var keyPrefix = 'xplatTestVaultKey';
+var testPrefix = 'arm-cli-keyvault-tests';
+var rgPrefix = 'xplatTestRg';
+var vaultPrefix = 'xplatTestVault';
+var keyPrefix = 'xplatTestKey';
 var knownNames = [];
 
-var requiredEnvironment = [{
-  requiresToken: true
-}, {
-  name: 'AZURE_ARM_TEST_VAULT',
-  defaultValue: 'XplatTestVaultMSTest'
-}];
+var requiredEnvironment = [
+  { requiresToken: true }, 
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' } 
+];
 
 var galleryTemplateName;
 var galleryTemplateUrl;
@@ -44,21 +44,39 @@ var galleryTemplateUrl;
 describe('arm', function() {
 
   describe('keyvault-key', function() {
+    
     var suite;
+    var dnsUpdateWait;
+    var testLocation;
+    var testResourceGroup;
     var testVault;
 
     before(function(done) {
-      suite = new CLITest(this, testprefix, requiredEnvironment);
-      suite.setupSuite(done);
+      suite = new CLITest(this, testPrefix, requiredEnvironment);
+      suite.setupSuite(function() { 
+        dnsUpdateWait = suite.isPlayback() ? 0 : 5000;
+        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        testLocation = testLocation.toLowerCase().replace(/ /g, '');
+        testResourceGroup = suite.generateId(rgPrefix, knownNames);
+        testVault = suite.generateId(vaultPrefix, knownNames);
+        suite.execute('group create %s --location %s', testResourceGroup, testLocation, function(result) {
+          result.exitStatus.should.be.equal(0);
+          suite.execute('keyvault create %s --resource-group %s --location %s --json', testVault, testResourceGroup, testLocation, function(result) {
+            result.exitStatus.should.be.equal(0);
+            setTimeout(done, dnsUpdateWait);
+          });
+        });      
+      });
     });
 
     after(function(done) {
-      suite.teardownSuite(done);
+      suite.execute('group delete %s --quiet', testResourceGroup, function() {
+        suite.teardownSuite(done);
+      });
     });
 
     beforeEach(function(done) {
       suite.setupTest(function() {
-        testVault = process.env.AZURE_ARM_TEST_VAULT;
         done();
       });
     });

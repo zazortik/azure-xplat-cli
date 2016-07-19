@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '53d9063d-87ae-4ea8-be90-3686c3b8669f',
-    name: 'Visual Studio Ultimate with MSDN',
+    id: '045c28ea-c686-462f-9081-33c34e871ba3',
+    name: 'MDInsightsPROD1_10759063',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '6e606ece-3a5a-4674-a654-d6b02bc5a51b',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -29,4 +29,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla2696','xplattestadla8792','xplattestadla5313','xplattestadls5047','xplattestadls4321','xplattestadls1479','adlacatalogitem930','adlacatalogitem9729','adlacatalogitem7952','adlacatalogitem9362','adlacatalogitem3344','adlacatalogitem746','adlacatalogitem7846','adlacatalogitem8591'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla528','xplattestadla5810','xplattestadla4305','xplattestadls1070','xplattestadls8823','xplattestadls599','adlacatalogitem9987','adlacatalogitem9067','adlacatalogitem410','adlacatalogitem8616','adlacatalogitem5348','adlacatalogitem516','adlacatalogitem9649','adlacatalogitem5226'];};

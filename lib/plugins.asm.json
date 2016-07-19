@@ -9871,9 +9871,188 @@
                   "description": "The subscription identifier"
                 }
               ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Validate storage account migration api validates the given storage account for IaaS Classic to ARM migration.",
+              "fullName": "storage account validate-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/storage.generated/storageAccount._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
             }
           ],
           "categories": {
+            "sas": {
+              "name": "sas",
+              "description": "Commands to manage shared access signatures of your storage account",
+              "fullName": "storage account sas",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Generate shared access signature of storage account",
+                  "fullName": "storage account sas create",
+                  "usage": "[options] [services] [resourceTypes] [permissions] [expiry]",
+                  "filePath": "commands/storage/storage.account._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--services <services>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--services",
+                      "description": "the storage services accessible with the account SAS combining symbols of b(Blob)/f(File)/q(Queue)/t(Table)"
+                    },
+                    {
+                      "flags": "--resource-types <resourceTypes>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--resource-types",
+                      "description": "the storage resource types accessible with the account SAS combining symbols of s(Service)/c(Container/o(Object)"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)/a(Add)/c(Create)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the SAS becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the SAS expires"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "keys": {
               "name": "keys",
               "description": "Commands to manage your Storage account keys",
@@ -10984,6 +11163,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -13131,7 +13326,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--permissions",
-                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
+                      "description": "the operation permissions combining symbols of r(Read)/a(Add)/c(Create)/w(Write)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -13625,6 +13836,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -14945,6 +15172,22 @@
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
                     },
                     {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
                       "flags": "--start <start>",
                       "required": -9,
                       "optional": 0,
@@ -15550,6 +15793,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/a(Add)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -16352,6 +16611,14 @@
                   "description": "show metrics properties for queue service"
                 },
                 {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "show metrics properties for file service"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -16435,6 +16702,14 @@
                   "bool": true,
                   "long": "--queue",
                   "description": "set metrics properties for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "set metrics properties for file service"
                 },
                 {
                   "flags": "--version <version>",
@@ -17187,6 +17462,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Query)/a(Add)/u(Update)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -18266,6 +18557,99 @@
                   "description": "The subscription identifier"
                 }
               ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "The Validate Deployment Operation validates your deployment for IaaS Classic to ARM migration.",
+              "fullName": "service deployment validate-migration",
+              "usage": "[options] <service-name> <name> <destination-virtual-network> <resource-group-name> <subnet-name> <virtual-network-name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "--destination-virtual-network <destination-virtual-network>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--destination-virtual-network",
+                  "description": "destination-virtual-network"
+                },
+                {
+                  "flags": "-g, --resource-group-name <resource-group-name>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group-name",
+                  "description": "resource-group-name"
+                },
+                {
+                  "flags": "--subnet-name <subnet-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subnet-name",
+                  "description": "subnet-name"
+                },
+                {
+                  "flags": "--virtual-network-name <virtual-network-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--virtual-network-name",
+                  "description": "virtual-network-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
             }
           ],
           "categories": {}
@@ -19106,7 +19490,7 @@
     },
     "hdinsight": {
       "name": "hdinsight",
-      "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters and jobs",
+      "description": "Commands to manage HDInsight clusters and jobs.\nhelp: \t\t\t  HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\t\t  To submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\t\t  For more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
       "fullName": "hdinsight",
       "usage": "[options]",
       "options": [],
@@ -19114,14 +19498,14 @@
       "categories": {
         "cluster": {
           "name": "cluster",
-          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters",
+          "description": "Commands to manage HDInsight clusters.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
           "fullName": "hdinsight cluster",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCreate a cluster",
+              "description": "Create a cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster create",
               "usage": "[options] <clusterName> <osType> <storageAccountName> <storageAccountKey> <storageContainer> <dataNodeCount> <headNodeSize> <dataNodeSize> <location> <userName> <password> <sshUserName> <sshPassword>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19268,7 +19652,7 @@
             },
             {
               "name": "delete",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nDelete a cluster",
+              "description": "Delete a cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster delete",
               "usage": "[options] <clusterName> <location> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19335,7 +19719,7 @@
             },
             {
               "name": "show",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nShow cluster details",
+              "description": "Show cluster details.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster show",
               "usage": "[options] <clusterName> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19394,7 +19778,7 @@
             },
             {
               "name": "list",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nList the clusters",
+              "description": "List the clustershelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster list",
               "usage": "[options]",
               "filePath": "commands/asm/hdinsight._js",
@@ -19431,14 +19815,14 @@
         },
         "job": {
           "name": "job",
-          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight jobs",
+          "description": "Commands to manage HDInsight jobs. \nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
           "fullName": "hdinsight job",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "hive_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Hive job to an HdInsight cluster",
+              "description": "Submits a Hive job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job hive_create",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19545,7 +19929,7 @@
             },
             {
               "name": "mr_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a MapReduce job to an HdInsight cluster",
+              "description": "Submits a MapReduce job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job mr_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <className> <jarFile>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19660,7 +20044,7 @@
             },
             {
               "name": "mr_streaming_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Streaming MapReduce job to an HdInsight cluster",
+              "description": "Submits a Streaming MapReduce job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job mr_streaming_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <mapper> <reducer>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19799,7 +20183,7 @@
             },
             {
               "name": "show",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the details of the specified job from an HDInsight cluster",
+              "description": "Retrieves the details of the specified job from an HDInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job show",
               "usage": "[options] <clusterDnsName> <userName> <password> <jobId>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19874,7 +20258,7 @@
             },
             {
               "name": "list",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the list of jobs from the specified HDInsight cluster",
+              "description": "Retrieves the list of jobs from the specified HDInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job list",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -24462,7 +24846,7 @@
           "commands": [
             {
               "name": "abort-migration",
-              "description": "Abort IaaS Classic to ARM migration for a virtual network.",
+              "description": "Abort Virtual Network migration api validates and aborts the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet abort-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -24514,7 +24898,7 @@
             },
             {
               "name": "commit-migration",
-              "description": "Commit IaaS Classic to ARM migration for a virtual network.",
+              "description": "Commit Virtual Network migration api validates and commits the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet commit-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -24566,8 +24950,60 @@
             },
             {
               "name": "prepare-migration",
-              "description": "Prepare IaaS Classic to ARM migration for a virtual network.",
+              "description": "Prepare Virtual Network migration api validates and prepare the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Prepare Virtual Network migration api validates the given virtual network for IaaS Classic to ARM migration.",
+              "fullName": "network vnet validate-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
@@ -36371,6 +36807,75 @@
               "short": "-f",
               "long": "--nic-config",
               "description": "the NIC configuration, comma separated list of NIC definition      \n Each NIC definition will be in the form  \"<nicName>:<subnetName>:[vnetStaticIP]:[nsgName]:[ipForwarding]\"      \n The VM must be created in a virtual network using --virtual-network-name option      \n The subnetName in each NIC definition must be an existing subnet in this virtual network"
+            },
+            {
+              "flags": "--disable-boot-diagnostics",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--disable-boot-diagnostics",
+              "description": "Disable boot diagnostics (enabled by default)."
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update VM settings",
+          "fullName": "vm set",
+          "usage": "[options] <name>",
+          "filePath": "commands/asm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-d, --dns-name <name>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-d",
+              "long": "--dns-name",
+              "description": "only show VMs for this DNS name"
+            },
+            {
+              "flags": "-B, --boot-diagnostics-enabled <boot-diagnostics-enabled>",
+              "required": -32,
+              "optional": 0,
+              "bool": true,
+              "short": "-B",
+              "long": "--boot-diagnostics-enabled",
+              "description": "Input true/false to enable/disable boot diagnostics."
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription id"
             }
           ]
         },
@@ -37222,15 +37727,6 @@
                   "description": "chef client pem file path i.e required in validator less bootstrap"
                 },
                 {
-                  "flags": "-a, --auto-update-client",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--auto-update-client",
-                  "description": "auto update chef client"
-                },
-                {
                   "flags": "-j, --bootstrap-options <bootstrap-json-attribute>",
                   "required": -25,
                   "optional": 0,
@@ -37238,15 +37734,6 @@
                   "short": "-j",
                   "long": "--bootstrap-options",
                   "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}'"
-                },
-                {
-                  "flags": "-D, --delete-chef-config",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-D",
-                  "long": "--delete-chef-config",
-                  "description": "delete chef config files during update/uninstall extension"
                 },
                 {
                   "flags": "-v, --bootstrap-version <number>",

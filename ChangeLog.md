@@ -1,3 +1,35 @@
+##2016-07-07 Version 0.10.2
+* Storage
+  * Added new command `azure storage account sas create`
+  * Added options `--protocol` and `--ip-range` for the service SAS commands
+	- `azure storage container sas create`
+	- `azure storage blob sas create`
+	- `azure storage queue sas create`
+	- `azure storage table sas create`
+	- `azure storage share sas create`
+	- `azure storage file sas create`
+  * Added support for permission `c` (Create) and `a` (Add) for the service SAS commands
+	- `azure storage container sas create`
+	- `azure storage blob sas create`
+  * Added support for permission `c` (Create) for the service SAS commands
+	- `azure storage share sas create`
+	- `azure storage file sas create`
+  * Added support for the option `--file` for `azure storage metrics set` and `azure storage metrics show` commands
+* Network
+  * Fixed issue importing record set in case when record name is equal to any record type
+* Compute
+  * Fixed VMSS Quick-Create issue
+  * Fixed issues #2717, #2767, #2879, #2926, #2960, #2961
+* General
+  * Added new commands
+	*  `azure ad app set`
+	*  `azure ad group member add | delete| check`
+	*  `azure ad sp set` 
+  * Added support for `ad user create|delete| memberGroups list` commands
+  * Added support for setting reply url for an application while creating it
+  * Added support for `ad group create|delete` commands
+  * Fixed issues #2919, #2937, #2939
+
 ##2016-06-01 Version 0.10.1
 * Storage
   * Integrated with the GA version of Azure Storage Client Library for Node.js

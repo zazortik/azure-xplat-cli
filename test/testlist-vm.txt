@@ -13,4 +13,5 @@ commands/cli.vm.disk.attachDetach-tests.js
 commands/cli.vm.disk.attachnew-tests.js
 commands/cli.vm.create_ssh-tests.js
 commands/cli.vm.compute.migration-tests.js
+commands/cli.vm.extension_set-tests.js
 # Live Only

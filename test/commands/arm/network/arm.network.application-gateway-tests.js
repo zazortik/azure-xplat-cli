@@ -582,6 +582,51 @@ describe('arm', function () {
           done();
         });
       });
+
+      it('create again should pass', function (done) {
+        var cmd = util.format('network application-gateway create {group} {name} -l {location} -e {vnetName} -m {subnetName} ' +
+          '-r {servers} -y {defaultSslCertPath} -x {sslPassword} -i {httpSettingsProtocol} -o {httpSettingsPortAddress} -f {cookieBasedAffinity} ' +
+          '-j {portValue} -b {httpListenerProtocol} -w {ruleType} -a {skuName} -u {skuTier} -z {capacity} -t {tags} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+          appGateway.location.should.equal(gatewayProp.location);
+          appGateway.sku.name.should.equal(gatewayProp.skuName);
+          appGateway.sku.tier.should.equal(gatewayProp.skuTier);
+          appGateway.sku.capacity.should.equal(gatewayProp.capacity);
+
+          var frontendPort = appGateway.frontendPorts[0];
+          frontendPort.port.should.equal(gatewayProp.portValue);
+
+          var backendHttpSettings = appGateway.backendHttpSettingsCollection[0];
+          backendHttpSettings.port.should.equal(gatewayProp.httpSettingsPortAddress);
+          backendHttpSettings.protocol.toLowerCase().should.equal(gatewayProp.httpSettingsProtocol.toLowerCase());
+          backendHttpSettings.cookieBasedAffinity.should.equal(gatewayProp.cookieBasedAffinity);
+
+          var httpListener = appGateway.httpListeners[0];
+          httpListener.protocol.toLowerCase().should.equal(gatewayProp.httpListenerProtocol.toLowerCase());
+
+          networkUtil.shouldHaveTags(appGateway);
+          networkUtil.shouldBeSucceeded(appGateway);
+          done();
+        });
+      });
+
+      it('delete should delete application gateway without waiting', function (done) {
+        var cmd = 'network application-gateway delete {group} {name} -q --nowait --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (deleteResult) {
+          deleteResult.exitStatus.should.equal(0);
+            var cmd = 'network application-gateway show {group} {name} --json'.formatArgs(gatewayProp);
+            testUtils.executeCommand(suite, retry, cmd, function (result) {
+              result.exitStatus.should.equal(0);
+              var appGateway = JSON.parse(result.text);
+              appGateway.name.should.equal(gatewayProp.name);
+              networkUtil.shouldBeDeleted(appGateway);
+              done();
+            });
+        });
+      });
     });
   });
 });

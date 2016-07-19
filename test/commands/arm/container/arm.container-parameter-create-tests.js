@@ -55,7 +55,7 @@ describe('arm', function() {
         location = process.env.AZURE_VM_TEST_LOCATION;
         sshcert = 'test/containerCert.pem';
         keydata = fs.readFileSync(sshcert).toString();
-        keydata = keydata.replace(' ', '').replace('\r', '').replace('\n', '');
+        keydata = keydata.replace('\r', '').replace('\n', '');
         groupName = suite.generateId(groupPrefix, null);
         containerPrefix = suite.generateId(containerPrefix, null);
         containerPrefix2 = suite.generateId(containerPrefix2, null);
@@ -108,8 +108,7 @@ describe('arm', function() {
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName, util.format('--admin-username %s', username)).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                           result.exitStatus.should.equal(0);
-                          var cmd = makeCommandStr('public-keys', 'set', paramFileName, util.format('--index 0 --key-data %s', keydata)).split(' ');
-                          testUtils.executeCommand(suite, retry, cmd, function(result) {
+                          suite.execute('acs config %s %s --parameter-file %s --index 0 --key-data %s --json', 'public-keys', 'set', paramFileName, keydata, function(result) {
                             result.exitStatus.should.equal(0);
                             var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix, paramFileName).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
@@ -170,8 +169,7 @@ describe('arm', function() {
                         var cmd = makeCommandStr('linux-profile', 'set', paramFileName2, util.format('--admin-username %s', username)).split(' ');
                         testUtils.executeCommand(suite, retry, cmd, function(result) {
                           result.exitStatus.should.equal(0);
-                          var cmd = makeCommandStr('public-keys', 'set', paramFileName2, util.format('--index 0 --key-data %s', keydata)).split(' ');
-                          testUtils.executeCommand(suite, retry, cmd, function(result) {
+                          suite.execute('acs config %s %s --parameter-file %s --index 0 --key-data %s --json', 'public-keys', 'set', paramFileName2, keydata, function(result) {
                             result.exitStatus.should.equal(0);
                             var cmd = util.format('acs create -g %s -n %s --parameter-file %s --json', groupName, containerPrefix2, paramFileName2).split(' ');
                             testUtils.executeCommand(suite, retry, cmd, function(result) {
