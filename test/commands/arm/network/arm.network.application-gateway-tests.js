@@ -616,7 +616,6 @@ describe('arm', function () {
       it('delete should delete application gateway without waiting', function (done) {
         var cmd = 'network application-gateway delete {group} {name} -q --nowait --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (deleteResult) {
-          console.log('DELETE result %j',deleteResult);
           deleteResult.exitStatus.should.equal(0);
             var cmd = 'network application-gateway show {group} {name} --json'.formatArgs(gatewayProp);
             testUtils.executeCommand(suite, retry, cmd, function (result) {
