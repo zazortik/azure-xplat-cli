@@ -257,16 +257,22 @@ describe('arm', function() {
           done();
         });
       });
-      
-      it('list-ip-address should display all VMs and corrosponding public IP address in subscription', function(done) {
+
+      it('list-ip-address should display all VMs and corresponding public IP address in subscription', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm list-ip-address %s --json', '').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
           allResources.some(function(res) {
-            var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
-            return vmPublicIpName.indexOf(publicipName) !== -1;
+            if(res && res.networkProfile && res.networkProfile.networkInterfaces[0]
+              && res.networkProfile.networkInterfaces[0].expanded
+              && res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress) {
+              var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
+              return vmPublicIpName.indexOf(publicipName) !== -1;
+            } else {
+              return false;
+            }
           }).should.be.true;
           done();
         });
