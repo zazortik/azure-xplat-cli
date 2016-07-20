@@ -29,24 +29,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .put('/testblobcopydest/toCopy?copyid=c44bb884-a4fa-40b1-b74e-27726542aeb9&comp=copy')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:cb304033-0001-0005-024e-e26278000000\nTime:2016-07-20T06:16:33.9767885Z</Message></Error>", { 'content-length': '236',
+  .put('/testblobcopydest/toCopy?copyid=5e229dac-07f9-4b01-aaa6-e7da828aff72&comp=copy')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:f5319c48-0001-0038-585f-e2d75e000000\nTime:2016-07-20T08:21:57.0649325Z</Message></Error>", { 'content-length': '236',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb304033-0001-0005-024e-e26278000000',
+  'x-ms-request-id': 'f5319c48-0001-0038-585f-e2d75e000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:16:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:21:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .put('/testblobcopydest/toCopy?copyid=c44bb884-a4fa-40b1-b74e-27726542aeb9&comp=copy')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:cb304033-0001-0005-024e-e26278000000\nTime:2016-07-20T06:16:33.9767885Z</Message></Error>", { 'content-length': '236',
+  .put('/testblobcopydest/toCopy?copyid=5e229dac-07f9-4b01-aaa6-e7da828aff72&comp=copy')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:f5319c48-0001-0038-585f-e2d75e000000\nTime:2016-07-20T08:21:57.0649325Z</Message></Error>", { 'content-length': '236',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb304033-0001-0005-024e-e26278000000',
+  'x-ms-request-id': 'f5319c48-0001-0038-585f-e2d75e000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:16:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:21:56 GMT',
   connection: 'close' });
  return result; }]];

@@ -30,24 +30,24 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
   .get('/?comp=list&include=metadata&prefix=storageclitest')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\"><Prefix>storageclitest</Prefix><Containers><Container><Name>storageclitest</Name><Properties><Last-Modified>Wed, 20 Jul 2016 06:12:26 GMT</Last-Modified><Etag>\"0x8D3B064D28AC759\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\"><Prefix>storageclitest</Prefix><Containers><Container><Name>storageclitest</Name><Properties><Last-Modified>Wed, 20 Jul 2016 08:17:19 GMT</Last-Modified><Etag>\"0x8D3B07644D60358\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6dc54add-0001-0013-234d-e2a3e6000000',
+  'x-ms-request-id': '31ff7b75-0001-0011-105f-e2a11c000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:12:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:17:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
   .get('/?comp=list&include=metadata&prefix=storageclitest')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\"><Prefix>storageclitest</Prefix><Containers><Container><Name>storageclitest</Name><Properties><Last-Modified>Wed, 20 Jul 2016 06:12:26 GMT</Last-Modified><Etag>\"0x8D3B064D28AC759\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ServiceEndpoint=\"https://xplat.blob.core.windows.net/\"><Prefix>storageclitest</Prefix><Containers><Container><Name>storageclitest</Name><Properties><Last-Modified>Wed, 20 Jul 2016 08:17:19 GMT</Last-Modified><Etag>\"0x8D3B07644D60358\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata /></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6dc54add-0001-0013-234d-e2a3e6000000',
+  'x-ms-request-id': '31ff7b75-0001-0011-105f-e2a11c000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:12:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:17:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -56,12 +56,12 @@ nock('http://xplat.blob.core.windows.net:443')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Wed, 20 Jul 2016 06:12:26 GMT',
-  etag: '"0x8D3B064D28AC759"',
+  'last-modified': 'Wed, 20 Jul 2016 08:17:19 GMT',
+  etag: '"0x8D3B07644D60358"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '793f301f-0001-0004-134d-e26385000000',
+  'x-ms-request-id': '71af9541-0001-002e-7c5f-e216c0000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:12:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:17:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -70,11 +70,11 @@ nock('https://xplat.blob.core.windows.net:443')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Wed, 20 Jul 2016 06:12:26 GMT',
-  etag: '"0x8D3B064D28AC759"',
+  'last-modified': 'Wed, 20 Jul 2016 08:17:19 GMT',
+  etag: '"0x8D3B07644D60358"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '793f301f-0001-0004-134d-e26385000000',
+  'x-ms-request-id': '71af9541-0001-002e-7c5f-e216c0000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 06:12:33 GMT',
+  date: 'Wed, 20 Jul 2016 08:17:28 GMT',
   connection: 'close' });
  return result; }]];

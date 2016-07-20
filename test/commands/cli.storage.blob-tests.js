@@ -652,6 +652,53 @@ describe('cli', function () {
             })
           });
         })
+        
+        it('should download blob snapshot', function(done) {
+          blockBlobName = suite.generateId(blockBlobName);
+          var buf = new Buffer('HelloWorld', 'utf8');
+          var fileName = 'hello.block.snapshot.txt';
+          var downloadFileName = 'hello.block.snapshot.download.txt';
+          var fd = fs.openSync(fileName, 'w');
+          fs.writeSync(fd, buf, 0, buf.length, 0);
+          var md5Hash = crypto.createHash('md5');
+          md5Hash.update(buf);
+          var originalContentMD5 = md5Hash.digest('base64');
+          
+          suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blockBlobName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.name.should.equal(blockBlobName);
+            blob.contentSettings.contentMD5.should.equal(originalContentMD5);
+
+            suite.execute('storage blob snapshot %s %s --json', containerName, blockBlobName, function (result) {
+              var blob = JSON.parse(result.text);
+              var snapshotId = blob.snapshot;
+
+              var bufUpdated = new Buffer('HelloWorldUpdated', 'utf8');
+              fd = fs.openSync(fileName, 'w');
+              fs.writeSync(fd, bufUpdated, 0, bufUpdated.length, 0);
+
+              md5Hash = crypto.createHash('md5');
+              md5Hash.update(bufUpdated);
+              var updatedContentMD5 = md5Hash.digest('base64');
+
+              suite.execute('storage blob upload %s %s %s -q --json', fileName, containerName, blockBlobName, function (result) {
+                var blob = JSON.parse(result.text);
+                blob.name.should.equal(blockBlobName);
+                blob.contentSettings.contentMD5.should.equal(updatedContentMD5);
+
+                fs.unlinkSync(fileName);
+
+                suite.execute('storage blob download %s %s %s --snapshot %s -q -m --json', containerName, blockBlobName, downloadFileName, snapshotId, function (result) {
+                  var blob = JSON.parse(result.text);
+                  blob.contentSettings.contentMD5.should.equal(originalContentMD5);
+                  
+                  fs.unlinkSync(downloadFileName);
+                  done();
+                });
+              });
+            });
+          });
+        })
 
         it('should download the specified page blob', function (done) {
           var fileName = 'hello.download.page.txt';

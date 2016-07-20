@@ -29,70 +29,70 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname757?comp=lease')
+  .put('/storage-cli-blob-test/blockblobname63597866?comp=lease')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 20 Jul 2016 06:14:51 GMT',
-  etag: '"0x8D3B06528E248F2"',
+  'last-modified': 'Wed, 20 Jul 2016 08:20:02 GMT',
+  etag: '"0x8D3B076A6026530"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c7de6d6-0001-002d-6b4e-e215c7000000',
+  'x-ms-request-id': 'fd716167-0001-0039-6a5f-e2d6a3000000',
   'x-ms-version': '2015-04-05',
-  'x-ms-lease-id': '92ea6aac-ed86-4878-bd81-c5f1f0e9d461',
-  date: 'Wed, 20 Jul 2016 06:15:14 GMT',
+  'x-ms-lease-id': 'd96a04b5-13ca-41e0-8073-62a5bb157e7f',
+  date: 'Wed, 20 Jul 2016 08:20:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname757?comp=lease')
+  .put('/storage-cli-blob-test/blockblobname63597866?comp=lease')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Wed, 20 Jul 2016 06:14:51 GMT',
-  etag: '"0x8D3B06528E248F2"',
+  'last-modified': 'Wed, 20 Jul 2016 08:20:02 GMT',
+  etag: '"0x8D3B076A6026530"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c7de6d6-0001-002d-6b4e-e215c7000000',
+  'x-ms-request-id': 'fd716167-0001-0039-6a5f-e2d6a3000000',
   'x-ms-version': '2015-04-05',
-  'x-ms-lease-id': '92ea6aac-ed86-4878-bd81-c5f1f0e9d461',
-  date: 'Wed, 20 Jul 2016 06:15:14 GMT',
+  'x-ms-lease-id': 'd96a04b5-13ca-41e0-8073-62a5bb157e7f',
+  date: 'Wed, 20 Jul 2016 08:20:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/blockblobname757')
-  .reply(200, "", { 'content-length': '10',
+  .head('/storage-cli-blob-test/blockblobname63597866')
+  .reply(200, "", { 'content-length': '17',
   'content-type': 'text/plain',
-  'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 06:14:51 GMT',
+  'content-md5': 'rG1yD4pD69MsOEPPGr72YA==',
+  'last-modified': 'Wed, 20 Jul 2016 08:20:02 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B06528E248F2"',
+  etag: '"0x8D3B076A6026530"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee7ae39b-0001-0009-364e-e28c89000000',
+  'x-ms-request-id': 'f07d2dac-0001-0042-335f-e2bd13000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
   'x-ms-lease-status': 'locked',
   'x-ms-lease-state': 'leased',
   'x-ms-lease-duration': 'infinite',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Wed, 20 Jul 2016 06:15:14 GMT',
+  date: 'Wed, 20 Jul 2016 08:20:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/blockblobname757')
-  .reply(200, "", { 'content-length': '10',
+  .head('/storage-cli-blob-test/blockblobname63597866')
+  .reply(200, "", { 'content-length': '17',
   'content-type': 'text/plain',
-  'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 06:14:51 GMT',
+  'content-md5': 'rG1yD4pD69MsOEPPGr72YA==',
+  'last-modified': 'Wed, 20 Jul 2016 08:20:02 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B06528E248F2"',
+  etag: '"0x8D3B076A6026530"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee7ae39b-0001-0009-364e-e28c89000000',
+  'x-ms-request-id': 'f07d2dac-0001-0042-335f-e2bd13000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
   'x-ms-lease-status': 'locked',
   'x-ms-lease-state': 'leased',
   'x-ms-lease-duration': 'infinite',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Wed, 20 Jul 2016 06:15:14 GMT',
+  date: 'Wed, 20 Jul 2016 08:20:13 GMT',
   connection: 'close' });
  return result; }]];

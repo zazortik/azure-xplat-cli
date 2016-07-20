@@ -11864,6 +11864,14 @@
                   "description": "the lease ID"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -12206,6 +12214,14 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
                 },
                 {
                   "flags": "--lease <leaseId>",
