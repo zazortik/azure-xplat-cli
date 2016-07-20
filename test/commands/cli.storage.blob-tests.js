@@ -523,6 +523,30 @@ describe('cli', function () {
           });
         });
 
+        it('should create a page blob by uploading a vhd file to azure storage by default', function (done) {
+          pageBlobName = suite.generateId(pageBlobName);
+          var buf = new Buffer(512);
+          if (suite.isMocked) { buf.fill(1); }
+          var fileName = 'hello.page.vhd';
+          var fd = fs.openSync(fileName, 'w');
+          fs.writeSync(fd, buf, 0, buf.length, 0);
+          var md5Hash = crypto.createHash('md5');
+          md5Hash.update(buf);
+          var contentMD5 = md5Hash.digest('base64');
+          suite.execute('storage blob upload %s %s %s --json', fileName, containerName, pageBlobName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.name.should.equal(pageBlobName);
+            blob.contentSettings.contentMD5.should.equal(contentMD5);
+            fs.unlinkSync(fileName);
+
+            suite.execute('storage blob show %s %s --json', containerName, pageBlobName, function (result) {
+              var blob = JSON.parse(result.text);
+              blob.blobType.should.equal('PageBlob');
+              done();
+            });
+          });
+        });
+
         it('should create an append blob by uploading a basic file to azure storage', function (done) {
           appendBlobName = suite.generateId(appendBlobName);
           var buf = new Buffer('HelloWorld', 'utf8');
