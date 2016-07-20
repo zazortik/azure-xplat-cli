@@ -14300,6 +14300,14 @@
                   "description": "check md5sum for the downloaded file"
                 },
                 {
+                  "flags": "--concurrenttaskcount <concurrenttaskcount>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--concurrenttaskcount",
+                  "description": "the maximum number of concurrent download requests"
+                },
+                {
                   "flags": "-q, --quiet",
                   "required": 0,
                   "optional": 0,
