@@ -29,40 +29,42 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/blockblobname6359')
-  .reply(200, "", { 'content-length': '10',
+  .head('/storage-cli-blob-test/blockblobname17332883')
+  .reply(200, "", { 'content-length': '17',
   'content-type': 'text/plain',
-  'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 08:19:46 GMT',
+  'content-md5': 'rG1yD4pD69MsOEPPGr72YA==',
+  'last-modified': 'Wed, 20 Jul 2016 09:58:32 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B0769C3589D5"',
+  etag: '"0x8D3B08468AFC4E2"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fd714df4-0001-0039-375f-e2d6a3000000',
+  'x-ms-request-id': '216237f9-0001-0000-326d-e29607000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
-  'x-ms-lease-status': 'unlocked',
-  'x-ms-lease-state': 'available',
+  'x-ms-lease-status': 'locked',
+  'x-ms-lease-state': 'leased',
+  'x-ms-lease-duration': 'infinite',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Wed, 20 Jul 2016 08:19:56 GMT',
+  date: 'Wed, 20 Jul 2016 09:58:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/blockblobname6359')
-  .reply(200, "", { 'content-length': '10',
+  .head('/storage-cli-blob-test/blockblobname17332883')
+  .reply(200, "", { 'content-length': '17',
   'content-type': 'text/plain',
-  'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 08:19:46 GMT',
+  'content-md5': 'rG1yD4pD69MsOEPPGr72YA==',
+  'last-modified': 'Wed, 20 Jul 2016 09:58:32 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B0769C3589D5"',
+  etag: '"0x8D3B08468AFC4E2"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fd714df4-0001-0039-375f-e2d6a3000000',
+  'x-ms-request-id': '216237f9-0001-0000-326d-e29607000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
-  'x-ms-lease-status': 'unlocked',
-  'x-ms-lease-state': 'available',
+  'x-ms-lease-status': 'locked',
+  'x-ms-lease-state': 'leased',
+  'x-ms-lease-duration': 'infinite',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Wed, 20 Jul 2016 08:19:56 GMT',
+  date: 'Wed, 20 Jul 2016 09:58:34 GMT',
   connection: 'close' });
  return result; }]];

@@ -568,6 +568,52 @@ describe('cli', function () {
             });
           });
         });
+
+        it('should be able to overwrite the blob by providing --lease when the blob is already leased', function (done) {
+          blockBlobName = suite.generateId(blockBlobName);
+          var buf = new Buffer('HelloWorld', 'utf8');
+          var fileName = 'hello.block.lease.txt';
+          var fd = fs.openSync(fileName, 'w');
+          fs.writeSync(fd, buf, 0, buf.length, 0);
+          var md5Hash = crypto.createHash('md5');
+          md5Hash.update(buf);
+          var originalContentMD5 = md5Hash.digest('base64');
+          
+          suite.execute('storage blob upload %s %s %s --json', fileName, containerName, blockBlobName, function (result) {
+            var blob = JSON.parse(result.text);
+            blob.name.should.equal(blockBlobName);
+            blob.contentSettings.contentMD5.should.equal(originalContentMD5);
+
+            suite.execute('storage blob lease acquire %s %s --json', containerName, blockBlobName, function(result) {
+              var lease = JSON.parse(result.text);
+              lease.id.should.not.be.emtpy;
+              var leaseId = lease.id;
+
+              var bufUpdated = new Buffer('HelloWorldUpdated', 'utf8');
+              fd = fs.openSync(fileName, 'w');
+              fs.writeSync(fd, bufUpdated, 0, bufUpdated.length, 0);
+
+              md5Hash = crypto.createHash('md5');
+              md5Hash.update(bufUpdated);
+              var updatedContentMD5 = md5Hash.digest('base64');
+
+              // No lease will get error
+              suite.execute('storage blob upload %s %s %s -q --json', fileName, containerName, blockBlobName, leaseId, function (result) {
+                (result.errorText.indexOf('There is currently a lease on the blob and no lease ID was specified in the request') !== -1).should.be.ok;
+
+                // Correct lease will success
+                suite.execute('storage blob upload %s %s %s --lease %s -q --json', fileName, containerName, blockBlobName, leaseId, function (result) {
+                  var blob = JSON.parse(result.text);
+                  blob.name.should.equal(blockBlobName);
+                  blob.contentSettings.contentMD5.should.equal(updatedContentMD5);
+
+                  fs.unlinkSync(fileName);
+                  done();
+                });
+              });
+            });
+          });
+        });
       });
 
       describe('list', function () {
@@ -649,9 +695,9 @@ describe('cli', function () {
                   blobService.deleteContainer(publicContainerName, function(){done();});
                 });
               });
-            })
+            });
           });
-        })
+        });
         
         it('should download blob snapshot', function(done) {
           blockBlobName = suite.generateId(blockBlobName);
@@ -698,7 +744,7 @@ describe('cli', function () {
               });
             });
           });
-        })
+        });
 
         it('should download the specified page blob', function (done) {
           var fileName = 'hello.download.page.txt';

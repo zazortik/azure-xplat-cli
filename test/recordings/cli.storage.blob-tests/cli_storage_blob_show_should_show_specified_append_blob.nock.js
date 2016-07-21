@@ -29,42 +29,42 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/appendblobname8034')
+  .head('/storage-cli-blob-test/appendblobname946')
   .reply(200, "", { 'content-length': '10',
   'content-type': 'text/plain',
   'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 08:19:54 GMT',
+  'last-modified': 'Wed, 20 Jul 2016 09:58:28 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B076A160682F"',
+  etag: '"0x8D3B084660C381C"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a517f364-0001-002c-055f-e2143a000000',
+  'x-ms-request-id': 'ce3ac261-0001-0002-1d6d-e294fd000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'AppendBlob',
   'x-ms-blob-committed-block-count': '1',
-  date: 'Wed, 20 Jul 2016 08:19:57 GMT',
+  date: 'Wed, 20 Jul 2016 09:58:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .head('/storage-cli-blob-test/appendblobname8034')
+  .head('/storage-cli-blob-test/appendblobname946')
   .reply(200, "", { 'content-length': '10',
   'content-type': 'text/plain',
   'content-md5': 'aOEJ8PQMpyoV4FzCJ4b45g==',
-  'last-modified': 'Wed, 20 Jul 2016 08:19:54 GMT',
+  'last-modified': 'Wed, 20 Jul 2016 09:58:28 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D3B076A160682F"',
+  etag: '"0x8D3B084660C381C"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a517f364-0001-002c-055f-e2143a000000',
+  'x-ms-request-id': 'ce3ac261-0001-0002-1d6d-e294fd000000',
   'x-ms-version': '2015-04-05',
   'x-ms-write-protection': 'false',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'AppendBlob',
   'x-ms-blob-committed-block-count': '1',
-  date: 'Wed, 20 Jul 2016 08:19:57 GMT',
+  date: 'Wed, 20 Jul 2016 09:58:35 GMT',
   connection: 'close' });
  return result; }]];
