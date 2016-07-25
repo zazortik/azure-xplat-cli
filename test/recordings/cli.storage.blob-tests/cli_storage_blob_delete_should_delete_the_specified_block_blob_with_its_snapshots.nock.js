@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    state: 'Enabled',
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -28,22 +29,22 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .delete('/storage-cli-blob-test/blockblobname1025')
+  .delete('/storage-cli-blob-test/blockblobname173328839918')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a7b7b399-0001-0016-42b5-b15799000000',
+  'x-ms-request-id': 'a78313d6-0001-0036-4f6d-e23b55000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:03:26 GMT',
+  date: 'Wed, 20 Jul 2016 10:00:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .delete('/storage-cli-blob-test/blockblobname1025')
+  .delete('/storage-cli-blob-test/blockblobname173328839918')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a7b7b399-0001-0016-42b5-b15799000000',
+  'x-ms-request-id': 'a78313d6-0001-0036-4f6d-e23b55000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:03:26 GMT',
+  date: 'Wed, 20 Jul 2016 10:00:01 GMT',
   connection: 'close' });
  return result; }]];
