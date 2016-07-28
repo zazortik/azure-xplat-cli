@@ -11450,6 +11450,14 @@
                   "description": "the lease ID"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11699,6 +11707,14 @@
                   "description": "the maximum number of concurrent upload requests"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11792,6 +11808,14 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -14298,6 +14322,14 @@
                   "short": "-m",
                   "long": "--checkmd5",
                   "description": "check md5sum for the downloaded file"
+                },
+                {
+                  "flags": "--concurrenttaskcount <concurrenttaskcount>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--concurrenttaskcount",
+                  "description": "the maximum number of concurrent download requests"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -30471,7 +30503,7 @@
               "bool": true,
               "short": "-S",
               "long": "--subnet-id",
-              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
+              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>\n     Use this parameter if specified subnet exists only to avoid other vnet parameters to specify vnet and subnet you use\n     If you need to use subnet and virtual network from another resource group (not the same as VM resource group), just enter appropriate subnet ID"
             },
             {
               "flags": "-F, --vnet-name <vnet-name>",
