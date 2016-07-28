@@ -182,7 +182,7 @@ describe('arm', function () {
         it('should fail if resourceId is missing', function (done) {
           suite.execute('insights diagnostic set -a %s -e true', storageId, function(result) {
             result.exitStatus.should.equal(1);
-            var expectedError = util.format('The switch resourceId is required');
+            var expectedError = util.format('The resourceId parameter is required');
             result.errorText.should.include(expectedError);
             done();
           });
@@ -191,7 +191,7 @@ describe('arm', function () {
         it('should fail if enable is missing', function (done) {
           suite.execute('insights diagnostic set -i %s -a %s', resourceId, storageId, function(result) {
             result.exitStatus.should.equal(1);
-            var expectedError = util.format('The switch enabled is required');
+            var expectedError = util.format('The enabled parameter is required');
             result.errorText.should.include(expectedError);
             done();
           });

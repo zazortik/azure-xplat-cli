@@ -81,7 +81,7 @@ describe('arm', function () {
         it('should fail if resourceId is missing', function (done) {
           suite.execute('insights diagnostic get', function(result) {
             result.exitStatus.should.equal(1);
-            var expectedError = util.format('The switch resourceId is required');
+            var expectedError = util.format('The resourceId parameter is required');
             result.errorText.should.include(expectedError);
             done();
           });
