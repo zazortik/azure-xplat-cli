@@ -68,7 +68,7 @@
     "azure-asm-sql": "0.10.1",
     "azure-asm-storage": "0.12.0",
     "azure-asm-subscription": "0.10.1",
-    "azure-asm-website": "0.10.1",
+    "azure-asm-website": "0.10.4",
     "azure-storage": "1.1.0",
     "azure-arm-batch": "0.2.0",
     "azure-batch": "0.4.0",
