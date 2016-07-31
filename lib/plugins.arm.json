@@ -11450,6 +11450,14 @@
                   "description": "the lease ID"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11699,6 +11707,14 @@
                   "description": "the maximum number of concurrent upload requests"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11792,6 +11808,14 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -14298,6 +14322,14 @@
                   "short": "-m",
                   "long": "--checkmd5",
                   "description": "check md5sum for the downloaded file"
+                },
+                {
+                  "flags": "--concurrenttaskcount <concurrenttaskcount>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--concurrenttaskcount",
+                  "description": "the maximum number of concurrent download requests"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -30471,7 +30503,7 @@
               "bool": true,
               "short": "-S",
               "long": "--subnet-id",
-              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
+              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>\n     Use this parameter if specified subnet exists only to avoid other vnet parameters to specify vnet and subnet you use\n     If you need to use subnet and virtual network from another resource group (not the same as VM resource group), just enter appropriate subnet ID"
             },
             {
               "flags": "-F, --vnet-name <vnet-name>",
@@ -44801,7 +44833,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, in UTC format"
+                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -44810,7 +44842,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, in UTC format"
+                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -44931,7 +44963,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, in UTC format"
+                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -44940,7 +44972,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, in UTC format"
+                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -45036,7 +45068,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change key expiration time; must be a date in UTC format or null"
+                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -45045,7 +45077,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which key cannot be used; must be a date in UTC format or null"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -45428,7 +45460,7 @@
               "name": "set",
               "description": "Stores a secret on the vault",
               "fullName": "keyvault secret set",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [--value] <secret-value> [options]",
+              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [options]",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -45481,7 +45513,39 @@
                   "bool": true,
                   "short": "-w",
                   "long": "--value",
-                  "description": "the secret value"
+                  "description": "the secret value to be uploaded, expressed as an arbitrary sequence of characters; cannot be used along with --json-value or --file flags"
+                },
+                {
+                  "flags": "--json-value <JSON-string>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json-value",
+                  "description": "the secret value to be uploaded, expressed as a JSON string; cannot be used along with --value or --file flags"
+                },
+                {
+                  "flags": "--file <file-name>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "the file that contains the secret value to be uploaded; cannot be used along with the --value or --json-value flag"
+                },
+                {
+                  "flags": "--file-encoding <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-encoding",
+                  "description": "for text files, specifies encoding used on the file; valid values: [utf8, utf16le, ucs2, ascii]; default is utf8"
+                },
+                {
+                  "flags": "--encode-binary <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--encode-binary",
+                  "description": "tells the file is binary and encodes it before uploading; valid values: [base64, hex]"
                 },
                 {
                   "flags": "--enabled <boolean>",
@@ -45498,7 +45562,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "expiration time of secret, in UTC format"
+                  "description": "expiration time of secret, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -45507,7 +45571,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which secret cannot be used, in UTC format"
+                  "description": "time before which secret cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -45517,6 +45581,15 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "Tags to set on the secret. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                },
+                {
+                  "flags": "-p, --pass-thru",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pass-thru",
+                  "description": "outputs the stored secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -45594,7 +45667,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change secret expiration time; must be a date in UTC format or null"
+                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -45603,7 +45676,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which secret cannot be used; must be a date in UTC format or null"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -45621,6 +45694,15 @@
                   "bool": true,
                   "long": "--reset-tags",
                   "description": "remove previously existing tags; can combined with --tags"
+                },
+                {
+                  "flags": "-p, --pass-thru",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pass-thru",
+                  "description": "outputs attributes of the modified secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -45682,6 +45764,91 @@
                   "short": "-r",
                   "long": "--secret-version",
                   "description": "the secret version; if ommited, uses the most recent"
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Downloads a secret from the vault",
+              "fullName": "keyvault secret get",
+              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [[--secret-version] <secret-version>] [--file] <file-name> [options]",
+              "filePath": "commands/arm/keyvault/keyvault.secret._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-s, --secret-name <secret-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--secret-name",
+                  "description": "the secret name"
+                },
+                {
+                  "flags": "-r, --secret-version <secret-version>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--secret-version",
+                  "description": "the secret version; if ommited, uses the most recent"
+                },
+                {
+                  "flags": "--file <file-name>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "the file to receive secret contents; the file must not exist otherwise the command fails"
+                },
+                {
+                  "flags": "--file-encoding <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-encoding",
+                  "description": "specifies how to encode the secret contents in the file; valid values: [utf8, utf16le, ucs2, ascii]; default is utf8"
+                },
+                {
+                  "flags": "--decode-binary <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--decode-binary",
+                  "description": "tells to write a binary file by decoding secret contents with the informed encoding; valid values: [base64, hex]"
                 }
               ]
             },
@@ -45751,7 +45918,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pass-thru",
-                  "description": "outputs the deleted secret"
+                  "description": "outputs the deleted secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             }
@@ -57222,6 +57389,23 @@
                   "description": "application gateway instance count in range [2,10]. Default value is 2."
                 },
                 {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                },
+                {
                   "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
@@ -57229,15 +57413,6 @@
                   "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": ""
                 }
               ]
             },
@@ -57326,6 +57501,14 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -57509,6 +57692,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -57730,6 +57921,14 @@
                       "description": "the certificate password"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -57807,6 +58006,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -57943,6 +58150,14 @@
                       "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58020,6 +58235,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58111,6 +58334,14 @@
                       "description": "the port, valid range is [0,65535]"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58188,6 +58419,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58279,6 +58518,14 @@
                       "description": "comma separated list of IP addresses or DNS names\n     corresponding to backend servers"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58356,6 +58603,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58465,6 +58720,14 @@
                       "description": "enable or disable cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is [Disabled]"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58542,6 +58805,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58660,6 +58931,14 @@
                       "description": "the name of an existing SSL certificate.\n   This parameter is required when --protocol is Https"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58737,6 +59016,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58855,6 +59142,14 @@
                       "description": "the type, currently supported only default value \"%s\""
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58932,6 +59227,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59077,6 +59380,14 @@
                       "description": "probe retry count.\n   Back end server is marked down after consecutive probe failure count reaches an unhealthy threshold\n   Default value is 5"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59154,6 +59465,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59272,6 +59591,14 @@
                       "description": "the name of an existing backend address pool"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59349,6 +59676,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59466,6 +59801,14 @@
                           "description": "the name of an existing backend address pool"
                         },
                         {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                        },
+                        {
                           "flags": "-s, --subscription <subscription>",
                           "required": -20,
                           "optional": 0,
@@ -59552,6 +59895,14 @@
                           "short": "-q",
                           "long": "--quiet",
                           "description": "quiet mode, do not ask for delete confirmation"
+                        },
+                        {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
