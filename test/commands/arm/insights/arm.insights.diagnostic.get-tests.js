@@ -63,7 +63,8 @@ describe('arm', function () {
           suite.execute('insights diagnostic get -i %s --json', resourceId, function(result) {
             var properties = JSON.parse(result.text);
 
-            properties.storageAccountId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus');
+            properties.storageAccountId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/microsoft.classicstorage/storageAccounts/sbeastus1a1');
+            properties.serviceBusRuleId.should.equal('/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/tseastus/authorizationrules/RootManageSharedAccessKey');
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -73,6 +74,15 @@ describe('arm', function () {
             properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
+            done();
+          });
+        });
+
+        it('should fail if resourceId is missing', function (done) {
+          suite.execute('insights diagnostic get', function(result) {
+            result.exitStatus.should.equal(1);
+            var expectedError = util.format('The resourceId parameter is required');
+            result.errorText.should.include(expectedError);
             done();
           });
         });
