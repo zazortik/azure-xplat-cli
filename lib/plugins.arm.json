@@ -43529,6 +43529,15 @@
                   "description": "storage account Id."
                 },
                 {
+                  "flags": "-b, --serviceBusRuleId <serviceBusRuleId>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--serviceBusRuleId",
+                  "description": "service bus authorization rule Id."
+                },
+                {
                   "flags": "-e, --enabled <enabled>",
                   "required": -15,
                   "optional": 0,
@@ -62488,6 +62497,14 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "show details such as alias definitions, etc."
             },
             {
               "flags": "-n --namespace <namespace>",
