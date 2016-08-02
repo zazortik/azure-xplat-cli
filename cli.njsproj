@@ -6,7 +6,7 @@
     <ProjectGuid>{e6309b69-d527-408b-8835-86367f414dba}</ProjectGuid>
     <ProjectHome />
     <ProjectView>ShowAllFiles</ProjectView>
-    <StartupFile>bin\azure.js</StartupFile>
+    <StartupFile>node bin\azure.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
@@ -78,7 +78,12 @@
     <Content Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
+    <Compile Include="lib\util\interaction.js" />
     <Compile Include="lib\util\profile\account.js" />
+    <Compile Include="lib\util\storage.util.js" />
+    <Compile Include="lib\util\telemetry.js" />
+    <Compile Include="lib\util\vmConstants.js" />
+    <Compile Include="lib\util\vnet.util.js" />
     <Compile Include="scripts\extract-labels.js" />
     <Compile Include="scripts\filter-testresults.js" />
     <Compile Include="scripts\harvest-cmds.js" />
