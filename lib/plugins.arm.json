@@ -63939,7 +63939,7 @@
           "name": "move",
           "description": "Moves resources from one resource group to another",
           "fullName": "resource move",
-          "usage": "[options] <ids> <destination-group>",
+          "usage": "[options] <ids> <destination-group> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -63992,6 +63992,15 @@
               "bool": true,
               "long": "--destination-subscriptionId",
               "description": "the destination subscription identifier"
+            },
+            {
+              "flags": "-o --api-version <api-version>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--api-version",
+              "description": "the API version of the resource provider"
             },
             {
               "flags": "-q, --quiet",
