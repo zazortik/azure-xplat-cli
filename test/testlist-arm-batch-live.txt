@@ -1,2 +1,3 @@
 commands/arm/batch/arm.batch.account-tests.js
 commands/arm/batch/arm.batch.subscription-tests.js
+commands/arm/batch/arm.batch.application-tests.js
