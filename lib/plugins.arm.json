@@ -42788,6 +42788,2180 @@
         }
       }
     },
+    "iothub": {
+      "name": "iothub",
+      "description": "Commands to manage your Azure Iot Hubs",
+      "fullName": "iothub",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create a new IotHub",
+          "fullName": "iothub create",
+          "usage": "[--resource-group] <resourceGroup> [--name] <name> [--location] <location> [--sku-name] <skuName> [--units] <units> \n\t\t\t [--enable-dm] [enableDMFlag] \n\t\t\t [--d2c-partitions] [d2cPartitions] [--d2c-retention-time-in-days] [d2cRetentionTimeInDays] \n\t\t\t [--c2d-max-delivery-count] [c2dMaxDeliveryCount] [--c2d-ttl] [c2dTtl] \n\t\t\t [--feedback-lock-duration] [feedbackLockDuration] [--feedback-ttl] [feedbackTtl] [--feedback-max-delivery-count] [feedbackMaxDeliveryCount] \n\t\t\t [--enable-fileupload-notifications] [enableFileUploadNotifications] [--fileupload-storage-connectionstring] [fileUploadStorageConnectionString] \n\t\t\t [--fileupload-container-name] [fileUploadContainerName] [--fileupload-sas-uri-ttl] [fileUploadSASUriTTL] [--fileupload-notification-ttl] [fileUploadNotificationTTL] \n\t\t\t [--fileupload-notification-max-delivery-count] [fileUploadNotificationMaxDeliveryCount] \n\t\t\t [--tags] [tags] \n\t\t\t [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the new Iot Hub"
+            },
+            {
+              "flags": "-l --location <location>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "The location (azure region/datacenter) where the IotHub will be provisioned"
+            },
+            {
+              "flags": "-k --sku-name <skuName>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-k",
+              "long": "--sku-name",
+              "description": "The name of the sku, one of: [F1, S1, S2, S3]"
+            },
+            {
+              "flags": "-u --units <units>",
+              "required": -12,
+              "optional": 0,
+              "bool": true,
+              "short": "-u",
+              "long": "--units",
+              "description": "The number of provisioned units"
+            },
+            {
+              "flags": "-e --enable-dm [enableDMFlag]",
+              "required": 0,
+              "optional": -16,
+              "bool": true,
+              "short": "-e",
+              "long": "--enable-dm",
+              "description": "The flag which indicates whether Device Management is enabled, one of true, false"
+            },
+            {
+              "flags": "-p --d2c-partitions [d2cPartitions]",
+              "required": 0,
+              "optional": -21,
+              "bool": true,
+              "short": "-p",
+              "long": "--d2c-partitions",
+              "description": "The number of partitions for your device-to-cloud events"
+            },
+            {
+              "flags": "-r --d2c-retention-time-in-days [d2cRetentionTimeInDays]",
+              "required": 0,
+              "optional": -33,
+              "bool": true,
+              "short": "-r",
+              "long": "--d2c-retention-time-in-days",
+              "description": "The number of days for which the device-to-cloud events will be maintained, between 1 and 7"
+            },
+            {
+              "flags": "-d --c2d-max-delivery-count [c2dMaxDeliveryCount]",
+              "required": 0,
+              "optional": -29,
+              "bool": true,
+              "short": "-d",
+              "long": "--c2d-max-delivery-count",
+              "description": "The number of times the IotHub will attempt to deliver a cloud-to-device message to a device, between 1 and 100"
+            },
+            {
+              "flags": "-c --c2d-ttl [c2dTtl]",
+              "required": 0,
+              "optional": -14,
+              "bool": true,
+              "short": "-c",
+              "long": "--c2d-ttl",
+              "description": "The amount of time for which a mesage is available for the device to consume before it is expired by IoT hub, between 1 and 48 hours"
+            },
+            {
+              "flags": "-f --feedback-lock-duration [feedbackLockDuration]",
+              "required": 0,
+              "optional": -29,
+              "bool": true,
+              "short": "-f",
+              "long": "--feedback-lock-duration",
+              "description": "The lock duration of the feedback messages, between 5 seconds and 5 minutes"
+            },
+            {
+              "flags": "-F --feedback-ttl [feedbackTtl]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-F",
+              "long": "--feedback-ttl",
+              "description": "The amount of time a feedback mesage is available for the device to consume before it is expired by IotHub, between 1 and 48 hours"
+            },
+            {
+              "flags": "-m --feedback-max-delivery-count [feedbackMaxDeliveryCount]",
+              "required": 0,
+              "optional": -34,
+              "bool": true,
+              "short": "-m",
+              "long": "--feedback-max-delivery-count",
+              "description": "The number of times the IotHub will attempt to deliver a cloud-device feedback message to a device, between 1 and 100"
+            },
+            {
+              "flags": "-x --enable-fileupload-notifications [enableFileUploadNotifications]",
+              "required": 0,
+              "optional": -38,
+              "bool": true,
+              "short": "-x",
+              "long": "--enable-fileupload-notifications",
+              "description": "The flag that specifies if the file upload notifications should be turned on, one of true, false"
+            },
+            {
+              "flags": "-S --fileupload-storage-connectionstring [fileUploadStorageConnectionString]",
+              "required": 0,
+              "optional": -42,
+              "bool": true,
+              "short": "-S",
+              "long": "--fileupload-storage-connectionstring",
+              "description": "The storage connection string where the files are to be uploaded"
+            },
+            {
+              "flags": "-C --fileupload-container-name [fileUploadContainerName]",
+              "required": 0,
+              "optional": -32,
+              "bool": true,
+              "short": "-C",
+              "long": "--fileupload-container-name",
+              "description": "The storage container name where the files are to be uploaded"
+            },
+            {
+              "flags": "-T --fileupload-sas-uri-ttl [fileUploadSASUriTTL]",
+              "required": 0,
+              "optional": -29,
+              "bool": true,
+              "short": "-T",
+              "long": "--fileupload-sas-uri-ttl",
+              "description": "The amount of time for which the SAS Uri generated by IoT Hub is valid before it expires, between 1 and 24 hours"
+            },
+            {
+              "flags": "-N --fileUpload-notification-ttl [fileUploadNotificationTTL]",
+              "required": 0,
+              "optional": -34,
+              "bool": true,
+              "short": "-N",
+              "long": "--fileUpload-notification-ttl",
+              "description": "The amount of time for which a file upload notification is available for the service to consume before it is expired by IoT Hub, between 1 and 48 hours"
+            },
+            {
+              "flags": "-D --fileupload-notification-max-delivery-count [fileUploadNotificationMaxDeliveryCount]",
+              "required": 0,
+              "optional": -49,
+              "bool": true,
+              "short": "-D",
+              "long": "--fileupload-notification-max-delivery-count",
+              "description": "The number of times the Iot Hub will attempt to deliver a file notification message, between 1 and 100"
+            },
+            {
+              "flags": "-t --tags [tags]",
+              "required": 0,
+              "optional": -11,
+              "bool": true,
+              "short": "-t",
+              "long": "--tags",
+              "description": "The tags to set to the resource group. Can be multipleIn the format of 'name=value'. Name is required and value is optionalFor example, -t 'tag1=value1;tag2'."
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "Get all IotHubs in subcription or resource group",
+          "fullName": "iothub list",
+          "usage": "[--resource-group] [resourceGroup] [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group [resourceGroup]",
+              "required": 0,
+              "optional": -21,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get an IotHub",
+          "fullName": "iothub show",
+          "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the IotHub"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show-quota-metrics",
+          "description": "Get the IotHub Quota Metrics",
+          "fullName": "iothub show-quota-metrics",
+          "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the IotHub"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show-registry-stats",
+          "description": "Get the IotHub Registry Statistics",
+          "fullName": "iothub show-registry-stats",
+          "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the IotHub"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an IotHub",
+          "fullName": "iothub delete",
+          "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+          "filePath": "commands/arm/iothub/iothub._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resourceGroup>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "The name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "The name of the IotHub to be deleted"
+            },
+            {
+              "flags": "-s --subscription [subscription]",
+              "required": 0,
+              "optional": -19,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "The subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {
+        "device-to-cloud-properties": {
+          "name": "device-to-cloud-properties",
+          "description": "Commands to manage the Device to Cloud Properties of an Iot Hub",
+          "fullName": "iothub device-to-cloud-properties",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set Device to Cloud properties on the IotHub",
+              "fullName": "iothub device-to-cloud-properties set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--d2c-retention-time-in-days] [d2cRetentionTimeInDays] [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-r --d2c-retention-time-in-days [d2cRetentionTimeInDays]",
+                  "required": 0,
+                  "optional": -33,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--d2c-retention-time-in-days",
+                  "description": "The number of days for which the device-to-cloud events will be maintained, between 1 and 7"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "cloud-to-device-properties": {
+          "name": "cloud-to-device-properties",
+          "description": "Commands to manage the Cloud to Device Properties of an Iot Hub",
+          "fullName": "iothub cloud-to-device-properties",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set Cloud to Device properties on the IotHub",
+              "fullName": "iothub cloud-to-device-properties set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--c2d-max-delivery-count] [c2dMaxDeliveryCount] [--c2d-ttl] [c2dTtl] \n\t\t\t [--feedback-lock-duration] [feedbackLockDuration] [--feedback-ttl] [feedbackTtl] [--feedback-max-delivery-count] [feedbackMaxDeliveryCount] \n\t\t\t [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-d --c2d-max-delivery-count [c2dMaxDeliveryCount]",
+                  "required": 0,
+                  "optional": -29,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--c2d-max-delivery-count",
+                  "description": "The number of times the IotHub will attempt to deliver a cloud-to-device message to a device, between 1 and 100"
+                },
+                {
+                  "flags": "-c --c2d-ttl [c2dTtl]",
+                  "required": 0,
+                  "optional": -14,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--c2d-ttl",
+                  "description": "The amount of time for which a mesage is available for the device to consume before it is expired by IoT hub, between 1 and 48 hours"
+                },
+                {
+                  "flags": "-f --feedback-lock-duration [feedbackLockDuration]",
+                  "required": 0,
+                  "optional": -29,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--feedback-lock-duration",
+                  "description": "The lock duration of the feedback messages, between 5 seconds and 5 minutes"
+                },
+                {
+                  "flags": "-F --feedback-ttl [feedbackTtl]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-F",
+                  "long": "--feedback-ttl",
+                  "description": "The amount of time a feedback mesage is available for the device to consume before it is expired by IotHub, between 1 and 48 hours"
+                },
+                {
+                  "flags": "-m --feedback-max-delivery-count [feedbackMaxDeliveryCount]",
+                  "required": 0,
+                  "optional": -34,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--feedback-max-delivery-count",
+                  "description": "The number of times the IotHub will attempt to deliver a cloud-device feedback message to a device, between 1 and 100"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "file-upload-properties": {
+          "name": "file-upload-properties",
+          "description": "Commands to manage the File Upload Properties of an Iot Hub",
+          "fullName": "iothub file-upload-properties",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set File upload Properties on the IotHub",
+              "fullName": "iothub file-upload-properties set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--enable-fileupload-notifications] [enableFileUploadNotifications] \n\t\t\t [--fileupload-storage-connectionstring] [fileUploadStorageConnectionString] [--fileupload-container-name] [fileUploadContainerName] \n\t\t\t [--fileupload-sas-uri-ttl] [fileUploadSASUriTTL] [--fileupload-notification-ttl] [fileUploadNotificationTTL] [--fileupload-notification-max-delivery-count] [fileUploadNotificationMaxDeliveryCount] \n\t\t\t [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-x --enable-fileupload-notifications [enableFileUploadNotifications]",
+                  "required": 0,
+                  "optional": -38,
+                  "bool": true,
+                  "short": "-x",
+                  "long": "--enable-fileupload-notifications",
+                  "description": "The flag that specifies if the file upload notifications should be turned on, one of true, false"
+                },
+                {
+                  "flags": "-S --fileupload-storage-connectionstring [fileUploadStorageConnectionString]",
+                  "required": 0,
+                  "optional": -42,
+                  "bool": true,
+                  "short": "-S",
+                  "long": "--fileupload-storage-connectionstring",
+                  "description": "The storage connection string where the files are to be uploaded"
+                },
+                {
+                  "flags": "-C --fileupload-container-name [fileUploadContainerName]",
+                  "required": 0,
+                  "optional": -32,
+                  "bool": true,
+                  "short": "-C",
+                  "long": "--fileupload-container-name",
+                  "description": "The storage container name where the files are to be uploaded"
+                },
+                {
+                  "flags": "-T --fileupload-sas-uri-ttl [fileUploadSASUriTTL]",
+                  "required": 0,
+                  "optional": -29,
+                  "bool": true,
+                  "short": "-T",
+                  "long": "--fileupload-sas-uri-ttl",
+                  "description": "The amount of time for which the SAS Uri generated by IoT Hub is valid before it expires, between 1 and 24 hours"
+                },
+                {
+                  "flags": "-N --fileUpload-notification-ttl [fileUploadNotificationTTL]",
+                  "required": 0,
+                  "optional": -34,
+                  "bool": true,
+                  "short": "-N",
+                  "long": "--fileUpload-notification-ttl",
+                  "description": "The amount of time for which a file upload notification is available for the service to consume before it is expired by IoT Hub, between 1 and 48 hours"
+                },
+                {
+                  "flags": "-D --fileupload-notification-max-delivery-count [fileUploadNotificationMaxDeliveryCount]",
+                  "required": 0,
+                  "optional": -49,
+                  "bool": true,
+                  "short": "-D",
+                  "long": "--fileupload-notification-max-delivery-count",
+                  "description": "The number of times the Iot Hub will attempt to deliver a file notification message, between 1 and 100"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "tags": {
+          "name": "tags",
+          "description": "Commands to manage the tags of an Iot Hub",
+          "fullName": "iothub tags",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "set",
+              "description": "Set tags on the IotHub",
+              "fullName": "iothub tags set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--tags] [tags] [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-t --tags [tags]",
+                  "required": 0,
+                  "optional": -11,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "The tags to set to the resource group. The tags specified here will replace the existing ones and not append to them. Can be multipleIn the format of 'name=value'. Name is required and value is optionalFor example, -t 'tag1=value1;tag2'."
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "sku": {
+          "name": "sku",
+          "description": "Commands to manage the sku related information of an Iot Hub",
+          "fullName": "iothub sku",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List the Valid Iot Hub Skus",
+              "fullName": "iothub sku list",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get sku info for an IotHub",
+              "fullName": "iothub sku show",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Set sku on the IotHub",
+              "fullName": "iothub sku set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--sku-name] <skuName> [--units] <units> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the Iot Hub"
+                },
+                {
+                  "flags": "-k --sku-name <skuName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--sku-name",
+                  "description": "The name of the sku, one of: [F1, S1, S2, S3]"
+                },
+                {
+                  "flags": "-u --units <units>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--units",
+                  "description": "The number of provisioned units"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "ehconsumergroup": {
+          "name": "ehconsumergroup",
+          "description": "Commands to manage the event hub consumer groups of an Iot Hub",
+          "fullName": "iothub ehconsumergroup",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List the event hub consumer groups of an Iot Hub",
+              "fullName": "iothub ehconsumergroup list",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--eh-endpoint-type] <ehEndPointType> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-e --eh-endpoint-type <ehEndPointType>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--eh-endpoint-type",
+                  "description": "The type of the event hub endpoint. One of events, operationsMonitoringEvents"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Add an Event Hub consumer groups for an Iot Hub",
+              "fullName": "iothub ehconsumergroup create",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--eh-endpoint-type] <ehEndPointType> [--eh-consumer-group] <ehConsumerGroup> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-e --eh-endpoint-type <ehEndPointType>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--eh-endpoint-type",
+                  "description": "The type of the event hub endpoint. One of events, operationsMonitoringEvents"
+                },
+                {
+                  "flags": "-c --eh-consumer-group <ehConsumerGroup>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--eh-consumer-group",
+                  "description": "The name of the event hub consumer group"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete an Event Hub consumer group for an IoT Hub",
+              "fullName": "iothub ehconsumergroup delete",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--eh-endpoint-type] <ehEndPointType> [--eh-consumer-group] <ehConsumerGroup> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-e --eh-endpoint-type <ehEndPointType>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--eh-endpoint-type",
+                  "description": "The type of the event hub endpoint. One of events, operationsMonitoringEvents"
+                },
+                {
+                  "flags": "-c --eh-consumer-group <ehConsumerGroup>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--eh-consumer-group",
+                  "description": "The name of the event hub consumer group"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "key": {
+          "name": "key",
+          "description": "Commands to manage the keys of an Iot Hub",
+          "fullName": "iothub key",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List all keys of an Iot Hub",
+              "fullName": "iothub key list",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show the properties of one key for an Iot Hub",
+              "fullName": "iothub key show",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--key-name] <keyName> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-k --key-name <keyName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--key-name",
+                  "description": "The name of a key in IotHub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Create keys for an Iot Hub",
+              "fullName": "iothub key create",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--key-name] <keyName> [--primary-key] <primaryKey> [--secondary-key] <secondaryKey> [--rights] <rights> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-k --key-name <keyName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--key-name",
+                  "description": "The name of a key in IotHub"
+                },
+                {
+                  "flags": "-p --primary-key <primaryKey>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--primary-key",
+                  "description": "The primary key value for the specified keyName"
+                },
+                {
+                  "flags": "-e --secondary-key <secondaryKey>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--secondary-key",
+                  "description": "The secondary key value for the specified keyName"
+                },
+                {
+                  "flags": "-r --rights <rights>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--rights",
+                  "description": "The rights for the specified keyName. One ore more of the following to be specified as a comma separated value listRegistryRead, RegistryWrite, ServiceConnect, DeviceConnect"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete keys for an Iot Hub",
+              "fullName": "iothub key delete",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--key-name] <keyName> [--primary-key] <primaryKey> [--secondary-key] <secondaryKey> [--rights] <rights> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-k --key-name <keyName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--key-name",
+                  "description": "The name of a key in IotHub to delete. The first match for a key with this name will be deleted. The same command can be executed again to delete more keys."
+                },
+                {
+                  "flags": "-p --primary-key [primaryKey]",
+                  "required": 0,
+                  "optional": -18,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--primary-key",
+                  "description": "The primary key value for the specified keyName"
+                },
+                {
+                  "flags": "-e --secondary-key [secondaryKey]",
+                  "required": 0,
+                  "optional": -20,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--secondary-key",
+                  "description": "The secondary key value for the specified keyName"
+                },
+                {
+                  "flags": "-r --rights [rights]",
+                  "required": 0,
+                  "optional": -13,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--rights",
+                  "description": "The rights for the specified keyName. One ore more of the following to be specified as a comma separated value listRegistryRead, RegistryWrite, ServiceConnect, DeviceConnect"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "opmon": {
+          "name": "opmon",
+          "description": "Commands to manage the operations monitoring related properties of an Iot Hub",
+          "fullName": "iothub opmon",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Show the operations monitoring properties for an Iot Hub",
+              "fullName": "iothub opmon show",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update the operations monitoring properties for an Iot Hub",
+              "fullName": "iothub opmon set",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--opmon-category] <opMonCategory> [--diagnostic-level] <diagnosticLevel> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-c --opmon-category <opmonCategory>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--opmon-category",
+                  "description": "The name of the operations monitoring category. One of Connections, DeviceTelemetry, C2DCommands, DeviceIdentityOperations, FileUploadOperations"
+                },
+                {
+                  "flags": "-l --diagnostic-level <diagnosticLevel>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--diagnostic-level",
+                  "description": "The diagnostic level. None, Error, Information."
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "job": {
+          "name": "job",
+          "description": "Commands to manage the jobs of an Iot Hub",
+          "fullName": "iothub job",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List the jobs for an Iot Hub",
+              "fullName": "iothub job list",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Show the properties of a job for an Iot Hub",
+              "fullName": "iothub job show",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> --job-id <jobId> [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-j --job-id <jobId>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-j",
+                  "long": "--job-id",
+                  "description": "The Job identifier"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "device": {
+          "name": "device",
+          "description": "Commands to manage the devices of an Iot Hub",
+          "fullName": "iothub device",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "export",
+              "description": "Export the devices of an Iot Hub",
+              "fullName": "iothub device export",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--export-blob-container-uri] <exportBlobContainerUri> [--exclude-keys] excludeKeys [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-e --export-blob-container-uri <exportBlobContainerUri>",
+                  "required": -32,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--export-blob-container-uri",
+                  "description": "The container Uri to export the devices to"
+                },
+                {
+                  "flags": "-k --exclude-keys [excludeKeys]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--exclude-keys",
+                  "description": "The flag indicating if the keys should also be exported or not. One of true, false. Default : true"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "import",
+              "description": "Import the devices of an Iot Hub",
+              "fullName": "iothub device import",
+              "usage": "[--resource-group] <resourceGroup> [--name] <name> [--input-blob-container-uri] <inputBlobContainerUri> [--output-blob-container-uri] outputBlobContainerUri [--subscription] [subscription] [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IotHub"
+                },
+                {
+                  "flags": "-i --input-blob-container-uri <inputBlobContainerUri>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--input-blob-container-uri",
+                  "description": "The container Uri from where devices will be imported"
+                },
+                {
+                  "flags": "-o --output-blob-container-uri [outputBlobContainerUri]",
+                  "required": 0,
+                  "optional": -32,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--output-blob-container-uri",
+                  "description": "The output container Uri which will be used to write some information related to the import job"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
+    },
     "keyvault": {
       "name": "keyvault",
       "description": "Commands to manage key vault instances in the Azure Key Vault service",
