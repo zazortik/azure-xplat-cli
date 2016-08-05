@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '2915bbd6-1252-405f-8173-6c00428146d9',
+    name: 'Batch-MatthChr',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -27,99 +23,100 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
+  
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30', '*')
+.patch('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 23 May 2016 20:40:00 GMT',
-  etag: '0x8D3834A68FB4B24',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:38 GMT',
+  etag: '0x8D3BBFA5E635A6B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'be0ddd09-1605-4190-b694-9362e7258bd7',
+  'request-id': '2c603353-d659-4da3-9a42-d7f457613b47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '3031fe19-d32f-48bf-8a69-b61c54eae14e',
+  'client-request-id': '5403ac36-5abe-428e-8ab4-06703a32c4ed',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule',
-  date: 'Mon, 23 May 2016 20:39:59 GMT',
+  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule',
+  date: 'Thu, 04 Aug 2016 00:00:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30', '*')
+.patch('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Mon, 23 May 2016 20:40:00 GMT',
-  etag: '0x8D3834A68FB4B24',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:38 GMT',
+  etag: '0x8D3BBFA5E635A6B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'be0ddd09-1605-4190-b694-9362e7258bd7',
+  'request-id': '2c603353-d659-4da3-9a42-d7f457613b47',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '3031fe19-d32f-48bf-8a69-b61c54eae14e',
+  'client-request-id': '5403ac36-5abe-428e-8ab4-06703a32c4ed',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule',
-  date: 'Mon, 23 May 2016 20:39:59 GMT',
+  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule',
+  date: 'Thu, 04 Aug 2016 00:00:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
-  .get('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatParamsJobSchedule\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule\",\"eTag\":\"0x8D3834A68FB4B24\",\"lastModified\":\"2016-05-23T20:40:00.14897Z\",\"creationTime\":\"2016-05-23T20:33:58.471432Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-23T20:33:58.471432Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2020-01-01T06:00:00Z\",\"doNotRunAfter\":\"2021-01-01T06:00:00Z\",\"startWindow\":\"PT2H\",\"recurrenceInterval\":\"PT4H\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":3,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"PT10H\",\"maxTaskRetryCount\":5\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"pool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2020-01-01T06:00:00Z\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatParamsJobSchedule\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule\",\"eTag\":\"0x8D3BBFA5E635A6B\",\"lastModified\":\"2016-08-04T00:00:38.9159531Z\",\"creationTime\":\"2016-08-04T00:00:33.4303061Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:33.4303061Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2020-01-01T06:00:00Z\",\"doNotRunAfter\":\"2021-01-01T06:00:00Z\",\"startWindow\":\"PT2H\",\"recurrenceInterval\":\"PT4H\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":3,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"PT10H\",\"maxTaskRetryCount\":5\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"pool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2020-01-01T06:00:00Z\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 23 May 2016 20:40:00 GMT',
-  etag: '0x8D3834A68FB4B24',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:38 GMT',
+  etag: '0x8D3BBFA5E635A6B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '20dc92fa-8f07-4834-a353-ba71860d98de',
+  'request-id': 'b81dceb7-5f6f-43e7-88ab-423987d46479',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'c74b4bc9-475a-4f1f-9e21-7315fbf626b2',
+  'client-request-id': '8b044769-2467-4be4-9490-f084a2acf7fd',
   dataserviceversion: '3.0',
-  date: 'Mon, 23 May 2016 20:40:00 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
-  .get('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatParamsJobSchedule\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule\",\"eTag\":\"0x8D3834A68FB4B24\",\"lastModified\":\"2016-05-23T20:40:00.14897Z\",\"creationTime\":\"2016-05-23T20:33:58.471432Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-23T20:33:58.471432Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2020-01-01T06:00:00Z\",\"doNotRunAfter\":\"2021-01-01T06:00:00Z\",\"startWindow\":\"PT2H\",\"recurrenceInterval\":\"PT4H\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":3,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"PT10H\",\"maxTaskRetryCount\":5\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"pool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2020-01-01T06:00:00Z\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatParamsJobSchedule\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatParamsJobSchedule\",\"eTag\":\"0x8D3BBFA5E635A6B\",\"lastModified\":\"2016-08-04T00:00:38.9159531Z\",\"creationTime\":\"2016-08-04T00:00:33.4303061Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:33.4303061Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2020-01-01T06:00:00Z\",\"doNotRunAfter\":\"2021-01-01T06:00:00Z\",\"startWindow\":\"PT2H\",\"recurrenceInterval\":\"PT4H\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":3,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"PT10H\",\"maxTaskRetryCount\":5\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"pool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2020-01-01T06:00:00Z\"\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    },{\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Mon, 23 May 2016 20:40:00 GMT',
-  etag: '0x8D3834A68FB4B24',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:38 GMT',
+  etag: '0x8D3BBFA5E635A6B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '20dc92fa-8f07-4834-a353-ba71860d98de',
+  'request-id': 'b81dceb7-5f6f-43e7-88ab-423987d46479',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'c74b4bc9-475a-4f1f-9e21-7315fbf626b2',
+  'client-request-id': '8b044769-2467-4be4-9490-f084a2acf7fd',
   dataserviceversion: '3.0',
-  date: 'Mon, 23 May 2016 20:40:00 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
-  .delete('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30')
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+  .delete('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '25afce93-2003-4a84-a0e2-e7b0ebe22cd3',
+  'request-id': 'deefaa27-1b8f-4549-9e8f-046797cde941',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'a7f0eed9-c1f5-41fc-a9e3-62ca32157007',
+  'client-request-id': '9e52364f-d4e6-4206-8e1b-879d74afad9b',
   dataserviceversion: '3.0',
-  date: 'Mon, 23 May 2016 20:40:00 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
-  .delete('/jobschedules/xplatParamsJobSchedule?api-version=2016-02-01.3.0&timeout=30')
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+  .delete('/jobschedules/xplatParamsJobSchedule?api-version=2016-07-01.3.1&timeout=30')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '25afce93-2003-4a84-a0e2-e7b0ebe22cd3',
+  'request-id': 'deefaa27-1b8f-4549-9e8f-046797cde941',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'a7f0eed9-c1f5-41fc-a9e3-62ca32157007',
+  'client-request-id': '9e52364f-d4e6-4206-8e1b-879d74afad9b',
   dataserviceversion: '3.0',
-  date: 'Mon, 23 May 2016 20:40:00 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:38 GMT',
   connection: 'close' });
  return result; }]];
