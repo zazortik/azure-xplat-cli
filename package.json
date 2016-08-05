@@ -35,7 +35,7 @@
   "dependencies": {
     "adal-node": "0.1.21",
     "async": "1.4.2",
-    "azure-common": "0.9.16",
+    "azure-common": "0.9.17",
     "azure-arm-authorization": "2.0.0",
     "azure-arm-cdn": "0.2.1",
     "azure-arm-commerce": "0.1.1",
