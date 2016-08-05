@@ -297,7 +297,7 @@ describe('arm', function() {
 
       it('vmss list should pass', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
-        var cmd = util.format('vmss list-all').split(' ');
+        var cmd = util.format('vmss list').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           result.text.should.containEql('ProvisioningState');

@@ -95,7 +95,6 @@ describe('arm', function () {
       storagePairs.push([storageName, resrouceGroupName]);
 
       suite.execute('group create %s --location %s --json', resrouceGroupName, resourceGroupLocation, function (result) {
-        result.text.should.containEql('Succeeded');
         result.exitStatus.should.equal(0);
         
         suite.execute('storage account create %s --resource-group %s --sku-name %s --location %s --kind %s --enable-encryption-service blob --json', 

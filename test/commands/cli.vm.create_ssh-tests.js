@@ -93,6 +93,9 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
+              result.text.should.containEql('ConsoleScreenshotBlobUri');
+              result.text.should.containEql('SerialOutputBlobUri');
+              result.text.should.containEql('"BootDiagnosticsEnabled": true');
               var createdVM = JSON.parse(result.text);
               createdVM.VMName.should.equal(vmName);
               vmToUse.Name = vmName;
@@ -107,7 +110,7 @@ describe('cli', function() {
       it('Create VM with generate ssh keys option should pass', function(done) {
         vmUtil.getImageName('Linux', suite, function(ImageName) {
           SSHKeyDir = path.join(homePath, SSHKeyFolder);
-          var cmd = util.format('vm create %s %s %s %s --ssh --generate-ssh-keys --json',
+          var cmd = util.format('vm create %s %s %s %s --ssh --generate-ssh-keys --disable-boot-diagnostics --json',
             vmName, ImageName, username, password).split(' ');
           cmd.push('--location');
           cmd.push(location);
@@ -116,6 +119,7 @@ describe('cli', function() {
             cmd = util.format('vm show %s --json', vmName).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
+              result.text.should.containEql('"BootDiagnosticsEnabled": {}');
               var createdVM = JSON.parse(result.text);
               createdVM.VMName.should.equal(vmName);
               var SSHkeysExist = testUtils.checkForSSHKeys(vmName, SSHKeyDir);

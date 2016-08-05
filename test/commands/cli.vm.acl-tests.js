@@ -85,7 +85,7 @@ describe('cli', function() {
       }, timeout);
     });
 
-    describe('ACL :', function() {
+    describe('ACL:', function() {
 
       it('Create a VM', function(done) {
         getImageName('Windows', function(ImageName) {
@@ -101,7 +101,7 @@ describe('cli', function() {
       });
 
       it('Create an ACL rule for a VM endpoint with description', function(done) {
-        var cmd = util.format('vm endpoint acl-rule create %s %s %s %s %s -r %s --json',
+        var cmd = util.format('vm endpoint acl-rule create -n %s -e %s -o %s -a %s -t %s -r %s --json',
           vmName, endpoint, order, action, remotesubnet, description).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);

@@ -9156,7 +9156,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--kind",
-                  "description": "the account kind"
+                  "description": "the account kind (Storage/BlobStorage)"
                 },
                 {
                   "flags": "--access-tier <accessTier>",
@@ -9164,7 +9164,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
@@ -9273,7 +9273,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--access-tier",
-                  "description": "the access tier (Hot/Cool)"
+                  "description": "the access tier for Blob storage accounts (Hot/Cool)"
                 },
                 {
                   "flags": "--enable-encryption-service <enableEncryptionService>",
@@ -9432,6 +9432,133 @@
             }
           ],
           "categories": {
+            "sas": {
+              "name": "sas",
+              "description": "Commands to manage shared access signatures of your storage account",
+              "fullName": "storage account sas",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Generate shared access signature of storage account",
+                  "fullName": "storage account sas create",
+                  "usage": "[options] [services] [resourceTypes] [permissions] [expiry]",
+                  "filePath": "commands/storage/storage.account._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "--services <services>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--services",
+                      "description": "the storage services accessible with the account SAS combining symbols of b(Blob)/f(File)/q(Queue)/t(Table)"
+                    },
+                    {
+                      "flags": "--resource-types <resourceTypes>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--resource-types",
+                      "description": "the storage resource types accessible with the account SAS combining symbols of s(Service)/c(Container/o(Object)"
+                    },
+                    {
+                      "flags": "--permissions <permissions>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--permissions",
+                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)/a(Add)/c(Create)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
+                      "flags": "--start <start>",
+                      "required": -9,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--start",
+                      "description": "the UTC time at which the SAS becomes valid"
+                    },
+                    {
+                      "flags": "--expiry <expiry>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--expiry",
+                      "description": "the UTC time at which the SAS expires"
+                    },
+                    {
+                      "flags": "-a, --account-name <accountName>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-name",
+                      "description": "the storage account name"
+                    },
+                    {
+                      "flags": "-k, --account-key <accountKey>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--account-key",
+                      "description": "the storage account key"
+                    },
+                    {
+                      "flags": "-c, --connection-string <connectionString>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--connection-string",
+                      "description": "the storage connection string"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
             "keys": {
               "name": "keys",
               "description": "Commands to manage your Storage account keys",
@@ -10624,6 +10751,22 @@
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
                     },
                     {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
+                    },
+                    {
                       "flags": "--start <start>",
                       "required": -9,
                       "optional": 0,
@@ -11307,6 +11450,14 @@
                   "description": "the lease ID"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11556,6 +11707,14 @@
                   "description": "the maximum number of concurrent upload requests"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -11649,6 +11808,14 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -12769,7 +12936,23 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--permissions",
-                      "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
+                      "description": "the operation permissions combining symbols of r(Read)/a(Add)/c(Create)/w(Write)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -13263,6 +13446,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)/l(List)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -14125,6 +14324,14 @@
                   "description": "check md5sum for the downloaded file"
                 },
                 {
+                  "flags": "--concurrenttaskcount <concurrenttaskcount>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--concurrenttaskcount",
+                  "description": "the maximum number of concurrent download requests"
+                },
+                {
                   "flags": "-q, --quiet",
                   "required": 0,
                   "optional": 0,
@@ -14581,6 +14788,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/w(Write)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -15188,6 +15411,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Read)/a(Add)/u(Update)/p(Process)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -15990,6 +16229,14 @@
                   "description": "show metrics properties for queue service"
                 },
                 {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "show metrics properties for file service"
+                },
+                {
                   "flags": "-a, --account-name <accountName>",
                   "required": -20,
                   "optional": 0,
@@ -16073,6 +16320,14 @@
                   "bool": true,
                   "long": "--queue",
                   "description": "set metrics properties for queue service"
+                },
+                {
+                  "flags": "--file",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "set metrics properties for file service"
                 },
                 {
                   "flags": "--version <version>",
@@ -16825,6 +17080,22 @@
                       "bool": true,
                       "long": "--permissions",
                       "description": "the operation permissions combining symbols of r(Query)/a(Add)/u(Update)/d(Delete)"
+                    },
+                    {
+                      "flags": "--protocol <protocol>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--protocol",
+                      "description": "the protocol permitted for a request made with the SAS. Possible values are HttpsOnly and HttpsOrHttp"
+                    },
+                    {
+                      "flags": "--ip-range <ipRange>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--ip-range",
+                      "description": "an IP address or a range of IP addresses from which to accept requests. When specifying a range of IP addresses, note that the range is inclusive. For example, specifying 168.1.5.65 or 168.1.5.60-168.1.5.70 on the SAS restricts the request to those IP addresses."
                     },
                     {
                       "flags": "--start <start>",
@@ -19388,7 +19659,7 @@
               "name": "create",
               "description": "Creates a new Active Directory application",
               "fullName": "ad app create",
-              "usage": "[options]",
+              "usage": "[options] <name> <home-page> <identifier-uris>",
               "filePath": "commands/arm/ad/ad.application._js",
               "options": [
                 {
@@ -19426,10 +19697,11 @@
                   "description": "the display name for the application"
                 },
                 {
-                  "flags": "--home-page <home-page>",
-                  "required": -13,
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
                   "optional": 0,
                   "bool": true,
+                  "short": "-m",
                   "long": "--home-page",
                   "description": "the URL to the application homepage"
                 },
@@ -19459,6 +19731,15 @@
                   "short": "-i",
                   "long": "--identifier-uris",
                   "description": "the comma-delimitied URIs that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "the comma-delimitied application reply urls"
                 },
                 {
                   "flags": "--key-value <key-value>",
@@ -19503,6 +19784,143 @@
               ]
             },
             {
+              "name": "set",
+              "description": "Updates the properties of the created Active Directory application",
+              "fullName": "ad app set",
+              "usage": "[options]",
+              "filePath": "commands/arm/ad/ad.application._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--objectId",
+                  "description": "the object id of the application to update. Either provide objectId or applicationId. objectId is more preferable."
+                },
+                {
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--applicationId",
+                  "description": "the applicationId of the application to update. If you have created a service principal using this application then this will be the spn of the service principal."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the new display name for the application."
+                },
+                {
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--home-page",
+                  "description": "the new URL to the application homepage"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "new value for the password credential associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "-i --identifier-uris <identifier-uris>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--identifier-uris",
+                  "description": "new comma-delimitied URI values that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "new comma-delimitied application reply urls"
+                },
+                {
+                  "flags": "--key-value <key-value>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-value",
+                  "description": "new value for the key credentials associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "--key-type <key-type>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-type",
+                  "description": "new type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric. Default value: AsymmetricX509Cert"
+                },
+                {
+                  "flags": "--key-usage <key-usage>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-usage",
+                  "description": "new usage of the key credentials associated with the application. Acceptable values are Sign and Verify. Default value: Verify"
+                },
+                {
+                  "flags": "--start-date <start-date>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-date",
+                  "description": "new start date value after which password or key would be valid. Default value is current time"
+                },
+                {
+                  "flags": "--end-date <end-date>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-date",
+                  "description": "new end date value till which password or key is valid. Default value is one year after current time"
+                }
+              ]
+            },
+            {
               "name": "delete",
               "description": "Deletes the Active Directory application",
               "fullName": "ad app delete",
@@ -19535,10 +19953,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the application to remove"
                 },
@@ -19620,34 +20039,38 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--appId <appId>",
-                  "required": -9,
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
-                  "long": "--appId",
+                  "short": "-a",
+                  "long": "--applicationId",
                   "description": "the name of the application to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the application to return"
                 },
                 {
-                  "flags": "--identifierUri <identifierUri>",
-                  "required": -17,
+                  "flags": "-i --identifierUri <identifierUri>",
+                  "required": -20,
                   "optional": 0,
                   "bool": true,
+                  "short": "-i",
                   "long": "--identifierUri",
                   "description": "the identifier uri of the application to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search display name of the application starting with the provided value"
                 }
@@ -19739,20 +20162,126 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object Id of the group to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "Search by display name which starts with the provided value"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Creates an Active Directory group in the tenant.",
+              "fullName": "ad group create",
+              "usage": "[options] <display-name> <mail-nickname>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "The name to display in the address book for the group."
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "The mail alias for the group."
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes an Active Directory group.",
+              "fullName": "ad group delete",
+              "usage": "[options] <objectId>",
+              "filePath": "commands/arm/ad/ad.groups._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--objectId",
+                  "description": "the object Id of the group to delete"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
                 }
               ]
             }
@@ -19769,7 +20298,7 @@
                   "name": "list",
                   "description": "Provides an Active Directory sub group or member info",
                   "fullName": "ad group member list",
-                  "usage": "[options] [objectId]",
+                  "usage": "[options] <objectId>",
                   "filePath": "commands/arm/ad/ad.groups._js",
                   "options": [
                     {
@@ -19798,12 +20327,196 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "--objectId <objectId>",
-                      "required": -12,
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
                       "optional": 0,
                       "bool": true,
+                      "short": "-o",
                       "long": "--objectId",
                       "description": "Object id of group whose members to return."
+                    }
+                  ]
+                },
+                {
+                  "name": "add",
+                  "description": "Adds a member to an Active Directory group.",
+                  "fullName": "ad group member add",
+                  "usage": "[options] <objectId> <member-objectId>",
+                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "Object id of group to which the member needs to be added."
+                    },
+                    {
+                      "flags": "-m --member-objectId <member-objectId>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--member-objectId",
+                      "description": "Object id of the member (application, user, servicePrincipal, another-group) to be added to this group."
+                    },
+                    {
+                      "flags": "-e --graph-endpoint <graph-endpoint>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--graph-endpoint",
+                      "description": "The graph endpoint which will be the part of the member url created by the command. Default value: 'https://graph.windows.net'."
+                    },
+                    {
+                      "flags": "-t --tenant <tenant>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--tenant",
+                      "description": "TenantId (in a GUID format) to which the member belongs. Default value is the current tenant of the logged in user/sp."
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a member from an Active Directory group.",
+                  "fullName": "ad group member delete",
+                  "usage": "[options] <objectId> <member-objectId>",
+                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "Object id of group from which the member needs to be deleted."
+                    },
+                    {
+                      "flags": "-m --member-objectId <member-objectId>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--member-objectId",
+                      "description": "Object id of the member (application, user, servicePrincipal, another-group) to be deleted from this group."
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    }
+                  ]
+                },
+                {
+                  "name": "check",
+                  "description": "Checks whether the specified user, group, contact, or service principal is a direct or a transitive member of the specified Active Directory group.",
+                  "fullName": "ad group member check",
+                  "usage": "[options] <objectId> <member-objectId>",
+                  "filePath": "commands/arm/ad/ad.groups._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "Object id of group against which the membership needs to be checked."
+                    },
+                    {
+                      "flags": "-m --member-objectId <member-objectId>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--member-objectId",
+                      "description": "Object id of the member (application, user, servicePrincipal, another-group) for which membership needs to be checked in the specified group."
                     }
                   ]
                 }
@@ -19895,26 +20608,29 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--spn <spn>",
-                  "required": -7,
+                  "flags": "-n --spn <spn>",
+                  "required": -10,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--spn",
                   "description": "the name of the service principal to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the service principal to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search display name of the service principal starting with the provided value"
                 }
@@ -19922,9 +20638,9 @@
             },
             {
               "name": "create",
-              "description": "Create Active Directory service principal",
+              "description": "Create Active Directory service principal.",
               "fullName": "ad sp create",
-              "usage": "[options] <applicationId>",
+              "usage": "[options]",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
               "options": [
                 {
@@ -19953,18 +20669,241 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--applicationId <applicationId>",
+                  "flags": "-a --applicationId <applicationId>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--applicationId",
+                  "description": "The application Id for which service principal needs to be created. If this is provided then everything else will be ignored. \nWhen the applicationId is provided it means that the application was already created and it needs to be used to create the service principal."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the display name for the application"
+                },
+                {
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--home-page",
+                  "description": "the URL to the application homepage"
+                },
+                {
+                  "flags": "-b --available",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--available",
+                  "description": "indicates if the application will be available to other tenants"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "the value for the password credential associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "-i --identifier-uris <identifier-uris>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--identifier-uris",
+                  "description": "the comma-delimitied URIs that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
                   "required": -17,
                   "optional": 0,
                   "bool": true,
-                  "long": "--applicationId",
-                  "description": "the application Id for which service principal is created"
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "the comma-delimitied application reply urls"
+                },
+                {
+                  "flags": "--key-value <key-value>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-value",
+                  "description": "the value for the key credentials associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "--key-type <key-type>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-type",
+                  "description": "the type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric"
+                },
+                {
+                  "flags": "--key-usage <key-usage>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-usage",
+                  "description": "the usage of the key credentials associated with the application. Acceptable values are Sign and Verify"
+                },
+                {
+                  "flags": "--start-date <start-date>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-date",
+                  "description": "the start date after which password or key would be valid. Default value is current time"
+                },
+                {
+                  "flags": "--end-date <end-date>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-date",
+                  "description": "the end date till which password or key is valid. Default value is one year after current time"
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Updates the properties of the created Active Directory ServicePrincipal",
+              "fullName": "ad sp set",
+              "usage": "[options] <objectId>",
+              "filePath": "commands/arm/ad/ad.servicePrincipals._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-o",
+                  "long": "--objectId",
+                  "description": "the object id of the servicePrincipal to update."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the new display name for the application."
+                },
+                {
+                  "flags": "-m --home-page <home-page>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--home-page",
+                  "description": "the new URL to the application homepage"
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "new value for the password credential associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "-i --identifier-uris <identifier-uris>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--identifier-uris",
+                  "description": "new comma-delimitied URI values that identify the application"
+                },
+                {
+                  "flags": "-r --reply-urls <reply-urls>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--reply-urls",
+                  "description": "new comma-delimitied application reply urls"
+                },
+                {
+                  "flags": "--key-value <key-value>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-value",
+                  "description": "new value for the key credentials associated with the application that will be valid for one year by default"
+                },
+                {
+                  "flags": "--key-type <key-type>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-type",
+                  "description": "new type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric. Default value: AsymmetricX509Cert"
+                },
+                {
+                  "flags": "--key-usage <key-usage>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--key-usage",
+                  "description": "new usage of the key credentials associated with the application. Acceptable values are Sign and Verify. Default value: Verify"
+                },
+                {
+                  "flags": "--start-date <start-date>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--start-date",
+                  "description": "new start date value after which password or key would be valid. Default value is current time"
+                },
+                {
+                  "flags": "--end-date <end-date>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--end-date",
+                  "description": "new end date value till which password or key is valid. Default value is one year after current time"
                 }
               ]
             },
             {
               "name": "delete",
-              "description": "Deletes Active Directory service principal",
+              "description": "Deletes Active Directory service principal.",
               "fullName": "ad sp delete",
               "usage": "[options] <objectId>",
               "filePath": "commands/arm/ad/ad.servicePrincipals._js",
@@ -19995,12 +20934,22 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the service principal to delete"
+                },
+                {
+                  "flags": "-p --preserve-application",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--preserve-application",
+                  "description": "Default value: false. If you do not want to delete the underlying application then set this flag."
                 },
                 {
                   "flags": "-q, --quiet",
@@ -20099,33 +21048,327 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--upn <upn>",
-                  "required": -7,
+                  "flags": "-u --upn <upn>",
+                  "required": -10,
                   "optional": 0,
                   "bool": true,
+                  "short": "-u",
                   "long": "--upn",
                   "description": "the principal name of the user to return"
                 },
                 {
-                  "flags": "--objectId <objectId>",
-                  "required": -12,
+                  "flags": "-o --objectId <objectId>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
+                  "short": "-o",
                   "long": "--objectId",
                   "description": "the object id of the user to return"
                 },
                 {
-                  "flags": "--search <search>",
-                  "required": -10,
+                  "flags": "-c --search <search>",
+                  "required": -13,
                   "optional": 0,
                   "bool": true,
+                  "short": "-c",
                   "long": "--search",
                   "description": "search users with display name starting with the provided value"
                 }
               ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes Active Directory user (work/school account also popularly known as org-id).",
+              "fullName": "ad user delete",
+              "usage": "[options] <upn-or-objectId>",
+              "filePath": "commands/arm/ad/ad.users._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u --upn-or-objectId <upn-or-objectId>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--upn-or-objectId",
+                  "description": "the user principal name or the objectId."
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)."
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Create Active Directory user (work/school account also popularly known as org-id). For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#CreateUser",
+              "fullName": "ad user create",
+              "usage": "[options] <upn> <display-name> <mail-nickname> <password>",
+              "filePath": "commands/arm/ad/ad.users._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u --upn <upn>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--upn",
+                  "description": "the user principal name. example - 'someuser@contoso.com'."
+                },
+                {
+                  "flags": "-i --immutableId <immutableId>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--immutableId",
+                  "description": "It needs to be specified only if you are using a federated domain for the user's user principal name (upn) property."
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "the name to display in the address book for the user. example 'Alex Wu'"
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "the mail alias for the user. example: 'Alexw'."
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "password for the user. It must meet the tenant's password complexity requirements. It is recommended to set a strong password."
+                },
+                {
+                  "flags": "-f --force-change-password-next-login",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--force-change-password-next-login",
+                  "description": "It must be specified if the user must change the password on the next successful login (true). Default behavior is (false) to not change the password on the next successful login."
+                }
+              ]
+            },
+            {
+              "name": "set",
+              "description": "Update an existing Active Directory user (work/school account also popularly known as org-id). For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#UpdateUser",
+              "fullName": "ad user set",
+              "usage": "[options] <upn-or-objectId>",
+              "filePath": "commands/arm/ad/ad.users._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u --upn-or-objectId <upn-or-objectId>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--upn-or-objectId",
+                  "description": "the user principal name ('someuser@contoso.com') or the objectId (a Guid) for which the properties need to be updated."
+                },
+                {
+                  "flags": "-a --enable-account <enable-account>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--enable-account",
+                  "description": "true for enabling the account; otherwise, false."
+                },
+                {
+                  "flags": "-d --display-name <display-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--display-name",
+                  "description": "new name to display in the address book for the user. example 'Alex Wu'"
+                },
+                {
+                  "flags": "-m --mail-nickname <mail-nickname>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-m",
+                  "long": "--mail-nickname",
+                  "description": "new mail alias for the user. example: 'Alexw'."
+                },
+                {
+                  "flags": "-p --password <password>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "new password for the user. It must meet the tenant's password complexity requirements. It is recommended to set a strong password."
+                },
+                {
+                  "flags": "-f --force-change-password-next-login",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-f",
+                  "long": "--force-change-password-next-login",
+                  "description": "It must be specified only when you are updating the password. Otherwise it will be ignored. It must be specified if the user must change the password on the next successful login (true). Default behavior is (false) to not change the password on the next successful login."
+                }
+              ]
             }
           ],
-          "categories": {}
+          "categories": {
+            "memberGroups": {
+              "name": "memberGroups",
+              "description": "Commands to display member groups of the Active Directory user.",
+              "fullName": "ad user memberGroups",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Provides a lit of Object IDs of the groups of which the user is a member.",
+                  "fullName": "ad user memberGroups list",
+                  "usage": "[options] <objectId>",
+                  "filePath": "commands/arm/ad/ad.users._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-o --objectId <objectId>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--objectId",
+                      "description": "the objectId of the user"
+                    },
+                    {
+                      "flags": "-e --securityEnabledOnly",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--securityEnabledOnly",
+                      "description": "If true, only membership in security enabled groups will be checked. Otherwise membership in all groups will be checked. Default: false"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
         }
       }
     },
@@ -20588,18 +21831,18 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-n, --name [name]",
-                  "required": 0,
-                  "optional": -12,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
                   "bool": true,
                   "short": "-n",
                   "long": "--name",
                   "description": "Name of the Cdn Profile"
                 },
                 {
-                  "flags": "-g, --resource-group [resource-group]",
-                  "required": 0,
-                  "optional": -22,
+                  "flags": "-g, --resource-group <resource-group>",
+                  "required": -22,
+                  "optional": 0,
                   "bool": true,
                   "short": "-g",
                   "long": "--resource-group",
@@ -22388,7 +23631,7 @@
       "commands": [
         {
           "name": "deallocate",
-          "description": "The operation to deallocate a virtual machine scale set.",
+          "description": "Allows you to deallocate a virtual machine virtual machine scale set.Shuts down the virtual machine and releases the compute resources. You are not billed for the compute resources that this virtual machine uses.",
           "fullName": "vmssvm deallocate",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22458,7 +23701,7 @@
         },
         {
           "name": "delete",
-          "description": "The operation to delete a virtual machine scale set.",
+          "description": "Allows you to delete a virtual machine scale set.",
           "fullName": "vmssvm delete",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22528,7 +23771,7 @@
         },
         {
           "name": "show",
-          "description": "The operation to get a virtual machine scale set virtual machine.",
+          "description": "Displays information about a virtual machine scale set virtual machine.",
           "fullName": "vmssvm show",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22598,7 +23841,7 @@
         },
         {
           "name": "get-instance-view",
-          "description": "The operation to get a virtual machine scale set virtual machine.",
+          "description": "Displays the status of a virtual machine scale set virtual machine.",
           "fullName": "vmssvm get-instance-view",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22668,7 +23911,7 @@
         },
         {
           "name": "list",
-          "description": "The operation to list virtual machine scale sets VMs.",
+          "description": "Lists all virtual machines in a VM scale sets.",
           "fullName": "vmssvm list",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22729,7 +23972,7 @@
         },
         {
           "name": "power-off",
-          "description": "The operation to power off (stop) a virtual machine scale set.",
+          "description": "Allows you to power off (stop) a virtual machine in a VM scale set.",
           "fullName": "vmssvm power-off",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22799,7 +24042,7 @@
         },
         {
           "name": "reimage",
-          "description": "The operation to re-image a virtual machine scale set instance.",
+          "description": "Allows you to re-image(update the version of the installed operating system) a virtual machine scale set instance.",
           "fullName": "vmssvm reimage",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22869,7 +24112,7 @@
         },
         {
           "name": "restart",
-          "description": "The operation to restart a virtual machine scale set.",
+          "description": "Allows you to restart a virtual machine in a VM scale set.",
           "fullName": "vmssvm restart",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -22939,7 +24182,7 @@
         },
         {
           "name": "start",
-          "description": "The operation to start a virtual machine scale set.",
+          "description": "Allows you to start a virtual machine in a VM scale set.",
           "fullName": "vmssvm start",
           "usage": "[options] <resource-group> <name> <instance-id>",
           "filePath": "commands/arm/compute/virtualMachineScaleSetVMs._js",
@@ -23019,7 +24262,7 @@
       "commands": [
         {
           "name": "create",
-          "description": "The operation to create or update a virtual machine scale set.",
+          "description": "Allows you to create or update a virtual machine scale set by providing parameters or a path to pre-configured parameter file.",
           "fullName": "vmss create",
           "usage": "[options] <resource-group> <name> <parameters>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23097,7 +24340,7 @@
         },
         {
           "name": "deallocate",
-          "description": "The operation to deallocate virtual machines in a virtual machine scale set.",
+          "description": "Allows you to deallocate virtual machines in a virtual machine scale set. Shuts down the virtual machines and releases the compute resources. You are not billed for the compute resources that this virtual machine scale set uses.",
           "fullName": "vmss deallocate",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23166,7 +24409,7 @@
         },
         {
           "name": "delete",
-          "description": "The operation to delete a virtual machine scale set.",
+          "description": "Allows you to delete a virtual machine scale set.",
           "fullName": "vmss delete",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23227,7 +24470,7 @@
         },
         {
           "name": "delete-instances",
-          "description": "The operation to delete virtual machines in a virtual machine scale set.",
+          "description": "Allows you to delete virtual machines in a virtual machine scale set.",
           "fullName": "vmss delete-instances",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23296,7 +24539,7 @@
         },
         {
           "name": "show",
-          "description": "The operation to get a virtual machine scale set.",
+          "description": "Display information about a virtual machine scale set.",
           "fullName": "vmss show",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23357,7 +24600,7 @@
         },
         {
           "name": "get-instance-view",
-          "description": "The operation to get a virtual machine scale set instance view.",
+          "description": "Displays status of a virtual machine scale set instance.",
           "fullName": "vmss get-instance-view",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23418,7 +24661,7 @@
         },
         {
           "name": "list",
-          "description": "The operation to list virtual machine scale sets under a resource group.",
+          "description": "Lists all virtual machine scale sets under a resource group.",
           "fullName": "vmss list",
           "usage": "[options] <resource-group>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23469,51 +24712,8 @@
           ]
         },
         {
-          "name": "list-all",
-          "description": "Gets the list of Virtual Machine Scale Sets in the subscription. Use nextLink property in the response to get the next page of Virtual Machine Scale Sets. Do this till nextLink is not null to fetch all the Virtual Machine Scale Sets.",
-          "fullName": "vmss list-all",
-          "usage": "[options]",
-          "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
-          "options": [
-            {
-              "flags": "-v, --verbose",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "short": "-v",
-              "long": "--verbose",
-              "description": "use verbose output"
-            },
-            {
-              "flags": "-vv",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "-vv",
-              "description": "more verbose with debug output"
-            },
-            {
-              "flags": "--json",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--json",
-              "description": "use json output"
-            },
-            {
-              "flags": "-s, --subscription <subscription>",
-              "required": -20,
-              "optional": 0,
-              "bool": true,
-              "short": "-s",
-              "long": "--subscription",
-              "description": "The subscription identifier"
-            }
-          ]
-        },
-        {
           "name": "list-skus",
-          "description": "The operation to list available skus for a virtual machine scale set.",
+          "description": "Displays available skus for your virtual machine scale set including the minimum and maximum vm instances allowed for a particular sku.",
           "fullName": "vmss list-skus",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23574,7 +24774,7 @@
         },
         {
           "name": "power-off",
-          "description": "The operation to power off (stop) virtual machines in a virtual machine scale set.",
+          "description": "Allows you to power off (stop) virtual machines in a virtual machine scale set. Note that resources are still attached and you are getting charged for the resources. Use deallocate to release resources.",
           "fullName": "vmss power-off",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23643,7 +24843,7 @@
         },
         {
           "name": "reimage",
-          "description": "The operation to re-image virtual machines in a virtual machine scale set.",
+          "description": "Allows you to re-image(update the version of the installed operating system) virtual machines in a virtual machine scale set.",
           "fullName": "vmss reimage",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23704,7 +24904,7 @@
         },
         {
           "name": "restart",
-          "description": "The operation to restart virtual machines in a virtual machine scale set.",
+          "description": "Allows you to restart virtual machines in a virtual machine scale set.",
           "fullName": "vmss restart",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23773,7 +24973,7 @@
         },
         {
           "name": "start",
-          "description": "The operation to start virtual machines in a virtual machine scale set.",
+          "description": "Allows you to start virtual machines in a virtual machine scale set.",
           "fullName": "vmss start",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -23842,7 +25042,7 @@
         },
         {
           "name": "update-instances",
-          "description": "The operation to manually upgrade virtual machines in a virtual machine scale set.",
+          "description": "Allows you to manually upgrade virtual machines in a virtual machine scale set.",
           "fullName": "vmss update-instances",
           "usage": "[options] <resource-group> <name> <instance-ids>",
           "filePath": "commands/arm/compute/virtualMachineScaleSets._js",
@@ -29303,7 +30503,7 @@
               "bool": true,
               "short": "-S",
               "long": "--subnet-id",
-              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>"
+              "description": "the subnet identifier\n     e.g. /subscriptions/<subscriptipn-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>\n     Use this parameter if specified subnet exists only to avoid other vnet parameters to specify vnet and subnet you use\n     If you need to use subnet and virtual network from another resource group (not the same as VM resource group), just enter appropriate subnet ID"
             },
             {
               "flags": "-F, --vnet-name <vnet-name>",
@@ -29358,6 +30558,14 @@
               "short": "-o",
               "long": "--storage-account-name",
               "description": "the storage account name"
+            },
+            {
+              "flags": "--storage-account-type <storage-account-type>",
+              "required": -24,
+              "optional": 0,
+              "bool": true,
+              "long": "--storage-account-type",
+              "description": "the storage account type for to-be-generated storage account, default Premium_LRS"
             },
             {
               "flags": "-R, --storage-account-container-name <storage-account-container-name>",
@@ -29666,6 +30874,58 @@
           "description": "Get all virtual machines in a resource group",
           "fullName": "vm list",
           "usage": "[options] <resource-group>",
+          "filePath": "commands/arm/vm/vm._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g, --resource-group <resource-group>",
+              "required": -22,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the resource group name"
+            },
+            {
+              "flags": "-s, --subscription <subscription>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list-ip-address",
+          "description": "Get all virtual machines and their corresponding IP addresses in subscription. If a resource group is specified it will list virtual machines and their corresponding IP addresses in specified resource group.",
+          "fullName": "vm list-ip-address",
+          "usage": "[options] [resource-group]",
           "filePath": "commands/arm/vm/vm._js",
           "options": [
             {
@@ -31801,6 +33061,15 @@
                   "description": "quiet mode, do not ask for uninstall confirmation"
                 },
                 {
+                  "flags": "-U, --auto-upgrade-minor-version",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-U",
+                  "long": "--auto-upgrade-minor-version",
+                  "description": "Enable auto-upgrade across minor version"
+                },
+                {
                   "flags": "-s, --subscription <id>",
                   "required": -20,
                   "optional": 0,
@@ -31907,15 +33176,6 @@
                   "description": "chef client pem file path i.e required in validator less bootstrap"
                 },
                 {
-                  "flags": "-a, --auto-update-client",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--auto-update-client",
-                  "description": "auto update chef client"
-                },
-                {
                   "flags": "-j, --bootstrap-options <bootstrap-json-attribute>",
                   "required": -25,
                   "optional": 0,
@@ -31923,15 +33183,6 @@
                   "short": "-j",
                   "long": "--bootstrap-options",
                   "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}'"
-                },
-                {
-                  "flags": "-D, --delete-chef-config",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-D",
-                  "long": "--delete-chef-config",
-                  "description": "delete chef config files during update/uninstall extension"
                 },
                 {
                   "flags": "-u, --uninstall",
@@ -33637,7 +34888,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--itemType",
-                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, secret, credential, assembly, externaldatasource, table, tablevaluedfunction, view, procedure, types or tablestatistics"
+                      "description": "The catalog item type to return. Valid values are (case insensitive): database, schema, secret, credential, assembly, externaldatasource, table, tablevaluedfunction, view, procedure, types, tablepartition or tablestatistics"
                     },
                     {
                       "flags": "-p --itemPath <itemPath>",
@@ -42278,6 +43529,15 @@
                   "description": "storage account Id."
                 },
                 {
+                  "flags": "-b, --serviceBusRuleId <serviceBusRuleId>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--serviceBusRuleId",
+                  "description": "service bus authorization rule Id."
+                },
+                {
                   "flags": "-e, --enabled <enabled>",
                   "required": -15,
                   "optional": 0,
@@ -45756,7 +47016,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, in UTC format"
+                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -45765,7 +47025,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, in UTC format"
+                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -45886,7 +47146,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, in UTC format"
+                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -45895,7 +47155,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, in UTC format"
+                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -45991,7 +47251,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change key expiration time; must be a date in UTC format or null"
+                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -46000,7 +47260,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which key cannot be used; must be a date in UTC format or null"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -46383,7 +47643,7 @@
               "name": "set",
               "description": "Stores a secret on the vault",
               "fullName": "keyvault secret set",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [--value] <secret-value> [options]",
+              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [options]",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -46436,7 +47696,39 @@
                   "bool": true,
                   "short": "-w",
                   "long": "--value",
-                  "description": "the secret value"
+                  "description": "the secret value to be uploaded, expressed as an arbitrary sequence of characters; cannot be used along with --json-value or --file flags"
+                },
+                {
+                  "flags": "--json-value <JSON-string>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json-value",
+                  "description": "the secret value to be uploaded, expressed as a JSON string; cannot be used along with --value or --file flags"
+                },
+                {
+                  "flags": "--file <file-name>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "the file that contains the secret value to be uploaded; cannot be used along with the --value or --json-value flag"
+                },
+                {
+                  "flags": "--file-encoding <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-encoding",
+                  "description": "for text files, specifies encoding used on the file; valid values: [utf8, utf16le, ucs2, ascii]; default is utf8"
+                },
+                {
+                  "flags": "--encode-binary <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--encode-binary",
+                  "description": "tells the file is binary and encodes it before uploading; valid values: [base64, hex]"
                 },
                 {
                   "flags": "--enabled <boolean>",
@@ -46453,7 +47745,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "expiration time of secret, in UTC format"
+                  "description": "expiration time of secret, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -46462,7 +47754,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which secret cannot be used, in UTC format"
+                  "description": "time before which secret cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -46472,6 +47764,15 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "Tags to set on the secret. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                },
+                {
+                  "flags": "-p, --pass-thru",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pass-thru",
+                  "description": "outputs the stored secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -46549,7 +47850,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change secret expiration time; must be a date in UTC format or null"
+                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -46558,7 +47859,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which secret cannot be used; must be a date in UTC format or null"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -46576,6 +47877,15 @@
                   "bool": true,
                   "long": "--reset-tags",
                   "description": "remove previously existing tags; can combined with --tags"
+                },
+                {
+                  "flags": "-p, --pass-thru",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--pass-thru",
+                  "description": "outputs attributes of the modified secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -46637,6 +47947,91 @@
                   "short": "-r",
                   "long": "--secret-version",
                   "description": "the secret version; if ommited, uses the most recent"
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Downloads a secret from the vault",
+              "fullName": "keyvault secret get",
+              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [[--secret-version] <secret-version>] [--file] <file-name> [options]",
+              "filePath": "commands/arm/keyvault/keyvault.secret._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-s, --secret-name <secret-name>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--secret-name",
+                  "description": "the secret name"
+                },
+                {
+                  "flags": "-r, --secret-version <secret-version>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--secret-version",
+                  "description": "the secret version; if ommited, uses the most recent"
+                },
+                {
+                  "flags": "--file <file-name>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "the file to receive secret contents; the file must not exist otherwise the command fails"
+                },
+                {
+                  "flags": "--file-encoding <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file-encoding",
+                  "description": "specifies how to encode the secret contents in the file; valid values: [utf8, utf16le, ucs2, ascii]; default is utf8"
+                },
+                {
+                  "flags": "--decode-binary <encoding>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--decode-binary",
+                  "description": "tells to write a binary file by decoding secret contents with the informed encoding; valid values: [base64, hex]"
                 }
               ]
             },
@@ -46706,7 +48101,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pass-thru",
-                  "description": "outputs the deleted secret"
+                  "description": "outputs the deleted secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             }
@@ -58177,6 +59572,23 @@
                   "description": "application gateway instance count in range [2,10]. Default value is 2."
                 },
                 {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                },
+                {
                   "flags": "-s, --subscription <subscription>",
                   "required": -20,
                   "optional": 0,
@@ -58184,15 +59596,6 @@
                   "short": "-s",
                   "long": "--subscription",
                   "description": "the subscription identifier"
-                },
-                {
-                  "flags": "-t, --tags <tags>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-t",
-                  "long": "--tags",
-                  "description": ""
                 }
               ]
             },
@@ -58281,6 +59684,14 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -58464,6 +59875,14 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "--nowait",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nowait",
+                  "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -58685,6 +60104,14 @@
                       "description": "the certificate password"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58762,6 +60189,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -58898,6 +60333,14 @@
                       "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -58975,6 +60418,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59066,6 +60517,14 @@
                       "description": "the port, valid range is [0,65535]"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59143,6 +60602,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59234,6 +60701,14 @@
                       "description": "comma separated list of IP addresses or DNS names\n     corresponding to backend servers"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59311,6 +60786,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59420,6 +60903,14 @@
                       "description": "enable or disable cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is [Disabled]"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59497,6 +60988,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for unregister confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59615,6 +61114,14 @@
                       "description": "the name of an existing SSL certificate.\n   This parameter is required when --protocol is Https"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59692,6 +61199,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -59810,6 +61325,14 @@
                       "description": "the type, currently supported only default value \"%s\""
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -59887,6 +61410,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -60032,6 +61563,14 @@
                       "description": "probe retry count.\n   Back end server is marked down after consecutive probe failure count reaches an unhealthy threshold\n   Default value is 5"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -60109,6 +61648,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -60227,6 +61774,14 @@
                       "description": "the name of an existing backend address pool"
                     },
                     {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
                       "flags": "-s, --subscription <subscription>",
                       "required": -20,
                       "optional": 0,
@@ -60304,6 +61859,14 @@
                       "short": "-q",
                       "long": "--quiet",
                       "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -60421,6 +61984,14 @@
                           "description": "the name of an existing backend address pool"
                         },
                         {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                        },
+                        {
                           "flags": "-s, --subscription <subscription>",
                           "required": -20,
                           "optional": 0,
@@ -60507,6 +62078,14 @@
                           "short": "-q",
                           "long": "--quiet",
                           "description": "quiet mode, do not ask for delete confirmation"
+                        },
+                        {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
                         },
                         {
                           "flags": "-s, --subscription <subscription>",
@@ -63092,6 +64671,14 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "show details such as alias definitions, etc."
             },
             {
               "flags": "-n --namespace <namespace>",
