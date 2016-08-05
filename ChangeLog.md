@@ -23,7 +23,7 @@
 * General
   * fixed issues #1646,#1794, #2087, #2870, #2938, #2987,#3053, #3045
   * customers can set non interactive mode by setting the environment variable AZURE_NON_INTERACTIVE_MODE=1 and the CLI will throw an error instead of waiting for the user input,#2420, #2946
-* setting cert thumbprint as the userId while sending telemetry, if the user is using cert based auth for rdfe commands
+  * setting cert thumbprint as the userId while sending telemetry, if the user is using cert based auth for rdfe commands
   * Added subscription Id for telemetry
   * json formatting set to 2 spaces whenever JSON data is being written to a file
 * ResourceManager
@@ -34,8 +34,8 @@
 * CDN 
   * fix the issue of cdn command -option not recongizable issue
   * improved help for cdn commands
-* compute
-  *Add CLI changes for validate migration apis
+* Compute
+  * Add CLI changes for validate migration apis
 
 
 ##2016-07-07 Version 0.10.2
