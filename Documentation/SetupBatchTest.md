@@ -7,6 +7,7 @@
   * AZURE_BATCH_ENDPOINT: The url of the account. 
 - If recording, create the common test pool and wait for it to reach steady state.
   * Run the following command from the root to create the pool: "node bin\azure batch pool create .\test\data\batchCreateTestPool.json"
+  * Run the following command from the root to create the shared linux pool: "node bin\azure batch pool create .\test\data\batchCreateTestLinuxPool.json"
   * Wait for the pool to reach active state, steady allocation state, and to have 3 VMs: "node bin\azure batch pool show xplatTestPool"
   * Some tests may change the size of the pool, so double check that you still have 3 VMs before recording again.
 - To launch the tests, from the root run "node .\scripts\unit.js testlist-batch-live.txt"

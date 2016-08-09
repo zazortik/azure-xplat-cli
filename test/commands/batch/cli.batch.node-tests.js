@@ -31,8 +31,9 @@ var userName = "xplatUser";
 var downloadLocation = "node.rdp";
 
 var requiredEnvironment = [
-  { name: 'AZURE_BATCH_ACCOUNT', defaultValue: 'defaultaccount' },
-  { name: 'AZURE_BATCH_ENDPOINT', defaultValue: 'https://defaultaccount.westus.batch.azure.com' }
+  { name: 'AZURE_BATCH_ACCOUNT'  },
+  { name: 'AZURE_BATCH_ENDPOINT' }
+  //Note we do not include AZURE_BATCH_ACCESS_KEY here because then it would be recorded
 ];
 
 var testPrefix = 'cli-batch-node-tests';

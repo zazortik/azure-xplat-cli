@@ -109,7 +109,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://armclibatch7370.westus.batch.azure.com:443')
-  .get('/applications?api-version=2016-02-01.3.0&timeout=30')
+  .get('/applications?api-version=2016-07-01.3.1&timeout=30')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://armclibatch7370.westus.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"armclibatchapp4948\",\"versions\":[\r\n        \"1.0\"\r\n      ],\"displayName\":\"test\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -123,7 +123,7 @@ nock('http://armclibatch7370.westus.batch.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://armclibatch7370.westus.batch.azure.com:443')
-  .get('/applications?api-version=2016-02-01.3.0&timeout=30')
+  .get('/applications?api-version=2016-07-01.3.1&timeout=30')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://armclibatch7370.westus.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"armclibatchapp4948\",\"versions\":[\r\n        \"1.0\"\r\n      ],\"displayName\":\"test\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',

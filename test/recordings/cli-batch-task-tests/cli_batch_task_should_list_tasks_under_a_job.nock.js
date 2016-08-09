@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
+    id: '2915bbd6-1252-405f-8173-6c00428146d9',
+    name: 'Batch-MatthChr',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,35 +23,36 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'test1';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://test1.westus.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
+  
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://test1.westus.batch.azure.com:443')
-  .get('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks\",\"value\":[\r\n    {\r\n      \"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n        {\r\n          \"name\":\"env1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"env2\",\"value\":\"value2\"\r\n        }\r\n      ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n        \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n      },\"constraints\":{\r\n        \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"executionInfo\":{\r\n        \"retryCount\":0,\"requeueCount\":0\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobs/xplatJobForTaskTests/tasks?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#tasks\",\"value\":[\r\n    {\r\n      \"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D3BBFA602D3560\",\"creationTime\":\"2016-08-04T00:00:41.9165536Z\",\"lastModified\":\"2016-08-04T00:00:41.9165536Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:41.9165536Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n        {\r\n          \"name\":\"env1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"env2\",\"value\":\"value2\"\r\n        }\r\n      ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n        \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n      },\"constraints\":{\r\n        \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"executionInfo\":{\r\n        \"retryCount\":0,\"requeueCount\":0\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '22d561fe-4f41-4b8b-bc5c-a34ed51658db',
+  'request-id': 'e39e5ae9-4704-4d76-b3ba-2be4afb67998',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8e87211a-2995-4676-888a-04cbac8b4a74',
+  'client-request-id': '6452fed9-1623-4b51-80f2-33e34a8a6aa8',
   dataserviceversion: '3.0',
-  date: 'Fri, 20 May 2016 05:36:02 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://test1.westus.batch.azure.com:443')
-  .get('/jobs/xplatJobForTaskTests/tasks?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://test1.westus.batch.azure.com/$metadata#tasks\",\"value\":[\r\n    {\r\n      \"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://test1.westus.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D38070A1226EC4\",\"creationTime\":\"2016-05-20T05:36:01.745274Z\",\"lastModified\":\"2016-05-20T05:36:01.745274Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-05-20T05:36:01.745274Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n        {\r\n          \"name\":\"env1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"env2\",\"value\":\"value2\"\r\n        }\r\n      ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n        \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n      },\"constraints\":{\r\n        \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"executionInfo\":{\r\n        \"retryCount\":0,\"requeueCount\":0\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobs/xplatJobForTaskTests/tasks?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#tasks\",\"value\":[\r\n    {\r\n      \"id\":\"xplatTask\",\"displayName\":\"displayName\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobs/xplatJobForTaskTests/tasks/xplatTask\",\"eTag\":\"0x8D3BBFA602D3560\",\"creationTime\":\"2016-08-04T00:00:41.9165536Z\",\"lastModified\":\"2016-08-04T00:00:41.9165536Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:41.9165536Z\",\"commandLine\":\"cmd /c dir /s\",\"environmentSettings\":[\r\n        {\r\n          \"name\":\"env1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"env2\",\"value\":\"value2\"\r\n        }\r\n      ],\"runElevated\":false,\"multiInstanceSettings\":{\r\n        \"numberOfInstances\":3,\"coordinationCommandLine\":\"cmd /c echo hello\"\r\n      },\"constraints\":{\r\n        \"maxWallClockTime\":\"P1D\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"executionInfo\":{\r\n        \"retryCount\":0,\"requeueCount\":0\r\n      }\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '22d561fe-4f41-4b8b-bc5c-a34ed51658db',
+  'request-id': 'e39e5ae9-4704-4d76-b3ba-2be4afb67998',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '8e87211a-2995-4676-888a-04cbac8b4a74',
+  'client-request-id': '6452fed9-1623-4b51-80f2-33e34a8a6aa8',
   dataserviceversion: '3.0',
-  date: 'Fri, 20 May 2016 05:36:02 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:42 GMT',
   connection: 'close' });
  return result; }]];
