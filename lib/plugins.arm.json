@@ -11450,12 +11450,12 @@
                   "description": "the lease ID"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--sas <sas>",
@@ -11544,12 +11544,12 @@
                   "description": "the storage blob name"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -11810,12 +11810,12 @@
                   "description": "the storage blob name"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -12542,7 +12542,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-uri",
-                      "description": "the source storage blob or file absolute uri"
+                      "description": "the source storage blob or file absolute uri. By providing this option, all other source related options will be ignored."
                     },
                     {
                       "flags": "--source-container <sourceContainer>",
@@ -12561,12 +12561,12 @@
                       "description": "the source storage blob name when copies a blob to a blob"
                     },
                     {
-                      "flags": "--snapshot <snapshot>",
+                      "flags": "--snapshot <snapshotTimestamp>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
                       "long": "--snapshot",
-                      "description": "the snapshot id if source is a snapshot"
+                      "description": "the snapshot timestamp if source is a snapshot"
                     },
                     {
                       "flags": "--source-lease <sourceLeaseId>",
