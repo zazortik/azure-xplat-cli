@@ -108,6 +108,38 @@ describe('arm', function() {
         }
       });
 
+      it('stats commands should work', function (done)
+      {
+
+          showIotHubQuotaMustSucceed();
+
+          function showIotHubQuotaMustSucceed()
+          {
+              suite.execute('iothub show-quota-metrics --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
+              {
+                  result.exitStatus.should.be.equal(0);
+                  var iothubQuota = JSON.parse(result.text);
+                  iothubQuota[0].name.should.be.equal('TotalMessages');
+                  iothubQuota[0].currentValue.should.equal(0);
+                  iothubQuota[0].maxValue.should.equal(400000);
+                  showIotHubRegistryStatsMustSucceed();
+              });
+          }
+
+          function showIotHubRegistryStatsMustSucceed()
+          {
+              suite.execute('iothub show-registry-stats --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
+              {
+                  result.exitStatus.should.be.equal(0);
+                  var iothubStats = JSON.parse(result.text);
+                  iothubStats.totalDeviceCount.should.be.equal(0);
+                  iothubStats.enabledDeviceCount.should.be.equal(0);
+                  iothubStats.disabledDeviceCount.should.be.equal(0);
+                  done();
+              });
+          }
+      });
+
       it('set sku commands should work', function (done)
       {
           suite.execute('iothub sku set --name %s --resource-group %s --sku-name %s --units %s --json', iothubName, testResourceGroup, 'S2', '2', function (result)
@@ -200,37 +232,6 @@ describe('arm', function() {
             var ehcg = JSON.parse(result.text);
             ehcg[0].should.be.equal('$Default');
             ehcg.length.should.be.equal(1);
-            done();
-          });
-        }
-      });
-
-      it('stats commands should work', function (done) {
-
-        showIotHubQuotaMustSucceed();
-
-        function showIotHubQuotaMustSucceed()
-        {
-          suite.execute('iothub show-quota-metrics --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
-            result.exitStatus.should.be.equal(0);
-            var iothubQuota = JSON.parse(result.text);
-            iothubQuota[0].name.should.be.equal('TotalMessages');
-            iothubQuota[0].currentValue.should.equal(0);
-            iothubQuota[0].maxValue.should.equal(12000000);
-            showIotHubRegistryStatsMustSucceed();
-          });
-        }
-
-        function showIotHubRegistryStatsMustSucceed()
-        {
-          suite.execute('iothub show-registry-stats --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
-            result.exitStatus.should.be.equal(0);
-            var iothubStats = JSON.parse(result.text);
-            iothubStats.totalDeviceCount.should.be.equal(0);
-            iothubStats.enabledDeviceCount.should.be.equal(0);
-            iothubStats.disabledDeviceCount.should.be.equal(0);
             done();
           });
         }
