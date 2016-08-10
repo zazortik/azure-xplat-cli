@@ -1,4 +1,4 @@
-﻿##2016-8-7 Version 0.10.3
+##2016-8-7 Version 0.10.3
 * Storage
   * Added '--concurrenttaskcount' option for 'azure file download' command
   * Added support --snaptshot option for 'azure storage blob show' and azure storage blob download' commands
