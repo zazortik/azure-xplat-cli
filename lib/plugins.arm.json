@@ -45721,33 +45721,6 @@
                   "description": "The name of a key in IoT hub to delete. The first match for a key with this name will be deleted. The same command can be executed again to delete more keys."
                 },
                 {
-                  "flags": "-p --primary-key [primaryKey]",
-                  "required": 0,
-                  "optional": -18,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--primary-key",
-                  "description": "The primary key value for the specified keyName"
-                },
-                {
-                  "flags": "-e --secondary-key [secondaryKey]",
-                  "required": 0,
-                  "optional": -20,
-                  "bool": true,
-                  "short": "-e",
-                  "long": "--secondary-key",
-                  "description": "The secondary key value for the specified keyName"
-                },
-                {
-                  "flags": "-r --rights [rights]",
-                  "required": 0,
-                  "optional": -13,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--rights",
-                  "description": "The rights for the specified keyName. One ore more of the following to be specified as a comma separated value listRegistryRead, RegistryWrite, ServiceConnect, DeviceConnect"
-                },
-                {
                   "flags": "-s --subscription [subscription]",
                   "required": 0,
                   "optional": -19,

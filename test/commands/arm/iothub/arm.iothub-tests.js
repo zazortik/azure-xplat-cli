@@ -38,68 +38,72 @@ var requiredEnvironment = [{
 }, {
   name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
   defaultValue: 'xplattestiothubrg'
-} 
+}
 ];
 
 var galleryTemplateName;
 var galleryTemplateUrl;
 var iothubName;
 
-describe('arm', function() {
+describe('arm', function () {
 
-  describe('iothub', function() {
+  describe('iothub', function () {
     var suite;
     var testLocation;
     var testResourceGroup;
     var testSku = 'S1';
     var testUnits = '1';
 
-    before(function(done) {
+    before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
-      suite.setupSuite(function() { 
+      suite.setupSuite(function () {
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         testLocation = testLocation.toLowerCase().replace(/ /g, '');
         testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
-        suite.execute('group create %s --location %s', testResourceGroup, testLocation, function() {
+        if (!suite.isPlayback()) {
+          suite.execute('group create %s --location %s', testResourceGroup, testLocation, function () {
+            done();
+          });
+        } else {
           done();
-        });
+        }
       });
     });
 
-    after(function (done)
-    {
-      suite.execute('group delete %s --quiet', testResourceGroup, function() {
+    after(function (done) {
+      if (!suite.isPlayback()) {
+        suite.execute('group delete %s --quiet', testResourceGroup, function() {
           suite.teardownSuite(done);
-      });
+        });
+      } else {
+        done();
+      }
     });
 
-    beforeEach(function(done) {
+    beforeEach(function (done) {
       suite.setupTest(done);
     });
 
-    afterEach(function(done) {
+    afterEach(function (done) {
       suite.teardownTest(done);
     });
 
-    describe('All Tests', function ()
-    {
+    describe('All Tests', function () {
 
-      it('create command should work', function(done) {
+      it('create command should work', function (done) {
 
         iothubName = suite.generateId(iothubPrefix, knownNames);
         createIotHubMustSucceed();
 
         function createIotHubMustSucceed() {
-          suite.execute('iothub create --name %s --resource-group %s --location %s --sku-name %s --units %s --json', iothubName, testResourceGroup, testLocation, testSku, testUnits, function (result)
-          {
+          suite.execute('iothub create --name %s --resource-group %s --location %s --sku-name %s --units %s --json', iothubName, testResourceGroup, testLocation, testSku, testUnits, function (result) {
             result.exitStatus.should.be.equal(0);
             showIotHubMustSucceed();
           });
         }
 
         function showIotHubMustSucceed() {
-          suite.execute('iothub show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
+          suite.execute('iothub show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             var iothub = JSON.parse(result.text);
             iothub.name.should.be.equal(iothubName);
@@ -108,55 +112,46 @@ describe('arm', function() {
         }
       });
 
-      it('stats commands should work', function (done)
-      {
+      it('stats commands should work', function (done) {
 
-          showIotHubQuotaMustSucceed();
+        showIotHubQuotaMustSucceed();
 
-          function showIotHubQuotaMustSucceed()
-          {
-              suite.execute('iothub show-quota-metrics --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-              {
-                  result.exitStatus.should.be.equal(0);
-                  var iothubQuota = JSON.parse(result.text);
-                  iothubQuota[0].name.should.be.equal('TotalMessages');
-                  iothubQuota[0].currentValue.should.equal(0);
-                  iothubQuota[0].maxValue.should.equal(400000);
-                  showIotHubRegistryStatsMustSucceed();
-              });
-          }
-
-          function showIotHubRegistryStatsMustSucceed()
-          {
-              suite.execute('iothub show-registry-stats --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-              {
-                  result.exitStatus.should.be.equal(0);
-                  var iothubStats = JSON.parse(result.text);
-                  iothubStats.totalDeviceCount.should.be.equal(0);
-                  iothubStats.enabledDeviceCount.should.be.equal(0);
-                  iothubStats.disabledDeviceCount.should.be.equal(0);
-                  done();
-              });
-          }
-      });
-
-      it('set sku commands should work', function (done)
-      {
-          suite.execute('iothub sku set --name %s --resource-group %s --sku-name %s --units %s --json', iothubName, testResourceGroup, 'S2', '2', function (result)
-          {
+        function showIotHubQuotaMustSucceed() {
+          suite.execute('iothub show-quota-metrics --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
-            var iothub = JSON.parse(result.text);
-            iothub.name.should.be.equal(iothubName);
-            iothub.sku.name.should.equal('S2');
-            iothub.sku.capacity.should.equal(2);
+            var iothubQuota = JSON.parse(result.text);
+            iothubQuota[0].name.should.be.equal('TotalMessages');
+            iothubQuota[0].currentValue.should.equal(0);
+            iothubQuota[0].maxValue.should.equal(400000);
+            showIotHubRegistryStatsMustSucceed();
+          });
+        }
+
+        function showIotHubRegistryStatsMustSucceed() {
+          suite.execute('iothub show-registry-stats --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var iothubStats = JSON.parse(result.text);
+            iothubStats.totalDeviceCount.should.be.equal(0);
+            iothubStats.enabledDeviceCount.should.be.equal(0);
+            iothubStats.disabledDeviceCount.should.be.equal(0);
             done();
           });
+        }
       });
 
-      it('update d2c commands should work', function (done)
-      {
-        suite.execute('iothub device-to-cloud-properties set --name %s --resource-group %s --d2c-retention-time-in-days %s --json', iothubName, testResourceGroup, '5', function (result)
-        {
+      it('set sku commands should work', function (done) {
+        suite.execute('iothub sku set --name %s --resource-group %s --sku-name %s --units %s --json', iothubName, testResourceGroup, 'S2', '2', function (result) {
+          result.exitStatus.should.be.equal(0);
+          var iothub = JSON.parse(result.text);
+          iothub.name.should.be.equal(iothubName);
+          iothub.sku.name.should.equal('S2');
+          iothub.sku.capacity.should.equal(2);
+          done();
+        });
+      });
+
+      it('update d2c commands should work', function (done) {
+        suite.execute('iothub device-to-cloud-properties set --name %s --resource-group %s --d2c-retention-time-in-days %s --json', iothubName, testResourceGroup, '5', function (result) {
           result.exitStatus.should.be.equal(0);
           var iothub = JSON.parse(result.text);
           iothub.name.should.be.equal(iothubName);
@@ -165,10 +160,8 @@ describe('arm', function() {
         });
       });
 
-      it('update c2d commands should work', function (done)
-      {
-        suite.execute('iothub cloud-to-device-properties set --name %s --resource-group %s --c2d-max-delivery-count %s --json', iothubName, testResourceGroup, '50', function (result)
-        {
+      it('update c2d commands should work', function (done) {
+        suite.execute('iothub cloud-to-device-properties set --name %s --resource-group %s --c2d-max-delivery-count %s --json', iothubName, testResourceGroup, '50', function (result) {
           result.exitStatus.should.be.equal(0);
           var iothub = JSON.parse(result.text);
           iothub.name.should.be.equal(iothubName);
@@ -177,10 +170,8 @@ describe('arm', function() {
         });
       });
 
-      it('update tags commands should work', function (done)
-      {
-        suite.execute('iothub tags set --name %s --resource-group %s --tags %s --json', iothubName, testResourceGroup, 't1=v1', function (result)
-        {
+      it('update tags commands should work', function (done) {
+        suite.execute('iothub tags set --name %s --resource-group %s --tags %s --json', iothubName, testResourceGroup, 't1=v1', function (result) {
           result.exitStatus.should.be.equal(0);
           var iothub = JSON.parse(result.text);
           iothub.name.should.be.equal(iothubName);
@@ -193,19 +184,15 @@ describe('arm', function() {
 
         createIotHubEHConsumerGroupMustSucceed();
 
-        function createIotHubEHConsumerGroupMustSucceed()
-        {
-          suite.execute('iothub ehconsumergroup create --name %s --resource-group %s --eh-endpoint-type %s --eh-consumer-group %s --json', iothubName, testResourceGroup, 'events', 'cg1', function (result)
-          {
+        function createIotHubEHConsumerGroupMustSucceed() {
+          suite.execute('iothub ehconsumergroup create --name %s --resource-group %s --eh-endpoint-type %s --eh-consumer-group %s --json', iothubName, testResourceGroup, 'events', 'cg1', function (result) {
             result.exitStatus.should.be.equal(0);
             listIotHubEHConsumerGroupMustSucceed();
           });
         }
 
-        function listIotHubEHConsumerGroupMustSucceed()
-        {
-          suite.execute('iothub ehconsumergroup list --name %s --resource-group %s --eh-endpoint-type %s --json', iothubName, testResourceGroup, 'events', function (result)
-          {
+        function listIotHubEHConsumerGroupMustSucceed() {
+          suite.execute('iothub ehconsumergroup list --name %s --resource-group %s --eh-endpoint-type %s --json', iothubName, testResourceGroup, 'events', function (result) {
             result.exitStatus.should.be.equal(0);
             var ehcg = JSON.parse(result.text);
             ehcg[0].should.be.equal('$Default');
@@ -215,19 +202,15 @@ describe('arm', function() {
           });
         }
 
-        function deleteIotHubEHConsumerGroupMustSucceed()
-        {
-          suite.execute('iothub ehconsumergroup delete --name %s --resource-group %s --eh-endpoint-type %s --eh-consumer-group %s --json', iothubName, testResourceGroup, 'events', 'cg1', function (result)
-          {
+        function deleteIotHubEHConsumerGroupMustSucceed() {
+          suite.execute('iothub ehconsumergroup delete --name %s --resource-group %s --eh-endpoint-type %s --eh-consumer-group %s --json', iothubName, testResourceGroup, 'events', 'cg1', function (result) {
             result.exitStatus.should.be.equal(0);
             listIotHubEHConsumerGroupAfterDeleteMustSucceed();
           });
         }
 
-        function listIotHubEHConsumerGroupAfterDeleteMustSucceed()
-        {
-          suite.execute('iothub ehconsumergroup list --name %s --resource-group %s --eh-endpoint-type %s --json', iothubName, testResourceGroup, 'events', function (result)
-          {
+        function listIotHubEHConsumerGroupAfterDeleteMustSucceed() {
+          suite.execute('iothub ehconsumergroup list --name %s --resource-group %s --eh-endpoint-type %s --json', iothubName, testResourceGroup, 'events', function (result) {
             result.exitStatus.should.be.equal(0);
             var ehcg = JSON.parse(result.text);
             ehcg[0].should.be.equal('$Default');
@@ -237,10 +220,8 @@ describe('arm', function() {
         }
       });
 
-      it('list iothubs command should work', function (done)
-      {
-        suite.execute('iothub list --resource-group %s --json', testResourceGroup, function (result)
-        {
+      it('list iothubs command should work', function (done) {
+        suite.execute('iothub list --resource-group %s --json', testResourceGroup, function (result) {
           result.exitStatus.should.be.equal(0);
           var iothubs = JSON.parse(result.text);
           iothubs.length.should.be.above(0);
@@ -252,10 +233,8 @@ describe('arm', function() {
 
         listIotHubKeysMustSucceed();
 
-        function listIotHubKeysMustSucceed()
-        {
-          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
+        function listIotHubKeysMustSucceed() {
+          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             var iothubKeys = JSON.parse(result.text);
             iothubKeys.length.should.be.above(0);
@@ -263,10 +242,8 @@ describe('arm', function() {
           });
         }
 
-        function showIotHubKeyMustSucceed()
-        {
-          suite.execute('iothub key show --name %s --resource-group %s --key-name %s', iothubName, testResourceGroup, 'iothubowner', function (result)
-          {
+        function showIotHubKeyMustSucceed() {
+          suite.execute('iothub key show --name %s --resource-group %s --key-name %s', iothubName, testResourceGroup, 'iothubowner', function (result) {
             result.exitStatus.should.be.equal(0);
             result.text.should.include('iothubowner');
             done();
@@ -279,29 +256,23 @@ describe('arm', function() {
 
         createIotHubKeyMustSucceed();
 
-        function createIotHubKeyMustSucceed()
-        {
-          suite.execute('iothub key create --name %s --resource-group %s --key-name %s --primary-key %s --secondary-key %s --rights %s --json', iothubName, testResourceGroup, 'key1', 'dfd', 'dfd', 'ServiceConnect', function (result)
-          {
+        function createIotHubKeyMustSucceed() {
+          suite.execute('iothub key create --name %s --resource-group %s --key-name %s --primary-key %s --secondary-key %s --rights %s --json', iothubName, testResourceGroup, 'key1', 'dfd', 'dfd', 'ServiceConnect', function (result) {
             result.exitStatus.should.be.equal(0);
             showIotHubKeyAfterCreateMustSucceed();
           });
         }
 
-        function showIotHubKeyAfterCreateMustSucceed()
-        {
-          suite.execute('iothub key show --name %s --resource-group %s --key-name %s ', iothubName, testResourceGroup, 'key1', function (result)
-          {
+        function showIotHubKeyAfterCreateMustSucceed() {
+          suite.execute('iothub key show --name %s --resource-group %s --key-name %s ', iothubName, testResourceGroup, 'key1', function (result) {
             result.exitStatus.should.be.equal(0);
             result.text.should.include('key1');
             listIotHubKeyAfterCreateMustSucceed();
           });
         }
 
-        function listIotHubKeyAfterCreateMustSucceed()
-        {
-          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
+        function listIotHubKeyAfterCreateMustSucceed() {
+          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             var iothubKeys = JSON.parse(result.text);
             iothubKeys.length.should.be.above(1);
@@ -311,34 +282,27 @@ describe('arm', function() {
 
       });
 
-      it('delete iothub key command should work', function (done)
-      {
+      it('delete iothub key command should work', function (done) {
 
         deleteIotHubKeyMustSucceed()
 
-        function deleteIotHubKeyMustSucceed()
-        {
-          suite.execute('iothub key delete --name %s --resource-group %s --key-name %s --rights %s', iothubName, testResourceGroup, 'key1', 'ServiceConnect', function (result)
-          {
+        function deleteIotHubKeyMustSucceed() {
+          suite.execute('iothub key delete --name %s --resource-group %s --key-name %s ', iothubName, testResourceGroup, 'key1', function (result) {
             result.exitStatus.should.be.equal(0);
             showIotHubKeyAfterDeleteMustFail();
           });
         }
 
-        function showIotHubKeyAfterDeleteMustFail()
-        {
-          suite.execute('iothub key show --name %s --resource-group %s --key-name %s', iothubName, testResourceGroup, 'key1', function (result)
-          {
+        function showIotHubKeyAfterDeleteMustFail() {
+          suite.execute('iothub key show --name %s --resource-group %s --key-name %s', iothubName, testResourceGroup, 'key1', function (result) {
             result.exitStatus.should.be.equal(1);
             result.errorText.should.include('KeyNameNotFound');
             listIotHubKeyAfterDeleteMustSucceed();
           });
         }
 
-        function listIotHubKeyAfterDeleteMustSucceed()
-        {
-          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result)
-          {
+        function listIotHubKeyAfterDeleteMustSucceed() {
+          suite.execute('iothub key list --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             var iothubKeys = JSON.parse(result.text);
             iothubKeys.length.should.be.above(1);
@@ -351,22 +315,20 @@ describe('arm', function() {
 
         listIotHubOpMonPropertiesMustSucceed();
 
-        function listIotHubOpMonPropertiesMustSucceed()
-        {
-          suite.execute('iothub opmon show --name %s --resource-group %s', iothubName, testResourceGroup, function (result)
-          {
+        function listIotHubOpMonPropertiesMustSucceed() {
+          suite.execute('iothub opmon show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
-            result.text.should.include('None')
+            var opmon = JSON.parse(result.text);
+            opmon.events.Connections.should.equal('None')
             setIotHubOpMonPropertiesMustSucceed();
           });
         }
 
-        function setIotHubOpMonPropertiesMustSucceed()
-        {
-          suite.execute('iothub opmon set --name %s --resource-group %s --opmon-category %s --diagnostic-level %s ', iothubName, testResourceGroup, 'Connections', 'Information', function (result)
-          {
+        function setIotHubOpMonPropertiesMustSucceed() {
+          suite.execute('iothub opmon set --name %s --resource-group %s --opmon-category %s --diagnostic-level %s --json', iothubName, testResourceGroup, 'Connections', 'Information', function (result) {
             result.exitStatus.should.be.equal(0);
-            result.text.should.include('Information')
+            var opmon = JSON.parse(result.text);
+            opmon.events.Connections.should.equal('Information')
             done();
           });
         }
@@ -376,19 +338,15 @@ describe('arm', function() {
 
         deleteIotHubMustSucceed();
 
-        function deleteIotHubMustSucceed()
-        {
-          suite.execute('iothub delete --name %s --resource-group %s ', iothubName, testResourceGroup, function (result)
-          {
+        function deleteIotHubMustSucceed() {
+          suite.execute('iothub delete --name %s --resource-group %s ', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             showIotHubMustFail();
           });
         }
 
-        function showIotHubMustFail()
-        {
-          suite.execute('iothub show --name %s --resource-group %s', iothubName, testResourceGroup, function (result)
-          {
+        function showIotHubMustFail() {
+          suite.execute('iothub show --name %s --resource-group %s', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(1);
             result.errorText.should.include('IotHubNotFound');
             done();
