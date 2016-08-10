@@ -71,13 +71,15 @@ describe('arm', function () {
     });
 
     after(function (done) {
-      if (!suite.isPlayback()) {
-        suite.execute('group delete %s --quiet', testResourceGroup, function() {
-          suite.teardownSuite(done);
-        });
-      } else {
-        done();
-      }
+      suite.teardownSuite(function () {
+        if (!suite.isPlayback()) {
+          suite.execute('group delete %s --quiet', testResourceGroup, function() {
+            done();
+          });
+        } else {
+          done();
+        }
+      });
     });
 
     beforeEach(function (done) {
