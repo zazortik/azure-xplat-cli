@@ -50,7 +50,7 @@ describe('arm', function () {
             return location.name === 'westus' && location.displayName === 'West US';
           }).should.be.true;
           locations.some(function (location) {
-            return location.providers.length > 1 && location.providers.indexOf("Microsoft.Batch") == 0;
+            return location.providers.length > 1 && location.providers.indexOf("Microsoft.Batch") >= 0;
           }).should.be.true;
           done();
         });
