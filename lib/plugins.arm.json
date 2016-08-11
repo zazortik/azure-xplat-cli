@@ -44139,7 +44139,7 @@
               "bool": true,
               "short": "-e",
               "long": "--enable-dm",
-              "description": "The flag which indicates whether the Device Management feature is enabled for this IoT hub. One of true, false."
+              "description": "The flag which indicates whether the Device Management feature is enabled for this IoT hub. One of true, false. Default : false"
             },
             {
               "flags": "-p --d2c-partitions [d2cPartitions]",
@@ -44148,7 +44148,7 @@
               "bool": true,
               "short": "-p",
               "long": "--d2c-partitions",
-              "description": "The number of partitions for your device-to-cloud events. Range : F1 [2-2] Rest of the Skus [2-128]."
+              "description": "The number of partitions for your device-to-cloud events. Range : F1 [2-2] Rest of the Skus [2-128]. Default : 2"
             },
             {
               "flags": "-r --d2c-retention-time-in-days [d2cRetentionTimeInDays]",
@@ -44157,7 +44157,7 @@
               "bool": true,
               "short": "-r",
               "long": "--d2c-retention-time-in-days",
-              "description": "The number of days for which the device-to-cloud events will be maintained. Range : [1-7]."
+              "description": "The number of days for which the device-to-cloud events will be maintained. Range : [1-7]. Default : 1."
             },
             {
               "flags": "-d --c2d-max-delivery-count [c2dMaxDeliveryCount]",
@@ -44166,7 +44166,7 @@
               "bool": true,
               "short": "-d",
               "long": "--c2d-max-delivery-count",
-              "description": "The number of times the IoT hub will attempt to deliver a cloud-to-device message to a device. Range : [1-100]."
+              "description": "The number of times the IoT hub will attempt to deliver a cloud-to-device message to a device. Range : [1-100]. Default : 10."
             },
             {
               "flags": "-c --c2d-ttl [c2dTtl]",
@@ -44175,7 +44175,7 @@
               "bool": true,
               "short": "-c",
               "long": "--c2d-ttl",
-              "description": "The amount of time for which a cloud to device mesage is available for the device to consume before it is expired by IoT hub. Range : [1-48 hours]."
+              "description": "The amount of time for which a cloud to device mesage is available for the device to consume before it is expired by IoT hub. Range : [1-48 hours]. Default : 1 hour."
             },
             {
               "flags": "-f --feedback-lock-duration [feedbackLockDuration]",
@@ -44184,7 +44184,7 @@
               "bool": true,
               "short": "-f",
               "long": "--feedback-lock-duration",
-              "description": "The lock duration for the feedback messages. Range : [5 seconds - 5 minutes]."
+              "description": "The lock duration for the feedback messages. Range : [5 seconds - 5 minutes]. Default : 1 minute."
             },
             {
               "flags": "-F --feedback-ttl [feedbackTtl]",
@@ -44193,7 +44193,7 @@
               "bool": true,
               "short": "-F",
               "long": "--feedback-ttl",
-              "description": "The amount of time a feedback mesage is available for the device to consume before it is expired by IotHub. Range : [1-48 hours]."
+              "description": "The amount of time a feedback mesage is available for the device to consume before it is expired by IotHub. Range : [1-48 hours]. Default : 1 hour."
             },
             {
               "flags": "-m --feedback-max-delivery-count [feedbackMaxDeliveryCount]",
@@ -44202,7 +44202,7 @@
               "bool": true,
               "short": "-m",
               "long": "--feedback-max-delivery-count",
-              "description": "The number of times the IoT hub will attempt to deliver a cloud-device feedback message to a device. Range : [1-100]."
+              "description": "The number of times the IoT hub will attempt to deliver a cloud-device feedback message to a device. Range : [1-100]. Default : 1."
             },
             {
               "flags": "-x --enable-fileupload-notifications [enableFileuploadNotifications]",
@@ -44211,7 +44211,7 @@
               "bool": true,
               "short": "-x",
               "long": "--enable-fileupload-notifications",
-              "description": "The flag that specifies if the file upload notifications should be turned on, One of true, false."
+              "description": "The flag that specifies if the file upload notifications should be turned on, One of true, false. Default : false."
             },
             {
               "flags": "-S --fileupload-storage-connectionstring [fileuploadStorageConnectionstring]",
@@ -44220,7 +44220,7 @@
               "bool": true,
               "short": "-S",
               "long": "--fileupload-storage-connectionstring",
-              "description": "The storage connection string where the files are to be uploaded."
+              "description": "The storage connection string where the files are to be uploaded. Default : null."
             },
             {
               "flags": "-C --fileupload-container-name [fileuploadContainerName]",
@@ -44229,7 +44229,7 @@
               "bool": true,
               "short": "-C",
               "long": "--fileupload-container-name",
-              "description": "The storage container name where the files are to be uploaded."
+              "description": "The storage container name where the files are to be uploaded. Default : null."
             },
             {
               "flags": "-T --fileupload-sas-uri-ttl [fileuploadSasUriTtl]",
@@ -44238,7 +44238,7 @@
               "bool": true,
               "short": "-T",
               "long": "--fileupload-sas-uri-ttl",
-              "description": "The amount of time for which the SAS Uri generated by IoT hub is valid before it expires. Range : [1-24 hours]."
+              "description": "The amount of time for which the SAS Uri generated by IoT hub is valid before it expires. Range : [1-24 hours]. Default : 1 hour."
             },
             {
               "flags": "-N --fileupload-notification-ttl [fileuploadNotificationTtl]",
@@ -44247,7 +44247,7 @@
               "bool": true,
               "short": "-N",
               "long": "--fileupload-notification-ttl",
-              "description": "The amount of time for which a file upload notification is available for the service to consume before it is expired by IoT hub. Range : [1-48 hours]."
+              "description": "The amount of time for which a file upload notification is available for the service to consume before it is expired by IoT hub. Range : [1-48 hours]. Default : 1 hour."
             },
             {
               "flags": "-D --fileupload-notification-max-delivery-count [fileuploadNotificationMaxDeliveryCount]",
@@ -44256,7 +44256,7 @@
               "bool": true,
               "short": "-D",
               "long": "--fileupload-notification-max-delivery-count",
-              "description": "The number of times the IoT hub will attempt to deliver a file notification message. Range [1-100]."
+              "description": "The number of times the IoT hub will attempt to deliver a file notification message. Range [1-100]. Default : 10."
             },
             {
               "flags": "-t --tags [tags]",
