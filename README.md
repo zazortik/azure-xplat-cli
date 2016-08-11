@@ -89,7 +89,10 @@ To enable it in bash, run:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
+# For macOS Terminal(login shell)
 echo 'source ~/azure.completion.sh' >> ~/.bash_profile
+# For Linux Terminal(non-login shell)
+echo 'source ~/azure.completion.sh' >> ~/.bashrc
 ```
 
 ## Get Started
