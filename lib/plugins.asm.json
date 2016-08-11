@@ -26149,190 +26149,6 @@
             }
           }
         },
-        "dns-server": {
-          "name": "dns-server",
-          "description": "Commands to manage your DNS servers",
-          "fullName": "network dns-server",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List DNS servers registered in network",
-              "fullName": "network dns-server list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "register",
-              "description": "Register a DNS server with network",
-              "fullName": "network dns-server register",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "unregister",
-              "description": "Unregister a DNS server registered in the current network",
-              "fullName": "network dns-server unregister",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for unregister confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
         "reserved-ip": {
           "name": "reserved-ip",
           "description": "Commands to manage your reserved public virtual IP addresses",
@@ -26340,6 +26156,210 @@
           "usage": "[options] [command]",
           "options": [],
           "commands": [
+            {
+              "name": "abort-migration",
+              "description": "",
+              "fullName": "network reserved-ip abort-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "",
+              "fullName": "network reserved-ip commit-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "",
+              "fullName": "network reserved-ip prepare-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "",
+              "fullName": "network reserved-ip validate-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
             {
               "name": "create",
               "description": "Create a reserved IP address",
@@ -26518,6 +26538,190 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "dns-server": {
+          "name": "dns-server",
+          "description": "Commands to manage your DNS servers",
+          "fullName": "network dns-server",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List DNS servers registered in network",
+              "fullName": "network dns-server list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "register",
+              "description": "Register a DNS server with network",
+              "fullName": "network dns-server register",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "unregister",
+              "description": "Unregister a DNS server registered in the current network",
+              "fullName": "network dns-server unregister",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
                 },
                 {
                   "flags": "-s, --subscription <id>",
