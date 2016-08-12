@@ -616,6 +616,43 @@ describe('cli', function () {
         });
       });
 
+      describe('update', function(){
+        it('should update the blob properties by updating the blob', function (done) {
+          blockBlobName = suite.generateId(blockBlobName);
+          var buf = new Buffer('HelloWorld', 'utf8');
+          var fileName = 'hello.block.updateproperties.txt';
+          var fd = fs.openSync(fileName, 'w');
+          fs.writeSync(fd, buf, 0, buf.length, 0);
+          var md5Hash = crypto.createHash('md5');
+          md5Hash.update(buf);
+          var contentMD5 = md5Hash.digest('base64');
+          suite.execute('storage blob upload %s %s %s -p %s --json', fileName, containerName, blockBlobName, 'contentType=plain/text', function (result) {
+            var blob = JSON.parse(result.text);
+            blob.name.should.equal(blockBlobName);
+            blob.contentSettings.contentMD5.should.equal(contentMD5);
+            fs.unlinkSync(fileName);
+
+            suite.execute('storage blob show %s %s --json', containerName, blockBlobName, function (result) {
+              var blob = JSON.parse(result.text);
+              blob.blobType.should.equal('BlockBlob');
+              blob.contentSettings.contentType.should.equal('plain/text');
+              blob.contentSettings.contentMD5.should.equal(contentMD5);
+
+              suite.execute('storage blob update %s %s -p %s --json', containerName, blockBlobName, 'contentType=text/xml', function (result) {
+                suite.execute('storage blob show %s %s --json', containerName, blockBlobName, function (result) {
+                  var blob = JSON.parse(result.text);
+                  blob.contentSettings.contentType.should.equal('text/xml');
+                  //ContentMD5 should not updated and should NOT cleared as user didn't supply it
+                  blob.contentSettings.contentMD5.should.equal(contentMD5);
+
+                  done();
+                });
+              });
+            });
+          });
+        });
+      })
+
       describe('list', function () {
         it('should list all blobs', function (done) {
           suite.execute('storage blob list %s --json', containerName, function (result) {

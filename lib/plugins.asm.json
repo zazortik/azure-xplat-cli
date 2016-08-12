@@ -12101,7 +12101,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--properties",
-                  "description": "the storage blob properties for uploaded file. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl"
+                  "description": "the storage blob properties for uploaded file. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl, contentDisposition, contentMD5"
                 },
                 {
                   "flags": "-m, --metadata <metadata>",
@@ -12359,6 +12359,109 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "description": "Update the properties of the specified storage blob",
+              "fullName": "storage blob update",
+              "usage": "[options] [container] [blob]",
+              "filePath": "commands/storage/storage.blob._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--container <container>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--container",
+                  "description": "the storage container name"
+                },
+                {
+                  "flags": "-b, --blob <blobName>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--blob",
+                  "description": "the storage blob name"
+                },
+                {
+                  "flags": "-p, --properties <properties>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--properties",
+                  "description": "the storage blob properties. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl, contentDisposition, contentMD5"
                 },
                 {
                   "flags": "--lease <leaseId>",
