@@ -190,7 +190,7 @@ describe('arm', function () {
       });
     });
 
-    describe('list', function () {
+    describe.skip('list', function () {
       it('should work without filters', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -402,6 +402,7 @@ describe('arm', function () {
         });
       });
       it('should work with api version provided', function (done) {
+<<<<<<< HEAD
           var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
           var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
           var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -474,6 +475,80 @@ describe('arm', function () {
                   });
               });
           });
+=======
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        var apiVersion = '2016-02-01';
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          
+          //create sample resource to move
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+            
+            //get the resource id
+            suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              var resourceId = JSON.parse(showResult.text).id;
+              
+              //perform move to destination group
+              suite.execute('group create %s --location %s --json', destinationGroupName, testGroupLocation, function (result) {
+                suite.execute('resource move -i %s -d %s -o %s -q', resourceId, destinationGroupName, apiVersion, function (moveResult) {
+                  moveResult.exitStatus.should.equal(0);
+                  
+                  //validate move was successful
+                  suite.execute('resource show %s %s %s %s --json', destinationGroupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                    showResult.exitStatus.should.equal(0);
+                    suite.execute('group delete %s --quiet --json', groupName, function () {
+                      suite.execute('group delete %s --quiet --json', destinationGroupName, function () {
+                        done();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+      it('should default to valid api version when incorrect format', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        var apiVersion = '2016-02-01';
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+          
+          //create sample resource to move
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+            
+            //get the resource id
+            suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+              var resourceId = JSON.parse(showResult.text).id;
+              
+              //perform move to destination group
+              suite.execute('group create %s --location %s --json', destinationGroupName, testGroupLocation, function (result) {
+                suite.execute('resource move -i %s -d %s -o %s -q', resourceId, destinationGroupName, apiVersion, function (moveResult) {
+                  moveResult.exitStatus.should.equal(0);
+                  
+                  //validate move was successful
+                  suite.execute('resource show %s %s %s %s --json', destinationGroupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                    showResult.exitStatus.should.equal(0);
+                    suite.execute('group delete %s --quiet --json', groupName, function () {
+                      suite.execute('group delete %s --quiet --json', destinationGroupName, function () {
+                        done();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+>>>>>>> ADDNPRD
       });
     });
 

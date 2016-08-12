@@ -63844,7 +63844,7 @@
           "name": "delete",
           "description": "Deletes a resource in a resource group",
           "fullName": "resource delete",
-          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
+          "usage": "[options] { <resource-group> <name> <resource-type> | <resource-id> } <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -63898,6 +63898,15 @@
               "short": "-r",
               "long": "--resource-type",
               "description": "the resource type"
+            },
+            {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "the resource id can be provided instead of <resource-group> <name> <resource-type>"
             },
             {
               "flags": "-o --api-version <api-version>",
