@@ -28,4 +28,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['CliTestVnet9277','cliTestRip7294'];};
+ exports.randomTestIdsGenerated = function() { return ['CliTestVnet7029','cliTestRip3071'];};
