@@ -9871,6 +9871,58 @@
                   "description": "The subscription identifier"
                 }
               ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Validate storage account migration api validates the given storage account for IaaS Classic to ARM migration.",
+              "fullName": "storage account validate-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/storage.generated/storageAccount._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
             }
           ],
           "categories": {
@@ -11812,6 +11864,14 @@
                   "description": "the lease ID"
                 },
                 {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -12061,6 +12121,14 @@
                   "description": "the maximum number of concurrent upload requests"
                 },
                 {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
                   "flags": "--sas <sas>",
                   "required": -7,
                   "optional": 0,
@@ -12154,6 +12222,14 @@
                   "short": "-b",
                   "long": "--blob",
                   "description": "the storage blob name"
+                },
+                {
+                  "flags": "--snapshot <snapshotId>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--snapshot",
+                  "description": "the snapshot ID"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -14660,6 +14736,14 @@
                   "short": "-m",
                   "long": "--checkmd5",
                   "description": "check md5sum for the downloaded file"
+                },
+                {
+                  "flags": "--concurrenttaskcount <concurrenttaskcount>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--concurrenttaskcount",
+                  "description": "the maximum number of concurrent download requests"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -18505,6 +18589,99 @@
                   "description": "The subscription identifier"
                 }
               ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "The Validate Deployment Operation validates your deployment for IaaS Classic to ARM migration.",
+              "fullName": "service deployment validate-migration",
+              "usage": "[options] <service-name> <name> <destination-virtual-network> <resource-group-name> <subnet-name> <virtual-network-name>",
+              "filePath": "commands/asm/compute/deployment._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--service-name <service-name>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--service-name",
+                  "description": "service-name"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "--destination-virtual-network <destination-virtual-network>",
+                  "required": -31,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--destination-virtual-network",
+                  "description": "destination-virtual-network"
+                },
+                {
+                  "flags": "-g, --resource-group-name <resource-group-name>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group-name",
+                  "description": "resource-group-name"
+                },
+                {
+                  "flags": "--subnet-name <subnet-name>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--subnet-name",
+                  "description": "subnet-name"
+                },
+                {
+                  "flags": "--virtual-network-name <virtual-network-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--virtual-network-name",
+                  "description": "virtual-network-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
             }
           ],
           "categories": {}
@@ -19345,7 +19522,7 @@
     },
     "hdinsight": {
       "name": "hdinsight",
-      "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters and jobs",
+      "description": "Commands to manage HDInsight clusters and jobs.\nhelp: \t\t\t  HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\t\t  To submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\t\t  For more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
       "fullName": "hdinsight",
       "usage": "[options]",
       "options": [],
@@ -19353,14 +19530,14 @@
       "categories": {
         "cluster": {
           "name": "cluster",
-          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight clusters",
+          "description": "Commands to manage HDInsight clusters.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
           "fullName": "hdinsight cluster",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCreate a cluster",
+              "description": "Create a cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster create",
               "usage": "[options] <clusterName> <osType> <storageAccountName> <storageAccountKey> <storageContainer> <dataNodeCount> <headNodeSize> <dataNodeSize> <location> <userName> <password> <sshUserName> <sshPassword>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19507,7 +19684,7 @@
             },
             {
               "name": "delete",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nDelete a cluster",
+              "description": "Delete a cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster delete",
               "usage": "[options] <clusterName> <location> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19574,7 +19751,7 @@
             },
             {
               "name": "show",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nShow cluster details",
+              "description": "Show cluster details.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster show",
               "usage": "[options] <clusterName> <osType>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19633,7 +19810,7 @@
             },
             {
               "name": "list",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nList the clusters",
+              "description": "List the clustershelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight cluster list",
               "usage": "[options]",
               "filePath": "commands/asm/hdinsight._js",
@@ -19670,14 +19847,14 @@
         },
         "job": {
           "name": "job",
-          "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nCommands to manage HDInsight jobs",
+          "description": "Commands to manage HDInsight jobs. \nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
           "fullName": "hdinsight job",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "hive_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Hive job to an HdInsight cluster",
+              "description": "Submits a Hive job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job hive_create",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19784,7 +19961,7 @@
             },
             {
               "name": "mr_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a MapReduce job to an HdInsight cluster",
+              "description": "Submits a MapReduce job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job mr_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <className> <jarFile>",
               "filePath": "commands/asm/hdinsight._js",
@@ -19899,7 +20076,7 @@
             },
             {
               "name": "mr_streaming_create",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nSubmits a Streaming MapReduce job to an HdInsight cluster",
+              "description": "Submits a Streaming MapReduce job to an HdInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job mr_streaming_create",
               "usage": "[options] <clusterDnsName> <userName> <password> <mapper> <reducer>",
               "filePath": "commands/asm/hdinsight._js",
@@ -20038,7 +20215,7 @@
             },
             {
               "name": "show",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the details of the specified job from an HDInsight cluster",
+              "description": "Retrieves the details of the specified job from an HDInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job show",
               "usage": "[options] <clusterDnsName> <userName> <password> <jobId>",
               "filePath": "commands/asm/hdinsight._js",
@@ -20113,7 +20290,7 @@
             },
             {
               "name": "list",
-              "description": "HDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nRetrieves the list of jobs from the specified HDInsight cluster",
+              "description": "Retrieves the list of jobs from the specified HDInsight cluster.\nhelp: \t\tHDInsight commands in ASM mode are deprecated and will be removed in January 2017. Please use ARM mode instead by entering:  azure config mode arm\nhelp: \t\tTo submit jobs, please use a Secure Shell (SSH) connection to your cluster.\nhelp: \t\tFor more information, go to http://go.microsoft.com/fwlink/?LinkID=746541&clcid=0x404 \nhelp:",
               "fullName": "hdinsight job list",
               "usage": "[options] <clusterDnsName> <userName> <password>",
               "filePath": "commands/asm/hdinsight._js",
@@ -24701,7 +24878,7 @@
           "commands": [
             {
               "name": "abort-migration",
-              "description": "Abort IaaS Classic to ARM migration for a virtual network.",
+              "description": "Abort Virtual Network migration api validates and aborts the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet abort-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -24753,7 +24930,7 @@
             },
             {
               "name": "commit-migration",
-              "description": "Commit IaaS Classic to ARM migration for a virtual network.",
+              "description": "Commit Virtual Network migration api validates and commits the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet commit-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -24805,8 +24982,60 @@
             },
             {
               "name": "prepare-migration",
-              "description": "Prepare IaaS Classic to ARM migration for a virtual network.",
+              "description": "Prepare Virtual Network migration api validates and prepare the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Prepare Virtual Network migration api validates the given virtual network for IaaS Classic to ARM migration.",
+              "fullName": "network vnet validate-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
@@ -31967,12 +32196,12 @@
               "description": "Create a deployment script for .NET web application, specify the project file path"
             },
             {
-              "flags": "--aspNet5 <projectFilePath>",
-              "required": -11,
+              "flags": "--aspNetCore <projectFilePath>",
+              "required": -14,
               "optional": 0,
               "bool": true,
-              "long": "--aspNet5",
-              "description": "Create a deployment script for ASP.NET 5 web application, specify the project.json file path"
+              "long": "--aspNetCore",
+              "description": "Create a deployment script for ASP.NET Core web application, specify the project.json file path"
             },
             {
               "flags": "--aspWebSite",
@@ -32090,38 +32319,6 @@
               "bool": false,
               "long": "--no-solution",
               "description": "Do not require a solution file path (only for --aspWAP otherwise ignored)."
-            },
-            {
-              "flags": "--aspNet5Version <version>",
-              "required": -18,
-              "optional": 0,
-              "bool": true,
-              "long": "--aspNet5Version",
-              "description": "The Dnx version for ASP.NET 5"
-            },
-            {
-              "flags": "--aspNet5Runtime <runtime>",
-              "required": -18,
-              "optional": 0,
-              "bool": true,
-              "long": "--aspNet5Runtime",
-              "description": "The .NET runtime (clr vs coreclr) for ASP.NET 5"
-            },
-            {
-              "flags": "--aspNet5Architecture <architecture>",
-              "required": -23,
-              "optional": 0,
-              "bool": true,
-              "long": "--aspNet5Architecture",
-              "description": "The architecture (x64 vs x86) for ASP.NET 5"
-            },
-            {
-              "flags": "--dnxConsoleApp <projectDirectory>",
-              "required": -17,
-              "optional": 0,
-              "bool": true,
-              "long": "--dnxConsoleApp",
-              "description": "Creates a deployment script for a DNX base console app as a webjob"
             }
           ]
         },

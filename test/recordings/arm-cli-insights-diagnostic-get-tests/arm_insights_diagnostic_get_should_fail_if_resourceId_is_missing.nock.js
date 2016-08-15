@@ -6,13 +6,13 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c',
+    name: 'Insights Org Sub2',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'e58d7273-6738-4be8-9c6e-82863ed7b695',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',
@@ -23,9 +23,6 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_VAULT'] = 'XplatTestVaultMSTest';
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_ARM_TEST_RESOURCE_GROUP'] = 'xplatTestVaultRG';
 };
 
-exports.scopes = [];
+exports.scopes = [[]];
