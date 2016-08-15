@@ -63456,7 +63456,7 @@
           "name": "create",
           "description": "Creates a resource in a resource group",
           "fullName": "resource create",
-          "usage": "[options] <resource-group> <name> <resource-type> <location> <api-version>",
+          "usage": "[options] <resource-group> <name> <resource-type> <location> <api-version> <properties> <sku> <plan>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -63545,6 +63545,23 @@
               "short": "-p",
               "long": "--properties",
               "description": "a JSON-formatted string containing properties"
+            },            
+            {
+              "flags": "-s --sku <sku>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
             },
             {
               "flags": "-t --tags <tags>",
@@ -63569,7 +63586,7 @@
           "name": "set",
           "description": "Updates a resource in a resource group without any templates or parameters",
           "fullName": "resource set",
-          "usage": "[options] <resource-group> <name> <resource-type> <properties> <api-version>",
+          "usage": "[options] <resource-group> <name> <resource-type> <api-version> <properties> <sku> <plan>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -63649,6 +63666,23 @@
               "bool": true,
               "long": "--parent",
               "description": "the name of the parent resource (if needed), in path/path/path format"
+            },
+            {
+              "flags": "-s --sku <sku>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": -17,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
             },
             {
               "flags": "-t --tags <tags>",
@@ -63853,7 +63887,7 @@
           "name": "delete",
           "description": "Deletes a resource in a resource group",
           "fullName": "resource delete",
-          "usage": "[options] { <resource-group> <name> <resource-type> | <resource-id> } <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
