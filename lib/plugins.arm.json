@@ -68299,7 +68299,7 @@
               "optional": 0,
               "bool": true,
               "long": "--reportedStartTime",
-              "description": "The start of the time range to retrieve data for, in UTC format."
+              "description": "The start of the time range to retrieve data for, in 'yyyy-mm-dd' format."
             },
             {
               "flags": "--reportedEndTime <datetime>",
@@ -68307,7 +68307,7 @@
               "optional": 0,
               "bool": true,
               "long": "--reportedEndTime",
-              "description": "The end of the time range to retrieve data for, in UTC format."
+              "description": "The end of the time range to retrieve data for, in 'yyyy-mm-dd' format."
             },
             {
               "flags": "--granularity <daily/hourly>",
