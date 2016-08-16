@@ -64,15 +64,14 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
-    describe('create', function () {
-      it('should work without switches', function (done) {
+    describe.skip('create', function () {
+      it.skip('should work without switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+        suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
           suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
-                        console.log(result);
             result.exitStatus.should.equal(0);
 
             suite.execute('group show %s --json', groupName, function (showResult) {
@@ -90,7 +89,78 @@ describe('arm', function () {
           });
         });
       });
-      
+      it.skip('should work with sku', function (done) {
+          var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+          var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+          suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+                result.exitStatus.should.equal(0);
+                  
+                suite.execute('group show %s --json', groupName, function (showResult) {
+                  showResult.exitStatus.should.equal(0);
+                   
+                    var group = JSON.parse(showResult.text);
+                      group.resources.some(function (res) {
+                        return res.name === resourceName && utils.stringEndsWith(res.id, resourceName);
+                      }).should.be.true;
+                      
+                      suite.execute('group delete %s --quiet --json', groupName, function () {
+                        done();
+                      });
+                  });
+              });
+          });
+        });
+      it.skip('should work with plan', function (done) {
+          var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+          var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+          suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+                result.exitStatus.should.equal(0);
+                  
+                suite.execute('group show %s --json', groupName, function (showResult) {
+                  showResult.exitStatus.should.equal(0);
+                   
+                    var group = JSON.parse(showResult.text);
+                      group.resources.some(function (res) {
+                        return res.name === resourceName && utils.stringEndsWith(res.id, resourceName);
+                      }).should.be.true;
+                      
+                      suite.execute('group delete %s --quiet --json', groupName, function () {
+                        done();
+                      });
+                  });
+              });
+          });
+       });
+      it.skip('should create at a tenant level', function (done) {
+          var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+          var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+          suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
+              result.exitStatus.should.equal(0);
+              
+              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+                result.exitStatus.should.equal(0);
+                  
+                suite.execute('group show %s --json', groupName, function (showResult) {
+                  showResult.exitStatus.should.equal(0);
+                   
+                    var group = JSON.parse(showResult.text);
+                      group.resources.some(function (res) {
+                        return res.name === resourceName && utils.stringEndsWith(res.id, resourceName);
+                      }).should.be.true;
+                      
+                      suite.execute('group delete %s --quiet --json', groupName, function () {
+                        done();
+                      });
+                  });
+              });
+          });
+       });
       //Might fail: Tracking: RD Bug 1713392: failed to delete 'Microsoft.Sql/servers/databases' resource
       //it('should work with switches', function (done) {
       //  var groupName = suite.generateId('xTestResource1', createdGroups, suite.isMocked);
@@ -146,7 +216,7 @@ describe('arm', function () {
       //  });
       //});
 
-      it('should fail if the group does not exist', function (done) {
+      it.skip('should fail if the group does not exist', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -161,6 +231,64 @@ describe('arm', function () {
 
     describe.skip('delete', function () {
       it('should work', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
+        suite.execute('group create %s --location %s --json', groupName, testWebsitesResourceLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
+              result.exitStatus.should.equal(0);
+
+              suite.execute('group show %s --json', groupName, function (showResult) {
+                showResult.exitStatus.should.equal(0);
+
+                var group = JSON.parse(showResult.text);
+                group.resources.some(function (res) {
+                  return res.name === resourceName;
+                }).should.be.false;
+
+                suite.execute('group delete %s --quiet --json', groupName, function () {
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+      it('should delete by id', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+        
+        suite.execute('group create %s --location %s --json', groupName, testWebsitesResourceLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
+              result.exitStatus.should.equal(0);
+
+              suite.execute('group show %s --json', groupName, function (showResult) {
+                showResult.exitStatus.should.equal(0);
+
+                var group = JSON.parse(showResult.text);
+                group.resources.some(function (res) {
+                  return res.name === resourceName;
+                }).should.be.false;
+
+                suite.execute('group delete %s --quiet --json', groupName, function () {
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+      it('should delete at a tenant level', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         
@@ -283,6 +411,54 @@ describe('arm', function () {
       });
 
       it('should work with switches', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+
+              var resource = JSON.parse(showResult.text);
+              resource.name.should.equal(resourceName);
+              resource.location.should.equal(testWebsitesResourceLocation);
+
+              suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
+            });
+          });
+        });
+      });
+      it('should show by id', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            result.exitStatus.should.equal(0);
+
+            suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+
+              var resource = JSON.parse(showResult.text);
+              resource.name.should.equal(resourceName);
+              resource.location.should.equal(testWebsitesResourceLocation);
+
+              suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
+            });
+          });
+        });
+      });
+      it('should show at a tenant level', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
