@@ -682,13 +682,13 @@ _.extend(CLITest.prototype, {
     }
 
     CLITest.wrap(sinon, utils, 'getRandomString', function (originalGetRandomString) {
-      return function (prefix, length) {
+      return function (prefix) {
         var str;
         if (self.isMocked) {
           if (!self.isRecording) {
             str = self.randomStringsGenerated[self.currentRandomString++]; 
           } else {
-            str = originalGetRandomString(prefix, length);
+            str = originalGetRandomString(prefix);
             self.randomStringsGenerated.push(str);
           }
         }
