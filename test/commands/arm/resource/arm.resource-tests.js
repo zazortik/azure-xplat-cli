@@ -229,8 +229,8 @@ describe('arm', function () {
       });
     });
 
-    describe.skip('delete', function () {
-      it('should work', function (done) {
+    describe('delete', function () {
+      it.skip('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         
@@ -259,7 +259,7 @@ describe('arm', function () {
           });
         });
       });
-      it('should delete by id', function (done) {
+      it.skip('should delete by id', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         
@@ -268,8 +268,12 @@ describe('arm', function () {
 
           suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
+            var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
 
-            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
+             suite.execute('resource show %s %s %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+              showResult.exitStatus.should.equal(0);
+
+            suite.execute('resource delete -i %s -o %s --quiet --json', resourceId, testApiVersion, function (result) {
               result.exitStatus.should.equal(0);
 
               suite.execute('group show %s --json', groupName, function (showResult) {
@@ -281,14 +285,15 @@ describe('arm', function () {
                 }).should.be.false;
 
                 suite.execute('group delete %s --quiet --json', groupName, function () {
-                  done();
+                                        done();
+                  });
                 });
               });
             });
           });
         });
       });
-      it('should delete at a tenant level', function (done) {
+      it.skip('should delete at a tenant level', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         
@@ -382,8 +387,8 @@ describe('arm', function () {
       });
     });
 
-    describe.skip('show', function () {
-      it('should work with positional', function (done) {
+    describe('show', function () {
+      it.skip('should work with positional', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -410,7 +415,7 @@ describe('arm', function () {
         });
       });
 
-      it('should work with switches', function (done) {
+      it.skip('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -442,9 +447,10 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
 
           suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+            suite.execute('resource show -i %s -o %s --json', resourceId, testApiVersion, function (showResult) {
               showResult.exitStatus.should.equal(0);
 
               var resource = JSON.parse(showResult.text);
@@ -458,7 +464,7 @@ describe('arm', function () {
           });
         });
       });
-      it('should show at a tenant level', function (done) {
+      it.skip('should show at a tenant level', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
