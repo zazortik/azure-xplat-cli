@@ -2,10 +2,10 @@
 
 var should = require('should');
 var util = require('util');
-var testUtils = require('../../util/util');
-var CLITest = require('../../framework/cli-test');
-var testPrefix = 'cli.network.subnet-tests';
-var networkTestUtil = require('../../util/asmNetworkTestUtil');
+var testUtils = require('../util/util');
+var CLITest = require('../framework/cli-test');
+var testPrefix = 'cli.network.migration-tests';
+var networkTestUtil = require('../util/asmNetworkTestUtil');
 
 var vnetPrefix = 'CliTestVnet',
   vnetAddressSpace = '10.0.0.0',
