@@ -62448,6 +62448,14 @@
               "description": "more verbose with debug output"
             },
             {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "show details such as alias definitions, etc."
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
