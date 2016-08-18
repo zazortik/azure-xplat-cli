@@ -104,6 +104,7 @@
     "through": "2.3.4",
     "tunnel": "0.0.2",
     "underscore": "1.4.x",
+    "user-home": "^2.0.0",
     "validator": "5.2.0",
     "winston": "2.1.1",
     "wordwrap": "0.0.2",
