@@ -297,6 +297,7 @@ _.extend(CLITest.prototype, {
     this.currentTest = this.mochaSuiteObject.currentTest.fullTitle();
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
+    this.currentRandomString = 0;
     nockHelper.nockHttp();
     if (this.isMocked && this.isRecording) {
       // nock recording
