@@ -45968,6 +45968,14 @@
               "description": "more verbose with debug output"
             },
             {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "shows full provider list with latitude and longitude"
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
