@@ -65,6 +65,7 @@ describe('arm', function() {
     after(function(done) {
       suite.execute('group delete %s --quiet', testResourceGroup, function() {
         suite.teardownSuite(done);
+        done();
       });
     });
 
