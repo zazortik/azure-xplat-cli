@@ -89,7 +89,6 @@ describe('arm', function () {
             '--json').formatArgs(virtualNetworkPeerings);
           testUtils.executeCommand(suite, retry, cmd, function (virtualNetwork) {
             virtualNetwork.exitStatus.should.equal(0);
-            virtualNetwork = JSON.parse(virtualNetwork.text);
             var cmd = ('network vnet create -g {group} -n {remoteNetworkName}  ' +
               '--location {location} ' +
               '--address-prefixes {remoteNetworkPrefixes} ' +
