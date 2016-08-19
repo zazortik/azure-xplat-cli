@@ -62453,7 +62453,7 @@
               "optional": 0,
               "bool": true,
               "long": "--details",
-              "description": "show details such as alias definitions, etc."
+              "description": "shows full list of resource type and locations."
             },
             {
               "flags": "--json",
