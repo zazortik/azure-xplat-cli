@@ -372,7 +372,7 @@ describe('cli', function () {
 
             var site = JSON.parse(result.text);
             site.config.netFrameworkVersion.should.equal('v2.0');
-            site.config.phpVersion.should.equal('5.3');
+            site.config.phpVersion.should.equal('5.4');
             site.config.webSocketsEnabled.should.equal(true);
 
             suite.execute('site set --net-version 3.5 --php-version off --disable-web-socket %s --json', siteName, function (result) {

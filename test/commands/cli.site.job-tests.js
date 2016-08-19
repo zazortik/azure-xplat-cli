@@ -258,7 +258,7 @@ describe('cli', function () {
       });
     });
 
-    describe('list, show and delete a triggered web job for a site', function () {
+    describe.skip('list, show and delete a triggered web job for a site', function () {
       var siteName;
       beforeEach(function (done) {
         suite.setupTest(function () {

@@ -6,12 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '46241355-bb95-46a9-ba6c-42b554d71925',
-    managementCertificate: {
-      key: 'mockedKey',
-      cert: 'mockedCert'
-    },
-    name: 'Microsoft Azure Internal Consumption',
+    id: '2915bbd6-1252-405f-8173-6c00428146d9',
+    name: 'Batch-MatthChr',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -27,75 +23,76 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
+  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
+  
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2016-02-01.3.0&timeout=30', '*')
+.post('/jobschedules?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 15 Apr 2016 19:01:48 GMT',
-  etag: '0x8D36560656C7EB2',
-  location: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:32 GMT',
+  etag: '0x8D3BBFA5A793043',
+  location: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '713cd4eb-8728-4d7e-89d0-0576b8244914',
+  'request-id': '378616d4-e0c1-47a0-b49c-2c27d57542ee',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'cd5052c7-de7b-4922-a2db-54b8517ba535',
+  'client-request-id': 'd42038e7-78fd-48cc-bc88-cc1f1764f6a9',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
-  date: 'Fri, 15 Apr 2016 19:01:46 GMT',
+  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
+  date: 'Thu, 04 Aug 2016 00:00:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2016-02-01.3.0&timeout=30', '*')
+.post('/jobschedules?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 15 Apr 2016 19:01:48 GMT',
-  etag: '0x8D36560656C7EB2',
-  location: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:32 GMT',
+  etag: '0x8D3BBFA5A793043',
+  location: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '713cd4eb-8728-4d7e-89d0-0576b8244914',
+  'request-id': '378616d4-e0c1-47a0-b49c-2c27d57542ee',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'cd5052c7-de7b-4922-a2db-54b8517ba535',
+  'client-request-id': 'd42038e7-78fd-48cc-bc88-cc1f1764f6a9',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
-  date: 'Fri, 15 Apr 2016 19:01:46 GMT',
+  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule',
+  date: 'Thu, 04 Aug 2016 00:00:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://jstesteastus2.eastus2.batch.azure.com:443')
-  .get('/jobschedules/xplatJobSchedule?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatJobSchedule\",\"displayName\":\"displayName\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule\",\"eTag\":\"0x8D36560656C7EB2\",\"lastModified\":\"2016-04-15T19:01:48.2246834Z\",\"creationTime\":\"2016-04-15T19:01:48.2246834Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-15T19:01:48.2246834Z\",\"schedule\":{\r\n    \"recurrenceInterval\":\"P2D\"\r\n  },\"jobSpecification\":{\r\n    \"displayName\":\"jobSpecDisplayName\",\"priority\":1,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n    },\"jobManagerTask\":{\r\n      \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"name1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"name2\",\"value\":\"value2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n      },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n    },\"jobPreparationTask\":{\r\n      \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n        },{\r\n          \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n    },\"jobReleaseTask\":{\r\n      \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n        },{\r\n          \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n        }\r\n      ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n    },\"commonEnvironmentSettings\":[\r\n      {\r\n        \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n      },{\r\n        \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n      }\r\n    ],\"poolInfo\":{\r\n      \"autoPoolSpecification\":{\r\n        \"autoPoolIdPrefix\":\"TestSpecPrefix\",\"poolLifetimeOption\":\"jobschedule\",\"keepAlive\":false,\"pool\":{\r\n          \"vmSize\":\"small\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n            \"nodeFillType\":\"Spread\"\r\n          },\"resizeTimeout\":\"PT15M\",\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n            \"commandLine\":\"cmd /c dir /s\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n          },\"certificateReferences\":[\r\n            {\r\n              \"thumbprint\":\"0123456789abcdef\",\"thumbprintAlgorithm\":\"sha1\",\"storeLocation\":\"LocalMachine\",\"storeName\":\"certStore\",\"visibility\":[\r\n                \"starttask\"\r\n              ]\r\n            }\r\n          ],\"cloudServiceConfiguration\":{\r\n            \"osFamily\":\"4\",\"targetOSVersion\":\"*\"\r\n          }\r\n        }\r\n      }\r\n    },\"metadata\":[\r\n      {\r\n        \"name\":\"specMeta1\",\"value\":\"specMetaValue1\"\r\n      },{\r\n        \"name\":\"specMeta2\",\"value\":\"specMetaValue2\"\r\n      }\r\n    ]\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2016-04-17T19:01:48.2246834Z\",\"recentJob\":{\r\n      \"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobs/xplatJobSchedule:job-1\",\"id\":\"xplatJobSchedule:job-1\"\r\n    }\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    },{\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobschedules/xplatJobSchedule?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatJobSchedule\",\"displayName\":\"displayName\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule\",\"eTag\":\"0x8D3BBFA5A793043\",\"lastModified\":\"2016-08-04T00:00:32.3481667Z\",\"creationTime\":\"2016-08-04T00:00:32.3481667Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:32.3481667Z\",\"schedule\":{\r\n    \"recurrenceInterval\":\"P2D\"\r\n  },\"jobSpecification\":{\r\n    \"displayName\":\"jobSpecDisplayName\",\"priority\":1,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n    },\"jobManagerTask\":{\r\n      \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"name1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"name2\",\"value\":\"value2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n      },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n    },\"jobPreparationTask\":{\r\n      \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n        },{\r\n          \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n    },\"jobReleaseTask\":{\r\n      \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n        },{\r\n          \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n        }\r\n      ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n    },\"commonEnvironmentSettings\":[\r\n      {\r\n        \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n      },{\r\n        \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n      }\r\n    ],\"poolInfo\":{\r\n      \"autoPoolSpecification\":{\r\n        \"autoPoolIdPrefix\":\"TestSpecPrefix\",\"poolLifetimeOption\":\"jobschedule\",\"keepAlive\":false,\"pool\":{\r\n          \"vmSize\":\"small\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n            \"nodeFillType\":\"Spread\"\r\n          },\"resizeTimeout\":\"PT15M\",\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n            \"commandLine\":\"cmd /c dir /s\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n          },\"certificateReferences\":[\r\n            {\r\n              \"thumbprint\":\"0123456789abcdef\",\"thumbprintAlgorithm\":\"sha1\",\"storeLocation\":\"LocalMachine\",\"storeName\":\"certStore\",\"visibility\":[\r\n                \"starttask\"\r\n              ]\r\n            }\r\n          ],\"cloudServiceConfiguration\":{\r\n            \"osFamily\":\"4\",\"targetOSVersion\":\"*\"\r\n          }\r\n        }\r\n      }\r\n    },\"metadata\":[\r\n      {\r\n        \"name\":\"specMeta1\",\"value\":\"specMetaValue1\"\r\n      },{\r\n        \"name\":\"specMeta2\",\"value\":\"specMetaValue2\"\r\n      }\r\n    ]\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2016-08-06T00:00:32.3481667Z\",\"recentJob\":{\r\n      \"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobs/xplatJobSchedule:job-1\",\"id\":\"xplatJobSchedule:job-1\"\r\n    }\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    },{\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 15 Apr 2016 19:01:48 GMT',
-  etag: '0x8D36560656C7EB2',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:32 GMT',
+  etag: '0x8D3BBFA5A793043',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5df9026e-72a7-468e-8f46-a6893c48f64c',
+  'request-id': '596edf7f-3124-4f80-b03d-255d3ccb6ab1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ded1caef-604e-4c5e-839b-202a31bfc3f3',
+  'client-request-id': 'ef5d2cea-1721-43be-acb7-7685f60d03d1',
   dataserviceversion: '3.0',
-  date: 'Fri, 15 Apr 2016 19:01:47 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://jstesteastus2.eastus2.batch.azure.com:443')
-  .get('/jobschedules/xplatJobSchedule?api-version=2016-02-01.3.0&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatJobSchedule\",\"displayName\":\"displayName\",\"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule\",\"eTag\":\"0x8D36560656C7EB2\",\"lastModified\":\"2016-04-15T19:01:48.2246834Z\",\"creationTime\":\"2016-04-15T19:01:48.2246834Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-15T19:01:48.2246834Z\",\"schedule\":{\r\n    \"recurrenceInterval\":\"P2D\"\r\n  },\"jobSpecification\":{\r\n    \"displayName\":\"jobSpecDisplayName\",\"priority\":1,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n    },\"jobManagerTask\":{\r\n      \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"name1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"name2\",\"value\":\"value2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n      },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n    },\"jobPreparationTask\":{\r\n      \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n        },{\r\n          \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n    },\"jobReleaseTask\":{\r\n      \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n        },{\r\n          \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n        }\r\n      ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n    },\"commonEnvironmentSettings\":[\r\n      {\r\n        \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n      },{\r\n        \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n      }\r\n    ],\"poolInfo\":{\r\n      \"autoPoolSpecification\":{\r\n        \"autoPoolIdPrefix\":\"TestSpecPrefix\",\"poolLifetimeOption\":\"jobschedule\",\"keepAlive\":false,\"pool\":{\r\n          \"vmSize\":\"small\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n            \"nodeFillType\":\"Spread\"\r\n          },\"resizeTimeout\":\"PT15M\",\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n            \"commandLine\":\"cmd /c dir /s\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n          },\"certificateReferences\":[\r\n            {\r\n              \"thumbprint\":\"0123456789abcdef\",\"thumbprintAlgorithm\":\"sha1\",\"storeLocation\":\"LocalMachine\",\"storeName\":\"certStore\",\"visibility\":[\r\n                \"starttask\"\r\n              ]\r\n            }\r\n          ],\"cloudServiceConfiguration\":{\r\n            \"osFamily\":\"4\",\"targetOSVersion\":\"*\"\r\n          }\r\n        }\r\n      }\r\n    },\"metadata\":[\r\n      {\r\n        \"name\":\"specMeta1\",\"value\":\"specMetaValue1\"\r\n      },{\r\n        \"name\":\"specMeta2\",\"value\":\"specMetaValue2\"\r\n      }\r\n    ]\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2016-04-17T19:01:48.2246834Z\",\"recentJob\":{\r\n      \"url\":\"https://jstesteastus2.eastus2.batch.azure.com/jobs/xplatJobSchedule:job-1\",\"id\":\"xplatJobSchedule:job-1\"\r\n    }\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    },{\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+  .get('/jobschedules/xplatJobSchedule?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"xplatJobSchedule\",\"displayName\":\"displayName\",\"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobschedules/xplatJobSchedule\",\"eTag\":\"0x8D3BBFA5A793043\",\"lastModified\":\"2016-08-04T00:00:32.3481667Z\",\"creationTime\":\"2016-08-04T00:00:32.3481667Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-08-04T00:00:32.3481667Z\",\"schedule\":{\r\n    \"recurrenceInterval\":\"P2D\"\r\n  },\"jobSpecification\":{\r\n    \"displayName\":\"jobSpecDisplayName\",\"priority\":1,\"usesTaskDependencies\":false,\"constraints\":{\r\n      \"maxWallClockTime\":\"P1D\",\"maxTaskRetryCount\":5\r\n    },\"jobManagerTask\":{\r\n      \"id\":\"jobManager\",\"displayName\":\"jobManagerDisplay\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"filePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"name1\",\"value\":\"value1\"\r\n        },{\r\n          \"name\":\"name2\",\"value\":\"value2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"PT1H\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":5\r\n      },\"runElevated\":false,\"runExclusive\":true,\"killJobOnCompletion\":false\r\n    },\"jobPreparationTask\":{\r\n      \"id\":\"jobPrep\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobPrepFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobPrepName1\",\"value\":\"jobPrepValue1\"\r\n        },{\r\n          \"name\":\"jobPrepName2\",\"value\":\"jobPrepValue2\"\r\n        }\r\n      ],\"constraints\":{\r\n        \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":2\r\n      },\"runElevated\":false,\"waitForSuccess\":true,\"rerunOnNodeRebootAfterSuccess\":true\r\n    },\"jobReleaseTask\":{\r\n      \"id\":\"jobRelease\",\"commandLine\":\"cmd /c dir /s\",\"resourceFiles\":[\r\n        {\r\n          \"blobSource\":\"https://testacct.blob.core.windows.net/\",\"filePath\":\"jobReleaseFilePath\"\r\n        }\r\n      ],\"environmentSettings\":[\r\n        {\r\n          \"name\":\"jobReleaseName1\",\"value\":\"jobReleaseValue1\"\r\n        },{\r\n          \"name\":\"jobReleaseName2\",\"value\":\"jobReleaseValue2\"\r\n        }\r\n      ],\"maxWallClockTime\":\"PT15M\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"runElevated\":false\r\n    },\"commonEnvironmentSettings\":[\r\n      {\r\n        \"name\":\"commonName1\",\"value\":\"commonValue1\"\r\n      },{\r\n        \"name\":\"commonName2\",\"value\":\"commonValue2\"\r\n      }\r\n    ],\"poolInfo\":{\r\n      \"autoPoolSpecification\":{\r\n        \"autoPoolIdPrefix\":\"TestSpecPrefix\",\"poolLifetimeOption\":\"jobschedule\",\"keepAlive\":false,\"pool\":{\r\n          \"vmSize\":\"small\",\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n            \"nodeFillType\":\"Spread\"\r\n          },\"resizeTimeout\":\"PT15M\",\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n            \"commandLine\":\"cmd /c dir /s\",\"runElevated\":false,\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n          },\"certificateReferences\":[\r\n            {\r\n              \"thumbprint\":\"0123456789abcdef\",\"thumbprintAlgorithm\":\"sha1\",\"storeLocation\":\"LocalMachine\",\"storeName\":\"certStore\",\"visibility\":[\r\n                \"starttask\"\r\n              ]\r\n            }\r\n          ],\"cloudServiceConfiguration\":{\r\n            \"osFamily\":\"4\",\"targetOSVersion\":\"*\"\r\n          }\r\n        }\r\n      }\r\n    },\"metadata\":[\r\n      {\r\n        \"name\":\"specMeta1\",\"value\":\"specMetaValue1\"\r\n      },{\r\n        \"name\":\"specMeta2\",\"value\":\"specMetaValue2\"\r\n      }\r\n    ]\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2016-08-06T00:00:32.3481667Z\",\"recentJob\":{\r\n      \"url\":\"https://matthchreastus2.eastus2.batch.azure.com/jobs/xplatJobSchedule:job-1\",\"id\":\"xplatJobSchedule:job-1\"\r\n    }\r\n  },\"metadata\":[\r\n    {\r\n      \"name\":\"meta2\",\"value\":\"value2\"\r\n    },{\r\n      \"name\":\"meta1\",\"value\":\"value1\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 15 Apr 2016 19:01:48 GMT',
-  etag: '0x8D36560656C7EB2',
+  'last-modified': 'Thu, 04 Aug 2016 00:00:32 GMT',
+  etag: '0x8D3BBFA5A793043',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5df9026e-72a7-468e-8f46-a6893c48f64c',
+  'request-id': '596edf7f-3124-4f80-b03d-255d3ccb6ab1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'ded1caef-604e-4c5e-839b-202a31bfc3f3',
+  'client-request-id': 'ef5d2cea-1721-43be-acb7-7685f60d03d1',
   dataserviceversion: '3.0',
-  date: 'Fri, 15 Apr 2016 19:01:47 GMT',
+  date: 'Thu, 04 Aug 2016 00:00:31 GMT',
   connection: 'close' });
  return result; }]];

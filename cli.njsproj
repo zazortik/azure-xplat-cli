@@ -78,7 +78,12 @@
     <Content Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
+    <Compile Include="lib\util\interaction.js" />
     <Compile Include="lib\util\profile\account.js" />
+    <Compile Include="lib\util\storage.util.js" />
+    <Compile Include="lib\util\telemetry.js" />
+    <Compile Include="lib\util\vmConstants.js" />
+    <Compile Include="lib\util\vnet.util.js" />
     <Compile Include="scripts\extract-labels.js" />
     <Compile Include="scripts\filter-testresults.js" />
     <Compile Include="scripts\harvest-cmds.js" />
