@@ -139,6 +139,15 @@
           "description": "Tenant domain or ID to log into."
         },
         {
+          "flags": "-d --disable-validate-authority",
+          "required": 0,
+          "optional": 0,
+          "bool": true,
+          "short": "-d",
+          "long": "--disable-validate-authority",
+          "description": "Disable authority validation. This should only be used for AzureStack."
+        },
+        {
           "flags": "-q --quiet",
           "required": 0,
           "optional": 0,
