@@ -1,3 +1,43 @@
+##2016-8-7 Version 0.10.3
+* Storage
+  * Added '--concurrenttaskcount' option for 'azure file download' command
+  * Added support --snaptshot option for 'azure storage blob show' and azure storage blob download' commands
+  * Added --lease option for 'azure storage blob upload' command
+  * Changed the default blob type to page blob when uploading VHD files
+  * Improved the error message for invalid account name when creating storage account
+  * Fixed the issue that downloading public blob with size greater than 32MB will fail.
+  * Upgraded the azure-storage dependency to version 1.1.0
+* Network
+  * Fixed issues #1847, #2940, #3015, #3058
+  * Added unit tests for --nowait option
+  * Added workaround to prevent issue
+  * Added workaround for old azure-arm-dns package location issue
+  * Display all locations for provider resource types.
+  * Reworked nowait option for common style (like group delete command)
+  * Reworked app gateway long-running commands
+* HDinsight
+  * fixed #3003
+* Insights
+  * Support for event hub in diagnosticsettings
+  * Use insights sdk version 0.11.3
+* General
+  * fixed issues #1646,#1794, #2087, #2870, #2938, #2987,#3053, #3045
+  * customers can set non interactive mode by setting the environment variable AZURE_NON_INTERACTIVE_MODE=1 and the CLI will throw an error instead of waiting for the user input,#2420, #2946
+  * setting cert thumbprint as the userId while sending telemetry, if the user is using cert based auth for rdfe commands
+  * Added subscription Id for telemetry
+  * json formatting set to 2 spaces whenever JSON data is being written to a file
+* ResourceManager
+   * Support property alias in provider show command
+* KeyVault
+  * Added support for upload and download secrets as a file to keyvault commands
+  * Added options to upload and download secrets as a file
+* CDN 
+  * fix the issue of cdn command -option not recongizable issue
+  * improved help for cdn commands
+* Compute
+  * Add CLI changes for validate migration apis
+
+
 ##2016-07-07 Version 0.10.2
 * Storage
   * Added new command `azure storage account sas create`

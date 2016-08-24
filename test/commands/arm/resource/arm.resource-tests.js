@@ -65,13 +65,13 @@ describe('arm', function () {
     });
 
     describe('create', function () {
-      it.skip('should work without switches', function (done) {
+      it('should work without switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group show %s --json', groupName, function (showResult) {
@@ -95,7 +95,7 @@ describe('arm', function () {
           suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
               
-             suite.execute('resource create %s %s %s %s %s -p %s -s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
+             suite.execute('resource create %s %s %s %s %s -p %s -s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
                var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
                result.exitStatus.should.equal(0);
 
@@ -132,14 +132,13 @@ describe('arm', function () {
           });
         }); 
       });
-      it.only('should work with plan', function (done) {
+      it.skip('should work with plan', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
             
           suite.execute('resource create %s %s %s %s %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{"apiVersion":"2015-08-01","name":"testingPlan","type":"Microsoft.Web/serverfarms"}', function (result) {
-              console.log(result);
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             result.exitStatus.should.equal(0);
               
@@ -152,8 +151,6 @@ describe('arm', function () {
                 
               suite.execute('resource show -i %s -o %s --json', resourceId, testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
-                console.log(JSON.parse(showResult));
-                
                 suite.execute('group delete %s --quiet --json', groupName, function () {
                   done();
                 });
@@ -167,11 +164,9 @@ describe('arm', function () {
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
-
           suite.execute('resource create %s %s %s %s %s -p %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "name": "User Defined", "publisher" : "Microsoft" , "product" : "tester", "version": "2.0.1" }', function (result) {
-          var expectedError = util.format('Resource plan can only be set for 3rd party store resources.');
-          result.errorText.should.include(expectedError);
-        
+            var expectedError = util.format('Resource plan can only be set for 3rd party store resources.');
+            result.errorText.should.include(expectedError);
             suite.execute('group delete %s --quiet --json', groupName, function () {
               done();
             });
@@ -235,7 +230,7 @@ describe('arm', function () {
       //  });
       //});
 
-      it.skip('should fail if the group does not exist', function (done) {
+      it('should fail if the group does not exist', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -249,7 +244,7 @@ describe('arm', function () {
     });
 
     describe('delete', function () {
-      it.skip('should work', function (done) {
+      it('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         
@@ -259,7 +254,7 @@ describe('arm', function () {
           suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
+                        suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
               result.exitStatus.should.equal(0);
 
               suite.execute('group show %s --json', groupName, function (showResult) {
@@ -314,7 +309,7 @@ describe('arm', function () {
       });
     });
 
-    describe.skip('list', function () {
+    describe('list', function () {
       it('should work without filters', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -336,7 +331,7 @@ describe('arm', function () {
         });
       });
 
-      it.skip('should work with group name and resource type filters', function (done) {
+      it('should work with group name and resource type filters', function (done) {
         var groupName1 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName1 = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         var groupName2 = suite.generateId('xTestResource', createdGroups, suite.isMocked);
@@ -378,7 +373,7 @@ describe('arm', function () {
     });
 
     describe('show', function () {
-      it.skip('should work with positional', function (done) {
+      it('should work with positional', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -405,7 +400,7 @@ describe('arm', function () {
         });
       });
 
-      it.skip('should work with switches', function (done) {
+      it('should work with switches', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -456,7 +451,7 @@ describe('arm', function () {
       });
     });
 
-    describe.skip('move', function () {
+    describe('move', function () {
       it('should work', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
@@ -495,7 +490,7 @@ describe('arm', function () {
         });
       });
 
-      it.skip('should work with multiple resource Ids', function (done) {
+      it('should work with multiple resource Ids', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
         var resourceName1 = suite.generateId('xTestGrpRes1', createdResources, suite.isMocked);
@@ -591,7 +586,7 @@ describe('arm', function () {
           var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
           var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
           var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
-          var apiVersion = '2016-02-01'; 
+          var apiVersion = '01/02/2013'; 
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
               result.exitStatus.should.equal(0);
               
@@ -645,7 +640,7 @@ describe('arm', function () {
 
               suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
                 showResult.exitStatus.should.equal(0);
-              
+                                
                 //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
                 var resource = JSON.parse(showResult.text);
                 resource.properties.appSettings[0].name.should.be.equal('testname1');

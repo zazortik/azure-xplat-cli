@@ -1,11 +1,11 @@
-## cli.site.domain-tests can only be run mocked, do not try to run live
-## TODO: Mocks are broken.
-##commands/cli.site.domain-tests.js
-## TODO: Not recording call to log service properly, disabling
-## commands/cli.site.log.tail-tests.js
-## Disabling, do not want this run in automated test runs
-## commands/cli.mobile.migration-tests.js
-## TODO: This suite uses custom recording
+# cli.site.domain-tests can only be run mocked, do not try to run live
+# TODO: Mocks are broken.
+#commands/cli.site.domain-tests.js
+# TODO: Not recording call to log service properly, disabling
+# commands/cli.site.log.tail-tests.js
+# Disabling, do not want this run in automated test runs
+# commands/cli.mobile.migration-tests.js
+# TODO: This suite uses custom recording
 #commands/cli-auto-complete.tests.js
 #commands/cli.account-tests.js
 #commands/cli.account.cert-tests.js
@@ -13,21 +13,21 @@
 #commands/cli.account.affinitygroup-tests.js
 #commands/cli.help-tests.js
 #commands/cli.telemetry-test.js
-#commands/cli.mobile-tests.js
-#commands/cli.mobile.api-tests.js
-#commands/cli.mobile.appsetting-tests.js
-#commands/cli.mobile.auth-tests.js
-#commands/cli.mobile.config-tests.js
-#commands/cli.mobile.domain-tests.js
-#commands/cli.mobile.job-tests.js
-#commands/cli.mobile.key-tests.js
-#commands/cli.mobile.log-tests.js
-#commands/cli.mobile.preview-tests.js
-#commands/cli.mobile.push-tests.js
-#commands/cli.mobile.scale-tests.js
-#commands/cli.mobile.script-tests.js
-#commands/cli.mobile.table-tests.js
-#commands/cli.mobilerecover-tests.js
+##commands/cli.mobile-tests.js
+##commands/cli.mobile.api-tests.js
+##commands/cli.mobile.appsetting-tests.js
+##commands/cli.mobile.auth-tests.js
+##commands/cli.mobile.config-tests.js
+##commands/cli.mobile.domain-tests.js
+##commands/cli.mobile.job-tests.js
+##commands/cli.mobile.key-tests.js
+##commands/cli.mobile.log-tests.js
+##commands/cli.mobile.preview-tests.js
+##commands/cli.mobile.push-tests.js
+##commands/cli.mobile.scale-tests.js
+##commands/cli.mobile.script-tests.js
+##commands/cli.mobile.table-tests.js
+##commands/cli.mobilerecover-tests.js
 #commands/cli.sb-tests.js
 #commands/cli.service-tests.js
 #commands/cli.service.cert-tests.js
