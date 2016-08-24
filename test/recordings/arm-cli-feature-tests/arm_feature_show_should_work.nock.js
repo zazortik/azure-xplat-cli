@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: '0d3ae56c-deaf-4982-b514-33d016d4a683',
+    name: 'antps10',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
+    registeredProviders: ['website'],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -28,36 +28,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc?api-version=2015-12-01')
-  .reply(200, "{\"properties\":{\"state\":\"Registered\"},\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc\",\"type\":\"Microsoft.Features/providers/features\",\"name\":\"Microsoft.Automation/dsc\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc?api-version=2015-12-01')
+  .reply(200, "{\"properties\":{\"state\":\"Registering\"},\"id\":\"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc\",\"type\":\"Microsoft.Features/providers/features\",\"name\":\"Microsoft.Automation/dsc\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '250',
+  'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
-  'x-ms-request-id': 'westus:28cad151-0f7c-4780-93ef-19ebeb78bf88',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'f8f4ce80-0fb4-443b-afc5-63a8dfc59ec1',
-  'x-ms-routing-request-id': 'WESTUS:20160130T015525Z:f8f4ce80-0fb4-443b-afc5-63a8dfc59ec1',
+  'x-ms-request-id': 'canadaeast:7c04796a-26e3-48ac-b5b8-939aeafa2970',
+  'x-ms-ratelimit-remaining-subscription-reads': '14956',
+  'x-ms-correlation-request-id': '2d6620bb-ba35-4b5c-b717-dd958ce39b03',
+  'x-ms-routing-request-id': 'WESTUS2:20160822T224409Z:2d6620bb-ba35-4b5c-b717-dd958ce39b03',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 01:55:24 GMT',
+  date: 'Mon, 22 Aug 2016 22:44:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc?api-version=2015-12-01')
-  .reply(200, "{\"properties\":{\"state\":\"Registered\"},\"id\":\"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc\",\"type\":\"Microsoft.Features/providers/features\",\"name\":\"Microsoft.Automation/dsc\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc?api-version=2015-12-01')
+  .reply(200, "{\"properties\":{\"state\":\"Registering\"},\"id\":\"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/providers/Microsoft.Features/providers/Microsoft.Automation/features/dsc\",\"type\":\"Microsoft.Features/providers/features\",\"name\":\"Microsoft.Automation/dsc\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '250',
+  'content-length': '251',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
-  'x-ms-request-id': 'westus:28cad151-0f7c-4780-93ef-19ebeb78bf88',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'f8f4ce80-0fb4-443b-afc5-63a8dfc59ec1',
-  'x-ms-routing-request-id': 'WESTUS:20160130T015525Z:f8f4ce80-0fb4-443b-afc5-63a8dfc59ec1',
+  'x-ms-request-id': 'canadaeast:7c04796a-26e3-48ac-b5b8-939aeafa2970',
+  'x-ms-ratelimit-remaining-subscription-reads': '14956',
+  'x-ms-correlation-request-id': '2d6620bb-ba35-4b5c-b717-dd958ce39b03',
+  'x-ms-routing-request-id': 'WESTUS2:20160822T224409Z:2d6620bb-ba35-4b5c-b717-dd958ce39b03',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 01:55:24 GMT',
+  date: 'Mon, 22 Aug 2016 22:44:08 GMT',
   connection: 'close' });
  return result; }]];

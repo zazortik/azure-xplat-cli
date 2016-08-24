@@ -303,7 +303,7 @@
       "description": "Commands to manage your account information and publish settings",
       "fullName": "account",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -493,7 +493,7 @@
           "description": "Commands to manage your account environment",
           "fullName": "account env",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -938,7 +938,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -947,15 +947,15 @@
       "description": "Commands to manage your Batch objects",
       "fullName": "batch",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "account": {
           "name": "account",
           "description": "Commands to manage your Batch accounts",
           "fullName": "batch account",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -1326,7 +1326,7 @@
               "description": "Commands to manage your Batch account keys",
               "fullName": "batch account keys",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -1449,7 +1449,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -1458,7 +1458,7 @@
           "description": "Commands to manage your Batch Application",
           "fullName": "batch application",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -1970,7 +1970,7 @@
               "description": "Commands to manage your Batch Application Package",
               "fullName": "batch application package",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -2302,7 +2302,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -2311,7 +2311,7 @@
           "description": "Commands to manage your Batch certificate",
           "fullName": "batch certificate",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -2668,14 +2668,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "task-file": {
           "name": "task-file",
           "description": "Commands to manage your Batch task files",
           "fullName": "batch task-file",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "delete",
@@ -3114,14 +3114,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "node-file": {
           "name": "node-file",
           "description": "Commands to manage your Batch compute node files",
           "fullName": "batch node-file",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "delete",
@@ -3560,14 +3560,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "job": {
           "name": "job",
           "description": "Commands to manage your Batch jobs",
           "fullName": "batch job",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -4273,7 +4273,7 @@
                   "bool": true,
                   "short": "-o",
                   "long": "--disable-option",
-                  "description": "specifies what to do with active tasks during a disable job operation, available options include \"requeue\", \"terminate\", and \"wait\""
+                  "description": "specifies what to do with active tasks during a disable job operation, available options include \"requeue\", \"terminate\", and \"wait"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -4445,7 +4445,7 @@
               "description": "Commands to manage the status of your job preparation and release tasks",
               "fullName": "batch job prep-release-status",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -4525,7 +4525,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -4534,7 +4534,7 @@
           "description": "Commands to manage your Batch job schedules",
           "fullName": "batch job-schedule",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -5467,14 +5467,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "node": {
           "name": "node",
           "description": "Commands to manage your Batch compute nodes",
           "fullName": "batch node",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -5987,7 +5987,7 @@
               "description": "The remote login settings for a Batch compute node",
               "fullName": "batch node remote-login-settings",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -6069,14 +6069,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "remote-desktop": {
               "name": "remote-desktop",
               "description": "The remote desktop protocol for a Batch compute node",
               "fullName": "batch node remote-desktop",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -6176,14 +6176,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "scheduling": {
               "name": "scheduling",
               "description": "The scheduling property for a Batch compute node",
               "fullName": "batch node scheduling",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "disable",
@@ -6353,7 +6353,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -6362,7 +6362,7 @@
           "description": "Commands to manage your Batch compute node users",
           "fullName": "batch node-user",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -6696,14 +6696,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "pool": {
           "name": "pool",
           "description": "Commands to manage your Batch pools",
           "fullName": "batch pool",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -7507,7 +7507,7 @@
               "description": "Commands to manage autoscale of your Batch pools",
               "fullName": "batch pool autoscale",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "disable",
@@ -7778,14 +7778,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "all-stats": {
               "name": "all-stats",
               "description": "Commands to manage all the pools under your Batch account",
               "fullName": "batch pool all-stats",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -7849,14 +7849,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "usage-metrics": {
               "name": "usage-metrics",
               "description": "Commands to manage usage metrics of your Batch pools",
               "fullName": "batch pool usage-metrics",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -7946,14 +7946,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "node-agent-skus": {
               "name": "node-agent-skus",
               "description": "Commands to manage node agent skus of IaaS pools",
               "fullName": "batch pool node-agent-skus",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -8025,7 +8025,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -8034,7 +8034,7 @@
           "description": "Commands to manage Batch options at the subscription level",
           "fullName": "batch subscription",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list-quotas",
@@ -8080,14 +8080,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "task": {
           "name": "task",
           "description": "Commands to manage your Batch tasks",
           "fullName": "batch task",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -8841,7 +8841,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -8850,7 +8850,7 @@
       "description": "Commands to manage your local settings",
       "fullName": "config",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -8989,22 +8989,22 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "storage": {
       "name": "storage",
       "description": "Commands to manage your Storage objects",
       "fullName": "storage",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "account": {
           "name": "account",
           "description": "Commands to manage your Storage accounts",
           "fullName": "storage account",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -9437,7 +9437,7 @@
               "description": "Commands to manage shared access signatures of your storage account",
               "fullName": "storage account sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -9557,14 +9557,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "keys": {
               "name": "keys",
               "description": "Commands to manage your Storage account keys",
               "fullName": "storage account keys",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -9687,14 +9687,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "usage": {
               "name": "usage",
               "description": "Commands to manage your Storage accounts usage",
               "fullName": "storage account usage",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -9740,14 +9740,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "connectionstring": {
               "name": "connectionstring",
               "description": "Commands to show your Storage connection string",
               "fullName": "storage account connectionstring",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -9842,7 +9842,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -9851,7 +9851,7 @@
           "description": "Commands to manage your storage containers",
           "fullName": "storage container",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -10257,7 +10257,7 @@
               "description": "Commands to manage leases of your storage container",
               "fullName": "storage container lease",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "acquire",
@@ -10701,14 +10701,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "sas": {
               "name": "sas",
               "description": "Commands to manage shared access signatures of your storage container",
               "fullName": "storage container sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -10828,14 +10828,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "policy": {
               "name": "policy",
               "description": "Commands to manage stored access policies of your storage container",
               "fullName": "storage container policy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -11303,7 +11303,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -11312,7 +11312,7 @@
           "description": "Commands to manage your storage blobs",
           "fullName": "storage blob",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -11573,7 +11573,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--delete-snapshots",
-                  "description": "'include' to delete the base blob and all of its snapshots. 'only' to delete only the blob's snapshots and not the blob itself"
+                  "description": "include' to delete the base blob and all of its snapshots. 'only' to delete only the blob's snapshots and not the blob itself"
                 },
                 {
                   "flags": "-q, --quiet",
@@ -12006,7 +12006,7 @@
               "description": "Commands to manage leases of your storage blob",
               "fullName": "storage blob lease",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "acquire",
@@ -12495,14 +12495,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "copy": {
               "name": "copy",
               "description": "Commands to manage your blob copy operations",
               "fullName": "storage blob copy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "start",
@@ -12881,14 +12881,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "sas": {
               "name": "sas",
               "description": "Commands to manage shared access signature of your storage blob",
               "fullName": "storage blob sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -13016,7 +13016,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -13025,7 +13025,7 @@
           "description": "Commands to manage your Storage file shares",
           "fullName": "storage share",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -13405,7 +13405,7 @@
               "description": "Commands to manage shared access signatures of your Storage file shares",
               "fullName": "storage share sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -13525,14 +13525,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "policy": {
               "name": "policy",
               "description": "Commands to manage stored access policies of your Storage file share",
               "fullName": "storage share policy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -13960,7 +13960,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -13969,7 +13969,7 @@
           "description": "Commands to manage your Storage files",
           "fullName": "storage file",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -14392,7 +14392,7 @@
               "description": "Commands to manage your file copy operations",
               "fullName": "storage file copy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "start",
@@ -14731,14 +14731,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "sas": {
               "name": "sas",
               "description": "Commands to manage shared access signatures of your Storage file",
               "fullName": "storage file sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -14867,7 +14867,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -14876,7 +14876,7 @@
           "description": "Commands to manage your Storage file directory",
           "fullName": "storage directory",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -15060,14 +15060,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "queue": {
           "name": "queue",
           "description": "Commands to manage your Storage queues",
           "fullName": "storage queue",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -15370,7 +15370,7 @@
               "description": "Commands to manage shared access signatures of your Storage queue",
               "fullName": "storage queue sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -15490,14 +15490,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "policy": {
               "name": "policy",
               "description": "Commands to manage stored access policies of your Storage queue",
               "fullName": "storage queue policy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -15925,7 +15925,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -15934,7 +15934,7 @@
           "description": "Commands to manage your Storage logging properties",
           "fullName": "storage logging",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -16171,14 +16171,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "metrics": {
           "name": "metrics",
           "description": "Commands to manage your Storage metrics properties",
           "fullName": "storage metrics",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -16431,14 +16431,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "cors": {
           "name": "cors",
           "description": "Commands to manage your Storage CORS (Cross-Origin Resource Sharing)",
           "fullName": "storage cors",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -16737,14 +16737,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "table": {
           "name": "table",
           "description": "Commands to manage your Storage tables",
           "fullName": "storage table",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -17039,7 +17039,7 @@
               "description": "Commands to manage shared access signatures of your Storage table",
               "fullName": "storage table sas",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -17191,14 +17191,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "policy": {
               "name": "policy",
               "description": "Commands to manage stored access policies of your Storage table",
               "fullName": "storage table policy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -17626,7 +17626,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -17637,7 +17637,7 @@
       "description": "Commands to manage your container service.  ",
       "fullName": "acs",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "scale",
@@ -17968,7 +17968,7 @@
           "description": "Commands to manage configuration of container-service in the parameter file.",
           "fullName": "acs config",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -18093,7 +18093,7 @@
               "description": "Commands to configure container-service of acs in config file.",
               "fullName": "acs config container-service",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -18380,14 +18380,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "orchestrator-profile": {
               "name": "orchestrator-profile",
               "description": "Commands to configure orchestrator-profile of acs in config file.",
               "fullName": "acs config orchestrator-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -18498,14 +18498,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "master-profile": {
               "name": "master-profile",
               "description": "Commands to configure master-profile of acs in config file.",
               "fullName": "acs config master-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -18648,14 +18648,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "agent-pool-profiles": {
               "name": "agent-pool-profiles",
               "description": "Commands to configure agent-pool-profiles of acs in config file.",
               "fullName": "acs config agent-pool-profiles",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -18854,14 +18854,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "windows-profile": {
               "name": "windows-profile",
               "description": "Commands to configure windows-profile of acs in config file.",
               "fullName": "acs config windows-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -18988,14 +18988,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "linux-profile": {
               "name": "linux-profile",
               "description": "Commands to configure linux-profile of acs in config file.",
               "fullName": "acs config linux-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -19122,14 +19122,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "ssh": {
               "name": "ssh",
               "description": "Commands to configure ssh of acs in config file.",
               "fullName": "acs config ssh",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -19240,14 +19240,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "public-keys": {
               "name": "public-keys",
               "description": "Commands to configure public-keys of acs in config file.",
               "fullName": "acs config public-keys",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -19382,14 +19382,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "diagnostics-profile": {
               "name": "diagnostics-profile",
               "description": "Commands to configure diagnostics-profile of acs in config file.",
               "fullName": "acs config diagnostics-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -19500,14 +19500,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "vm-diagnostics": {
               "name": "vm-diagnostics",
               "description": "Commands to configure vm-diagnostics of acs in config file.",
               "fullName": "acs config vm-diagnostics",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -19634,7 +19634,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -19645,15 +19645,15 @@
       "description": "Commands to display Active Directory objects",
       "fullName": "ad",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "app": {
           "name": "app",
           "description": "Commands to display Active Directory applications",
           "fullName": "ad app",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -20077,14 +20077,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "group": {
           "name": "group",
           "description": "Commands to display Active Directory groups",
           "fullName": "ad group",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -20292,7 +20292,7 @@
               "description": "Commands to provide an Active Directory sub group or member info",
               "fullName": "ad group member",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -20521,7 +20521,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -20530,7 +20530,7 @@
           "description": "Commands to display Active Directory service principals",
           "fullName": "ad sp",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -20963,14 +20963,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "user": {
           "name": "user",
           "description": "Commands to display Active Directory users",
           "fullName": "ad user",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -21185,7 +21185,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--display-name",
-                  "description": "the name to display in the address book for the user. example 'Alex Wu'"
+                  "description": "the name to display in the address book for the user. example 'Alex Wu"
                 },
                 {
                   "flags": "-m --mail-nickname <mail-nickname>",
@@ -21273,7 +21273,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--display-name",
-                  "description": "new name to display in the address book for the user. example 'Alex Wu'"
+                  "description": "new name to display in the address book for the user. example 'Alex Wu"
                 },
                 {
                   "flags": "-m --mail-nickname <mail-nickname>",
@@ -21311,7 +21311,7 @@
               "description": "Commands to display member groups of the Active Directory user.",
               "fullName": "ad user memberGroups",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -21366,7 +21366,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -21377,7 +21377,7 @@
       "description": "Commands to manage your availability sets.  ",
       "fullName": "availset",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -21730,22 +21730,22 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "cdn": {
       "name": "cdn",
       "description": "Commands to manage Azure Content Delivery Network (CDN)",
       "fullName": "cdn",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "profile": {
           "name": "profile",
           "description": "Commands to manage your Azure cdn profiles",
           "fullName": "cdn profile",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -22075,14 +22075,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "ssouri": {
           "name": "ssouri",
           "description": "Commands to generate sso uri of your Azure cdn profiles",
           "fullName": "cdn ssouri",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -22145,14 +22145,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "endpoint": {
           "name": "endpoint",
           "description": "Commands to manage Azure cdn profile endpoints",
           "fullName": "cdn endpoint",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -23025,14 +23025,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "origin": {
           "name": "origin",
           "description": "Commands to manage Azure cdn profile endpoint origin",
           "fullName": "cdn origin",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -23218,14 +23218,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "customDomain": {
           "name": "customDomain",
           "description": "Commands to manage Azure cdn profile endpoint custom domain",
           "fullName": "cdn customDomain",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -23618,7 +23618,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -23627,7 +23627,7 @@
       "description": "Commands to manage your virtual machine scale set vm.  ",
       "fullName": "vmssvm",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "deallocate",
@@ -24251,14 +24251,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "vmss": {
       "name": "vmss",
       "description": "Commands to manage your virtual machine scale sets.  ",
       "fullName": "vmss",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -25319,7 +25319,7 @@
           "description": "Commands to manage configuration of virtual-machine-scale-sets in the parameter file.",
           "fullName": "vmss config",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -25444,7 +25444,7 @@
               "description": "Commands to configure virtual-machine-scale-set of vmss in config file.",
               "fullName": "vmss config virtual-machine-scale-set",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -25699,14 +25699,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "sku": {
               "name": "sku",
               "description": "Commands to configure sku of vmss in config file.",
               "fullName": "vmss config sku",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -25849,14 +25849,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "upgrade-policy": {
               "name": "upgrade-policy",
               "description": "Commands to configure upgrade-policy of vmss in config file.",
               "fullName": "vmss config upgrade-policy",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -25967,14 +25967,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "virtual-machine-profile": {
               "name": "virtual-machine-profile",
               "description": "Commands to configure virtual-machine-profile of vmss in config file.",
               "fullName": "vmss config virtual-machine-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26133,14 +26133,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "os-profile": {
               "name": "os-profile",
               "description": "Commands to configure os-profile of vmss in config file.",
               "fullName": "vmss config os-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26347,14 +26347,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "windows-configuration": {
               "name": "windows-configuration",
               "description": "Commands to configure windows-configuration of vmss in config file.",
               "fullName": "vmss config windows-configuration",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26529,14 +26529,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "additional-unattend-content": {
               "name": "additional-unattend-content",
               "description": "Commands to configure additional-unattend-content of vmss in config file.",
               "fullName": "vmss config additional-unattend-content",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26719,14 +26719,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "win-rm": {
               "name": "win-rm",
               "description": "Commands to configure win-rm of vmss in config file.",
               "fullName": "vmss config win-rm",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26837,14 +26837,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "listeners": {
               "name": "listeners",
               "description": "Commands to configure listeners of vmss in config file.",
               "fullName": "vmss config listeners",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -26995,14 +26995,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "linux-configuration": {
               "name": "linux-configuration",
               "description": "Commands to configure linux-configuration of vmss in config file.",
               "fullName": "vmss config linux-configuration",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27129,14 +27129,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "ssh": {
               "name": "ssh",
               "description": "Commands to configure ssh of vmss in config file.",
               "fullName": "vmss config ssh",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27247,14 +27247,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "public-keys": {
               "name": "public-keys",
               "description": "Commands to configure public-keys of vmss in config file.",
               "fullName": "vmss config public-keys",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27405,14 +27405,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "secrets": {
               "name": "secrets",
               "description": "Commands to configure secrets of vmss in config file.",
               "fullName": "vmss config secrets",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27563,14 +27563,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "source-vault": {
               "name": "source-vault",
               "description": "Commands to configure source-vault of vmss in config file.",
               "fullName": "vmss config source-vault",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27697,14 +27697,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "vault-certificates": {
               "name": "vault-certificates",
               "description": "Commands to configure vault-certificates of vmss in config file.",
               "fullName": "vmss config vault-certificates",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -27871,14 +27871,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "storage-profile": {
               "name": "storage-profile",
               "description": "Commands to configure storage-profile of vmss in config file.",
               "fullName": "vmss config storage-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28005,14 +28005,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "image-reference": {
               "name": "image-reference",
               "description": "Commands to configure image-reference of vmss in config file.",
               "fullName": "vmss config image-reference",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28171,14 +28171,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "os-disk": {
               "name": "os-disk",
               "description": "Commands to configure os-disk of vmss in config file.",
               "fullName": "vmss config os-disk",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28369,14 +28369,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "image": {
               "name": "image",
               "description": "Commands to configure image of vmss in config file.",
               "fullName": "vmss config image",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28487,14 +28487,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "vhd-containers": {
               "name": "vhd-containers",
               "description": "Commands to configure vhd-containers of vmss in config file.",
               "fullName": "vmss config vhd-containers",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28613,14 +28613,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "network-profile": {
               "name": "network-profile",
               "description": "Commands to configure network-profile of vmss in config file.",
               "fullName": "vmss config network-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28731,14 +28731,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "network-interface-configurations": {
               "name": "network-interface-configurations",
               "description": "Commands to configure network-interface-configurations of vmss in config file.",
               "fullName": "vmss config network-interface-configurations",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -28921,14 +28921,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "ip-configurations": {
               "name": "ip-configurations",
               "description": "Commands to configure ip-configurations of vmss in config file.",
               "fullName": "vmss config ip-configurations",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29159,14 +29159,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "subnet": {
               "name": "subnet",
               "description": "Commands to configure subnet of vmss in config file.",
               "fullName": "vmss config subnet",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29309,14 +29309,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "application-gateway-backend-address-pools": {
               "name": "application-gateway-backend-address-pools",
               "description": "Commands to configure application-gateway-backend-address-pools of vmss in config file.",
               "fullName": "vmss config application-gateway-backend-address-pools",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29483,14 +29483,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "load-balancer-backend-address-pools": {
               "name": "load-balancer-backend-address-pools",
               "description": "Commands to configure load-balancer-backend-address-pools of vmss in config file.",
               "fullName": "vmss config load-balancer-backend-address-pools",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29657,14 +29657,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "load-balancer-inbound-nat-pools": {
               "name": "load-balancer-inbound-nat-pools",
               "description": "Commands to configure load-balancer-inbound-nat-pools of vmss in config file.",
               "fullName": "vmss config load-balancer-inbound-nat-pools",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29831,14 +29831,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "extension-profile": {
               "name": "extension-profile",
               "description": "Commands to configure extension-profile of vmss in config file.",
               "fullName": "vmss config extension-profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -29949,14 +29949,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "extensions": {
               "name": "extensions",
               "description": "Commands to configure extensions of vmss in config file.",
               "fullName": "vmss config extensions",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -30219,7 +30219,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -30230,7 +30230,7 @@
       "description": "Commands to manage your virtual machines",
       "fullName": "vm",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "redeploy",
@@ -30431,7 +30431,7 @@
               "bool": true,
               "short": "-M",
               "long": "--ssh-publickey-file",
-              "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+              "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux"
             },
             {
               "flags": "-G, --generate-ssh-keys",
@@ -30440,7 +30440,7 @@
               "bool": true,
               "short": "-G",
               "long": "--generate-ssh-keys",
-              "description": "Auto generate SSH keys, will be ignored if --ssh-publickey-file is specified. This parameter is valid only when os-type is \"Linux\""
+              "description": "Auto generate SSH keys, will be ignored if --ssh-publickey-file is specified. This parameter is valid only when os-type is \"Linux"
             },
             {
               "flags": "-z, --vm-size <vm-size>",
@@ -32565,7 +32565,7 @@
           "description": "Commands to manage your Virtual Machine data disks",
           "fullName": "vm disk",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "attach-new",
@@ -32902,14 +32902,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "extension": {
           "name": "extension",
           "description": "Commands to manage VM resource extensions",
           "fullName": "vm extension",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -33182,7 +33182,7 @@
                   "bool": true,
                   "short": "-j",
                   "long": "--bootstrap-options",
-                  "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}'"
+                  "description": "Bootstrap options in JSON format. Ex: -j '{\"chef_node_name\":\"test_node\"}"
                 },
                 {
                   "flags": "-u, --uninstall",
@@ -33345,14 +33345,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "extension-image": {
           "name": "extension-image",
           "description": "Commands to query available VM resource extensions",
           "fullName": "vm extension-image",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list-publishers",
@@ -33687,14 +33687,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "docker": {
           "name": "docker",
           "description": "Commands to manage your Docker Virtual Machine",
           "fullName": "vm docker",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -33870,7 +33870,7 @@
                   "bool": true,
                   "short": "-M",
                   "long": "--ssh-publickey-file",
-                  "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux\""
+                  "description": "path to public key PEM file or SSH Public key file for SSH authentication\n     This parameter is valid only when os-type is \"Linux"
                 },
                 {
                   "flags": "-G, --generate-ssh-keys",
@@ -33879,7 +33879,7 @@
                   "bool": true,
                   "short": "-G",
                   "long": "--generate-ssh-keys",
-                  "description": "Auto generate SSH keys, --ssh-publickey-file will be ignored. This parameter is valid only when os-type is \"Linux\""
+                  "description": "Auto generate SSH keys, --ssh-publickey-file will be ignored. This parameter is valid only when os-type is \"Linux"
                 },
                 {
                   "flags": "-z, --vm-size <vm-size>",
@@ -34073,14 +34073,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "image": {
           "name": "image",
           "description": "Commands to manage VM images",
           "fullName": "vm image",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list-publishers",
@@ -34433,7 +34433,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -34442,23 +34442,23 @@
       "description": "Commands to manage your Data Lake objects",
       "fullName": "datalake",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "analytics": {
           "name": "analytics",
           "description": "Commands to manage your Data Lake Analytics objects",
           "fullName": "datalake analytics",
           "usage": "[options]",
-          "options": [],
-          "commands": [],
+          "options": [ ],
+          "commands": [ ],
           "categories": {
             "job": {
               "name": "job",
               "description": "Commands to manage your Data Lake Analytics Jobs",
               "fullName": "datalake analytics job",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -34831,14 +34831,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "catalog": {
               "name": "catalog",
               "description": "Commands to manage your Data Lake Analytics Catalog",
               "fullName": "datalake analytics catalog",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -34917,7 +34917,7 @@
                   "description": "Commands to manage your Data Lake Analytics Catalog secrets",
                   "fullName": "datalake analytics catalog secret",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -35175,7 +35175,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             },
@@ -35184,7 +35184,7 @@
               "description": "Commands to manage your Data Lake Analytics accounts",
               "fullName": "datalake analytics account",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -35551,7 +35551,7 @@
                   "description": "Commands to manage your Data Lake Analytics account data sources",
                   "fullName": "datalake analytics account datasource",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "add",
@@ -35827,7 +35827,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             }
@@ -35838,15 +35838,15 @@
           "description": "Commands to manage your Data Lake Storage objects",
           "fullName": "datalake store",
           "usage": "[options]",
-          "options": [],
-          "commands": [],
+          "options": [ ],
+          "commands": [ ],
           "categories": {
             "filesystem": {
               "name": "filesystem",
               "description": "Commands to manage your Data Lake Storage FileSystem",
               "fullName": "datalake store filesystem",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -36612,14 +36612,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "permissions": {
               "name": "permissions",
               "description": "Commands to manage your Data Lake Storage FileSystem Permissions",
               "fullName": "datalake store permissions",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "show",
@@ -36768,7 +36768,7 @@
                   "description": "Commands to manage your Data Lake Storage FileSystem granular permissions entries",
                   "fullName": "datalake store permissions entry",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "delete",
@@ -36929,7 +36929,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             },
@@ -36938,7 +36938,7 @@
               "description": "Commands to manage your Data Lake Storage accounts",
               "fullName": "datalake store account",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -37299,7 +37299,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -37310,15 +37310,15 @@
       "description": "Commands to manage your DevTest Labs",
       "fullName": "lab",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "vms-per-lab-policy": {
           "name": "vms-per-lab-policy",
           "description": "Commands to manage total allowed virtual machines per lab policy",
           "fullName": "lab vms-per-lab-policy",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -37513,14 +37513,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "vms-per-user-policy": {
           "name": "vms-per-user-policy",
           "description": "Commands to manage max allowed virtual machines per user policy",
           "fullName": "lab vms-per-user-policy",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -37715,14 +37715,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "vm-size-policy": {
           "name": "vm-size-policy",
           "description": "Commands to manage allowed virtual machine sizes policy",
           "fullName": "lab vm-size-policy",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -37917,14 +37917,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "auto-shutdown-policy": {
           "name": "auto-shutdown-policy",
           "description": "Commands to manage auto-shutdown policy",
           "fullName": "lab auto-shutdown-policy",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -38119,14 +38119,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "auto-start-policy": {
           "name": "auto-start-policy",
           "description": "Commands to manage auto-start policy",
           "fullName": "lab auto-start-policy",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "set",
@@ -38330,7 +38330,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -38339,7 +38339,7 @@
       "description": "Commands to manage your features",
       "fullName": "feature",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -38504,14 +38504,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "group": {
       "name": "group",
       "description": "Commands to manage your resource groups",
       "fullName": "group",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -38977,7 +38977,7 @@
           "description": "Commands to manage resource group logs",
           "fullName": "group log",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -39059,14 +39059,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "deployment": {
           "name": "deployment",
           "description": "Commands to manage your deployment in a resource group",
           "fullName": "group deployment",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -39472,7 +39472,7 @@
               "description": "Commands to manager your deployment template in a resource group",
               "fullName": "group deployment template",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "download",
@@ -39553,14 +39553,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "operation": {
               "name": "operation",
               "description": "Commands to list deployment operations in a resource group",
               "fullName": "group deployment operation",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -39623,7 +39623,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -39632,7 +39632,7 @@
           "description": "Commands to manage your local or gallery resource group template",
           "fullName": "group template",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -39887,7 +39887,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -39896,15 +39896,15 @@
       "description": "Commands to manage HDInsight clusters and jobs",
       "fullName": "hdinsight",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "cluster": {
           "name": "cluster",
           "description": "Commands to manage HDInsight clusters",
           "fullName": "hdinsight cluster",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -39972,7 +39972,7 @@
                   "bool": true,
                   "short": "-y",
                   "long": "--osType",
-                  "description": "HDInsight cluster operating system - 'Windows' or 'Linux'"
+                  "description": "HDInsight cluster operating system - 'Windows' or 'Linux"
                 },
                 {
                   "flags": "--version <version>",
@@ -40140,7 +40140,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--additionalStorageAccounts",
-                  "description": "(Optional) Additional storage accounts. Can be multiple. In the format of 'accountName#accountKey'. For example, --additionalStorageAccounts \"acc1#key1;acc2#key2\""
+                  "description": "(Optional) Additional storage accounts. Can be multiple. In the format of 'accountName#accountKey'. For example, --additionalStorageAccounts \"acc1#key1;acc2#key2"
                 },
                 {
                   "flags": "--hiveMetastoreServerName <hiveMetastoreServerName>",
@@ -40769,14 +40769,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "script-action": {
           "name": "script-action",
           "description": "Commands to manage HDInsight script actions",
           "fullName": "hdinsight script-action",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -40871,7 +40871,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--applicationName",
-                  "description": "Application name. When application name is specified, persistOnSuccess cannot be specified, and nodeTypes must contain only \"edgenode\""
+                  "description": "Application name. When application name is specified, persistOnSuccess cannot be specified, and nodeTypes must contain only \"edgenode"
                 },
                 {
                   "flags": "--persistOnSuccess",
@@ -40899,7 +40899,7 @@
               "description": "Commands to manage HDInsight persisted script actions",
               "fullName": "hdinsight script-action persisted",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -41173,14 +41173,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "history": {
               "name": "history",
               "description": "Commands to manage HDInsight script action history",
               "fullName": "hdinsight script-action history",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -41314,7 +41314,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -41323,7 +41323,7 @@
           "description": "Commands to manage HDInsight cluster configuration",
           "fullName": "hdinsight config",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -41421,7 +41421,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--core-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--hive-site <hive-site>",
@@ -41429,7 +41429,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--hive-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--hive-env <hive-env>",
@@ -41437,7 +41437,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--hive-env",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--hdfs-site <hdfs-site>",
@@ -41445,7 +41445,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--hdfs-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--hbase-env <hbase-env>",
@@ -41453,7 +41453,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--hbase-env",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--hbase-site <hbase-site>",
@@ -41461,7 +41461,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--hbase-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--mapred-site <mapred-site>",
@@ -41469,7 +41469,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--mapred-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--oozie-env <oozie-env>",
@@ -41477,7 +41477,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--oozie-env",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--oozie-site <oozie-site>",
@@ -41485,7 +41485,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--oozie-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--storm-site <storm-site>",
@@ -41493,7 +41493,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--storm-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--tez-site <tez-site>",
@@ -41501,7 +41501,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--tez-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--webhcat-site <webhcat-site>",
@@ -41509,7 +41509,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--webhcat-site",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--gateway <gateway>",
@@ -41517,7 +41517,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--gateway",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "--yarn <yarn>",
@@ -41525,7 +41525,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--yarn",
-                  "description": "Config values in the format of 'name=value'"
+                  "description": "Config values in the format of 'name=value"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -41622,7 +41622,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -41631,15 +41631,15 @@
       "description": "Commands related to monitoring Insights (events, alert rules, autoscale settings, metrics)",
       "fullName": "insights",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "logs": {
           "name": "logs",
           "description": "Retrieve operation logs for a subscription, a correlationId, a resource group, resource, or resource provider.",
           "fullName": "insights logs",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -41773,14 +41773,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "alerts": {
           "name": "alerts",
           "description": "Manages alert rules",
           "fullName": "insights alerts",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -41884,15 +41884,15 @@
               "description": "Creates alert rules actions",
               "fullName": "insights alerts actions",
               "usage": "[options]",
-              "options": [],
-              "commands": [],
+              "options": [ ],
+              "commands": [ ],
               "categories": {
                 "email": {
                   "name": "email",
                   "description": "Creates alert rule e-mail actions",
                   "fullName": "insights alerts actions email",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -41947,14 +41947,14 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 },
                 "webhook": {
                   "name": "webhook",
                   "description": "Creates alert rule webhook actions",
                   "fullName": "insights alerts actions webhook",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -42009,7 +42009,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             },
@@ -42018,7 +42018,7 @@
               "description": "Manages alert rules",
               "fullName": "insights alerts rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -42158,7 +42158,7 @@
                   "description": "Creates event-based alerts rules",
                   "fullName": "insights alerts rule log",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "set",
@@ -42262,7 +42262,7 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]"
                         },
                         {
                           "flags": "-i --targetResourceId <targetResourceId>",
@@ -42321,14 +42321,14 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 },
                 "metric": {
                   "name": "metric",
                   "description": "Creates metric-based alerts rules",
                   "fullName": "insights alerts rule metric",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "set",
@@ -42475,19 +42475,19 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]"
                         }
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 },
                 "webtest": {
                   "name": "webtest",
                   "description": "Creates webtest alerts rules",
                   "fullName": "insights alerts rule webtest",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "set",
@@ -42626,12 +42626,12 @@
                           "bool": true,
                           "short": "-z",
                           "long": "--actions",
-                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]\""
+                          "description": "The list of alert rule actions. The list must be a json object (string) of an array. Example: \"[{\\\"customEmails\\\":[\\\"gu@ms.com\\\"]},{\\\"serviceUri\\\":\\\"http://foo.com\\\",\\\"properties\\\":[{\\\"key\\\":\\\"key1\\\",\\\"value\\\":\\\"value1\\\"},{\\\"key\\\":\\\"value1\\\",\\\"value\\\":\\\"key2\\\"}]}]"
                         }
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             }
@@ -42642,7 +42642,7 @@
           "description": "Retrieve autoscale logs",
           "fullName": "insights autoscale",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -42746,7 +42746,7 @@
               "description": "Creates autoscale notifications",
               "fullName": "insights autoscale notifications",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -42825,7 +42825,7 @@
                   "description": "Creates autoscale webhook notifications",
                   "fullName": "insights autoscale notifications webhook",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -42880,7 +42880,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             },
@@ -42889,7 +42889,7 @@
               "description": "Manages autoscale profiles",
               "fullName": "insights autoscale profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -43052,14 +43052,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "rule": {
               "name": "rule",
               "description": "Manages autoscale rules",
               "fullName": "insights autoscale rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -43204,14 +43204,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "setting": {
               "name": "setting",
               "description": "Manages autoscale settings",
               "fullName": "insights autoscale setting",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -43424,7 +43424,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -43433,7 +43433,7 @@
           "description": "Configure diagnostics for resources",
           "fullName": "insights diagnostic",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "get",
@@ -43558,14 +43558,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "logprofile": {
           "name": "logprofile",
           "description": "Configure log profiles",
           "fullName": "insights logprofile",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "add",
@@ -43776,14 +43776,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "metrics": {
           "name": "metrics",
           "description": "Retrieve metrics values resource",
           "fullName": "insights metrics",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -43880,7 +43880,7 @@
               "description": "Retrieves metric definitions for a resource",
               "fullName": "insights metrics definition",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -43944,7 +43944,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -43953,7 +43953,7 @@
           "description": "Retrieve usage metrics for a resource.",
           "fullName": "insights usage",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -44035,7 +44035,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -44044,7 +44044,7 @@
       "description": "Commands to manage key vault instances in the Azure Key Vault service",
       "fullName": "keyvault",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -44242,7 +44242,7 @@
               "bool": true,
               "short": "-g",
               "long": "--resource-group",
-              "description": "changes only if vault belongs to the informed resource group; otherwise returns 'not found'"
+              "description": "changes only if vault belongs to the informed resource group; otherwise returns 'not found"
             },
             {
               "flags": "-x, --sku <sku>",
@@ -44329,7 +44329,7 @@
               "bool": true,
               "short": "-g",
               "long": "--resource-group",
-              "description": "shows only if vault belongs to the informed resource group; otherwise returns 'not found'"
+              "description": "shows only if vault belongs to the informed resource group; otherwise returns 'not found"
             },
             {
               "flags": "-s, --subscription <subscription>",
@@ -44390,7 +44390,7 @@
               "bool": true,
               "short": "-g",
               "long": "--resource-group",
-              "description": "deletes only if vault belongs to the informed resource group; otherwise returns 'not found'"
+              "description": "deletes only if vault belongs to the informed resource group; otherwise returns 'not found"
             },
             {
               "flags": "-q, --quiet",
@@ -44469,7 +44469,7 @@
               "bool": true,
               "short": "-g",
               "long": "--resource-group",
-              "description": "changes only if vault belongs to the informed resource group; otherwise returns 'not found'"
+              "description": "changes only if vault belongs to the informed resource group; otherwise returns 'not found"
             },
             {
               "flags": "--object-id <object-id>",
@@ -44594,7 +44594,7 @@
               "bool": true,
               "short": "-g",
               "long": "--resource-group",
-              "description": "deletes only if vault belongs to the informed resource group; otherwise returns 'not found'"
+              "description": "deletes only if vault belongs to the informed resource group; otherwise returns 'not found"
             },
             {
               "flags": "--object-id <object-id>",
@@ -44662,7 +44662,7 @@
           "description": "Commands to manage keys in the Azure Key Vault service",
           "fullName": "keyvault key",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -45352,14 +45352,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "secret": {
           "name": "secret",
           "description": "Commands to manage secrets in the Azure Key Vault service",
           "fullName": "keyvault secret",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -45923,7 +45923,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -45932,7 +45932,7 @@
       "description": "Commands to get the available locations",
       "fullName": "location",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -45977,22 +45977,22 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "network": {
       "name": "network",
       "description": "Commands to manage network resources",
       "fullName": "network",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "vnet": {
           "name": "vnet",
           "description": "Commands to manage virtual networks",
           "fullName": "network vnet",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -46078,7 +46078,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -46166,7 +46166,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -46369,7 +46369,7 @@
               "description": "Commands to manage virtual network subnets",
               "fullName": "network vnet subnet",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -46812,7 +46812,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -46821,7 +46821,7 @@
           "description": "Commands to manage network usage",
           "fullName": "network usage",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -46876,14 +46876,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "lb": {
           "name": "lb",
           "description": "Commands to manage load balancers",
           "fullName": "network lb",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -46951,7 +46951,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -47021,7 +47021,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -47224,7 +47224,7 @@
               "description": "Commands to manage frontend ip configurations of a load balancer",
               "fullName": "network lb frontend-ip",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -47615,14 +47615,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "probe": {
               "name": "probe",
               "description": "Commands to manage probes of a load balancer",
               "fullName": "network lb probe",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -47995,14 +47995,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "address-pool": {
               "name": "address-pool",
               "description": "Commands to manage backend address pools of a load balancer",
               "fullName": "network lb address-pool",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -48215,14 +48215,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "rule": {
               "name": "rule",
               "description": "Commands to manage load balancer rules",
               "fullName": "network lb rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -48667,14 +48667,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "inbound-nat-rule": {
               "name": "inbound-nat-rule",
               "description": "Commands to manage load balancer inbound NAT rules",
               "fullName": "network lb inbound-nat-rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -49065,14 +49065,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "inbound-nat-pool": {
               "name": "inbound-nat-pool",
               "description": "Commands to manage load balancer inbound NAT pools",
               "fullName": "network lb inbound-nat-pool",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -49445,7 +49445,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -49454,7 +49454,7 @@
           "description": "Commands to manage public ip addresses",
           "fullName": "network public-ip",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -49567,7 +49567,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -49673,7 +49673,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -49870,14 +49870,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "nic": {
           "name": "nic",
           "description": "Commands to manage network interfaces",
           "fullName": "network nic",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -50062,7 +50062,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -50168,7 +50168,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -50407,7 +50407,7 @@
               "description": "Commands to manage network interface ip configurations",
               "fullName": "network nic ip-config",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -50928,7 +50928,7 @@
                   "description": "Commands to manage backend address pools of the network interface ip configuration",
                   "fullName": "network nic ip-config address-pool",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -51125,14 +51125,14 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 },
                 "inbound-nat-rule": {
                   "name": "inbound-nat-rule",
                   "description": "Commands to manage inbound NAT rules of the network interface ip configuration",
                   "fullName": "network nic ip-config inbound-nat-rule",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -51329,7 +51329,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             }
@@ -51340,7 +51340,7 @@
           "description": "Commands to manage network security groups",
           "fullName": "network nsg",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -51408,7 +51408,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -51478,7 +51478,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -51681,7 +51681,7 @@
               "description": "Commands to manage network security group rules",
               "fullName": "network nsg rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -52196,7 +52196,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -52205,15 +52205,15 @@
           "description": "Commands to manage DNS",
           "fullName": "network dns",
           "usage": "[options]",
-          "options": [],
-          "commands": [],
+          "options": [ ],
+          "commands": [ ],
           "categories": {
             "zone": {
               "name": "zone",
               "description": "Commands to manage DNS zone",
               "fullName": "network dns zone",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -52272,7 +52272,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -52342,7 +52342,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -52712,14 +52712,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "record-set": {
               "name": "record-set",
               "description": "Commands to manage record sets in DNS zone",
               "fullName": "network dns record-set",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -52805,7 +52805,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -52902,7 +52902,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -53599,7 +53599,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -53608,15 +53608,15 @@
           "description": "Commands to manage Traffic Manager",
           "fullName": "network traffic-manager",
           "usage": "[options]",
-          "options": [],
-          "commands": [],
+          "options": [ ],
+          "commands": [ ],
           "categories": {
             "profile": {
               "name": "profile",
               "description": "Commands to manage Traffic Manager profile",
               "fullName": "network traffic-manager profile",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -53738,7 +53738,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -53862,7 +53862,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -54111,14 +54111,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "endpoint": {
               "name": "endpoint",
               "description": "Commands to manage Traffic Manager endpoints",
               "fullName": "network traffic-manager endpoint",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -54213,7 +54213,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--target",
-                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints\""
+                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints"
                     },
                     {
                       "flags": "-i, --target-resource-id <target-resource-id>",
@@ -54222,7 +54222,7 @@
                       "bool": true,
                       "short": "-i",
                       "long": "--target-resource-id",
-                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints\""
+                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints"
                     },
                     {
                       "flags": "-w, --weight <weight>",
@@ -54346,7 +54346,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--target",
-                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints\""
+                      "description": "the domain name target of the endpoint,\n       e.g. foobar.contoso.com. Only applicable to endpoints of type \"ExternalEndpoints"
                     },
                     {
                       "flags": "-i, --target-resource-id <target-resource-id>",
@@ -54355,7 +54355,7 @@
                       "bool": true,
                       "short": "-i",
                       "long": "--target-resource-id",
-                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints\""
+                      "description": "the Azure Resource URI of the endpoint. Not applicable to endpoints of type \"ExternalEndpoints"
                     },
                     {
                       "flags": "-w, --weight <weight>",
@@ -54554,7 +54554,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -54563,7 +54563,7 @@
           "description": "Commands to manage Route Table",
           "fullName": "network route-table",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -54631,7 +54631,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -54701,7 +54701,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -54904,7 +54904,7 @@
               "description": "Commands to manage Route Table routes",
               "fullName": "network route-table route",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -55311,7 +55311,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -55320,7 +55320,7 @@
           "description": "Commands to manage Local Network Gateways",
           "fullName": "network local-gateway",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -55406,7 +55406,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -55485,7 +55485,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -55682,14 +55682,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "vpn-gateway": {
           "name": "vpn-gateway",
           "description": "Commands to manage Virtual Network Gateways",
           "fullName": "network vpn-gateway",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -55820,7 +55820,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--subnet-name",
-                  "description": "the subnet name which exists in vnet. Default value is \"GatewaySubnet\""
+                  "description": "the subnet name which exists in vnet. Default value is \"GatewaySubnet"
                 },
                 {
                   "flags": "-d, --default-site-name <default-site-name>",
@@ -55847,7 +55847,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--address-prefixes",
-                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24"
                 },
                 {
                   "flags": "-a, --private-ip-address <private-ip-address>",
@@ -55874,7 +55874,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -55980,7 +55980,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--address-prefixes",
-                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24\""
+                  "description": "the comma separated list of address prefixes.\n     For example, -f \"10.0.0.0/24,10.0.1.0/24"
                 },
                 {
                   "flags": "-t, --tags [tags]",
@@ -55989,7 +55989,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -56192,7 +56192,7 @@
               "description": "Commands to manage Virtual Network Gateways Root Certificates",
               "fullName": "network vpn-gateway root-cert",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -56353,14 +56353,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "revoked-cert": {
               "name": "revoked-cert",
               "description": "Commands to manage Virtual Network Gateways Revoked Certificates",
               "fullName": "network vpn-gateway revoked-cert",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -56521,7 +56521,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -56530,7 +56530,7 @@
           "description": "Commands to manage gateway connections",
           "fullName": "network vpn-connection",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -56688,7 +56688,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 }
               ]
             },
@@ -56767,7 +56767,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 }
               ]
             },
@@ -56961,7 +56961,7 @@
               "description": "Commands to manage gateway connection shared key",
               "fullName": "network vpn-connection shared-key",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "set",
@@ -57165,7 +57165,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         },
@@ -57174,7 +57174,7 @@
           "description": "Commands to manage application gateways",
           "fullName": "network application-gateway",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -57314,7 +57314,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--http-settings-cookie-based-affinity",
-                  "description": "Enable or disable HTTP settings cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is \"Disabled\""
+                  "description": "Enable or disable HTTP settings cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is \"Disabled"
                 },
                 {
                   "flags": "-j, --frontend-port <frontend-port>",
@@ -57359,7 +57359,7 @@
                   "bool": true,
                   "short": "-w",
                   "long": "--routing-rule-type",
-                  "description": "the request routing rule type, default is \"Basic\""
+                  "description": "the request routing rule type, default is \"Basic"
                 },
                 {
                   "flags": "-a, --sku-name <sku-name>",
@@ -57368,7 +57368,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--sku-name",
-                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]. Default values is \"Standard_Medium\""
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]. Default values is \"Standard_Medium"
                 },
                 {
                   "flags": "-u, --sku-tier <sku-tier>",
@@ -57377,7 +57377,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--sku-tier",
-                  "description": "the sku tier, valid values are [undefined]. Default values is \"Standard\""
+                  "description": "the sku tier, valid values are [undefined]. Default values is \"Standard"
                 },
                 {
                   "flags": "-z, --capacity <capacity>",
@@ -57395,7 +57395,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "--nowait",
@@ -57500,7 +57500,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "--nowait",
@@ -57841,7 +57841,7 @@
               "description": "Commands to manage application gateway SSL certificates",
               "fullName": "network application-gateway ssl-cert",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -58027,14 +58027,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "frontend-ip": {
               "name": "frontend-ip",
               "description": "Commands to manage application gateway frontend ips",
               "fullName": "network application-gateway frontend-ip",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -58256,14 +58256,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "frontend-port": {
               "name": "frontend-port",
               "description": "Commands to manage application gateway frontend ports",
               "fullName": "network application-gateway frontend-port",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -58440,14 +58440,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "address-pool": {
               "name": "address-pool",
               "description": "Commands to manage application gateway backend address pools",
               "fullName": "network application-gateway address-pool",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -58624,14 +58624,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "http-settings": {
               "name": "http-settings",
               "description": "Commands to manage application gateway http settings",
               "fullName": "network application-gateway http-settings",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -58826,14 +58826,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "http-listener": {
               "name": "http-listener",
               "description": "Commands to manage application gateway http listeners",
               "fullName": "network application-gateway http-listener",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -59037,14 +59037,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "rule": {
               "name": "rule",
               "description": "Commands to manage application gateway request routing rule",
               "fullName": "network application-gateway rule",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -59139,7 +59139,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--type",
-                      "description": "the type, currently supported only default value \"%s\""
+                      "description": "the type, currently supported only default value \"%s"
                     },
                     {
                       "flags": "--nowait",
@@ -59248,14 +59248,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "probe": {
               "name": "probe",
               "description": "Commands to manage application gateway probes",
               "fullName": "network application-gateway probe",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -59332,7 +59332,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--protocol",
-                      "description": "the protocol, only valid value is \"http\""
+                      "description": "the protocol, only valid value is \"http"
                     },
                     {
                       "flags": "-d, --host-name <host-name>",
@@ -59341,7 +59341,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--host-name",
-                      "description": "the name of host to send probe.\n   Default value is \"http://127.0.0.1\""
+                      "description": "the name of host to send probe.\n   Default value is \"http://127.0.0.1"
                     },
                     {
                       "flags": "-f, --path <path>",
@@ -59350,7 +59350,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--path",
-                      "description": "the relative path of probe. Valid path starts from \"/\".\n   Probe is sent to ://:. Default value is \"/\""
+                      "description": "the relative path of probe. Valid path starts from \"/\".\n   Probe is sent to ://:. Default value is \"/"
                     },
                     {
                       "flags": "-i, --interval <interval>",
@@ -59486,14 +59486,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "url-path-map": {
               "name": "url-path-map",
               "description": "Commands to manage application gateway url path maps",
               "fullName": "network application-gateway url-path-map",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -59703,7 +59703,7 @@
                   "description": "Commands to manage application gateway url path map rules",
                   "fullName": "network application-gateway url-path-map rule",
                   "usage": "[options] [command]",
-                  "options": [],
+                  "options": [ ],
                   "commands": [
                     {
                       "name": "create",
@@ -59916,7 +59916,7 @@
                       ]
                     }
                   ],
-                  "categories": {}
+                  "categories": { }
                 }
               }
             }
@@ -59927,15 +59927,15 @@
           "description": "Commands to manage express routes",
           "fullName": "network express-route",
           "usage": "[options]",
-          "options": [],
-          "commands": [],
+          "options": [ ],
+          "commands": [ ],
           "categories": {
             "provider": {
               "name": "provider",
               "description": "Commands to manage express route service providers",
               "fullName": "network express-route provider",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -59981,14 +59981,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "circuit": {
               "name": "circuit",
               "description": "Commands to manage express routes circuits",
               "fullName": "network express-route circuit",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -60101,7 +60101,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -60198,7 +60198,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--tags",
-                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2\""
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     Existing tag values will be replaced by the values specified.\n     For example, -t \"tag1=value1;tag2"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -60395,14 +60395,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "peering": {
               "name": "peering",
               "description": "Commands to manage express route peerings",
               "fullName": "network express-route peering",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -60980,14 +60980,14 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             },
             "authorization": {
               "name": "authorization",
               "description": "Commands to manage express routes authorization",
               "fullName": "network express-route authorization",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "create",
@@ -61358,7 +61358,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -61369,15 +61369,15 @@
       "description": "Commands to manage your policies on ARM Resources.",
       "fullName": "policy",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "assignment": {
           "name": "assignment",
           "description": "Commands to manage your policy assignments.",
           "fullName": "policy assignment",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -61707,14 +61707,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "definition": {
           "name": "definition",
           "description": "Commands to manage your policy definitions.",
           "fullName": "policy definition",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -62042,7 +62042,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -62051,7 +62051,7 @@
       "description": "Commands to manage your Azure Power BI Embedded Workspace Collections",
       "fullName": "powerbi",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -62191,7 +62191,7 @@
           "description": "Commands to manage your Power BI Workspace Collection keys",
           "fullName": "powerbi keys",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -62332,14 +62332,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "workspaces": {
           "name": "workspaces",
           "description": "Commands to manage your Power BI Workspaces",
           "fullName": "powerbi workspaces",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "list",
@@ -62403,7 +62403,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -62412,7 +62412,7 @@
       "description": "Commands to manage resource provider registrations",
       "fullName": "provider",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -62620,7 +62620,7 @@
           "description": "Commands to get the operations or actions allowed by an Azure resource provider.",
           "fullName": "provider operations",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "show",
@@ -62675,7 +62675,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -62684,7 +62684,7 @@
       "description": "Command to view your aggregated Azure quotas",
       "fullName": "quotas",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "show",
@@ -62739,14 +62739,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "rediscache": {
       "name": "rediscache",
       "description": "Commands to manage your Azure Redis Cache(s)",
       "fullName": "rediscache",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -62841,7 +62841,7 @@
               "bool": true,
               "short": "-c",
               "long": "--redis-configuration",
-              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:\"{\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}\""
+              "description": "Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:\"{\"<key1>\":\"<value1>\",\"<key2>\":\"<value2>\"}"
             },
             {
               "flags": "-f, --redis-configuration-file <redisConfigurationFile>",
@@ -63426,14 +63426,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "resource": {
       "name": "resource",
       "description": "Commands to manage your resources",
       "fullName": "resource",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -63996,14 +63996,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "role": {
       "name": "role",
       "description": "Commands to manage role definitions",
       "fullName": "role",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -64279,7 +64279,7 @@
           "name": "delete",
           "description": "Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id or Name property of the role. Delete will fail if there are existing role assignments made to the custom role.",
           "fullName": "role delete",
-          "usage": "[id] [name] [scope]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e\"",
+          "usage": "[id] [name] [scope]\n\n     --------------------------  Example 1  --------------------------\n     azure role delete --name \"Contoso On-call\"\n\n     --------------------------  Example 2  --------------------------\n     azure role delete --id \"52a6cc13-ff92-47a8-a39b-2a8205c3087e",
           "filePath": "commands/arm/role/role.definition._js",
           "options": [
             {
@@ -64366,7 +64366,7 @@
           "description": "Commands to manage role assignments",
           "fullName": "role assignment",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -64794,7 +64794,7 @@
               "description": "Gets access change history for the selected subscription for the specified time range i.e. role assignments that were added or removed, including classic administrators (co-administrators and service administrators). Maximum duration that can be queried is 15 days (going back up to past 90 days).",
               "fullName": "role assignment changelog",
               "usage": "[options] [command]",
-              "options": [],
+              "options": [ ],
               "commands": [
                 {
                   "name": "list",
@@ -64858,7 +64858,7 @@
                   ]
                 }
               ],
-              "categories": {}
+              "categories": { }
             }
           }
         }
@@ -64869,15 +64869,15 @@
       "description": "Commands to manage Azure Server Managment resources",
       "fullName": "servermanagement",
       "usage": "[options]",
-      "options": [],
-      "commands": [],
+      "options": [ ],
+      "commands": [ ],
       "categories": {
         "gateway": {
           "name": "gateway",
           "description": "Commands to manage Azure Server Management Tools Gateway instances",
           "fullName": "servermanagement gateway",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -64963,7 +64963,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 }
               ]
             },
@@ -65142,14 +65142,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "node": {
           "name": "node",
           "description": "Commands to manage Azure Server Management Tools Node instances",
           "fullName": "servermanagement node",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -65253,7 +65253,7 @@
                   "bool": true,
                   "short": "-t",
                   "long": "--tags",
-                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                  "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -65441,14 +65441,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "session": {
           "name": "session",
           "description": "Commands to manage Azure Server Management Tools Sessions",
           "fullName": "servermanagement session",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -65679,14 +65679,14 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         },
         "powershell": {
           "name": "powershell",
           "description": "Commands to invoke powershelll commands on a Azure Server Management Tools node",
           "fullName": "servermanagement powershell",
           "usage": "[options] [command]",
-          "options": [],
+          "options": [ ],
           "commands": [
             {
               "name": "create",
@@ -65847,7 +65847,7 @@
               ]
             }
           ],
-          "categories": {}
+          "categories": { }
         }
       }
     },
@@ -65856,7 +65856,7 @@
       "description": "Commands to manage your resource manager tags",
       "fullName": "tag",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
@@ -66088,14 +66088,14 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "usage": {
       "name": "usage",
       "description": "Command to view your aggregated Azure usage data",
       "fullName": "usage",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "list",
@@ -66180,18 +66180,18 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": { }
     },
     "webapp": {
       "name": "webapp",
       "description": "Commands to manage your Azure webapps",
       "fullName": "webapp",
       "usage": "[options] [command]",
-      "options": [],
+      "options": [ ],
       "commands": [
         {
           "name": "create",
-          "description": "create a web app",
+          "description": "Create a web app",
           "fullName": "webapp create",
           "usage": "[options] <resource-group> <name> <location> <plan>",
           "filePath": "commands/arm/webapp/webapp._js",
@@ -66683,7 +66683,579 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": {
+        "config": {
+          "name": "config",
+          "description": "Commands to manage webapp configurations",
+          "fullName": "webapp config",
+          "usage": "[options] [command]",
+          "options": [ ],
+          "commands": [
+            {
+              "name": "get",
+              "description": "Get webapp configuration",
+              "fullName": "webapp config get",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to getconfig"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to getconfig"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "description": "Update webapp configuration",
+              "fullName": "webapp config update",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to getconfig"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to getconfig"
+                },
+                {
+                  "flags": "--phpversion <phpversion>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--phpversion",
+                  "description": "phpversion of webapp"
+                },
+                {
+                  "flags": "--pythonversion <pythonversion>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pythonversion",
+                  "description": "pythonversion of webapp"
+                },
+                {
+                  "flags": "--nodeversion <nodeversion>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nodeversion",
+                  "description": "nodeversion of webapp"
+                },
+                {
+                  "flags": "--appcommandline <appcommandline>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--appcommandline",
+                  "description": "app command line for webapp"
+                },
+                {
+                  "flags": "--javaversion <javaversion>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javaversion",
+                  "description": "javaversion of webapp"
+                },
+                {
+                  "flags": "--javacontainer <javacontainer>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javacontainer",
+                  "description": "javacontainer of webapp"
+                },
+                {
+                  "flags": "--javacontainerversion <javacontainerversion>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javacontainerversion",
+                  "description": "javacontainerversion of webapp"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ]
+        },
+        "publishprofile": {
+          "name": "publishprofile",
+          "description": "Commands to get webapp publish profiles",
+          "fullName": "webapp publishprofile",
+          "usage": "[options] [command]",
+          "options": [ ],
+          "commands": [
+            {
+              "name": "get",
+              "description": "Get webapp publish profile",
+              "fullName": "webapp publishprofile get",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to get publishprofile"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to get publishprofile"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "appserviceplan": {
+      "name": "appserviceplan",
+      "description": "Commands to manage your Azure appserviceplans",
+      "fullName": "appserviceplan",
+      "usage": "[options] [command]",
+      "options": [ ],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create an appservice plan",
+          "fullName": "appserviceplan create",
+          "usage": "[options] <resource-group> <name> <location> <sku> <numberOfWorkers> <workerSize>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the webapp to create"
+            },
+            {
+              "flags": "-l --location <location>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "the geographic region to create the webapp"
+            },
+            {
+              "flags": "-k --sku <sku>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-k",
+              "long": "--sku",
+              "description": "the sku of the appserviceplan eg: Basic."
+            },
+            {
+              "flags": "-w, --workers <numberOfWorkers>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-w",
+              "long": "--workers",
+              "description": "the number of workers in the appserviceplan"
+            },
+            {
+              "flags": "-z, --workersize <workerSize>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-z",
+              "long": "--workerSize",
+              "description": "the size of workers in the appserviceplan"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete an appservice plan",
+          "fullName": "appserviceplan delete",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the webapp to delete"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for delete confirmation"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List your appservice plans",
+          "fullName": "appserviceplan list",
+          "usage": "[options] <resource-group>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get an appservice plan",
+          "fullName": "appserviceplan show",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the webapp to get"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": { }
     }
   }
 }

@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '3d1cd7a8-b035-4563-9288-dbe706cd672e',
-    name: 'SAAS InfoNav Test_564339',
+    id: '0d3ae56c-deaf-4982-b514-33d016d4a683',
+    name: 'antps10',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
-    tenantId: 'microsoft.com',
+    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
+    registeredProviders: ['website'],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -32,39 +32,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup5228/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection3663/regenerateKey?api-version=2016-01-29', '*')
-  .reply(200, "{\"key1\":\"Ttruxd9jMcDgIPDE9UZgudKLfvXpgrE+M8ZewH1LELUc1aIgYILaISc33FmIvFWk1hnM7XtRIvi5X9bZGl9MPQ==\",\"key2\":\"uWNtE0Wbmvnx9JNSF112X2TnBeq+lLEICrkr+EcTWi0lnkN0XPBt5oNVSL1yeGXwybHyAMAoDdeImYmKSQU5uw==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
-  'content-length': '197',
+.post('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/azureXplatCliTestResourceGroup3994/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434/regenerateKey?api-version=2016-01-29', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434' under resource group 'azureXplatCliTestResourceGroup3994' was not found.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-request-id': 'bbb940de-33a8-43b9-bf08-8975518051f9',
+  'x-ms-correlation-request-id': 'bbb940de-33a8-43b9-bf08-8975518051f9',
+  'x-ms-routing-request-id': 'WESTUS2:20160822T224304Z:bbb940de-33a8-43b9-bf08-8975518051f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-frame-options': 'deny',
-  'x-content-type-options': 'nosniff',
-  requestid: 'f974e0f7-079c-4b40-a640-3723a62f9a3c',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'd3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  'x-ms-correlation-request-id': 'd3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  'x-ms-routing-request-id': 'WESTUS:20160524T193244Z:d3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  date: 'Tue, 24 May 2016 19:32:43 GMT',
-  connection: 'close' });
+  date: 'Mon, 22 Aug 2016 22:43:03 GMT',
+  connection: 'close',
+  'content-length': '216' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup5228/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection3663/regenerateKey?api-version=2016-01-29', '*')
-  .reply(200, "{\"key1\":\"Ttruxd9jMcDgIPDE9UZgudKLfvXpgrE+M8ZewH1LELUc1aIgYILaISc33FmIvFWk1hnM7XtRIvi5X9bZGl9MPQ==\",\"key2\":\"uWNtE0Wbmvnx9JNSF112X2TnBeq+lLEICrkr+EcTWi0lnkN0XPBt5oNVSL1yeGXwybHyAMAoDdeImYmKSQU5uw==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
-  'content-length': '197',
+.post('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/azureXplatCliTestResourceGroup3994/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434/regenerateKey?api-version=2016-01-29', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434' under resource group 'azureXplatCliTestResourceGroup3994' was not found.\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-failure-cause': 'gateway',
+  'x-ms-request-id': 'bbb940de-33a8-43b9-bf08-8975518051f9',
+  'x-ms-correlation-request-id': 'bbb940de-33a8-43b9-bf08-8975518051f9',
+  'x-ms-routing-request-id': 'WESTUS2:20160822T224304Z:bbb940de-33a8-43b9-bf08-8975518051f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-frame-options': 'deny',
-  'x-content-type-options': 'nosniff',
-  requestid: 'f974e0f7-079c-4b40-a640-3723a62f9a3c',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'd3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  'x-ms-correlation-request-id': 'd3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  'x-ms-routing-request-id': 'WESTUS:20160524T193244Z:d3a334d4-8ad1-4fcf-91bc-35179bafa04d',
-  date: 'Tue, 24 May 2016 19:32:43 GMT',
-  connection: 'close' });
+  date: 'Mon, 22 Aug 2016 22:43:03 GMT',
+  connection: 'close',
+  'content-length': '216' });
  return result; }]];

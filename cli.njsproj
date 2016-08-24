@@ -76,6 +76,7 @@
     <Content Include="lib\cli.js" />
     <Content Include="lib\cmdLoader.js" />
     <Content Include="lib\commands\arm\insights\insights.autoscale.notifications.js" />
+    <Compile Include="lib\commands\arm\webapp\webapp.config._js" />
     <Compile Include="lib\util\authentication\adalAuthForUser.js" />
     <Compile Include="lib\util\authentication\adalAuthForServicePrincipal.js" />
     <Compile Include="lib\util\profile\account.js" />
@@ -561,6 +562,63 @@
     <Folder Include="tools\windows\scripts" />
     <Folder Include="tools\windows\wix" />
     <Folder Include="tools\windows\wix\3.6.3303.0" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\applicationinsights\" />
+    <Folder Include="typings\globals\async\" />
+    <Folder Include="typings\globals\colors\" />
+    <Folder Include="typings\globals\commander\" />
+    <Folder Include="typings\globals\easy-table\" />
+    <Folder Include="typings\globals\event-stream\" />
+    <Folder Include="typings\globals\eyes\" />
+    <Folder Include="typings\globals\fast-json-patch\" />
+    <Folder Include="typings\globals\istanbul\" />
+    <Folder Include="typings\globals\mocha\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\nock\" />
+    <Folder Include="typings\globals\node-forge\" />
+    <Folder Include="typings\globals\node-uuid\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\progress\" />
+    <Folder Include="typings\globals\read\" />
+    <Folder Include="typings\globals\request\" />
+    <Folder Include="typings\globals\should\" />
+    <Folder Include="typings\globals\sinon\" />
+    <Folder Include="typings\globals\through\" />
+    <Folder Include="typings\globals\underscore\" />
+    <Folder Include="typings\globals\validator\" />
+    <Folder Include="typings\globals\winston\" />
+    <Folder Include="typings\globals\xml2js\" />
+    <Folder Include="typings\globals\xmlbuilder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\applicationinsights\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\async\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\colors\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\commander\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\easy-table\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\event-stream\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\eyes\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\fast-json-patch\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\istanbul\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mocha\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\nock\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node-forge\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node-uuid\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\progress\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\read\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\request\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\should\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\sinon\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\through\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\underscore\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\validator\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\winston\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\xml2js\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\xmlbuilder\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->

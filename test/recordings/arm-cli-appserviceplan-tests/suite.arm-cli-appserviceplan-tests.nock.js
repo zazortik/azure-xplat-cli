@@ -27,4 +27,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['webappclitest2894','testrg14770'];};
+ exports.randomTestIdsGenerated = function() { return ['appservicepplanclitest8116','testrg18479'];};

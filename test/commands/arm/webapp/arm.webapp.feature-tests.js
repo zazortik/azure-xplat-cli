@@ -30,6 +30,7 @@ var createdGroups = [];
 var createdResources = [];
 var hostingPlanName, groupName;
 var resourceClient;
+var updatedPHPValue = "7.0";
 
 describe('arm', function () {
   var suite;
@@ -104,6 +105,27 @@ describe('arm', function () {
         webapp.webSite.name.should.equal(sitename);
         done();
       });
+    });
+
+    it('config get should work', function (done) {
+        suite.execute('webapp config get %s %s --json', groupName, sitename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+      });
+    });
+
+    it('config update should work', function (done) {
+        suite.execute('webapp config update %s %s -l %s --phpversion %s --json', groupName, sitename, location, updatedPHPValue, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+      });
+    });
+
+    it('publishprofile get should work', function (done) {
+        suite.execute('webapp publishprofile get %s %s --json', groupName, sitename, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+       });
     });
 
     it('stop should work', function (done) {
