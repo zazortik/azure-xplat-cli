@@ -253,8 +253,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(nsProp, suite, done);
       });
       it('add-record should add a record of type NS', function (done) {
-        networkUtil.addDnsRecord(nsProp, suite, function (mxSet) {
-          mxSet.nsRecords.should.containEql({nsdname: 'ns1.com.'});
+        networkUtil.addDnsRecord(nsProp, suite, function (nsSet) {
+          nsSet.nsRecords.should.containEql({nsdname: 'ns1.com.'});
           done();
         });
       });
@@ -269,12 +269,10 @@ describe('arm', function () {
        * SOA
        */
       it('set SOA record should create a record-set of type SOA', function (done) {
-        var cmd = util.format('network dns record-set set-soa-record -g {group} -z {zoneName} -n {name} -l {ttl} ' +
+        var cmd = util.format('network dns record-set set-soa-record -g {group} -z {zoneName} -l {ttl} ' +
           '-m {metadata} {params} --json').formatArgs(soaProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-          var recordSet = JSON.parse(result.text);
-          recordSet.name.should.equal(soaProp.name);
           done();
         });
       });
@@ -286,8 +284,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(srvProp, suite, done);
       });
       it('add-record should add a record of type SRV', function (done) {
-        networkUtil.addDnsRecord(srvProp, suite, function (mxSet) {
-          mxSet.srvRecords.should.containEql({priority: 1, weight: 2, port: 3, target: 'target.com'});
+        networkUtil.addDnsRecord(srvProp, suite, function (srvSet) {
+          srvSet.srvRecords.should.containEql({priority: 1, weight: 2, port: 3, target: 'target.com'});
           done();
         });
       });
@@ -305,8 +303,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(txtProp, suite, done);
       });
       it('add-record should add a record of type TXT', function (done) {
-        networkUtil.addDnsRecord(txtProp, suite, function (mxSet) {
-          mxSet.txtRecords.should.containEql({value: ['longtexthere']});
+        networkUtil.addDnsRecord(txtProp, suite, function (txtSet) {
+          txtSet.txtRecords.should.containEql({value: ['longtexthere']});
           done();
         });
       });

@@ -54515,7 +54515,7 @@
                   "name": "list",
                   "description": "Get all DNS zones",
                   "fullName": "network dns zone list",
-                  "usage": "[options]",
+                  "usage": "[options] [resource-group]",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
                     {
@@ -55142,9 +55142,9 @@
                   ]
                 },
                 {
-                  "name": "set-soa-record-set",
+                  "name": "set-soa-record",
                   "description": "Set a SOA record in a record set under a DNS zone",
-                  "fullName": "network dns record-set set-soa-record-set",
+                  "fullName": "network dns record-set set-soa-record",
                   "usage": "[options] <resource-group> <dns-zone-name> <record-set-name>",
                   "filePath": "commands/arm/network/network._js",
                   "options": [
@@ -55190,15 +55190,6 @@
                       "short": "-z",
                       "long": "--dns-zone-name",
                       "description": "the name of the DNS zone"
-                    },
-                    {
-                      "flags": "-n, --record-set-name <record-set-name>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--record-set-name",
-                      "description": "the name of the record set"
                     },
                     {
                       "flags": "-l, --email <email>",
