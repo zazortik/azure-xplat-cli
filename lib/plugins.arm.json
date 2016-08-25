@@ -54696,7 +54696,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete a DNS zone",
+                  "description": "Delete a DNS zone. WARNING: This will delete the DNS zone and all DNS records. This operation cannot be undone.",
                   "fullName": "network dns zone delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/network/network._js",
