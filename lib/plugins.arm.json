@@ -54611,7 +54611,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--name",
-                      "description": "the name of the DNS zone\n   You can specify \"*\" (in quotes) for this parameter"
+                      "description": "the name of the DNS zone\n     You can specify \"*\" (in quotes) for this parameter"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -55142,6 +55142,148 @@
                   ]
                 },
                 {
+                  "name": "set-soa-record-set",
+                  "description": "Set a SOA record in a record set under a DNS zone",
+                  "fullName": "network dns record-set set-soa-record-set",
+                  "usage": "[options] <resource-group> <dns-zone-name> <record-set-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-z, --dns-zone-name <dns-zone-name>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-z",
+                      "long": "--dns-zone-name",
+                      "description": "the name of the DNS zone"
+                    },
+                    {
+                      "flags": "-n, --record-set-name <record-set-name>",
+                      "required": -23,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--record-set-name",
+                      "description": "the name of the record set"
+                    },
+                    {
+                      "flags": "-l, --email <email>",
+                      "required": -13,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--email",
+                      "description": "the email attribute"
+                    },
+                    {
+                      "flags": "-i, --expire-time <expire-time>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--expire-time",
+                      "description": "the expire time specified in seconds"
+                    },
+                    {
+                      "flags": "-S, --serial-number <serial-number>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-S",
+                      "long": "--serial-number",
+                      "description": "the serial number"
+                    },
+                    {
+                      "flags": "-m, --minimum-ttl <minimum-ttl>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--minimum-ttl",
+                      "description": "the minimum time to live specified in seconds"
+                    },
+                    {
+                      "flags": "-r, --refresh-time <refresh-time>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--refresh-time",
+                      "description": "the refresh time specified in seconds"
+                    },
+                    {
+                      "flags": "-j, --retry-time <retry-time>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-j",
+                      "long": "--retry-time",
+                      "description": "the retry time specified in seconds"
+                    },
+                    {
+                      "flags": "-l, --ttl <ttl>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--ttl",
+                      "description": "time to live specified in seconds"
+                    },
+                    {
+                      "flags": "-m, --metadata <metadata>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--metadata",
+                      "description": "the list of tags.\n     Can be multiple. In the format of \"name=value\".\n     Name is required and value is optional.\n     For example, -t \"tag1=value1;tag2\""
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "list",
                   "description": "Get all record sets in a DNS zone",
                   "fullName": "network dns record-set list",
@@ -55444,7 +55586,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\nThe record type A \n"
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [SOA,A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]\n\nThe record type A"
                     },
                     {
                       "flags": "-a  --ipv4-address <ipv4-address>",
@@ -55453,7 +55595,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--ipv4-address",
-                      "description": "the IPv4 address attribute\nRecord type AAAA \n"
+                      "description": "the IPv4 address attribute\n\nRecord type AAAA"
                     },
                     {
                       "flags": "-b  --ipv6-address <ipv6-address>",
@@ -55462,7 +55604,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--ipv6-address",
-                      "description": "the IPv6 address attribute\nRecord type CNAME\n"
+                      "description": "the IPv6 address attribute\n\nRecord type CNAME"
                     },
                     {
                       "flags": "-c  --cname <cname>",
@@ -55471,7 +55613,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--cname",
-                      "description": "the canonical name (target)\nRecord type MX\n"
+                      "description": "the canonical name (target)\n\nRecord type MX"
                     },
                     {
                       "flags": "-f, --preference <preference>",
@@ -55489,7 +55631,7 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--exchange",
-                      "description": "exchange attribute\nRecord type NS\n"
+                      "description": "exchange attribute\n\nRecord type NS"
                     },
                     {
                       "flags": "-d  --nsdname <nsdname>",
@@ -55498,7 +55640,7 @@
                       "bool": true,
                       "short": "-d",
                       "long": "--nsdname",
-                      "description": "the domain name attribute\nRecord type SRV\n"
+                      "description": "the domain name attribute\n\nRecord type SRV"
                     },
                     {
                       "flags": "-p, --priority <priority>",
@@ -55525,7 +55667,7 @@
                       "bool": true,
                       "short": "-o",
                       "long": "--port",
-                      "description": "the port\n"
+                      "description": "the port"
                     },
                     {
                       "flags": "-u, --target <target>",
@@ -55534,7 +55676,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--target",
-                      "description": "the target attribute\nRecord type SRV\n"
+                      "description": "the target attribute\n\nRecord type TXT"
                     },
                     {
                       "flags": "-x, --text <text>",
@@ -55543,70 +55685,7 @@
                       "bool": true,
                       "short": "-x",
                       "long": "--text",
-                      "description": "the text attribute\nRecord type TXT\n"
-                    },
-                    {
-                      "flags": "-l, --email <email>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--email",
-                      "description": "the email attribute"
-                    },
-                    {
-                      "flags": "-i, --expire-time <expire-time>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--expire-time",
-                      "description": "the expire time specified in seconds"
-                    },
-                    {
-                      "flags": "-S, --serial-number <serial-number>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-S",
-                      "long": "--serial-number",
-                      "description": "the serial number"
-                    },
-                    {
-                      "flags": "-k, --host <host>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-k",
-                      "long": "--host",
-                      "description": "the host name attribute"
-                    },
-                    {
-                      "flags": "-m, --minimum-ttl <minimum-ttl>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-m",
-                      "long": "--minimum-ttl",
-                      "description": "the minimum time to live specified in seconds"
-                    },
-                    {
-                      "flags": "-r, --refresh-time <refresh-time>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-r",
-                      "long": "--refresh-time",
-                      "description": "the refresh time specified in seconds"
-                    },
-                    {
-                      "flags": "-j, --retry-time <retry-time>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-j",
-                      "long": "--retry-time",
-                      "description": "the retry time specified in seconds\nRecord type PTR \n"
+                      "description": "the text attribute\n\nRecord type PTR"
                     },
                     {
                       "flags": "-P, --ptrd-name <ptrd-name>",
@@ -55616,130 +55695,6 @@
                       "short": "-P",
                       "long": "--ptrd-name",
                       "description": "ptr domain name\n"
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "set-soa-record",
-                  "description": "Set a SOA record in a record set under a DNS zone",
-                  "fullName": "network dns record-set set-soa-record",
-                  "usage": "[options] <resource-group> <dns-zone-name> <record-set-name>",
-                  "filePath": "commands/arm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g, --resource-group <resource-group>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-z, --dns-zone-name <dns-zone-name>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-z",
-                      "long": "--dns-zone-name",
-                      "description": "the name of the DNS zone"
-                    },
-                    {
-                      "flags": "-n, --record-set-name <record-set-name>",
-                      "required": -23,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--record-set-name",
-                      "description": "the name of the record set"
-                    },
-                    {
-                      "flags": "-l, --email <email>",
-                      "required": -13,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-l",
-                      "long": "--email",
-                      "description": "the email attribute"
-                    },
-                    {
-                      "flags": "-i, --expire-time <expire-time>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--expire-time",
-                      "description": "the expire time specified in seconds"
-                    },
-                    {
-                      "flags": "-S, --serial-number <serial-number>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-S",
-                      "long": "--serial-number",
-                      "description": "the serial number"
-                    },
-                    {
-                      "flags": "-m, --minimum-ttl <minimum-ttl>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-m",
-                      "long": "--minimum-ttl",
-                      "description": "the minimum time to live specified in seconds"
-                    },
-                    {
-                      "flags": "-r, --refresh-time <refresh-time>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-r",
-                      "long": "--refresh-time",
-                      "description": "the refresh time specified in seconds"
-                    },
-                    {
-                      "flags": "-j, --retry-time <retry-time>",
-                      "required": -18,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-j",
-                      "long": "--retry-time",
-                      "description": "the retry time specified in seconds"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
