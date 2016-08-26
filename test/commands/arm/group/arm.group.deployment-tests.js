@@ -87,7 +87,7 @@ describe('arm', function () {
     
     function setUniqParameterNames(suite, filename, writeComment) {
             //no need to create unique parameter values in playbackmode
-      if(writeComment){
+      if(writeComment && !suite.isPlayback()){
         fs.appendFile(filename, '//Single Line Comment \n /*A \n Multiline \n Comment */' , function(err) {
             if (err) throw err;
                 console.log('Added single and multiline comments to file ', filename);
