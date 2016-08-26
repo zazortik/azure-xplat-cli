@@ -64595,6 +64595,14 @@
               "description": "more verbose with debug output"
             },
             {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "shows full list of resource type and locations."
+            },
+            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
