@@ -55110,7 +55110,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set, valid values are\n     [SOA,A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]"
+                      "description": "the type of the record set, valid values are\n     [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]"
                     },
                     {
                       "flags": "-l, --ttl <ttl>",
@@ -55192,11 +55192,11 @@
                       "description": "the name of the DNS zone"
                     },
                     {
-                      "flags": "-l, --email <email>",
+                      "flags": "-e, --email <email>",
                       "required": -13,
                       "optional": 0,
                       "bool": true,
-                      "short": "-l",
+                      "short": "-e",
                       "long": "--email",
                       "description": "the email attribute"
                     },
@@ -55219,11 +55219,11 @@
                       "description": "the serial number"
                     },
                     {
-                      "flags": "-m, --minimum-ttl <minimum-ttl>",
+                      "flags": "-n, --minimum-ttl <minimum-ttl>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-m",
+                      "short": "-n",
                       "long": "--minimum-ttl",
                       "description": "the minimum time to live specified in seconds"
                     },
@@ -55331,7 +55331,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set, \n     If specified only record sets of this type will be listed.\n     valid values are [SOA,A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]"
+                      "description": "the type of the record set, \n     If specified only record sets of this type will be listed.\n     valid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -55410,7 +55410,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set, \n     valid values are [SOA,A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]"
+                      "description": "the type of the record set, \n     valid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -55577,7 +55577,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [SOA,A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]\n\nThe record type A"
+                      "description": "the type of the record set.\nIf specified only record sets of this type will be listed.\nValid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]\n\nThe record type A"
                     },
                     {
                       "flags": "-a  --ipv4-address <ipv4-address>",
@@ -55622,7 +55622,16 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--exchange",
-                      "description": "exchange attribute\n\nRecord type NS"
+                      "description": "exchange attribute\n\nRecord type PTR"
+                    },
+                    {
+                      "flags": "-P, --ptrdname <ptrdname>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-P",
+                      "long": "--ptrdname",
+                      "description": "ptr domain name\n\nRecord type NS"
                     },
                     {
                       "flags": "-d  --nsdname <nsdname>",
@@ -55676,16 +55685,7 @@
                       "bool": true,
                       "short": "-x",
                       "long": "--text",
-                      "description": "the text attribute\n\nRecord type PTR"
-                    },
-                    {
-                      "flags": "-P, --ptrd-name <ptrd-name>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-P",
-                      "long": "--ptrd-name",
-                      "description": "ptr domain name\n"
+                      "description": "the text attribute\n"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
