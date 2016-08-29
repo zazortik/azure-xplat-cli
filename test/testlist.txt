@@ -53,6 +53,7 @@ commands/cli.network.application-gateway.js
 commands/cli.network.application.gateway-config.js
 commands/cli.network.route-table.js
 commands/cli.network.traffic-manager-profile.js
+commands/cli.network.migration-tests.js
 include:./testlist-vm.txt
 commands/cli.vm.create_loc_vnet_vm-tests.js
 # TODO: The test should be able to create a vm and delete it. It expects a vm is already there.

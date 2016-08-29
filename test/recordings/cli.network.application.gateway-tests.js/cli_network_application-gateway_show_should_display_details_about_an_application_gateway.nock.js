@@ -14,7 +14,7 @@ exports.getMockedProfile = function () {
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
+    registeredProviders: ['mobileservice'],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -29,28 +29,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/ApplicationGateways/CliTestAppGate?api-version=2016-03-01')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/ApplicationGateways/CliTestAppGate?api-version=2016-07-01')
   .reply(200, "<ApplicationGateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Description/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway>", { 'cache-control': 'no-cache',
   'content-length': '402',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.408 (rd_rdfe_stable.160802-0931) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'af8f8a277353af38b8cf596849d9baaa',
-  date: 'Mon, 25 Apr 2016 09:40:46 GMT',
+  'x-ms-request-id': '88de5120ee4004d592faddde1081c032',
+  date: 'Fri, 12 Aug 2016 13:22:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/ApplicationGateways/CliTestAppGate?api-version=2016-03-01')
+  .get('/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/networking/ApplicationGateways/CliTestAppGate?api-version=2016-07-01')
   .reply(200, "<ApplicationGateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Description/><DnsName i:nil=\"true\"/><GatewaySize>Small</GatewaySize><InstanceCount>4</InstanceCount><Name>CliTestAppGate</Name><State>Stopped</State><Subnets><Subnet>CliTestSubnett</Subnet></Subnets><VirtualIPs i:nil=\"true\"/><VnetName>CliTestVnett</VnetName></ApplicationGateway>", { 'cache-control': 'no-cache',
   'content-length': '402',
   'content-type': 'application/xml; charset=utf-8',
-  server: '1.0.6198.357 (rd_rdfe_stable.160413-1538) Microsoft-HTTPAPI/2.0',
+  server: '1.0.6198.408 (rd_rdfe_stable.160802-0931) Microsoft-HTTPAPI/2.0',
   'x-ms-servedbyregion': 'ussouth3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'af8f8a277353af38b8cf596849d9baaa',
-  date: 'Mon, 25 Apr 2016 09:40:46 GMT',
+  'x-ms-request-id': '88de5120ee4004d592faddde1081c032',
+  date: 'Fri, 12 Aug 2016 13:22:50 GMT',
   connection: 'close' });
  return result; }]];

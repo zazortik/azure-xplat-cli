@@ -32,12 +32,13 @@ nock('http://xplat.blob.core.windows.net:443')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>containerpolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Wed, 20 Jul 2016 09:56:04 GMT',
-  etag: '"0x8D3B084101E446A"',
+  'last-modified': 'Fri, 12 Aug 2016 06:44:25 GMT',
+  etag: '"0x8D3C27C19A164C2"',
+  vary: 'Origin',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e90b2b48-0001-0035-296c-e23852000000',
+  'x-ms-request-id': '3bc019a3-0001-0022-8065-f4f831000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 09:56:34 GMT',
+  date: 'Fri, 12 Aug 2016 06:44:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -46,11 +47,12 @@ nock('https://xplat.blob.core.windows.net:443')
   .get('/storageclitest?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>containerpolicy01</Id><AccessPolicy><Start>2014-12-01T00:00:00.0000000Z</Start><Expiry>2099-12-31T00:00:00.0000000Z</Expiry><Permission>rl</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Wed, 20 Jul 2016 09:56:04 GMT',
-  etag: '"0x8D3B084101E446A"',
+  'last-modified': 'Fri, 12 Aug 2016 06:44:25 GMT',
+  etag: '"0x8D3C27C19A164C2"',
+  vary: 'Origin',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e90b2b48-0001-0035-296c-e23852000000',
+  'x-ms-request-id': '3bc019a3-0001-0022-8065-f4f831000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 09:56:34 GMT',
+  date: 'Fri, 12 Aug 2016 06:44:53 GMT',
   connection: 'close' });
  return result; }]];

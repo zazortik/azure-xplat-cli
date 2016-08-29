@@ -10307,7 +10307,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -10316,7 +10316,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -10325,7 +10325,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -10384,7 +10384,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -10393,7 +10393,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -10402,7 +10402,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -10462,7 +10462,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -10471,7 +10471,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -10480,7 +10480,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -10548,7 +10548,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -10557,7 +10557,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -10566,7 +10566,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -10634,7 +10634,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -10643,7 +10643,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -10652,7 +10652,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -10736,7 +10736,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -10745,7 +10745,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -10754,7 +10754,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -10821,7 +10821,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -10830,7 +10830,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -10839,7 +10839,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -10914,7 +10914,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -10923,7 +10923,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -10932,7 +10932,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -10999,7 +10999,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11008,7 +11008,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11017,7 +11017,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11084,7 +11084,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11093,7 +11093,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11102,7 +11102,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11211,7 +11211,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11220,7 +11220,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11229,7 +11229,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11330,7 +11330,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11339,7 +11339,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11348,7 +11348,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11415,7 +11415,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11424,7 +11424,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11433,7 +11433,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11492,7 +11492,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11501,7 +11501,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11510,7 +11510,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11601,7 +11601,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11610,7 +11610,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11619,7 +11619,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11686,7 +11686,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -11695,7 +11695,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -11704,7 +11704,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -11784,7 +11784,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -11793,7 +11793,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -11802,7 +11802,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -11864,12 +11864,12 @@
                   "description": "the lease ID"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--sas <sas>",
@@ -11886,7 +11886,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -11895,7 +11895,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -11904,7 +11904,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -11958,12 +11958,12 @@
                   "description": "the storage blob name"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -12005,7 +12005,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -12014,7 +12014,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -12023,7 +12023,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -12101,7 +12101,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--properties",
-                  "description": "the storage blob properties for uploaded file. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl"
+                  "description": "the storage blob properties for uploaded file. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl, contentDisposition, contentMD5"
                 },
                 {
                   "flags": "-m, --metadata <metadata>",
@@ -12152,7 +12152,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -12161,7 +12161,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -12170,7 +12170,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -12224,12 +12224,12 @@
                   "description": "the storage blob name"
                 },
                 {
-                  "flags": "--snapshot <snapshotId>",
+                  "flags": "--snapshot <snapshotTimestamp>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
                   "long": "--snapshot",
-                  "description": "the snapshot ID"
+                  "description": "the snapshot timestamp"
                 },
                 {
                   "flags": "--lease <leaseId>",
@@ -12289,7 +12289,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -12298,7 +12298,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -12307,7 +12307,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -12383,7 +12383,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -12392,7 +12392,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -12401,7 +12401,110 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "run storage command in debug mode"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "description": "Update the properties of the specified storage blob",
+              "fullName": "storage blob update",
+              "usage": "[options] [container] [blob]",
+              "filePath": "commands/storage/storage.blob._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--container <container>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--container",
+                  "description": "the storage container name"
+                },
+                {
+                  "flags": "-b, --blob <blobName>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--blob",
+                  "description": "the storage blob name"
+                },
+                {
+                  "flags": "-p, --properties <properties>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--properties",
+                  "description": "the storage blob properties. Properties are key=value pairs and separated with semicolon(;). Available properties are contentType, contentEncoding, contentLanguage, cacheControl, contentDisposition, contentMD5"
+                },
+                {
+                  "flags": "--lease <leaseId>",
+                  "required": -9,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--lease",
+                  "description": "the lease ID"
+                },
+                {
+                  "flags": "--sas <sas>",
+                  "required": -7,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--sas",
+                  "description": "the shared access signature"
+                },
+                {
+                  "flags": "-a, --account-name <accountName>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
+                },
+                {
+                  "flags": "-k, --account-key <accountKey>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
+                },
+                {
+                  "flags": "-c, --connection-string <connectionString>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--connection-string",
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -12494,7 +12597,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -12503,7 +12606,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -12512,7 +12615,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -12588,7 +12691,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -12597,7 +12700,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -12606,7 +12709,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -12690,7 +12793,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -12699,7 +12802,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -12708,7 +12811,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -12784,7 +12887,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -12793,7 +12896,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -12802,7 +12905,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -12878,7 +12981,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -12887,7 +12990,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -12896,7 +12999,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -12956,7 +13059,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--source-uri",
-                      "description": "the source storage blob or file absolute uri"
+                      "description": "the source storage blob or file absolute uri. By providing this option, all other source related options will be ignored."
                     },
                     {
                       "flags": "--source-container <sourceContainer>",
@@ -12975,12 +13078,12 @@
                       "description": "the source storage blob name when copies a blob to a blob"
                     },
                     {
-                      "flags": "--snapshot <snapshot>",
+                      "flags": "--snapshot <snapshotTimestamp>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
                       "long": "--snapshot",
-                      "description": "the snapshot id if source is a snapshot"
+                      "description": "the snapshot timestamp if source is a snapshot"
                     },
                     {
                       "flags": "--source-lease <sourceLeaseId>",
@@ -13078,7 +13181,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -13087,7 +13190,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -13096,7 +13199,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -13171,7 +13274,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -13180,7 +13283,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -13189,7 +13292,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -13264,7 +13367,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -13273,7 +13376,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -13282,7 +13385,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -13399,7 +13502,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -13408,7 +13511,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -13417,7 +13520,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -13488,7 +13591,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -13497,7 +13600,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -13506,7 +13609,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -13557,7 +13660,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -13566,7 +13669,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -13575,7 +13678,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -13634,7 +13737,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -13643,7 +13746,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -13652,7 +13755,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -13712,7 +13815,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -13721,7 +13824,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -13730,7 +13833,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -13782,7 +13885,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -13791,7 +13894,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -13800,7 +13903,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -13908,7 +14011,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -13917,7 +14020,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -13926,7 +14029,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14019,7 +14122,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14028,7 +14131,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14037,7 +14140,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14096,7 +14199,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14105,7 +14208,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14114,7 +14217,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14165,7 +14268,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14174,7 +14277,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14183,7 +14286,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14266,7 +14369,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14275,7 +14378,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14284,7 +14387,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14343,7 +14446,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14352,7 +14455,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14361,7 +14464,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -14441,7 +14544,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -14450,7 +14553,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -14459,7 +14562,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -14536,7 +14639,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -14545,7 +14648,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -14554,7 +14657,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -14648,7 +14751,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -14657,7 +14760,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -14666,7 +14769,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -14769,7 +14872,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -14778,7 +14881,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -14787,7 +14890,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -14944,7 +15047,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -14953,7 +15056,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -14962,7 +15065,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -15029,7 +15132,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -15038,7 +15141,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -15047,7 +15150,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -15114,7 +15217,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -15123,7 +15226,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -15132,7 +15235,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -15250,7 +15353,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -15259,7 +15362,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -15268,7 +15371,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -15348,7 +15451,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15357,7 +15460,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15366,7 +15469,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15443,7 +15546,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15452,7 +15555,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15461,7 +15564,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15522,7 +15625,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15531,7 +15634,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15540,7 +15643,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15592,7 +15695,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15601,7 +15704,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15610,7 +15713,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15669,7 +15772,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15678,7 +15781,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15687,7 +15790,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15747,7 +15850,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -15756,7 +15859,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -15765,7 +15868,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -15873,7 +15976,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -15882,7 +15985,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -15891,7 +15994,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -15984,7 +16087,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -15993,7 +16096,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -16002,7 +16105,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -16061,7 +16164,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -16070,7 +16173,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -16079,7 +16182,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -16130,7 +16233,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -16139,7 +16242,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -16148,7 +16251,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -16231,7 +16334,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -16240,7 +16343,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -16249,7 +16352,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -16308,7 +16411,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -16317,7 +16420,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -16326,7 +16429,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -16405,7 +16508,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -16414,7 +16517,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -16423,7 +16526,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -16554,7 +16657,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -16563,7 +16666,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -16572,7 +16675,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -16657,7 +16760,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -16666,7 +16769,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -16675,7 +16778,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -16814,7 +16917,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -16823,7 +16926,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -16832,7 +16935,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -16925,7 +17028,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -16934,7 +17037,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -16943,7 +17046,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17018,7 +17121,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17027,7 +17130,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17036,7 +17139,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17120,7 +17223,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17129,7 +17232,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17138,7 +17241,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17199,7 +17302,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17208,7 +17311,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17217,7 +17320,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17269,7 +17372,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17278,7 +17381,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17287,7 +17390,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17338,7 +17441,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17347,7 +17450,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17356,7 +17459,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17416,7 +17519,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--account-name",
-                  "description": "the storage account name"
+                  "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                 },
                 {
                   "flags": "-k, --account-key <accountKey>",
@@ -17425,7 +17528,7 @@
                   "bool": true,
                   "short": "-k",
                   "long": "--account-key",
-                  "description": "the storage account key"
+                  "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                 },
                 {
                   "flags": "-c, --connection-string <connectionString>",
@@ -17434,7 +17537,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--connection-string",
-                  "description": "the storage connection string"
+                  "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                 },
                 {
                   "flags": "-vv",
@@ -17574,7 +17677,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -17583,7 +17686,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -17592,7 +17695,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -17685,7 +17788,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -17694,7 +17797,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -17703,7 +17806,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -17762,7 +17865,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -17771,7 +17874,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -17780,7 +17883,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -17831,7 +17934,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -17840,7 +17943,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -17849,7 +17952,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -17932,7 +18035,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -17941,7 +18044,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -17950,7 +18053,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -18009,7 +18112,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--account-name",
-                      "description": "the storage account name"
+                      "description": "the storage account name or omit it to use environment variable [AZURE_STORAGE_ACCOUNT]"
                     },
                     {
                       "flags": "-k, --account-key <accountKey>",
@@ -18018,7 +18121,7 @@
                       "bool": true,
                       "short": "-k",
                       "long": "--account-key",
-                      "description": "the storage account key"
+                      "description": "the storage account key or omit it to use environment variable [AZURE_STORAGE_ACCESS_KEY]"
                     },
                     {
                       "flags": "-c, --connection-string <connectionString>",
@@ -18027,7 +18130,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--connection-string",
-                      "description": "the storage connection string"
+                      "description": "the storage connection string or omit it to use environment variable [AZURE_STORAGE_CONNECTION_STRING]"
                     },
                     {
                       "flags": "-vv",
@@ -26149,190 +26252,6 @@
             }
           }
         },
-        "dns-server": {
-          "name": "dns-server",
-          "description": "Commands to manage your DNS servers",
-          "fullName": "network dns-server",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List DNS servers registered in network",
-              "fullName": "network dns-server list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "register",
-              "description": "Register a DNS server with network",
-              "fullName": "network dns-server register",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "unregister",
-              "description": "Unregister a DNS server registered in the current network",
-              "fullName": "network dns-server unregister",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for unregister confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
         "reserved-ip": {
           "name": "reserved-ip",
           "description": "Commands to manage your reserved public virtual IP addresses",
@@ -26340,6 +26259,210 @@
           "usage": "[options] [command]",
           "options": [],
           "commands": [
+            {
+              "name": "abort-migration",
+              "description": "",
+              "fullName": "network reserved-ip abort-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "",
+              "fullName": "network reserved-ip commit-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "",
+              "fullName": "network reserved-ip prepare-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "",
+              "fullName": "network reserved-ip validate-migration",
+              "usage": "[options] <ip-name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "--ip-name <ip-name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--ip-name",
+                  "description": "ip-name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
             {
               "name": "create",
               "description": "Create a reserved IP address",
@@ -26518,6 +26641,190 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "dns-server": {
+          "name": "dns-server",
+          "description": "Commands to manage your DNS servers",
+          "fullName": "network dns-server",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List DNS servers registered in network",
+              "fullName": "network dns-server list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "register",
+              "description": "Register a DNS server with network",
+              "fullName": "network dns-server register",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "unregister",
+              "description": "Unregister a DNS server registered in the current network",
+              "fullName": "network dns-server unregister",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
                 },
                 {
                   "flags": "-s, --subscription <id>",
