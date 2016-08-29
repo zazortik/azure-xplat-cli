@@ -29,24 +29,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .put('/testblobcopydest/testblobcopydir/copytoblob.tmp.txt?copyid=eeb04d46-f92b-42d2-a2dc-e887b6999718&comp=copy')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:b980a5f8-0001-001a-4a6d-e2b968000000\nTime:2016-07-20T10:00:16.8074776Z</Message></Error>", { 'content-length': '236',
+  .put('/testblobcopydest/testblobcopydir/copytoblob.tmp.txt?copyid=d3918105-9cd2-4099-b5d1-3b1d46f62822&comp=copy')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:e451f513-0001-0000-3165-f49607000000\nTime:2016-08-12T06:48:39.5700267Z</Message></Error>", { 'content-length': '236',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b980a5f8-0001-001a-4a6d-e2b968000000',
+  'x-ms-request-id': 'e451f513-0001-0000-3165-f49607000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 10:00:16 GMT',
+  date: 'Fri, 12 Aug 2016 06:48:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .put('/testblobcopydest/testblobcopydir/copytoblob.tmp.txt?copyid=eeb04d46-f92b-42d2-a2dc-e887b6999718&comp=copy')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:b980a5f8-0001-001a-4a6d-e2b968000000\nTime:2016-07-20T10:00:16.8074776Z</Message></Error>", { 'content-length': '236',
+  .put('/testblobcopydest/testblobcopydir/copytoblob.tmp.txt?copyid=d3918105-9cd2-4099-b5d1-3b1d46f62822&comp=copy')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.\nRequestId:e451f513-0001-0000-3165-f49607000000\nTime:2016-08-12T06:48:39.5700267Z</Message></Error>", { 'content-length': '236',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b980a5f8-0001-001a-4a6d-e2b968000000',
+  'x-ms-request-id': 'e451f513-0001-0000-3165-f49607000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 10:00:16 GMT',
+  date: 'Fri, 12 Aug 2016 06:48:38 GMT',
   connection: 'close' });
  return result; }]];

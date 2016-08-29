@@ -38,6 +38,7 @@ describe('arm', function () {
       var suite;
       var resourceId;
       var storageId;
+      var serviceBusRuleId;
 
       before(function(done) {
         suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -51,7 +52,8 @@ describe('arm', function () {
       beforeEach(function(done) {
         suite.setupTest(function() {
           resourceId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/test.shoebox/testresources2/0000000000eastusR2';
-          storageId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-Storage-EastUS/providers/Microsoft.ClassicStorage/storageAccounts/testshoeboxeastus';
+          storageId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/microsoft.classicstorage/storageAccounts/sbeastus1a1';
+          serviceBusRuleId = '/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/tseastus/authorizationrules/RootManageSharedAccessKey';
           done();
         });
       });
@@ -62,10 +64,13 @@ describe('arm', function () {
 
       describe('set', function() {
         it('should work enable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true --json', resourceId, storageId, function (result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e true --json', resourceId, storageId, serviceBusRuleId, function (result) {
+            (result.error == null).should.be.ok;
+
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -80,10 +85,11 @@ describe('arm', function () {
         });
 
         it('should work disable all', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e false --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e false --json', resourceId, storageId, serviceBusRuleId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(false);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -98,10 +104,11 @@ describe('arm', function () {
         });
 
         it('should work enable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e true -t PT1M --json', resourceId, storageId, serviceBusRuleId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -116,10 +123,11 @@ describe('arm', function () {
         });
 
         it('should work enable one category only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -c TestLog2 --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e true -c TestLog2 --json', resourceId, storageId, serviceBusRuleId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -134,10 +142,11 @@ describe('arm', function () {
         });
 
         it('should work disable timegrain only', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e false -t PT1M --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e false -t PT1M --json', resourceId, storageId, serviceBusRuleId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(false);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -152,10 +161,11 @@ describe('arm', function () {
         });
 
         it('should work enable timegrain and category', function (done) {
-          suite.execute('insights diagnostic set -i %s -a %s -e true -t PT1M -c TestLog1,TestLog2 --json', resourceId, storageId, function(result) {
+          suite.execute('insights diagnostic set -i %s -a %s -b %s -e true -t PT1M -c TestLog1,TestLog2 --json', resourceId, storageId, serviceBusRuleId, function(result) {
             var properties = JSON.parse(result.text);
 
             properties.storageAccountId.should.equal(storageId);
+            properties.serviceBusRuleId.should.equal(serviceBusRuleId);
             properties.metrics.length.should.equal(1);
             properties.metrics[0].enabled.should.equal(true);
             moment.duration(properties.metrics[0].timeGrain).asMilliseconds().should.equal(60000);
@@ -165,6 +175,24 @@ describe('arm', function () {
             properties.logs[1].category.should.equal('TestLog2');
             properties.logs[1].enabled.should.equal(true);
             
+            done();
+          });
+        });
+
+        it('should fail if resourceId is missing', function (done) {
+          suite.execute('insights diagnostic set -a %s -e true', storageId, function(result) {
+            result.exitStatus.should.equal(1);
+            var expectedError = util.format('The resourceId parameter is required');
+            result.errorText.should.include(expectedError);
+            done();
+          });
+        });
+
+        it('should fail if enable is missing', function (done) {
+          suite.execute('insights diagnostic set -i %s -a %s', resourceId, storageId, function(result) {
+            result.exitStatus.should.equal(1);
+            var expectedError = util.format('The enabled parameter is required');
+            result.errorText.should.include(expectedError);
             done();
           });
         });
