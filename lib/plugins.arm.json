@@ -48198,7 +48198,7 @@
           "description": "list the available locations",
           "fullName": "location list",
           "usage": "[options]",
-          "filePath": "commands/arm/location/location.js",
+          "filePath": "commands/arm/location/location._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -48216,6 +48216,14 @@
               "bool": true,
               "long": "-vv",
               "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "shows full provider list with latitude and longitude"
             },
             {
               "flags": "--json",
