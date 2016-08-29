@@ -65702,17 +65702,16 @@
               "description": "a JSON-formatted string containing properties"
             },            
             {
-              "flags": "-s --sku <sku>",
-              "required": -17,
+              "flags": "--sku <sku>",
+              "required": 0,
               "optional": 0,
               "bool": true,
-              "short": "-s",
               "long": "--sku",
               "description": "a JSON-formatted string containing sku properties"
             },
             {
               "flags": "--plan <plan>",
-              "required": -17,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "long": "--plan",
@@ -65720,7 +65719,7 @@
             },
             {
               "flags": "-t --tags <tags>",
-              "required": -11,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-t",
@@ -65806,7 +65805,7 @@
             },
             {
               "flags": "-p --properties <properties>",
-              "required": -17,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-p",
@@ -65831,17 +65830,16 @@
               "description": "the name of the parent resource (if needed), in path/path/path format"
             },
             {
-              "flags": "-s --sku <sku>",
-              "required": -17,
+              "flags": "--sku <sku>",
+              "required": 0,
               "optional": 0,
               "bool": true,
-              "short": "-s",
               "long": "--sku",
               "description": "a JSON-formatted string containing sku properties"
             },
             {
               "flags": "--plan <plan>",
-              "required": -17,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "long": "--plan",
@@ -65849,7 +65847,7 @@
             },
             {
               "flags": "-t --tags <tags>",
-              "required": -11,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-t",

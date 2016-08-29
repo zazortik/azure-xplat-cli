@@ -95,7 +95,7 @@ describe('arm', function () {
           suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
               
-             suite.execute('resource create %s %s %s %s %s -p %s -s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
+             suite.execute('resource create %s %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
                var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
                result.exitStatus.should.equal(0);
 
@@ -123,7 +123,7 @@ describe('arm', function () {
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
             
-          suite.execute('resource create %s %s %s %s %s -p %s -s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "random": "aa", "tier" : "free", "size" : "A0" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "random": "aa", "tier" : "free", "size" : "A0" }', function (result) {
             var expectedError = util.format('Required property \'name\' not found in JSON. Path \'sku\'');
             result.errorText.should.include(expectedError);
             suite.execute('group delete %s --quiet --json', groupName, function () {
@@ -424,7 +424,7 @@ describe('arm', function () {
           });
         });
       });
-      it('should show by id', function (done) {
+      it('should show by id starting with subscription', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
@@ -435,9 +435,33 @@ describe('arm', function () {
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource show -i %s -o %s --json', resourceId, testApiVersion, function (showResult) {
+              suite.execute('resource show -i %s -o %s --json', resourceId, testApiVersion, function (showResult) {
               showResult.exitStatus.should.equal(0);
+              var resource = JSON.parse(showResult.text);
+              resource.name.should.equal(resourceName);
+              resource.location.should.equal(testWebsitesResourceLocation);
 
+              suite.execute('group delete %s --quiet --json', groupName, function () {
+                done();
+              });
+            });
+          });
+        });
+      });
+      it('should show by id starting with resourceGroup', function (done) {
+        var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
+        var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
+
+        suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
+          result.exitStatus.should.equal(0);
+
+          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
+            resourceId = resourceId.split("/").slice(3, resourceId.length).join("/");
+            result.exitStatus.should.equal(0);
+
+            suite.execute('resource show -i %s -o %s --json', resourceId, testApiVersion, function (showResult) {
+            showResult.exitStatus.should.equal(0);
               var resource = JSON.parse(showResult.text);
               resource.name.should.equal(resourceName);
               resource.location.should.equal(testWebsitesResourceLocation);
