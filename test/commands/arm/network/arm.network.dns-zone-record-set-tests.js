@@ -79,7 +79,7 @@ var soaProp = {
   name: '@',
   type: 'SOA',
   ttl: 3600,
-  params: '-l mail@microsoft.com -i 60000 -S 123 -m 2400 -r 3600 -j 6400',
+  params: '-e mail@microsoft.com -i 60000 -S 123 -n 2400 -r 3600 -j 6400',
   zoneName: zoneProp.name,
   metadata: networkUtil.tags
 };
