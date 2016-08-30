@@ -55577,7 +55577,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set.\nValid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]\nTo update the SOA record see \"azure network dns record-set set-soa-record --help\"\n\nThe record type A"
+                      "description": "the type of the record set.\nValid values are [A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]\nTo update the SOA record see \"azure network dns record-set set-soa-record --help\"\n\nThe record type A"
                     },
                     {
                       "flags": "-a  --ipv4-address <ipv4-address>",
@@ -55764,7 +55764,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A, AAAA, CNAME, MX, NS, SOA, SRV, TXT, PTR]\nThe record type A \n"
+                      "description": "the type of the record set.\n     If specified only record sets of this type will be listed.\n     Valid values are [A,AAAA,CNAME,MX,NS,PTR,SRV,TXT]\nThe record type A \n"
                     },
                     {
                       "flags": "-a  --ipv4-address <ipv4-address>",
@@ -55773,7 +55773,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--ipv4-address",
-                      "description": "the IPv4 address attribute\nRecord type AAAA \n"
+                      "description": "the IPv4 address attribute\n\nRecord type AAAA"
                     },
                     {
                       "flags": "-b  --ipv6-address <ipv6-address>",
@@ -55782,7 +55782,7 @@
                       "bool": true,
                       "short": "-b",
                       "long": "--ipv6-address",
-                      "description": "the IPv6 address attribute\nRecord type CNAME\n"
+                      "description": "the IPv6 address attribute\n\nRecord type CNAME"
                     },
                     {
                       "flags": "-c  --cname <cname>",
@@ -55791,16 +55791,7 @@
                       "bool": true,
                       "short": "-c",
                       "long": "--cname",
-                      "description": "the canonical name (target)\nRecord type NS\n"
-                    },
-                    {
-                      "flags": "-d  --nsdname <nsdname>",
-                      "required": -15,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-d",
-                      "long": "--nsdname",
-                      "description": "the domain name attribute\nRecord type MX\n"
+                      "description": "the canonical name (target)\n\nRecord type MX"
                     },
                     {
                       "flags": "-f, --preference <preference>",
@@ -55818,7 +55809,25 @@
                       "bool": true,
                       "short": "-e",
                       "long": "--exchange",
-                      "description": "exchange attribute\nRecord type SRV\n"
+                      "description": "exchange attribute\n\nRecord type PTR"
+                    },
+                    {
+                      "flags": "-P, --ptrdname <ptrdname>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-P",
+                      "long": "--ptrdname",
+                      "description": "ptr domain name\n\nRecord type NS"
+                    },
+                    {
+                      "flags": "-d  --nsdname <nsdname>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--nsdname",
+                      "description": "the domain name attribute\n\nRecord type SRV"
                     },
                     {
                       "flags": "-p, --priority <priority>",
@@ -55854,7 +55863,7 @@
                       "bool": true,
                       "short": "-u",
                       "long": "--target",
-                      "description": "the target attribute\nRecord type TXT\n"
+                      "description": "the target attribute\n\nRecord type TXT"
                     },
                     {
                       "flags": "-x, --text <text>",
@@ -55863,16 +55872,7 @@
                       "bool": true,
                       "short": "-x",
                       "long": "--text",
-                      "description": "the text attribute\nRecord type PTR \n"
-                    },
-                    {
-                      "flags": "-P, --ptrd-name <ptrd-name>",
-                      "required": -17,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-P",
-                      "long": "--ptrd-name",
-                      "description": "ptr domain name\n"
+                      "description": "the text attribute\n"
                     },
                     {
                       "flags": "-q, --quiet",
