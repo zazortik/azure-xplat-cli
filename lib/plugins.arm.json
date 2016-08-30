@@ -55577,7 +55577,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--type",
-                      "description": "the type of the record set.\nIf specified only record sets of this type will be listed.\nValid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]\n\nThe record type A"
+                      "description": "the type of the record set.\nValid values are [A,AAAA,CNAME,MX,NS,PTR,SOA,SRV,TXT]\nTo update the SOA record see \"azure network dns record-set set-soa-record --help\"\n\nThe record type A"
                     },
                     {
                       "flags": "-a  --ipv4-address <ipv4-address>",
