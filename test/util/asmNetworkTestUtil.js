@@ -25,13 +25,13 @@ var retry = 5;
  * @class
  * Initializes a new instance of the asmNetworkTestUtil class.
  * @constructor
- * 
+ *
  * Example use of this class:
  *
  * //creates mobile test class
  * var vmUtil = new asmNetworkTestUtil();
- * // use the methods 
- * 
+ * // use the methods
+ *
  */
 function asmNetworkTestUtil() {
 	this.timeout = 3000000;
@@ -42,9 +42,9 @@ asmNetworkTestUtil.prototype.createVnetForGateway = function(vnetPrefix, vnetAdd
 	cmd.push('-l');
 	cmd.push(location);
 	testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-	    setTimeout(callback, timeout);
-    });
+		result.exitStatus.should.equal(0);
+		setTimeout(callback, timeout);
+	});
 };
 
 asmNetworkTestUtil.prototype.createGatewaySubnet = function(vnetPrefix, subnetPrefix, subnetAddressPrefix, timeout, suite, callback) {
@@ -83,9 +83,9 @@ asmNetworkTestUtil.prototype.listStorageKey = function(storagePrefix, timeout, s
 	testUtils.executeCommand(suite, retry, cmd, function(result) {
 		result.exitStatus.should.equal(0);
 		var storageAccountKeys = JSON.parse(result.text);
-        storageAccountKeys.primaryKey.should.not.be.null;
-        var primaryKey = storageAccountKeys.primaryKey;
-        storageAccountKeys.secondaryKey.should.not.be.null;
+		storageAccountKeys.primaryKey.should.not.be.null;
+		var primaryKey = storageAccountKeys.primaryKey;
+		storageAccountKeys.secondaryKey.should.not.be.null;
 		setTimeout(callback(primaryKey), timeout);
 	});
 };
@@ -108,9 +108,9 @@ asmNetworkTestUtil.prototype.deleteLocalNetwork = function(localnetworkPrefix, t
 };
 asmNetworkTestUtil.prototype.deleteStorage = function(storagePrefix, timeout, suite, callback) {
 	if (!suite.isPlayback()) {
-	var cmd = util.format('storage account delete %s -q --json', storagePrefix).split(' ');
-	testUtils.executeCommand(suite, retry, cmd, function(result) {
-		result.exitStatus.should.equal(0);
+		var cmd = util.format('storage account delete %s -q --json', storagePrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
 			setTimeout(callback, timeout);
 		});
 	} else
@@ -148,32 +148,53 @@ asmNetworkTestUtil.prototype.createSubnetVnet = function(vnetPrefix, vnetAddress
 };
 asmNetworkTestUtil.prototype.createVnet = function(vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr, location, timeout, suite, callback) {
 	var cmd = util.format('network vnet create %s -e %s -i %s -p %s -r %s --json', vnetPrefix, vnetAddressSpace, vnetCidr, subnetStartIp, subnetCidr).split(' ');
-    cmd.push('-l');
-    cmd.push(location);
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        //callback();
+	cmd.push('-l');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		//callback();
 		setTimeout(callback, timeout);
-    });
+	});
 };
 asmNetworkTestUtil.prototype.createVnetMin = function(vnetPrefix, subnetPrefix, location, suite, callback) {
 	var cmd = util.format('network vnet create --vnet %s -n %s --json', vnetPrefix, subnetPrefix).split(' ');
-    cmd.push('-l');
-    cmd.push(location);
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        callback();
-    });
+	cmd.push('-l');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		callback();
+	});
 };
 asmNetworkTestUtil.prototype.deleteVnet = function(vnetPrefix, suite, callback) {
 	if (!suite.isPlayback()) {
-        var cmd = util.format('network vnet delete %s --quiet --json', vnetPrefix).split(' ');
-        testUtils.executeCommand(suite, retry, cmd, function(result) {
-            result.exitStatus.should.equal(0);
-            callback();
-        });
-    } else
-        callback();
+		var cmd = util.format('network vnet delete %s --quiet --json', vnetPrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	} else
+		callback();
+};
+asmNetworkTestUtil.prototype.createReservedIp = function(ripName, location, suite, callback) {
+	var cmd = util.format('network reserved-ip create %s %s --json', ripName, location);
+	suite.execute('network reserved-ip create %s %s --json', ripName, location, function(result) {
+		result.exitStatus.should.equal(0);
+		cmd = util.format('network reserved-ip show %s --json', ripName);
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	});
+};
+asmNetworkTestUtil.prototype.deleteRIP = function(ripName, suite, callback) {
+	if (!suite.isPlayback()) {
+		var cmd = util.format('network reserved-ip delete %s --quiet --json', ripName).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	} else
+		callback();
 };
 asmNetworkTestUtil.prototype.createNSG = function(nsgPrefix, location, suite, callback) {
 	var cmd = util.format('network nsg create %s --json', nsgPrefix).split(' ');
@@ -203,25 +224,25 @@ asmNetworkTestUtil.prototype.createEmptySubVnet = function(vnetPrefix, subnetPre
 		callback();
 	});
 };
-asmNetworkTestUtil.prototype.deleteSubnet = function(vnetPrefix,subnetPrefix, suite, callback) {		
-	if (!suite.isPlayback()) {		
-		var cmd = util.format('network vnet subnet delete %s --quiet --json', vnetPrefix,subnetPrefix).split(' ');		
-		testUtils.executeCommand(suite, retry, cmd, function(result) {		
-			result.exitStatus.should.equal(0);		
-			callback();		
-		});		
-	} else		
-		callback();		
+asmNetworkTestUtil.prototype.deleteSubnet = function(vnetPrefix,subnetPrefix, suite, callback) {
+	if (!suite.isPlayback()) {
+		var cmd = util.format('network vnet subnet delete %s --quiet --json', vnetPrefix,subnetPrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	} else
+		callback();
 };
 asmNetworkTestUtil.prototype.createGateway = function(appGatePrefix, vnetPrefix, subnetPrefix, instanceCount, gatewaySize, description, suite, callback) {
-    var cmd = util.format('network application-gateway create -n %s -e %s -t %s -c %s -z %s --json',
-        appGatePrefix, vnetPrefix, subnetPrefix, instanceCount, gatewaySize).split(' ');
-    cmd.push('-d');
-    cmd.push(description);
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
+	var cmd = util.format('network application-gateway create -n %s -e %s -t %s -c %s -z %s --json',
+		appGatePrefix, vnetPrefix, subnetPrefix, instanceCount, gatewaySize).split(' ');
+	cmd.push('-d');
+	cmd.push(description);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
 		callback();
-    });
+	});
 };
 asmNetworkTestUtil.prototype.deleteGateway = function(appGatePrefix, suite, callback) {
 	if (!suite.isPlayback()) {
@@ -236,20 +257,20 @@ asmNetworkTestUtil.prototype.deleteGateway = function(appGatePrefix, suite, call
 };
 asmNetworkTestUtil.prototype.createService = function(servicePrefix, location, suite, callback) {
 	var cmd = util.format('service create %s --json', servicePrefix).split(' ');
-    cmd.push('--location');
-    cmd.push(location);
-    testUtils.executeCommand(suite, retry, cmd, function(result) {
-        result.exitStatus.should.equal(0);
-        callback();
-    });
+	cmd.push('--location');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		callback();
+	});
 };
 asmNetworkTestUtil.prototype.deleteService = function(servicePrefix, suite, callback) {
-	if (!suite.isPlayback()) {		
+	if (!suite.isPlayback()) {
 		var cmd = util.format('service delete %s --quiet --json', servicePrefix).split(' ');
-		testUtils.executeCommand(suite, retry, cmd, function(result) {		
-			result.exitStatus.should.equal(0);		
-			callback();		
-		});		
-	} else		
-		callback();	
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	} else
+		callback();
 };

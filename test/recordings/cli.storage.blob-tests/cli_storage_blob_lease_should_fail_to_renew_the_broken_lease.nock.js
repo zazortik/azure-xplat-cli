@@ -29,24 +29,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname173328839918?comp=lease')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:492459c0-0001-002b-806d-e2e2bf000000\nTime:2016-07-20T09:58:59.5590671Z</Message></Error>", { 'content-length': '285',
+  .put('/storage-cli-blob-test/blockblobname5169376393893464?comp=lease')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:bb4eacbf-0001-003c-5865-f422dc000000\nTime:2016-08-12T06:47:22.5708719Z</Message></Error>", { 'content-length': '285',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '492459c0-0001-002b-806d-e2e2bf000000',
+  'x-ms-request-id': 'bb4eacbf-0001-003c-5865-f422dc000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 09:58:59 GMT',
+  date: 'Fri, 12 Aug 2016 06:47:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname173328839918?comp=lease')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:492459c0-0001-002b-806d-e2e2bf000000\nTime:2016-07-20T09:58:59.5590671Z</Message></Error>", { 'content-length': '285',
+  .put('/storage-cli-blob-test/blockblobname5169376393893464?comp=lease')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:bb4eacbf-0001-003c-5865-f422dc000000\nTime:2016-08-12T06:47:22.5708719Z</Message></Error>", { 'content-length': '285',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '492459c0-0001-002b-806d-e2e2bf000000',
+  'x-ms-request-id': 'bb4eacbf-0001-003c-5865-f422dc000000',
   'x-ms-version': '2015-04-05',
-  date: 'Wed, 20 Jul 2016 09:58:59 GMT',
+  date: 'Fri, 12 Aug 2016 06:47:21 GMT',
   connection: 'close' });
  return result; }]];
