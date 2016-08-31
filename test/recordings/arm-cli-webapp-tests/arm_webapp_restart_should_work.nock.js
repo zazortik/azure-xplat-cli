@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'fb2c25dc-6bab-45c4-8cc9-cece7c42a95a',
-    name: 'antps14',
+    id: '8d57ddbd-c779-40ea-b660-1015f4bf027d',
+    name: 'Visual Studio Enterprise',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,38 +28,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg17626/providers/Microsoft.Web/sites/webappclitests3400/restart?api-version=2015-08-01')
+  .post('/subscriptions/8d57ddbd-c779-40ea-b660-1015f4bf027d/resourceGroups/testrg19730/providers/Microsoft.Web/sites/webappclitests2535/restart?api-version=2015-08-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '61b1dc3a-8fd3-4ecb-bdfb-8c3543918b2e',
+  'x-ms-request-id': 'a54ffafd-dc23-4630-aedb-df1e71fce4ed',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'b4d6255f-2afb-4236-8463-dc04435a49be',
-  'x-ms-routing-request-id': 'WESTUS2:20160831T025304Z:b4d6255f-2afb-4236-8463-dc04435a49be',
-  date: 'Wed, 31 Aug 2016 02:53:03 GMT',
+  'x-ms-correlation-request-id': '19c3fbb4-17cb-4107-b5a8-245fc9fd6c32',
+  'x-ms-routing-request-id': 'WESTUS2:20160831T050319Z:19c3fbb4-17cb-4107-b5a8-245fc9fd6c32',
+  date: 'Wed, 31 Aug 2016 05:03:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg17626/providers/Microsoft.Web/sites/webappclitests3400/restart?api-version=2015-08-01')
+  .post('/subscriptions/8d57ddbd-c779-40ea-b660-1015f4bf027d/resourceGroups/testrg19730/providers/Microsoft.Web/sites/webappclitests2535/restart?api-version=2015-08-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '61b1dc3a-8fd3-4ecb-bdfb-8c3543918b2e',
+  'x-ms-request-id': 'a54ffafd-dc23-4630-aedb-df1e71fce4ed',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'b4d6255f-2afb-4236-8463-dc04435a49be',
-  'x-ms-routing-request-id': 'WESTUS2:20160831T025304Z:b4d6255f-2afb-4236-8463-dc04435a49be',
-  date: 'Wed, 31 Aug 2016 02:53:03 GMT',
+  'x-ms-correlation-request-id': '19c3fbb4-17cb-4107-b5a8-245fc9fd6c32',
+  'x-ms-routing-request-id': 'WESTUS2:20160831T050319Z:19c3fbb4-17cb-4107-b5a8-245fc9fd6c32',
+  date: 'Wed, 31 Aug 2016 05:03:19 GMT',
   connection: 'close' });
  return result; }]];
