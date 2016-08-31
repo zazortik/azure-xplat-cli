@@ -17,6 +17,7 @@
 
 var should = require('should');
 var util = require('util');
+var utils = require('../../../../lib/util/utils');
 var _ = require('underscore');
 
 var testUtils = require('../../../util/util');
@@ -26,7 +27,18 @@ var networkUtil = new NetworkTestUtil();
 
 var testPrefix = 'arm-network-nic-tests',
   groupName = 'xplat-test-nic',
-  location;
+  location,
+  vnetName = 'test-vnet',
+  vnetAddressSpace = '10.0.0.0/8',
+  subnetName = 'test-subnet',
+  subnetAddressPrefix = '10.0.0.0/24',
+  nsgName = 'test-nsg',
+  poolName = 'test-pool',
+  inboundRuleName = 'test-inbound-rule',
+  subnetId,
+  protocol = 'tcp',
+  frontendPort = '90',
+  backendPort = '90';
 
 var nicProp = {
   group: groupName,
@@ -42,6 +54,16 @@ var nicProp = {
   newEnableIpForwarding: true,
   tags: networkUtil.tags,
   newTags: networkUtil.newTags
+};
+var ipConfigProp1 = {
+  name: 'config01'
+};
+var ipConfigProp2 = {
+  name: 'config02',
+  privateIPAddress: '10.0.0.26',
+  subnetName: subnetName,
+  vnetName: vnetName,
+  isPrimary: true
 };
 var publicIpProp = {
   name: 'test-ip',
@@ -64,17 +86,6 @@ var lbProp = {
   }
 };
 
-var vnetName = 'test-vnet',
-  vnetAddressSpace = '10.0.0.0/8',
-  subnetName = 'test-subnet',
-  subnetAddressPrefix = '10.0.0.0/24',
-  nsgName = 'test-nsg',
-  poolName = 'test-pool',
-  inboundRuleName = 'test-inbound-rule',
-  protocol = 'tcp',
-  frontendPort = '90',
-  backendPort = '90';
-
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
   defaultValue: 'eastus'
@@ -82,7 +93,7 @@ var requiredEnvironment = [{
 
 describe('arm', function () {
   describe('network', function () {
-    var suite, retry = 5;
+    var suite, retry = 5, hour = 60 * 60000;
 
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
@@ -99,6 +110,13 @@ describe('arm', function () {
         vnetName = suite.isMocked ? vnetName : suite.generateId(vnetName, null);
         subnetName = suite.isMocked ? subnetName : suite.generateId(subnetName, null);
         nsgName = suite.isMocked ? nsgName : suite.generateId(nsgName, null);
+
+        ipConfigProp1.group = groupName;
+        ipConfigProp1.nicName = nicProp.name;
+        ipConfigProp2.group = groupName;
+        ipConfigProp2.nicName = nicProp.name;
+        ipConfigProp2.vnetName = vnetName;
+        ipConfigProp2.subnetName = subnetName;
 
         publicIpProp.location = location;
         publicIpProp.group = groupName;
@@ -129,13 +147,15 @@ describe('arm', function () {
     });
 
     describe('nic', function () {
+      this.timeout(hour);
       it('create should create nic with default ip configuration', function (done) {
         networkUtil.createGroup(groupName, location, suite, function () {
           networkUtil.createVnet(groupName, vnetName, location, vnetAddressSpace, suite, function () {
             networkUtil.createSubnet(groupName, vnetName, subnetName, subnetAddressPrefix, suite, function (subnet) {
+              subnetId = subnet.id;
               networkUtil.createPublicIp(publicIpProp, suite, function (publicIp) {
                 var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -r {internalDnsNameLabel} -f {enableIpForwarding} -t {tags} -u {1} -i {2} --json'
-                  .formatArgs(nicProp, subnet.id, publicIp.id);
+                  .formatArgs(nicProp, subnetId, publicIp.id);
 
                 testUtils.executeCommand(suite, retry, cmd, function (result) {
                   result.exitStatus.should.equal(0);
@@ -222,8 +242,8 @@ describe('arm', function () {
         });
       });
 
-      // TODO uncomment when IPv6 feature goes to public
-      /*it('ip-config create should should create another ip configuration', function (done) {
+      // TODO uncomment when IPv6 feature goes to public.
+      /* it('ip-config create should should create another ip configuration', function (done) {
         var cmd = 'network nic ip-config create -g {group} -c {name} -n {ipConfigName} -b {newPrivateIPAddressVersion} --json'.formatArgs(nicProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -381,12 +401,10 @@ describe('arm', function () {
           done();
         });
       });
-
       it('delete should delete nic', function (done) {
         var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
-
           cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -394,6 +412,64 @@ describe('arm', function () {
             nic.should.be.empty;
             done();
           });
+        });
+      });
+
+      it('create should create another nic with default ip configuration', function (done) {
+        var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -u {1} --json'
+          .formatArgs(nicProp, subnetId);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          networkUtil.shouldBeSucceeded(nic);
+          done();
+        });
+      });
+      it('ip-config create should create second ip configuration', function (done) {
+        var cmd = 'network nic ip-config create -g {group} -c {nicName} -n {name} --json'.formatArgs(ipConfigProp1);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          var createdConfig = utils.findFirstCaseIgnore(nic.ipConfigurations, {name: ipConfigProp1.name});
+          createdConfig.should.not.be.empty;
+          networkUtil.shouldBeSucceeded(createdConfig);
+          done();
+        });
+      });
+      it('ip-config create should create third ip configuration', function (done) {
+        var cmd = 'network nic ip-config create -g {group} -c {nicName} -n {name} -m {vnetName} -k {subnetName} -y {isPrimary} -q --json'.formatArgs(ipConfigProp2);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          var createdConfig = utils.findFirstCaseIgnore(nic.ipConfigurations, {name: ipConfigProp2.name});
+          createdConfig.should.not.be.empty;
+          createdConfig.primary.should.be.true;
+          _.some(nic.ipConfigurations, function (ipConfig) {
+            return ipConfig.isPrimary === true && ipConfig.name === ipConfigProp2.name;
+          }).should.be.false;
+          networkUtil.shouldBeSucceeded(createdConfig);
+          done();
+        });
+      });
+      it('ip-config set should set second ip configuration as primary', function (done) {
+        var cmd = 'network nic ip-config set -g {group} -c {nicName} -n {name} -y true --json'.formatArgs(ipConfigProp1);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          var primaryConfig = utils.findFirstCaseIgnore(nic.ipConfigurations, {name: ipConfigProp1.name});
+          primaryConfig.primary.should.be.true;
+          done();
+        });
+      });
+      it('ip-config delete should delete third ip configuration', function (done) {
+        var cmd = 'network nic ip-config delete -g {group} -c {nicName} -n {name} -q --json'.formatArgs(ipConfigProp2);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var nic = JSON.parse(result.text);
+          _.some(nic.ipConfigurations, function (ipConfig) {
+            return ipConfig.name === ipConfigProp2.name;
+          }).should.be.false;
+          done();
         });
       });
     });

@@ -281,6 +281,7 @@ describe('arm', function () {
           });
         });
       });
+
       it('should work with URI containing SAS token', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/startersite-parameters.json');
         setUniqParameterNames(suite, parameterFile);
@@ -398,7 +399,6 @@ describe('arm', function () {
             });
           });
         });
-
 
       it('should all work with a local file', function (done) {
         var parameterFile = path.join(__dirname, '../../../data/arm-deployment-parameters.json');
