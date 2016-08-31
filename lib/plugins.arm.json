@@ -54440,6 +54440,15 @@
                   "description": "the location"
                 },
                 {
+                  "flags": "-c, --ip-config-name <ip-config-name>",
+                  "required": -22,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--ip-config-name",
+                  "description": "the name of the default ip config configuration"
+                },
+                {
                   "flags": "-u, --subnet-id <subnet-id>",
                   "required": -17,
                   "optional": 0,
@@ -54970,6 +54979,24 @@
                       "description": "the name of the ip configuration"
                     },
                     {
+                      "flags": "-y, --is-primary <is-primary>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--is-primary",
+                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying true for an ip-config, all other ip-configs will be set as \"primary: false\""
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for change primary IP config confirmation"
+                    },
+                    {
                       "flags": "-u, --subnet-id <subnet-id>",
                       "required": -17,
                       "optional": 0,
@@ -55119,6 +55146,15 @@
                       "short": "-n",
                       "long": "--name",
                       "description": "the name of the ip configuration"
+                    },
+                    {
+                      "flags": "-y, --is-primary <is-primary>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-y",
+                      "long": "--is-primary",
+                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying true for an ip-config, all other ip-configs will be set as \"primary: false\""
                     },
                     {
                       "flags": "-u, --subnet-id <subnet-id>",
@@ -55345,7 +55381,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete a network interface ip configuration",
+                  "description": "Delete a network interface ip configuration\n     IP configuration marked as primary cannot be deleted. In this case, update another ip configuration as primary prior to deletion\n     Deleting an ip configuration is not supported if it is the only one on a network interface. There must be at least one ip configuration",
                   "fullName": "network nic ip-config delete",
                   "usage": "[options] <resource-group> <nic-name> <name>",
                   "filePath": "commands/arm/network/network._js",
