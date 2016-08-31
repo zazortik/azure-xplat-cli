@@ -65,12 +65,13 @@ describe('arm', function() {
     after(function(done) {
       suite.execute('group delete %s --quiet', testResourceGroup, function() {
         suite.teardownSuite(done);
-        done();
       });
     });
 
     beforeEach(function(done) {
-      suite.setupTest(done);
+      suite.setupTest(function() {
+        done();
+      });
     });
 
     afterEach(function(done) {
@@ -132,7 +133,7 @@ describe('arm', function() {
         }
 
         function setPolicySomePermsMustSucceed() {
-          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --enabled-for-deployment true --enabled-for-template-deployment true --enabled-for-disk-encryption true --json', vaultName, objectId, function(result) {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --perms-to-certificates ["get","delete"] --enabled-for-deployment true --enabled-for-template-deployment true --enabled-for-disk-encryption true --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {
@@ -155,12 +156,23 @@ describe('arm', function() {
             vault.properties.enabledForDeployment.should.be.true;
             vault.properties.enabledForTemplateDeployment.should.be.true;
             vault.properties.enabledForDiskEncryption.should.be.true;
-            setPolicyEmptySecretPermsMustSucceedAndKillObjectId();
+            setPolicyEmptySecretPermsMustSucceedAndLetObjectIdThere();
           });
         }
 
-        function setPolicyEmptySecretPermsMustSucceedAndKillObjectId() {
+        function setPolicyEmptySecretPermsMustSucceedAndLetObjectIdThere() {
           suite.execute('keyvault set-policy %s --object-id %s --perms-to-secrets [] --json', vaultName, objectId, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.properties.accessPolicies.some(function(policy) {
+              return policy.objectId.toLowerCase() === objectId.toLowerCase();
+            }).should.be.true;
+            setPolicyEmptyCertificatePermsMustSucceedAndKillObjectId();
+          });
+        }
+
+        function setPolicyEmptyCertificatePermsMustSucceedAndKillObjectId() {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-certificates [] --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {

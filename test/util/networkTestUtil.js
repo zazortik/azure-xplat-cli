@@ -261,7 +261,7 @@ _.extend(NetworkTestUtil.prototype, {
       self.createSubnet(gatewayProp.group, gatewayProp.vnetName, gatewayProp.subnetName, gatewayProp.subnetAddressPrefix, suite, function (subnet) {
         self.createPublicIpLegacy(gatewayProp.group, gatewayProp.publicIpName, gatewayProp.location, suite, function (publicIp) {
           var cmd = util.format('network vpn-gateway create -g {group} -n {name} -l {location} -w {gatewayType} -y {vpnType} -k {sku} ' +
-            '-a {privateIpAddress} -b {enableBgp} -t {tags} -u {1} -f {2} --json').formatArgs(gatewayProp, publicIp.id, subnet.id);
+            '-b {enableBgp} -t {tags} -u {1} -f {2} --json').formatArgs(gatewayProp, publicIp.id, subnet.id);
 
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -273,7 +273,6 @@ _.extend(NetworkTestUtil.prototype, {
             vpnGateway.enableBgp.should.equal(gatewayProp.enableBgp);
             vpnGateway.ipConfigurations.length.should.equal(1);
             var ipConfig = vpnGateway.ipConfigurations[0];
-            ipConfig.privateIPAddress.should.equal(gatewayProp.privateIpAddress);
             ipConfig.subnet.id.should.equal(subnet.id);
             ipConfig.publicIPAddress.id.should.equal(publicIp.id);
             self.shouldHaveTags(vpnGateway);
@@ -310,13 +309,13 @@ _.extend(NetworkTestUtil.prototype, {
   },
   createDnsRecordSet: function (rsetProp, suite, callback) {
     var self = this;
-    var cmd = 'network dns record-set create -g {group} -z {zoneName} -n {name} -y {type} -l {ttl} -t {tags} --json'
+    var cmd = 'network dns record-set create -g {group} -z {zoneName} -n {name} -y {type} -l {ttl} -m {metadata} --json'
       .formatArgs(rsetProp);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
       var rset = JSON.parse(result.text);
       rset.name.should.equal(rsetProp.name);
-      self.shouldHaveTags(rset);
+      self.shouldHaveTags(rset, 'metadata');
       callback();
     });
   },
@@ -394,12 +393,14 @@ _.extend(NetworkTestUtil.prototype, {
   /**
    * Assertions
    */
-  shouldHaveTags: function (obj) {
-    tagUtils.getTagsInfo(obj.tags).should.equal(this.tags);
+  shouldHaveTags: function (obj, propName) {
+    if (propName === undefined) propName = 'tags';
+    tagUtils.getTagsInfo(obj[propName]).should.equal(this.tags);
   },
-  shouldAppendTags: function (obj) {
+  shouldAppendTags: function (obj, propName) {
+    if (propName === undefined) propName = 'tags';
     var pattern = this.tags + ';' + this.newTags;
-    tagUtils.getTagsInfo(obj.tags).should.equal(pattern);
+    tagUtils.getTagsInfo(obj[propName]).should.equal(pattern);
   },
   shouldBeSucceeded: function (obj) {
     obj.provisioningState.should.equal(this.stateSucceeded);

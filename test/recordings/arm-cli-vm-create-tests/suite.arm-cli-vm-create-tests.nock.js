@@ -15,7 +15,6 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
-    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,10 +22,10 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_VM_TEST_LOCATION'] = 'southeastasia';
+  process.env['AZURE_VM_TEST_LOCATION'] = 'eastus';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplatTestGVMCreate7980','xplatTestaAvail9749','xplatteststorage19288','xplatteststoragecnt12278','xplattestipdns4618','xplattestipdns27225'];};
+ exports.randomTestIdsGenerated = function() { return ['xplatTestGVMCreate3424','xplatTestaAvail6270','xplatteststorage12584','xplatteststoragecnt15038','xplattestipdns7780','xplattestipdns21308'];};
