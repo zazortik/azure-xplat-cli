@@ -114,8 +114,8 @@ describe('arm', function () {
       });
     });
 
-    it('config update should work', function (done) {
-      suite.execute('webapp config update %s %s --phpversion %s --json', groupName, sitename, updatedPHPValue, function (result) {
+    it('config set should work', function (done) {
+      suite.execute('webapp config set %s %s --phpversion %s --json', groupName, sitename, updatedPHPValue, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });

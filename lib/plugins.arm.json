@@ -69351,9 +69351,9 @@
               ]
             },
             {
-              "name": "update",
-              "description": "Update webapp configuration (1 setting at a time)",
-              "fullName": "webapp config update",
+              "name": "set",
+              "description": "set webapp configuration (1 setting at a time)",
+              "fullName": "webapp config set",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
               "options": [

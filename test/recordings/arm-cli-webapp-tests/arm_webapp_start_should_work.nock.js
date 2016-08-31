@@ -28,38 +28,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg1177/providers/Microsoft.Web/sites/webappclitests2910/start?api-version=2015-08-01')
+  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg19641/providers/Microsoft.Web/sites/webappclitests4194/start?api-version=2015-08-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '959b3139-bbfa-42bb-843c-e5565dc265c6',
+  'x-ms-request-id': '121ef386-0ac1-4921-97ba-edba40c2ea46',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '38a63dbc-d8fd-4e48-82db-7dc9a852211e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160831T053434Z:38a63dbc-d8fd-4e48-82db-7dc9a852211e',
-  date: 'Wed, 31 Aug 2016 05:34:34 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1181',
+  'x-ms-correlation-request-id': 'ecea5bbd-d647-486d-8890-48ef8f1c523a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160831T213022Z:ecea5bbd-d647-486d-8890-48ef8f1c523a',
+  date: 'Wed, 31 Aug 2016 21:30:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg1177/providers/Microsoft.Web/sites/webappclitests2910/start?api-version=2015-08-01')
+  .post('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg19641/providers/Microsoft.Web/sites/webappclitests4194/start?api-version=2015-08-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '959b3139-bbfa-42bb-843c-e5565dc265c6',
+  'x-ms-request-id': '121ef386-0ac1-4921-97ba-edba40c2ea46',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '38a63dbc-d8fd-4e48-82db-7dc9a852211e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160831T053434Z:38a63dbc-d8fd-4e48-82db-7dc9a852211e',
-  date: 'Wed, 31 Aug 2016 05:34:34 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1181',
+  'x-ms-correlation-request-id': 'ecea5bbd-d647-486d-8890-48ef8f1c523a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160831T213022Z:ecea5bbd-d647-486d-8890-48ef8f1c523a',
+  date: 'Wed, 31 Aug 2016 21:30:22 GMT',
   connection: 'close' });
  return result; }]];
