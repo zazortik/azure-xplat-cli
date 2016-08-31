@@ -309,13 +309,13 @@ _.extend(NetworkTestUtil.prototype, {
   },
   createDnsRecordSet: function (rsetProp, suite, callback) {
     var self = this;
-    var cmd = 'network dns record-set create -g {group} -z {zoneName} -n {name} -y {type} -l {ttl} -t {tags} --json'
+    var cmd = 'network dns record-set create -g {group} -z {zoneName} -n {name} -y {type} -l {ttl} -m {metadata} --json'
       .formatArgs(rsetProp);
     testUtils.executeCommand(suite, retry, cmd, function (result) {
       result.exitStatus.should.equal(0);
       var rset = JSON.parse(result.text);
       rset.name.should.equal(rsetProp.name);
-      self.shouldHaveTags(rset);
+      self.shouldHaveTags(rset, 'metadata');
       callback();
     });
   },
@@ -393,12 +393,14 @@ _.extend(NetworkTestUtil.prototype, {
   /**
    * Assertions
    */
-  shouldHaveTags: function (obj) {
-    tagUtils.getTagsInfo(obj.tags).should.equal(this.tags);
+  shouldHaveTags: function (obj, propName) {
+    if (propName === undefined) propName = 'tags';
+    tagUtils.getTagsInfo(obj[propName]).should.equal(this.tags);
   },
-  shouldAppendTags: function (obj) {
+  shouldAppendTags: function (obj, propName) {
+    if (propName === undefined) propName = 'tags';
     var pattern = this.tags + ';' + this.newTags;
-    tagUtils.getTagsInfo(obj.tags).should.equal(pattern);
+    tagUtils.getTagsInfo(obj[propName]).should.equal(pattern);
   },
   shouldBeSucceeded: function (obj) {
     obj.provisioningState.should.equal(this.stateSucceeded);
