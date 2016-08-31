@@ -52640,7 +52640,16 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--is-primary",
-                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying false for an ip-config, all other ip-configs will be set as \"primary: true\""
+                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying true for an ip-config, all other ip-configs will be set as \"primary: false\""
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for change primary IP config confirmation"
                     },
                     {
                       "flags": "-u, --subnet-id <subnet-id>",
@@ -52800,7 +52809,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--is-primary",
-                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying false for an ip-config, all other ip-configs will be set as \"primary: true\""
+                      "description": "set the ip-config as primary for the network interface [false,true].\n     Default is false, if option is not specified.\n     NOTE: only one ip configuration can be set as primary for a NIC. \n     By specifying true for an ip-config, all other ip-configs will be set as \"primary: false\""
                     },
                     {
                       "flags": "-u, --subnet-id <subnet-id>",
