@@ -25137,7 +25137,7 @@
             },
             {
               "name": "validate-migration",
-              "description": "Prepare Virtual Network migration api validates the given virtual network for IaaS Classic to ARM migration.",
+              "description": "Validate Virtual Network migration api validates the given virtual network for IaaS Classic to ARM migration.",
               "fullName": "network vnet validate-migration",
               "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
@@ -26261,9 +26261,9 @@
           "commands": [
             {
               "name": "abort-migration",
-              "description": "",
+              "description": "Abort Reserved IP migration api validates and aborts the given reserved IP for IaaS Classic to ARM migration.",
               "fullName": "network reserved-ip abort-migration",
-              "usage": "[options] <ip-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
                 {
@@ -26292,12 +26292,12 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--ip-name <ip-name>",
-                  "required": -11,
+                  "flags": "--name <name>",
+                  "required": -8,
                   "optional": 0,
                   "bool": true,
-                  "long": "--ip-name",
-                  "description": "ip-name"
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -26312,9 +26312,9 @@
             },
             {
               "name": "commit-migration",
-              "description": "",
+              "description": "Commit Reserved IP migration api validates and commits the given reserved IP for IaaS Classic to ARM migration.",
               "fullName": "network reserved-ip commit-migration",
-              "usage": "[options] <ip-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
                 {
@@ -26343,12 +26343,12 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--ip-name <ip-name>",
-                  "required": -11,
+                  "flags": "--name <name>",
+                  "required": -8,
                   "optional": 0,
                   "bool": true,
-                  "long": "--ip-name",
-                  "description": "ip-name"
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -26363,9 +26363,9 @@
             },
             {
               "name": "prepare-migration",
-              "description": "",
+              "description": "Prepare Reserved IP migration api validates and prepare the given reserved IP for IaaS Classic to ARM migration.",
               "fullName": "network reserved-ip prepare-migration",
-              "usage": "[options] <ip-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
                 {
@@ -26394,12 +26394,12 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--ip-name <ip-name>",
-                  "required": -11,
+                  "flags": "--name <name>",
+                  "required": -8,
                   "optional": 0,
                   "bool": true,
-                  "long": "--ip-name",
-                  "description": "ip-name"
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
@@ -26414,9 +26414,9 @@
             },
             {
               "name": "validate-migration",
-              "description": "",
+              "description": "Validate Reserved IP migration api validates the given reserved IP for IaaS Classic to ARM migration.",
               "fullName": "network reserved-ip validate-migration",
-              "usage": "[options] <ip-name>",
+              "usage": "[options] <name>",
               "filePath": "commands/asm/network.generated/network._js",
               "options": [
                 {
@@ -26445,12 +26445,12 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--ip-name <ip-name>",
-                  "required": -11,
+                  "flags": "--name <name>",
+                  "required": -8,
                   "optional": 0,
                   "bool": true,
-                  "long": "--ip-name",
-                  "description": "ip-name"
+                  "long": "--name",
+                  "description": "name"
                 },
                 {
                   "flags": "-s, --subscription <subscription>",
