@@ -30962,6 +30962,24 @@
               "description": "the path to public key file for SSH authentication,\n                                               & this parameter is valid only when os-type is Linux."
             },
             {
+              "flags": "-w, --public-ip-domain-name <public-ip-domain-name>",
+              "required": -29,
+              "optional": 0,
+              "bool": true,
+              "short": "-w",
+              "long": "--public-ip-domain-name",
+              "description": "Optional -- the public ip domain name\n                                               This sets the DNS to \"<publicip-domain-name>.<location>.cloudapp.azure.com\".\n                                               This parameter will be used only when creating new public IP."
+            },
+            {
+              "flags": "-C, --custom-data <custom-data-file>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-C",
+              "long": "--custom-data",
+              "description": "Optional -- CustomData file"
+            },
+            {
               "flags": "-s, --subscription <subscription>",
               "required": -20,
               "optional": 0,
@@ -33170,7 +33188,7 @@
                   "bool": true,
                   "short": "-U",
                   "long": "--auto-upgrade-minor-version",
-                  "description": "Enable auto-upgrade across minor version"
+                  "description": "Pick the highest minor version of the extension"
                 },
                 {
                   "flags": "-s, --subscription <id>",
@@ -48198,7 +48216,7 @@
           "description": "list the available locations",
           "fullName": "location list",
           "usage": "[options]",
-          "filePath": "commands/arm/location/location.js",
+          "filePath": "commands/arm/location/location._js",
           "options": [
             {
               "flags": "-v, --verbose",
@@ -48232,6 +48250,14 @@
               "bool": true,
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "shows full provider list with latitude and longitude"
             }
           ]
         }
@@ -64698,14 +64724,6 @@
               "description": "more verbose with debug output"
             },
             {
-              "flags": "--details",
-              "required": 0,
-              "optional": 0,
-              "bool": true,
-              "long": "--details",
-              "description": "shows full list of resource type and locations."
-            },
-            {
               "flags": "--json",
               "required": 0,
               "optional": 0,
@@ -64721,6 +64739,14 @@
               "short": "-s",
               "long": "--subscription",
               "description": "Subscription to list providers for"
+            },
+            {
+              "flags": "--details",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--details",
+              "description": "shows full list of resource type and locations."
             }
           ]
         },
