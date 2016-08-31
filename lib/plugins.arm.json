@@ -69352,7 +69352,7 @@
             },
             {
               "name": "update",
-              "description": "Update webapp configuration",
+              "description": "Update webapp configuration (1 setting at a time)",
               "fullName": "webapp config update",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
@@ -69407,7 +69407,7 @@
                   "bool": true,
                   "short": "-l",
                   "long": "--location",
-                  "description": "the location of the webapp to update, , \n\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
+                  "description": "the location of the webapp to update, , \n\t\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
                 },
                 {
                   "flags": "-j --jsonInput <jsonInput>",
