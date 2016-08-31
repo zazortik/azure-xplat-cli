@@ -48,7 +48,6 @@
     "azure-arm-network": "0.16.0",
     "azure-arm-powerbiembedded": "0.1.0",
     "azure-arm-trafficmanager": "0.10.5",
-    "azure-arm-dns": "0.10.1",
     "azure-arm-dns": "0.11.1",
     "azure-arm-website": "0.11.0",
     "azure-arm-rediscache": "0.2.1",
