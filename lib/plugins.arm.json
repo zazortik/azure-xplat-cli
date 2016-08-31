@@ -65722,7 +65722,7 @@
           "name": "create",
           "description": "Creates a resource in a resource group",
           "fullName": "resource create",
-          "usage": "[options] <resource-group> <name> <resource-type> <location> <api-version>",
+          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -65859,7 +65859,7 @@
           "name": "set",
           "description": "Updates a resource in a resource group without any templates or parameters",
           "fullName": "resource set",
-          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -65939,6 +65939,15 @@
               "short": "-o",
               "long": "--api-version",
               "description": "the API version of the resource provider"
+            },
+            {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "the resource id can be provided instead of <resource-group> <name> <resource-type>"
             },
             {
               "flags": "--parent <parent>",

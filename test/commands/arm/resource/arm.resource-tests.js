@@ -71,7 +71,7 @@ describe('arm', function () {
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('group show %s --json', groupName, function (showResult) {
@@ -88,14 +88,15 @@ describe('arm', function () {
             });
           });
         });
-      });
+            });
+
       it('should work with sku', function (done) {
           var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
           var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
           suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
               
-             suite.execute('resource create %s %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
+             suite.execute('resource create %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "name": "' + resourceName + '", "siteMode": "Limited", "computeMode": "Shared" }', '{ "name": "F0", "tier" : "Free", "size" : "A0" }', function (result) {
                var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
                result.exitStatus.should.equal(0);
 
@@ -117,28 +118,31 @@ describe('arm', function () {
             });
           });
         });
+
       it('should error with incorrectly formatted sku', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
             
-          suite.execute('resource create %s %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "random": "aa", "tier" : "free", "size" : "A0" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --sku %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "random": "aa", "tier" : "free", "size" : "A0" }', function (result) {
             var expectedError = util.format('Required property \'name\' not found in JSON. Path \'sku\'');
-            result.errorText.should.include(expectedError);
+                        result.errorText.should.include(expectedError);
+
             suite.execute('group delete %s --quiet --json', groupName, function () {
               done();
             });
           });
         }); 
       });
+
       it.skip('should work with plan', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
             
-          suite.execute('resource create %s %s %s %s %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{"apiVersion":"2015-08-01","name":"testingPlan","type":"Microsoft.Web/serverfarms"}', function (result) {
+          suite.execute('resource create %s %s %s %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{"apiVersion":"2015-08-01","name":"testingPlan","type":"Microsoft.Web/serverfarms"}', function (result) {
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             result.exitStatus.should.equal(0);
               
@@ -159,14 +163,17 @@ describe('arm', function () {
           });
         });
       });
+
       it('should error with non-third party plan', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
         suite.execute('group create -n %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
-          suite.execute('resource create %s %s %s %s %s -p %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "name": "User Defined", "publisher" : "Microsoft" , "product" : "tester", "version": "2.0.1" }', function (result) {
+
+          suite.execute('resource create %s %s %s %s -p %s --plan %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', '{ "name": "User Defined", "publisher" : "Microsoft" , "product" : "tester", "version": "2.0.1" }', function (result) {
             var expectedError = util.format('Resource plan can only be set for 3rd party store resources.');
             result.errorText.should.include(expectedError);
+
             suite.execute('group delete %s --quiet --json', groupName, function () {
               done();
             });
@@ -234,7 +241,7 @@ describe('arm', function () {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
 
-        suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+        suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
           result.exitStatus.should.equal(1);
           var expectedError = util.format('Resource group \'%s\' could not be found.', groupName);
           result.errorText.should.include(expectedError);
@@ -251,10 +258,10 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testWebsitesResourceLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
-                        suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
+            suite.execute('resource delete %s %s %s %s --quiet --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (result) {
               result.exitStatus.should.equal(0);
 
               suite.execute('group show %s --json', groupName, function (showResult) {
@@ -273,6 +280,7 @@ describe('arm', function () {
           });
         });
       });
+
       it('should delete by id', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -280,7 +288,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testWebsitesResourceLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
 
@@ -317,7 +325,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource list %s --json', groupName, function (listResult) {
@@ -343,10 +351,10 @@ describe('arm', function () {
           suite.execute('group create %s --location %s --json', groupName2, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName1, resourceName1, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            suite.execute('resource create %s %s %s %s -p %s --json', groupName1, resourceName1, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
               result.exitStatus.should.equal(0);
 
-              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName2, resourceName2, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              suite.execute('resource create %s %s %s %s -p %s --json', groupName2, resourceName2, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                 result.exitStatus.should.equal(0);
 
                 suite.execute('resource list -g %s -r %s --json', groupName1, 'Microsoft.Web/sites', function (listResult) {
@@ -380,7 +388,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource show %s %s %s %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
@@ -407,7 +415,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
 
             suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, function (showResult) {
@@ -424,6 +432,7 @@ describe('arm', function () {
           });
         });
       });
+
       it('should show by id starting with subscription', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -431,7 +440,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             result.exitStatus.should.equal(0);
 
@@ -448,6 +457,7 @@ describe('arm', function () {
           });
         });
       });
+
       it('should show by id starting with resourceGroup', function (done) {
         var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpRes', createdResources, suite.isMocked);
@@ -455,7 +465,7 @@ describe('arm', function () {
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             var resourceId = result.text.split(':')[1].split(",")[0].split("\"")[1];
             resourceId = resourceId.split("/").slice(3, resourceId.length).join("/");
             result.exitStatus.should.equal(0);
@@ -485,7 +495,7 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           
           //create sample resource to move
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
             
             //get the resource id
@@ -524,11 +534,11 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           
           //create sample resource1 to move
-          suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName1, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+          suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName1, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName1 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
             result.exitStatus.should.equal(0);
             
             //create sample resource2 to move
-            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName2, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+            suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName2, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName2 + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
               result.exitStatus.should.equal(0);
 
               //get the resource1 id
@@ -569,6 +579,7 @@ describe('arm', function () {
           });
         });
       });
+
       it('should work with api version provided', function (done) {
           var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
           var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
@@ -578,7 +589,7 @@ describe('arm', function () {
               result.exitStatus.should.equal(0);
               
               //create sample resource to move
-              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                   result.exitStatus.should.equal(0);
                   
                   //get the resource id
@@ -606,6 +617,7 @@ describe('arm', function () {
               });
           });
       });
+
       it('should default to valid api version when incorrect format', function (done) {
           var groupName = suite.generateId('xTestResource', createdGroups, suite.isMocked);
           var destinationGroupName = suite.generateId('xTestResource2', createdGroups, suite.isMocked);
@@ -615,7 +627,7 @@ describe('arm', function () {
               result.exitStatus.should.equal(0);
               
               //create sample resource to move
-              suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testWebsitesResourceLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
+              suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }', function (result) {
                   result.exitStatus.should.equal(0);
                   
                   //get the resource id
@@ -646,23 +658,27 @@ describe('arm', function () {
     });
 
     //Tracking: RD Bug 1713476: failed to set configure app settings
-    describe('set', function () {
+    describe.only('set', function () {
       it('should set the appsettings of a website resource', function(done) {
         var groupName = suite.generateId('xTestResourceSet', createdGroups, suite.isMocked);
         var resourceName = suite.generateId('xTestGrpResSet', createdResources, suite.isMocked);
-        var parentRsrc = 'sites/' + resourceName;
-
+        var parentRsrc = resourceName + '/web';
+        var resourceNameWeb = resourceName + '';
         suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
           result.exitStatus.should.equal(0);
 
-          suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testGroupLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1" }', function (result) {
+                    suite.execute('resource create -g %s -n %s -r %s -l %s -o %s -p %s --json', groupName, resourceName, 'Microsoft.Web/sites', testGroupLocation, testApiVersion, '{ "Name": "' + resourceName + '", "SiteMode": "Standard", "ComputeMode": "Limited", "workerSize" : "0", "sku" : "Free", "hostingplanName" : "xTestHostingplan1" }', function (result) {
+                        console.log(result)
+
             result.exitStatus.should.equal(0);
 
             //Make a change to appsettings property of web config
-            suite.execute('resource set -g %s -n %s -r %s --parent %s -o %s -p %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc , testApiVersion, '{"appSettings": [{"name": "testname1", "value": "testvalue1"}]}', function (setResult) {
+                        suite.execute('resource set -g %s -n %s -r %s -o %s -p %s --json', groupName, parentRsrc, 'Microsoft.Web/sites' , testApiVersion, '{"appSettings": [{"name": "testname1", "value": "testvalue1"}]}', function (setResult) {
+                            console.log(setResult);
               setResult.exitStatus.should.equal(0);
 
-              suite.execute('resource show -g %s -n %s -r %s --parent %s -o %s --json', groupName, 'web', 'Microsoft.Web/sites/config', parentRsrc, testApiVersion, function (showResult) {
+                            suite.execute('resource show -g %s -n %s -r %s -o %s --json', groupName, parentRsrc , 'Microsoft.Web/sites', testApiVersion, function (showResult) {
+                  console.log(showResult)
                 showResult.exitStatus.should.equal(0);
                                 
                 //Search for appSettings name=testname1, value=tesvalue1 to make sure resource set did work
