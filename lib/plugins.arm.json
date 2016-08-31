@@ -46789,6 +46789,14 @@
               "description": "JSON-encoded array of strings representing secret operations; each string can be one of [all, set, get, list, delete]"
             },
             {
+              "flags": "--perms-to-certificates <perms-to-certificates>",
+              "required": -25,
+              "optional": 0,
+              "bool": true,
+              "long": "--perms-to-certificates",
+              "description": "JSON-encoded array of strings representing certificate operations; each string can be one of [all, get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers]"
+            },
+            {
               "flags": "--enabled-for-deployment <boolean>",
               "required": -26,
               "optional": 0,
@@ -46934,6 +46942,1791 @@
         }
       ],
       "categories": {
+        "certificate": {
+          "name": "certificate",
+          "description": "Commands to manage certificates in the Azure Key Vault service",
+          "fullName": "keyvault certificate",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "Lists certificates of a vault",
+              "fullName": "keyvault certificate list",
+              "usage": "[options] <vault-name>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                }
+              ]
+            },
+            {
+              "name": "list-versions",
+              "description": "Lists certificate versions",
+              "fullName": "keyvault certificate list-versions",
+              "usage": "[options] <vault-name> [certificate-name]",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "lists only versions of this certificate"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Shows a vault certificate",
+              "fullName": "keyvault certificate show",
+              "usage": "[options] <vault-name> <certificate-name> [certificate-version]",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-r, --certificate-version <certificate-version>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--certificate-version",
+                  "description": "the certificate version; if omited, uses the most recent"
+                }
+              ]
+            },
+            {
+              "name": "get",
+              "description": "Downloads a certificate from the vault",
+              "fullName": "keyvault certificate get",
+              "usage": "[options] <vault-name> <certificate-name> [certificate-version] <file>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-r, --certificate-version <certificate-version>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--certificate-version",
+                  "description": "the certificate version; if omited, uses the most recent"
+                },
+                {
+                  "flags": "--file <file>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--file",
+                  "description": "the file to receive certificate contents; the file must not exist otherwise the command fails"
+                },
+                {
+                  "flags": "--encode <encoding>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--encode",
+                  "description": "tells to write a file by encoding certificate contents with the informed encoding; valid values: [base64]"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Creates a certificate in the vault",
+              "fullName": "keyvault certificate create",
+              "usage": "[options] <vault-name> <certificate-name>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-p --certificate-policy <certificate-policy>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--certificate-policy",
+                  "description": "a JSON-formatted string containing the certificate policy."
+                },
+                {
+                  "flags": "-e --certificate-policy-file <certificate-policy-file>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--certificate-policy-file",
+                  "description": "a file containing the certificate policy. Mutually exlcusive with --certificate-policy.",
+                  "fileRelatedOption": true
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "Tags to set on the certificate. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                }
+              ]
+            },
+            {
+              "name": "import",
+              "description": "Imports a certificate into the vault",
+              "fullName": "keyvault certificate import",
+              "usage": "[options] <vault-name> <certificate-name>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-b --content <content>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--content",
+                  "description": "a base64 encoded string containing the certificate and private key (optional) to be imported"
+                },
+                {
+                  "flags": "-e --content-file <content-file>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--content-file",
+                  "description": "a file containing the certificate and private key (optional) to be imported",
+                  "fileRelatedOption": true
+                },
+                {
+                  "flags": "--content-file-binary <boolean>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--content-file-binary",
+                  "description": "indicates if the content file is binary. valid values: [false, true]. default is false."
+                },
+                {
+                  "flags": "-d, --password <password>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-d",
+                  "long": "--password",
+                  "description": "password of the file if it contains a encrypted private key"
+                },
+                {
+                  "flags": "-p --certificate-policy <certificate-policy>",
+                  "required": -25,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--certificate-policy",
+                  "description": "a JSON-formatted string containing the certificate policy."
+                },
+                {
+                  "flags": "-e --certificate-policy-file <certificate-policy-file>",
+                  "required": -30,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-e",
+                  "long": "--certificate-policy-file",
+                  "description": "a file containing the certificate policy. Mutually exlusive with --certificate-policy.",
+                  "fileRelatedOption": true
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "Tags to set on the certificate. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                }
+              ]
+            },
+            {
+              "name": "merge",
+              "description": "Merges certificate(s)into the vault",
+              "fullName": "keyvault certificate merge",
+              "usage": "[options] <vault-name> <certificate-name> <content>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-b --content <content>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--content",
+                  "description": "certificate chain to merge; must be JSON-encoded array of base64 encoded certificate"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "Tags to set on the certificate. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                }
+              ]
+            },
+            {
+              "name": "set-attributes",
+              "description": "Changes attributes of an existing certificate",
+              "fullName": "keyvault certificate set-attributes",
+              "usage": "[options] <vault-name> <certificate-name> [certificate-version]",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "name of the certificate to be modified"
+                },
+                {
+                  "flags": "-r, --certificate-version <certificate-version>",
+                  "required": -27,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-r",
+                  "long": "--certificate-version",
+                  "description": "the version to be modified; if omited, modifies only the most recent"
+                },
+                {
+                  "flags": "--enabled <boolean>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--enabled",
+                  "description": "if informed, command will change the enabled state; valid values: [false, true]"
+                },
+                {
+                  "flags": "-t, --tags <tags>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-t",
+                  "long": "--tags",
+                  "description": "Tags to set on the certificate. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
+                },
+                {
+                  "flags": "--reset-tags",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--reset-tags",
+                  "description": "remove previously existing tags; can combined with --tags"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Deletes a certificate from the vault",
+              "fullName": "keyvault certificate delete",
+              "usage": "[options] <vault-name> <certificate-name>",
+              "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-u, --vault-name <vault-name>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--vault-name",
+                  "description": "the vault name"
+                },
+                {
+                  "flags": "-c, --certificate-name <certificate-name>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--certificate-name",
+                  "description": "the certificate name"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode (do not ask for delete confirmation)"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "policy": {
+              "name": "policy",
+              "description": "Commands to manage a certificate policy in the Azure Key Vault service",
+              "fullName": "keyvault certificate policy",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Shows a vault certificate policy",
+                  "fullName": "keyvault certificate policy show",
+                  "usage": "[options] <vault-name> <certificate-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    }
+                  ]
+                },
+                {
+                  "name": "get",
+                  "description": "Gets a vault certificate policy",
+                  "fullName": "keyvault certificate policy get",
+                  "usage": "[options] <vault-name> <certificate-name> <file>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    },
+                    {
+                      "flags": "--file <file>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--file",
+                      "description": "the file to receive certificate policy contents; the file must not exist otherwise the command fails"
+                    }
+                  ]
+                },
+                {
+                  "name": "create",
+                  "description": "Creates a new certificate policy JSON object. This policy object can be used as input to other certificate commands such as certificate create.",
+                  "fullName": "keyvault certificate policy create",
+                  "usage": "options <issuer-name> [subject-name] [file]",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --issuer-name <issuer-name>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--issuer-name",
+                      "description": "issuer name"
+                    },
+                    {
+                      "flags": "-n, --subject-name <subject-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--subject-name",
+                      "description": "subject name"
+                    },
+                    {
+                      "flags": "--file <file>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--file",
+                      "description": "the file to receive certificate policy object; the file must not exist otherwise the command fails"
+                    },
+                    {
+                      "flags": "-k, --key-type <key-type>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--key-type",
+                      "description": "tells if the key backing the certificate is software-protected or HSM-protected; valid values: [RSA, RSA-HSM]"
+                    },
+                    {
+                      "flags": "--reuse-key-on-renewal",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--reuse-key-on-renewal",
+                      "description": "indicates if the key should be reused on renewal; defaults to key is not reused"
+                    },
+                    {
+                      "flags": "--key-not-exportable",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--key-not-exportable",
+                      "description": "indicates if the key should not be exportable; defaults to key is exportable"
+                    },
+                    {
+                      "flags": "-t, --secret-content-type <secret-content-type>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--secret-content-type",
+                      "description": "secret content type; valid values: [application/x-pkcs12, application/x-pem-file]"
+                    },
+                    {
+                      "flags": "-d, --dns-names <dns-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--dns-names",
+                      "description": "subject alternative dns names; must be JSON-encoded array of strings"
+                    },
+                    {
+                      "flags": "-e, --ekus <ekus>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--ekus",
+                      "description": "extended key usages; must be JSON-encoded array of strings"
+                    },
+                    {
+                      "flags": "-m, --validity-in-months <validity-in-months>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--validity-in-months",
+                      "description": "validity of the certificate in months"
+                    },
+                    {
+                      "flags": "--renew-days-before-expiry <renew-days-before-expiry>",
+                      "required": -28,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--renew-days-before-expiry",
+                      "description": "number of days before expiry to automatically renew the certificate"
+                    },
+                    {
+                      "flags": "--renew-at-percentage-lifetime <renew-at-percentage-lifetime>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--renew-at-percentage-lifetime",
+                      "description": "lifetime percentage at which automatically renew the certificate"
+                    },
+                    {
+                      "flags": "--email-days-before-expiry <email-days-before-expiry>",
+                      "required": -28,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--email-days-before-expiry",
+                      "description": "number of days before expiry to send notification"
+                    },
+                    {
+                      "flags": "--email-at-percentage-lifetime <email-at-percentage-lifetime>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--email-at-percentage-lifetime",
+                      "description": "lifetime percentage at which send notification"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Sets a vault certificate policy",
+                  "fullName": "keyvault certificate policy set",
+                  "usage": "[options] <vault-name> <certificate-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    },
+                    {
+                      "flags": "-p --certificate-policy <certificate-policy>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--certificate-policy",
+                      "description": "a JSON-formatted string containing the certificate policy"
+                    },
+                    {
+                      "flags": "-e --certificate-policy-file <certificate-policy-file>",
+                      "required": -30,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--certificate-policy-file",
+                      "description": "a file containing the certificate policy.Mutually exlcusive with --certificate-policy.",
+                      "fileRelatedOption": true
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "operation": {
+              "name": "operation",
+              "description": "Commands to manage certificate operations in the Azure Key Vault service",
+              "fullName": "keyvault certificate operation",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "show",
+                  "description": "Shows a vault certificate operation",
+                  "fullName": "keyvault certificate operation show",
+                  "usage": "[options] <vault-name> <certificate-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    }
+                  ]
+                },
+                {
+                  "name": "cancel",
+                  "description": "Cancels a vault certificate operation",
+                  "fullName": "keyvault certificate operation cancel",
+                  "usage": "[options] <vault-name> <certificate-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for cancel confirmation)"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a vault certificate operation",
+                  "fullName": "keyvault certificate operation delete",
+                  "usage": "[options] <vault-name> <certificate-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-name <certificate-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-name",
+                      "description": "the certificate name"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "administrator": {
+              "name": "administrator",
+              "description": "Commands to manage certificate administrators in the Azure Key Vault service",
+              "fullName": "keyvault certificate administrator",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Creates a new certificate administator JSON object. This administratory object can be used as input to other certificate commands such as organization create.",
+                  "fullName": "keyvault certificate administrator create",
+                  "usage": "[options] [first-name] [last-name] [email-address] [phone-number] [file]",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-f, --first-name <first-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--first-name",
+                      "description": "first name"
+                    },
+                    {
+                      "flags": "-l, --last-name <last-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--last-name",
+                      "description": "last name"
+                    },
+                    {
+                      "flags": "-e, --email-address <email-address>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--email-address",
+                      "description": "email-address"
+                    },
+                    {
+                      "flags": "-p, --phone-number <phone-number>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--phone-number",
+                      "description": "phone-number"
+                    },
+                    {
+                      "flags": "--file <file>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--file",
+                      "description": "the file to receive certificate administator object; the file must not exist otherwise the command fails"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "organization": {
+              "name": "organization",
+              "description": "Commands to manage certificate organization in the Azure Key Vault service",
+              "fullName": "keyvault certificate organization",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Creates a new certificate organization JSON object. This organization object can be used as input to other certificate commands such as issuer create.",
+                  "fullName": "keyvault certificate organization create",
+                  "usage": "[options] [id] [file]",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-i, --id <id>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--id",
+                      "description": "organization identifier"
+                    },
+                    {
+                      "flags": "-a --certificate-administrator <certificate-administrator>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--certificate-administrator",
+                      "description": "a JSON-formatted string containing a certificate administrator or an array of certificate administrators"
+                    },
+                    {
+                      "flags": "-e --certificate-administrator-file <certificate-administrator-file>",
+                      "required": -37,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--certificate-administrator-file",
+                      "description": "a file containing a certificate administrator or an array of certificate administrator. Mutually exclusive with --certificate-administrator.",
+                      "fileRelatedOption": true
+                    },
+                    {
+                      "flags": "--file <file>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--file",
+                      "description": "the file to receive certificate organization object; the file must not exist otherwise the command fails"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "issuer": {
+              "name": "issuer",
+              "description": "Commands to manage certificate issuers in the Azure Key Vault service",
+              "fullName": "keyvault certificate issuer",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "Lists certificate issuers of a vault",
+                  "fullName": "keyvault certificate issuer list",
+                  "usage": "[options] <vault-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Shows a vault certificate issuer",
+                  "fullName": "keyvault certificate issuer show",
+                  "usage": "[options] <vault-name> <certificate-issuer-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-issuer-name <certificate-issuer-name>",
+                      "required": -31,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-issuer-name",
+                      "description": "the certificate issuer name"
+                    }
+                  ]
+                },
+                {
+                  "name": "create",
+                  "description": "Creates a vault certificate issuer",
+                  "fullName": "keyvault certificate issuer create",
+                  "usage": "[options] <vault-name> <certificate-issuer-name> <provider-name> ",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-issuer-name <certificate-issuer-name>",
+                      "required": -31,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-issuer-name",
+                      "description": "the certificate issuer name"
+                    },
+                    {
+                      "flags": "-p, --provider-name <provider-name>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--provider-name",
+                      "description": "the provider-name"
+                    },
+                    {
+                      "flags": "-a, --account-id <account-id>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--account-id",
+                      "description": "account identifier"
+                    },
+                    {
+                      "flags": "-k, --api-key <api-key>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-k",
+                      "long": "--api-key",
+                      "description": "api key for the account"
+                    },
+                    {
+                      "flags": "-o, --certificate-organization <certificate-organization>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--certificate-organization",
+                      "description": "the certificate organization"
+                    },
+                    {
+                      "flags": "-e --certificate-organization-file <certificate-organization-file>",
+                      "required": -36,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--certificate-organization-file",
+                      "description": "a file containing the certificate organization. Mutually exclusive with --certificate-organization.",
+                      "fileRelatedOption": true
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a certificate issuer from the vault",
+                  "fullName": "keyvault certificate issuer delete",
+                  "usage": "[options] <vault-name> <certificate-issuer-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-c, --certificate-issuer-name <certificate-issuer-name>",
+                      "required": -31,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--certificate-issuer-name",
+                      "description": "the certificate issuer name"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "contact": {
+              "name": "contact",
+              "description": "Commands to manage certificate contacts in the Azure Key Vault service",
+              "fullName": "keyvault certificate contact",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "list",
+                  "description": "List vault certificate contacts",
+                  "fullName": "keyvault certificate contact list",
+                  "usage": "[options] <vault-name>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    }
+                  ]
+                },
+                {
+                  "name": "add",
+                  "description": "Adds a certificate contact to the vault",
+                  "fullName": "keyvault certificate contact add",
+                  "usage": "[options] <vault-name> <email-address>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-e, --email-address <email-address>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--email-address",
+                      "description": "the contact email address"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Deletes a certificate contact from the vault",
+                  "fullName": "keyvault certificate contact delete",
+                  "usage": "[options <vault-name> <email-address>",
+                  "filePath": "commands/arm/keyvault/keyvault.certificate._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-u, --vault-name <vault-name>",
+                      "required": -18,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--vault-name",
+                      "description": "the vault name"
+                    },
+                    {
+                      "flags": "-e, --email-address <email-address>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--email-address",
+                      "description": "the email address"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode (do not ask for delete confirmation)"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
         "key": {
           "name": "key",
           "description": "Commands to manage keys in the Azure Key Vault service",
@@ -46945,7 +48738,7 @@
               "name": "list",
               "description": "Lists keys of a vault",
               "fullName": "keyvault key list",
-              "usage": "[--vault-name] <vault-name> [options]",
+              "usage": "[options] <vault-name>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -46988,7 +48781,7 @@
               "name": "list-versions",
               "description": "Lists key versions",
               "fullName": "keyvault key list-versions",
-              "usage": "[--vault-name] <vault-name> [[--key-name] <key-name>] [options]",
+              "usage": "[options] <vault-name> [key-name>]",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47040,7 +48833,7 @@
               "name": "create",
               "description": "Creates a key in the vault",
               "fullName": "keyvault key create",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> --destination <destination> [options]",
+              "usage": "[options] <vault-name> <key-name>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47110,7 +48903,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "key expiration time, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -47119,7 +48912,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "time before which key cannot be used, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -47145,7 +48938,7 @@
               "name": "import",
               "description": "Imports an existing key into a vault",
               "fullName": "keyvault key import",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> ( --pem-file | --byok-file ) <file-name> [--destination <destination>] [options]",
+              "usage": "[options] <vault-name> <key-name>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47240,7 +49033,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "key expiration time, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "key expiration time, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -47249,7 +49042,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which key cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "time before which key cannot be used, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -47275,7 +49068,7 @@
               "name": "set-attributes",
               "description": "Changes attributes of an existing key",
               "fullName": "keyvault key set-attributes",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> [[--key-version] <key-version>] [options]",
+              "usage": "[options] <vault-name> <key-name> [key-version]",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47328,7 +49121,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--key-version",
-                  "description": "the version to be modified; if ommited, modifies only the most recent"
+                  "description": "the version to be modified; if omited, modifies only the most recent"
                 },
                 {
                   "flags": "--enabled <boolean>",
@@ -47345,7 +49138,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
+                  "description": "if informed, command will change secret expiration time; expressed in RFC-1123/ISO8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -47354,7 +49147,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed in RFC-1123/ISO8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-o, --key-ops <key-ops>",
@@ -47388,7 +49181,7 @@
               "name": "show",
               "description": "Shows properties of a vault key",
               "fullName": "keyvault key show",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> [[--key-version] <key-version>] [options]",
+              "usage": "[options] <vault-name> <key-name> [key-version]",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47441,7 +49234,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--key-version",
-                  "description": "the key version; if ommited, uses the most recent"
+                  "description": "the key version; if omited, uses the most recent"
                 }
               ]
             },
@@ -47449,7 +49242,7 @@
               "name": "delete",
               "description": "Deletes a key from the vault",
               "fullName": "keyvault key delete",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> [options]",
+              "usage": "[options] <vault-name> <key-name>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47503,15 +49296,6 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode (do not ask for delete confirmation)"
-                },
-                {
-                  "flags": "-p, --pass-thru",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--pass-thru",
-                  "description": "outputs the deleted key"
                 }
               ]
             },
@@ -47519,7 +49303,7 @@
               "name": "backup",
               "description": "Generates a protected backup of a vault key",
               "fullName": "keyvault key backup",
-              "usage": "[--vault-name] <vault-name> [--key-name] <key-name> [--output-file] <output-file> [options]",
+              "usage": "[options] <vault-name> <key-name> <output-file>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47580,7 +49364,7 @@
               "name": "restore",
               "description": "Restores a backed up key to a vault",
               "fullName": "keyvault key restore",
-              "usage": "[--vault-name] <vault-name> [--input-file] <input-file> [options]",
+              "usage": "[options] <vault-name> <input-file>",
               "filePath": "commands/arm/keyvault/keyvault.key._js",
               "options": [
                 {
@@ -47642,7 +49426,7 @@
               "name": "list",
               "description": "Lists secrets of a vault",
               "fullName": "keyvault secret list",
-              "usage": "[--vault-name] <vault-name> [options]",
+              "usage": "[options] <vault-name>",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -47685,7 +49469,7 @@
               "name": "list-versions",
               "description": "Lists secret versions",
               "fullName": "keyvault secret list-versions",
-              "usage": "[--vault-name] <vault-name> [[--secret-name] <secret-name>] [options]",
+              "usage": "[options] <vault-name> [secret-name]",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -47737,7 +49521,7 @@
               "name": "set",
               "description": "Stores a secret on the vault",
               "fullName": "keyvault secret set",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [options]",
+              "usage": "options <vault-name> <secret-name>",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -47825,6 +49609,15 @@
                   "description": "tells the file is binary and encodes it before uploading; valid values: [base64, hex]"
                 },
                 {
+                  "flags": "-c, --content-type <content-type>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--content-type",
+                  "description": "the content type"
+                },
+                {
                   "flags": "--enabled <boolean>",
                   "required": -11,
                   "optional": 0,
@@ -47839,7 +49632,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "expiration time of secret, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "expiration time of secret, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -47848,7 +49641,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "time before which secret cannot be used, expressed as Unix Time integer, or ISO 8601 date format"
+                  "description": "time before which secret cannot be used, expressed in RFC-1123/ISO8601 date format"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -47858,15 +49651,6 @@
                   "short": "-t",
                   "long": "--tags",
                   "description": "Tags to set on the secret. Can be multiple in the format 'name=value'. Name is required and value is optional. For example, -t tag1=value1;tag2"
-                },
-                {
-                  "flags": "-p, --pass-thru",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--pass-thru",
-                  "description": "outputs the stored secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -47874,7 +49658,7 @@
               "name": "set-attributes",
               "description": "Changes attributes of an existing secret",
               "fullName": "keyvault secret set-attributes",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [[--secret-version] <secret-version>] [options]",
+              "usage": "[options] <vault-name> <secret-name> [secret-version]",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -47927,7 +49711,16 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--secret-version",
-                  "description": "the version to be modified; if ommited, modifies only the most recent"
+                  "description": "the version to be modified; if omited, modifies only the most recent"
+                },
+                {
+                  "flags": "-c, --content-type <content-type>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-c",
+                  "long": "--content-type",
+                  "description": "the content type"
                 },
                 {
                   "flags": "--enabled <boolean>",
@@ -47944,7 +49737,7 @@
                   "bool": true,
                   "short": "-e",
                   "long": "--expires",
-                  "description": "if informed, command will change secret expiration time; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
+                  "description": "if informed, command will change secret expiration time; expressed in RFC-1123/ISO8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-n, --not-before <datetime>",
@@ -47953,7 +49746,7 @@
                   "bool": true,
                   "short": "-n",
                   "long": "--not-before",
-                  "description": "if informed, command will change time before which secret cannot be used; expressed as Unix Time integer, or ISO 8601 date format, or null to clear the value"
+                  "description": "if informed, command will change time before which secret cannot be used; expressed in RFC-1123/ISO8601 date format, or null to clear the value"
                 },
                 {
                   "flags": "-t, --tags <tags>",
@@ -47971,15 +49764,6 @@
                   "bool": true,
                   "long": "--reset-tags",
                   "description": "remove previously existing tags; can combined with --tags"
-                },
-                {
-                  "flags": "-p, --pass-thru",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--pass-thru",
-                  "description": "outputs attributes of the modified secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             },
@@ -47987,7 +49771,7 @@
               "name": "show",
               "description": "Shows a vault secret",
               "fullName": "keyvault secret show",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [[--secret-version] <secret-version>] [options]",
+              "usage": "[options] <vault-name> <secret-name> [secret-version]",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -48040,7 +49824,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--secret-version",
-                  "description": "the secret version; if ommited, uses the most recent"
+                  "description": "the secret version; if omited, uses the most recent"
                 }
               ]
             },
@@ -48048,7 +49832,7 @@
               "name": "get",
               "description": "Downloads a secret from the vault",
               "fullName": "keyvault secret get",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [[--secret-version] <secret-version>] [--file] <file-name> [options]",
+              "usage": "[options] <vault-name> <secret-name> [secret-version] <file>",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -48101,7 +49885,7 @@
                   "bool": true,
                   "short": "-r",
                   "long": "--secret-version",
-                  "description": "the secret version; if ommited, uses the most recent"
+                  "description": "the secret version; if omited, uses the most recent"
                 },
                 {
                   "flags": "--file <file-name>",
@@ -48133,7 +49917,7 @@
               "name": "delete",
               "description": "Deletes a secret from the vault",
               "fullName": "keyvault secret delete",
-              "usage": "[--vault-name] <vault-name> [--secret-name] <secret-name> [options]",
+              "usage": "[options] <vault-name> <secret-name>",
               "filePath": "commands/arm/keyvault/keyvault.secret._js",
               "options": [
                 {
@@ -48187,15 +49971,6 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "quiet mode (do not ask for delete confirmation)"
-                },
-                {
-                  "flags": "-p, --pass-thru",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--pass-thru",
-                  "description": "outputs the deleted secret; note it always outputs when --json or verbose is informed"
                 }
               ]
             }
