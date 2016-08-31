@@ -74,7 +74,11 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     newMapPath: '/test01',
     sslCertName: 'cert02',
     sslFile: 'test/data/cert02.pfx',
-    sslPassword: 'pswd'
+    sslPassword: 'pswd',
+    disabledSslProtocols: 'TLSv1_0,TLSv1_2',
+    authCertName: 'TestAuthCert',
+    certificateFile: 'test/data/auth-cert.pfx',
+    certificateFileNew: 'test/data/auth-cert-2.pfx',
   };
 
 var requiredEnvironment = [{
@@ -572,6 +576,96 @@ describe('arm', function () {
           }).should.be.false;
           networkUtil.shouldBeSucceeded(appGateway);
           done();
+        });
+      });
+
+      it('ssl-policy create should create application gateway ssl policy', function (done) {
+        var cmd = 'network application-gateway ssl-policy create -g {group} --disable-ssl-protocols {disabledSslProtocols} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          gatewayProp.disabledSslProtocols.split(',').forEach(function(item) { output.disabledSslProtocols.should.containEql(item) });
+          done();
+        });
+      });
+
+      it('ssl-policy show should display application gateway ssl policy details', function (done) {
+        var cmd = 'network application-gateway ssl-policy show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          gatewayProp.disabledSslProtocols.split(',').forEach(function(item) { output.disabledSslProtocols.should.containEql(item) });
+          done();
+        });
+      });
+
+      it('ssl-policy delete should delete application gateway ssl policy', function (done) {
+        var cmd = 'network application-gateway ssl-policy delete -g {group} --quiet --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network application-gateway ssl-policy show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.be.empty;
+            done();
+          });
+        });
+      });
+
+      it('auth-cert create should create application gateway authentication certificate', function (done) {
+        var cmd = 'network application-gateway auth-cert create -g {group} -n {authCertName} --cert-file {certificateFile} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.authCertName);
+          done();
+        });
+      });
+
+      it('auth-cert show should display application gateway authentication certificate details', function (done) {
+        var cmd = 'network application-gateway auth-cert show -g {group} -n {authCertName} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.authCertName);
+          done();
+        });
+      });
+
+      it('auth-cert set should update application gateway authentication certificate', function (done) {
+        var cmd = 'network application-gateway auth-cert set -g {group} -n {authCertName} --cert-file {certificateFileNew} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.authCertName);
+          done();
+        });
+      });
+
+      it('auth-cert list should display all application gateway authentication certificate in resource group', function (done) {
+        var cmd = 'network application-gateway auth-cert list -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.authCertName;
+          }).should.be.true;
+          done();
+        });
+      });
+
+      it('auth-cert delete should delete application gateway authentication certificate', function (done) {
+        var cmd = 'network application-gateway auth-cert delete -g {group} -n {authCertName} --quiet  --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network application-gateway auth-cert show -g {group} -n {authCertName} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.be.empty;
+            done();
+          });
         });
       });
 
