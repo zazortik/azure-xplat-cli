@@ -415,7 +415,7 @@ describe('arm', function () {
         });
       });
 
-      it('create should create nic with default ip configuration', function (done) {
+      it('create should create another nic with default ip configuration', function (done) {
         var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -u {1} --json'
           .formatArgs(nicProp, subnetId);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
