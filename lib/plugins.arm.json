@@ -68251,7 +68251,7 @@
           "name": "set",
           "description": "Updates a resource in a resource group without any templates or parameters",
           "fullName": "resource set",
-          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <properties> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
