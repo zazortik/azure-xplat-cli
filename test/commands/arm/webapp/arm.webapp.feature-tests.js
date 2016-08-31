@@ -20,6 +20,7 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var profile = require('../../../../lib/util/profile');
 var utils = require('../../../../lib/util/utils');
+var webappUtils = require('../../../../lib/commands/arm/webapp/webappUtils');
 
 var testPrefix = 'arm-cli-webapp-tests';
 
@@ -29,7 +30,7 @@ var location = 'West US';
 var createdGroups = [];
 var createdResources = [];
 var hostingPlanName, groupName;
-var resourceClient;
+var client;
 var updatedPHPValue = "7.0";
 
 describe('arm', function () {
@@ -38,10 +39,10 @@ describe('arm', function () {
   before(function (done) {
     suite = new CLITest(this, testPrefix);
     suite.setupSuite(function () {
-      sitename = suite.generateId('webappclitest', createdSites);
+      sitename = suite.generateId('webappclitests', createdSites);
       groupName = suite.generateId('testrg1', createdGroups);
       var subscription = profile.current.getSubscription();
-      resourceClient = utils.createResourceClient(subscription);
+      client = webappUtils.createWebappManagementClient(subscription);
       if (!suite.isPlayback()) {
         suite.execute('group create %s --location %s --json', groupName, location, function (result) {
           result.exitStatus.should.equal(0);
@@ -53,7 +54,6 @@ describe('arm', function () {
       } else {
         done();
       }
-
     });
   });
 
@@ -102,30 +102,30 @@ describe('arm', function () {
       suite.execute('webapp show %s %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         var webapp = JSON.parse(result.text);
-        webapp.webSite.name.should.equal(sitename);
+        webapp.name.should.equal(sitename);
         done();
       });
     });
 
-    it('config get should work', function (done) {
-        suite.execute('webapp config get %s %s --json', groupName, sitename, function (result) {
-          result.exitStatus.should.equal(0);
-          done();
+    it('config show should work', function (done) {
+      suite.execute('webapp config show %s %s --json', groupName, sitename, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
       });
     });
 
     it('config update should work', function (done) {
-        suite.execute('webapp config update %s %s -l %s --phpversion %s --json', groupName, sitename, location, updatedPHPValue, function (result) {
-          result.exitStatus.should.equal(0);
-          done();
+      suite.execute('webapp config update %s %s --phpversion %s --json', groupName, sitename, updatedPHPValue, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
       });
     });
 
-    it('publishprofile get should work', function (done) {
-        suite.execute('webapp publishprofile get %s %s --json', groupName, sitename, function (result) {
-          result.exitStatus.should.equal(0);
-          done();
-       });
+    it('publishprofile show should work', function (done) {
+      suite.execute('webapp publishprofile show %s %s --json', groupName, sitename, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
     });
 
     it('stop should work', function (done) {
@@ -157,37 +157,22 @@ describe('arm', function () {
     });
   });
 
-  function createGroupAndPlan(done) {
-    createGroup(function (err, groupName) {
-      if (err) { return done(err); }
-      createHostingPlan(groupName, function (err, planId) {
-        if (err) { return done(err); }
-        return done(null, { group: groupName, plan: planId });
-      });
-    });
-  }
 
   function createHostingPlan(groupName, done) {
     hostingPlanName = suite.generateId(testPrefix, createdResources);
-    var planToCreate = {
-      resourceName: hostingPlanName,
-      resourceProviderNamespace: 'Microsoft.Web',
-      resourceType: 'serverFarms',
-      resourceProviderApiVersion: '2014-06-01'
-    };
 
     var planParameters = {
-      properties: {
+      location: location,
+      name: hostingPlanName,
+      sku: {
+        name: 'S1',
         sku: 'Standard',
-        numberOfWorkers: 1,
-        workerSize: 'Small',
-        hostingPlanName: hostingPlanName
-      },
-      location: location
+        family: 'S',
+        capacity: 1
+      }
     };
 
-    resourceClient.resources.createOrUpdate(groupName, planToCreate.resourceProviderNamespace, '', planToCreate.resourceType, 
-      planToCreate.resourceName, planToCreate.resourceProviderApiVersion, planParameters, function (err, planResource) {
+    var result = client.serverFarms.createOrUpdateServerFarm(groupName, hostingPlanName, planParameters, function (err, planResource) {
       return done(err, planResource.id);
     });
   }

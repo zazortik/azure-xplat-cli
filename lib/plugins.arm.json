@@ -21475,6 +21475,287 @@
         }
       }
     },
+    "appserviceplan": {
+      "name": "appserviceplan",
+      "description": "Commands to manage your Azure appserviceplans",
+      "fullName": "appserviceplan",
+      "usage": "[options] [command]",
+      "options": [],
+      "commands": [
+        {
+          "name": "create",
+          "description": "Create an App Service Plan",
+          "fullName": "appserviceplan create",
+          "usage": "[options] <resource-group> <name> <location> <tier>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the App Service Plan to create"
+            },
+            {
+              "flags": "-l --location <location>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "the geographic region to create the App Service Plan, \n\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
+            },
+            {
+              "flags": "-t --tier <tier>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--tier",
+              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+            },
+            {
+              "flags": "-i --instances <numberOfInstances>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--instances",
+              "description": "the number of instances in the App Service Plan, Default is 1"
+            },
+            {
+              "flags": "-s, --subscription <id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "description": "Delete a appserviceplan",
+          "fullName": "appserviceplan delete",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the App Service Plan to delete"
+            },
+            {
+              "flags": "-q, --quiet",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-q",
+              "long": "--quiet",
+              "description": "quiet mode, do not ask for delete confirmation"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "list",
+          "description": "List your App Service Plans",
+          "fullName": "appserviceplan list",
+          "usage": "[options] <resource-group>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "show",
+          "description": "Get an App Service Plan",
+          "fullName": "appserviceplan show",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "the name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the App Service Plan to show"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            }
+          ]
+        }
+      ],
+      "categories": {}
+    },
     "availset": {
       "name": "availset",
       "description": "Commands to manage your availability sets.  ",
@@ -68555,7 +68836,7 @@
               "bool": true,
               "short": "-l",
               "long": "--location",
-              "description": "the geographic region to create the webapp"
+              "description": "the geographic region to create the webapp, \n\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
             },
             {
               "flags": "-p --plan <plan>",
@@ -68984,7 +69265,325 @@
           ]
         }
       ],
-      "categories": {}
+      "categories": {
+        "config": {
+          "name": "config",
+          "description": "Commands to manage your Azure webapps configurations",
+          "fullName": "webapp config",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Get webapp configuration",
+              "fullName": "webapp config show",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to show"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to show"
+                },
+                {
+                  "flags": "--propertiesToInclude <propertiesToInclude>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--propertiesToInclude",
+                  "description": "comma separate property names to include"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "description": "Update webapp configuration",
+              "fullName": "webapp config update",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to update"
+                },
+                {
+                  "flags": "-l --location <location>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location of the webapp to update, , \n\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
+                },
+                {
+                  "flags": "-j --jsonInput <jsonInput>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-j",
+                  "long": "--jsonInput",
+                  "description": "the json config object string"
+                },
+                {
+                  "flags": "--phpversion <phpversion>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--phpversion",
+                  "description": "phpversion of webapp"
+                },
+                {
+                  "flags": "--pythonversion <pythonversion>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--pythonversion",
+                  "description": "pythonversion of webapp"
+                },
+                {
+                  "flags": "--nodeversion <nodeversion>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--nodeversion",
+                  "description": "nodeversion of webapp"
+                },
+                {
+                  "flags": "--appcommandline <appcommandline>",
+                  "required": -18,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--appcommandline",
+                  "description": "app command line for webapp"
+                },
+                {
+                  "flags": "--javaversion <javaversion>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javaversion",
+                  "description": "javaversion of webapp"
+                },
+                {
+                  "flags": "--javacontainer <javacontainer>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javacontainer",
+                  "description": "javacontainer of webapp"
+                },
+                {
+                  "flags": "--javacontainerversion <javacontainerversion>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--javacontainerversion",
+                  "description": "javacontainerversion of webapp"
+                },
+                {
+                  "flags": "--appsettings <appsettings>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--appsettings",
+                  "description": "webapp appsettings"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to update"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "publishprofile": {
+          "name": "publishprofile",
+          "description": "Command to get your Azure webapps publishing profile",
+          "fullName": "webapp publishprofile",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Get webapp publish profile",
+              "fullName": "webapp publishprofile show",
+              "usage": "[options] <resource-group> <name>",
+              "filePath": "commands/arm/webapp/webapp.config._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resource-group>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "the name of the resource group"
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the webapp to show"
+                },
+                {
+                  "flags": "--slot <slot>",
+                  "required": -8,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--slot",
+                  "description": "the name of the slot to show"
+                },
+                {
+                  "flags": "-s --subscription <subscription>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        }
+      }
     }
   }
 }

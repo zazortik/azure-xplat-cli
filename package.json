@@ -49,7 +49,7 @@
     "azure-arm-powerbiembedded": "0.1.0",
     "azure-arm-trafficmanager": "0.10.5",
     "azure-arm-dns": "0.10.1",
-    "azure-arm-website": "0.10.0",
+    "azure-arm-website": "0.11.0",
     "azure-arm-rediscache": "0.2.1",
     "azure-arm-datalake-analytics": "^0.4.2",
     "azure-arm-datalake-store": "^0.4.1",

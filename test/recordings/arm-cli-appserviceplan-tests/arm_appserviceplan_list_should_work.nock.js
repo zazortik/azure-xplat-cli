@@ -28,40 +28,40 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverFarms?api-version=2014-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverfarms/appservicepplanclitest8116\",\"name\":\"appservicepplanclitest8116\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"name\":\"appservicepplanclitest8116\",\"sku\":\"Standard\",\"reserved\":false,\"workerSize\":2,\"workerSizeId\":2,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":2,\"currentWorkerSizeId\":2,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg18479-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":10,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"lastModifiedTimeUtc\":\"2016-08-24T16:15:40.047Z\"}},{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverfarms/arm-cli-appserviceplan-tests6386\",\"name\":\"arm-cli-appserviceplan-tests6386\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"name\":\"arm-cli-appserviceplan-tests6386\",\"sku\":\"Standard\",\"reserved\":false,\"workerSize\":0,\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg18479-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":10,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"lastModifiedTimeUtc\":\"2016-08-24T16:15:35.827Z\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg16731/providers/Microsoft.Web/serverfarms?api-version=2015-08-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg16731/providers/Microsoft.Web/serverfarms/armappserviceplantests2362\",\"name\":\"armappserviceplantests2362\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"serverFarmId\":0,\"name\":\"armappserviceplantests2362\",\"workerSize\":0,\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg16731-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":3,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":0,\"siteMode\":null,\"geoRegion\":\"West US\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"kind\":null,\"resourceGroup\":\"testrg16731\",\"reserved\":false},\"sku\":{\"name\":\"B1\",\"tier\":\"Basic\",\"size\":\"B1\",\"family\":\"B\",\"capacity\":1}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1773',
+  'content-length': '1038',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e188bee1-7e0f-4ba9-a6b0-e702df7cd4fb',
+  'x-ms-request-id': 'e39bdb61-2e5c-4e59-84d8-84f6a7b7e9e2',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14920',
-  'x-ms-correlation-request-id': 'abc818db-78f1-4cb3-8eb0-b621bbe319e4',
-  'x-ms-routing-request-id': 'CENTRALUS:20160824T161551Z:abc818db-78f1-4cb3-8eb0-b621bbe319e4',
-  date: 'Wed, 24 Aug 2016 16:15:51 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14599',
+  'x-ms-correlation-request-id': '721ddfa7-c9ca-4610-98f8-fbd1030fc0e6',
+  'x-ms-routing-request-id': 'CENTRALUS:20160831T025455Z:721ddfa7-c9ca-4610-98f8-fbd1030fc0e6',
+  date: 'Wed, 31 Aug 2016 02:54:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverFarms?api-version=2014-06-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverfarms/appservicepplanclitest8116\",\"name\":\"appservicepplanclitest8116\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"name\":\"appservicepplanclitest8116\",\"sku\":\"Standard\",\"reserved\":false,\"workerSize\":2,\"workerSizeId\":2,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":2,\"currentWorkerSizeId\":2,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg18479-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":10,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"lastModifiedTimeUtc\":\"2016-08-24T16:15:40.047Z\"}},{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg18479/providers/Microsoft.Web/serverfarms/arm-cli-appserviceplan-tests6386\",\"name\":\"arm-cli-appserviceplan-tests6386\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"name\":\"arm-cli-appserviceplan-tests6386\",\"sku\":\"Standard\",\"reserved\":false,\"workerSize\":0,\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg18479-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":10,\"planName\":\"VirtualDedicatedPlan\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"lastModifiedTimeUtc\":\"2016-08-24T16:15:35.827Z\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg16731/providers/Microsoft.Web/serverfarms?api-version=2015-08-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/testrg16731/providers/Microsoft.Web/serverfarms/armappserviceplantests2362\",\"name\":\"armappserviceplantests2362\",\"type\":\"Microsoft.Web/serverfarms\",\"location\":\"West US\",\"tags\":null,\"properties\":{\"serverFarmId\":0,\"name\":\"armappserviceplantests2362\",\"workerSize\":0,\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":0,\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":1,\"status\":0,\"webSpace\":\"testrg16731-WestUSwebspace\",\"subscription\":\"fb2c25dc-6bab-45c4-8cc9-cece7c42a95a\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":3,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":0,\"siteMode\":null,\"geoRegion\":\"West US\",\"perSiteScaling\":false,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"tags\":null,\"kind\":null,\"resourceGroup\":\"testrg16731\",\"reserved\":false},\"sku\":{\"name\":\"B1\",\"tier\":\"Basic\",\"size\":\"B1\",\"family\":\"B\",\"capacity\":1}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1773',
+  'content-length': '1038',
   'content-type': 'application/json',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': 'e188bee1-7e0f-4ba9-a6b0-e702df7cd4fb',
+  'x-ms-request-id': 'e39bdb61-2e5c-4e59-84d8-84f6a7b7e9e2',
   server: 'Microsoft-IIS/8.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14920',
-  'x-ms-correlation-request-id': 'abc818db-78f1-4cb3-8eb0-b621bbe319e4',
-  'x-ms-routing-request-id': 'CENTRALUS:20160824T161551Z:abc818db-78f1-4cb3-8eb0-b621bbe319e4',
-  date: 'Wed, 24 Aug 2016 16:15:51 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14599',
+  'x-ms-correlation-request-id': '721ddfa7-c9ca-4610-98f8-fbd1030fc0e6',
+  'x-ms-routing-request-id': 'CENTRALUS:20160831T025455Z:721ddfa7-c9ca-4610-98f8-fbd1030fc0e6',
+  date: 'Wed, 31 Aug 2016 02:54:54 GMT',
   connection: 'close' });
  return result; }]];
