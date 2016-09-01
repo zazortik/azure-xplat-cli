@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '0d3ae56c-deaf-4982-b514-33d016d4a683',
-    name: 'antps10',
+    id: '3d1cd7a8-b035-4563-9288-dbe706cd672e',
+    name: 'SAAS InfoNav Test_564339',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'microsoft.com',
     state: 'Enabled',
-    registeredProviders: ['website'],
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -31,34 +31,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/azureXplatCliTestResourceGroup3994/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434/listKeys?api-version=2016-01-29')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434' under resource group 'azureXplatCliTestResourceGroup3994' was not found.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
+  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup5228/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection3663/listKeys?api-version=2016-01-29')
+  .reply(200, "{\"key1\":\"4TTyLU4Is9a2S5rcpEYp3xrq6zb3qHIaIyiaX5JlY97k4mlX5Vmuas0F2KysNa9l8KY7FNzHhXww/EF4h8fWBw==\",\"key2\":\"uWNtE0Wbmvnx9JNSF112X2TnBeq+lLEICrkr+EcTWi0lnkN0XPBt5oNVSL1yeGXwybHyAMAoDdeImYmKSQU5uw==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
+  'content-length': '197',
   'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
-  'x-ms-correlation-request-id': 'b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
-  'x-ms-routing-request-id': 'WESTUS2:20160822T224304Z:b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 22 Aug 2016 22:43:04 GMT',
-  connection: 'close',
-  'content-length': '216' });
+  'x-frame-options': 'deny',
+  'x-content-type-options': 'nosniff',
+  requestid: 'ce4d6652-9486-4a51-ae1a-8c7fb20ee1b9',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-request-id': '0d396c9f-4ebf-4195-80d8-d6343651decd',
+  'x-ms-correlation-request-id': '0d396c9f-4ebf-4195-80d8-d6343651decd',
+  'x-ms-routing-request-id': 'WESTUS:20160524T193244Z:0d396c9f-4ebf-4195-80d8-d6343651decd',
+  date: 'Tue, 24 May 2016 19:32:43 GMT',
+  connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/azureXplatCliTestResourceGroup3994/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434/listKeys?api-version=2016-01-29')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection434' under resource group 'azureXplatCliTestResourceGroup3994' was not found.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
+  .post('/subscriptions/3d1cd7a8-b035-4563-9288-dbe706cd672e/resourceGroups/azureXplatCliTestResourceGroup5228/providers/Microsoft.PowerBI/workspaceCollections/azureXplatCliTestWorkspaceCollection3663/listKeys?api-version=2016-01-29')
+  .reply(200, "{\"key1\":\"4TTyLU4Is9a2S5rcpEYp3xrq6zb3qHIaIyiaX5JlY97k4mlX5Vmuas0F2KysNa9l8KY7FNzHhXww/EF4h8fWBw==\",\"key2\":\"uWNtE0Wbmvnx9JNSF112X2TnBeq+lLEICrkr+EcTWi0lnkN0XPBt5oNVSL1yeGXwybHyAMAoDdeImYmKSQU5uw==\"}", { 'cache-control': 'no-store, must-revalidate, no-cache',
+  'content-length': '197',
   'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
-  'x-ms-correlation-request-id': 'b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
-  'x-ms-routing-request-id': 'WESTUS2:20160822T224304Z:b120aa58-4bf7-4e2e-82b9-aaa9c77fd781',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 22 Aug 2016 22:43:04 GMT',
-  connection: 'close',
-  'content-length': '216' });
+  'x-frame-options': 'deny',
+  'x-content-type-options': 'nosniff',
+  requestid: 'ce4d6652-9486-4a51-ae1a-8c7fb20ee1b9',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-request-id': '0d396c9f-4ebf-4195-80d8-d6343651decd',
+  'x-ms-correlation-request-id': '0d396c9f-4ebf-4195-80d8-d6343651decd',
+  'x-ms-routing-request-id': 'WESTUS:20160524T193244Z:0d396c9f-4ebf-4195-80d8-d6343651decd',
+  date: 'Tue, 24 May 2016 19:32:43 GMT',
+  connection: 'close' });
  return result; }]];

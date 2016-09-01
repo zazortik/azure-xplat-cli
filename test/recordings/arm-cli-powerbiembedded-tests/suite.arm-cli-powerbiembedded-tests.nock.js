@@ -6,15 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '0d3ae56c-deaf-4982-b514-33d016d4a683',
-    name: 'antps10',
+    id: '3d1cd7a8-b035-4563-9288-dbe706cd672e',
+    name: 'SAAS InfoNav Test_564339',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'microsoft.com',
     state: 'Enabled',
-    registeredProviders: ['website'],
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -30,4 +30,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['azureXplatCliTestResourceGroup3994'];};
+ exports.randomTestIdsGenerated = function() { return ['azureXplatCliTestResourceGroup5228'];};
