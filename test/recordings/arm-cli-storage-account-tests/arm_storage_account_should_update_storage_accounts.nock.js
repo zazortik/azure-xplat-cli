@@ -6,16 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '45b60d85-fd72-427a-a708-f994d26e593e',
-    name: 'Azure Storage DM Staging',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
-    _eventsCount: '1',
+    registeredProviders: ['mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,7 +22,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'East US 2 (Stage)';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
   process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_STORAGE_TEST_KIND'] = 'storage';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
@@ -31,75 +30,36 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743?api-version=2016-01-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistoragegroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743\",\"kind\":\"Storage\",\"location\":\"eastus2(stage)\",\"name\":\"armclistorageaccount5743\",\"properties\":{\"creationTime\":\"2016-04-25T06:24:49.8558369Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5743.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743.table.core.windows.net/\"},\"primaryLocation\":\"eastus2(stage)\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northcentralus(stage)\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+.patch('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/armclistorageGroup8821/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5027?api-version=2016-01-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/armclistoragegroup8821/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5027\",\"kind\":\"Storage\",\"location\":\"westeurope\",\"name\":\"armclistorageaccount5027\",\"properties\":{\"creationTime\":\"2016-09-01T10:54:43.7935824Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5027.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5027.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5027.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5027.table.core.windows.net/\"},\"primaryLocation\":\"westeurope\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5027-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5027-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5027-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northeurope\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1120',
+  'content-length': '1103',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '82e67259-3a69-4f89-868f-058fa5ffd88c',
+  'x-ms-request-id': '6e4de45e-dd9e-4ad2-b44a-89a37a8af770',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1189',
-  'x-ms-correlation-request-id': '82e67259-3a69-4f89-868f-058fa5ffd88c',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062610Z:82e67259-3a69-4f89-868f-058fa5ffd88c',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '6e4de45e-dd9e-4ad2-b44a-89a37a8af770',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160901T105553Z:6e4de45e-dd9e-4ad2-b44a-89a37a8af770',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:09 GMT',
-  connection: 'close' });
+  date: 'Thu, 01 Sep 2016 10:55:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743?api-version=2016-01-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistoragegroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743\",\"kind\":\"Storage\",\"location\":\"eastus2(stage)\",\"name\":\"armclistorageaccount5743\",\"properties\":{\"creationTime\":\"2016-04-25T06:24:49.8558369Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5743.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743.table.core.windows.net/\"},\"primaryLocation\":\"eastus2(stage)\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northcentralus(stage)\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/armclistorageGroup8821/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5027?api-version=2016-01-01')
+  .reply(200, "{\"id\":\"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/armclistoragegroup8821/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5027\",\"kind\":\"Storage\",\"location\":\"westeurope\",\"name\":\"armclistorageaccount5027\",\"properties\":{\"creationTime\":\"2016-09-01T10:54:43.7935824Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5027.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5027.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5027.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5027.table.core.windows.net/\"},\"primaryLocation\":\"westeurope\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5027-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5027-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5027-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northeurope\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1120',
+  'content-length': '1103',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '82e67259-3a69-4f89-868f-058fa5ffd88c',
+  'x-ms-request-id': '68f76233-a45e-4ca2-b887-01a92cf02764',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1189',
-  'x-ms-correlation-request-id': '82e67259-3a69-4f89-868f-058fa5ffd88c',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062610Z:82e67259-3a69-4f89-868f-058fa5ffd88c',
+  'x-ms-ratelimit-remaining-subscription-reads': '14994',
+  'x-ms-correlation-request-id': '68f76233-a45e-4ca2-b887-01a92cf02764',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160901T105554Z:68f76233-a45e-4ca2-b887-01a92cf02764',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:09 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743?api-version=2016-01-01')
-  .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistoragegroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743\",\"kind\":\"Storage\",\"location\":\"eastus2(stage)\",\"name\":\"armclistorageaccount5743\",\"properties\":{\"creationTime\":\"2016-04-25T06:24:49.8558369Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5743.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743.table.core.windows.net/\"},\"primaryLocation\":\"eastus2(stage)\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northcentralus(stage)\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '1120',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '299e5d61-9961-4f1e-aa2d-0cb984396855',
-  server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '299e5d61-9961-4f1e-aa2d-0cb984396855',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062613Z:299e5d61-9961-4f1e-aa2d-0cb984396855',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:13 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743?api-version=2016-01-01')
-  .reply(200, "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistoragegroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743\",\"kind\":\"Storage\",\"location\":\"eastus2(stage)\",\"name\":\"armclistorageaccount5743\",\"properties\":{\"creationTime\":\"2016-04-25T06:24:49.8558369Z\",\"primaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743.blob.core.windows.net/\",\"file\":\"https://armclistorageaccount5743.file.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743.table.core.windows.net/\"},\"primaryLocation\":\"eastus2(stage)\",\"provisioningState\":\"Succeeded\",\"secondaryEndpoints\":{\"blob\":\"https://armclistorageaccount5743-secondary.blob.core.windows.net/\",\"queue\":\"https://armclistorageaccount5743-secondary.queue.core.windows.net/\",\"table\":\"https://armclistorageaccount5743-secondary.table.core.windows.net/\"},\"secondaryLocation\":\"northcentralus(stage)\",\"statusOfPrimary\":\"available\",\"statusOfSecondary\":\"available\"},\"sku\":{\"name\":\"Standard_RAGRS\",\"tier\":\"Standard\"},\"tags\":{},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '1120',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '299e5d61-9961-4f1e-aa2d-0cb984396855',
-  server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14990',
-  'x-ms-correlation-request-id': '299e5d61-9961-4f1e-aa2d-0cb984396855',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062613Z:299e5d61-9961-4f1e-aa2d-0cb984396855',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:13 GMT',
-  connection: 'close' });
+  date: 'Thu, 01 Sep 2016 10:55:53 GMT' });
  return result; }]];
