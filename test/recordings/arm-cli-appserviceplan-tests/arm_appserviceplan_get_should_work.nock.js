@@ -25,6 +25,4 @@ exports.getMockedProfile = function () {
 exports.setEnvironment = function() {
 };
 
-exports.scopes = [];
-
- exports.randomTestIdsGenerated = function() { return ['webappclitests4194','testrg19641'];};
+exports.scopes = [[]];
