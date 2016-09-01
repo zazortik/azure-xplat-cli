@@ -289,14 +289,10 @@ describe('arm', function () {
         var storageAccountName = suite.generateId('xstorageaccount', createdGroups, suite.isMocked);
         var storageContainerName = suite.generateId('xstoragecontainer', createdGroups, suite.isMocked);
         var deploymentName = suite.generateId('Deploy1', createdDeployments, suite.isMocked);
-        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
-        //var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var CreateStorageAccount = util.format('storage account create -g %s --sku-name LRS --kind Storage %s --location %s --json', groupName, storageAccountName, 'eastus');
         var GetKeyString = util.format('storage account keys list %s -g %s --json', storageAccountName, groupName);
-        //var oCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --nowait --json',
-            //templateUri, groupName, deploymentName, parameterFile);
-        
+       
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
 
@@ -348,13 +344,9 @@ describe('arm', function () {
         var storageAccountName = suite.generateId('xstorageaccount', createdGroups, suite.isMocked);
         var storageContainerName = suite.generateId('xstoragecontainer', createdGroups, suite.isMocked);
         var deploymentName = 'arm-deployment-template';
-        //same content like path.join(__dirname, '../../../data/arm-deployment-template.json')
-        //var templateUri = 'http://azuresdkcitest.blob.core.windows.net/azure-cli-test/arm-deployment-template.json';
         var templateFile = path.join(__dirname, '../../../data/arm-deployment-template.json');
         var CreateStorageAccount = util.format('storage account create -g %s --sku-name LRS --kind Storage %s --location %s --json', groupName, storageAccountName, 'eastus');
         var GetKeyString = util.format('storage account keys list %s -g %s --json', storageAccountName, groupName);
-        //var oCreateDeployment = util.format('group deployment create --template-uri %s -g %s -n %s -e %s --nowait --json',
-            //templateUri, groupName, deploymentName, parameterFile);
         
         suite.execute('group create %s --location %s --json', groupName, testLocation, function (result) {
           result.exitStatus.should.equal(0);
