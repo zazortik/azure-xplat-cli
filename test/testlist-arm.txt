@@ -98,3 +98,6 @@ commands/arm/group/arm.group.deployment.operation-tests.js
 commands/arm/cdnMangement/arm.cdnMangement-tests.js
 commands/arm/policy/arm.policy.definition-tests.js
 commands/arm/policy/arm.policy.assignment-tests.js
+
+commands/arm/appserviceplan/arm.appserviceplan.feature-tests.js
+commands/arm/webapp/arm.webapp.feature-tests.js
