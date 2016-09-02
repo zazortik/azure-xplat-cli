@@ -36,7 +36,7 @@ describe('cli', function () {
     //put the json file under same folder of the test file; 
     //rather under repo root.
     var networkconfig = path.join(__dirname, '/../output', 'netconfig.json');
-    var dnsIp = '66.77.88.04';
+    var dnsIp = '66.77.88.14';
     var dnsId = 'dns-cli-2';
     testUtils.TIMEOUT_INTERVAL = 5000;
     before(function (done) {
@@ -169,8 +169,10 @@ describe('cli', function () {
 
                 cmd = util.format('network vnet delete %s --quiet --json', vnetName);
                 suite.execute(cmd, function (result) {
+                  result.exitStatus.should.equal(0);
                   cmd = util.format('network dns-server unregister %s --quiet --json', dnsIp);
                   suite.execute(cmd, function (result) {
+                    result.exitStatus.should.equal(0);
                     done();
                   });
                 })
