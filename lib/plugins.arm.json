@@ -4625,7 +4625,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -5082,7 +5082,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
