@@ -46192,6 +46192,86 @@
             }
           ],
           "categories": {}
+        },
+        "connectionstring": {
+          "name": "connectionstring",
+          "description": "Command to get the connection string of an IoT hub",
+          "fullName": "iothub connectionstring",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Get an IoT hub connection string",
+              "fullName": "iothub connectionstring show",
+              "usage": "<resourceGroup> <name> [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IoT hub."
+                },
+                {
+                  "flags": "-k --key-name <keyName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--key-name",
+                  "description": "The name of the key. Default : The first key in the list of keys retrieved for the iothub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier."
+                }
+              ]
+            }
+          ],
+          "categories": {}
         }
       }
     },

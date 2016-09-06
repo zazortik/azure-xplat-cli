@@ -90,6 +90,50 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
+    describe('Connection String Tests', function () {
+
+      it('create command should work', function (done) {
+
+        iothubName = suite.generateId(iothubPrefix, knownNames);
+        createIotHubMustSucceed();
+
+        function createIotHubMustSucceed() {
+          suite.execute('iothub create --name %s --resource-group %s --location %s --sku-name %s --units %s --json', iothubName, testResourceGroup, testLocation, testSku, testUnits, function (result) {
+            result.exitStatus.should.be.equal(0);
+            showIotHubMustSucceed();
+          });
+        }
+
+        function showIotHubMustSucceed() {
+          suite.execute('iothub show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var iothub = JSON.parse(result.text);
+            iothub.name.should.be.equal(iothubName);
+            done();
+          });
+        }
+      });
+
+      it('get default connection string should work', function (done) {
+        suite.execute('iothub connectionstring show --name %s --resource-group %s', iothubName, testResourceGroup, function (result) {
+          result.exitStatus.should.be.equal(0);
+          result.text.should.containEql('iothubowner');
+          result.text.should.containEql('HostName');
+          done();
+        });
+      });
+
+      it('get specific connection string should work', function (done) {
+        suite.execute('iothub connectionstring show --name %s --resource-group %s --key-name %s ', iothubName, testResourceGroup, 'service', function (result) {
+          result.exitStatus.should.be.equal(0);
+          result.text.should.containEql('service');
+          result.text.should.containEql('HostName');
+          done();
+        });
+      });
+
+    });
+
     describe('All Tests', function () {
 
       it('create command should work', function (done) {
