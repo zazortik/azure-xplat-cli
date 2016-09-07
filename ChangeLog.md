@@ -34,7 +34,7 @@
   * Moved to new api version 2016-04-01
   * Implemented new dns zone clear command to remove all related record sets
   * Dns zone delete command now removes dns zone and all related record sets
-  * Implemented command ```dns record-set set-soa-record''' to set SOA type record
+  * Implemented command ```dns record-set set-soa-record``` to set SOA type record
   * Records of type PTR is now supported
   * Added functionality to create dns zone, record sets from record-set add-record command.
   * Reworked dns zone list command to make resource-group optional parameter
