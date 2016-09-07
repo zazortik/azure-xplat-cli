@@ -6,7 +6,7 @@
   * Support generating random values within a command; record them if a test runs that command and retrieve them from the recording file if the test for that command is being run in playback mode
   * Fixed Image URN for VM Related Tests
   * Updated the request package to 2.74.0 to fix the though-cookie issue.
-
+  * Changed azureProfile file permission to 600
 * WebApp
   * Added appserviceplan and webapp commands
     - `webapp config show`
@@ -17,19 +17,17 @@
     - `appserviceplan show`
     - `appserviceplan delete`
   * Fixed appserviceplan/webapp commands and updated webapp api to be used
-  * Changed azureProfile file permission to 600
-  * Batch
+* Batch
   * Azure batch pool commands now support a virtual network property
   * Azure batch job now supports onAllTasksComplete and onAllTasksFailure properties, which can be used to control the lifetime of the job along with the azure batch task exitConditions property.
   * Azure batch task now supports application package references, as does the jobManager property of azure batch job.
-
 * Storage
   * Upgraded azure-common package to 0.9.17 and request package to 2.74.0 to address the security issue and proxy tunneling issue.
   * Tuned the description of the `--snapshot` option for blob commands.
   * Tuned the description of the storage account credential related options for storage commands.
   * Added the command azure storage blob update to update the properties of an existing blob.  
-  * IoHub
-  * Azure IotHub CLI commands
+* IotHub
+  * Added Azure IotHub CLI commands
 * Network
   * Moved to new api version 2016-04-01
   * Implemented new dns zone clear command to remove all related record sets
