@@ -58,6 +58,7 @@ commands/arm/network/arm.network.publicip-tests.js
 commands/arm/network/arm.network.nsg-tests.js
 commands/arm/network/arm.network.nsg-rule-tests.js
 commands/arm/network/arm.network.vnet-tests.js
+commands/arm/network/arm.network.vnet-peering-tests.js
 commands/arm/network/arm.network.subnet-tests.js
 commands/arm/network/arm.network.nic-tests.js
 commands/arm/network/arm.network.lb-tests.js
@@ -74,7 +75,8 @@ commands/arm/network/arm.network.vpn-gateway-tests.js
 commands/arm/network/arm.network.vpn-connection-tests.js
 commands/arm/network/arm.network.application-gateway-tests.js
 commands/arm/network/arm.network.express-route-circuit-tests.js
-commands/arm/network/arm.network.express-route-peering-tests.js
+# TODO: Uncomment express-route-peering-tests line when fixed
+# commands/arm/network/arm.network.express-route-peering-tests.js
 commands/arm/network/arm.network.express-route-authorization-tests.js
 commands/arm/network/arm.network.dns-zone-tests.js
 commands/arm/network/arm.network.dns-zone-record-set-tests.js
@@ -87,6 +89,7 @@ commands/arm/rediscache/arm.rediscache-tests.js
 commands/arm/datalakeanalytics/arm.datalake-analytics-tests.js
 commands/arm/datalakestore/arm.datalake-store-tests.js
 commands/arm/devtestlabs/arm.devtestlabs-tests.js
+commands/arm/iothub/arm.iothub-tests.js
 #please put the following group tests to the last, as it uses the different subscription
 #and it exposes a test framework bug which failed vm tests randomly
 commands/arm/group/arm.group-tests.js
@@ -95,3 +98,6 @@ commands/arm/group/arm.group.deployment.operation-tests.js
 commands/arm/cdnMangement/arm.cdnMangement-tests.js
 commands/arm/policy/arm.policy.definition-tests.js
 commands/arm/policy/arm.policy.assignment-tests.js
+
+commands/arm/appserviceplan/arm.appserviceplan.feature-tests.js
+commands/arm/webapp/arm.webapp.feature-tests.js

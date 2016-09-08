@@ -40,8 +40,8 @@ var aProp = {
   newTtl: 255,
   params: '-a 192.168.17.18',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags,
-  newTags: networkUtil.newTags
+  metadata: networkUtil.tags,
+  newMetadata: networkUtil.newTags
 };
 var aaaaProp = {
   name: 'set-aaaa',
@@ -49,7 +49,15 @@ var aaaaProp = {
   ttl: 3600,
   params: '-b 2001:cafe:130::100',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags
+  metadata: networkUtil.tags
+};
+var cnameProp = {
+  name: 'set-cname',
+  type: 'CNAME',
+  ttl: 3600,
+  params: '-c testcname',
+  zoneName: zoneProp.name,
+  metadata: networkUtil.tags
 };
 var mxProp = {
   name: 'set-mx',
@@ -57,7 +65,7 @@ var mxProp = {
   ttl: 3600,
   params: '-f 100 -e mail.test.com.',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags
+  metadata: networkUtil.tags
 };
 var nsProp = {
   name: 'set-ns',
@@ -65,15 +73,15 @@ var nsProp = {
   ttl: 3600,
   params: '-d ns1.com.',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags
+  metadata: networkUtil.tags
 };
-var txtProp = {
-  name: 'set-txt',
-  type: 'TXT',
+var soaProp = {
+  name: '@',
+  type: 'SOA',
   ttl: 3600,
-  params: '-x longtexthere',
+  params: '-e mail@microsoft.com -i 60000 -S 123 -n 2400 -r 3600 -j 6400',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags
+  metadata: networkUtil.tags
 };
 var srvProp = {
   name: 'set-srv',
@@ -81,8 +89,17 @@ var srvProp = {
   ttl: 3600,
   params: '-p 1 -w 2 -o 3 -u target.com.',
   zoneName: zoneProp.name,
-  tags: networkUtil.tags
+  metadata: networkUtil.tags
 };
+var txtProp = {
+  name: 'set-txt',
+  type: 'TXT',
+  ttl: 3600,
+  params: '-x longtexthere',
+  zoneName: zoneProp.name,
+  metadata: networkUtil.tags
+};
+
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -97,7 +114,7 @@ describe('arm', function () {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
         location = process.env.AZURE_VM_TEST_LOCATION;
-        groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
+        groupName = suite.generateId(groupName, null);
 
         zoneProp.location = location;
         zoneProp.group = groupName;
@@ -108,6 +125,8 @@ describe('arm', function () {
         nsProp.group = zoneProp.group;
         txtProp.group = zoneProp.group;
         srvProp.group = zoneProp.group;
+        cnameProp.group = zoneProp.group;
+        soaProp.group = zoneProp.group;
 
         done();
       });
@@ -140,14 +159,13 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(aProp, suite, done);
       });
       it('set should modify a record-set', function (done) {
-        var cmd = 'network dns record-set set -g {group} -z {zoneName} -n {name} -y {type} -l {newTtl} -t {newTags} --json'
-          .formatArgs(aProp);
+        var cmd = 'network dns record-set set -g {group} -z {zoneName} -n {name} -y {type} -l {newTtl} -m {newMetadata} --json'.formatArgs(aProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var aSet = JSON.parse(result.text);
           aSet.name.should.equal(aProp.name);
-          aSet.properties.ttl.should.equal(aProp.newTtl);
-          networkUtil.shouldAppendTags(aSet);
+          aSet.tTL.should.equal(aProp.newTtl);
+          networkUtil.shouldAppendTags(aSet, 'metadata');
           done();
         });
       });
@@ -159,7 +177,7 @@ describe('arm', function () {
       });
       it('add-record should add a record of type A', function (done) {
         networkUtil.addDnsRecord(aProp, suite, function (aSet) {
-          aSet.properties.aRecords.should.containEql({ipv4Address: '192.168.17.18'});
+          aSet.aRecords.should.containEql({ipv4Address: '192.168.17.18'});
           done();
         });
       });
@@ -185,7 +203,7 @@ describe('arm', function () {
       });
       it('add-record should add a record of type AAAA', function (done) {
         networkUtil.addDnsRecord(aaaaProp, suite, function (aaaaSet) {
-          aaaaSet.properties.aaaaRecords.should.containEql({ipv6Address: '2001:cafe:130::100'});
+          aaaaSet.aaaaRecords.should.containEql({ipv6Address: '2001:cafe:130::100'});
           done();
         });
       });
@@ -197,6 +215,19 @@ describe('arm', function () {
       });
 
       /**
+       * CNAME
+       */
+      it('add-record should add a record of type CNAME', function (done) {
+        networkUtil.addDnsRecord(cnameProp, suite, function (cnameSet) {
+          cnameSet.cnameRecord.cname.should.equal('testcname');
+          done();
+        });
+      });
+      it('delete-record should delete a record of type CNAME', function (done) {
+        networkUtil.deleteDnsRecord(cnameProp, suite, done);
+      });
+
+      /**
        * MX
        */
       it('create should create a record-set of type MX', function (done) {
@@ -204,7 +235,7 @@ describe('arm', function () {
       });
       it('add-record should add a record of type MX', function (done) {
         networkUtil.addDnsRecord(mxProp, suite, function (mxSet) {
-          mxSet.properties.mxRecords.should.containEql({preference: 100, exchange: 'mail.test.com'});
+          mxSet.mxRecords.should.containEql({preference: 100, exchange: 'mail.test.com'});
           done();
         });
       });
@@ -222,8 +253,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(nsProp, suite, done);
       });
       it('add-record should add a record of type NS', function (done) {
-        networkUtil.addDnsRecord(nsProp, suite, function (mxSet) {
-          mxSet.properties.nsRecords.should.containEql({nsdname: 'ns1.com.'});
+        networkUtil.addDnsRecord(nsProp, suite, function (nsSet) {
+          nsSet.nsRecords.should.containEql({nsdname: 'ns1.com.'});
           done();
         });
       });
@@ -235,22 +266,15 @@ describe('arm', function () {
       });
 
       /**
-       * TXT
+       * SOA
        */
-      it('create should create a record-set of type TXT', function (done) {
-        networkUtil.createDnsRecordSet(txtProp, suite, done);
-      });
-      it('add-record should add a record of type TXT', function (done) {
-        networkUtil.addDnsRecord(txtProp, suite, function (mxSet) {
-          mxSet.properties.txtRecords.should.containEql({value: 'longtexthere'});
+      it('set SOA record should create a record-set of type SOA', function (done) {
+        var cmd = util.format('network dns record-set set-soa-record -g {group} -z {zoneName} -l {ttl} ' +
+          '-m {metadata} {params} --json').formatArgs(soaProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
           done();
         });
-      });
-      it('delete-record should delete a record of type TXT', function (done) {
-        networkUtil.deleteDnsRecord(txtProp, suite, done);
-      });
-      it('delete should delete record-set of type TXT', function (done) {
-        networkUtil.deleteDnsRecordSet(txtProp, suite, done);
       });
 
       /**
@@ -260,8 +284,8 @@ describe('arm', function () {
         networkUtil.createDnsRecordSet(srvProp, suite, done);
       });
       it('add-record should add a record of type SRV', function (done) {
-        networkUtil.addDnsRecord(srvProp, suite, function (mxSet) {
-          mxSet.properties.srvRecords.should.containEql({priority: 1, weight: 2, port: 3, target: 'target.com'});
+        networkUtil.addDnsRecord(srvProp, suite, function (srvSet) {
+          srvSet.srvRecords.should.containEql({priority: 1, weight: 2, port: 3, target: 'target.com'});
           done();
         });
       });
@@ -270,6 +294,25 @@ describe('arm', function () {
       });
       it('delete should delete record-set of type SRV', function (done) {
         networkUtil.deleteDnsRecordSet(srvProp, suite, done);
+      });
+
+      /**
+       * TXT
+       */
+      it('create should create a record-set of type TXT', function (done) {
+        networkUtil.createDnsRecordSet(txtProp, suite, done);
+      });
+      it('add-record should add a record of type TXT', function (done) {
+        networkUtil.addDnsRecord(txtProp, suite, function (txtSet) {
+          txtSet.txtRecords.should.containEql({value: ['longtexthere']});
+          done();
+        });
+      });
+      it('delete-record should delete a record of type TXT', function (done) {
+        networkUtil.deleteDnsRecord(txtProp, suite, done);
+      });
+      it('delete should delete record-set of type TXT', function (done) {
+        networkUtil.deleteDnsRecordSet(txtProp, suite, done);
       });
     });
   });

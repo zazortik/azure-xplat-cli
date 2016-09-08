@@ -88,6 +88,10 @@ function CLITest(mochaSuiteObject, testPrefix, env, forceMocked) {
   this.uuidsGenerated = [];
   this.currentUuid = 0;
 
+  //track & restore generated random strings that are used internally by any command
+  this.randomStringsGenerated = [];
+  this.currentRandomString = 0;
+
   // disable telemetry in test
   telemetry.init(false);
 
@@ -188,12 +192,14 @@ _.extend(CLITest.prototype, {
 
     if (this.isMocked){
       this.stubOutUuidGen(sinon);
+      this.stubOutGetRandomString(sinon);
     }
 
     executeCommand(cmd, function (result) {
       utilsCore.readConfig.restore();
       if (this.isMocked){
         utils.uuidGen.restore();
+        utils.getRandomString.restore();
       }
       callback(result);
     });
@@ -222,6 +228,10 @@ _.extend(CLITest.prototype, {
 
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+
+      if (nocked.randomStringsGenerated) {
+        this.randomStringsGenerated = nocked.randomStringsGenerated();
       }
 
       if (nocked.getMockedProfile) {
@@ -256,6 +266,7 @@ _.extend(CLITest.prototype, {
       this.writeRecordingHeader(this.getSuiteRecordingsFile());
       fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
       this.writeGeneratedUuids(this.getSuiteRecordingsFile());
+      this.writeGeneratedRandomStrings(this.getSuiteRecordingsFile());
       this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
     }
   },
@@ -286,6 +297,7 @@ _.extend(CLITest.prototype, {
     this.currentTest = this.mochaSuiteObject.currentTest.fullTitle();
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
+    this.currentRandomString = 0;
     nockHelper.nockHttp();
     if (this.isMocked && this.isRecording) {
       // nock recording
@@ -302,6 +314,10 @@ _.extend(CLITest.prototype, {
 
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+
+      if (nocked.randomStringsGenerated) {
+        this.randomStringsGenerated = nocked.randomStringsGenerated();
       }
 
       if (nocked.getMockedProfile) {
@@ -375,6 +391,7 @@ _.extend(CLITest.prototype, {
         scope += ']];';
         fs.appendFileSync(this.getTestRecordingsFile(), scope);
         this.writeGeneratedUuids();
+        this.writeGeneratedRandomStrings();
         this.writeGeneratedRandomTestIds();
         nockHelper.nock.recorder.clear();
       } else {
@@ -479,6 +496,22 @@ _.extend(CLITest.prototype, {
       filename = filename || this.getTestRecordingsFile();
       fs.appendFileSync(filename, content);
       this.uuidsGenerated.length = 0;
+    }
+  },
+
+  /**
+  * Writes the generated random strings to the specified file.
+  *
+  * @param {string} filename        (Optional) The file name to which the random strings need to be added
+  *                                 If the filename is not provided then it will get the current test recording file.
+  */
+  writeGeneratedRandomStrings: function (filename) {
+    if (this.randomStringsGenerated.length > 0) {
+      var randomStrings = this.randomStringsGenerated.map(function (str) { return '\'' + str + '\''; }).join(',');
+      var content = util.format('\n exports.randomStringsGenerated = function() { return [%s];};', randomStrings);
+      filename = filename || this.getTestRecordingsFile();
+      fs.appendFileSync(filename, content);
+      this.randomStringsGenerated.length = 0;
     }
   },
   
@@ -636,6 +669,31 @@ _.extend(CLITest.prototype, {
           }
         }
         return uuid;
+      };
+    });
+  },
+
+  /**
+  * Record any generated hashes which get created while executing a command and restore then in playback mode
+  */
+  stubOutGetRandomString: function () {
+    var self = this;
+    if (utils.getRandomString.restore) {
+      utils.getRandomString.restore();
+    }
+
+    CLITest.wrap(sinon, utils, 'getRandomString', function (originalGetRandomString) {
+      return function (prefix) {
+        var str;
+        if (self.isMocked) {
+          if (!self.isRecording) {
+            str = self.randomStringsGenerated[self.currentRandomString++]; 
+          } else {
+            str = originalGetRandomString(prefix);
+            self.randomStringsGenerated.push(str);
+          }
+        }
+        return str;
       };
     });
   },

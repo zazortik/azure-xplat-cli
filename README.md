@@ -34,6 +34,9 @@ The CLI targets **"Public Azure Cloud"** by default. You can get more informatio
 ## Non-Interactive Authentication
 If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md).
 
+## Supported Environment Variables
+
+Please take a look at the list of supported environment variables over [here](https://github.com/Azure/azure-xplat-cli/wiki/Environment-Variables).
 
 ## Installation
 
@@ -89,7 +92,10 @@ To enable it in bash, run:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
+# For macOS Terminal(login shell)
 echo 'source ~/azure.completion.sh' >> ~/.bash_profile
+# For Linux Terminal(non-login shell)
+echo 'source ~/azure.completion.sh' >> ~/.bashrc
 ```
 
 ## Get Started

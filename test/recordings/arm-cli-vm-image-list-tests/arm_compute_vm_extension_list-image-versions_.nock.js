@@ -15,7 +15,6 @@ exports.getMockedProfile = function () {
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
     registeredProviders: [],
-    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -28,24 +27,6 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2016-03-30')
-  .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"2.1\",\r\n    \"id\": \"/Subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/BGInfo/Versions/2.1\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '252',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '937e1164-c9bf-4290-9237-a7dfd0736263',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14970',
-  'x-ms-correlation-request-id': 'da92c509-375a-4780-9983-0d2ae083e9f9',
-  'x-ms-routing-request-id': 'EASTUS:20160718T210056Z:da92c509-375a-4780-9983-0d2ae083e9f9',
-  date: 'Mon, 18 Jul 2016 21:00:56 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/providers/Microsoft.Compute/locations/eastus/publishers/Microsoft.Compute/artifacttypes/vmextension/types/BGInfo/versions?api-version=2016-03-30')
   .reply(200, "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"2.1\",\r\n    \"id\": \"/Subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/BGInfo/Versions/2.1\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
@@ -54,11 +35,10 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '937e1164-c9bf-4290-9237-a7dfd0736263',
+  'x-ms-request-id': '0bba70b8-7a7d-4cd0-a65a-0011fe30bb22',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14970',
-  'x-ms-correlation-request-id': 'da92c509-375a-4780-9983-0d2ae083e9f9',
-  'x-ms-routing-request-id': 'EASTUS:20160718T210056Z:da92c509-375a-4780-9983-0d2ae083e9f9',
-  date: 'Mon, 18 Jul 2016 21:00:56 GMT',
-  connection: 'close' });
+  'x-ms-ratelimit-remaining-subscription-reads': '14946',
+  'x-ms-correlation-request-id': 'a170ee04-670f-4b00-bb69-6994a5d4ff8a',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160816T071113Z:a170ee04-670f-4b00-bb69-6994a5d4ff8a',
+  date: 'Tue, 16 Aug 2016 07:11:13 GMT' });
  return result; }]];

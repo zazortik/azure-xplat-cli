@@ -20,6 +20,8 @@ targets/*
 Debug/
 Release/
 Microsoft.NodejsTools.WebRole.dll
+typings.json
+typings/
 
 # Visual Studio Code
 .settings/

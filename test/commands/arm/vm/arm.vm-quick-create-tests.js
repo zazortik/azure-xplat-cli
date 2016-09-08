@@ -31,6 +31,7 @@ var requiredEnvironment = [{
   defaultValue: 'test/myCert.pem'
 }];
 
+var customDataFile = './test/data/customdata.txt';
 var groupName,
   vm1Prefix = 'xplatvm101',
   vm2Prefix = 'xplatvm102',
@@ -82,11 +83,12 @@ describe('arm', function() {
               vmTest.GetLinuxSkusList(location, suite, function(result) {
                 vmTest.GetLinuxImageList(location, suite, function(result) {
                   var latestLinuxImageUrn = 'UbuntuLTS';
-                  var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s',
-                    groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize).split(' ');
+                  var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s -w %s -C %s',
+                    groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize, vm1Prefix + '-pip', customDataFile).split(' ');
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
-                    result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                    result.text.should.containEql(vm1Prefix + '-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                    result.text.should.containEql('Custom Data (Base64 Encoded)');
                     done();
                   });
                 });
@@ -94,11 +96,12 @@ describe('arm', function() {
             }
             else {
               var latestLinuxImageUrn = 'UbuntuLTS';
-              var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s',
-                groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize).split(' ');
+              var cmd = util.format('vm quick-create %s %s %s Linux %s %s %s -M %s -z %s -w %s -C %s',
+                groupName, vm1Prefix, location, latestLinuxImageUrn, username, password, sshcert, vmSize, vm1Prefix + '-pip', customDataFile).split(' ');
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
-                result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                result.text.should.containEql(vm1Prefix + '-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                result.text.should.containEql('Custom Data (Base64 Encoded)');
                 done();
               });
             }
@@ -131,6 +134,7 @@ describe('arm', function() {
                   testUtils.executeCommand(suite, retry, cmd, function(result) {
                     result.exitStatus.should.equal(0);
                     result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                    result.text.should.not.containEql('Custom Data (Base64 Encoded)');
                     done();
                   });
                 });
@@ -145,6 +149,7 @@ describe('arm', function() {
               testUtils.executeCommand(suite, retry, cmd, function(result) {
                 result.exitStatus.should.equal(0);
                 result.text.should.containEql('-pip.' + location.toLowerCase() + '.cloudapp.azure.com');
+                result.text.should.not.containEql('Custom Data (Base64 Encoded)');
                 done();
               });
             });
