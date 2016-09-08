@@ -1609,6 +1609,14 @@
                   "description": "the display name for the application"
                 },
                 {
+                  "flags": "--default-version <default-version>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--default-version",
+                  "description": "the package to use if a client requests the application but does not specify a version"
+                },
+                {
                   "flags": "-g, --resource-group <resource-group>",
                   "required": -22,
                   "optional": 0,

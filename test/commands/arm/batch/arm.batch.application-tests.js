@@ -30,6 +30,7 @@ var emptyGroupName;
 var autoStorageAccountPrefix = 'armclibatch';
 var autoStorageAccountName;
 var location;
+var appPackageVersion = "1.0";
 
 var requiredEnvironment = [
   { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'westus' },
@@ -147,9 +148,18 @@ describe('arm', function () {
         done();
       });
     });
+    
+    it('should create applications package within the application', function (done) {
+      var uploadFilePath = path.resolve(__dirname, '../../../data/test.zip');
+      suite.execute('batch application package create --resource-group %s --account-name %s --application-id %s --version %s --package-file %s --json', resourceGroupName, accountName, applicationName, appPackageVersion, uploadFilePath, function (result) {
+        result.text.should.equal('');
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
 
     it('should update applications within the account', function (done) {
-      suite.execute('batch application set --resource-group %s --account-name %s --application-id %s --allow-updates false --display-name test --json', resourceGroupName, accountName, applicationName, function (result) {
+      suite.execute('batch application set --resource-group %s --account-name %s --application-id %s --allow-updates false --display-name test --default-Version %s --json', resourceGroupName, accountName, applicationName, appPackageVersion, function (result) {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
           
@@ -160,17 +170,9 @@ describe('arm', function () {
           batchApp.id.should.equal(applicationName);
           batchApp.allowUpdates.should.equal(false);
           batchApp.displayName.should.equal('test');
+          batchApp.defaultVersion.should.equal(appPackageVersion);
           done();
         });
-      });
-    });
-
-    it('should create applications package within the application', function (done) {
-      var uploadFilePath = path.resolve(__dirname, '../../../data/test.zip');
-      suite.execute('batch application package create --resource-group %s --account-name %s --application-id %s --version 1.0 --package-file %s --json', resourceGroupName, accountName, applicationName, uploadFilePath, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-        done();
       });
     });
 
