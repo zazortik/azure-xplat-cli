@@ -13,7 +13,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Chen, Hao <hach@microsoft.com>"
   ],
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Microsoft Azure Cross Platform Command Line tool",
   "tags": [
     "azure",
