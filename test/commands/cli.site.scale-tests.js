@@ -67,11 +67,11 @@ describe('cli', function () {
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
-        suite.execute('site scale mode free %s --json ', siteName, function (result) {
+        suite.execute('site scale mode shared %s --json ', siteName, function (result) {
           result.text.should.equal('');
           result.exitStatus.should.equal(0);
 
-          suite.execute('site scale mode shared %s --json', siteName, function (result) {
+          suite.execute('site scale mode standard %s --json', siteName, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 

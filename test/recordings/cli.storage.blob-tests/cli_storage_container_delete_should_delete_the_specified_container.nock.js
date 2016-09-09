@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    state: 'Enabled',
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -31,9 +32,9 @@ nock('http://xplat.blob.core.windows.net:443')
   .delete('/storageclitest?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e89ab3b4-0001-001c-50b5-b14e10000000',
+  'x-ms-request-id': 'eb57bd41-0001-0045-5865-f44b96000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:01:51 GMT',
+  date: 'Fri, 12 Aug 2016 06:46:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -42,8 +43,8 @@ nock('https://xplat.blob.core.windows.net:443')
   .delete('/storageclitest?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e89ab3b4-0001-001c-50b5-b14e10000000',
+  'x-ms-request-id': 'eb57bd41-0001-0045-5865-f44b96000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:01:51 GMT',
+  date: 'Fri, 12 Aug 2016 06:46:37 GMT',
   connection: 'close' });
  return result; }]];

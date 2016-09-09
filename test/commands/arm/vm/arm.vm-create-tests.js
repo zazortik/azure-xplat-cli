@@ -23,6 +23,8 @@ var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-vm-create-tests';
 var groupPrefix = 'xplatTestGVMCreate';
 var availprefix = 'xplatTestaAvail';
+var profile = require('../../../../lib/util/profile');
+var NetworkTestUtil = require('../../../util/networkTestUtil');
 var VMTestUtil = require('../../../util/vmTestUtil');
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -62,6 +64,7 @@ var groupName,
 describe('arm', function() {
   describe('compute', function() {
     var suite, retry = 5;
+    var networkUtil = new NetworkTestUtil();
     var vmTest = new VMTestUtil();
     before(function(done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
@@ -118,29 +121,36 @@ describe('arm', function() {
             var cmd = util.format('availset create %s %s %s  --json', groupName, availprefix, location).split(' ');
             testUtils.executeCommand(suite, retry, cmd, function(result) {
               result.exitStatus.should.equal(0);
-              if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
-                vmTest.GetLinuxSkusList(location, suite, function(result) {
-                  vmTest.GetLinuxImageList(location, suite, function(result) {
+              networkUtil.createVnet(groupName, vNetPrefix, location, '10.0.0.0/16', suite, function () {
+                networkUtil.createSubnet(groupName, vNetPrefix, subnetName, '10.0.0.0/24', suite, function () {
+                  var subscription = profile.current.getSubscription();
+                  var subnetId = '/subscriptions/' + subscription.id + '/resourceGroups/' + groupName +
+                    '/providers/Microsoft.Network/VirtualNetworks/' + vNetPrefix + '/subnets/' + subnetName;
+                  if (VMTestUtil.linuxImageUrn === '' || VMTestUtil.linuxImageUrn === undefined) {
+                    vmTest.GetLinuxSkusList(location, suite, function (result) {
+                      vmTest.GetLinuxImageList(location, suite, function (result) {
+                        latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
+                        var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -S %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                          groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
+                          subnetId, publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
+                        testUtils.executeCommand(suite, retry, cmd, function (result) {
+                          result.exitStatus.should.equal(0);
+                          done();
+                        });
+                      });
+                    });
+                  } else {
                     latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
+                    var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -S %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
                       groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
-                      vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
-                    testUtils.executeCommand(suite, retry, cmd, function(result) {
+                      subnetId, publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
+                    testUtils.executeCommand(suite, retry, cmd, function (result) {
                       result.exitStatus.should.equal(0);
                       done();
                     });
-                  });
+                  }
                 });
-              } else {
-                latestLinuxImageUrn = VMTestUtil.linuxImageUrn.substring(0, VMTestUtil.linuxImageUrn.lastIndexOf(':')) + ':latest';
-                var cmd = util.format('vm create %s %s %s Linux -f %s -Q %s -u %s -p %s -o %s --storage-account-type Standard_LRS -z Standard_D1 -R %s -F %s -P %s -j %s -k %s -i %s -w %s -M %s --tags %s --boot-diagnostics-storage-uri https://%s.blob.core.windows.net/ -r %s --json',
-                  groupName, vm3Prefix, location, nicName, latestLinuxImageUrn, username, password, storageAccount, storageCont,
-                  vNetPrefix, '10.0.0.0/16', subnetName, '10.0.0.0/24', publicipName, dnsPrefix, sshcert, tags, storageAccount, availprefix).split(' ');
-                testUtils.executeCommand(suite, retry, cmd, function(result) {
-                  result.exitStatus.should.equal(0);
-                  done();
-                });
-              }
+              });
             });
           });
         });
@@ -247,16 +257,22 @@ describe('arm', function() {
           done();
         });
       });
-      
-      it('list-ip-address should display all VMs and corrosponding public IP address in subscription', function(done) {
+
+      it('list-ip-address should display all VMs and corresponding public IP address in subscription', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
         var cmd = util.format('vm list-ip-address %s --json', '').split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           var allResources = JSON.parse(result.text);
           allResources.some(function(res) {
-            var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
-            return vmPublicIpName.indexOf(publicipName) !== -1;
+            if(res && res.networkProfile && res.networkProfile.networkInterfaces[0]
+              && res.networkProfile.networkInterfaces[0].expanded
+              && res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress) {
+              var vmPublicIpName = res.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.name;
+              return vmPublicIpName.indexOf(publicipName) !== -1;
+            } else {
+              return false;
+            }
           }).should.be.true;
           done();
         });
@@ -420,7 +436,6 @@ describe('arm', function() {
           });
         });
       });
-
     });
   });
 });

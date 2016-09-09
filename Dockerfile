@@ -2,9 +2,9 @@ FROM debian:jessie
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-ENV AZURE_CLI_VERSION "0.10.0"
 ENV NODEJS_APT_ROOT "node_4.x"
 ENV NODEJS_VERSION "4.2.4"
+ENV AZURECLITEMP /tmp/azure-cli
 
 RUN apt-get update -qq && \
     apt-get install -qqy --no-install-recommends\
@@ -21,13 +21,24 @@ RUN apt-get update -qq && \
       jq && \
     rm -rf /var/lib/apt/lists/* && \
     curl https://deb.nodesource.com/${NODEJS_APT_ROOT}/pool/main/n/nodejs/nodejs_${NODEJS_VERSION}-1nodesource1~jessie1_amd64.deb > node.deb && \
-      dpkg -i node.deb && \
-      rm node.deb && \
-      npm install --global azure-cli@${AZURE_CLI_VERSION} && \
-      azure --completion >> ~/azure.completion.sh && \
-      echo 'source ~/azure.completion.sh' >> ~/.bashrc && \
-      azure
+    dpkg -i node.deb && \
+    rm node.deb
 
-RUN azure config mode arm
+ADD ./ $AZURECLITEMP
+
+RUN cd $AZURECLITEMP && \
+    npm install && \
+    node node_modules/streamline/bin/_node -c lib && \
+    find lib/ -name "*._js" -delete && \
+    node bin/azure telemetry -d && \
+    node bin/azure --gen && \
+    npm install ./ -g
+
+Run azure --completion >> ~/azure.completion.sh && \
+    echo 'source ~/azure.completion.sh' >> ~/.bashrc && \
+    azure config mode arm
+
+RUN rm -rf $AZURECLITEMP
 
 ENV EDITOR vim
+

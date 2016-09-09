@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    state: 'Enabled',
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -28,22 +29,22 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .delete('/storage-cli-blob-test/appendblobname2855?snapshot=2016-05-19T10%3A02%3A12.8382122Z')
+  .delete('/storage-cli-blob-test/appendblobname8860?snapshot=2016-08-12T06%3A47%3A15.0390271Z')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd54d3290-0001-001a-40b5-b1b968000000',
+  'x-ms-request-id': 'cbf28441-0001-000a-4265-f48f8e000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:03:24 GMT',
+  date: 'Fri, 12 Aug 2016 06:48:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .delete('/storage-cli-blob-test/appendblobname2855?snapshot=2016-05-19T10%3A02%3A12.8382122Z')
+  .delete('/storage-cli-blob-test/appendblobname8860?snapshot=2016-08-12T06%3A47%3A15.0390271Z')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd54d3290-0001-001a-40b5-b1b968000000',
+  'x-ms-request-id': 'cbf28441-0001-000a-4265-f48f8e000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:03:24 GMT',
+  date: 'Fri, 12 Aug 2016 06:48:21 GMT',
   connection: 'close' });
  return result; }]];

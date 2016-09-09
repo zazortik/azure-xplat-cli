@@ -1,0 +1,5 @@
+#owner: msfcolombo
+commands/arm/keyvault/arm.keyvault-tests.js
+commands/arm/keyvault/arm.keyvault-key-tests.js
+commands/arm/keyvault/arm.keyvault-secret-tests.js
+commands/arm/keyvault/arm.keyvault-certificate-tests.js

@@ -128,7 +128,6 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
           var zone = JSON.parse(result.text);
           zone.should.have.property('sets');
-          // console.log('PARSE ONLY:  %j', zone);
           // TODO add more validation
           done();
         });
@@ -139,7 +138,6 @@ describe('arm', function () {
           result.exitStatus.should.equal(0);
 
           networkUtil.listDnsRecordSets(zoneProp, suite, function (sets) {
-            // console.log('RECORD LIST RES:  %j', sets);
             // TODO add more validation
             done();
           });
@@ -152,7 +150,6 @@ describe('arm', function () {
 
           cmd = 'network dns zone import -g {group} -n {name} -f {exportPath} --parse-only --json'.formatArgs(zoneProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
-            // console.log('EXPORT PARSE RES:  %j', result);
             result.exitStatus.should.equal(0);
             var zone = JSON.parse(result.text);
             zone.should.have.property('sets');

@@ -27,18 +27,13 @@ var testUtil = require('../../../util/util');
 var utils = require('../../../../lib/util/utils');
 
 var testPrefix = 'arm-cli-keyvault-tests';
+var rgPrefix = 'xplatTestRg';
 var vaultPrefix = 'xplatTestVault';
 var knownNames = [];
 
-var requiredEnvironment = [{
-  requiresToken: true
-}, {
-  name: 'AZURE_ARM_TEST_LOCATION',
-  defaultValue: 'West US'
-}, {
-  name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
-  defaultValue: 'xplatTestVaultRG'
-} 
+var requiredEnvironment = [
+  { requiresToken: true }, 
+  { name: 'AZURE_ARM_TEST_LOCATION', defaultValue: 'West US' } 
 ];
 
 var galleryTemplateName;
@@ -47,17 +42,21 @@ var galleryTemplateUrl;
 describe('arm', function() {
 
   describe('keyvault', function() {
+    
     var suite;
+    var dnsUpdateWait;
     var testLocation;
     var testResourceGroup;
 
     before(function(done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function() { 
+        dnsUpdateWait = suite.isPlayback() ? 0 : 5000;
         testLocation = process.env.AZURE_ARM_TEST_LOCATION;
         testLocation = testLocation.toLowerCase().replace(/ /g, '');
-        testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
-        suite.execute('group create %s --location %s', testResourceGroup, testLocation, function() {
+        testResourceGroup = suite.generateId(rgPrefix, knownNames);
+        suite.execute('group create %s --location %s', testResourceGroup, testLocation, function(result) {
+          result.exitStatus.should.be.equal(0);
           done();
         });      
       });
@@ -70,7 +69,9 @@ describe('arm', function() {
     });
 
     beforeEach(function(done) {
-      suite.setupTest(done);
+      suite.setupTest(function() {
+        done();
+      });
     });
 
     afterEach(function(done) {
@@ -78,6 +79,7 @@ describe('arm', function() {
     });
 
     describe('basic', function() {
+
       it('management commands should work', function(done) {
 
         var vaultName = suite.generateId(vaultPrefix, knownNames);
@@ -86,7 +88,7 @@ describe('arm', function() {
         function createVaultMustSucceed() {
           suite.execute('keyvault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
             result.exitStatus.should.be.equal(0);
-            showVaultMustSucceed();
+            setTimeout(showVaultMustSucceed, dnsUpdateWait);
           });
         }
 
@@ -126,12 +128,12 @@ describe('arm', function() {
         function createVaultMustSucceed() {
           suite.execute('keyvault create %s --resource-group %s --location %s --json', vaultName, testResourceGroup, testLocation, function(result) {
             result.exitStatus.should.be.equal(0);
-            setPolicySomePermsMustSucceed();
+            setTimeout(setPolicySomePermsMustSucceed, dnsUpdateWait);
           });
         }
 
         function setPolicySomePermsMustSucceed() {
-          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --enabled-for-deployment true --enabled-for-template-deployment true --enabled-for-disk-encryption true --json', vaultName, objectId, function(result) {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-keys ["create","import","delete"] --perms-to-secrets ["set","get"] --perms-to-certificates ["get","delete"] --enabled-for-deployment true --enabled-for-template-deployment true --enabled-for-disk-encryption true --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {
@@ -154,12 +156,23 @@ describe('arm', function() {
             vault.properties.enabledForDeployment.should.be.true;
             vault.properties.enabledForTemplateDeployment.should.be.true;
             vault.properties.enabledForDiskEncryption.should.be.true;
-            setPolicyEmptySecretPermsMustSucceedAndKillObjectId();
+            setPolicyEmptySecretPermsMustSucceedAndLetObjectIdThere();
           });
         }
 
-        function setPolicyEmptySecretPermsMustSucceedAndKillObjectId() {
+        function setPolicyEmptySecretPermsMustSucceedAndLetObjectIdThere() {
           suite.execute('keyvault set-policy %s --object-id %s --perms-to-secrets [] --json', vaultName, objectId, function(result) {
+            result.exitStatus.should.be.equal(0);
+            var vault = JSON.parse(result.text);
+            vault.properties.accessPolicies.some(function(policy) {
+              return policy.objectId.toLowerCase() === objectId.toLowerCase();
+            }).should.be.true;
+            setPolicyEmptyCertificatePermsMustSucceedAndKillObjectId();
+          });
+        }
+
+        function setPolicyEmptyCertificatePermsMustSucceedAndKillObjectId() {
+          suite.execute('keyvault set-policy %s --object-id %s --perms-to-certificates [] --json', vaultName, objectId, function(result) {
             result.exitStatus.should.be.equal(0);
             var vault = JSON.parse(result.text);
             vault.properties.accessPolicies.some(function(policy) {

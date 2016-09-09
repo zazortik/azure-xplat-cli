@@ -1,20 +1,20 @@
 ; Exported zone file from Azure DNS
 ; Resource Group Name: xplat-test-dns-zone
 ; Zone name: example1.com
-; Date and time (UTC): Thu May 12 2016 17:08:47 GMT+0000
+; Date and time (UTC): Mon Aug 29 2016 12:40:51 GMT+0000
 
-$TTL 5
+$TTL 3600
 $ORIGIN example1.com.
 
-@ 3600 IN SOA ns1-07.azure-dns.com. msnhst.microsoft.com. (
-				2016051247
-				3600
-				300
-				2419200
-				300
+@ 3600 IN SOA ns1-07.azure-dns.com. hostmaster.example1.com. (
+				2003080800
+				43200
+				900
+				1814400
+				10800
 				)
 
-@ 5 IN A 1.2.3.4
+@ 3600 IN A 1.2.3.4
 
 @ 172800 IN NS ns1-07.azure-dns.com.
   172800 IN NS ns2-07.azure-dns.net.
@@ -23,32 +23,27 @@ $ORIGIN example1.com.
 
 default 3600 IN A 0.1.2.3
 
-record 5 IN CNAME bar.foo.com.
+record 3600 IN CNAME bar.foo.com.
 
-subzone 5 IN A 3.4.5.6
+subzone 3600 IN A 3.4.5.6
 
-test-cname.subzone 5 IN CNAME r1.subzone.example1.com.
+test-cname.subzone 3600 IN CNAME r1.subzone.example1.com.
 
-www.subzone 5 IN A 4.5.6.7
+www.subzone 3600 IN A 4.5.6.7
 
 tc 3600 IN CNAME test.example1.com.
 
-test 5 IN A 7.8.9.0
+test 3600 IN A 7.8.9.0
 
-test-cname 5 IN CNAME r1.example1.com.
+test-cname 3600 IN CNAME r1.example1.com.
 
-test-cname2 5 IN CNAME r1.
+test-cname2 3600 IN CNAME r1.
 
-test-multi-a 5 IN A 192.168.1.145
-             5 IN A 10.1.1.230
+test-multi-a 3600 IN A 192.168.1.145
 
-test-mx 5 IN MX 10 m1.example1.com.
+test-srv 3600 IN SRV 1 2 3 srv1.example1.com.
 
-test-mx2 5 IN MX 10 m1.
+test-srv2 3600 IN SRV 1 2 3 srv1.
 
-test-srv 5 IN SRV 1 2 3 srv1.example1.com.
-
-test-srv2 5 IN SRV 1 2 3 srv1.
-
-www 5 IN A 2.3.4.5
+www 3600 IN A 2.3.4.5
 

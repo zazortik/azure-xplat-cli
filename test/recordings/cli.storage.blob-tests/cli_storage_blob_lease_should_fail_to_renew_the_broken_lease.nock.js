@@ -6,14 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: 'c9cbd920-c00c-427c-852b-8aaf38badaeb',
-    name: 'Azure SDK Powershell Test',
+    id: 'a0d901ba-9956-4f7d-830c-2d7974c36666',
+    name: 'Azure Storage DM Dev',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
-    registeredProviders: ['website'],
+    state: 'Enabled',
+    registeredProviders: [],
     _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
@@ -28,24 +29,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname1025?comp=lease')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:fbb8c95d-0001-000d-67b5-b1790b000000\nTime:2016-05-19T10:02:25.9612921Z</Message></Error>", { 'content-length': '285',
+  .put('/storage-cli-blob-test/blockblobname5169376393893464?comp=lease')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:bb4eacbf-0001-003c-5865-f422dc000000\nTime:2016-08-12T06:47:22.5708719Z</Message></Error>", { 'content-length': '285',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fbb8c95d-0001-000d-67b5-b1790b000000',
+  'x-ms-request-id': 'bb4eacbf-0001-003c-5865-f422dc000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:02:25 GMT',
+  date: 'Fri, 12 Aug 2016 06:47:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://xplat.blob.core.windows.net:443')
-  .put('/storage-cli-blob-test/blockblobname1025?comp=lease')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:fbb8c95d-0001-000d-67b5-b1790b000000\nTime:2016-05-19T10:02:25.9612921Z</Message></Error>", { 'content-length': '285',
+  .put('/storage-cli-blob-test/blockblobname5169376393893464?comp=lease')
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIsBrokenAndCannotBeRenewed</Code><Message>The lease ID matched, but the lease has been broken explicitly and cannot be renewed.\nRequestId:bb4eacbf-0001-003c-5865-f422dc000000\nTime:2016-08-12T06:47:22.5708719Z</Message></Error>", { 'content-length': '285',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fbb8c95d-0001-000d-67b5-b1790b000000',
+  'x-ms-request-id': 'bb4eacbf-0001-003c-5865-f422dc000000',
   'x-ms-version': '2015-04-05',
-  date: 'Thu, 19 May 2016 10:02:25 GMT',
+  date: 'Fri, 12 Aug 2016 06:47:21 GMT',
   connection: 'close' });
  return result; }]];

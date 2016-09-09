@@ -38,8 +38,6 @@ var gatewayProp = {
   gatewayType: 'Vpn',
   vpnType: 'RouteBased',
   sku: 'Standard',
-  privateIpAddress: '10.1.0.11',
-  newPrivateIpAddress: '10.1.0.12',
   enableBgp: false,
   addressPrefix: '10.0.0.0/24',
   tags: networkUtil.tags,
@@ -125,7 +123,7 @@ describe('arm', function () {
         });
       });
       it('set should modify vpn gateway', function (done) {
-        var cmd = util.format('network vpn-gateway set -g {group} -n {name} -a {newPrivateIpAddress} -f {addressPrefix} ' +
+        var cmd = util.format('network vpn-gateway set -g {group} -n {name} -f {addressPrefix} ' +
           '-t {newTags} --json').formatArgs(gatewayProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -134,7 +132,6 @@ describe('arm', function () {
           vpnGateway.name.should.equal(gatewayProp.name);
           vpnGateway.ipConfigurations.length.should.equal(1);
           var ipConfig = vpnGateway.ipConfigurations[0];
-          ipConfig.privateIPAddress.should.equal(gatewayProp.newPrivateIpAddress);
           var vpnConfig = vpnGateway.vpnClientConfiguration;
           vpnConfig.vpnClientAddressPool.addressPrefixes[0].should.equal(gatewayProp.addressPrefix);
           networkUtil.shouldAppendTags(vpnGateway);
