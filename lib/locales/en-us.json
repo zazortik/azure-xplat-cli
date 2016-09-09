@@ -1633,7 +1633,7 @@
   "the delete underlying blob from storage": "the delete underlying blob from storage",
   "the description. Defaults to 'Service host'": "the description. Defaults to 'Service host'",
   "the domain name": "the domain name",
-  "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately.": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately.",
+  "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately.": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately.",
   "the ending IP address for the firewall rule": "the ending IP address for the firewall rule",
   "the endpoint name": "the endpoint name",
   "the environment name": "the environment name",
