@@ -10260,7 +10260,7 @@
                   "name": "start",
                   "description": "Start application upgrade",
                   "fullName": "servicefabric application upgrade start",
-                  "usage": "[options] [applicationName] [targetApplicationTypeVersion] [parameters] [upgradeKind] [rollingUpgradeMode] [upgradeReplicaSetCheckTimeoutInSeconds] [forceRestart] [monitoringPolicy] [applicationHealthPolicy]",
+                  "usage": "[options] [applicationName] [targetApplicationTypeVersion] [parameters] [rollingUpgradeMode] [upgradeReplicaSetCheckTimeoutInSeconds] [forceRestart] [monitoringPolicy] [applicationHealthPolicy]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -10313,14 +10313,6 @@
                       "description": "the parameters"
                     },
                     {
-                      "flags": "--upgrade-kind <upgradeKind>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--upgrade-kind",
-                      "description": "the kind of the upgrade"
-                    },
-                    {
                       "flags": "--rolling-upgrade-mode <rollingUpgradeMode>",
                       "required": -24,
                       "optional": 0,
@@ -10366,7 +10358,7 @@
                   "name": "update",
                   "description": "Update application upgrade",
                   "fullName": "servicefabric application upgrade update",
-                  "usage": "[options] [applicationName] [upgradeKind] [rollingUpgradeMode] [forceRestart] [failureAction] [upgradeReplicaSetCheckTimeoutInSeconds] [healthCheckWaitDurationInMilliseconds] [healthCheckStableDurationInMilliseconds] [healthCheckRetryTimeoutInMilliseconds] [upgradeTimeoutInMilliseconds] [upgradeDomainTimeoutInMilliseconds] [applicationHealthPolicy]",
+                  "usage": "[options] [applicationName] [rollingUpgradeMode] [forceRestart] [failureAction] [upgradeReplicaSetCheckTimeoutInSeconds] [healthCheckWaitDurationInMilliseconds] [healthCheckStableDurationInMilliseconds] [healthCheckRetryTimeoutInMilliseconds] [upgradeTimeoutInMilliseconds] [upgradeDomainTimeoutInMilliseconds] [applicationHealthPolicy]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -10401,14 +10393,6 @@
                       "bool": true,
                       "long": "--application-name",
                       "description": "the name of the application"
-                    },
-                    {
-                      "flags": "--upgrade-kind <upgradeKind>",
-                      "required": -16,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--upgrade-kind",
-                      "description": "the kind of the upgrade"
                     },
                     {
                       "flags": "--rolling-upgrade-mode <rollingUpgradeMode>",
@@ -10596,7 +10580,7 @@
               "commands": [
                 {
                   "name": "copy",
-                  "description": "Copy application package, Example: azure servicefabric application-package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
+                  "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
                   "fullName": "servicefabric application package copy",
                   "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
                   "filePath": "commands/serviceFabricPackage._js",
@@ -10693,20 +10677,20 @@
                       "description": "the path of the application package"
                     },
                     {
+                      "flags": "--application-parameter <applicationParameter>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--application-parameter",
+                      "description": "the parameter of the application"
+                    },
+                    {
                       "flags": "--image-store-connection-string <imageStoreConnectionString>",
                       "required": -33,
                       "optional": 0,
                       "bool": true,
                       "long": "--image-store-connection-string",
                       "description": "the string of the image store connection"
-                    },
-                    {
-                      "flags": "--application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                      "required": -43,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--application-package-path-in-image-store",
-                      "description": "the path of the application package in image store"
                     }
                   ]
                 },
@@ -11003,7 +10987,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send cluster health report",
+                  "description": "Send cluster health",
                   "fullName": "servicefabric cluster health send",
                   "usage": "[options] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricCluster._js",
@@ -11509,7 +11493,7 @@
             },
             "load": {
               "name": "load",
-              "description": "Commands to manage your node load information",
+              "description": "Commands to manage your node load",
               "fullName": "servicefabric node load",
               "usage": "[options] [command]",
               "options": [],
@@ -11570,7 +11554,7 @@
             },
             "health": {
               "name": "health",
-              "description": "Commands to manage your node load information",
+              "description": "Commands to manage your node health",
               "fullName": "servicefabric node health",
               "usage": "[options] [command]",
               "options": [],
@@ -11636,7 +11620,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send node health report",
+                  "description": "Send node health",
                   "fullName": "servicefabric node health send",
                   "usage": "[options] [nodeName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricNode._js",
@@ -12970,7 +12954,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send service health report",
+                  "description": "Send service health",
                   "fullName": "servicefabric service health send",
                   "usage": "[options] [serviceName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricService._js",
@@ -13816,7 +13800,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send partition health report",
+                  "description": "Send partition health",
                   "fullName": "servicefabric partition health send",
                   "usage": "[options] [partitionId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricPartition._js",
@@ -13977,7 +13961,7 @@
                   "name": "reset",
                   "description": "Reset partition",
                   "fullName": "servicefabric partition load reset",
-                  "usage": "[options] [serviceName] [partitionId]",
+                  "usage": "[options] [partitionId]",
                   "filePath": "commands/serviceFabricPartition._js",
                   "options": [
                     {
@@ -14300,7 +14284,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send replica health report",
+                  "description": "Send replica health",
                   "fullName": "servicefabric replica health send",
                   "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricReplica._js",
