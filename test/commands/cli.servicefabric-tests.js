@@ -27,7 +27,6 @@ var requiredEnvironment = [
   { name: 'AZURE_STORAGE_ACCESS_KEY', defaultValue: 'key'}
 ];
 var httpEndpoint = 'http://10.91.140.142:10550';
-var tcpEndpoint = '10.91.140.142:10549';
 var applicationPackagePath = '/media/share/EchoServerApplication3';
 var applicationPackagePath2 = '/media/share/EchoServerApplication32';
 var applicationPackageName = 'EchoServerApplication3';
@@ -64,7 +63,7 @@ describe('Service Fabric', function () {
     });
     
     it('should connect cluster', function (done) {
-      suite.execute('servicefabric cluster connect --connection-endpoint ' + httpEndpoint + ' --client-connection-endpoint ' + tcpEndpoint + ' --json', function (result) {
+      suite.execute('servicefabric cluster connect --connection-endpoint ' + httpEndpoint + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
@@ -75,8 +74,7 @@ describe('Service Fabric', function () {
         result.exitStatus.should.equal(0);
         var res = JSON.parse(result.text);
         res.should.containDeep({
-          connectionEndpoint: httpEndpoint + "/",
-          tcpConnectionEndpoint: tcpEndpoint
+          connectionEndpoint: httpEndpoint + "/"
         });
         done();
       });

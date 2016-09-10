@@ -10760,7 +10760,7 @@
               "name": "connect",
               "description": "Connect cluster",
               "fullName": "servicefabric cluster connect",
-              "usage": "[options] [connectionEndpoint] [clientConnectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath] [strictSsl] [rejectUnauthorized]",
+              "usage": "[options] [connectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath] [strictSsl] [rejectUnauthorized]",
               "filePath": "commands/serviceFabricCluster._js",
               "options": [
                 {
@@ -10795,14 +10795,6 @@
                   "bool": true,
                   "long": "--connection-endpoint",
                   "description": "the url of the connection endpoint"
-                },
-                {
-                  "flags": "--client-connection-endpoint <clientConnectionEndpoint>",
-                  "required": -30,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--client-connection-endpoint",
-                  "description": "the endpoint of the client connection"
                 },
                 {
                   "flags": "--client-key-path <clientKeyPath>",
@@ -12050,7 +12042,7 @@
               "name": "update",
               "description": "Update service",
               "fullName": "servicefabric service update",
-              "usage": "[options] [serviceName] [serviceKind] [flags] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
+              "usage": "[options] [serviceName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
               "filePath": "commands/serviceFabricService._js",
               "options": [
                 {
@@ -12093,14 +12085,6 @@
                   "bool": true,
                   "long": "--service-kind",
                   "description": "the kind of the service, values are [Stateless|Stateful]"
-                },
-                {
-                  "flags": "--flags <flags>",
-                  "required": -9,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--flags",
-                  "description": "the flags"
                 },
                 {
                   "flags": "--instance-count <instanceCount>",
@@ -13242,7 +13226,7 @@
                   "name": "update",
                   "description": "Update service group",
                   "fullName": "servicefabric service group update",
-                  "usage": "[options] [applicationName] [serviceName] [serviceKind] [flags] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
+                  "usage": "[options] [applicationName] [serviceName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
                   "filePath": "commands/serviceFabricServiceGroup._js",
                   "options": [
                     {
@@ -13293,14 +13277,6 @@
                       "bool": true,
                       "long": "--service-kind",
                       "description": "the kind of the service, values are [Stateless|Stateful]"
-                    },
-                    {
-                      "flags": "--flags <flags>",
-                      "required": -9,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--flags",
-                      "description": "the flags"
                     },
                     {
                       "flags": "--instance-count <instanceCount>",
