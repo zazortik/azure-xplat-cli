@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2915bbd6-1252-405f-8173-6c00428146d9',
-    name: 'Batch-MatthChr',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,36 +27,35 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
-  
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
   .get('/poolusagemetrics?api-version=2016-07-01.3.1&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"matthchr-poolmulti\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":3.548990935087204E-05,\"dataEgressGiB\":1.1066906154155731E-05\r\n    },{\r\n      \"poolId\":\"matthchr-pooltest\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":1.6803853213787079E-05,\"dataEgressGiB\":5.0123780965805054E-06\r\n    },{\r\n      \"poolId\":\"matthchr-pooltest-linux\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.3445386812222229,\"dataIngressGiB\":0.00021480116993188858,\"dataEgressGiB\":3.5434029996395111E-05\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"centos\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a2\",\"totalCoreHours\":3.0000000000000013,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"test\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"ubuntupool3\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"windowspool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":2.5711953639984131E-05,\"dataEgressGiB\":8.9881941676139832E-06\r\n    },{\r\n      \"poolId\":\"xplattestlinuxpool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":2.8051435947418213E-06,\"dataEgressGiB\":1.6093254089355469E-06\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bdcc9ef4-08e3-42fc-8473-ae6a0ec291e9',
+  'request-id': '1be8be82-b45b-49fc-9013-cc91363c96ac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'b4c145c4-07bc-4f6a-a37c-d1e46c041195',
+  'client-request-id': 'e4f8b652-2470-4065-aacb-61b17c3384d9',
   dataserviceversion: '3.0',
-  date: 'Thu, 04 Aug 2016 00:01:51 GMT',
+  date: 'Mon, 12 Sep 2016 23:36:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
   .get('/poolusagemetrics?api-version=2016-07-01.3.1&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"matthchr-poolmulti\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":3.548990935087204E-05,\"dataEgressGiB\":1.1066906154155731E-05\r\n    },{\r\n      \"poolId\":\"matthchr-pooltest\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":1.6803853213787079E-05,\"dataEgressGiB\":5.0123780965805054E-06\r\n    },{\r\n      \"poolId\":\"matthchr-pooltest-linux\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"standard_d1_v2\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-08-03T20:00:00Z\",\"endTime\":\"2016-08-03T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.3445386812222229,\"dataIngressGiB\":0.00021480116993188858,\"dataEgressGiB\":3.5434029996395111E-05\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"centos\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a2\",\"totalCoreHours\":3.0000000000000013,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"test\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"ubuntupool3\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"windowspool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":2.5711953639984131E-05,\"dataEgressGiB\":8.9881941676139832E-06\r\n    },{\r\n      \"poolId\":\"xplattestlinuxpool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999999999994,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"xplattestpool\",\"startTime\":\"2016-09-12T20:00:00Z\",\"endTime\":\"2016-09-12T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.5000000000000007,\"dataIngressGiB\":2.8051435947418213E-06,\"dataEgressGiB\":1.6093254089355469E-06\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bdcc9ef4-08e3-42fc-8473-ae6a0ec291e9',
+  'request-id': '1be8be82-b45b-49fc-9013-cc91363c96ac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': 'b4c145c4-07bc-4f6a-a37c-d1e46c041195',
+  'client-request-id': 'e4f8b652-2470-4065-aacb-61b17c3384d9',
   dataserviceversion: '3.0',
-  date: 'Thu, 04 Aug 2016 00:01:51 GMT',
+  date: 'Mon, 12 Sep 2016 23:36:17 GMT',
   connection: 'close' });
  return result; }]];
