@@ -2368,7 +2368,7 @@
   "the name of the Batch account": "the name of the Batch account",
   "the id of the application": "the id of the application",
   "whether packages within the application may be overwritten using the same version string": "whether packages within the application may be overwritten using the same version string",
-  "the disaply name for the application": "the disaply name for the application",
+  "the display name for the application": "the display name for the application",
   "Updates an application to the specified Batch account": "Updates an application to the specified Batch account",
   "Deletes an application": "Deletes an application",
   "delete the specified application without confirmation": "delete the specified application without confirmation",
