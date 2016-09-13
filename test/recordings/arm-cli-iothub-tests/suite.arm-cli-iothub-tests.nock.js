@@ -10,9 +10,9 @@ exports.getMockedProfile = function () {
     name: 'IOTHUB_PERF_1',
     user: {
       name: 'user@domain.example',
-      type: 'user'
+      type: 'servicePrincipal'
     },
-    tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+    tenantId: 'microsoft.com',
     state: 'Enabled',
     registeredProviders: [],
     _eventsCount: '1',

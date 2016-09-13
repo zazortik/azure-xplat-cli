@@ -90,7 +90,57 @@ describe('arm', function () {
       suite.teardownTest(done);
     });
 
-    describe('All Tests', function () {
+    describe('Connection String Tests', function () {
+
+      it('create command should work', function (done) {
+
+        iothubName = suite.generateId(iothubPrefix, knownNames);
+        createIotHubMustSucceed();
+
+        function createIotHubMustSucceed() {
+          suite.execute('iothub create --name %s --resource-group %s --location %s --sku-name %s --units %s --json', iothubName, testResourceGroup, testLocation, testSku, testUnits, function (result) {
+            result.exitStatus.should.be.equal(0);
+            showIotHubMustSucceed();
+          });
+        }
+
+        function showIotHubMustSucceed() {
+          suite.execute('iothub show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
+            result.exitStatus.should.be.equal(0);
+            var iothub = JSON.parse(result.text);
+            iothub.name.should.be.equal(iothubName);
+            done();
+          });
+        }
+      });
+
+      it('get default connection string should work', function (done) {
+        suite.execute('iothub connectionstring show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
+          result.exitStatus.should.be.equal(0);
+          var iothubConnectionStrings = JSON.parse(result.text)
+          iothubConnectionStrings.primary.should.containEql('iothubowner');
+          iothubConnectionStrings.primary.should.containEql('HostName');
+          iothubConnectionStrings.secondary.should.containEql('iothubowner');
+          iothubConnectionStrings.secondary.should.containEql('HostName');
+          done();
+        });
+      });
+
+      it('get specific connection string should work', function (done) {
+        suite.execute('iothub connectionstring show --name %s --resource-group %s --key-name %s --json', iothubName, testResourceGroup, 'service', function (result) {
+          result.exitStatus.should.be.equal(0);
+          var iothubConnectionStrings = JSON.parse(result.text)
+          iothubConnectionStrings.primary.should.containEql('service');
+          iothubConnectionStrings.primary.should.containEql('HostName');
+          iothubConnectionStrings.secondary.should.containEql('service');
+          iothubConnectionStrings.secondary.should.containEql('HostName');
+          done();
+        });
+      });
+
+    });
+
+    describe.skip('All Tests', function () {
 
       it('create command should work', function (done) {
 
