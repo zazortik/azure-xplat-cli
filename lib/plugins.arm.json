@@ -1522,7 +1522,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -1606,7 +1606,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -3626,7 +3626,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
                   "flags": "--metadata <--metadata>",
@@ -3752,7 +3752,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -3838,7 +3838,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4028,10 +4028,10 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
-                  "flags": "--metadata <--metadata>",
+                  "flags": "--metadata <metadata>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -4052,7 +4052,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--max-wall-clock-time",
-                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration format"
                 },
                 {
                   "flags": "--max-task-retry-count <max-task-retry-count>",
@@ -4593,7 +4593,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -4625,7 +4625,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -4742,7 +4742,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4828,7 +4828,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -5050,7 +5050,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -5082,7 +5082,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -6951,7 +6951,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -7037,7 +7037,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -8299,7 +8299,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -8402,7 +8402,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -21548,7 +21548,7 @@
               "bool": true,
               "short": "-t",
               "long": "--tier",
-              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
               "flags": "-i --instances <numberOfInstances>",
@@ -46589,6 +46589,86 @@
                   "short": "-s",
                   "long": "--subscription",
                   "description": "The subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {}
+        },
+        "connectionstring": {
+          "name": "connectionstring",
+          "description": "Command to get the connection string of an IoT hub",
+          "fullName": "iothub connectionstring",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "show",
+              "description": "Get an IoT hub connection string",
+              "fullName": "iothub connectionstring show",
+              "usage": "<resourceGroup> <name> [options]",
+              "filePath": "commands/arm/iothub/iothub._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-g --resource-group <resourceGroup>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-g",
+                  "long": "--resource-group",
+                  "description": "The name of the resource group."
+                },
+                {
+                  "flags": "-n --name <name>",
+                  "required": -11,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "The name of the IoT hub."
+                },
+                {
+                  "flags": "-k --key-name <keyName>",
+                  "required": -15,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--key-name",
+                  "description": "The name of the key. Default : The first key in the list of keys retrieved for the iothub"
+                },
+                {
+                  "flags": "-s --subscription [subscription]",
+                  "required": 0,
+                  "optional": -19,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier."
                 }
               ]
             }

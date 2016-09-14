@@ -399,30 +399,18 @@ describe('arm', function () {
           done();
         });
       });
-      it('delete should delete nic', function (done) {
-        var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var nic = JSON.parse(result.text);
-            nic.should.be.empty;
-            done();
-          });
-        });
-      });
-
-      it('create should create another nic with default ip configuration', function (done) {
-        var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -u {1} --json'
-          .formatArgs(nicProp, subnetId);
+      it('ip-config set should detach public ip from ip configuration', function (done) {
+        var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config --public-ip-name \'\' --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          networkUtil.shouldBeSucceeded(nic);
+          nic.ipConfigurations.length.should.equal(1);
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('publicIPAddress');
           done();
         });
       });
+
       it('ip-config create should create second ip configuration', function (done) {
         var cmd = 'network nic ip-config create -g {group} -c {nicName} -n {name} --json'.formatArgs(ipConfigProp1);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -468,6 +456,19 @@ describe('arm', function () {
             return ipConfig.name === ipConfigProp2.name;
           }).should.be.false;
           done();
+        });
+      });
+      it('delete should delete nic', function (done) {
+        var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var nic = JSON.parse(result.text);
+            nic.should.be.empty;
+            done();
+          });
         });
       });
     });

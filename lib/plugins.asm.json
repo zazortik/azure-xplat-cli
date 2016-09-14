@@ -1904,7 +1904,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -1988,7 +1988,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -4008,7 +4008,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
                   "flags": "--metadata <--metadata>",
@@ -4134,7 +4134,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4220,7 +4220,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4410,10 +4410,10 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
-                  "flags": "--metadata <--metadata>",
+                  "flags": "--metadata <metadata>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -4434,7 +4434,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--max-wall-clock-time",
-                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration format"
                 },
                 {
                   "flags": "--max-task-retry-count <max-task-retry-count>",
@@ -4975,7 +4975,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -5007,7 +5007,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -5124,7 +5124,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -5210,7 +5210,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -5432,7 +5432,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -5464,7 +5464,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -7333,7 +7333,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -7419,7 +7419,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -8681,7 +8681,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -8784,7 +8784,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
