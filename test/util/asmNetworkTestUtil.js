@@ -215,6 +215,25 @@ asmNetworkTestUtil.prototype.deleteNSG = function(nsgPrefix, suite, callback) {
 	} else
 		callback();
 };
+asmNetworkTestUtil.prototype.createRouteTable = function(rtPrefix, location, suite, callback) {
+	var cmd = util.format('network route-table create %s --json', rtPrefix).split(' ');
+	cmd.push('-l');
+	cmd.push(location);
+	testUtils.executeCommand(suite, retry, cmd, function(result) {
+		result.exitStatus.should.equal(0);
+		callback();
+	});
+};
+asmNetworkTestUtil.prototype.deleteRouteTable = function(rtPrefix, suite, callback) {
+	if (!suite.isPlayback()) {
+		var cmd = util.format('network route-table delete %s --quiet --json', rtPrefix).split(' ');
+		testUtils.executeCommand(suite, retry, cmd, function(result) {
+			result.exitStatus.should.equal(0);
+			callback();
+		});
+	} else
+		callback();
+};
 asmNetworkTestUtil.prototype.createEmptySubVnet = function(vnetPrefix, subnetPrefix, location, suite, callback) {
 	var cmd = util.format('network vnet create --vnet %s -n %s --json', vnetPrefix, subnetPrefix).split(' ');
 	cmd.push('-l');
