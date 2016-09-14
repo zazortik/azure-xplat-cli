@@ -27,7 +27,7 @@ var networkUtil = new NetworkTestUtil();
 
 var testPrefix = 'arm-network-nic-tests',
   groupName = 'xplat-test-nic',
-  location,
+  location = 'westus',
   vnetName = 'test-vnet',
   vnetAddressSpace = '10.0.0.0/8',
   subnetName = 'test-subnet',
@@ -98,8 +98,7 @@ describe('arm', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        //location = 'WestUS';
+        location = 'WestUS';
 
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
 
@@ -242,15 +241,14 @@ describe('arm', function () {
         });
       });
 
-      // TODO uncomment when IPv6 feature goes to public.
-      /* it('ip-config create should should create another ip configuration', function (done) {
+      it('ip-config create should should create another ip configuration', function (done) {
         var cmd = 'network nic ip-config create -g {group} -c {name} -n {ipConfigName} -b {newPrivateIPAddressVersion} --json'.formatArgs(nicProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
           nic.ipConfigurations.length.should.equal(2);
-          var anotherIpConfig = nic.ipConfigurations[0];
+          var anotherIpConfig = nic.ipConfigurations[1];
           anotherIpConfig.name.should.equal(nicProp.ipConfigName);
           anotherIpConfig.privateIPAddressVersion.should.equal(nicProp.newPrivateIPAddressVersion);
           networkUtil.shouldBeSucceeded(anotherIpConfig);
@@ -296,7 +294,7 @@ describe('arm', function () {
             done();
           });
         });
-      });*/
+      });
 
       it('ip-config set should attach address pool to ip configuration', function (done) {
         networkUtil.createLB(lbProp, suite, function () {
