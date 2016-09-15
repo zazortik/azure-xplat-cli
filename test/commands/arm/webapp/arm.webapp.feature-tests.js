@@ -29,7 +29,11 @@ var createdSites = [];
 var location = 'West US';
 var createdGroups = [];
 var createdResources = [];
+var createdAppSettingsKeys = [];
+var createdAppSettingsValues = [];
+
 var hostingPlanName, groupName;
+var appSettingKey, appSettingValue, finalAppSetting;
 var client;
 var updatedPHPValue = "7.0";
 
@@ -41,6 +45,9 @@ describe('arm', function () {
     suite.setupSuite(function () {
       sitename = suite.generateId('webappclitests', createdSites);
       groupName = suite.generateId('testrg1', createdGroups);
+      appSettingKey = suite.generateId('testkey1', createdAppSettingsKeys);
+      appSettingValue = suite.generateId('testval1', createdAppSettingsValues);
+      finalAppSetting = appSettingKey + '=' + appSettingValue;
       var subscription = profile.current.getSubscription();
       client = webappUtils.createWebappManagementClient(subscription);
       if (!suite.isPlayback()) {
@@ -121,6 +128,27 @@ describe('arm', function () {
       });
     });
 
+    it('config appsetting set should work', function (done) {
+      suite.execute('webapp config appsetting set %s %s %s --json', groupName, sitename, finalAppSetting, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    it('config appsetting list should work', function (done) {
+      suite.execute('webapp config appsetting list %s %s --json', groupName, sitename, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
+    it('config appsetting delete should work', function (done) {
+      suite.execute('webapp config appsetting delete %s %s %s --json', groupName, sitename, appSettingKey, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+
     it('publishprofile show should work', function (done) {
       suite.execute('webapp publishprofile show %s %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
@@ -165,9 +193,9 @@ describe('arm', function () {
       location: location,
       name: hostingPlanName,
       sku: {
-        name: 'S1',
-        sku: 'Standard',
-        family: 'S',
+        name: 'B1',
+        sku: 'Basic',
+        family: 'B',
         capacity: 1
       }
     };
