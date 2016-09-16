@@ -32389,6 +32389,14 @@
               "description": "Remove all tags"
             },
             {
+              "flags": "--new-os-disk-size <new-os-disk-size>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "long": "--new-os-disk-size",
+              "description": "new OS disk size in GB"
+            },
+            {
               "flags": "-s, --subscription <subscription>",
               "required": -20,
               "optional": 0,
