@@ -33,7 +33,7 @@ var knownNames = [];
 var requiredEnvironment = [{
   requiresToken: true
 }, {
-  name: 'AZURE_ARM_TEST_LOCATION',
+  name: 'AZURE_ARM_IOTHUB_TEST_LOCATION',
   defaultValue: 'West US'
 }, {
   name: 'AZURE_ARM_TEST_RESOURCE_GROUP',
@@ -57,7 +57,7 @@ describe('arm', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        testLocation = process.env.AZURE_ARM_TEST_LOCATION;
+        testLocation = process.env.AZURE_ARM_IOTHUB_TEST_LOCATION;
         testLocation = testLocation.toLowerCase().replace(/ /g, '');
         testResourceGroup = process.env.AZURE_ARM_TEST_RESOURCE_GROUP;
         if (!suite.isPlayback()) {
@@ -143,7 +143,6 @@ describe('arm', function () {
     describe.skip('All Tests', function () {
 
       it('create command should work', function (done) {
-
         iothubName = suite.generateId(iothubPrefix, knownNames);
         createIotHubMustSucceed();
 
@@ -391,14 +390,14 @@ describe('arm', function () {
         deleteIotHubMustSucceed();
 
         function deleteIotHubMustSucceed() {
-          suite.execute('iothub delete --name %s --resource-group %s ', iothubName, testResourceGroup, function (result) {
+          suite.execute('iothub delete --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(0);
             showIotHubMustFail();
           });
         }
 
         function showIotHubMustFail() {
-          suite.execute('iothub show --name %s --resource-group %s', iothubName, testResourceGroup, function (result) {
+          suite.execute('iothub show --name %s --resource-group %s --json', iothubName, testResourceGroup, function (result) {
             result.exitStatus.should.be.equal(1);
             result.errorText.should.include('IotHubNotFound');
             done();
