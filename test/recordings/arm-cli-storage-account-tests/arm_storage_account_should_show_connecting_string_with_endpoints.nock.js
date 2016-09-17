@@ -6,16 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '45b60d85-fd72-427a-a708-f994d26e593e',
-    name: 'Azure Storage DM Staging',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
-      type: 'servicePrincipal'
+      type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
-    _eventsCount: '1',
+    registeredProviders: ['mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,7 +22,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'East US 2 (Stage)';
+  process.env['AZURE_STORAGE_TEST_LOCATION'] = 'West Europe';
   process.env['AZURE_STORAGE_TEST_TYPE'] = 'LRS';
   process.env['AZURE_STORAGE_TEST_KIND'] = 'storage';
   process.env['AZURE_RESOURCE_GROUP_TEST_LOCATION'] = 'West US';
@@ -31,37 +30,18 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743/listKeys?api-version=2016-01-01')
-  .reply(200, "{\"keys\":[{\"keyName\":\"key1\",\"permissions\":\"Full\",\"value\":\"eBZx+IEAQ+U2DT/7cfDAmAVCInDAoCqTlVFnVWhjFXF2t0yOAt+g5xi6jeZu4mFll7GowpIUYXGYA9oy8QLWBg==\"},{\"keyName\":\"key2\",\"permissions\":\"Full\",\"value\":\"BBtGmdxD7/gNDJbivoxJlo7V9BMxjA2Q5egrA1B2ryJMBoGuiDjQTh4JVJxoFyKlFSs23xX7PzEQntPoxuFmZQ==\"}]}\n", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '289',
-  'content-type': 'application/json',
-  expires: '-1',
-  'x-ms-request-id': '9a70afaf-df54-43af-b6fd-19ab5310ac88',
-  server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1192',
-  'x-ms-correlation-request-id': '9a70afaf-df54-43af-b6fd-19ab5310ac88',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062627Z:9a70afaf-df54-43af-b6fd-19ab5310ac88',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:27 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/armclistorageGroup110/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5743/listKeys?api-version=2016-01-01')
-  .reply(200, "{\"keys\":[{\"keyName\":\"key1\",\"permissions\":\"Full\",\"value\":\"eBZx+IEAQ+U2DT/7cfDAmAVCInDAoCqTlVFnVWhjFXF2t0yOAt+g5xi6jeZu4mFll7GowpIUYXGYA9oy8QLWBg==\"},{\"keyName\":\"key2\",\"permissions\":\"Full\",\"value\":\"BBtGmdxD7/gNDJbivoxJlo7V9BMxjA2Q5egrA1B2ryJMBoGuiDjQTh4JVJxoFyKlFSs23xX7PzEQntPoxuFmZQ==\"}]}\n", { 'cache-control': 'no-cache',
+  .post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/armclistorageGroup8821/providers/Microsoft.Storage/storageAccounts/armclistorageaccount5027/listKeys?api-version=2016-01-01')
+  .reply(200, "{\"keys\":[{\"keyName\":\"key1\",\"permissions\":\"Full\",\"value\":\"P9P2fO386DTcIBpmUrWV1du5aSPvXQQj2w6pLw3twxUDllnHTJGezpcvmuY67FacyiRhRx3cSdyqVIk8bUZ+6w==\"},{\"keyName\":\"key2\",\"permissions\":\"Full\",\"value\":\"y3wAWUVeQHSUnseLCN7Vx6Pi0Qldiu4/7NGltgtYNlNzBrJ5lPOjqPk7iAetSdw3BwMQfAaKgW5N2fuZV7uSLQ==\"}]}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '289',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '9a70afaf-df54-43af-b6fd-19ab5310ac88',
+  'x-ms-request-id': 'dfaad89a-f32b-4246-bd0b-4d2d356aeaba',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1192',
-  'x-ms-correlation-request-id': '9a70afaf-df54-43af-b6fd-19ab5310ac88',
-  'x-ms-routing-request-id': 'SOUTHEASTASIA:20160425T062627Z:9a70afaf-df54-43af-b6fd-19ab5310ac88',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': 'dfaad89a-f32b-4246-bd0b-4d2d356aeaba',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160901T105558Z:dfaad89a-f32b-4246-bd0b-4d2d356aeaba',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 25 Apr 2016 06:26:27 GMT',
-  connection: 'close' });
+  date: 'Thu, 01 Sep 2016 10:55:58 GMT' });
  return result; }]];
