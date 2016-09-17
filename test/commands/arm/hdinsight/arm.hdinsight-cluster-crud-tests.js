@@ -29,8 +29,8 @@ var appNamePrefix = "xplatSampleApp";
 var HdinsightTestUtil = require('../../../util/hdinsightTestUtil');
 var requiredEnvironment = [
   {
-    name: 'AZURE_ARM_TEST_LOCATION',
-    defaultValue: 'eastus'
+    name: 'AZURE_ARM_HDI_TEST_LOCATION',
+    defaultValue: 'westeurope'
   }, {
     name: 'SSHCERT',
     defaultValue: 'test/myCert.pem'
@@ -49,7 +49,7 @@ var scriptActionName;
 var scriptActionUri;
 var appName;
 
-var location = "East US",
+var location = "West Europe",
     username = 'azureuser',
     password = 'Brillio@2015',
     defaultStorageAccount = 'xplatteststorage1',
@@ -78,10 +78,10 @@ describe('arm', function () {
     before(function (done) {
       suite = new CLITest(this, testprefix, requiredEnvironment);
       suite.setupSuite(function () {
-        location = process.env.AZURE_ARM_TEST_LOCATION;
-        defaultStorageAccount = process.env.AZURE_ARM_TEST_STORAGEACCOUNT;
-        defaultStorageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY;
-        defaultStorageContainer = process.env.AZURE_STORAGE_CONTAINER;
+        location = process.env.AZURE_ARM_HDI_TEST_LOCATION || location;
+        defaultStorageAccount = process.env.AZURE_ARM_TEST_STORAGEACCOUNT || defaultStorageAccount;
+        defaultStorageAccountKey = process.env.AZURE_STORAGE_ACCESS_KEY || defaultStorageAccountKey;
+        defaultStorageContainer = process.env.AZURE_STORAGE_CONTAINER || defaultStorageContainer;
         groupName = suite.generateId(groupPrefix, createdResources);
         clusterNameWindows = suite.generateId(clusterNamePrefix, createdResources);
         clusterNameLinux = suite.generateId(clusterNamePrefix, createdResources);
@@ -95,16 +95,23 @@ describe('arm', function () {
         scriptActionUri = 'https://hdiconfigactions.blob.core.windows.net/linuxsampleconfigaction/sample.sh';
         if (!suite.isPlayback()) {
           suite.execute('group create %s --location %s --json', groupName, location, function () {
-            setTimeout(function () {
-              done();
-            }, 120000);
+            var cmd = util.format('storage account create %s --resource-group %s --location %s --sku-name LRS --kind Storage --json',
+              defaultStorageAccount, groupName, location);
+            suite.execute(cmd, function (result) {
+              var cmd = util.format('storage account keys list %s --resource-group %s  --json', defaultStorageAccount, groupName);
+              suite.execute(cmd, function (result) {
+                var keyItems = JSON.parse(result.text);
+                defaultStorageAccountKey = keyItems[0].value;
+                done();
+              });
+            });
           });
         } else {
           done();
         }
       });
     });
-    
+
     after(function (done) {
       suite.teardownSuite(function () {
         if (!suite.isPlayback()) {
@@ -115,15 +122,16 @@ describe('arm', function () {
         }
       });
     });
-    
+
     beforeEach(function (done) {
       suite.setupTest(done);
     });
     afterEach(function (done) {
       suite.teardownTest(done);
     });
-    
+
     describe('cluster', function () {
+
       it('create premium linux cluster should pass', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster create ' +
@@ -172,7 +180,7 @@ describe('arm', function () {
           });
         }, timeBeforeClusterAvailable);
       });
-      
+
       it('create linux cluster should pass', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster create ' +
@@ -210,7 +218,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('create windows cluster should pass', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster create ' +
@@ -248,7 +256,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('show should display details about windows hdinsight cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster show --resource-group %s --clusterName %s --json', groupName, clusterNameWindows).split(' ');
@@ -259,7 +267,7 @@ describe('arm', function () {
           });
         }, timeBeforeClusterAvailable);
       });
-      
+
       it('show should display details about linux hdinsight cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster show --resource-group %s --clusterName %s --json', groupName, clusterNameLinux).split(' ');
@@ -270,7 +278,7 @@ describe('arm', function () {
           });
         }, timeBeforeClusterAvailable);
       });
-      
+
       it('list should display all hdinsight clusters in resource group', function (done) {
         var cmd = util.format('hdinsight cluster list --resource-group %s --json', groupName).split(' ');
         suite.execute(cmd, function (result) {
@@ -278,7 +286,7 @@ describe('arm', function () {
           done();
         });
       });
-      
+
       it('list all should display all hdinsight clusters in subscription', function (done) {
         var cmd = util.format('hdinsight cluster list --json', '').split(' ');
         this.timeout(hdinsightTest.timeoutLarge);
@@ -287,7 +295,7 @@ describe('arm', function () {
           done();
         });
       });
-      
+
       it('disable-http-access should disable HTTP access to the cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster disable-http-access --resource-group %s --clusterName %s --json',
@@ -298,7 +306,7 @@ describe('arm', function () {
           });
         }, HdinsightTestUtil.timeoutMedium);
       });
-      
+
       it('enable-http-access should enable HTTP access to the cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster enable-http-access --resource-group %s --clusterName %s --userName %s --password %s --json',
@@ -309,7 +317,7 @@ describe('arm', function () {
           });
         }, HdinsightTestUtil.timeoutMedium);
       });
-      
+
       it('disable-rdp-access should disable RDP access to the cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster disable-rdp-access --resource-group %s --clusterName %s --json',
@@ -320,7 +328,7 @@ describe('arm', function () {
           });
         }, HdinsightTestUtil.timeoutMedium);
       });
-      
+
       it('enable-rdp-access should enable RDP access to the cluster', function (done) {
         setTimeout(function () {
           var cmd = util.format('hdinsight cluster enable-rdp-access --resource-group %s --clusterName %s --rdpUserName %s --rdpPassword %s --json',
@@ -331,7 +339,7 @@ describe('arm', function () {
           });
         }, HdinsightTestUtil.timeoutMedium);
       });
-      
+
       it('delete should delete hdinsight windows cluster', function (done) {
         var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, clusterNameWindows).split(' ');
         suite.execute(cmd, function (result) {
@@ -345,7 +353,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action should succeed on hdinsight linux cluster', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action create %s --resource-group %s -n %s -u %s -t headnode;workernode --persistOnSuccess --json', clusterNameLinux, groupName, scriptActionName, scriptActionUri).split(' ');
@@ -435,7 +443,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action delete persisted should delete persisted scripts from the cluster', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action persisted delete %s %s --resource-group %s --json', clusterNameLinux, scriptActionName, groupName).split(' ');
@@ -450,7 +458,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action list history should list script execution history', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action history list %s --resource-group %s --json', clusterNameLinux, groupName).split(' ');
@@ -465,7 +473,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action show details should fail for invalid execution id', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action history show %s 1 --resource-group %s --json', clusterNameLinux, groupName).split(' ');
@@ -480,7 +488,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('script action promote should fail for invalid execution id', function (done) {
         this.timeout(hdinsightTest.timeoutMedium);
         var cmd = util.format('hdinsight script-action persisted set %s 1 --resource-group %s --json', clusterNameLinux, groupName).split(' ');
@@ -495,7 +503,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('config create should create a Azure HDinsight cluster configuration', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight config create %s --json', configFile).split(' ');
@@ -510,7 +518,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('add script action to config file', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmdAddScriptAction = util.format('hdinsight config add-script-action ' +
@@ -531,7 +539,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('create a custom cluster using config file', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmdCreateCustomCluster = util.format('hdinsight cluster create ' +
@@ -570,7 +578,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('delete should delete hdinsight linux cluster', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, clusterNameLinux).split(' ');
@@ -585,7 +593,7 @@ describe('arm', function () {
           }
         });
       });
-      
+
       it('delete should delete the custom hdinsight linux cluster', function (done) {
         this.timeout(hdinsightTest.timeoutLarge);
         var cmd = util.format('hdinsight cluster delete --resource-group %s --clusterName %s --quiet --json', groupName, customConfigClusterNameLinux).split(' ');
