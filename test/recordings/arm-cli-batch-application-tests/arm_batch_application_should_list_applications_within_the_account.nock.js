@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -29,38 +33,38 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"id\":\"armclibatchapp4948\",\"packages\":[],\"allowUpdates\":true}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup7389/providers/Microsoft.Batch/batchAccounts/armclibatch9879/applications?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"id\":\"armclibatchapp9288\",\"packages\":[],\"allowUpdates\":true}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '73',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '2385632e-1dd3-428e-8a36-5937c2521ef8',
+  'request-id': 'd91ada16-a5d0-4b01-81d6-3fe0f2c90c4f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  'x-ms-correlation-request-id': '2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190907Z:2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  date: 'Wed, 13 Apr 2016 19:09:06 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14899',
+  'x-ms-request-id': '5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  'x-ms-correlation-request-id': '5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  'x-ms-routing-request-id': 'CENTRALUS:20160913T170813Z:5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  date: 'Tue, 13 Sep 2016 17:08:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications?api-version=2015-12-01')
-  .reply(200, "{\"value\":[{\"id\":\"armclibatchapp4948\",\"packages\":[],\"allowUpdates\":true}]}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup7389/providers/Microsoft.Batch/batchAccounts/armclibatch9879/applications?api-version=2015-12-01')
+  .reply(200, "{\"value\":[{\"id\":\"armclibatchapp9288\",\"packages\":[],\"allowUpdates\":true}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '73',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '2385632e-1dd3-428e-8a36-5937c2521ef8',
+  'request-id': 'd91ada16-a5d0-4b01-81d6-3fe0f2c90c4f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  'x-ms-correlation-request-id': '2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190907Z:2c001b7d-66dd-4f74-a642-d5c332b2d26b',
-  date: 'Wed, 13 Apr 2016 19:09:06 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14899',
+  'x-ms-request-id': '5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  'x-ms-correlation-request-id': '5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  'x-ms-routing-request-id': 'CENTRALUS:20160913T170813Z:5ca9d86d-a9a6-442f-a46d-3a0963e69871',
+  date: 'Tue, 13 Sep 2016 17:08:12 GMT',
   connection: 'close' });
  return result; }]];

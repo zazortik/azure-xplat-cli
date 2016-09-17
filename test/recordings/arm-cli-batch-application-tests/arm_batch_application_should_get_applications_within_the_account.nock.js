@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -29,42 +33,42 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications/armclibatchapp4948?api-version=2015-12-01')
-  .reply(200, "{\"id\":\"armclibatchapp4948\",\"packages\":[],\"allowUpdates\":true}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup7389/providers/Microsoft.Batch/batchAccounts/armclibatch9879/applications/armclibatchapp9288?api-version=2015-12-01')
+  .reply(200, "{\"id\":\"armclibatchapp9288\",\"packages\":[],\"allowUpdates\":true}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '61',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Wed, 13 Apr 2016 19:09:06 GMT',
-  etag: '0x8D363CF15B56D6A',
-  'request-id': '067caa47-2efa-4ebb-b7bd-5b906709717a',
+  'last-modified': 'Tue, 13 Sep 2016 17:08:13 GMT',
+  etag: '0x8D3DBF88BD530D1',
+  'request-id': '55cd1914-89dd-48f5-b0d5-406252a09568',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14872',
-  'x-ms-request-id': '7870a0b4-2cb2-446d-940b-b37d0974846a',
-  'x-ms-correlation-request-id': '7870a0b4-2cb2-446d-940b-b37d0974846a',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190907Z:7870a0b4-2cb2-446d-940b-b37d0974846a',
-  date: 'Wed, 13 Apr 2016 19:09:07 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14988',
+  'x-ms-request-id': '5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  'x-ms-correlation-request-id': '5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  'x-ms-routing-request-id': 'CENTRALUS:20160913T170814Z:5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  date: 'Tue, 13 Sep 2016 17:08:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/6e0b24a6-2bef-4598-9bd3-f87e9700e24c/resourceGroups/armclibatchgroup8055/providers/Microsoft.Batch/batchAccounts/armclibatch7370/applications/armclibatchapp4948?api-version=2015-12-01')
-  .reply(200, "{\"id\":\"armclibatchapp4948\",\"packages\":[],\"allowUpdates\":true}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/armclibatchgroup7389/providers/Microsoft.Batch/batchAccounts/armclibatch9879/applications/armclibatchapp9288?api-version=2015-12-01')
+  .reply(200, "{\"id\":\"armclibatchapp9288\",\"packages\":[],\"allowUpdates\":true}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '61',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Wed, 13 Apr 2016 19:09:06 GMT',
-  etag: '0x8D363CF15B56D6A',
-  'request-id': '067caa47-2efa-4ebb-b7bd-5b906709717a',
+  'last-modified': 'Tue, 13 Sep 2016 17:08:13 GMT',
+  etag: '0x8D3DBF88BD530D1',
+  'request-id': '55cd1914-89dd-48f5-b0d5-406252a09568',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14872',
-  'x-ms-request-id': '7870a0b4-2cb2-446d-940b-b37d0974846a',
-  'x-ms-correlation-request-id': '7870a0b4-2cb2-446d-940b-b37d0974846a',
-  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160413T190907Z:7870a0b4-2cb2-446d-940b-b37d0974846a',
-  date: 'Wed, 13 Apr 2016 19:09:07 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14988',
+  'x-ms-request-id': '5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  'x-ms-correlation-request-id': '5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  'x-ms-routing-request-id': 'CENTRALUS:20160913T170814Z:5b49b4bc-7e7d-4934-8a2a-dc99b77d7c26',
+  date: 'Tue, 13 Sep 2016 17:08:13 GMT',
   connection: 'close' });
  return result; }]];

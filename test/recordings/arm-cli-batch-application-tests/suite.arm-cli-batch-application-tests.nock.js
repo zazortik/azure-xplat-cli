@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '6e0b24a6-2bef-4598-9bd3-f87e9700e24c',
-    name: 'Windows Azure Internal Consumption',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -28,4 +32,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
-exports.randomTestIdsGenerated = function() { return ['armclibatch1951','armclibatch7370','armclibatchgroup8055'];};
+ exports.randomTestIdsGenerated = function() { return ['armclibatch2928','armclibatch9879','armclibatchgroup7389'];};
