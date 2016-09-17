@@ -117,9 +117,9 @@ describe('arm', function () {
     });
     after(function (done) {
       this.timeout(hour);
-      networkUtil.deleteGroup(groupName, suite, function () {
-        suite.teardownSuite(done);
-      });
+       networkUtil.deleteGroup(groupName, suite, function () {
+         suite.teardownSuite(done);
+       });
     });
     beforeEach(function (done) {
       suite.setupTest(done);
@@ -166,7 +166,7 @@ describe('arm', function () {
           });
         });
       });
-
+/*
       it('set should modify application gateway', function (done) {
         var cmd = 'network application-gateway set {group} {name} -z {newCapacity} -t {newTags} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -394,7 +394,7 @@ describe('arm', function () {
           });
         });
       });
-
+*/
       it('url path map create should create map in application gateway', function (done) {
         var cmd = util.format('network application-gateway url-path-map create {group} {name} {urlPathMapName} ' +
           '-r {urlMapRuleName} -p {mapPath} -i {defHttpSettingName} -a {defPoolName} --json').formatArgs(gatewayProp);
@@ -411,6 +411,22 @@ describe('arm', function () {
         });
       });
 
+      it('url path map show should display details of application gateway', function (done) {
+        var cmd = 'network application-gateway url-path-map show {group} {name} {urlPathMapName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+
+      it('url path map list should display all application gateways from all resource groups', function (done) {
+        var cmd = 'network application-gateway url-path-map list {group} {name} {urlMapRuleName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+/*
       it('url path map rule create should create map rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway url-path-map rule create {group} {name} {newUrlMapRuleName} ' +
           '-u {urlPathMapName} -p {newMapPath} -i {defHttpSettingName} -a {defPoolName} --json').formatArgs(gatewayProp);
@@ -720,7 +736,7 @@ describe('arm', function () {
               done();
             });
         });
-      });
+      });*/
     });
   });
 });
