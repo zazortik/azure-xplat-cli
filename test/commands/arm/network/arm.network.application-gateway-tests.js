@@ -23,6 +23,7 @@ var should = require('should');
 var testUtils = require('../../../util/util');
 var testPrefix = 'arm-network-application-gateway-tests';
 var util = require('util');
+var utils = require('../../../../lib/util/utils');
 
 var location, groupName = 'xplatTestGroupCreateAppGw3',
   gatewayProp = {
@@ -78,7 +79,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     disabledSslProtocols: 'TLSv1_0,TLSv1_2',
     authCertName: 'TestAuthCert',
     certificateFile: 'test/data/auth-cert.pfx',
-    certificateFileNew: 'test/data/auth-cert-2.pfx',
+    certificateFileNew: 'test/data/auth-cert-2.pfx'
   };
 
 var requiredEnvironment = [{
