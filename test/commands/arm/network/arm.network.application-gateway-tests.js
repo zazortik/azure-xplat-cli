@@ -412,7 +412,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map show should display details of application gateway', function (done) {
+      it('url path map show should display created URL path map application gateway', function (done) {
         var cmd = 'network application-gateway url-path-map show {group} {name} {urlPathMapName} --json'
           .formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -424,7 +424,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map list should display all application gateways from all resource groups', function (done) {
+      it('url path map list should display all URL path maps from application gateway', function (done) {
         var cmd = 'network application-gateway url-path-map list {group} {name} {urlPathMapName} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
@@ -454,7 +454,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map rule show should display details of application gateway', function (done) {
+      it('url path map rule show should display created rule of URL path map', function (done) {
         var cmd = 'network application-gateway url-path-map rule show {group} {name} {urlPathMapName} {newUrlMapRuleName} --json'
           .formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -465,7 +465,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map rule list should display all application gateways from all resource groups', function (done) {
+      it('url path map rule list should display all rules from URL path map', function (done) {
         var cmd = 'network application-gateway url-path-map rule list {group} {name} {urlPathMapName} {urlMapRuleName} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
@@ -476,7 +476,6 @@ describe('arm', function () {
           done();
         });
       });
-
 
       // Changed application gateway state to "Stopped" in this test case.
       it('url path map rule delete should remove map rule in application gateway', function (done) {
