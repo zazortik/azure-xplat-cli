@@ -23,6 +23,7 @@ var should = require('should');
 var testUtils = require('../../../util/util');
 var testPrefix = 'arm-network-application-gateway-tests';
 var util = require('util');
+var utils = require('../../../../lib/util/utils');
 
 var location, groupName = 'xplatTestGroupCreateAppGw3',
   gatewayProp = {
@@ -32,6 +33,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     subnetName: 'xplatTestSubnet',
     subnetAddress: '10.0.0.0/11',
     servers: '1.1.1.1',
+    defSslCertName: 'cert01',
     defaultSslCertPath: 'test/data/sslCert.pfx',
     httpSettingsProtocol: constants.appGateway.settings.protocol[0],
     httpSettingsPortAddress: 111,
@@ -55,7 +57,9 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     httpSettingsPort: 234,
     cookieBasedAffinity: 'Disabled',
     httpProtocol: 'Http',
+    httpsProtocol: 'Https',
     httpListenerName: 'xplatTestListener',
+    defHttpListenerName: 'listener01',
     ruleName: 'xplatTestRule',
     probeName: 'xplatTestProbe',
     probePublicIpName: 'probePublicIp',
@@ -352,6 +356,22 @@ describe('arm', function () {
           var listener = appGateway.httpListeners[1];
           listener.name.should.equal(gatewayProp.httpListenerName);
           listener.protocol.should.equal(gatewayProp.httpProtocol);
+          networkUtil.shouldBeSucceeded(listener);
+          done();
+        });
+      });
+
+      it('http-listener set command should modify new http listener in application gateway', function (done) {
+        var cmd = util.format('network application-gateway http-listener set {group} {name} {defHttpListenerName} ' +
+          '-r {httpsProtocol} -c {defSslCertName} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var listener = utils.findFirstCaseIgnore(appGateway.httpListeners, {name: gatewayProp.defHttpListenerName});
+          listener.name.should.equal(gatewayProp.defHttpListenerName);
+          listener.protocol.should.equal(gatewayProp.httpsProtocol);
           networkUtil.shouldBeSucceeded(listener);
           done();
         });
