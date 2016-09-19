@@ -364,7 +364,7 @@ describe('arm', function () {
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var listener = JSON.parse(result.text);
-          listener.name.should.equal(gatewayProp.httpListenerName);
+          listener.name.should.equal(gatewayProp.defHttpListenerName);
           networkUtil.shouldBeSucceeded(listener);
           done();
         });
@@ -378,7 +378,6 @@ describe('arm', function () {
           _.some(listeners, function(listener) {
             return listener.name === gatewayProp.defHttpListenerName;
           }).should.be.true;
-          networkUtil.shouldBeSucceeded(listener);
           done();
         });
       });
