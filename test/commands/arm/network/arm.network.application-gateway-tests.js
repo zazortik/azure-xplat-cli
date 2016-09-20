@@ -376,6 +376,29 @@ describe('arm', function () {
           done();
         });
       });
+      it('http-listener show command should show default http listener in application gateway', function (done) {
+        var cmd = util.format('network application-gateway http-listener show {group} {name} {defHttpListenerName} --json')
+          .formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var listener = JSON.parse(result.text);
+          listener.name.should.equal(gatewayProp.defHttpListenerName);
+          networkUtil.shouldBeSucceeded(listener);
+          done();
+        });
+      });
+
+      it('http-listener list command should show all http listeners in application gateway', function (done) {
+        var cmd = util.format('network application-gateway http-listener list {group} {name} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var listeners = JSON.parse(result.text);
+          _.some(listeners, function(listener) {
+            return listener.name === gatewayProp.defHttpListenerName;
+          }).should.be.true;
+          done();
+        });
+      });
 
       it('rule create command should create new request routing rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway rule create {group} {name} {ruleName} -i {httpSettingsName} ' +
