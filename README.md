@@ -14,7 +14,6 @@ This project provides a cross-platform command line interface for developers and
   * Network
   * Mobile Services
   * Service Bus
-  * IoT Hub
   * SQL Database
 * Azure Resource Management
   * Generic resource groups and deployments management
