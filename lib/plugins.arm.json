@@ -64316,12 +64316,135 @@
                       "description": "the name of an existing SSL certificate.\n   This parameter is required when --protocol is Https"
                     },
                     {
-                      "flags": "--nowait",
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show HTTP listener from application gateway",
+                  "fullName": "network application-gateway http-listener show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
                       "required": 0,
                       "optional": 0,
                       "bool": true,
-                      "long": "--nowait",
-                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the HTTP listener"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List HTTP listeners from application gateway",
+                  "fullName": "network application-gateway http-listener list",
+                  "usage": "[options] <resource-group> <gateway-name> ",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -65337,7 +65460,7 @@
                     },
                     {
                       "name": "show",
-                      "description": "Show url path map from application gateway",
+                      "description": "Show url path map rule from application gateway",
                       "fullName": "network application-gateway url-path-map rule show",
                       "usage": "[options] <resource-group> <gateway-name> <url-path-map-name> <name>",
                       "filePath": "commands/arm/network/network._js",
@@ -65416,7 +65539,7 @@
                     },
                     {
                       "name": "list",
-                      "description": "List url path map from application gateway",
+                      "description": "List url path map rule from application gateway",
                       "fullName": "network application-gateway url-path-map rule list",
                       "usage": "[options] <resource-group> <gateway-name> <url-path-map-name>",
                       "filePath": "commands/arm/network/network._js",
