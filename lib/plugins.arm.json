@@ -21667,7 +21667,7 @@
               "bool": true,
               "short": "-t",
               "long": "--tier",
-              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
               "flags": "-i --instances <numberOfInstances>",
@@ -64239,6 +64239,102 @@
                   ]
                 },
                 {
+                  "name": "set",
+                  "description": "Set an http listener from application gateway",
+                  "fullName": "network application-gateway http-listener set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the HTTP listener"
+                    },
+                    {
+                      "flags": "-r, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--protocol",
+                      "description": "the protocol, supported values are [http,https]"
+                    },
+                    {
+                      "flags": "-c, --ssl-cert <ssl-cert>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--ssl-cert",
+                      "description": "the name of an existing SSL certificate.\n   This parameter is required when --protocol is Https"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "delete",
                   "description": "Delete an http listener from an application gateway",
                   "fullName": "network application-gateway http-listener delete",
@@ -72949,7 +73045,7 @@
                 },
                 {
                   "name": "set",
-                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsetting RGName SiteName set KEY1=val1,KEY2=val2,KEY3=val3",
+                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsetting set RGName SiteName KEY1=val1,KEY2=val2,KEY3=val3",
                   "fullName": "webapp config appsetting set",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
@@ -73027,7 +73123,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsetting add RGName SiteName KEY1,KEY2,KEY3",
+                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsetting delete RGName SiteName KEY1,KEY2,KEY3",
                   "fullName": "webapp config appsetting delete",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
