@@ -24,6 +24,8 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
 var networkUtil = new NetworkTestUtil();
+var VMTestUtil = require('../../../util/vmTestUtil');
+var vmUtil = new VMTestUtil();
 
 var testPrefix = 'arm-network-nic-tests',
   groupName = 'xplat-test-nic',
@@ -53,7 +55,9 @@ var nicProp = {
   enableIpForwarding: false,
   newEnableIpForwarding: true,
   tags: networkUtil.tags,
-  newTags: networkUtil.newTags
+  newTags: networkUtil.newTags,
+  attachedVMName: 'tempXplatVMForNicTests',
+  attachedVMStorageAccount: 'xplattemptestaccount'
 };
 var ipConfigProp1 = {
   name: 'config01'
@@ -98,7 +102,7 @@ describe('arm', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        location = 'WestUS';
+        location = 'WestEurope';
 
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
 
@@ -227,6 +231,34 @@ describe('arm', function () {
           var nic = JSON.parse(result.text);
           nic.name.should.equal(nicProp.name);
           done();
+        });
+      });
+      it('effective-route-table and effective-nsg commands should work', function (done) {
+        var cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          var cmd = 'network nic effective-nsg list {group} {name} --json'.formatArgs(nicProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.not.equal(0);
+            var cmd = 'network nic effective-route-table show {group} {name} --json'.formatArgs(nicProp);
+            testUtils.executeCommand(suite, retry, cmd, function (result) {
+              result.exitStatus.should.not.equal(0);
+              vmUtil.CreateVmWithNic(nicProp.group, nicProp.attachedVMName, location, 'Linux', 'Debian', output.name, 'xplatuser', 'Pa$$word1', nicProp.attachedVMStorageAccount, suite, function(result) {
+                var cmd = 'network nic effective-nsg list {group} {name} --json'.formatArgs(nicProp);
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var cmd = 'network nic effective-route-table show {group} {name} --json'.formatArgs(nicProp);
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
+                    result.exitStatus.should.equal(0);
+                    vmUtil.RemoveVm(nicProp.group, nicProp.attachedVMName, suite, function(result) {
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
         });
       });
       it('list should display all nics in resource group', function (done) {

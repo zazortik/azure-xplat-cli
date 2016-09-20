@@ -360,6 +360,23 @@ describe('arm', function() {
           done();
         });
       });
+      
+      it('set should update the os disk size', function(done) {
+        this.timeout(vmTest.timeoutLarge * 10);
+        var cmd = util.format('vm deallocate %s %s --json', groupName, vmPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          var cmd = util.format('vm set %s %s --new-os-disk-size %s --json', groupName, vmPrefix, 1023).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            var cmd = util.format('vm start %s %s --json', groupName, vmPrefix).split(' ');
+            testUtils.executeCommand(suite, retry, cmd, function(result) {
+              result.exitStatus.should.equal(0);
+              done();
+            });
+          });
+        });
+      });
 
       it('get-serial-output should not show bootdiagnostics output', function(done) {
         this.timeout(vmTest.timeoutLarge * 10);
