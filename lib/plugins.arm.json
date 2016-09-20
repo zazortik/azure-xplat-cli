@@ -9236,7 +9236,7 @@
               "commands": [
                 {
                   "name": "show",
-                  "description": "Show application type",
+                  "description": "Show application type, Example: azure servicefabric application type show --application-type-name type1",
                   "fullName": "servicefabric application type show",
                   "usage": "[options] [applicationTypeName]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -9329,7 +9329,7 @@
                 },
                 {
                   "name": "unregister",
-                  "description": "Unregister application type",
+                  "description": "Unregister application type, Example: azure servicefabric application type unregister --application-type-name type1 --application-type-version 1.0",
                   "fullName": "servicefabric application type unregister",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -9382,7 +9382,7 @@
             },
             "health": {
               "name": "health",
-              "description": "Commands to send your application health report",
+              "description": "Commands to send your application health",
               "fullName": "servicefabric application health",
               "usage": "[options] [command]",
               "options": [],
@@ -9456,7 +9456,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send application health report",
+                  "description": "Send application health, Example: azure servicefabric application health send --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric application health send",
                   "usage": "[options] [applicationName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -9516,7 +9516,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
@@ -9634,7 +9634,7 @@
               "categories": {
                 "health": {
                   "name": "health",
-                  "description": "Commands to manage your deployed application health report",
+                  "description": "Commands to manage your deployed application health",
                   "fullName": "servicefabric application deployed health",
                   "usage": "[options] [command]",
                   "options": [],
@@ -9716,7 +9716,7 @@
                     },
                     {
                       "name": "send",
-                      "description": "Send cluster health report",
+                      "description": "Send deployed application health, Example: azure servicefabric deployed application health send --node-name node1 --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                       "fullName": "servicefabric application deployed health send",
                       "usage": "[options] [nodeName] [applicationName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                       "filePath": "commands/serviceFabricApplication._js",
@@ -9784,7 +9784,7 @@
                           "optional": 0,
                           "bool": true,
                           "long": "--health-state",
-                          "description": "the state of the health"
+                          "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                         },
                         {
                           "flags": "--description <description>",
@@ -9876,7 +9876,7 @@
                 },
                 {
                   "name": "start",
-                  "description": "Start application upgrade",
+                  "description": "Start application upgrade, Example: azure servicefabric application upgrade start --application-name fabric:/app --target-application-type-version 1.1 --rolling-upgrade-mode Monitored --force-restart true",
                   "fullName": "servicefabric application upgrade start",
                   "usage": "[options] [applicationName] [targetApplicationTypeVersion] [parameters] [rollingUpgradeMode] [upgradeReplicaSetCheckTimeoutInSeconds] [forceRestart] [monitoringPolicy] [applicationHealthPolicy]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -9936,7 +9936,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--rolling-upgrade-mode",
-                      "description": "the mode of the rolling upgrade"
+                      "description": "the mode of the rolling upgrade, values are [UnmonitoredAuto|UnmonitoredManual|Monitored]"
                     },
                     {
                       "flags": "--upgrade-replica-set-check-timeout-in-seconds <upgradeReplicaSetCheckTimeoutInSeconds>",
@@ -9974,7 +9974,7 @@
                 },
                 {
                   "name": "update",
-                  "description": "Update application upgrade",
+                  "description": "Update application upgrade, Example: azure servicefabric application upgrade update --application-name fabric:/app --rolling-upgrade-mode Monitored",
                   "fullName": "servicefabric application upgrade update",
                   "usage": "[options] [applicationName] [rollingUpgradeMode] [forceRestart] [failureAction] [upgradeReplicaSetCheckTimeoutInSeconds] [healthCheckWaitDurationInMilliseconds] [healthCheckStableDurationInMilliseconds] [healthCheckRetryTimeoutInMilliseconds] [upgradeTimeoutInMilliseconds] [upgradeDomainTimeoutInMilliseconds] [applicationHealthPolicy]",
                   "filePath": "commands/serviceFabricApplication._js",
@@ -10018,7 +10018,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--rolling-upgrade-mode",
-                      "description": "the mode of the rolling upgrade"
+                      "description": "the mode of the rolling upgrade, values are [UnmonitoredAuto|UnmonitoredManual|Monitored]"
                     },
                     {
                       "flags": "--force-restart <forceRestart>",
@@ -10026,7 +10026,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--force-restart",
-                      "description": "the mode of the rolling upgrade"
+                      "description": "the boolean of the force restart"
                     },
                     {
                       "flags": "--failure-action <failureAction>",
@@ -10034,7 +10034,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--failure-action",
-                      "description": "the mode of the rolling upgrade"
+                      "description": "the mode of the failure action, values are [Rollback|Manual]"
                     },
                     {
                       "flags": "--upgrade-replica-set-check-timeout-in-seconds <upgradeReplicaSetCheckTimeoutInSeconds>",
@@ -10198,7 +10198,7 @@
               "commands": [
                 {
                   "name": "copy",
-                  "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/Package1 --image-store-connection-string fabric:ImageStore",
+                  "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/package1 --image-store-connection-string fabric:ImageStore",
                   "fullName": "servicefabric application package copy",
                   "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
                   "filePath": "commands/serviceFabricPackage._js",
@@ -10376,7 +10376,7 @@
           "commands": [
             {
               "name": "connect",
-              "description": "Connect cluster",
+              "description": "Connect cluster, Example: azure servicefabric cluster connect --connection-endpoint http://127.0.0.1:19080",
               "fullName": "servicefabric cluster connect",
               "usage": "[options] [connectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath] [strictSsl] [rejectUnauthorized]",
               "filePath": "commands/serviceFabricCluster._js",
@@ -10412,7 +10412,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--connection-endpoint",
-                  "description": "the url of the connection endpoint"
+                  "description": "the url of the connection endpoint, value is [http|https]://[ip_address]"
                 },
                 {
                   "flags": "--client-key-path <clientKeyPath>",
@@ -10444,7 +10444,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--strict-ssl",
-                  "description": "the boolean of the strict ssl"
+                  "description": "the boolean of the strict ssl, false to disable CN verification"
                 },
                 {
                   "flags": "--reject-unauthorized <rejectUnauthorized>",
@@ -10452,7 +10452,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--reject-unauthorized",
-                  "description": "the boolean of the reject unauthorized"
+                  "description": "the boolean of the reject unauthorized, false to disable CA verification"
                 }
               ]
             },
@@ -10597,7 +10597,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send cluster health",
+                  "description": "Send cluster health, Example: azure servicefabric cluster health send --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric cluster health send",
                   "usage": "[options] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricCluster._js",
@@ -10649,7 +10649,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
@@ -10796,7 +10796,7 @@
           "commands": [
             {
               "name": "encrypt",
-              "description": "Encrypt text",
+              "description": "Encrypt text, Example: azure servicefabric text encrypt --text test --path /tmp/cert",
               "fullName": "servicefabric text encrypt",
               "usage": "[options] [text] [path] [algorithmOid]",
               "filePath": "commands/serviceFabricCrypto._js",
@@ -10854,7 +10854,7 @@
             },
             {
               "name": "decrypt",
-              "description": "Decrypt text",
+              "description": "Decrypt text, Example: azure servicefabric text decrypt --cipher-text 1234",
               "fullName": "servicefabric text decrypt",
               "usage": "[options] [cipherText]",
               "filePath": "commands/serviceFabricCrypto._js",
@@ -10957,7 +10957,7 @@
             },
             {
               "name": "enable",
-              "description": "Enable node",
+              "description": "Enable node, Example: azure servicefabric node enable --node-name node1",
               "fullName": "servicefabric node enable",
               "usage": "[options] [nodeName]",
               "filePath": "commands/serviceFabricNode._js",
@@ -10999,7 +10999,7 @@
             },
             {
               "name": "disable",
-              "description": "Disable node",
+              "description": "Disable node, Example: azure servicefabric node enable --node-name node1 --deactivation-intent Pause",
               "fullName": "servicefabric node disable",
               "usage": "[options] [nodeName] [deactivationIntent]",
               "filePath": "commands/serviceFabricNode._js",
@@ -11043,7 +11043,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--deactivation-intent",
-                  "description": "the intent of the deactivation"
+                  "description": "the intent of the deactivation, values are [Pause|Restart|RemoveData|RemoveNode]"
                 }
               ]
             }
@@ -11230,7 +11230,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send node health",
+                  "description": "Send node health, Example: azure servicefabric node health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric node health send",
                   "usage": "[options] [nodeName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricNode._js",
@@ -11290,7 +11290,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
@@ -11658,7 +11658,7 @@
             },
             {
               "name": "update",
-              "description": "Update service",
+              "description": "Update service, Example: azure servicefabric service update --service-name fabric:/app --instance-count 1",
               "fullName": "servicefabric service update",
               "usage": "[options] [serviceName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
               "filePath": "commands/serviceFabricService._js",
@@ -11842,7 +11842,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--partition-key-type",
-                  "description": "the name of the service"
+                  "description": "the type of the partition key, values are [Singleton|Int64Range|Named]"
                 },
                 {
                   "flags": "--partition-key-value <partitionKeyValue>",
@@ -11850,7 +11850,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--partition-key-value",
-                  "description": "the name of the service"
+                  "description": "the value of the partition key"
                 },
                 {
                   "flags": "--previous-rsp-version <previousRspVersion>",
@@ -11858,7 +11858,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--previous-rsp-version",
-                  "description": "the name of the service"
+                  "description": "the version of the previous rsp"
                 },
                 {
                   "flags": "-s --select <fields>",
@@ -11883,7 +11883,7 @@
               "categories": {
                 "deployed": {
                   "name": "deployed",
-                  "description": "Commands to send your service package health report",
+                  "description": "Commands to send your deployed service package",
                   "fullName": "servicefabric service package deployed",
                   "usage": "[options] [command]",
                   "options": [],
@@ -12033,7 +12033,7 @@
                         },
                         {
                           "name": "send",
-                          "description": "Send deployed service package health report",
+                          "description": "Send deployed service package health, Example: azure servicefabric application health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                           "fullName": "servicefabric service package deployed health send",
                           "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                           "filePath": "commands/serviceFabricPackage._js",
@@ -12109,7 +12109,7 @@
                               "optional": 0,
                               "bool": true,
                               "long": "--health-state",
-                              "description": "the state of the health"
+                              "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                             },
                             {
                               "flags": "--description <description>",
@@ -12556,7 +12556,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send service health",
+                  "description": "Send service health, Example: azure servicefabric service health send --service-name fabric:/app/svc fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric service health send",
                   "usage": "[options] [serviceName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricService._js",
@@ -12616,7 +12616,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
@@ -12664,7 +12664,7 @@
               "commands": [
                 {
                   "name": "create",
-                  "description": "Create service group",
+                  "description": "Create service group, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
                   "fullName": "servicefabric service group create",
                   "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [hasPersistedState] [partitionScheme] [partitionCount] [partitionNames] [partitionLowKey] [partitionHighKey] [serviceGroupMemberDescription] [placementConstraints] [correlationSchema] [serviceLoadMetrics] [servicePlacementPolicyDescription]",
                   "filePath": "commands/serviceFabricServiceGroup._js",
@@ -13068,7 +13068,7 @@
                 },
                 "description": {
                   "name": "description",
-                  "description": "Commands to manage your service",
+                  "description": "Commands to manage your service group description",
                   "fullName": "servicefabric service group description",
                   "usage": "[options] [command]",
                   "options": [],
@@ -13394,7 +13394,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send partition health",
+                  "description": "Send partition health, Example: azure servicefabric partition health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric partition health send",
                   "usage": "[options] [partitionId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricPartition._js",
@@ -13454,7 +13454,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
@@ -13878,7 +13878,7 @@
                 },
                 {
                   "name": "send",
-                  "description": "Send replica health",
+                  "description": "Send replica health, Example: azure servicefabric replica health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric replica health send",
                   "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
                   "filePath": "commands/serviceFabricReplica._js",
@@ -13946,7 +13946,7 @@
                       "optional": 0,
                       "bool": true,
                       "long": "--health-state",
-                      "description": "the state of the health"
+                      "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
                     {
                       "flags": "--description <description>",
