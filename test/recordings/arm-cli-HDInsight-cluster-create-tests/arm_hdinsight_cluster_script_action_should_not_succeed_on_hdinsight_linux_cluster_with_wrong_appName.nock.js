@@ -6,16 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '26d6d535-5164-443d-82f6-4c695caf7688',
-    name: 'BDHadoopHumboldtCRPAdhocTestShortTerm',
+    id: '2c224e7e-3ef5-431d-a57b-e71f4662e3a6',
+    name: 'Node CLI Test',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
     tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
     state: 'Enabled',
-    registeredProviders: [],
-    _eventsCount: '1',
+    registeredProviders: ['mobileservice'],
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 
@@ -23,47 +22,26 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'NorthCentralUS';
+  process.env['AZURE_ARM_HDI_TEST_LOCATION'] = 'westeurope';
   process.env['SSHCERT'] = 'test/myCert.pem';
 };
 
-exports.scopes = [[function (nock) {
-var result =
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate5904/executeScriptActions?api-version=2015-03-01-preview', '*')
-  .reply(400, "{\"code\":\"BadRequest\",\"message\":\"Application with name xplatSampleApp8928 does not exist.\"}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '90',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'bcf5e3b8-ef01-41bb-914e-124329ca2033',
-  'x-ms-correlation-request-id': 'bcf5e3b8-ef01-41bb-914e-124329ca2033',
-  'x-ms-routing-request-id': 'WESTUS:20160518T011914Z:bcf5e3b8-ef01-41bb-914e-124329ca2033',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 18 May 2016 01:19:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) {
-var result =
+exports.scopes = [[function (nock) { 
+var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/26d6d535-5164-443d-82f6-4c695caf7688/resourceGroups/xplatTestRgHDInsightClusterCreate4390/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate5904/executeScriptActions?api-version=2015-03-01-preview', '*')
-  .reply(400, "{\"code\":\"BadRequest\",\"message\":\"Application with name xplatSampleApp8928 does not exist.\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/resourceGroups/xplatTestRgHDInsightClusterCreate5990/providers/Microsoft.HDInsight/clusters/xplatTestHDInsightClusterCreate8208/executeScriptActions?api-version=2015-03-01-preview', '*')
+  .reply(400, "{\"code\":\"BadRequest\",\"message\":\"Application with name xplatSampleApp378 does not exist.\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '90',
+  'content-length': '89',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
+  'x-ms-request-id': '8b3733db-6c5c-4d69-a912-607ef27d8ca7',
   server: 'Microsoft-IIS/8.5',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'bcf5e3b8-ef01-41bb-914e-124329ca2033',
-  'x-ms-correlation-request-id': 'bcf5e3b8-ef01-41bb-914e-124329ca2033',
-  'x-ms-routing-request-id': 'WESTUS:20160518T011914Z:bcf5e3b8-ef01-41bb-914e-124329ca2033',
+  'x-ms-correlation-request-id': '6e5eb485-c0b2-492f-9418-d373c71ec185',
+  'x-ms-routing-request-id': 'WESTEUROPE:20160905T085259Z:6e5eb485-c0b2-492f-9418-d373c71ec185',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 18 May 2016 01:19:14 GMT',
-  connection: 'close' });
+  date: 'Mon, 05 Sep 2016 08:52:58 GMT' });
  return result; }]];

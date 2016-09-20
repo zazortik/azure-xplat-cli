@@ -24,10 +24,12 @@ var testUtils = require('../../../util/util');
 var CLITest = require('../../../framework/arm-cli-test');
 var NetworkTestUtil = require('../../../util/networkTestUtil');
 var networkUtil = new NetworkTestUtil();
+var VMTestUtil = require('../../../util/vmTestUtil');
+var vmUtil = new VMTestUtil();
 
 var testPrefix = 'arm-network-nic-tests',
   groupName = 'xplat-test-nic',
-  location,
+  location = 'westus',
   vnetName = 'test-vnet',
   vnetAddressSpace = '10.0.0.0/8',
   subnetName = 'test-subnet',
@@ -53,7 +55,9 @@ var nicProp = {
   enableIpForwarding: false,
   newEnableIpForwarding: true,
   tags: networkUtil.tags,
-  newTags: networkUtil.newTags
+  newTags: networkUtil.newTags,
+  attachedVMName: 'tempXplatVMForNicTests',
+  attachedVMStorageAccount: 'xplattemptestaccount'
 };
 var ipConfigProp1 = {
   name: 'config01'
@@ -98,8 +102,7 @@ describe('arm', function () {
     before(function (done) {
       suite = new CLITest(this, testPrefix, requiredEnvironment);
       suite.setupSuite(function () {
-        location = process.env.AZURE_VM_TEST_LOCATION;
-        //location = 'WestUS';
+        location = 'WestEurope';
 
         groupName = suite.isMocked ? groupName : suite.generateId(groupName, null);
 
@@ -230,6 +233,34 @@ describe('arm', function () {
           done();
         });
       });
+      it('effective-route-table and effective-nsg commands should work', function (done) {
+        var cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          var cmd = 'network nic effective-nsg list {group} {name} --json'.formatArgs(nicProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.not.equal(0);
+            var cmd = 'network nic effective-route-table show {group} {name} --json'.formatArgs(nicProp);
+            testUtils.executeCommand(suite, retry, cmd, function (result) {
+              result.exitStatus.should.not.equal(0);
+              vmUtil.CreateVmWithNic(nicProp.group, nicProp.attachedVMName, location, 'Linux', 'Debian', output.name, 'xplatuser', 'Pa$$word1', nicProp.attachedVMStorageAccount, suite, function(result) {
+                var cmd = 'network nic effective-nsg list {group} {name} --json'.formatArgs(nicProp);
+                testUtils.executeCommand(suite, retry, cmd, function (result) {
+                  result.exitStatus.should.equal(0);
+                  var cmd = 'network nic effective-route-table show {group} {name} --json'.formatArgs(nicProp);
+                  testUtils.executeCommand(suite, retry, cmd, function (result) {
+                    result.exitStatus.should.equal(0);
+                    vmUtil.RemoveVm(nicProp.group, nicProp.attachedVMName, suite, function(result) {
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
       it('list should display all nics in resource group', function (done) {
         var cmd = 'network nic list -g {group} --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -242,15 +273,14 @@ describe('arm', function () {
         });
       });
 
-      // TODO uncomment when IPv6 feature goes to public.
-      /* it('ip-config create should should create another ip configuration', function (done) {
+      it('ip-config create should should create another ip configuration', function (done) {
         var cmd = 'network nic ip-config create -g {group} -c {name} -n {ipConfigName} -b {newPrivateIPAddressVersion} --json'.formatArgs(nicProp);
 
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
           nic.ipConfigurations.length.should.equal(2);
-          var anotherIpConfig = nic.ipConfigurations[0];
+          var anotherIpConfig = nic.ipConfigurations[1];
           anotherIpConfig.name.should.equal(nicProp.ipConfigName);
           anotherIpConfig.privateIPAddressVersion.should.equal(nicProp.newPrivateIPAddressVersion);
           networkUtil.shouldBeSucceeded(anotherIpConfig);
@@ -296,7 +326,7 @@ describe('arm', function () {
             done();
           });
         });
-      });*/
+      });
 
       it('ip-config set should attach address pool to ip configuration', function (done) {
         networkUtil.createLB(lbProp, suite, function () {
@@ -401,30 +431,18 @@ describe('arm', function () {
           done();
         });
       });
-      it('delete should delete nic', function (done) {
-        var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
-          testUtils.executeCommand(suite, retry, cmd, function (result) {
-            result.exitStatus.should.equal(0);
-            var nic = JSON.parse(result.text);
-            nic.should.be.empty;
-            done();
-          });
-        });
-      });
-
-      it('create should create another nic with default ip configuration', function (done) {
-        var cmd = 'network nic create -g {group} -n {name} -l {location} -a {privateIPAddress} -u {1} --json'
-          .formatArgs(nicProp, subnetId);
+      it('ip-config set should detach public ip from ip configuration', function (done) {
+        var cmd = 'network nic ip-config set -g {group} -c {name} -n default-ip-config --public-ip-name \'\' --json'.formatArgs(nicProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var nic = JSON.parse(result.text);
-          networkUtil.shouldBeSucceeded(nic);
+          nic.ipConfigurations.length.should.equal(1);
+          var defaultIpConfig = nic.ipConfigurations[0];
+          defaultIpConfig.should.not.have.property('publicIPAddress');
           done();
         });
       });
+
       it('ip-config create should create second ip configuration', function (done) {
         var cmd = 'network nic ip-config create -g {group} -c {nicName} -n {name} --json'.formatArgs(ipConfigProp1);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -470,6 +488,19 @@ describe('arm', function () {
             return ipConfig.name === ipConfigProp2.name;
           }).should.be.false;
           done();
+        });
+      });
+      it('delete should delete nic', function (done) {
+        var cmd = 'network nic delete -g {group} -n {name} --quiet --json'.formatArgs(nicProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network nic show -g {group} -n {name} --json'.formatArgs(nicProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var nic = JSON.parse(result.text);
+            nic.should.be.empty;
+            done();
+          });
         });
       });
     });

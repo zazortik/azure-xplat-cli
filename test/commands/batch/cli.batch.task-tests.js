@@ -230,6 +230,39 @@ describe('cli', function () {
         });
       });
     });
+
+    it('should reactivate the task', function (done) {
+      var reactivateTaskId = 'reactivateTask';
+      // Create a task which will fail with exit code 1
+      suite.execute('batch task create %s -i %s -c %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+        reactivateTaskId, 'cmd /c dir abc.123', batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+        result.exitStatus.should.equal(0);
+        
+        setTimeout(function () {
+          suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, reactivateTaskId,
+            batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+            result.exitStatus.should.equal(0);
+            var failedTask = JSON.parse(result.text);
+            failedTask.state.should.equal('completed');
+            failedTask.executionInfo.should.not.be.null;
+            failedTask.executionInfo.exitCode.should.equal(1);
+            
+            suite.execute('batch task reactivate %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, 
+              reactivateTaskId, batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+              result.exitStatus.should.equal(0);
+
+              suite.execute('batch task show %s %s --account-name %s --account-key %s --account-endpoint %s --json', jobId, reactivateTaskId,
+                batchAccount, batchAccountKey, batchAccountEndpoint, function (result) {
+                result.exitStatus.should.equal(0);
+                var reactivatedTask = JSON.parse(result.text);
+                reactivatedTask.state.should.equal('active');
+                done();
+              });
+            });
+          });
+        }, suite.isPlayback() ? 0 : 10000);
+      });
+    });
     
   });
 });

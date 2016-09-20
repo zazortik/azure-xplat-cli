@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2915bbd6-1252-405f-8173-6c00428146d9',
-    name: 'Batch-MatthChr',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,40 +27,39 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
-  
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://matthchreastus2.eastus2.batch.azure.com:443')
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users?api-version=2016-07-01.3.1&timeout=30', '*')
+.post('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users/xplatUser',
+  location: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users/xplatUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3692f421-7480-4475-92d6-ba352da68f39',
+  'request-id': 'a457a46d-b43b-491d-a8f5-e246484cbec7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '5e8bd9b2-9f88-442f-95c7-ac816e1303cd',
+  'client-request-id': '0108a56a-b263-4b2b-8608-b1093317169c',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users/xplatUser',
-  date: 'Thu, 04 Aug 2016 00:01:20 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users/xplatUser',
+  date: 'Mon, 12 Sep 2016 23:35:45 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://matthchreastus2.eastus2.batch.azure.com:443')
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users?api-version=2016-07-01.3.1&timeout=30', '*')
+.post('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users?api-version=2016-07-01.3.1&timeout=30', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users/xplatUser',
+  location: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users/xplatUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3692f421-7480-4475-92d6-ba352da68f39',
+  'request-id': 'a457a46d-b43b-491d-a8f5-e246484cbec7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '5e8bd9b2-9f88-442f-95c7-ac816e1303cd',
+  'client-request-id': '0108a56a-b263-4b2b-8608-b1093317169c',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/users/xplatUser',
-  date: 'Thu, 04 Aug 2016 00:01:20 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/users/xplatUser',
+  date: 'Mon, 12 Sep 2016 23:35:45 GMT',
   connection: 'close' });
  return result; }]];

@@ -29,7 +29,7 @@ var accountKind;
 var resourceGroupLocation;
 
 var requiredEnvironment = [
-  { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'East US' },
+  { name: 'AZURE_STORAGE_TEST_LOCATION', defaultValue: 'West Europe' },
   { name: 'AZURE_STORAGE_TEST_TYPE', defaultValue: 'LRS' },
   { name: 'AZURE_STORAGE_TEST_KIND', defaultValue: 'storage' },
   { name: 'AZURE_RESOURCE_GROUP_TEST_LOCATION', defaultValue: 'West US' }

@@ -6,8 +6,12 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '2915bbd6-1252-405f-8173-6c00428146d9',
-    name: 'Batch-MatthChr',
+    id: '46241355-bb95-46a9-ba6c-42b554d71925',
+    managementCertificate: {
+      key: 'mockedKey',
+      cert: 'mockedCert'
+    },
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,38 +27,37 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_BATCH_ACCOUNT'] = 'matthchreastus2';
-  process.env['AZURE_BATCH_ENDPOINT'] = 'https://matthchreastus2.eastus2.batch.azure.com';
-  
+  process.env['AZURE_BATCH_ACCOUNT'] = 'jstesteastus2';
+  process.env['AZURE_BATCH_ENDPOINT'] = 'https://jstesteastus2.eastus2.batch.azure.com';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://matthchreastus2.eastus2.batch.azure.com:443')
-  .get('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/remoteloginsettings?api-version=2016-07-01.3.1&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\"remoteLoginIPAddress\":\"13.68.17.64\",\"remoteLoginPort\":50000\r\n}", { 'transfer-encoding': 'chunked',
+nock('http://jstesteastus2.eastus2.batch.azure.com:443')
+  .get('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/remoteloginsettings?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\"remoteLoginIPAddress\":\"40.79.72.236\",\"remoteLoginPort\":50000\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5a86f04f-56e7-454f-82a1-c5a282647c97',
+  'request-id': '4378daa4-b66d-4a5e-8534-cfda0dd57f83',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '29404c04-f4dc-4ac7-8504-baacf10cc84a',
+  'client-request-id': '1823a74e-3f0d-41ae-a3f2-f1bd533c94b3',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/remoteloginsettings',
-  date: 'Thu, 04 Aug 2016 00:01:19 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/remoteloginsettings',
+  date: 'Mon, 12 Sep 2016 23:35:44 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://matthchreastus2.eastus2.batch.azure.com:443')
-  .get('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/remoteloginsettings?api-version=2016-07-01.3.1&timeout=30')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://matthchreastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\"remoteLoginIPAddress\":\"13.68.17.64\",\"remoteLoginPort\":50000\r\n}", { 'transfer-encoding': 'chunked',
+nock('https://jstesteastus2.eastus2.batch.azure.com:443')
+  .get('/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/remoteloginsettings?api-version=2016-07-01.3.1&timeout=30')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://jstesteastus2.eastus2.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\"remoteLoginIPAddress\":\"40.79.72.236\",\"remoteLoginPort\":50000\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5a86f04f-56e7-454f-82a1-c5a282647c97',
+  'request-id': '4378daa4-b66d-4a5e-8534-cfda0dd57f83',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'client-request-id': '29404c04-f4dc-4ac7-8504-baacf10cc84a',
+  'client-request-id': '1823a74e-3f0d-41ae-a3f2-f1bd533c94b3',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://matthchreastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160803t220254z/remoteloginsettings',
-  date: 'Thu, 04 Aug 2016 00:01:19 GMT',
+  dataserviceid: 'https://jstesteastus2.eastus2.batch.azure.com/pools/xplatTestLinuxPool/nodes/tvm-1695681911_1-20160908t182355z/remoteloginsettings',
+  date: 'Mon, 12 Sep 2016 23:35:44 GMT',
   connection: 'close' });
  return result; }]];

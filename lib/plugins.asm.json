@@ -1904,7 +1904,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -1988,7 +1988,15 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--display-name",
-                  "description": "the disaply name for the application"
+                  "description": "the display name for the application"
+                },
+                {
+                  "flags": "--default-version <default-version>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--default-version",
+                  "description": "the package to use if a client requests the application but does not specify a version"
                 },
                 {
                   "flags": "-g, --resource-group <resource-group>",
@@ -4008,7 +4016,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
                   "flags": "--metadata <--metadata>",
@@ -4134,7 +4142,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4220,7 +4228,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -4410,10 +4418,10 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of the job will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of the job will run on the specified pool"
                 },
                 {
-                  "flags": "--metadata <--metadata>",
+                  "flags": "--metadata <metadata>",
                   "required": -12,
                   "optional": 0,
                   "bool": true,
@@ -4434,7 +4442,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--max-wall-clock-time",
-                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration formation"
+                  "description": "the maximum elapsed time that a job may run, in ISO 8601 duration format"
                 },
                 {
                   "flags": "--max-task-retry-count <max-task-retry-count>",
@@ -4975,7 +4983,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -5007,7 +5015,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -5124,7 +5132,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -5210,7 +5218,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -5432,7 +5440,7 @@
                   "bool": true,
                   "short": "-p",
                   "long": "--pool-id",
-                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the speicfied pool"
+                  "description": "the id of an existing pool; all the tasks of jobs created under this schedule will run on the specified pool"
                 },
                 {
                   "flags": "--priority <priority>",
@@ -5464,7 +5472,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--do-not-run-until",
-                  "description": "the earliest time at which any ob may be created under this job schedule; if you do not specify a time, the scheudle becomes ready to create jobs immediately."
+                  "description": "the earliest time at which any job may be created under this job schedule; if you do not specify a time, the schedule becomes ready to create jobs immediately."
                 },
                 {
                   "flags": "--do-not-run-after <do-not-run-after>",
@@ -7333,7 +7341,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -7419,7 +7427,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -8681,7 +8689,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "-a, --account-name <account-name>",
@@ -8784,7 +8792,7 @@
                   "optional": 0,
                   "bool": true,
                   "long": "--expand-clause",
-                  "description": "list of related entites by which the results can be expanded"
+                  "description": "list of related entities by which the results can be expanded"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -9160,6 +9168,117 @@
                   "short": "-q",
                   "long": "--quiet",
                   "description": "terminate the specified Batch task without confirmation"
+                },
+                {
+                  "flags": "--if-match <if-match>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-match",
+                  "description": "only perform if resource's ETag is an exact match to the specified value"
+                },
+                {
+                  "flags": "--if-none-match <if-none-match>",
+                  "required": -17,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-none-match",
+                  "description": "only perform if resource's ETag does not match the specified value"
+                },
+                {
+                  "flags": "--if-modified-since <if-modified-since>",
+                  "required": -21,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-modified-since",
+                  "description": "only perform if the resource has been modified since the specified time"
+                },
+                {
+                  "flags": "--if-unmodified-since <if-unmodified-since>",
+                  "required": -23,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--if-unmodified-since",
+                  "description": "only perform if the resource has not been modified since the specified time"
+                },
+                {
+                  "flags": "-a, --account-name <account-name>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-a",
+                  "long": "--account-name",
+                  "description": "the Batch account name"
+                },
+                {
+                  "flags": "-k, --account-key <account-key>",
+                  "required": -19,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-k",
+                  "long": "--account-key",
+                  "description": "the Batch account key"
+                },
+                {
+                  "flags": "-u, --account-endpoint <account-endpoint>",
+                  "required": -24,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-u",
+                  "long": "--account-endpoint",
+                  "description": "the Batch account URL"
+                }
+              ]
+            },
+            {
+              "name": "reactivate",
+              "description": "Reactivate the specified Batch task",
+              "fullName": "batch task reactivate",
+              "usage": "[options] [jobId] [taskId]",
+              "filePath": "commands/batch/batch.task._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-j, --job-id <jobId>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-j",
+                  "long": "--job-id",
+                  "description": "the Batch job id"
+                },
+                {
+                  "flags": "-i, --id <taskId>",
+                  "required": -10,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--id",
+                  "description": "the Batch task id"
                 },
                 {
                   "flags": "--if-match <if-match>",
@@ -31359,10 +31478,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--name <name>",
-                  "required": -8,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--name",
                   "description": "name"
                 },
@@ -31410,10 +31530,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--name <name>",
-                  "required": -8,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--name",
                   "description": "name"
                 },
@@ -31461,10 +31582,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--name <name>",
-                  "required": -8,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--name",
                   "description": "name"
                 },
@@ -31512,10 +31634,11 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "--name <name>",
-                  "required": -8,
+                  "flags": "-n, --name <name>",
+                  "required": -12,
                   "optional": 0,
                   "bool": true,
+                  "short": "-n",
                   "long": "--name",
                   "description": "name"
                 },
@@ -31723,190 +31846,6 @@
           ],
           "categories": {}
         },
-        "dns-server": {
-          "name": "dns-server",
-          "description": "Commands to manage your DNS servers",
-          "fullName": "network dns-server",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "list",
-              "description": "List DNS servers registered in network",
-              "fullName": "network dns-server list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "register",
-              "description": "Register a DNS server with network",
-              "fullName": "network dns-server register",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            },
-            {
-              "name": "unregister",
-              "description": "Unregister a DNS server registered in the current network",
-              "fullName": "network dns-server unregister",
-              "usage": "[options] <dns-ip>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-p, --dns-ip <dns-ip>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--dns-ip",
-                  "description": "the IP address of the DNS server"
-                },
-                {
-                  "flags": "-i, --dns-id <dns-id>",
-                  "required": -14,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-i",
-                  "long": "--dns-id",
-                  "description": "the name identifier of the DNS server"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for unregister confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <id>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription id"
-                }
-              ]
-            }
-          ],
-          "categories": {}
-        },
         "nsg": {
           "name": "nsg",
           "description": "Commands to manage network security groups",
@@ -31914,6 +31853,214 @@
           "usage": "[options] [command]",
           "options": [],
           "commands": [
+            {
+              "name": "abort-migration",
+              "description": "Abort Network Security Group migration api validates and aborts the given network security group for IaaS Classic to ARM migration.",
+              "fullName": "network nsg abort-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "Commit Network Security Group migration api validates and commits the given network security group for IaaS Classic to ARM migration.",
+              "fullName": "network nsg commit-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "Prepare Network Security Group migration api validates and prepare the given network security group for IaaS Classic to ARM migration.",
+              "fullName": "network nsg prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Validate Network Security Group migration api validates the given network security group for IaaS Classic to ARM migration.",
+              "fullName": "network nsg validate-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
             {
               "name": "create",
               "description": "Create a network security group",
@@ -32761,6 +32908,803 @@
               "categories": {}
             }
           }
+        },
+        "route-table": {
+          "name": "route-table",
+          "description": "Commands to manage Route Table",
+          "fullName": "network route-table",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "abort-migration",
+              "description": "Abort Route Table migration api validates and aborts the given route table group for IaaS Classic to ARM migration.",
+              "fullName": "network route-table abort-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "commit-migration",
+              "description": "Commit Route Table migration api validates and commits the given route table for IaaS Classic to ARM migration.",
+              "fullName": "network route-table commit-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "prepare-migration",
+              "description": "Prepare Route Table migration api validates and prepare the given route table for IaaS Classic to ARM migration.",
+              "fullName": "network route-table prepare-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "validate-migration",
+              "description": "Validate Route Table migration api validates the given route table for IaaS Classic to ARM migration.",
+              "fullName": "network route-table validate-migration",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network.generated/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "name"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "The subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "description": "Create a Route Table",
+              "fullName": "network route-table create",
+              "usage": "[options] <name> <location>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-l, --location <location>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--location",
+                  "description": "the location, this must be same as the location of the virtual network containing the subnet(s) on which this Route Table needs to be applied"
+                },
+                {
+                  "flags": "-b, --label <label>",
+                  "required": -13,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-b",
+                  "long": "--label",
+                  "description": "the label for the Route Table"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "show",
+              "description": "Get a Route Table",
+              "fullName": "network route-table show",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "list",
+              "description": "Get all Route Tables",
+              "fullName": "network route-table list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            },
+            {
+              "name": "delete",
+              "description": "Delete a Route Table",
+              "fullName": "network route-table delete",
+              "usage": "[options] <name>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-n, --name <name>",
+                  "required": -12,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-n",
+                  "long": "--name",
+                  "description": "the name of the Route Table"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for delete confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <subscription>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription identifier"
+                }
+              ]
+            }
+          ],
+          "categories": {
+            "route": {
+              "name": "route",
+              "description": "Commands to manage Route Table routes",
+              "fullName": "network route-table route",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "set",
+                  "description": "Set route in a Route Table",
+                  "fullName": "network route-table route set",
+                  "usage": "[options] <route-table-name> <name> <address-prefix> <next-hop-type>",
+                  "filePath": "commands/asm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-a, --address-prefix <address-prefix>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-prefix",
+                      "description": "the route address prefix e.g. 0.0.0.0/0"
+                    },
+                    {
+                      "flags": "-t, --next-hop-type <next-hop-type>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--next-hop-type",
+                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VPNGateway]"
+                    },
+                    {
+                      "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--next-hop-ip-address",
+                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirtualAppliance"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete route from a Route Table",
+                  "fullName": "network route-table route delete",
+                  "usage": "[options] <route-table-name> <name>",
+                  "filePath": "commands/asm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-r, --route-table-name <route-table-name>",
+                      "required": -24,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--route-table-name",
+                      "description": "the name of the Route Table"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the route"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            }
+          }
+        },
+        "dns-server": {
+          "name": "dns-server",
+          "description": "Commands to manage your DNS servers",
+          "fullName": "network dns-server",
+          "usage": "[options] [command]",
+          "options": [],
+          "commands": [
+            {
+              "name": "list",
+              "description": "List DNS servers registered in network",
+              "fullName": "network dns-server list",
+              "usage": "[options]",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "register",
+              "description": "Register a DNS server with network",
+              "fullName": "network dns-server register",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            },
+            {
+              "name": "unregister",
+              "description": "Unregister a DNS server registered in the current network",
+              "fullName": "network dns-server unregister",
+              "usage": "[options] <dns-ip>",
+              "filePath": "commands/asm/network/network._js",
+              "options": [
+                {
+                  "flags": "-v, --verbose",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-v",
+                  "long": "--verbose",
+                  "description": "use verbose output"
+                },
+                {
+                  "flags": "-vv",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "-vv",
+                  "description": "more verbose with debug output"
+                },
+                {
+                  "flags": "--json",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "long": "--json",
+                  "description": "use json output"
+                },
+                {
+                  "flags": "-p, --dns-ip <dns-ip>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-p",
+                  "long": "--dns-ip",
+                  "description": "the IP address of the DNS server"
+                },
+                {
+                  "flags": "-i, --dns-id <dns-id>",
+                  "required": -14,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-i",
+                  "long": "--dns-id",
+                  "description": "the name identifier of the DNS server"
+                },
+                {
+                  "flags": "-q, --quiet",
+                  "required": 0,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-q",
+                  "long": "--quiet",
+                  "description": "quiet mode, do not ask for unregister confirmation"
+                },
+                {
+                  "flags": "-s, --subscription <id>",
+                  "required": -20,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-s",
+                  "long": "--subscription",
+                  "description": "the subscription id"
+                }
+              ]
+            }
+          ],
+          "categories": {}
         },
         "local-network": {
           "name": "local-network",
@@ -34036,411 +34980,6 @@
                       "short": "-s",
                       "long": "--subscription",
                       "description": "the subscription id"
-                    }
-                  ]
-                }
-              ],
-              "categories": {}
-            }
-          }
-        },
-        "route-table": {
-          "name": "route-table",
-          "description": "Commands to manage Route Table",
-          "fullName": "network route-table",
-          "usage": "[options] [command]",
-          "options": [],
-          "commands": [
-            {
-              "name": "create",
-              "description": "Create a Route Table",
-              "fullName": "network route-table create",
-              "usage": "[options] <name> <location>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the Route Table"
-                },
-                {
-                  "flags": "-l, --location <location>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-l",
-                  "long": "--location",
-                  "description": "the location, this must be same as the location of the virtual network containing the subnet(s) on which this Route Table needs to be applied"
-                },
-                {
-                  "flags": "-b, --label <label>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--label",
-                  "description": "the label for the Route Table"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "show",
-              "description": "Get a Route Table",
-              "fullName": "network route-table show",
-              "usage": "[options] <name>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the Route Table"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "list",
-              "description": "Get all Route Tables",
-              "fullName": "network route-table list",
-              "usage": "[options]",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            },
-            {
-              "name": "delete",
-              "description": "Delete a Route Table",
-              "fullName": "network route-table delete",
-              "usage": "[options] <name>",
-              "filePath": "commands/asm/network/network._js",
-              "options": [
-                {
-                  "flags": "-v, --verbose",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-v",
-                  "long": "--verbose",
-                  "description": "use verbose output"
-                },
-                {
-                  "flags": "-vv",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "-vv",
-                  "description": "more verbose with debug output"
-                },
-                {
-                  "flags": "--json",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--json",
-                  "description": "use json output"
-                },
-                {
-                  "flags": "-n, --name <name>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-n",
-                  "long": "--name",
-                  "description": "the name of the Route Table"
-                },
-                {
-                  "flags": "-q, --quiet",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-q",
-                  "long": "--quiet",
-                  "description": "quiet mode, do not ask for delete confirmation"
-                },
-                {
-                  "flags": "-s, --subscription <subscription>",
-                  "required": -20,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-s",
-                  "long": "--subscription",
-                  "description": "the subscription identifier"
-                }
-              ]
-            }
-          ],
-          "categories": {
-            "route": {
-              "name": "route",
-              "description": "Commands to manage Route Table routes",
-              "fullName": "network route-table route",
-              "usage": "[options] [command]",
-              "options": [],
-              "commands": [
-                {
-                  "name": "set",
-                  "description": "Set route in a Route Table",
-                  "fullName": "network route-table route set",
-                  "usage": "[options] <route-table-name> <name> <address-prefix> <next-hop-type>",
-                  "filePath": "commands/asm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-r, --route-table-name <route-table-name>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-r",
-                      "long": "--route-table-name",
-                      "description": "the name of the Route Table"
-                    },
-                    {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the route"
-                    },
-                    {
-                      "flags": "-a, --address-prefix <address-prefix>",
-                      "required": -22,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--address-prefix",
-                      "description": "the route address prefix e.g. 0.0.0.0/0"
-                    },
-                    {
-                      "flags": "-t, --next-hop-type <next-hop-type>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-t",
-                      "long": "--next-hop-type",
-                      "description": "the route next hop type, valid values are:\n       [VirtualAppliance,VPNGateway]"
-                    },
-                    {
-                      "flags": "-p, --next-hop-ip-address <next-hop-ip-address>",
-                      "required": -27,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--next-hop-ip-address",
-                      "description": "the route next hop ip addresses, this parameter is valid\n       only for next hop type VirtualAppliance"
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
-                  "name": "delete",
-                  "description": "Delete route from a Route Table",
-                  "fullName": "network route-table route delete",
-                  "usage": "[options] <route-table-name> <name>",
-                  "filePath": "commands/asm/network/network._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-r, --route-table-name <route-table-name>",
-                      "required": -24,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-r",
-                      "long": "--route-table-name",
-                      "description": "the name of the Route Table"
-                    },
-                    {
-                      "flags": "-n, --name <name>",
-                      "required": -12,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the route"
-                    },
-                    {
-                      "flags": "-q, --quiet",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-q",
-                      "long": "--quiet",
-                      "description": "quiet mode, do not ask for delete confirmation"
-                    },
-                    {
-                      "flags": "-s, --subscription <subscription>",
-                      "required": -20,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
                     }
                   ]
                 }

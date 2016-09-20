@@ -1,0 +1,20 @@
+{
+  "siteName": {
+    "value": "xDeploymentTestSite13501"
+  },
+  "hostingPlanName": {
+    "value": "xDeploymentTestHost2624"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "sku": {
+    "value": "Standard"
+  },
+  "workerSize": {
+    "value": "0"
+  }
+}//Single Line Comment 
+ /*A 
+ Multiline 
+ Comment */
