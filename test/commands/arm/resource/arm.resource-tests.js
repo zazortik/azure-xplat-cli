@@ -35,7 +35,7 @@ var createdGroups = [];
 var createdResources = [];
 
 describe('arm', function () {
-  describe.only('resource', function () {
+  describe('resource', function () {
     var suite;
     var testApiVersion = '2014-04-01';
     var testGroupLocation;

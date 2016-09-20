@@ -68339,7 +68339,7 @@
               "bool": true,
               "short": "-i",
               "long": "--resource-id",
-              "description": "the resource id can be provided instead of <resource-group> <name> <resource-type>"
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
             },
             {
               "flags": "--parent <parent>",
@@ -68535,7 +68535,7 @@
               "bool": true,
               "short": "-i",
               "long": "--resource-id",
-              "description": "the resource id can be provided instead of <resource-group> <name> <resource-type>"
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
             },
             {
               "flags": "-o --api-version <api-version>",
@@ -68630,7 +68630,7 @@
               "bool": true,
               "short": "-i",
               "long": "--resource-id",
-              "description": "the resource id can be provided instead of <resource-group> <name> <resource-type>"
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
             },
             {
               "flags": "-o --api-version <api-version>",
