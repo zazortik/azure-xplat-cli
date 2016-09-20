@@ -14,7 +14,9 @@ var vnetPrefix = 'CliTestVnet',
   subnetCidr = '23',
   location;
 
-var ripPrefix = 'cliTestRip';
+var ripPrefix = 'cliTestRip',
+    nsgPrefix = 'cliTestNSG',
+    rtPrefix  = 'cliTestRT';
 
 var requiredEnvironment = [{
   name: 'AZURE_VM_TEST_LOCATION',
@@ -31,6 +33,8 @@ describe('cli', function() {
       suite.setupSuite(function () {
         vnetPrefix = suite.generateId(vnetPrefix, null);
         ripPrefix = suite.generateId(ripPrefix, null);
+        nsgPrefix = suite.generateId(nsgPrefix, null);
+        rtPrefix = suite.generateId(rtPrefix, null);
         timeout = suite.isPlayback() ? 0 : testUtils.TIMEOUT_INTERVAL;
         done();
       });
@@ -39,7 +43,11 @@ describe('cli', function() {
       this.timeout(hour);
       networkUtil.deleteRIP(ripPrefix, suite, function () {
         networkUtil.deleteVnet(vnetPrefix, suite, function () {
-          suite.teardownSuite(done);
+          networkUtil.deleteNSG(nsgPrefix, suite, function () {
+            networkUtil.deleteRouteTable(rtPrefix, suite, function () {
+              suite.teardownSuite(done);
+            });
+          })
         });
       });
     });
@@ -100,6 +108,60 @@ describe('cli', function() {
       });
       it('abort migration should pass', function(done) {
         var cmd = util.format('network reserved-ip abort-migration %s --json', ripPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+    });
+
+    describe('nsg', function() {
+      this.timeout(hour);
+      it('validate migration should pass', function(done) {
+        networkUtil.createNSG(nsgPrefix, location, suite, function() {
+          var cmd = util.format('network nsg validate-migration %s --json', nsgPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+      it('prepare migration should pass', function(done) {
+        var cmd = util.format('network nsg prepare-migration %s --json', nsgPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('abort migration should pass', function(done) {
+        var cmd = util.format('network nsg abort-migration %s --json', nsgPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+    });
+
+    describe('route-table', function() {
+      this.timeout(hour);
+      it('validate migration should pass', function(done) {
+        networkUtil.createRouteTable(rtPrefix, location, suite, function() {
+          var cmd = util.format('network route-table validate-migration %s --json', rtPrefix).split(' ');
+          testUtils.executeCommand(suite, retry, cmd, function(result) {
+            result.exitStatus.should.equal(0);
+            done();
+          });
+        });
+      });
+      it('prepare migration should pass', function(done) {
+        var cmd = util.format('network route-table prepare-migration %s --json', rtPrefix).split(' ');
+        testUtils.executeCommand(suite, retry, cmd, function(result) {
+          result.exitStatus.should.equal(0);
+          done();
+        });
+      });
+      it('abort migration should pass', function(done) {
+        var cmd = util.format('network route-table abort-migration %s --json', rtPrefix).split(' ');
         testUtils.executeCommand(suite, retry, cmd, function(result) {
           result.exitStatus.should.equal(0);
           done();
