@@ -69841,7 +69841,7 @@
           "name": "create",
           "description": "Creates a resource in a resource group",
           "fullName": "resource create",
-          "usage": "[options] <resource-group> <name> <resource-type> <location> <api-version>",
+          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -69868,6 +69868,14 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--isFullObject",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--isFullObject",
+              "description": "Indicates that the property object includes other options such as location, tags, sku, and/or plan."
             },
             {
               "flags": "-g --resource-group <resource-group>",
@@ -69930,10 +69938,26 @@
               "short": "-p",
               "long": "--properties",
               "description": "a JSON-formatted string containing properties"
+            },            
+            {
+              "flags": "--sku <sku>",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
             },
             {
               "flags": "-t --tags <tags>",
-              "required": -11,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-t",
@@ -69954,7 +69978,7 @@
           "name": "set",
           "description": "Updates a resource in a resource group without any templates or parameters",
           "fullName": "resource set",
-          "usage": "[options] <resource-group> <name> <resource-type> <properties> <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <properties> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -69981,6 +70005,14 @@
               "bool": true,
               "long": "--json",
               "description": "use json output"
+            },
+            {
+              "flags": "--isFullObject",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--isFullObject",
+              "description": "Indicates that the property object includes other options such as location, tags, sku, and/or plan."
             },
             {
               "flags": "-g --resource-group <resource-group>",
@@ -70011,7 +70043,7 @@
             },
             {
               "flags": "-p --properties <properties>",
-              "required": -17,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-p",
@@ -70028,6 +70060,15 @@
               "description": "the API version of the resource provider"
             },
             {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
+            },
+            {
               "flags": "--parent <parent>",
               "required": -10,
               "optional": 0,
@@ -70036,8 +70077,24 @@
               "description": "the name of the parent resource (if needed), in path/path/path format"
             },
             {
+              "flags": "--sku <sku>",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
+            },
+            {
               "flags": "-t --tags <tags>",
-              "required": -11,
+              "required": 0,
               "optional": 0,
               "bool": true,
               "short": "-t",
@@ -70143,7 +70200,7 @@
           "name": "show",
           "description": "Gets one resource within a resource group or subscription",
           "fullName": "resource show",
-          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -70197,6 +70254,15 @@
               "short": "-r",
               "long": "--resource-type",
               "description": "the resource type"
+            },
+            {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
             },
             {
               "flags": "-o --api-version <api-version>",
@@ -70229,7 +70295,7 @@
           "name": "delete",
           "description": "Deletes a resource in a resource group",
           "fullName": "resource delete",
-          "usage": "[options] <resource-group> <name> <resource-type> <api-version>",
+          "usage": "[options] [ <resource-group> <name> <resource-type> | <resource-id> ] <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -70283,6 +70349,15 @@
               "short": "-r",
               "long": "--resource-type",
               "description": "the resource type"
+            },
+            {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -20,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "resource-id and (resource-group, name, resource-type, parent) are mutually exclusive."
             },
             {
               "flags": "-o --api-version <api-version>",
@@ -70324,7 +70399,7 @@
           "name": "move",
           "description": "Moves resources from one resource group to another",
           "fullName": "resource move",
-          "usage": "[options] <ids> <destination-group>",
+          "usage": "[options] <ids> <destination-group> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -70377,6 +70452,15 @@
               "bool": true,
               "long": "--destination-subscriptionId",
               "description": "the destination subscription identifier"
+            },
+            {
+              "flags": "-o --api-version <api-version>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--api-version",
+              "description": "the API version of the resource provider"
             },
             {
               "flags": "-q, --quiet",
