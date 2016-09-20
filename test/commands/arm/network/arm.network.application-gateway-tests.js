@@ -834,7 +834,6 @@ describe('arm', function () {
           done();
         });
       });
-    });*/
+    });
   });
-});
 });
