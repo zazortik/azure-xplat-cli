@@ -130,8 +130,8 @@ describe('Service Fabric', function () {
       });
     });
 
-    // it('should remove node state', function (done) {
-    //   suite.execute('servicefabric node state remove ' + node1 + ' --json', function (result) {
+    // it('should delete node state', function (done) {
+    //   suite.execute('servicefabric node state delete ' + node1 + ' --json', function (result) {
     //     result.exitStatus.should.equal(0);
     //     done();
     //   });
@@ -420,15 +420,15 @@ describe('Service Fabric', function () {
       });
     });
     
-    it('should remove service', function (done) {
-      suite.execute('servicefabric service remove --service-name ' + serviceName + ' --json', function (result) {
+    it('should delete service', function (done) {
+      suite.execute('servicefabric service delete --service-name ' + serviceName + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
-    it('should remove application', function (done) {
-      suite.execute('servicefabric application remove --application-name ' + applicationName + ' --json', function (result) {
+    it('should delete application', function (done) {
+      suite.execute('servicefabric application delete --application-name ' + applicationName + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
