@@ -74967,17 +74967,17 @@
             }
           ],
           "categories": {
-            "appsetting": {
-              "name": "appsetting",
+            "appsettings": {
+              "name": "appsettings",
               "description": "Commands to manage your Azure webapps app setting configurations",
-              "fullName": "webapp config appsetting",
+              "fullName": "webapp config appsettings",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "set",
-                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsetting set RGName SiteName KEY1=val1,KEY2=val2,KEY3=val3",
-                  "fullName": "webapp config appsetting set",
+                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsettings set RGName SiteName KEY1=val1,KEY2=val2,KEY3=val3",
+                  "fullName": "webapp config appsettings set",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -75054,8 +75054,8 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsetting add RGName SiteName KEY1,KEY2,KEY3",
-                  "fullName": "webapp config appsetting delete",
+                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsettings delete RGName SiteName KEY1,KEY2,KEY3",
+                  "fullName": "webapp config appsettings delete",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -75133,7 +75133,7 @@
                 {
                   "name": "list",
                   "description": "Get webapp app settings",
-                  "fullName": "webapp config appsetting list",
+                  "fullName": "webapp config appsettings list",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -75211,7 +75211,7 @@
               "commands": [
                 {
                   "name": "add",
-                  "description": "Add a hostname bindings for a webapp (using comma seperated names)\nexample:  webapp config hostname add RGName SiteName www.site1.com,www.site2.co.uk",
+                  "description": "Add a hostname bindings for a webapp (using comma seperated names)\nexample:  webapp config hostnames add RGName SiteName www.site1.com,www.site2.co.uk",
                   "fullName": "webapp config hostnames add",
                   "usage": "[options] <resource-group> <name> <hostnames>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
@@ -75281,7 +75281,7 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete a hostname binding for a webapp(using comma seperated names)\nexample:  webapp config hostname delete RGName SiteName www.site1.com,www.site2.co.uk",
+                  "description": "Delete a hostname binding for a webapp(using comma seperated names)\nexample:  webapp config hostnames delete RGName SiteName www.site1.com,www.site2.co.uk",
                   "fullName": "webapp config hostnames delete",
                   "usage": "[options] <resource-group> <name> <hostnames>",
                   "filePath": "commands/arm/webapp/webapp.config._js",

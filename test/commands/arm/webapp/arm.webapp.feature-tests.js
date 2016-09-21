@@ -128,22 +128,22 @@ describe('arm', function () {
       });
     });
 
-    it('config appsetting set should work', function (done) {
-      suite.execute('webapp config appsetting set %s %s %s --json', groupName, sitename, finalAppSetting, function (result) {
+    it('config appsettings set should work', function (done) {
+      suite.execute('webapp config appsettings set %s %s %s --json', groupName, sitename, finalAppSetting, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
-    it('config appsetting list should work', function (done) {
-      suite.execute('webapp config appsetting list %s %s --json', groupName, sitename, function (result) {
+    it('config appsettings list should work', function (done) {
+      suite.execute('webapp config appsettings list %s %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
     });
 
-    it('config appsetting delete should work', function (done) {
-      suite.execute('webapp config appsetting delete %s %s %s --json', groupName, sitename, appSettingKey, function (result) {
+    it('config appsettings delete should work', function (done) {
+      suite.execute('webapp config appsettings delete %s %s %s --json', groupName, sitename, appSettingKey, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
