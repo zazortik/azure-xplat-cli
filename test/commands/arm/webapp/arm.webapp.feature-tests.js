@@ -149,8 +149,8 @@ describe('arm', function () {
       });
     });
 
-    it('publishprofile show should work', function (done) {
-      suite.execute('webapp publishprofile show %s %s --json', groupName, sitename, function (result) {
+    it('publishingprofile show should work', function (done) {
+      suite.execute('webapp publishingprofile show %s %s --json', groupName, sitename, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });

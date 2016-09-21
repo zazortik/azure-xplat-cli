@@ -75415,17 +75415,17 @@
             }
           }
         },
-        "publishprofile": {
-          "name": "publishprofile",
+        "publishingprofile": {
+          "name": "publishingprofile",
           "description": "Command to get your Azure webapps publishing profile",
-          "fullName": "webapp publishprofile",
+          "fullName": "webapp publishingprofile",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "show",
               "description": "Get webapp publish profile",
-              "fullName": "webapp publishprofile show",
+              "fullName": "webapp publishingprofile show",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
               "options": [
