@@ -21667,7 +21667,7 @@
               "bool": true,
               "short": "-k",
               "long": "--sku",
-              "description": "sku of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+              "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
               "flags": "-i --instances <numberofinstances>",
@@ -21938,7 +21938,7 @@
               "bool": true,
               "short": "-k",
               "long": "--sku",
-              "description": "sku of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+              "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
               "flags": "-i --instances <numberofinstances>",
@@ -75213,7 +75213,7 @@
                   "name": "add",
                   "description": "Add a hostname bindings for a webapp (using comma seperated names)\nexample:  webapp config hostname add RGName SiteName www.site1.com,www.site2.co.uk",
                   "fullName": "webapp config hostnames add",
-                  "usage": "[options] <resource-group> <name> <hostname>",
+                  "usage": "[options] <resource-group> <name> <hostnames>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
                     {
@@ -75260,12 +75260,12 @@
                       "description": "the name of the web app"
                     },
                     {
-                      "flags": "-o --hostname <hostname>",
-                      "required": -15,
+                      "flags": "-o --hostnames <hostname>",
+                      "required": -16,
                       "optional": 0,
                       "bool": true,
                       "short": "-o",
-                      "long": "--hostname",
+                      "long": "--hostnames",
                       "description": "the list of hostnames to bind"
                     },
                     {
@@ -75281,9 +75281,9 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete a hostname binding for a webapp",
+                  "description": "Delete a hostname binding for a webapp(using comma seperated names)\nexample:  webapp config hostname delete RGName SiteName www.site1.com,www.site2.co.uk",
                   "fullName": "webapp config hostnames delete",
-                  "usage": "[options] <resource-group> <name>",
+                  "usage": "[options] <resource-group> <name> <hostnames>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
                     {
@@ -75330,12 +75330,12 @@
                       "description": "the name of the web app"
                     },
                     {
-                      "flags": "-o --hostname <hostname>",
-                      "required": -15,
+                      "flags": "-o --hostnames <hostname>",
+                      "required": -16,
                       "optional": 0,
                       "bool": true,
                       "short": "-o",
-                      "long": "--hostname",
+                      "long": "--hostnames",
                       "description": "the list of hostnames to unbind"
                     },
                     {
