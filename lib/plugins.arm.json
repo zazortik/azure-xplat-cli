@@ -75202,17 +75202,17 @@
               ],
               "categories": {}
             },
-            "hostname": {
-              "name": "hostname",
+            "hostnames": {
+              "name": "hostnames",
               "description": "Commands to get your Azure webapps hostnames",
-              "fullName": "webapp config hostname",
+              "fullName": "webapp config hostnames",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
                   "name": "add",
                   "description": "Add a hostname bindings for a webapp (using comma seperated names)\nexample:  webapp config hostname add RGName SiteName www.site1.com,www.site2.co.uk",
-                  "fullName": "webapp config hostname add",
+                  "fullName": "webapp config hostnames add",
                   "usage": "[options] <resource-group> <name> <hostname>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -75282,7 +75282,7 @@
                 {
                   "name": "delete",
                   "description": "Delete a hostname binding for a webapp",
-                  "fullName": "webapp config hostname delete",
+                  "fullName": "webapp config hostnames delete",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -75352,7 +75352,7 @@
                 {
                   "name": "list",
                   "description": "List hostname bindings under a webapp",
-                  "fullName": "webapp config hostname list",
+                  "fullName": "webapp config hostnames list",
                   "usage": "[options] <resource-group> <name>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
