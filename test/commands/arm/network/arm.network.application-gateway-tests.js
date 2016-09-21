@@ -93,7 +93,11 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     disabledSslProtocols: 'TLSv1_0,TLSv1_2',
     authCertName: 'TestAuthCert',
     certificateFile: 'test/data/auth-cert.pfx',
-    certificateFileNew: 'test/data/auth-cert-2.pfx'
+    certificateFileNew: 'test/data/auth-cert-2.pfx',
+    firewallMode: "Prevention",
+    firewallEnabled: true,
+    wafSkuName: constants.appGateway.sku.name[3],
+    wafSkuTier: constants.appGateway.sku.tier[1]
   };
 
 var requiredEnvironment = [{
@@ -989,6 +993,46 @@ describe('arm', function () {
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           cmd = 'network application-gateway auth-cert show -g {group} -n {authCertName} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.be.empty;
+            done();
+          });
+        });
+      });
+
+      it('waf-config create should create application gateway waf config', function (done) {
+        var cmd = 'network application-gateway set -g {group} --sku-name {wafSkuName} --sku-tier {wafSkuTier} --name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var cmd = 'network application-gateway waf-config create -g {group} --waf-mode {firewallMode} --enable {firewallEnabled} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.firewallMode.should.equal(gatewayProp.firewallMode);
+            output.enabled.should.equal(gatewayProp.firewallEnabled);
+            done();
+          });
+        });
+      });
+
+      it('waf-config show should display application gateway waf config details', function (done) {
+        var cmd = 'network application-gateway waf-config show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.firewallMode.should.equal(gatewayProp.firewallMode);
+          output.enabled.should.equal(gatewayProp.firewallEnabled);
+          done();
+        });
+      });
+
+      it('waf-config delete should delete application gateway waf config', function (done) {
+        var cmd = 'network application-gateway waf-config delete -g {group} --quiet --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network application-gateway waf-config show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var output = JSON.parse(result.text);
