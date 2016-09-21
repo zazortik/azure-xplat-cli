@@ -70,7 +70,7 @@
     "azure-asm-storage": "0.12.0",
     "azure-asm-subscription": "0.10.1",
     "azure-asm-website": "0.10.4",
-    "azure-storage": "1.1.0",
+    "azure-storage": "1.3.0",
     "azure-arm-batch": "0.2.0",
     "azure-batch": "0.5.2",
     "applicationinsights": "0.15.12",
