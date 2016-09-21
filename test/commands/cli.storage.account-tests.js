@@ -192,7 +192,7 @@ describe('cli', function () {
     it('should create account sas with --account-name and --account-key', function(done) {
       suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=w8WFjNYa6yDL50AmhxgAqXg2UFB0Lk74A0lYFhOnPqA%3D');
         done();
       });
     });
@@ -200,7 +200,7 @@ describe('cli', function () {
     it('should create account sas with --connection-string', function(done) {
       suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z -c DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=w8WFjNYa6yDL50AmhxgAqXg2UFB0Lk74A0lYFhOnPqA%3D');
         done();
       });
     });
@@ -244,7 +244,7 @@ describe('cli', function () {
     it('should get sas without protocol when no --protocol provided', function(done) {
       suite.execute('storage account sas create --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&sig=l7GqdatfCy2u7ecAugqMFklF65CqB5j2r7u3btzbGwc%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&sig=HATSuGzEBEfaiHzcRVr%2BMhfOx%2FwS92IbdYTVqIcxceI%3D');
         done();
       });
     });
@@ -252,7 +252,7 @@ describe('cli', function () {
     it('should sort the service automatically creating sas with randomly-ordered services provided', function(done) {
       suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services tbfq --resource-types sco --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= " --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=w8WFjNYa6yDL50AmhxgAqXg2UFB0Lk74A0lYFhOnPqA%3D');
         done();
       });
     });
@@ -260,7 +260,7 @@ describe('cli', function () {
     it('should sort the service automatically creating sas with randomly-ordered resource type provided', function(done) {
       suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services tbfq --resource-types ocs --permissions acurpwdl --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=w8WFjNYa6yDL50AmhxgAqXg2UFB0Lk74A0lYFhOnPqA%3D');
         done();
       });
     });
@@ -268,7 +268,7 @@ describe('cli', function () {
     it('should sort the service automatically creating sas with randomly-ordered permission provided', function(done) {
       suite.execute('storage account sas create --protocol HttpsOnly --ip-range 192.168.0.1-192.168.0.100 --services bqft --resource-types sco --permissions ldwpruca --expiry 2017-02-01T16:00:00Z  -a devstoreaccount1 -k 3PhbC2d3D2e0wPNhjaFxNqF1wTGu0Su5lZ8fCCCqIvg= --json', function(result){
         var sas = JSON.parse(result.text);
-        sas.sas.should.equal('sv=2015-04-05&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=DoIegiPua41qtg1x5iVN2fzdg6MexkR%2Fwk%2FUBexLiQQ%3D');
+        sas.sas.should.equal('sv=2015-12-11&ss=bfqt&srt=sco&sp=racupwdl&se=2017-02-01T16%3A00%3A00Z&sip=192.168.0.1-192.168.0.100&spr=https&sig=w8WFjNYa6yDL50AmhxgAqXg2UFB0Lk74A0lYFhOnPqA%3D');
         done();
       });
     });
