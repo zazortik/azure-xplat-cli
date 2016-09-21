@@ -21670,7 +21670,7 @@
               "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
-              "flags": "-i --instances <numberofinstances>",
+              "flags": "-i --instances <instances>",
               "required": -16,
               "optional": 0,
               "bool": true,
@@ -21941,7 +21941,7 @@
               "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
-              "flags": "-i --instances <numberofinstances>",
+              "flags": "-i --instances <instances>",
               "required": -16,
               "optional": 0,
               "bool": true,
