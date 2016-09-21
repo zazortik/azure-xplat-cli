@@ -56,6 +56,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     poolServers: '4.4.4.4,3.3.3.3',
     poolServersNew: '1.2.3.4,4.4.4.4,3.3.3.3',
     httpSettingsName: 'xplatTestHttpSettings',
+    defHttpSettingsName: constants.appGateway.settings.name,
     httpSettingsPort: 234,
     httpSettingsPortNew: 345,
     cookieBasedAffinity: 'Disabled',
@@ -594,7 +595,7 @@ describe('arm', function () {
 
       it('rule create command should create new request routing rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway rule create {group} {name} {ruleName} -i {httpSettingsName} ' +
-          '-l {httpListenerName} -p {poolName} --json').formatArgs(gatewayProp);
+          '-l {httpListenerName} -p {defPoolName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
@@ -603,6 +604,43 @@ describe('arm', function () {
           var rule = appGateway.requestRoutingRules[1];
           rule.name.should.equal(gatewayProp.ruleName);
           networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
+
+      it('rule show should display request routing rule from application gateway', function (done) {
+        var cmd = 'network application-gateway rule show {group} {name} {ruleName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.ruleName);
+          done();
+        });
+      });
+
+      it('rule set command should update request routing rule in application gateway', function (done) {
+        var cmd = util.format('network application-gateway rule set {group} {name} {ruleName} -i {defHttpSettingsName} ' +
+          '-p {defPoolName} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var rule = appGateway.requestRoutingRules[1];
+          rule.name.should.equal(gatewayProp.ruleName);
+          networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
+
+      it('rule list should display all rules in application gateway', function (done) {
+        var cmd = 'network application-gateway rule list -g {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.ruleName;
+          }).should.be.true;
           done();
         });
       });
@@ -1050,6 +1088,7 @@ describe('arm', function () {
           });
         });
       });
+
     });
   });
 });
