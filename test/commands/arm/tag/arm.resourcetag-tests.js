@@ -76,8 +76,8 @@ describe('arm', function () {
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
 
-            suite.execute('resource create %s %s %s %s %s -p %s -t %s --json', groupName, resourceName,
-              'Microsoft.Web/sites', testResourceLocation, testApiVersion,
+            suite.execute('resource create %s %s %s %s -p %s -t %s --json', groupName, resourceName,
+              'Microsoft.Web/sites', testApiVersion,
               '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
               tagName + '=' + tagValue, function (result) {
                 result.exitStatus.should.equal(0);
@@ -123,8 +123,8 @@ describe('arm', function () {
 
           suite.execute('group create %s --location %s --json', groupName, testGroupLocation, function (result) {
             result.exitStatus.should.equal(0);
-            suite.execute('resource create %s %s %s %s %s -p %s --json', groupName, resourceName,
-              'Microsoft.Web/sites', testResourceLocation, testApiVersion,
+            suite.execute('resource create %s %s %s %s -p %s --json', groupName, resourceName,
+              'Microsoft.Web/sites', testApiVersion,
               '{ "Name": "' + resourceName + '", "SiteMode": "Limited", "ComputeMode": "Shared" }',
               function (result) {
                 result.exitStatus.should.equal(0);
