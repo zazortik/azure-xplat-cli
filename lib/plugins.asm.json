@@ -9512,7 +9512,7 @@
               "description": "Show application",
               "fullName": "servicefabric application show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9563,7 +9563,7 @@
               "description": "Create application, Example: azure servicefabric application create --application-name fabric:/app --application-type-name type1 --application-type-version 1.0",
               "fullName": "servicefabric application create",
               "usage": "[options] [applicationName] [applicationTypeName] [applicationTypeVersion]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9633,7 +9633,7 @@
               "description": "Delete application",
               "fullName": "servicefabric application delete",
               "usage": "[options] [applicationName]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9685,7 +9685,7 @@
                   "description": "Show application manifest",
                   "fullName": "servicefabric application manifest show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9747,7 +9747,7 @@
                   "description": "Show application type, Example: azure servicefabric application type show --application-type-name type1",
                   "fullName": "servicefabric application type show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9798,7 +9798,7 @@
                   "description": "Register application type, Example: azure servicefabric application type register --application-type-build-path Package1",
                   "fullName": "servicefabric application type register",
                   "usage": "[options] [applicationTypeBuildPath]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9841,7 +9841,7 @@
                   "description": "Unregister application type, Example: azure servicefabric application type unregister --application-type-name type1 --application-type-version 1.0",
                   "fullName": "servicefabric application type unregister",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9903,7 +9903,7 @@
                   "description": "Show application health",
                   "fullName": "servicefabric application health show",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9972,7 +9972,7 @@
                   "description": "Send application health, Example: azure servicefabric application health send --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric application health send",
                   "usage": "[options] [applicationName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10096,7 +10096,7 @@
                   "description": "Show deployed application",
                   "fullName": "servicefabric application deployed show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10165,7 +10165,7 @@
                       "description": "Show deployed application health",
                       "fullName": "servicefabric application deployed health show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricApplication._js",
+                      "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -10243,7 +10243,7 @@
                       "description": "Send deployed application health, Example: azure servicefabric deployed application health send --node-name node1 --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                       "fullName": "servicefabric application deployed health send",
                       "usage": "[options] [nodeName] [applicationName] [sourceId] [property] [healthState]",
-                      "filePath": "commands/serviceFabricApplication._js",
+                      "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -10370,7 +10370,7 @@
                   "description": "Show application upgrade",
                   "fullName": "servicefabric application upgrade show",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10413,7 +10413,7 @@
                   "description": "Start application upgrade, Example: azure servicefabric application upgrade start --application-name fabric:/app --target-application-type-version 1.1 --rolling-upgrade-mode Monitored --force-restart true",
                   "fullName": "servicefabric application upgrade start",
                   "usage": "[options] [applicationName] [targetApplicationTypeVersion] [rollingUpgradeMode]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10519,7 +10519,7 @@
                   "description": "Update application upgrade, Example: azure servicefabric application upgrade update --application-name fabric:/app --rolling-upgrade-mode Monitored",
                   "fullName": "servicefabric application upgrade update",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10652,7 +10652,7 @@
                   "description": "Resume application upgrade",
                   "fullName": "servicefabric application upgrade resume",
                   "usage": "[options] [applicationName] [upgradeDomainName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10704,7 +10704,7 @@
                   "description": "Start application upgrade rollback",
                   "fullName": "servicefabric application upgrade rollback",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10757,7 +10757,7 @@
                   "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/package1 --image-store-connection-string fabric:ImageStore",
                   "fullName": "servicefabric application package copy",
                   "usage": "[options] [applicationPackagePath] [imageStoreConnectionString]",
-                  "filePath": "commands/serviceFabricPackage._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10821,7 +10821,7 @@
               "description": "Connect cluster, Example: azure servicefabric cluster connect --connection-endpoint http://127.0.0.1:19080",
               "fullName": "servicefabric cluster connect",
               "usage": "[options] [connectionEndpoint]",
-              "filePath": "commands/serviceFabricCluster._js",
+              "filePath": "commands/serviceFabric/serviceFabricCluster._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10909,7 +10909,7 @@
               "description": "Show cluster",
               "fullName": "servicefabric cluster show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricCluster._js",
+              "filePath": "commands/serviceFabric/serviceFabricCluster._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10960,7 +10960,7 @@
                   "description": "Show cluster manifest",
                   "fullName": "servicefabric cluster manifest show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11004,7 +11004,7 @@
                   "description": "Show cluster health",
                   "fullName": "servicefabric cluster health show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11073,7 +11073,7 @@
                   "description": "Send cluster health, Example: azure servicefabric cluster health send --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric cluster health send",
                   "usage": "[options] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11180,7 +11180,7 @@
                   "description": "Show load information",
                   "fullName": "servicefabric cluster load show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11232,7 +11232,7 @@
                   "description": "Show cluster upgrade",
                   "fullName": "servicefabric cluster upgrade show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11278,7 +11278,7 @@
               "description": "Show node",
               "fullName": "servicefabric node show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11329,7 +11329,7 @@
               "description": "Enable node, Example: azure servicefabric node enable --node-name node1",
               "fullName": "servicefabric node enable",
               "usage": "[options] [nodeName]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11372,7 +11372,7 @@
               "description": "Disable node, Example: azure servicefabric node enable --node-name node1 --deactivation-intent Pause",
               "fullName": "servicefabric node disable",
               "usage": "[options] [nodeName] [deactivationIntent]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11433,7 +11433,7 @@
                   "description": "Delete node state",
                   "fullName": "servicefabric node state delete",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11486,7 +11486,7 @@
                   "description": "Show node load information",
                   "fullName": "servicefabric node load show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11547,7 +11547,7 @@
                   "description": "Show node health",
                   "fullName": "servicefabric node health show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11607,7 +11607,7 @@
                   "description": "Send node health, Example: azure servicefabric node health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric node health send",
                   "usage": "[options] [nodeName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11741,7 +11741,7 @@
                       "description": "Show deployed application health",
                       "fullName": "servicefabric code package deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricPackage._js",
+                      "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -11815,7 +11815,7 @@
               "description": "Show service",
               "fullName": "servicefabric service show",
               "usage": "[options] [applicationName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11875,7 +11875,7 @@
               "description": "Create service, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
               "fullName": "servicefabric service create",
               "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -12062,7 +12062,7 @@
               "description": "Update service, Example: azure servicefabric service update --service-name fabric:/app --instance-count 1",
               "fullName": "servicefabric service update",
               "usage": "[options] [serviceName] [serviceKind]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -12168,7 +12168,7 @@
               "description": "Delete service",
               "fullName": "servicefabric service delete",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -12211,7 +12211,7 @@
               "description": "Resolve service",
               "fullName": "servicefabric service resolve",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -12306,7 +12306,7 @@
                       "description": "Show deployed service package",
                       "fullName": "servicefabric service package deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricPackage._js",
+                      "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -12375,7 +12375,7 @@
                           "description": "Show deployed service package health",
                           "fullName": "servicefabric service package deployed health show",
                           "usage": "[options] [nodeName] [applicationName] [servicePackageName]",
-                          "filePath": "commands/serviceFabricPackage._js",
+                          "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                           "options": [
                             {
                               "flags": "-v, --verbose",
@@ -12453,7 +12453,7 @@
                           "description": "Send deployed service package health, Example: azure servicefabric application health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                           "fullName": "servicefabric service package deployed health send",
                           "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState]",
-                          "filePath": "commands/serviceFabricPackage._js",
+                          "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                           "options": [
                             {
                               "flags": "-v, --verbose",
@@ -12591,7 +12591,7 @@
                   "description": "Create service from template",
                   "fullName": "servicefabric service template create",
                   "usage": "[options] [applicationName] [serviceName] [serviceTypeName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12662,7 +12662,7 @@
                   "description": "Show service type",
                   "fullName": "servicefabric service type show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12731,7 +12731,7 @@
                       "description": "Show deployed service type",
                       "fullName": "servicefabric service type deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricService._js",
+                      "filePath": "commands/serviceFabric/serviceFabricService._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -12812,7 +12812,7 @@
                   "description": "Show service manifest",
                   "fullName": "servicefabric service manifest show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion] [serviceManifestName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12883,7 +12883,7 @@
                   "description": "Show service description",
                   "fullName": "servicefabric service description show",
                   "usage": "[options] [serviceName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12944,7 +12944,7 @@
                   "description": "Show service health",
                   "fullName": "servicefabric service health show",
                   "usage": "[options] [serviceName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12995,7 +12995,7 @@
                   "description": "Send service health, Example: azure servicefabric service health send --service-name fabric:/app/svc fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric service health send",
                   "usage": "[options] [serviceName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13111,7 +13111,7 @@
                   "description": "Create service group, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
                   "fullName": "servicefabric service group create",
                   "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13307,7 +13307,7 @@
                   "description": "Update service group",
                   "fullName": "servicefabric service group update",
                   "usage": "[options] [applicationName] [serviceName] [serviceKind]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13422,7 +13422,7 @@
                   "description": "Delete service group",
                   "fullName": "servicefabric service group delete",
                   "usage": "[options] [applicationName] [serviceName]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13483,7 +13483,7 @@
                       "description": "Create service group from template",
                       "fullName": "servicefabric service group template create",
                       "usage": "[options] [applicationName] [serviceName] [serviceTypeName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13554,7 +13554,7 @@
                       "description": "Show service group description",
                       "fullName": "servicefabric service group description show",
                       "usage": "[options] [serviceName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13615,7 +13615,7 @@
                       "description": "Show service group member",
                       "fullName": "servicefabric service group member show",
                       "usage": "[options] [applicationName] [serviceName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13689,7 +13689,7 @@
               "description": "Show partition",
               "fullName": "servicefabric partition show",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricPartition._js",
+              "filePath": "commands/serviceFabric/serviceFabricPartition._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -13749,7 +13749,7 @@
               "description": "Repair partition",
               "fullName": "servicefabric partition repair",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricPartition._js",
+              "filePath": "commands/serviceFabric/serviceFabricPartition._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -13810,7 +13810,7 @@
                   "description": "Show partition health",
                   "fullName": "servicefabric partition health show",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13879,7 +13879,7 @@
                   "description": "Send partition health, Example: azure servicefabric partition health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric partition health send",
                   "usage": "[options] [partitionId] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13995,7 +13995,7 @@
                   "description": "Show partition load information",
                   "fullName": "servicefabric partition load show",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14046,7 +14046,7 @@
                   "description": "Reset partition",
                   "fullName": "servicefabric partition load reset",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14101,7 +14101,7 @@
               "description": "Show replica",
               "fullName": "servicefabric replica show",
               "usage": "[options] [partitionId]",
-              "filePath": "commands/serviceFabricReplica._js",
+              "filePath": "commands/serviceFabric/serviceFabricReplica._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -14170,7 +14170,7 @@
                   "description": "Show deployed replica",
                   "fullName": "servicefabric replica deployed show",
                   "usage": "[options] [nodeName] [applicationName]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14230,7 +14230,7 @@
                   "description": "Show deployed replica detail",
                   "fullName": "servicefabric replica deployed detail",
                   "usage": "[options] [nodeName] [partitionName] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14309,7 +14309,7 @@
                   "description": "Show replica health",
                   "fullName": "servicefabric replica health show",
                   "usage": "[options] [partitionId] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14378,7 +14378,7 @@
                   "description": "Send replica health, Example: azure servicefabric replica health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric replica health send",
                   "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14503,7 +14503,7 @@
                   "description": "Show replica load information",
                   "fullName": "servicefabric replica load show",
                   "usage": "[options] [partitionId] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
