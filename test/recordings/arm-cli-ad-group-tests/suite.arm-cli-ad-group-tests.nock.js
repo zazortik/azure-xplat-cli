@@ -6,16 +6,15 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '0b1f6471-1bf0-4dda-aec3-cb9272f09590',
-    name: 'AzureSDKADGraph2',
+    id: '4004a9fd-d58e-48dc-aeb2-4a4aec58606f',
+    name: 'AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI',
     user: {
       name: 'user@domain.example',
       type: 'user'
     },
-    tenantId: '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a',
+    tenantId: '1273adef-00a3-4086-a51a-dbcce1857d36',
     state: 'Enabled',
     registeredProviders: [],
-    _eventsCount: '1',
     isDefault: true
   }, newProfile.environments['AzureCloud']));
 

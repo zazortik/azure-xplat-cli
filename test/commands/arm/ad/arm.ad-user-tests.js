@@ -21,7 +21,7 @@ var util = require('util');
 var CLITest = require('../../../framework/arm-cli-test');
 var testprefix = 'arm-cli-ad-user-tests';
 var userPrefix = 'testuser1012';
-var testdomain = '@AzureSDKTeam.onmicrosoft.com';
+var testdomain = '@rbacclitest.onmicrosoft.com';
 var userObjectId;
 var createdUsers = [];
 

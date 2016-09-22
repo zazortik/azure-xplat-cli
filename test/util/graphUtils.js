@@ -41,7 +41,7 @@ exports.createGroup = function (groupName, callback) {
   createParams['securityEnabled'] = true;
 
   var groupInfo = {};
-  graphClient.groupOperations.create(createParams, function (err, result) {
+  graphClient.groups.create(createParams, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -58,7 +58,7 @@ exports.createGroup = function (groupName, callback) {
 exports.deleteGroup = function (groupInfo, callback) {
   createGraphClient();
   var groupObjectId = groupInfo['objectId'];
-  graphClient.groupOperations.deleteMethod(groupObjectId, function (err, result) {
+  graphClient.groups.deleteMethod(groupObjectId, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -83,7 +83,7 @@ exports.createUser = function (upn, password, callback) {
   userParams['passwordProfile'] = pwdProfileParams;
 
   var userInfo = {};
-  graphClient.userOperations.create(userParams, function (err, result) {
+  graphClient.users.create(userParams, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -101,7 +101,7 @@ exports.createUser = function (upn, password, callback) {
 exports.deleteUser = function (userInfo, callback) {
   createGraphClient();
   var upn = userInfo.upn;
-  graphClient.userOperations.deleteMethod(upn, function (err, result) {
+  graphClient.users.deleteMethod(upn, function (err, result) {
     if (err) {
       return callback(err);
     } else {
@@ -121,7 +121,7 @@ exports.addGroupMember = function (groupInfo, memberInfo, callback) {
   //construct memberUrl
   var url = graphClient.baseUri + '/' + graphClient.tenantID + '/directoryObjects/' + memberObjectId;
 
-  graphClient.groupOperations.addMember(groupObjectId, url, function (err, result) {
+  graphClient.groups.addMember(groupObjectId, url, function (err, result) {
     if (err) {
       return callback(err);
     }
@@ -138,7 +138,7 @@ exports.removeGroupMember = function (groupInfo, memberInfo, callback) {
 
   var memberObjectId = memberInfo['objectId'];
 
-  graphClient.groupOperations.removeMember(groupObjectId, memberObjectId, function (err, result) {
+  graphClient.groups.removeMember(groupObjectId, memberObjectId, function (err, result) {
     if (err) {
       return callback(err);
     }
@@ -159,14 +159,14 @@ exports.createSP = function (appName, callback) {
   appParams['identifierUris'] = [url];
   appParams['replyUrls'] = [url];
   var spInfo = {};
-  graphClient.applicationOperations.create(appParams, function (err, appResult) {
+  graphClient.applications.create(appParams, function (err, appResult) {
     if (err) {
       return callback(err);
-    }
+		}
     var spParams = {};
     spParams['appId'] = appResult['appId'];
     spParams['accountEnabled'] = true;
-    graphClient.servicePrincipalOperations.create(spParams, function (err, spResult) {
+    graphClient.servicePrincipals.create(spParams, function (err, spResult) {
       if (err) {
         return callback(err);
       }
@@ -183,11 +183,11 @@ exports.deleteSP = function(spInfo, callback) {
   createGraphClient();
   var spObjectId = spInfo['objectId'];
   var appObjectId = spInfo['application']['objectId'];
-  graphClient.servicePrincipalOperations.deleteMethod(spObjectId, function (err, spResult) {
+  graphClient.servicePrincipals.deleteMethod(spObjectId, function (err, spResult) {
     if (err) {
       return callback(err);
     }
-    graphClient.applicationOperations.deleteMethod(appObjectId, function (err, appResult) {
+    graphClient.applications.deleteMethod(appObjectId, function (err, appResult) {
       if (err) {
         return callback(err);
       }
