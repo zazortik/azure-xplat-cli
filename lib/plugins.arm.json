@@ -62657,7 +62657,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--sku-name",
-                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]. Default values is \"Standard_Medium\""
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large,WAF_Medium,WAF_Large]. Default values is \"Standard_Medium\""
                 },
                 {
                   "flags": "-u, --sku-tier <sku-tier>",
@@ -62762,7 +62762,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--sku-name",
-                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]"
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large,WAF_Medium,WAF_Large]"
                 },
                 {
                   "flags": "-u, --sku-tier <sku-tier>",
@@ -62771,7 +62771,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--sku-tier",
-                  "description": "the sku tier, valid values are [Standard]"
+                  "description": "the sku tier, valid values are [Standard,WAF]"
                 },
                 {
                   "flags": "-z, --capacity <capacity>",
@@ -67952,6 +67952,226 @@
                       "short": "-n",
                       "long": "--name",
                       "description": "the application gateway authentication certificate name"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "waf-config": {
+              "name": "waf-config",
+              "description": "Commands to manage application gateway web application firewall configuration",
+              "fullName": "network application-gateway waf-config",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config create",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-m, --waf-mode <waf-mode>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--waf-mode",
+                      "description": "Mode of web application firewall for application gateway\n      supported values are [Detection,Prevention]"
+                    },
+                    {
+                      "flags": "-e, --enable <enable>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--enable",
+                      "description": "If web application firewall enabled on application gateway\n      supported values are [true, false]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config delete",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config show",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
