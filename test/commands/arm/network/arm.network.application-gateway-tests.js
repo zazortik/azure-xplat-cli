@@ -59,6 +59,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     defHttpSettingsName: constants.appGateway.settings.name,
     httpSettingsPort: 234,
     httpSettingsPortNew: 345,
+    httpSettingsPort1: 456,
     cookieBasedAffinity: 'Disabled',
     cookieBasedAffinityNew: 'Enabled',
     httpProtocol: 'Http',
@@ -84,6 +85,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     urlMapRuleName: 'urlMapRuleName01',
     urlMapRuleName2: 'urlMapRuleName02',
     defHttpSettingName: constants.appGateway.settings.name,
+    httpSettingsName1: 'httpSettingsName1',
     defPoolName: constants.appGateway.pool.name,
     mapPath: '/test',
     newUrlMapRuleName: 'rule01',
@@ -615,16 +617,6 @@ describe('arm', function () {
         });
       });
 
-      it('rule show should display request routing rule from application gateway', function (done) {
-        var cmd = 'network application-gateway rule show {group} {name} {ruleName} --json'.formatArgs(gatewayProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.name.should.equal(gatewayProp.ruleName);
-          done();
-        });
-      });
-
       it('rule set command should update request routing rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway rule set {group} {name} {ruleName} -i {defHttpSettingsName} ' +
           '-p {defPoolName} --json').formatArgs(gatewayProp);
@@ -636,6 +628,16 @@ describe('arm', function () {
           var rule = appGateway.requestRoutingRules[1];
           rule.name.should.equal(gatewayProp.ruleName);
           networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
+
+      it('rule show should display request routing rule from application gateway', function (done) {
+        var cmd = 'network application-gateway rule show {group} {name} {ruleName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.ruleName);
           done();
         });
       });
@@ -751,7 +753,8 @@ describe('arm', function () {
       });
 
       it('url path map list should display all URL path maps from application gateway', function (done) {
-        var cmd = 'network application-gateway url-path-map list {group} {name} {urlPathMapName} --json'.formatArgs(gatewayProp);
+        var cmd = 'network application-gateway url-path-map list {group} {name} {urlPathMapName} --json'
+          .formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var urlPathMaps = JSON.parse(result.text);
