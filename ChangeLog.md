@@ -1,4 +1,57 @@
-﻿##2016-9-3 Version 0.10.4
+﻿##2016-09-28 Version 0.10.5
+* General
+  * **By default azure-cli will now save access tokens to ~/.azure/accessTokens.json for OSX and Window, like it does on Linux**. When you install this version, **please run login to re-establish the credentials**. If you prefer **old behaviors** of using secure storage, you can turn on the env variable of **AZURE_USE_SECURE_TOKEN_STORAGE**
+  * Typo fixes in log messages, help of some commands, help files and README
+  * Added back ip for telemetry
+  * Fixed #3108
+* Network
+  * Implemented functionality to remove public-ip-address and NIC ip config association
+  * Fixed error message in application gateways when user have to login
+  * IPv6 NICs are available for a few regions
+  * Added nic effective-nsg and effective-route-tables
+  * Implemented ARM application gateway http listener set command
+  * Implemented url path map show/list commands
+  * Reworked app gateway show command
+  * Implemented Application gateway http listener show/list commands
+  * Added app-gw rule set/list/show
+  * Implemented App gateway URL path maps, rules set commands 
+  * Added CRUD commands for app-gw sub commands
+    * address-pool
+    * frontend-ip
+    * frontend-port
+    * http-settings
+    * probe
+    * ssl-cert
+* IotHub
+  * Adding commands to show a well formed connection string.
+* ResourceManager
+  * Ignore resource group case when validating source and destination group in resource move
+  * Fixed #2931 #2561 #3085 #2751 #2689 #2552
+* Compute
+  * Fixed #2601: 'vm set' command to support '--new-os-disk-size' input
+* Datalake
+  * Fixed #3163
+* Storage
+  * Upgraded the azure-storage dependency to 1.3.0 to address the tough-cookie security issue
+* Batch
+  * Added new 'batch task reactivate' command
+  * Added '--default-version' parameter to 'batch application set' command
+  * Fixed bug in the --app-package-ref parameter handling in the 'batch pool create' and 'batch pool set' commands
+  * Fixed a bug in the formatted display of the 'batch pool usage-metrics list' output
+* WebApp
+  * Added webapp config hostname commands
+  * Added appserviceplan set command
+  * Modified appserviceplan parameter name change from tier to sku
+  * Modified some description changes
+  * Fixed creating free/shared appserviceplans now work
+* ServiceFabric
+  * Implemented the first version of service fabric commands
+
+* ASM
+  * Network
+    * Added nsg and route-table migration commands
+
+##2016-09-03 Version 0.10.4
 * General
   * Fixed #2775 and #2963.
   * Support for help in json format
