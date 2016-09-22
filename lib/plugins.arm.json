@@ -9129,7 +9129,7 @@
               "name": "show",
               "description": "Show application",
               "fullName": "servicefabric application show",
-              "usage": "[options] [applicationName]",
+              "usage": "[options]",
               "filePath": "commands/serviceFabricApplication._js",
               "options": [
                 {
@@ -9180,7 +9180,7 @@
               "name": "create",
               "description": "Create application, Example: azure servicefabric application create --application-name fabric:/app --application-type-name type1 --application-type-version 1.0",
               "fullName": "servicefabric application create",
-              "usage": "[options] [applicationName] [applicationTypeName] [applicationTypeVersion] [applicationParameter]",
+              "usage": "[options] [applicationName] [applicationTypeName] [applicationTypeVersion]",
               "filePath": "commands/serviceFabricApplication._js",
               "options": [
                 {
@@ -9364,7 +9364,7 @@
                   "name": "show",
                   "description": "Show application type, Example: azure servicefabric application type show --application-type-name type1",
                   "fullName": "servicefabric application type show",
-                  "usage": "[options] [applicationTypeName]",
+                  "usage": "[options]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -9520,7 +9520,7 @@
                   "name": "show",
                   "description": "Show application health",
                   "fullName": "servicefabric application health show",
-                  "usage": "[options] [applicationName] [eventsHealthStateFilter] [deployedServicePackagesHealthStateFilter]",
+                  "usage": "[options] [applicationName]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -9558,11 +9558,11 @@
                       "description": "the name of the application"
                     },
                     {
-                      "flags": "-h --events-health-state-filter <eventsHealthStateFilter>",
+                      "flags": "-e --events-health-state-filter <eventsHealthStateFilter>",
                       "required": -33,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--events-health-state-filter",
                       "description": "the filter of the event health state, values are [Default|None|Ok|Warning|Error|All]"
                     },
@@ -9589,7 +9589,7 @@
                   "name": "send",
                   "description": "Send application health, Example: azure servicefabric application health send --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric application health send",
-                  "usage": "[options] [applicationName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [applicationName] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -9645,11 +9645,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -9672,17 +9672,17 @@
                       "description": "the time in milliseconds for live"
                     },
                     {
-                      "flags": "-e --sequence-number <sequenceNumber>",
+                      "flags": "-q --sequence-number <sequenceNumber>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-q",
                       "long": "--sequence-number",
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-w --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-w --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-w",
@@ -9713,7 +9713,7 @@
                   "name": "show",
                   "description": "Show deployed application",
                   "fullName": "servicefabric application deployed show",
-                  "usage": "[options] [nodeName] [applicationName]",
+                  "usage": "[options] [nodeName]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -9782,7 +9782,7 @@
                       "name": "show",
                       "description": "Show deployed application health",
                       "fullName": "servicefabric application deployed health show",
-                      "usage": "[options] [nodeName] [applicationName] [eventsHealthStateFilter] [deployedServicePackagesHealthStateFilter]",
+                      "usage": "[options] [nodeName] [applicationName]",
                       "filePath": "commands/serviceFabricApplication._js",
                       "options": [
                         {
@@ -9835,16 +9835,16 @@
                           "bool": true,
                           "short": "-f",
                           "long": "--events-health-state-filter",
-                          "description": "the filter of the event health state"
+                          "description": "the filter of the event health state, values are [Default|None|Ok|Warning|Error|All]"
                         },
                         {
-                          "flags": "-h --deployed-service-packages-health-state-filter <deployedServicePackagesHealthStateFilter>",
+                          "flags": "-p --deployed-service-packages-health-state-filter <deployedServicePackagesHealthStateFilter>",
                           "required": -52,
                           "optional": 0,
                           "bool": true,
-                          "short": "-h",
+                          "short": "-p",
                           "long": "--deployed-service-packages-health-state-filter",
-                          "description": "the filter of the deployed service packages health state"
+                          "description": "the filter of the deployed service packages health state, values are [Default|None|Ok|Warning|Error|All]"
                         },
                         {
                           "flags": "--select <fields>",
@@ -9860,7 +9860,7 @@
                       "name": "send",
                       "description": "Send deployed application health, Example: azure servicefabric deployed application health send --node-name node1 --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                       "fullName": "servicefabric application deployed health send",
-                      "usage": "[options] [nodeName] [applicationName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                      "usage": "[options] [nodeName] [applicationName] [sourceId] [property] [healthState]",
                       "filePath": "commands/serviceFabricApplication._js",
                       "options": [
                         {
@@ -9925,11 +9925,11 @@
                           "description": "the property"
                         },
                         {
-                          "flags": "-h --health-state <healthState>",
+                          "flags": "-e --health-state <healthState>",
                           "required": -19,
                           "optional": 0,
                           "bool": true,
-                          "short": "-h",
+                          "short": "-e",
                           "long": "--health-state",
                           "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                         },
@@ -9952,17 +9952,17 @@
                           "description": "the time in milliseconds for live"
                         },
                         {
-                          "flags": "-e --sequence-number <sequenceNumber>",
+                          "flags": "-q --sequence-number <sequenceNumber>",
                           "required": -22,
                           "optional": 0,
                           "bool": true,
-                          "short": "-e",
+                          "short": "-q",
                           "long": "--sequence-number",
                           "description": "the number of the sequence"
                         },
                         {
-                          "flags": "-r --remove-when-expired <removeWhenExpired>",
-                          "required": -26,
+                          "flags": "-r --remove-when-expired",
+                          "required": 0,
                           "optional": 0,
                           "bool": true,
                           "short": "-r",
@@ -10030,7 +10030,7 @@
                   "name": "start",
                   "description": "Start application upgrade, Example: azure servicefabric application upgrade start --application-name fabric:/app --target-application-type-version 1.1 --rolling-upgrade-mode Monitored --force-restart true",
                   "fullName": "servicefabric application upgrade start",
-                  "usage": "[options] [applicationName] [targetApplicationTypeVersion] [parameters] [rollingUpgradeMode] [upgradeReplicaSetCheckTimeoutInSeconds] [forceRestart] [monitoringPolicy] [applicationHealthPolicy]",
+                  "usage": "[options] [applicationName] [targetApplicationTypeVersion] [rollingUpgradeMode]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -10083,7 +10083,7 @@
                       "bool": true,
                       "short": "-p",
                       "long": "--parameters",
-                      "description": "the parameters"
+                      "description": "the parameters, json string \"{\"Key\": \"key1\", \"Value\": \"value1\"}\""
                     },
                     {
                       "flags": "-m --rolling-upgrade-mode <rollingUpgradeMode>",
@@ -10095,20 +10095,20 @@
                       "description": "the mode of the rolling upgrade, values are [UnmonitoredAuto|UnmonitoredManual|Monitored]"
                     },
                     {
-                      "flags": "-s --upgrade-replica-set-check-timeout-in-seconds <upgradeReplicaSetCheckTimeoutInSeconds>",
+                      "flags": "-r --upgrade-replica-set-check-timeout-in-seconds <upgradeReplicaSetCheckTimeoutInSeconds>",
                       "required": -51,
                       "optional": 0,
                       "bool": true,
-                      "short": "-s",
+                      "short": "-r",
                       "long": "--upgrade-replica-set-check-timeout-in-seconds",
                       "description": "the name of the upgrade domain"
                     },
                     {
-                      "flags": "-r --force-restart <forceRestart>",
-                      "required": -20,
+                      "flags": "-f --force-restart",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
-                      "short": "-r",
+                      "short": "-f",
                       "long": "--force-restart",
                       "description": "the force restart"
                     },
@@ -10122,11 +10122,11 @@
                       "description": "the policy of the monitoring"
                     },
                     {
-                      "flags": "-h --application-health-policy <applicationHealthPolicy>",
+                      "flags": "-a --application-health-policy <applicationHealthPolicy>",
                       "required": -32,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-a",
                       "long": "--application-health-policy",
                       "description": "the policy of the health application"
                     }
@@ -10136,7 +10136,7 @@
                   "name": "update",
                   "description": "Update application upgrade, Example: azure servicefabric application upgrade update --application-name fabric:/app --rolling-upgrade-mode Monitored",
                   "fullName": "servicefabric application upgrade update",
-                  "usage": "[options] [applicationName] [rollingUpgradeMode] [forceRestart] [failureAction] [upgradeReplicaSetCheckTimeoutInSeconds] [healthCheckWaitDurationInMilliseconds] [healthCheckStableDurationInMilliseconds] [healthCheckRetryTimeoutInMilliseconds] [upgradeTimeoutInMilliseconds] [upgradeDomainTimeoutInMilliseconds] [applicationHealthPolicy]",
+                  "usage": "[options] [applicationName]",
                   "filePath": "commands/serviceFabricApplication._js",
                   "options": [
                     {
@@ -10183,8 +10183,8 @@
                       "description": "the mode of the rolling upgrade, values are [UnmonitoredAuto|UnmonitoredManual|Monitored]"
                     },
                     {
-                      "flags": "-r --force-restart <forceRestart>",
-                      "required": -20,
+                      "flags": "-r --force-restart",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-r",
@@ -10219,20 +10219,20 @@
                       "description": "the mode of the rolling upgrade"
                     },
                     {
-                      "flags": "-s --health-check-stable-duration-in-milliseconds <healthCheckStableDurationInMilliseconds>",
+                      "flags": "-c --health-check-stable-duration-in-milliseconds <healthCheckStableDurationInMilliseconds>",
                       "required": -51,
                       "optional": 0,
                       "bool": true,
-                      "short": "-s",
+                      "short": "-c",
                       "long": "--health-check-stable-duration-in-milliseconds",
                       "description": "the mode of the rolling upgrade"
                     },
                     {
-                      "flags": "-t --health-check-retry-timeout-in-milliseconds <healthCheckRetryTimeoutInMilliseconds>",
+                      "flags": "-e --health-check-retry-timeout-in-milliseconds <healthCheckRetryTimeoutInMilliseconds>",
                       "required": -49,
                       "optional": 0,
                       "bool": true,
-                      "short": "-t",
+                      "short": "-e",
                       "long": "--health-check-retry-timeout-in-milliseconds",
                       "description": "the mode of the rolling upgrade"
                     },
@@ -10374,7 +10374,7 @@
                   "name": "copy",
                   "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/package1 --image-store-connection-string fabric:ImageStore",
                   "fullName": "servicefabric application package copy",
-                  "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
+                  "usage": "[options] [applicationPackagePath] [imageStoreConnectionString]",
                   "filePath": "commands/serviceFabricPackage._js",
                   "options": [
                     {
@@ -10419,128 +10419,6 @@
                       "short": "-c",
                       "long": "--image-store-connection-string",
                       "description": "the string of the image store connection"
-                    },
-                    {
-                      "flags": "-i --application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                      "required": -46,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--application-package-path-in-image-store",
-                      "description": "the path of the application package in image store"
-                    }
-                  ]
-                },
-                {
-                  "name": "test",
-                  "description": "Test application package",
-                  "fullName": "servicefabric application package test",
-                  "usage": "[options] [applicationPackagePath] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
-                  "filePath": "commands/serviceFabricPackage._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-p --application-package-path <applicationPackagePath>",
-                      "required": -31,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-p",
-                      "long": "--application-package-path",
-                      "description": "the path of the application package"
-                    },
-                    {
-                      "flags": "-a --application-parameter <applicationParameter>",
-                      "required": -28,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-a",
-                      "long": "--application-parameter",
-                      "description": "the parameter of the application, json string \"{\"Key\": \"key1\", \"Value\": \"value1\"}\""
-                    },
-                    {
-                      "flags": "-c --image-store-connection-string <imageStoreConnectionString>",
-                      "required": -36,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-c",
-                      "long": "--image-store-connection-string",
-                      "description": "the string of the image store connection"
-                    }
-                  ]
-                },
-                {
-                  "name": "delete",
-                  "description": "Delete application package",
-                  "fullName": "servicefabric application package delete",
-                  "usage": "[options] [imageStoreConnectionString] [applicationPackagePathInImageStore]",
-                  "filePath": "commands/serviceFabricPackage._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-c --image-store-connection-string <imageStoreConnectionString>",
-                      "required": -36,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-c",
-                      "long": "--image-store-connection-string",
-                      "description": "the string of the image store connection"
-                    },
-                    {
-                      "flags": "-i --application-package-path-in-image-store <applicationPackagePathInImageStore>",
-                      "required": -46,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-i",
-                      "long": "--application-package-path-in-image-store",
-                      "description": "the path of the application package in image store"
                     }
                   ]
                 }
@@ -10560,7 +10438,7 @@
               "name": "connect",
               "description": "Connect cluster, Example: azure servicefabric cluster connect --connection-endpoint http://127.0.0.1:19080",
               "fullName": "servicefabric cluster connect",
-              "usage": "[options] [connectionEndpoint] [clientKeyPath] [clientCertPath] [caCertPath] [strictSsl] [rejectUnauthorized]",
+              "usage": "[options] [connectionEndpoint]",
               "filePath": "commands/serviceFabricCluster._js",
               "options": [
                 {
@@ -10625,21 +10503,21 @@
                   "description": "the path of the ca cert, comma separated if multiple"
                 },
                 {
-                  "flags": "-t --strict-ssl <strictSsl>",
-                  "required": -17,
+                  "flags": "-t --strict-ssl-false",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
                   "short": "-t",
-                  "long": "--strict-ssl",
+                  "long": "--strict-ssl-false",
                   "description": "the boolean of the strict ssl, false to disable CN verification"
                 },
                 {
-                  "flags": "-u --reject-unauthorized <rejectUnauthorized>",
-                  "required": -26,
+                  "flags": "-u --reject-unauthorized-false",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
                   "short": "-u",
-                  "long": "--reject-unauthorized",
+                  "long": "--reject-unauthorized-false",
                   "description": "the boolean of the reject unauthorized, false to disable CA verification"
                 }
               ]
@@ -10677,11 +10555,10 @@
                   "description": "use json output"
                 },
                 {
-                  "flags": "-s --select <fields>",
-                  "required": -13,
+                  "flags": "--select <fields>",
+                  "required": -10,
                   "optional": 0,
                   "bool": true,
-                  "short": "-s",
                   "long": "--select",
                   "description": "select fields to show, call without this parameter to see all fields"
                 }
@@ -10744,7 +10621,7 @@
                   "name": "show",
                   "description": "Show cluster health",
                   "fullName": "servicefabric cluster health show",
-                  "usage": "[options] [eventsHealthStateFilter] [nodesHealthStateFilter] [applicationsHealthStateFilter]",
+                  "usage": "[options]",
                   "filePath": "commands/serviceFabricCluster._js",
                   "options": [
                     {
@@ -10773,11 +10650,37 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
+                      "flags": "-f --events-health-state-filter <eventsHealthStateFilter>",
+                      "required": -33,
                       "optional": 0,
                       "bool": true,
-                      "short": "-s",
+                      "short": "-f",
+                      "long": "--events-health-state-filter",
+                      "description": "the filter of the event health state, values are [Default|None|Ok|Warning|Error|All]"
+                    },
+                    {
+                      "flags": "-n --nodes-health-state-filter <nodesHealthStateFilter>",
+                      "required": -32,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--nodes-health-state-filter",
+                      "description": "the filter of the nodes health state, values are [Default|None|Ok|Warning|Error|All]"
+                    },
+                    {
+                      "flags": "-a --applications-health-state-filter <applicationsHealthStateFilter>",
+                      "required": -39,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--applications-health-state-filter",
+                      "description": "the filter of the applications health state, values are [Default|None|Ok|Warning|Error|All]"
+                    },
+                    {
+                      "flags": "--select <fields>",
+                      "required": -10,
+                      "optional": 0,
+                      "bool": true,
                       "long": "--select",
                       "description": "select fields to show, call without this parameter to see all fields"
                     }
@@ -10787,7 +10690,7 @@
                   "name": "send",
                   "description": "Send cluster health, Example: azure servicefabric cluster health send --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric cluster health send",
-                  "usage": "[options] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricCluster._js",
                   "options": [
                     {
@@ -10834,11 +10737,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -10870,11 +10773,11 @@
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-e --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-o --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-o",
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
                     }
@@ -10923,11 +10826,10 @@
                       "description": "use json output"
                     },
                     {
-                      "flags": "-s --select <fields>",
-                      "required": -13,
+                      "flags": "--select <fields>",
+                      "required": -10,
                       "optional": 0,
                       "bool": true,
-                      "short": "-s",
                       "long": "--select",
                       "description": "select fields to show, call without this parameter to see all fields"
                     }
@@ -10993,7 +10895,7 @@
               "name": "show",
               "description": "Show node",
               "fullName": "servicefabric node show",
-              "usage": "[options] [nodeName]",
+              "usage": "[options]",
               "filePath": "commands/serviceFabricNode._js",
               "options": [
                 {
@@ -11262,7 +11164,7 @@
                   "name": "show",
                   "description": "Show node health",
                   "fullName": "servicefabric node health show",
-                  "usage": "[options] [nodeName] [eventsHealthStateFilter]",
+                  "usage": "[options] [nodeName]",
                   "filePath": "commands/serviceFabricNode._js",
                   "options": [
                     {
@@ -11306,7 +11208,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--events-health-state-filter",
-                      "description": "the filter of the event health state"
+                      "description": "the filter of the event health state, values are [Default|None|Ok|Warning|Error|All]"
                     },
                     {
                       "flags": "--select <fields>",
@@ -11322,7 +11224,7 @@
                   "name": "send",
                   "description": "Send node health, Example: azure servicefabric node health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric node health send",
-                  "usage": "[options] [nodeName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [nodeName] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricNode._js",
                   "options": [
                     {
@@ -11378,11 +11280,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -11405,17 +11307,17 @@
                       "description": "the time in milliseconds for live"
                     },
                     {
-                      "flags": "-e --sequence-number <sequenceNumber>",
+                      "flags": "-q --sequence-number <sequenceNumber>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-q",
                       "long": "--sequence-number",
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-w --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-w --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-w",
@@ -11530,7 +11432,7 @@
               "name": "show",
               "description": "Show service",
               "fullName": "servicefabric service show",
-              "usage": "[options] [applicationName] [serviceName]",
+              "usage": "[options] [applicationName]",
               "filePath": "commands/serviceFabricService._js",
               "options": [
                 {
@@ -11590,7 +11492,7 @@
               "name": "create",
               "description": "Create service, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
               "fullName": "servicefabric service create",
-              "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [hasPersistedState] [partitionScheme] [partitionCount] [partitionNames] [partitionLowKey] [partitionHighKey] [placementConstraints] [correlationSchema] [serviceLoadMetrics] [servicePlacementPolicyDescription]",
+              "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
               "filePath": "commands/serviceFabricService._js",
               "options": [
                 {
@@ -11682,8 +11584,8 @@
                   "description": "the size of the min replica set"
                 },
                 {
-                  "flags": "-p --has-persisted-state <hasPersistedState>",
-                  "required": -26,
+                  "flags": "-p --has-persisted-state",
+                  "required": 0,
                   "optional": 0,
                   "bool": true,
                   "short": "-p",
@@ -11727,11 +11629,11 @@
                   "description": "the key of the partition low"
                 },
                 {
-                  "flags": "-h --partition-high-key <partitionHighKey>",
+                  "flags": "-g --partition-high-key <partitionHighKey>",
                   "required": -25,
                   "optional": 0,
                   "bool": true,
-                  "short": "-h",
+                  "short": "-g",
                   "long": "--partition-high-key",
                   "description": "the key of the partition high"
                 },
@@ -11751,7 +11653,7 @@
                   "bool": true,
                   "short": "-c",
                   "long": "--correlation-schema",
-                  "description": "the schema of the correlation"
+                  "description": "the schema of the correlation, json string"
                 },
                 {
                   "flags": "-d --service-load-metrics <serviceLoadMetrics>",
@@ -11760,7 +11662,7 @@
                   "bool": true,
                   "short": "-d",
                   "long": "--service-load-metrics",
-                  "description": "the metrics of the service load"
+                  "description": "the metrics of the service load, json string"
                 },
                 {
                   "flags": "-f --service-placement-policy-description <servicePlacementPolicyDescription>",
@@ -11769,7 +11671,7 @@
                   "bool": true,
                   "short": "-f",
                   "long": "--service-placement-policy-description",
-                  "description": "the description of the service placement policy"
+                  "description": "the description of the service placement policy, json string"
                 }
               ]
             },
@@ -11777,7 +11679,7 @@
               "name": "update",
               "description": "Update service, Example: azure servicefabric service update --service-name fabric:/app --instance-count 1",
               "fullName": "servicefabric service update",
-              "usage": "[options] [serviceName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
+              "usage": "[options] [serviceName] [serviceKind]",
               "filePath": "commands/serviceFabricService._js",
               "options": [
                 {
@@ -11926,7 +11828,7 @@
               "name": "resolve",
               "description": "Resolve service",
               "fullName": "servicefabric service resolve",
-              "usage": "[options] [serviceName] [partitionKeyType] [partitionKeyValue] [previousRspVersion]",
+              "usage": "[options] [serviceName]",
               "filePath": "commands/serviceFabricService._js",
               "options": [
                 {
@@ -12090,7 +11992,7 @@
                           "name": "show",
                           "description": "Show deployed service package health",
                           "fullName": "servicefabric service package deployed health show",
-                          "usage": "[options] [nodeName] [applicationName] [servicePackageName] [eventsHealthStateFilter]",
+                          "usage": "[options] [nodeName] [applicationName] [servicePackageName]",
                           "filePath": "commands/serviceFabricPackage._js",
                           "options": [
                             {
@@ -12152,7 +12054,7 @@
                               "bool": true,
                               "short": "-f",
                               "long": "--events-health-state-filter",
-                              "description": "the filter of the events health state"
+                              "description": "the filter of the events health state, values are [Default|None|Ok|Warning|Error|All]"
                             },
                             {
                               "flags": "--select <fields>",
@@ -12168,7 +12070,7 @@
                           "name": "send",
                           "description": "Send deployed service package health, Example: azure servicefabric application health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                           "fullName": "servicefabric service package deployed health send",
-                          "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                          "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState]",
                           "filePath": "commands/serviceFabricPackage._js",
                           "options": [
                             {
@@ -12242,11 +12144,11 @@
                               "description": "the property"
                             },
                             {
-                              "flags": "-h --health-state <healthState>",
+                              "flags": "-e --health-state <healthState>",
                               "required": -19,
                               "optional": 0,
                               "bool": true,
-                              "short": "-h",
+                              "short": "-e",
                               "long": "--health-state",
                               "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                             },
@@ -12269,17 +12171,17 @@
                               "description": "the time in milliseconds for live"
                             },
                             {
-                              "flags": "-e --sequence-number <sequenceNumber>",
+                              "flags": "-q --sequence-number <sequenceNumber>",
                               "required": -22,
                               "optional": 0,
                               "bool": true,
-                              "short": "-e",
+                              "short": "-q",
                               "long": "--sequence-number",
                               "description": "the number of the sequence"
                             },
                             {
-                              "flags": "-w --remove-when-expired <removeWhenExpired>",
-                              "required": -26,
+                              "flags": "-w --remove-when-expired",
+                              "required": 0,
                               "optional": 0,
                               "bool": true,
                               "short": "-w",
@@ -12493,11 +12395,11 @@
                           "description": "the name of the service package"
                         },
                         {
-                          "flags": "-p --application-name <applicationName>",
+                          "flags": "-l --application-name <applicationName>",
                           "required": -23,
                           "optional": 0,
                           "bool": true,
-                          "short": "-p",
+                          "short": "-l",
                           "long": "--application-name",
                           "description": "the name of the application"
                         },
@@ -12710,7 +12612,7 @@
                   "name": "send",
                   "description": "Send service health, Example: azure servicefabric service health send --service-name fabric:/app/svc fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric service health send",
-                  "usage": "[options] [serviceName] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [serviceName] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricService._js",
                   "options": [
                     {
@@ -12766,11 +12668,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -12793,17 +12695,17 @@
                       "description": "the time in milliseconds for live"
                     },
                     {
-                      "flags": "-e --sequence-number <sequenceNumber>",
+                      "flags": "-q --sequence-number <sequenceNumber>",
                       "required": -22,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-q",
                       "long": "--sequence-number",
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-w --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-w --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-w",
@@ -12826,7 +12728,7 @@
                   "name": "create",
                   "description": "Create service group, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
                   "fullName": "servicefabric service group create",
-                  "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [hasPersistedState] [partitionScheme] [partitionCount] [partitionNames] [partitionLowKey] [partitionHighKey] [serviceGroupMemberDescription] [placementConstraints] [correlationSchema] [serviceLoadMetrics] [servicePlacementPolicyDescription]",
+                  "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
                   "filePath": "commands/serviceFabricServiceGroup._js",
                   "options": [
                     {
@@ -12918,8 +12820,8 @@
                       "description": "the size of the min replica set"
                     },
                     {
-                      "flags": "-p --has-persisted-state <hasPersistedState>",
-                      "required": -26,
+                      "flags": "-p --has-persisted-state",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
                       "short": "-p",
@@ -12963,11 +12865,11 @@
                       "description": "the key of the partition low"
                     },
                     {
-                      "flags": "-h --partition-high-key <partitionHighKey>",
+                      "flags": "-g --partition-high-key <partitionHighKey>",
                       "required": -25,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-g",
                       "long": "--partition-high-key",
                       "description": "the key of the partition high"
                     },
@@ -12996,7 +12898,7 @@
                       "bool": true,
                       "short": "-n",
                       "long": "--correlation-schema",
-                      "description": "the schema of the correlation"
+                      "description": "the schema of the correlation, json string"
                     },
                     {
                       "flags": "-a --service-load-metrics <serviceLoadMetrics>",
@@ -13005,7 +12907,7 @@
                       "bool": true,
                       "short": "-a",
                       "long": "--service-load-metrics",
-                      "description": "the metrics of the service load"
+                      "description": "the metrics of the service load, json string"
                     },
                     {
                       "flags": "-y --service-placement-policy-description <servicePlacementPolicyDescription>",
@@ -13014,7 +12916,7 @@
                       "bool": true,
                       "short": "-y",
                       "long": "--service-placement-policy-description",
-                      "description": "the description of the service placement policy"
+                      "description": "the description of the service placement policy, json string"
                     }
                   ]
                 },
@@ -13022,7 +12924,7 @@
                   "name": "update",
                   "description": "Update service group",
                   "fullName": "servicefabric service group update",
-                  "usage": "[options] [applicationName] [serviceName] [serviceKind] [instanceCount] [targetReplicaSetSize] [minReplicaSetSize] [replicaRestartWaitDurationInMilliseconds] [quorumLossWaitDurationInMilliseconds] [standByReplicaKeepDurationInMilliseconds]",
+                  "usage": "[options] [applicationName] [serviceName] [serviceKind]",
                   "filePath": "commands/serviceFabricServiceGroup._js",
                   "options": [
                     {
@@ -13404,7 +13306,7 @@
               "name": "show",
               "description": "Show partition",
               "fullName": "servicefabric partition show",
-              "usage": "[options] [serviceName] [partitionId]",
+              "usage": "[options] [serviceName]",
               "filePath": "commands/serviceFabricPartition._js",
               "options": [
                 {
@@ -13464,7 +13366,7 @@
               "name": "repair",
               "description": "Repair partition",
               "fullName": "servicefabric partition repair",
-              "usage": "[options] [serviceName] [partitionId]",
+              "usage": "[options]",
               "filePath": "commands/serviceFabricPartition._js",
               "options": [
                 {
@@ -13525,7 +13427,7 @@
                   "name": "show",
                   "description": "Show partition health",
                   "fullName": "servicefabric partition health show",
-                  "usage": "[options] [partitionId] [eventsHealthStateFilter] [replicasHealthStateFilter]",
+                  "usage": "[options] [partitionId]",
                   "filePath": "commands/serviceFabricPartition._js",
                   "options": [
                     {
@@ -13569,16 +13471,16 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--events-health-state-filter",
-                      "description": "the filter of the events health state"
+                      "description": "the filter of the events health state, values are [Default|None|Ok|Warning|Error|All]"
                     },
                     {
-                      "flags": "-h --replicas-health-state-filter <replicasHealthStateFilter>",
+                      "flags": "-r --replicas-health-state-filter <replicasHealthStateFilter>",
                       "required": -35,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-r",
                       "long": "--replicas-health-state-filter",
-                      "description": "the filter of the replicas health state"
+                      "description": "the filter of the replicas health state, values are [Default|None|Ok|Warning|Error|All]"
                     },
                     {
                       "flags": "--select <fields>",
@@ -13594,7 +13496,7 @@
                   "name": "send",
                   "description": "Send partition health, Example: azure servicefabric partition health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric partition health send",
-                  "usage": "[options] [partitionId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [partitionId] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricPartition._js",
                   "options": [
                     {
@@ -13650,11 +13552,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -13686,11 +13588,11 @@
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-e --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-w --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-w",
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
                     }
@@ -13816,7 +13718,7 @@
               "name": "show",
               "description": "Show replica",
               "fullName": "servicefabric replica show",
-              "usage": "[options] [partitionId] [replicaId]",
+              "usage": "[options] [partitionId]",
               "filePath": "commands/serviceFabricReplica._js",
               "options": [
                 {
@@ -14024,7 +13926,7 @@
                   "name": "show",
                   "description": "Show replica health",
                   "fullName": "servicefabric replica health show",
-                  "usage": "[options] [partitionId] [replicaId] [eventsHealthStateFilter]",
+                  "usage": "[options] [partitionId] [replicaId]",
                   "filePath": "commands/serviceFabricReplica._js",
                   "options": [
                     {
@@ -14077,7 +13979,7 @@
                       "bool": true,
                       "short": "-f",
                       "long": "--events-health-state-filter",
-                      "description": "the filter of the events health state"
+                      "description": "the filter of the events health state, values are [Default|None|Ok|Warning|Error|All]"
                     },
                     {
                       "flags": "--select <fields>",
@@ -14093,7 +13995,7 @@
                   "name": "send",
                   "description": "Send replica health, Example: azure servicefabric replica health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric replica health send",
-                  "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState] [description] [timeToLiveInMilliSeconds] [sequenceNumber] [removeWhenExpired]",
+                  "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState]",
                   "filePath": "commands/serviceFabricReplica._js",
                   "options": [
                     {
@@ -14158,11 +14060,11 @@
                       "description": "the property"
                     },
                     {
-                      "flags": "-h --health-state <healthState>",
+                      "flags": "-e --health-state <healthState>",
                       "required": -19,
                       "optional": 0,
                       "bool": true,
-                      "short": "-h",
+                      "short": "-e",
                       "long": "--health-state",
                       "description": "the state of the health, values are [Ok|Warning|Error|Unknown]"
                     },
@@ -14194,11 +14096,11 @@
                       "description": "the number of the sequence"
                     },
                     {
-                      "flags": "-e --remove-when-expired <removeWhenExpired>",
-                      "required": -26,
+                      "flags": "-w --remove-when-expired",
+                      "required": 0,
                       "optional": 0,
                       "bool": true,
-                      "short": "-e",
+                      "short": "-w",
                       "long": "--remove-when-expired",
                       "description": "the boolean of the remove when expired"
                     }

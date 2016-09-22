@@ -222,7 +222,7 @@ describe('Service Fabric', function () {
       suite.execute('servicefabric application show ' + applicationName + ' --json', function (result) {
         result.exitStatus.should.equal(0);
         var res = JSON.parse(result.text);
-        res.should.containDeep({name: applicationName, typeName: applicationTypeName, typeVersion: applicationTypeVersion});
+        res.should.containDeep({items: [{name: applicationName, typeName: applicationTypeName, typeVersion: applicationTypeVersion}]});
         done();
       });
     });
