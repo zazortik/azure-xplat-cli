@@ -26752,7 +26752,7 @@
               "description": "the number of instances in the App Service Plan, Default is 1"
             },
             {
-              "flags": "-s --subscription <id>",
+              "flags": "-s --subscription <subscription>",
               "required": -19,
               "optional": 0,
               "bool": true,
@@ -27023,7 +27023,7 @@
               "description": "the number of instances in the App Service Plan, Default is 1"
             },
             {
-              "flags": "-s --subscription <id>",
+              "flags": "-s --subscription <subscription>",
               "required": -19,
               "optional": 0,
               "bool": true,
@@ -71949,6 +71949,102 @@
                   ]
                 },
                 {
+                  "name": "set",
+                  "description": "Set url path map in application gateway",
+                  "fullName": "network application-gateway url-path-map set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-a, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "show",
                   "description": "Show url path map from application gateway",
                   "fullName": "network application-gateway url-path-map show",
@@ -72177,8 +72273,122 @@
                   "commands": [
                     {
                       "name": "create",
-                      "description": "Add url path map to application gateway",
+                      "description": "Add url path map rule to application gateway",
                       "fullName": "network application-gateway url-path-map rule create",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the url path map rule"
+                        },
+                        {
+                          "flags": "-p, --path <path>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "path, which specifies application gateway path rule"
+                        },
+                        {
+                          "flags": "-i, --http-settings-name <http-settings-name>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--http-settings-name",
+                          "description": "the name of an existing backend HTTP settings"
+                        },
+                        {
+                          "flags": "-a, --address-pool-name <address-pool-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--address-pool-name",
+                          "description": "the name of an existing backend address pool"
+                        },
+                        {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "set",
+                      "description": "Set url path map rule in application gateway",
+                      "fullName": "network application-gateway url-path-map rule set",
                       "usage": "[options] <resource-group> <gateway-name> <name>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
@@ -72440,7 +72650,7 @@
                     },
                     {
                       "name": "delete",
-                      "description": "Delete an url path map from an application gateway",
+                      "description": "Delete an url path map rule from an application gateway",
                       "fullName": "network application-gateway url-path-map rule delete",
                       "usage": "[options] <resource-group> <gateway-name> <name>",
                       "filePath": "commands/arm/network/network._js",

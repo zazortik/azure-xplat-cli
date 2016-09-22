@@ -80,12 +80,15 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     unhealthyThreshold: 8,
     unhealthyThresholdNew: 5,
     urlPathMapName: 'urlPathMapName01',
+    urlPathMapName2: 'urlPathMapName02',
     urlMapRuleName: 'urlMapRuleName01',
+    urlMapRuleName2: 'urlMapRuleName02',
     defHttpSettingName: constants.appGateway.settings.name,
     defPoolName: constants.appGateway.pool.name,
     mapPath: '/test',
     newUrlMapRuleName: 'rule01',
     newMapPath: '/test01',
+    newMapPath1: '/test02',
     sslCertName: 'cert02',
     sslFile: 'test/data/cert02.pfx',
     sslPassword: 'pswd',
@@ -438,21 +441,6 @@ describe('arm', function () {
         });
       });
 
-      it('address-pool show should display backend address pool from application gateway', function (done) {
-        var cmd = 'network application-gateway address-pool show {group} {name} {poolName} --json'.formatArgs(gatewayProp);
-        testUtils.executeCommand(suite, retry, cmd, function (result) {
-          result.exitStatus.should.equal(0);
-          var output = JSON.parse(result.text);
-          output.name.should.equal(gatewayProp.poolName);
-          gatewayProp.poolServers.split(',').map(function(item) {
-            return { ipAddress: item };
-          }).forEach(function(item) {
-            output.backendAddresses.should.containEql(item)
-          });
-          done();
-        });
-      });
-
       it('address-pool set should update backend address pool in application gateway', function (done) {
         var cmd = 'network application-gateway address-pool set {group} {name} {poolName} --servers {poolServersNew} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -467,6 +455,21 @@ describe('arm', function () {
             return { ipAddress: item };
           }).forEach(function(item) {
             addressPool.backendAddresses.should.containEql(item)
+          });
+          done();
+        });
+      });
+
+      it('address-pool show should display backend address pool from application gateway', function (done) {
+        var cmd = 'network application-gateway address-pool show {group} {name} {poolName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.poolName);
+          gatewayProp.poolServers.split(',').map(function(item) {
+            return { ipAddress: item };
+          }).forEach(function(item) {
+            output.backendAddresses.should.containEql(item)
           });
           done();
         });
@@ -759,7 +762,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map rule create should create map rule in application gateway', function (done) {
+      it('url path map rule create 2nd should create map rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway url-path-map rule create {group} {name} {newUrlMapRuleName} ' +
           '-u {urlPathMapName} -p {newMapPath} -i {defHttpSettingName} -a {defPoolName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -796,6 +799,46 @@ describe('arm', function () {
           _.some(urlPathMapRules, function(urlPathMapRule) {
             return urlPathMapRule.name === gatewayProp.newUrlMapRuleName
           }).should.be.true;
+          done();
+        });
+      });
+
+      it('url path map rule set should modify map in application gateway', function (done) {
+        var cmd = util.format('network application-gateway http-settings create {group} {name} {httpSettingsName1} ' +
+          '-o {httpSettingsPort1} -c {cookieBasedAffinity} -p {httpProtocol} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = util.format('network application-gateway url-path-map rule set {group} {name} {newUrlMapRuleName} ' +
+            '-u {urlPathMapName} -p {newMapPath1} -i {httpSettingsName1} --json').formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var appGateway = JSON.parse(result.text);
+            appGateway.name.should.equal(gatewayProp.name);
+
+            var urlPathMap = utils.findFirstCaseIgnore( appGateway.urlPathMaps, {name: gatewayProp.urlPathMapName});
+            urlPathMap.name.should.equal(gatewayProp.urlPathMapName);
+            _.some(urlPathMap.pathRules, function (rule) {
+              return (rule.name === gatewayProp.newUrlMapRuleName && rule.backendHttpSettings && rule.backendAddressPool);
+            }).should.be.true;
+            networkUtil.shouldBeSucceeded(urlPathMap);
+            done();
+          });
+        });
+      });
+
+      it('url path map set should modify map in application gateway', function (done) {
+        var cmd = util.format('network application-gateway url-path-map set {group} {name} {urlPathMapName} ' +
+          '-i {httpSettingsName1} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var urlPathMap = utils.findFirstCaseIgnore( appGateway.urlPathMaps, {name: gatewayProp.urlPathMapName});
+          urlPathMap.name.should.equal(gatewayProp.urlPathMapName);
+          urlPathMap.defaultBackendHttpSettings.should.not.be.empty;
+          urlPathMap.defaultBackendAddressPool.should.not.be.empty;
+          networkUtil.shouldBeSucceeded(urlPathMap);
           done();
         });
       });
@@ -1132,7 +1175,6 @@ describe('arm', function () {
           });
         });
       });
-
     });
   });
 });
