@@ -59,7 +59,7 @@ describe('arm', function () {
               result.exitStatus.should.equal(0);
               var sp = JSON.parse(result.text);
               var spObjectId = sp.objectId;
-              suite.execute('ad sp delete -p %s -q', spObjectId, function (result) {
+              suite.execute('ad sp delete -o %s -q', spObjectId, function (result) {
                 result.exitStatus.should.equal(0);
                 suite.execute('ad app delete %s -q', appObjectId, function (result) {
                   result.exitStatus.should.equal(0);

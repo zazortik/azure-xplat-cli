@@ -74,7 +74,7 @@ describe('arm', function () {
       it ('add list check and remove member should work', function (done) {
         var groupName = 'testGroup4301';
         var mailNickname = 'testG4301';
-        var upn = 'testuser9007@AzureSDKTeam.onmicrosoft.com';
+        var upn = 'testuser9007@rbacclitest.onmicrosoft.com';
         var userObjectId = '';
         //Create Group
         suite.execute('ad group create -d %s -m %s --json', groupName, mailNickname, function (result) {

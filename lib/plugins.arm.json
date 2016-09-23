@@ -25001,24 +25001,6 @@
                   "description": "the URL to the application homepage"
                 },
                 {
-                  "flags": "-a --available",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-a",
-                  "long": "--available",
-                  "description": "indicates if the application will be available to other tenants"
-                },
-                {
-                  "flags": "-p --password <password>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--password",
-                  "description": "the value for the password credential associated with the application that will be valid for one year by default"
-                },
-                {
                   "flags": "-i --identifier-uris <identifier-uris>",
                   "required": -22,
                   "optional": 0,
@@ -25026,6 +25008,15 @@
                   "short": "-i",
                   "long": "--identifier-uris",
                   "description": "the comma-delimitied URIs that identify the application"
+                },
+                {
+                  "flags": "-l --available <available>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--available",
+                  "description": "the value specifying whether the application is a single tenant or a multi-tenant. \"true\" if the application will be available to other tenants, \"false\" if its a single tenant application. Default is false."
                 },
                 {
                   "flags": "-r --reply-urls <reply-urls>",
@@ -25037,28 +25028,21 @@
                   "description": "the comma-delimitied application reply urls"
                 },
                 {
-                  "flags": "--key-value <key-value>",
-                  "required": -13,
+                  "flags": "-p --password <password>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-value",
-                  "description": "the value for the key credentials associated with the application that will be valid for one year by default"
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "the value for the password credential associated with the application that will be valid for one year by default"
                 },
                 {
-                  "flags": "--key-type <key-type>",
-                  "required": -12,
+                  "flags": "--cert-value <cert-value>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-type",
-                  "description": "the type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric"
-                },
-                {
-                  "flags": "--key-usage <key-usage>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-usage",
-                  "description": "the usage of the key credentials associated with the application. Acceptable values are Sign and Verify"
+                  "long": "--cert-value",
+                  "description": "the value of the \"asymmetric\" credential type. It represents the base 64 encoded certificate."
                 },
                 {
                   "flags": "--start-date <start-date>",
@@ -25129,6 +25113,15 @@
                   "description": "the applicationId of the application to update. If you have created a service principal using this application then this will be the spn of the service principal."
                 },
                 {
+                  "flags": "-l --available <available>",
+                  "required": -16,
+                  "optional": 0,
+                  "bool": true,
+                  "short": "-l",
+                  "long": "--available",
+                  "description": "the new value specifying whether the application is a single tenant or a multi-tenant. \"true\" if the application will be available to other tenants, \"false\" if its a single tenant application."
+                },
+                {
                   "flags": "-n --name <name>",
                   "required": -11,
                   "optional": 0,
@@ -25145,15 +25138,6 @@
                   "short": "-m",
                   "long": "--home-page",
                   "description": "the new URL to the application homepage"
-                },
-                {
-                  "flags": "-p --password <password>",
-                  "required": -15,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-p",
-                  "long": "--password",
-                  "description": "new value for the password credential associated with the application that will be valid for one year by default"
                 },
                 {
                   "flags": "-i --identifier-uris <identifier-uris>",
@@ -25174,28 +25158,21 @@
                   "description": "new comma-delimitied application reply urls"
                 },
                 {
-                  "flags": "--key-value <key-value>",
-                  "required": -13,
+                  "flags": "-p --password <password>",
+                  "required": -15,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-value",
-                  "description": "new value for the key credentials associated with the application that will be valid for one year by default"
+                  "short": "-p",
+                  "long": "--password",
+                  "description": "new value for the password credential associated with the application that will be valid for one year by default"
                 },
                 {
-                  "flags": "--key-type <key-type>",
-                  "required": -12,
+                  "flags": "--cert-value <cert-value>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "long": "--key-type",
-                  "description": "new type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric. Default value: AsymmetricX509Cert"
-                },
-                {
-                  "flags": "--key-usage <key-usage>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-usage",
-                  "description": "new usage of the key credentials associated with the application. Acceptable values are Sign and Verify. Default value: Verify"
+                  "long": "--cert-value",
+                  "description": "new value of the \"asymmetric\" credential type. It represents the base 64 encoded certificate."
                 },
                 {
                   "flags": "--start-date <start-date>",
@@ -25982,24 +25959,6 @@
                   "description": "the display name for the application"
                 },
                 {
-                  "flags": "-m --home-page <home-page>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-m",
-                  "long": "--home-page",
-                  "description": "the URL to the application homepage"
-                },
-                {
-                  "flags": "-b --available",
-                  "required": 0,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-b",
-                  "long": "--available",
-                  "description": "indicates if the application will be available to other tenants"
-                },
-                {
                   "flags": "-p --password <password>",
                   "required": -15,
                   "optional": 0,
@@ -26009,46 +25968,12 @@
                   "description": "the value for the password credential associated with the application that will be valid for one year by default"
                 },
                 {
-                  "flags": "-i --identifier-uris <identifier-uris>",
-                  "required": -22,
+                  "flags": "--cert-value <cert-value>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "short": "-i",
-                  "long": "--identifier-uris",
-                  "description": "the comma-delimitied URIs that identify the application"
-                },
-                {
-                  "flags": "-r --reply-urls <reply-urls>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--reply-urls",
-                  "description": "the comma-delimitied application reply urls"
-                },
-                {
-                  "flags": "--key-value <key-value>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-value",
-                  "description": "the value for the key credentials associated with the application that will be valid for one year by default"
-                },
-                {
-                  "flags": "--key-type <key-type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-type",
-                  "description": "the type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric"
-                },
-                {
-                  "flags": "--key-usage <key-usage>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-usage",
-                  "description": "the usage of the key credentials associated with the application. Acceptable values are Sign and Verify"
+                  "long": "--cert-value",
+                  "description": "the value of the \"asymmetric\" credential type. It represents the base 64 encoded certificate"
                 },
                 {
                   "flags": "--start-date <start-date>",
@@ -26119,15 +26044,6 @@
                   "description": "the new display name for the application."
                 },
                 {
-                  "flags": "-m --home-page <home-page>",
-                  "required": -16,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-m",
-                  "long": "--home-page",
-                  "description": "the new URL to the application homepage"
-                },
-                {
                   "flags": "-p --password <password>",
                   "required": -15,
                   "optional": 0,
@@ -26137,46 +26053,12 @@
                   "description": "new value for the password credential associated with the application that will be valid for one year by default"
                 },
                 {
-                  "flags": "-i --identifier-uris <identifier-uris>",
-                  "required": -22,
+                  "flags": "--cert-value <cert-value>",
+                  "required": -14,
                   "optional": 0,
                   "bool": true,
-                  "short": "-i",
-                  "long": "--identifier-uris",
-                  "description": "new comma-delimitied URI values that identify the application"
-                },
-                {
-                  "flags": "-r --reply-urls <reply-urls>",
-                  "required": -17,
-                  "optional": 0,
-                  "bool": true,
-                  "short": "-r",
-                  "long": "--reply-urls",
-                  "description": "new comma-delimitied application reply urls"
-                },
-                {
-                  "flags": "--key-value <key-value>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-value",
-                  "description": "new value for the key credentials associated with the application that will be valid for one year by default"
-                },
-                {
-                  "flags": "--key-type <key-type>",
-                  "required": -12,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-type",
-                  "description": "new type of the key credentials associated with the application. Acceptable values are AsymmetricX509Cert, Password and Symmetric. Default value: AsymmetricX509Cert"
-                },
-                {
-                  "flags": "--key-usage <key-usage>",
-                  "required": -13,
-                  "optional": 0,
-                  "bool": true,
-                  "long": "--key-usage",
-                  "description": "new usage of the key credentials associated with the application. Acceptable values are Sign and Verify. Default value: Verify"
+                  "long": "--cert-value",
+                  "description": "new value of the \"asymmetric\" credential type. It represents the base 64 encoded certificate"
                 },
                 {
                   "flags": "--start-date <start-date>",
@@ -26238,13 +26120,13 @@
                   "description": "the object id of the service principal to delete"
                 },
                 {
-                  "flags": "-p --preserve-application",
+                  "flags": "-d --delete-application",
                   "required": 0,
                   "optional": 0,
                   "bool": true,
-                  "short": "-p",
-                  "long": "--preserve-application",
-                  "description": "Default value: false. If you do not want to delete the underlying application then set this flag."
+                  "short": "-d",
+                  "long": "--delete-application",
+                  "description": "Default value: false. If you want to delete the underlying application then set this flag."
                 },
                 {
                   "flags": "-q, --quiet",

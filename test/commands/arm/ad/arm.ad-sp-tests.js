@@ -50,7 +50,7 @@ describe('arm', function () {
         var appName = suite.generateId(appPrefix, createdApps);
         var idUri = 'https://' + appName + '.com/home';
         var replyUrls = 'https://locahost:9090,https://localhost:8080';
-        suite.execute('ad sp create -n testapp --home-page http://www.bing.com --identifier-uris %s -r %s --json', idUri, replyUrls, function (result) {
+        suite.execute('ad sp create -n %s --json', appName, function (result) {
           result.exitStatus.should.equal(0);
           var sp = JSON.parse(result.text);
           spObjectId = sp.objectId;
