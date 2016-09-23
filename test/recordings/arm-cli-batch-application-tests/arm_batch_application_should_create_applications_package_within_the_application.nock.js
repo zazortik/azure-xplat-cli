@@ -72,7 +72,7 @@ function (nock) {
 var result = 
 nock('http://armclibatch2928.blob.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/app-armclibatchapp9288-c579dea371da2c9ebee5c6425f289178b1dce884/armclibatchapp9288-1.0-8462947a-aa97-4a03-b806-11f9f9662b52?sv=2015-04-05&sr=b&sig=0U3YFJnTPwD%2BvPardkgOVxfK590%2FhndUVhD86AYQtvU%3D&st=2016-09-13T17%3A03%3A13Z&se=2016-09-13T21%3A08%3A13Z&sp=rw&api-version=2015-04-05', '*')
+.put('/app-armclibatchapp9288-c579dea371da2c9ebee5c6425f289178b1dce884/armclibatchapp9288-1.0-8462947a-aa97-4a03-b806-11f9f9662b52?sv=2015-04-05&sr=b&sig=0U3YFJnTPwD%2BvPardkgOVxfK590%2FhndUVhD86AYQtvU%3D&st=2016-09-13T17%3A03%3A13Z&se=2016-09-13T21%3A08%3A13Z&sp=rw&api-version=2015-12-11', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'aegW9zT5QEn52baYgZAWKQ==',
   'last-modified': 'Tue, 13 Sep 2016 17:08:16 GMT',
@@ -87,7 +87,7 @@ function (nock) {
 var result = 
 nock('https://armclibatch2928.blob.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/app-armclibatchapp9288-c579dea371da2c9ebee5c6425f289178b1dce884/armclibatchapp9288-1.0-8462947a-aa97-4a03-b806-11f9f9662b52?sv=2015-04-05&sr=b&sig=0U3YFJnTPwD%2BvPardkgOVxfK590%2FhndUVhD86AYQtvU%3D&st=2016-09-13T17%3A03%3A13Z&se=2016-09-13T21%3A08%3A13Z&sp=rw&api-version=2015-04-05', '*')
+.put('/app-armclibatchapp9288-c579dea371da2c9ebee5c6425f289178b1dce884/armclibatchapp9288-1.0-8462947a-aa97-4a03-b806-11f9f9662b52?sv=2015-04-05&sr=b&sig=0U3YFJnTPwD%2BvPardkgOVxfK590%2FhndUVhD86AYQtvU%3D&st=2016-09-13T17%3A03%3A13Z&se=2016-09-13T21%3A08%3A13Z&sp=rw&api-version=2015-12-11', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'aegW9zT5QEn52baYgZAWKQ==',
   'last-modified': 'Tue, 13 Sep 2016 17:08:16 GMT',

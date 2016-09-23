@@ -30,7 +30,9 @@ var createdGroups = [];
 var createdResources = [];
 var groupName;
 var updatedPHPValue = "7.0";
-var servicePlanTier = "B1";
+var servicePlanSku = "B1";
+var servicePlanSkuChanged = "Free";
+
 
 describe('arm', function () {
   var suite;
@@ -75,7 +77,7 @@ describe('arm', function () {
 
   describe('appserviceplan', function () {
     it('create should work', function (done) {
-      suite.execute('appserviceplan create %s %s %s %s --json', groupName, appservicename, location, servicePlanTier, function (result) {
+      suite.execute('appserviceplan create %s %s %s %s --json', groupName, appservicename, location, servicePlanSku, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });
@@ -90,6 +92,13 @@ describe('arm', function () {
 
     it('show should work', function (done) {
       suite.execute('appserviceplan show %s %s --json', groupName, appservicename, function (result) {
+        result.exitStatus.should.equal(0);
+        done();
+      });
+    });
+    
+    it('set should work', function (done) {
+      suite.execute('appserviceplan set %s %s --sku %s --json', groupName, appservicename, servicePlanSkuChanged, function (result) {
         result.exitStatus.should.equal(0);
         done();
       });

@@ -6,8 +6,8 @@ exports.getMockedProfile = function () {
   var newProfile = new profile.Profile();
 
   newProfile.addSubscription(new profile.Subscription({
-    id: '00977cdb-163f-435f-9c32-39ec8ae61f4d',
-    name: 'node',
+    id: 'd05f4e58-b80d-4ebd-a6d7-c9cac216cd39',
+    name: 'Microsoft Azure Internal Consumption',
     user: {
       name: 'user@domain.example',
       type: 'user'
@@ -23,7 +23,7 @@ exports.getMockedProfile = function () {
 };
 
 exports.setEnvironment = function() {
-  process.env['AZURE_ARM_TEST_LOCATION'] = 'West US';
+  process.env['AZURE_ARM_TEST_LOCATION'] = 'South Central US';
   process.env['AZURE_ARM_TEST_SQL_RESOURCE_LOCATION'] = 'West US';
   process.env['AZURE_ARM_TEST_WEBSITES_RESOURCE_LOCATION'] = 'South Central US';
 };
@@ -31,71 +31,37 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xTestResource8543/providers/Microsoft.Web/sites/xTestGrpRes6337?api-version=2014-04-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource8543' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/d05f4e58-b80d-4ebd-a6d7-c9cac216cd39/resourcegroups/xTestResource7784?api-version=2016-02-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource7784' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
-  'x-ms-correlation-request-id': 'b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
-  'x-ms-routing-request-id': 'CENTRALUS:20160130T224816Z:b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-request-id': '8fcc932a-a90e-45b3-823a-8944d5768ea9',
+  'x-ms-correlation-request-id': '8fcc932a-a90e-45b3-823a-8944d5768ea9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160830T230441Z:8fcc932a-a90e-45b3-823a-8944d5768ea9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 22:48:15 GMT',
+  date: 'Tue, 30 Aug 2016 23:04:41 GMT',
   connection: 'close',
   'content-length': '109' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xTestResource8543/providers/Microsoft.Web/sites/xTestGrpRes6337?api-version=2014-04-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource8543' could not be found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/d05f4e58-b80d-4ebd-a6d7-c9cac216cd39/resourcegroups/xTestResource7784?api-version=2016-02-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource7784' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
-  'x-ms-correlation-request-id': 'b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
-  'x-ms-routing-request-id': 'CENTRALUS:20160130T224816Z:b13ff517-8f8b-4ccf-9293-0bdf4a8f4087',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-request-id': '8fcc932a-a90e-45b3-823a-8944d5768ea9',
+  'x-ms-correlation-request-id': '8fcc932a-a90e-45b3-823a-8944d5768ea9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160830T230441Z:8fcc932a-a90e-45b3-823a-8944d5768ea9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 22:48:15 GMT',
-  connection: 'close',
-  'content-length': '109' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xTestResource8543/providers/Microsoft.Web/sites/xTestGrpRes6337?api-version=2014-04-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource8543' could not be found.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '46567793-a4c2-46c7-863e-e723ba870c5e',
-  'x-ms-correlation-request-id': '46567793-a4c2-46c7-863e-e723ba870c5e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160130T224818Z:46567793-a4c2-46c7-863e-e723ba870c5e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 22:48:17 GMT',
-  connection: 'close',
-  'content-length': '109' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourcegroups/xTestResource8543/providers/Microsoft.Web/sites/xTestGrpRes6337?api-version=2014-04-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'xTestResource8543' could not be found.\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '46567793-a4c2-46c7-863e-e723ba870c5e',
-  'x-ms-correlation-request-id': '46567793-a4c2-46c7-863e-e723ba870c5e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160130T224818Z:46567793-a4c2-46c7-863e-e723ba870c5e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 30 Jan 2016 22:48:17 GMT',
+  date: 'Tue, 30 Aug 2016 23:04:41 GMT',
   connection: 'close',
   'content-length': '109' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['xTestResource8543','xTestGrpRes6337'];};
+ exports.randomTestIdsGenerated = function() { return ['xTestResource7784','xTestGrpRes5089'];};

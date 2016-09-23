@@ -9130,7 +9130,7 @@
               "description": "Show application",
               "fullName": "servicefabric application show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9181,7 +9181,7 @@
               "description": "Create application, Example: azure servicefabric application create --application-name fabric:/app --application-type-name type1 --application-type-version 1.0",
               "fullName": "servicefabric application create",
               "usage": "[options] [applicationName] [applicationTypeName] [applicationTypeVersion]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9251,7 +9251,7 @@
               "description": "Delete application",
               "fullName": "servicefabric application delete",
               "usage": "[options] [applicationName]",
-              "filePath": "commands/serviceFabricApplication._js",
+              "filePath": "commands/serviceFabric/serviceFabricApplication._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -9303,7 +9303,7 @@
                   "description": "Show application manifest",
                   "fullName": "servicefabric application manifest show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9365,7 +9365,7 @@
                   "description": "Show application type, Example: azure servicefabric application type show --application-type-name type1",
                   "fullName": "servicefabric application type show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9416,7 +9416,7 @@
                   "description": "Register application type, Example: azure servicefabric application type register --application-type-build-path Package1",
                   "fullName": "servicefabric application type register",
                   "usage": "[options] [applicationTypeBuildPath]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9459,7 +9459,7 @@
                   "description": "Unregister application type, Example: azure servicefabric application type unregister --application-type-name type1 --application-type-version 1.0",
                   "fullName": "servicefabric application type unregister",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9521,7 +9521,7 @@
                   "description": "Show application health",
                   "fullName": "servicefabric application health show",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9590,7 +9590,7 @@
                   "description": "Send application health, Example: azure servicefabric application health send --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric application health send",
                   "usage": "[options] [applicationName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9714,7 +9714,7 @@
                   "description": "Show deployed application",
                   "fullName": "servicefabric application deployed show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -9783,7 +9783,7 @@
                       "description": "Show deployed application health",
                       "fullName": "servicefabric application deployed health show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricApplication._js",
+                      "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -9861,7 +9861,7 @@
                       "description": "Send deployed application health, Example: azure servicefabric deployed application health send --node-name node1 --application-name fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                       "fullName": "servicefabric application deployed health send",
                       "usage": "[options] [nodeName] [applicationName] [sourceId] [property] [healthState]",
-                      "filePath": "commands/serviceFabricApplication._js",
+                      "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -9988,7 +9988,7 @@
                   "description": "Show application upgrade",
                   "fullName": "servicefabric application upgrade show",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10031,7 +10031,7 @@
                   "description": "Start application upgrade, Example: azure servicefabric application upgrade start --application-name fabric:/app --target-application-type-version 1.1 --rolling-upgrade-mode Monitored --force-restart true",
                   "fullName": "servicefabric application upgrade start",
                   "usage": "[options] [applicationName] [targetApplicationTypeVersion] [rollingUpgradeMode]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10137,7 +10137,7 @@
                   "description": "Update application upgrade, Example: azure servicefabric application upgrade update --application-name fabric:/app --rolling-upgrade-mode Monitored",
                   "fullName": "servicefabric application upgrade update",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10270,7 +10270,7 @@
                   "description": "Resume application upgrade",
                   "fullName": "servicefabric application upgrade resume",
                   "usage": "[options] [applicationName] [upgradeDomainName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10322,7 +10322,7 @@
                   "description": "Start application upgrade rollback",
                   "fullName": "servicefabric application upgrade rollback",
                   "usage": "[options] [applicationName]",
-                  "filePath": "commands/serviceFabricApplication._js",
+                  "filePath": "commands/serviceFabric/serviceFabricApplication._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10375,7 +10375,7 @@
                   "description": "Copy application package, Example: azure servicefabric application package copy --application-package-path /tmp/package1 --image-store-connection-string fabric:ImageStore",
                   "fullName": "servicefabric application package copy",
                   "usage": "[options] [applicationPackagePath] [imageStoreConnectionString]",
-                  "filePath": "commands/serviceFabricPackage._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10439,7 +10439,7 @@
               "description": "Connect cluster, Example: azure servicefabric cluster connect --connection-endpoint http://127.0.0.1:19080",
               "fullName": "servicefabric cluster connect",
               "usage": "[options] [connectionEndpoint]",
-              "filePath": "commands/serviceFabricCluster._js",
+              "filePath": "commands/serviceFabric/serviceFabricCluster._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10527,7 +10527,7 @@
               "description": "Show cluster",
               "fullName": "servicefabric cluster show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricCluster._js",
+              "filePath": "commands/serviceFabric/serviceFabricCluster._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10578,7 +10578,7 @@
                   "description": "Show cluster manifest",
                   "fullName": "servicefabric cluster manifest show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10622,7 +10622,7 @@
                   "description": "Show cluster health",
                   "fullName": "servicefabric cluster health show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10691,7 +10691,7 @@
                   "description": "Send cluster health, Example: azure servicefabric cluster health send --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric cluster health send",
                   "usage": "[options] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10798,7 +10798,7 @@
                   "description": "Show load information",
                   "fullName": "servicefabric cluster load show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10850,7 +10850,7 @@
                   "description": "Show cluster upgrade",
                   "fullName": "servicefabric cluster upgrade show",
                   "usage": "[options]",
-                  "filePath": "commands/serviceFabricCluster._js",
+                  "filePath": "commands/serviceFabric/serviceFabricCluster._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -10896,7 +10896,7 @@
               "description": "Show node",
               "fullName": "servicefabric node show",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10947,7 +10947,7 @@
               "description": "Enable node, Example: azure servicefabric node enable --node-name node1",
               "fullName": "servicefabric node enable",
               "usage": "[options] [nodeName]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -10990,7 +10990,7 @@
               "description": "Disable node, Example: azure servicefabric node enable --node-name node1 --deactivation-intent Pause",
               "fullName": "servicefabric node disable",
               "usage": "[options] [nodeName] [deactivationIntent]",
-              "filePath": "commands/serviceFabricNode._js",
+              "filePath": "commands/serviceFabric/serviceFabricNode._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11051,7 +11051,7 @@
                   "description": "Delete node state",
                   "fullName": "servicefabric node state delete",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11104,7 +11104,7 @@
                   "description": "Show node load information",
                   "fullName": "servicefabric node load show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11165,7 +11165,7 @@
                   "description": "Show node health",
                   "fullName": "servicefabric node health show",
                   "usage": "[options] [nodeName]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11225,7 +11225,7 @@
                   "description": "Send node health, Example: azure servicefabric node health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric node health send",
                   "usage": "[options] [nodeName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricNode._js",
+                  "filePath": "commands/serviceFabric/serviceFabricNode._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -11359,7 +11359,7 @@
                       "description": "Show deployed application health",
                       "fullName": "servicefabric code package deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricPackage._js",
+                      "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -11433,7 +11433,7 @@
               "description": "Show service",
               "fullName": "servicefabric service show",
               "usage": "[options] [applicationName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11493,7 +11493,7 @@
               "description": "Create service, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
               "fullName": "servicefabric service create",
               "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11680,7 +11680,7 @@
               "description": "Update service, Example: azure servicefabric service update --service-name fabric:/app --instance-count 1",
               "fullName": "servicefabric service update",
               "usage": "[options] [serviceName] [serviceKind]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11786,7 +11786,7 @@
               "description": "Delete service",
               "fullName": "servicefabric service delete",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11829,7 +11829,7 @@
               "description": "Resolve service",
               "fullName": "servicefabric service resolve",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricService._js",
+              "filePath": "commands/serviceFabric/serviceFabricService._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -11924,7 +11924,7 @@
                       "description": "Show deployed service package",
                       "fullName": "servicefabric service package deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricPackage._js",
+                      "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -11993,7 +11993,7 @@
                           "description": "Show deployed service package health",
                           "fullName": "servicefabric service package deployed health show",
                           "usage": "[options] [nodeName] [applicationName] [servicePackageName]",
-                          "filePath": "commands/serviceFabricPackage._js",
+                          "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                           "options": [
                             {
                               "flags": "-v, --verbose",
@@ -12071,7 +12071,7 @@
                           "description": "Send deployed service package health, Example: azure servicefabric application health send --node-name node1 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                           "fullName": "servicefabric service package deployed health send",
                           "usage": "[options] [nodeName] [applicationName] [serviceManifestName] [sourceId] [property] [healthState]",
-                          "filePath": "commands/serviceFabricPackage._js",
+                          "filePath": "commands/serviceFabric/serviceFabricPackage._js",
                           "options": [
                             {
                               "flags": "-v, --verbose",
@@ -12209,7 +12209,7 @@
                   "description": "Create service from template",
                   "fullName": "servicefabric service template create",
                   "usage": "[options] [applicationName] [serviceName] [serviceTypeName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12280,7 +12280,7 @@
                   "description": "Show service type",
                   "fullName": "servicefabric service type show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12349,7 +12349,7 @@
                       "description": "Show deployed service type",
                       "fullName": "servicefabric service type deployed show",
                       "usage": "[options] [nodeName] [applicationName]",
-                      "filePath": "commands/serviceFabricService._js",
+                      "filePath": "commands/serviceFabric/serviceFabricService._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -12430,7 +12430,7 @@
                   "description": "Show service manifest",
                   "fullName": "servicefabric service manifest show",
                   "usage": "[options] [applicationTypeName] [applicationTypeVersion] [serviceManifestName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12501,7 +12501,7 @@
                   "description": "Show service description",
                   "fullName": "servicefabric service description show",
                   "usage": "[options] [serviceName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12562,7 +12562,7 @@
                   "description": "Show service health",
                   "fullName": "servicefabric service health show",
                   "usage": "[options] [serviceName]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12613,7 +12613,7 @@
                   "description": "Send service health, Example: azure servicefabric service health send --service-name fabric:/app/svc fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric service health send",
                   "usage": "[options] [serviceName] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricService._js",
+                  "filePath": "commands/serviceFabric/serviceFabricService._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12729,7 +12729,7 @@
                   "description": "Create service group, Example: servicefabric service create --application-name fabric:/app --service-name fabric:/app/service --service-type-name ServiceType1 --service-kind Stateless --instance-count 1 --partition-scheme Singleton",
                   "fullName": "servicefabric service group create",
                   "usage": "[options] [applicationName] [serviceName] [serviceTypeName] [serviceKind] [partitionScheme]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -12925,7 +12925,7 @@
                   "description": "Update service group",
                   "fullName": "servicefabric service group update",
                   "usage": "[options] [applicationName] [serviceName] [serviceKind]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13040,7 +13040,7 @@
                   "description": "Delete service group",
                   "fullName": "servicefabric service group delete",
                   "usage": "[options] [applicationName] [serviceName]",
-                  "filePath": "commands/serviceFabricServiceGroup._js",
+                  "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13101,7 +13101,7 @@
                       "description": "Create service group from template",
                       "fullName": "servicefabric service group template create",
                       "usage": "[options] [applicationName] [serviceName] [serviceTypeName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13172,7 +13172,7 @@
                       "description": "Show service group description",
                       "fullName": "servicefabric service group description show",
                       "usage": "[options] [serviceName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13233,7 +13233,7 @@
                       "description": "Show service group member",
                       "fullName": "servicefabric service group member show",
                       "usage": "[options] [applicationName] [serviceName]",
-                      "filePath": "commands/serviceFabricServiceGroup._js",
+                      "filePath": "commands/serviceFabric/serviceFabricServiceGroup._js",
                       "options": [
                         {
                           "flags": "-v, --verbose",
@@ -13307,7 +13307,7 @@
               "description": "Show partition",
               "fullName": "servicefabric partition show",
               "usage": "[options] [serviceName]",
-              "filePath": "commands/serviceFabricPartition._js",
+              "filePath": "commands/serviceFabric/serviceFabricPartition._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -13367,7 +13367,7 @@
               "description": "Repair partition",
               "fullName": "servicefabric partition repair",
               "usage": "[options]",
-              "filePath": "commands/serviceFabricPartition._js",
+              "filePath": "commands/serviceFabric/serviceFabricPartition._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -13428,7 +13428,7 @@
                   "description": "Show partition health",
                   "fullName": "servicefabric partition health show",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13497,7 +13497,7 @@
                   "description": "Send partition health, Example: azure servicefabric partition health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric partition health send",
                   "usage": "[options] [partitionId] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13613,7 +13613,7 @@
                   "description": "Show partition load information",
                   "fullName": "servicefabric partition load show",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13664,7 +13664,7 @@
                   "description": "Reset partition",
                   "fullName": "servicefabric partition load reset",
                   "usage": "[options] [partitionId]",
-                  "filePath": "commands/serviceFabricPartition._js",
+                  "filePath": "commands/serviceFabric/serviceFabricPartition._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13719,7 +13719,7 @@
               "description": "Show replica",
               "fullName": "servicefabric replica show",
               "usage": "[options] [partitionId]",
-              "filePath": "commands/serviceFabricReplica._js",
+              "filePath": "commands/serviceFabric/serviceFabricReplica._js",
               "options": [
                 {
                   "flags": "-v, --verbose",
@@ -13788,7 +13788,7 @@
                   "description": "Show deployed replica",
                   "fullName": "servicefabric replica deployed show",
                   "usage": "[options] [nodeName] [applicationName]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13848,7 +13848,7 @@
                   "description": "Show deployed replica detail",
                   "fullName": "servicefabric replica deployed detail",
                   "usage": "[options] [nodeName] [partitionName] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13927,7 +13927,7 @@
                   "description": "Show replica health",
                   "fullName": "servicefabric replica health show",
                   "usage": "[options] [partitionId] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -13996,7 +13996,7 @@
                   "description": "Send replica health, Example: azure servicefabric replica health send --partition-id 1234 fabric:app --source-id monitor --property pc --health-state Ok --description healthy",
                   "fullName": "servicefabric replica health send",
                   "usage": "[options] [partitionId] [replicaId] [sourceId] [property] [healthState]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -14121,7 +14121,7 @@
                   "description": "Show replica load information",
                   "fullName": "servicefabric replica load show",
                   "usage": "[options] [partitionId] [replicaId]",
-                  "filePath": "commands/serviceFabricReplica._js",
+                  "filePath": "commands/serviceFabric/serviceFabricReplica._js",
                   "options": [
                     {
                       "flags": "-v, --verbose",
@@ -26678,7 +26678,7 @@
           "name": "create",
           "description": "Create an App Service Plan",
           "fullName": "appserviceplan create",
-          "usage": "[options] <resource-group> <name> <location> <tier>",
+          "usage": "[options] <resource-group> <name> <location> <sku>",
           "filePath": "commands/arm/appserviceplan/appserviceplan._js",
           "options": [
             {
@@ -26734,16 +26734,16 @@
               "description": "the geographic region to create the App Service Plan, \n\t\t\t\t\t   locations found at https://azure.microsoft.com/en-us/status/"
             },
             {
-              "flags": "-t --tier <tier>",
-              "required": -11,
+              "flags": "-k --sku <sku>",
+              "required": -10,
               "optional": 0,
               "bool": true,
-              "short": "-t",
-              "long": "--tier",
-              "description": "tier of the App Service Plan\n\teg:\n\t\t Free, Shared,\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+              "short": "-k",
+              "long": "--sku",
+              "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
             },
             {
-              "flags": "-i --instances <numberOfInstances>",
+              "flags": "-i --instances <instances>",
               "required": -16,
               "optional": 0,
               "bool": true,
@@ -26752,19 +26752,28 @@
               "description": "the number of instances in the App Service Plan, Default is 1"
             },
             {
-              "flags": "-s, --subscription <id>",
-              "required": -20,
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
               "optional": 0,
               "bool": true,
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            },
+            {
+              "flags": "-t --tier <tier>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--tier",
+              "description": "to be deprecated, please use --sku option"
             }
           ]
         },
         {
           "name": "delete",
-          "description": "Delete a appserviceplan",
+          "description": "Delete an App Service Plan",
           "fullName": "appserviceplan delete",
           "usage": "[options] <resource-group> <name>",
           "filePath": "commands/arm/appserviceplan/appserviceplan._js",
@@ -26942,6 +26951,94 @@
               "short": "-s",
               "long": "--subscription",
               "description": "the subscription identifier"
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Update App Service Plan Configurations",
+          "fullName": "appserviceplan set",
+          "usage": "[options] <resource-group> <name>",
+          "filePath": "commands/arm/appserviceplan/appserviceplan._js",
+          "options": [
+            {
+              "flags": "-v, --verbose",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "short": "-v",
+              "long": "--verbose",
+              "description": "use verbose output"
+            },
+            {
+              "flags": "-vv",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "-vv",
+              "description": "more verbose with debug output"
+            },
+            {
+              "flags": "--json",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--json",
+              "description": "use json output"
+            },
+            {
+              "flags": "-g --resource-group <resource-group>",
+              "required": -21,
+              "optional": 0,
+              "bool": true,
+              "short": "-g",
+              "long": "--resource-group",
+              "description": "Name of the resource group"
+            },
+            {
+              "flags": "-n --name <name>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-n",
+              "long": "--name",
+              "description": "the name of the App Service Plan to update"
+            },
+            {
+              "flags": "-k --sku <sku>",
+              "required": -10,
+              "optional": 0,
+              "bool": true,
+              "short": "-k",
+              "long": "--sku",
+              "description": "sku of the App Service Plan\n\teg:\n\t\t F1 (Free),           D1 (Shared),\n\t\t B1 (Basic Small),    B2 (Basic Medium),    B3 (Basic Large),\n\t\t S1 (Standard Small), S2 (Standard Medium), S3 (Standard Large),\n\t\t P1 (Premium Small),  P2 (Premium Medium),  P3 (Premium Large)\n"
+            },
+            {
+              "flags": "-i --instances <instances>",
+              "required": -16,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--instances",
+              "description": "the number of instances in the App Service Plan, Default is 1"
+            },
+            {
+              "flags": "-s --subscription <subscription>",
+              "required": -19,
+              "optional": 0,
+              "bool": true,
+              "short": "-s",
+              "long": "--subscription",
+              "description": "the subscription identifier"
+            },
+            {
+              "flags": "-t --tier <tier>",
+              "required": -11,
+              "optional": 0,
+              "bool": true,
+              "short": "-t",
+              "long": "--tier",
+              "description": "to be deprecated, please use --sku option"
             }
           ]
         }
@@ -67730,7 +67827,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--sku-name",
-                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]. Default values is \"Standard_Medium\""
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large,WAF_Medium,WAF_Large]. Default values is \"Standard_Medium\""
                 },
                 {
                   "flags": "-u, --sku-tier <sku-tier>",
@@ -67835,7 +67932,7 @@
                   "bool": true,
                   "short": "-a",
                   "long": "--sku-name",
-                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large]"
+                  "description": "the name of the sku, valid values are [Standard_Medium,Standard_Small,Standard_Large,WAF_Medium,WAF_Large]"
                 },
                 {
                   "flags": "-u, --sku-tier <sku-tier>",
@@ -67844,7 +67941,7 @@
                   "bool": true,
                   "short": "-u",
                   "long": "--sku-tier",
-                  "description": "the sku tier, valid values are [Standard]"
+                  "description": "the sku tier, valid values are [Standard,WAF]"
                 },
                 {
                   "flags": "-z, --capacity <capacity>",
@@ -68302,6 +68399,233 @@
                   ]
                 },
                 {
+                  "name": "set",
+                  "description": "Update application gateway SSL certificate",
+                  "fullName": "network application-gateway ssl-cert set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the certificate"
+                    },
+                    {
+                      "flags": "-f, --cert-file <cert-file>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-f",
+                      "long": "--cert-file",
+                      "description": "the full path to the certificate in pfx format"
+                    },
+                    {
+                      "flags": "-p, --cert-password <cert-password>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--cert-password",
+                      "description": "the certificate password"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway ssl configurations",
+                  "fullName": "network application-gateway ssl-cert list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show application gateway SSL certificate",
+                  "fullName": "network application-gateway ssl-cert show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the certificate"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "delete",
                   "description": "Delete application gateway SSL certificate",
                   "fullName": "network application-gateway ssl-cert delete",
@@ -68531,6 +68855,269 @@
                   ]
                 },
                 {
+                  "name": "set",
+                  "description": "Update an application gateway frontend ip configuration",
+                  "fullName": "network application-gateway frontend-ip set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend IP address name"
+                    },
+                    {
+                      "flags": "-e, --vnet-name <vnet-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--vnet-name",
+                      "description": "the name of the virtual network"
+                    },
+                    {
+                      "flags": "-u, --subnet-name <subnet-name>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--subnet-name",
+                      "description": "the name of the subnet"
+                    },
+                    {
+                      "flags": "-i, --subnet-id <subnet-id>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--subnet-id",
+                      "description": "the id of the subnet"
+                    },
+                    {
+                      "flags": "-a, --static-ip-address <static-ip-address>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--static-ip-address",
+                      "description": "the static IP address name"
+                    },
+                    {
+                      "flags": "-p, --public-ip-name <public-ip-name>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--public-ip-name",
+                      "description": "the name of the public ip name"
+                    },
+                    {
+                      "flags": "-r, --public-ip-id <public-ip-id>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--public-ip-id",
+                      "description": "the public ip identifier.\n     e.g. /subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/publicIPAddresses/<public-ip-name>"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway frontend ip configurations",
+                  "fullName": "network application-gateway frontend-ip list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a frontend ip configuration from an application gateway",
+                  "fullName": "network application-gateway frontend-ip show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend IP configuration"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "delete",
                   "description": "Delete a frontend ip configuration from an application gateway",
                   "fullName": "network application-gateway frontend-ip delete",
@@ -68715,6 +69302,224 @@
                   ]
                 },
                 {
+                  "name": "set",
+                  "description": "Update an application gateway frontend port",
+                  "fullName": "network application-gateway frontend-port set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend port"
+                    },
+                    {
+                      "flags": "-p, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--port",
+                      "description": "the port, valid range is [0,65535]"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway frontend ports",
+                  "fullName": "network application-gateway frontend-port list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a frontend port from an application gateway",
+                  "fullName": "network application-gateway frontend-port show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the frontend port"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
                   "name": "delete",
                   "description": "Delete a frontend port from an application gateway",
                   "fullName": "network application-gateway frontend-port delete",
@@ -68886,6 +69691,224 @@
                       "bool": true,
                       "long": "--nowait",
                       "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Update a backend address pool in an application gateway",
+                  "fullName": "network application-gateway address-pool set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the backend address pool"
+                    },
+                    {
+                      "flags": "-r, --servers <servers>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-r",
+                      "long": "--servers",
+                      "description": "comma separated list of IP addresses or DNS names\n     corresponding to backend servers"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway backend address pools",
+                  "fullName": "network application-gateway address-pool list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a backend address pool from an application gateway",
+                  "fullName": "network application-gateway address-pool show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the backend address pool"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -69088,6 +70111,242 @@
                       "bool": true,
                       "long": "--nowait",
                       "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Update http settings of an application gateway",
+                  "fullName": "network application-gateway http-settings set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the HTTP settings"
+                    },
+                    {
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the protocol, valid value is [http]"
+                    },
+                    {
+                      "flags": "-o, --port <port>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--port",
+                      "description": "the port, valid range is [0,65535]"
+                    },
+                    {
+                      "flags": "-c, --cookie-based-affinity <cookie-based-affinity>",
+                      "required": -29,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-c",
+                      "long": "--cookie-based-affinity",
+                      "description": "enable or disable cookie based affinity, valid values are\n     [Disabled,Enabled],\n     default value is [Disabled]"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway http settings",
+                  "fullName": "network application-gateway http-settings list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a http settings from an application gateway",
+                  "fullName": "network application-gateway http-settings show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the http settings"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -69720,7 +70979,7 @@
                       "bool": true,
                       "short": "-t",
                       "long": "--type",
-                      "description": "the type, currently supported only default value \"%s\""
+                      "description": "the type, currently supported only default value \"Basic\""
                     },
                     {
                       "flags": "--nowait",
@@ -69729,6 +70988,251 @@
                       "bool": true,
                       "long": "--nowait",
                       "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Update request routing rule to application gateway",
+                  "fullName": "network application-gateway rule set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the request routing rule"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-l, --http-listener-name <http-listener-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-l",
+                      "long": "--http-listener-name",
+                      "description": "the name of an existing HTTP listener"
+                    },
+                    {
+                      "flags": "-p, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "-t, --type <type>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-t",
+                      "long": "--type",
+                      "description": "the type, currently supported only default value \"Basic\""
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway request routing rules",
+                  "fullName": "network application-gateway rule list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Delete a request routing rule from an application gateway",
+                  "fullName": "network application-gateway rule show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the request routing rule"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -69898,13 +71402,136 @@
                       "description": "the name of the probe"
                     },
                     {
-                      "flags": "-o, --port <port>",
+                      "flags": "-p, --protocol <protocol>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-p",
+                      "long": "--protocol",
+                      "description": "the protocol, only valid value is \"http\""
+                    },
+                    {
+                      "flags": "-d, --host-name <host-name>",
+                      "required": -17,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-d",
+                      "long": "--host-name",
+                      "description": "the name of host to send probe.\n   Default value is \"http://127.0.0.1\""
+                    },
+                    {
+                      "flags": "-f, --path <path>",
                       "required": -12,
                       "optional": 0,
                       "bool": true,
-                      "short": "-o",
-                      "long": "--port",
-                      "description": "the port, valid range is [0,65535]"
+                      "short": "-f",
+                      "long": "--path",
+                      "description": "the relative path of probe. Valid path starts from \"/\".\n   Probe is sent to ://:. Default value is \"/\""
+                    },
+                    {
+                      "flags": "-i, --interval <interval>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--interval",
+                      "description": "the probe interval in seconds.\n   This is the time interval between two consecutive probes.\n   Default value is 30"
+                    },
+                    {
+                      "flags": "-u, --timeout <timeout>",
+                      "required": -15,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-u",
+                      "long": "--timeout",
+                      "description": "the probe timeout in seconds.\n   Probe marked as failed if valid response is not received with this timeout period.\n   Default value is 30"
+                    },
+                    {
+                      "flags": "-e, --unhealthy-threshold <unhealthy-threshold>",
+                      "required": -27,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--unhealthy-threshold",
+                      "description": "probe retry count.\n   Back end server is marked down after consecutive probe failure count reaches an unhealthy threshold\n   Default value is 5"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Update probe to application gateway",
+                  "fullName": "network application-gateway probe set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the probe"
                     },
                     {
                       "flags": "-p, --protocol <protocol>",
@@ -69967,6 +71594,137 @@
                       "bool": true,
                       "long": "--nowait",
                       "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List an application gateway probes",
+                  "fullName": "network application-gateway probe list",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show a http settings from an application gateway",
+                  "fullName": "network application-gateway probe show",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the http settings"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -70152,6 +71910,102 @@
                       "short": "-p",
                       "long": "--path",
                       "description": "path, which specifies application gateway path rule"
+                    },
+                    {
+                      "flags": "-i, --http-settings-name <http-settings-name>",
+                      "required": -26,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-i",
+                      "long": "--http-settings-name",
+                      "description": "the name of an existing backend HTTP settings"
+                    },
+                    {
+                      "flags": "-a, --address-pool-name <address-pool-name>",
+                      "required": -25,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-a",
+                      "long": "--address-pool-name",
+                      "description": "the name of an existing backend address pool"
+                    },
+                    {
+                      "flags": "--nowait",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--nowait",
+                      "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "set",
+                  "description": "Set url path map in application gateway",
+                  "fullName": "network application-gateway url-path-map set",
+                  "usage": "[options] <resource-group> <gateway-name> <name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-n, --name <name>",
+                      "required": -12,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the url path map"
                     },
                     {
                       "flags": "-i, --http-settings-name <http-settings-name>",
@@ -70419,8 +72273,122 @@
                   "commands": [
                     {
                       "name": "create",
-                      "description": "Add url path map to application gateway",
+                      "description": "Add url path map rule to application gateway",
                       "fullName": "network application-gateway url-path-map rule create",
+                      "usage": "[options] <resource-group> <gateway-name> <name>",
+                      "filePath": "commands/arm/network/network._js",
+                      "options": [
+                        {
+                          "flags": "-v, --verbose",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-v",
+                          "long": "--verbose",
+                          "description": "use verbose output"
+                        },
+                        {
+                          "flags": "-vv",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "-vv",
+                          "description": "more verbose with debug output"
+                        },
+                        {
+                          "flags": "--json",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--json",
+                          "description": "use json output"
+                        },
+                        {
+                          "flags": "-g, --resource-group <resource-group>",
+                          "required": -22,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-g",
+                          "long": "--resource-group",
+                          "description": "the name of the resource group"
+                        },
+                        {
+                          "flags": "-w, --gateway-name <gateway-name>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-w",
+                          "long": "--gateway-name",
+                          "description": "the name of the application gateway"
+                        },
+                        {
+                          "flags": "-u, --url-path-map-name <url-path-map-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-u",
+                          "long": "--url-path-map-name",
+                          "description": "the name of the url path map"
+                        },
+                        {
+                          "flags": "-n, --name <name>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-n",
+                          "long": "--name",
+                          "description": "the name of the url path map rule"
+                        },
+                        {
+                          "flags": "-p, --path <path>",
+                          "required": -12,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-p",
+                          "long": "--path",
+                          "description": "path, which specifies application gateway path rule"
+                        },
+                        {
+                          "flags": "-i, --http-settings-name <http-settings-name>",
+                          "required": -26,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-i",
+                          "long": "--http-settings-name",
+                          "description": "the name of an existing backend HTTP settings"
+                        },
+                        {
+                          "flags": "-a, --address-pool-name <address-pool-name>",
+                          "required": -25,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-a",
+                          "long": "--address-pool-name",
+                          "description": "the name of an existing backend address pool"
+                        },
+                        {
+                          "flags": "--nowait",
+                          "required": 0,
+                          "optional": 0,
+                          "bool": true,
+                          "long": "--nowait",
+                          "description": "does not wait for the operation to complete. Returns as soon as the intial request is received by the server."
+                        },
+                        {
+                          "flags": "-s, --subscription <subscription>",
+                          "required": -20,
+                          "optional": 0,
+                          "bool": true,
+                          "short": "-s",
+                          "long": "--subscription",
+                          "description": "the subscription identifier"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "set",
+                      "description": "Set url path map rule in application gateway",
+                      "fullName": "network application-gateway url-path-map rule set",
                       "usage": "[options] <resource-group> <gateway-name> <name>",
                       "filePath": "commands/arm/network/network._js",
                       "options": [
@@ -70682,7 +72650,7 @@
                     },
                     {
                       "name": "delete",
-                      "description": "Delete an url path map from an application gateway",
+                      "description": "Delete an url path map rule from an application gateway",
                       "fullName": "network application-gateway url-path-map rule delete",
                       "usage": "[options] <resource-group> <gateway-name> <name>",
                       "filePath": "commands/arm/network/network._js",
@@ -71364,6 +73332,226 @@
                       "short": "-n",
                       "long": "--name",
                       "description": "the application gateway authentication certificate name"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "waf-config": {
+              "name": "waf-config",
+              "description": "Commands to manage application gateway web application firewall configuration",
+              "fullName": "network application-gateway waf-config",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "create",
+                  "description": "Create an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config create",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-m, --waf-mode <waf-mode>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-m",
+                      "long": "--waf-mode",
+                      "description": "Mode of web application firewall for application gateway\n      supported values are [Detection,Prevention]"
+                    },
+                    {
+                      "flags": "-e, --enable <enable>",
+                      "required": -14,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-e",
+                      "long": "--enable",
+                      "description": "If web application firewall enabled on application gateway\n      supported values are [true, false]"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config delete",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
+                    },
+                    {
+                      "flags": "-q, --quiet",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-q",
+                      "long": "--quiet",
+                      "description": "quiet mode, do not ask for delete confirmation"
+                    },
+                    {
+                      "flags": "-s, --subscription <subscription>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "show",
+                  "description": "Show an application gateway web application firewall config",
+                  "fullName": "network application-gateway waf-config show",
+                  "usage": "[options] <resource-group> <gateway-name>",
+                  "filePath": "commands/arm/network/network._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g, --resource-group <resource-group>",
+                      "required": -22,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-w, --gateway-name <gateway-name>",
+                      "required": -20,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-w",
+                      "long": "--gateway-name",
+                      "description": "the name of the application gateway"
                     },
                     {
                       "flags": "-s, --subscription <subscription>",
@@ -74961,15 +77149,6 @@
               "description": "the resource name"
             },
             {
-              "flags": "-l --location <location>",
-              "required": -15,
-              "optional": 0,
-              "bool": true,
-              "short": "-l",
-              "long": "--location",
-              "description": "the location where we will create the resource"
-            },
-            {
               "flags": "-r --resource-type <resource-type>",
               "required": -20,
               "optional": 0,
@@ -75003,6 +77182,39 @@
               "short": "-p",
               "long": "--properties",
               "description": "a JSON-formatted string containing properties"
+            },
+            {
+              "flags": "--sku <sku>",
+              "required": -7,
+              "optional": 0,
+              "bool": true,
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "-l --location <location>",
+              "required": -15,
+              "optional": 0,
+              "bool": true,
+              "short": "-l",
+              "long": "--location",
+              "description": "the location where we will create the resource"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
+            },
+            {
+              "flags": "--isFullObject",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--isFullObject",
+              "description": "Indicates that the property object includes other options such as location, tags, sku, and/or plan."
             },
             {
               "flags": "-t --tags <tags>",
@@ -75099,6 +77311,39 @@
               "short": "-o",
               "long": "--api-version",
               "description": "the API version of the resource provider"
+            },
+            {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "the resource id"
+            },
+            {
+              "flags": "--sku <sku>",
+              "required": -7,
+              "optional": 0,
+              "bool": true,
+              "long": "--sku",
+              "description": "a JSON-formatted string containing sku properties"
+            },
+            {
+              "flags": "--plan <plan>",
+              "required": -8,
+              "optional": 0,
+              "bool": true,
+              "long": "--plan",
+              "description": "a JSON-formatted string containing plan properties"
+            },
+            {
+              "flags": "--isFullObject",
+              "required": 0,
+              "optional": 0,
+              "bool": true,
+              "long": "--isFullObject",
+              "description": "Indicates that the property object includes other options such as location, tags, sku, and/or plan."
             },
             {
               "flags": "--parent <parent>",
@@ -75272,6 +77517,15 @@
               "description": "the resource type"
             },
             {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "the resource id"
+            },
+            {
               "flags": "-o --api-version <api-version>",
               "required": -18,
               "optional": 0,
@@ -75358,6 +77612,15 @@
               "description": "the resource type"
             },
             {
+              "flags": "-i --resource-id <resource-id>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-i",
+              "long": "--resource-id",
+              "description": "the resource id"
+            },
+            {
               "flags": "-o --api-version <api-version>",
               "required": -18,
               "optional": 0,
@@ -75397,7 +77660,7 @@
           "name": "move",
           "description": "Moves resources from one resource group to another",
           "fullName": "resource move",
-          "usage": "[options] <ids> <destination-group>",
+          "usage": "[options] <ids> <destination-group> <api-version>",
           "filePath": "commands/arm/resource/resource._js",
           "options": [
             {
@@ -75450,6 +77713,15 @@
               "bool": true,
               "long": "--destination-subscriptionId",
               "description": "the destination subscription identifier"
+            },
+            {
+              "flags": "-o --api-version <api-version>",
+              "required": -18,
+              "optional": 0,
+              "bool": true,
+              "short": "-o",
+              "long": "--api-version",
+              "description": "the API version of the resource provider"
             },
             {
               "flags": "-q, --quiet",
@@ -78168,7 +80440,7 @@
           "commands": [
             {
               "name": "show",
-              "description": "Get webapp configuration \nexample:  webapp config show resroucegroup1 webapp1",
+              "description": "Get webapp configuration \nexample:  webapp config show RGName WebAppName",
               "fullName": "webapp config show",
               "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
@@ -78237,9 +80509,9 @@
             },
             {
               "name": "set",
-              "description": "set webapp configuration",
+              "description": "Set webapp configuration\nexample:  webapp config set RGName WebAppName --alwayson true --numberofworkers 1",
               "fullName": "webapp config set",
-              "usage": "[options] <resource-group> <name>\nexample:  webapp config set RGName SiteName --alwayson true --numberofworkers 1",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
               "options": [
                 {
@@ -78443,86 +80715,17 @@
             }
           ],
           "categories": {
-            "appsetting": {
-              "name": "appsetting",
+            "appsettings": {
+              "name": "appsettings",
               "description": "Commands to manage your Azure webapps app setting configurations",
-              "fullName": "webapp config appsetting",
+              "fullName": "webapp config appsettings",
               "usage": "[options] [command]",
               "options": [],
               "commands": [
                 {
-                  "name": "list",
-                  "description": "Get webapp app settings",
-                  "fullName": "webapp config appsetting list",
-                  "usage": "[options] <resource-group> <name>",
-                  "filePath": "commands/arm/webapp/webapp.config._js",
-                  "options": [
-                    {
-                      "flags": "-v, --verbose",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-v",
-                      "long": "--verbose",
-                      "description": "use verbose output"
-                    },
-                    {
-                      "flags": "-vv",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "-vv",
-                      "description": "more verbose with debug output"
-                    },
-                    {
-                      "flags": "--json",
-                      "required": 0,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--json",
-                      "description": "use json output"
-                    },
-                    {
-                      "flags": "-g --resource-group <resource-group>",
-                      "required": -21,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-g",
-                      "long": "--resource-group",
-                      "description": "the name of the resource group"
-                    },
-                    {
-                      "flags": "-n --name <name>",
-                      "required": -11,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-n",
-                      "long": "--name",
-                      "description": "the name of the webapp to show"
-                    },
-                    {
-                      "flags": "--slot <slot>",
-                      "required": -8,
-                      "optional": 0,
-                      "bool": true,
-                      "long": "--slot",
-                      "description": "the name of the slot to show"
-                    },
-                    {
-                      "flags": "-s --subscription <subscription>",
-                      "required": -19,
-                      "optional": 0,
-                      "bool": true,
-                      "short": "-s",
-                      "long": "--subscription",
-                      "description": "the subscription identifier"
-                    }
-                  ]
-                },
-                {
                   "name": "set",
-                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsetting set RGName SiteName KEY1=val1,KEY2=val2,KEY3=val3",
-                  "fullName": "webapp config appsetting set",
+                  "description": "Set webapp app settings (using comma seperated key value pairs)\nexample:  webapp config appsettings set RGName WebAppName KEY1=val1,KEY2=val2,KEY3=val3",
+                  "fullName": "webapp config appsettings set",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -78599,8 +80802,8 @@
                 },
                 {
                   "name": "delete",
-                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsetting delete RGName SiteName KEY1,KEY2,KEY3",
-                  "fullName": "webapp config appsetting delete",
+                  "description": "Delete webapp app settings (using comma seperated keys)\nexample:  webapp config appsettings delete RGName WebAppName KEY1,KEY2,KEY3",
+                  "fullName": "webapp config appsettings delete",
                   "usage": "[options] <resource-group> <name> <appsettings>",
                   "filePath": "commands/arm/webapp/webapp.config._js",
                   "options": [
@@ -78674,24 +80877,304 @@
                       "description": "the subscription identifier"
                     }
                   ]
+                },
+                {
+                  "name": "list",
+                  "description": "Get webapp app settings",
+                  "fullName": "webapp config appsettings list",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/webapp/webapp.config._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the webapp to list"
+                    },
+                    {
+                      "flags": "--slot <slot>",
+                      "required": -8,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--slot",
+                      "description": "the name of the slot to list"
+                    },
+                    {
+                      "flags": "-s --subscription <subscription>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                }
+              ],
+              "categories": {}
+            },
+            "hostnames": {
+              "name": "hostnames",
+              "description": "Commands to get your Azure webapps hostnames",
+              "fullName": "webapp config hostnames",
+              "usage": "[options] [command]",
+              "options": [],
+              "commands": [
+                {
+                  "name": "add",
+                  "description": "Add a hostname bindings for a webapp (using comma seperated names)\nexample:  webapp config hostnames add RGName WebAppName www.site1.com,www.site2.co.uk",
+                  "fullName": "webapp config hostnames add",
+                  "usage": "[options] <resource-group> <name> <hostnames>",
+                  "filePath": "commands/arm/webapp/webapp.config._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the web app"
+                    },
+                    {
+                      "flags": "-o --hostnames <hostname>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--hostnames",
+                      "description": "the list of hostnames to bind"
+                    },
+                    {
+                      "flags": "-s --subscription <subscription>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete",
+                  "description": "Delete a hostname binding for a webapp(using comma seperated names)\nexample:  webapp config hostnames delete RGName WebAppName www.site1.com,www.site2.co.uk",
+                  "fullName": "webapp config hostnames delete",
+                  "usage": "[options] <resource-group> <name> <hostnames>",
+                  "filePath": "commands/arm/webapp/webapp.config._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the web app"
+                    },
+                    {
+                      "flags": "-o --hostnames <hostname>",
+                      "required": -16,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-o",
+                      "long": "--hostnames",
+                      "description": "the list of hostnames to unbind"
+                    },
+                    {
+                      "flags": "-s --subscription <subscription>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
+                },
+                {
+                  "name": "list",
+                  "description": "List hostname bindings under a webapp",
+                  "fullName": "webapp config hostnames list",
+                  "usage": "[options] <resource-group> <name>",
+                  "filePath": "commands/arm/webapp/webapp.config._js",
+                  "options": [
+                    {
+                      "flags": "-v, --verbose",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-v",
+                      "long": "--verbose",
+                      "description": "use verbose output"
+                    },
+                    {
+                      "flags": "-vv",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "-vv",
+                      "description": "more verbose with debug output"
+                    },
+                    {
+                      "flags": "--json",
+                      "required": 0,
+                      "optional": 0,
+                      "bool": true,
+                      "long": "--json",
+                      "description": "use json output"
+                    },
+                    {
+                      "flags": "-g --resource-group <resource-group>",
+                      "required": -21,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-g",
+                      "long": "--resource-group",
+                      "description": "the name of the resource group"
+                    },
+                    {
+                      "flags": "-n --name <name>",
+                      "required": -11,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-n",
+                      "long": "--name",
+                      "description": "the name of the web app"
+                    },
+                    {
+                      "flags": "-s --subscription <subscription>",
+                      "required": -19,
+                      "optional": 0,
+                      "bool": true,
+                      "short": "-s",
+                      "long": "--subscription",
+                      "description": "the subscription identifier"
+                    }
+                  ]
                 }
               ],
               "categories": {}
             }
           }
         },
-        "publishprofile": {
-          "name": "publishprofile",
+        "publishingprofile": {
+          "name": "publishingprofile",
           "description": "Command to get your Azure webapps publishing profile",
-          "fullName": "webapp publishprofile",
+          "fullName": "webapp publishingprofile",
           "usage": "[options] [command]",
           "options": [],
           "commands": [
             {
               "name": "show",
               "description": "Get webapp publish profile",
-              "fullName": "webapp publishprofile show",
-              "usage": "[options] <resource-group> <name>\nexample:  webapp config show ",
+              "fullName": "webapp publishingprofile show",
+              "usage": "[options] <resource-group> <name>",
               "filePath": "commands/arm/webapp/webapp.config._js",
               "options": [
                 {

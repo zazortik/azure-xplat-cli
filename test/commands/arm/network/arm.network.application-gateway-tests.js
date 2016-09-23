@@ -38,6 +38,7 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     httpSettingsProtocol: constants.appGateway.settings.protocol[0],
     httpSettingsPortAddress: 111,
     portValue: 112,
+    portNewValue: 555,
     httpListenerProtocol: 'Https',
     ruleType: constants.appGateway.routingRule.type[0],
     skuName: 'Standard_Small',
@@ -47,15 +48,20 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     newCapacity: 5,
     newTags: networkUtil.newTags,
     configName: 'ipConfig01',
-    frontendIpName: 'testFronteEndIp',
+    frontendIpName: 'testFrontendIp',
     publicIpName: 'xplatTestPublicIp',
     portName: 'xplatTestPoolName',
     portAddress: 123,
     poolName: 'xplatTestPoolName',
-    poolServers: '4.4.4.4',
+    poolServers: '4.4.4.4,3.3.3.3',
+    poolServersNew: '1.2.3.4,4.4.4.4,3.3.3.3',
     httpSettingsName: 'xplatTestHttpSettings',
+    defHttpSettingsName: constants.appGateway.settings.name,
     httpSettingsPort: 234,
+    httpSettingsPortNew: 345,
+    httpSettingsPort1: 456,
     cookieBasedAffinity: 'Disabled',
+    cookieBasedAffinityNew: 'Enabled',
     httpProtocol: 'Http',
     httpsProtocol: 'Https',
     httpListenerName: 'xplatTestListener',
@@ -65,24 +71,39 @@ var location, groupName = 'xplatTestGroupCreateAppGw3',
     probePublicIpName: 'probePublicIp',
     probePort: 90,
     hostName: 'contoso.com',
+    hostNameNew: 'updated.com',
     path: '/',
+    pathNew: '/testpath',
     interval: 30,
+    intervalNew: 60,
     timeout: 120,
+    timeoutNew: 100,
     unhealthyThreshold: 8,
+    unhealthyThresholdNew: 5,
     urlPathMapName: 'urlPathMapName01',
+    urlPathMapName2: 'urlPathMapName02',
     urlMapRuleName: 'urlMapRuleName01',
+    urlMapRuleName2: 'urlMapRuleName02',
     defHttpSettingName: constants.appGateway.settings.name,
+    httpSettingsName1: 'httpSettingsName1',
     defPoolName: constants.appGateway.pool.name,
     mapPath: '/test',
     newUrlMapRuleName: 'rule01',
     newMapPath: '/test01',
+    newMapPath1: '/test02',
     sslCertName: 'cert02',
     sslFile: 'test/data/cert02.pfx',
     sslPassword: 'pswd',
+    sslFileNew: 'test/data/cert03.pfx',
+    sslPasswordNew: 'pswd',
     disabledSslProtocols: 'TLSv1_0,TLSv1_2',
     authCertName: 'TestAuthCert',
     certificateFile: 'test/data/auth-cert.pfx',
-    certificateFileNew: 'test/data/auth-cert-2.pfx'
+    certificateFileNew: 'test/data/auth-cert-2.pfx',
+    firewallMode: "Prevention",
+    firewallEnabled: true,
+    wafSkuName: constants.appGateway.sku.name[3],
+    wafSkuTier: constants.appGateway.sku.tier[1]
   };
 
 var requiredEnvironment = [{
@@ -259,6 +280,28 @@ describe('arm', function () {
         });
       });
 
+      it('frontend-ip show should display frontend ip in application gateway', function (done) {
+        var cmd = 'network application-gateway frontend-ip show {group} {name} {frontendIpName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var frontendIp = JSON.parse(result.text);
+          frontendIp.name.should.equal(gatewayProp.frontendIpName);
+          done();
+        });
+      });
+
+      it('frontend-ip list should display all frontend ips in application gateway', function (done) {
+        var cmd = 'network application-gateway frontend-ip list {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.frontendIpName;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('frontend-port create should create new frontend port in application gateway', function (done) {
         var cmd = 'network application-gateway frontend-port create {group} {name} {portName} -p {portAddress} --json'.formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -274,6 +317,43 @@ describe('arm', function () {
         });
       });
 
+      it('frontend-port show should display frontend port in application gateway', function (done) {
+        var cmd = 'network application-gateway frontend-port show {group} {name} {portName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var frontendPort = JSON.parse(result.text);
+          frontendPort.name.should.equal(gatewayProp.portName);
+          frontendPort.port.should.equal(gatewayProp.portAddress);
+          done();
+        });
+      });
+
+      it('frontend-port set should update frontend port in application gateway', function (done) {
+        var cmd = 'network application-gateway frontend-port set {group} {name} {portName} --port {portNewValue} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var frontendPort = appGateway.frontendPorts[1];
+          frontendPort.name.should.equal(gatewayProp.portName);
+          frontendPort.port.should.equal(gatewayProp.portNewValue);
+          done();
+        });
+      });
+
+      it('frontend-port list should display all frontend ports in application gateway', function (done) {
+        var cmd = 'network application-gateway frontend-port list -g {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.portName;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('ssl cert create should create ssl certificate in application gateway', function (done) {
         var cmd = util.format('network application-gateway ssl-cert create {group} {name} {sslCertName} ' +
           '-f {sslFile} -p {sslPassword} --json').formatArgs(gatewayProp);
@@ -285,6 +365,42 @@ describe('arm', function () {
           var sslCert = appGateway.sslCertificates[1];
           sslCert.name.should.equal(gatewayProp.sslCertName);
           networkUtil.shouldBeSucceeded(sslCert);
+          done();
+        });
+      });
+
+      it('ssl cert show should display ssl certificate in application gateway', function (done) {
+        var cmd = 'network application-gateway ssl-cert show {group} {name} {sslCertName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.sslCertName);
+          done();
+        });
+      });
+
+      it('ssl cert set should update application gateway ssl certificate', function (done) {
+        var cmd = 'network application-gateway ssl-cert set {group} {name} {sslCertName} --cert-file {sslFileNew} --cert-password {sslPasswordNew} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var sslCert = appGateway.sslCertificates[1];
+          sslCert.name.should.equal(gatewayProp.sslCertName);
+          networkUtil.shouldBeSucceeded(sslCert);
+          done();
+        });
+      });
+
+      it('ssl cert list should display all ssl certificates in application gateway', function (done) {
+        var cmd = 'network application-gateway ssl-cert list {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.sslCertName;
+          }).should.be.true;
           done();
         });
       });
@@ -327,6 +443,52 @@ describe('arm', function () {
         });
       });
 
+      it('address-pool set should update backend address pool in application gateway', function (done) {
+        var cmd = 'network application-gateway address-pool set {group} {name} {poolName} --servers {poolServersNew} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var addressPool = appGateway.backendAddressPools[1];
+          addressPool.name.should.equal(gatewayProp.poolName);
+
+          gatewayProp.poolServersNew.split(',').map(function(item) {
+            return { ipAddress: item };
+          }).forEach(function(item) {
+            addressPool.backendAddresses.should.containEql(item)
+          });
+          done();
+        });
+      });
+
+      it('address-pool show should display backend address pool from application gateway', function (done) {
+        var cmd = 'network application-gateway address-pool show {group} {name} {poolName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.poolName);
+          gatewayProp.poolServers.split(',').map(function(item) {
+            return { ipAddress: item };
+          }).forEach(function(item) {
+            output.backendAddresses.should.containEql(item)
+          });
+          done();
+        });
+      });
+
+      it('address-pool list should display all backend address pools in application gateway', function (done) {
+        var cmd = 'network application-gateway address-pool list {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.poolName;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('http-settings create command should create new http settings in application gateway', function (done) {
         var cmd = util.format('network application-gateway http-settings create {group} {name} {httpSettingsName} ' +
           '-o {httpSettingsPort} -c {cookieBasedAffinity} -p {httpProtocol} --json').formatArgs(gatewayProp);
@@ -341,6 +503,46 @@ describe('arm', function () {
           setting.cookieBasedAffinity.should.equal(gatewayProp.cookieBasedAffinity);
           setting.protocol.should.equal(gatewayProp.httpProtocol);
           networkUtil.shouldBeSucceeded(setting);
+          done();
+        });
+      });
+
+      it('http-settings show should display http settings in application gateway', function (done) {
+        var cmd = 'network application-gateway http-settings show {group} {name} {httpSettingsName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var httpSettings = JSON.parse(result.text);
+          httpSettings.name.should.equal(gatewayProp.httpSettingsName);
+          httpSettings.protocol.toLowerCase().should.equal(gatewayProp.httpSettingsProtocol.toLowerCase());
+          httpSettings.port.should.equal(gatewayProp.httpSettingsPort);
+          httpSettings.cookieBasedAffinity.toLowerCase().should.equal(gatewayProp.cookieBasedAffinity.toLowerCase());
+          done();
+        });
+      });
+
+      it('http-settings set should update http settings application gateway', function (done) {
+        var cmd = 'network application-gateway http-settings set {group} {name} {httpSettingsName} --port {httpSettingsPortNew} --cookie-based-affinity {cookieBasedAffinityNew} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var httpSettings = appGateway.backendHttpSettingsCollection[1];
+          httpSettings.name.should.equal(gatewayProp.httpSettingsName);
+          httpSettings.port.should.equal(gatewayProp.httpSettingsPortNew);
+          httpSettings.cookieBasedAffinity.toLowerCase().should.equal(gatewayProp.cookieBasedAffinityNew.toLowerCase());
+          done();
+        });
+      });
+
+      it('http-settings list should display all http settings in application gateway', function (done) {
+        var cmd = 'network application-gateway http-settings list {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.httpSettingsName;
+          }).should.be.true;
           done();
         });
       });
@@ -362,15 +564,15 @@ describe('arm', function () {
       });
 
       it('http-listener set command should modify new http listener in application gateway', function (done) {
-        var cmd = util.format('network application-gateway http-listener set {group} {name} {defHttpListenerName} ' +
+        var cmd = util.format('network application-gateway http-listener set {group} {name} {httpListenerName} ' +
           '-r {httpsProtocol} -c {defSslCertName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
           appGateway.name.should.equal(gatewayProp.name);
 
-          var listener = utils.findFirstCaseIgnore(appGateway.httpListeners, {name: gatewayProp.defHttpListenerName});
-          listener.name.should.equal(gatewayProp.defHttpListenerName);
+          var listener = utils.findFirstCaseIgnore(appGateway.httpListeners, {name: gatewayProp.httpListenerName});
+          listener.name.should.equal(gatewayProp.httpListenerName);
           listener.protocol.should.equal(gatewayProp.httpsProtocol);
           networkUtil.shouldBeSucceeded(listener);
           done();
@@ -402,7 +604,7 @@ describe('arm', function () {
 
       it('rule create command should create new request routing rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway rule create {group} {name} {ruleName} -i {httpSettingsName} ' +
-          '-l {httpListenerName} -p {poolName} --json').formatArgs(gatewayProp);
+          '-l {httpListenerName} -p {defPoolName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var appGateway = JSON.parse(result.text);
@@ -415,9 +617,46 @@ describe('arm', function () {
         });
       });
 
+      it('rule set command should update request routing rule in application gateway', function (done) {
+        var cmd = util.format('network application-gateway rule set {group} {name} {ruleName} -i {defHttpSettingsName} ' +
+          '-p {defPoolName} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var rule = appGateway.requestRoutingRules[1];
+          rule.name.should.equal(gatewayProp.ruleName);
+          networkUtil.shouldBeSucceeded(rule);
+          done();
+        });
+      });
+
+      it('rule show should display request routing rule from application gateway', function (done) {
+        var cmd = 'network application-gateway rule show {group} {name} {ruleName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.ruleName);
+          done();
+        });
+      });
+
+      it('rule list should display all rules in application gateway', function (done) {
+        var cmd = 'network application-gateway rule list -g {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.ruleName;
+          }).should.be.true;
+          done();
+        });
+      });
+
       it('probe create should create probe in application gateway', function (done) {
         networkUtil.createPublicIpLegacy(groupName, gatewayProp.probePublicIpName, gatewayProp.location, suite, function () {
-          var cmd = util.format('network application-gateway probe create {group} {name} {probeName} -o {port} -p {httpProtocol} ' +
+          var cmd = util.format('network application-gateway probe create {group} {name} {probeName} -p {httpProtocol} ' +
             '-d {hostName} -f {path} -i {interval} -u {timeout} -e {unhealthyThreshold} --json').formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
@@ -435,6 +674,53 @@ describe('arm', function () {
             networkUtil.shouldBeSucceeded(probe);
             done();
           });
+        });
+      });
+
+      it('probe show should display probe from application gateway', function (done) {
+        var cmd = 'network application-gateway probe show {group} {name} {probeName} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.name.should.equal(gatewayProp.probeName);
+          output.protocol.toLowerCase().should.equal(gatewayProp.httpProtocol.toLowerCase());
+          output.host.toLowerCase().should.equal(gatewayProp.hostName.toLowerCase());
+          output.path.toLowerCase().should.equal(gatewayProp.path.toLowerCase());
+          output.interval.should.equal(gatewayProp.interval);
+          output.timeout.should.equal(gatewayProp.timeout);
+          output.unhealthyThreshold.should.equal(gatewayProp.unhealthyThreshold);
+          done();
+        });
+      });
+
+      it('probe set should update probe in application gateway', function (done) {
+        var cmd = 'network application-gateway probe set {group} {name} {probeName} --host-name {hostNameNew} --path {pathNew} --interval {intervalNew} --timeout {timeoutNew} --unhealthy-threshold {unhealthyThresholdNew} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var probe = appGateway.probes[0];
+          probe.name.should.equal(gatewayProp.probeName);
+          probe.host.toLowerCase().should.equal(gatewayProp.hostNameNew.toLowerCase());
+          probe.path.toLowerCase().should.equal(gatewayProp.pathNew.toLowerCase());
+          probe.interval.should.equal(gatewayProp.intervalNew);
+          probe.timeout.should.equal(gatewayProp.timeoutNew);
+          probe.unhealthyThreshold.should.equal(gatewayProp.unhealthyThresholdNew);
+
+          done();
+        });
+      });
+
+      it('probe list should display all probes in application gateway', function (done) {
+        var cmd = 'network application-gateway probe list -g {group} {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var outputs = JSON.parse(result.text);
+          _.some(outputs, function (output) {
+            return output.name === gatewayProp.probeName;
+          }).should.be.true;
+          done();
         });
       });
 
@@ -467,7 +753,8 @@ describe('arm', function () {
       });
 
       it('url path map list should display all URL path maps from application gateway', function (done) {
-        var cmd = 'network application-gateway url-path-map list {group} {name} {urlPathMapName} --json'.formatArgs(gatewayProp);
+        var cmd = 'network application-gateway url-path-map list {group} {name} {urlPathMapName} --json'
+          .formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           var urlPathMaps = JSON.parse(result.text);
@@ -478,7 +765,7 @@ describe('arm', function () {
         });
       });
 
-      it('url path map rule create should create map rule in application gateway', function (done) {
+      it('url path map rule create 2nd should create map rule in application gateway', function (done) {
         var cmd = util.format('network application-gateway url-path-map rule create {group} {name} {newUrlMapRuleName} ' +
           '-u {urlPathMapName} -p {newMapPath} -i {defHttpSettingName} -a {defPoolName} --json').formatArgs(gatewayProp);
         testUtils.executeCommand(suite, retry, cmd, function (result) {
@@ -515,6 +802,46 @@ describe('arm', function () {
           _.some(urlPathMapRules, function(urlPathMapRule) {
             return urlPathMapRule.name === gatewayProp.newUrlMapRuleName
           }).should.be.true;
+          done();
+        });
+      });
+
+      it('url path map rule set should modify map in application gateway', function (done) {
+        var cmd = util.format('network application-gateway http-settings create {group} {name} {httpSettingsName1} ' +
+          '-o {httpSettingsPort1} -c {cookieBasedAffinity} -p {httpProtocol} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = util.format('network application-gateway url-path-map rule set {group} {name} {newUrlMapRuleName} ' +
+            '-u {urlPathMapName} -p {newMapPath1} -i {httpSettingsName1} --json').formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var appGateway = JSON.parse(result.text);
+            appGateway.name.should.equal(gatewayProp.name);
+
+            var urlPathMap = utils.findFirstCaseIgnore( appGateway.urlPathMaps, {name: gatewayProp.urlPathMapName});
+            urlPathMap.name.should.equal(gatewayProp.urlPathMapName);
+            _.some(urlPathMap.pathRules, function (rule) {
+              return (rule.name === gatewayProp.newUrlMapRuleName && rule.backendHttpSettings && rule.backendAddressPool);
+            }).should.be.true;
+            networkUtil.shouldBeSucceeded(urlPathMap);
+            done();
+          });
+        });
+      });
+
+      it('url path map set should modify map in application gateway', function (done) {
+        var cmd = util.format('network application-gateway url-path-map set {group} {name} {urlPathMapName} ' +
+          '-i {httpSettingsName1} --json').formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var appGateway = JSON.parse(result.text);
+          appGateway.name.should.equal(gatewayProp.name);
+
+          var urlPathMap = utils.findFirstCaseIgnore( appGateway.urlPathMaps, {name: gatewayProp.urlPathMapName});
+          urlPathMap.name.should.equal(gatewayProp.urlPathMapName);
+          urlPathMap.defaultBackendHttpSettings.should.not.be.empty;
+          urlPathMap.defaultBackendAddressPool.should.not.be.empty;
+          networkUtil.shouldBeSucceeded(urlPathMap);
           done();
         });
       });
@@ -750,6 +1077,46 @@ describe('arm', function () {
         testUtils.executeCommand(suite, retry, cmd, function (result) {
           result.exitStatus.should.equal(0);
           cmd = 'network application-gateway auth-cert show -g {group} -n {authCertName} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.should.be.empty;
+            done();
+          });
+        });
+      });
+
+      it('waf-config create should create application gateway waf config', function (done) {
+        var cmd = 'network application-gateway set -g {group} --sku-name {wafSkuName} --sku-tier {wafSkuTier} --name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var cmd = 'network application-gateway waf-config create -g {group} --waf-mode {firewallMode} --enable {firewallEnabled} --gateway-name {name} --json'.formatArgs(gatewayProp);
+          testUtils.executeCommand(suite, retry, cmd, function (result) {
+            result.exitStatus.should.equal(0);
+            var output = JSON.parse(result.text);
+            output.firewallMode.should.equal(gatewayProp.firewallMode);
+            output.enabled.should.equal(gatewayProp.firewallEnabled);
+            done();
+          });
+        });
+      });
+
+      it('waf-config show should display application gateway waf config details', function (done) {
+        var cmd = 'network application-gateway waf-config show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          var output = JSON.parse(result.text);
+          output.firewallMode.should.equal(gatewayProp.firewallMode);
+          output.enabled.should.equal(gatewayProp.firewallEnabled);
+          done();
+        });
+      });
+
+      it('waf-config delete should delete application gateway waf config', function (done) {
+        var cmd = 'network application-gateway waf-config delete -g {group} --quiet --gateway-name {name} --json'.formatArgs(gatewayProp);
+        testUtils.executeCommand(suite, retry, cmd, function (result) {
+          result.exitStatus.should.equal(0);
+          cmd = 'network application-gateway waf-config show -g {group} --gateway-name {name} --json'.formatArgs(gatewayProp);
           testUtils.executeCommand(suite, retry, cmd, function (result) {
             result.exitStatus.should.equal(0);
             var output = JSON.parse(result.text);
