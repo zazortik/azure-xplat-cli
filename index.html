@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Azure-xplat-clis by zazortik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Azure-xplat-clis</h1>
+      <h2 class="project-tagline">Microsoft Azure Cross Platform Command Line</h2>
+      <a href="https://github.com/zazortik/azure-xplat-clis" class="btn">View on GitHub</a>
+      <a href="https://github.com/zazortik/azure-xplat-clis/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/zazortik/azure-xplat-clis/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="microsoft-azure-xplat-cli-for-windows-mac-and-linux" class="anchor" href="#microsoft-azure-xplat-cli-for-windows-mac-and-linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Microsoft Azure Xplat-CLI for Windows, Mac and Linux</h1>
+
+<p><a href="http://badge.fury.io/js/azure-cli"><img src="https://badge.fury.io/js/azure-cli.png" alt="NPM version"></a> <a href="https://travis-ci.org/Azure/azure-xplat-cli"><img src="https://travis-ci.org/Azure/azure-xplat-cli.png?branch=master" alt="Build Status"></a></p>
+
+<p>This project provides a cross-platform command line interface for developers and IT administrators to develop, deploy and manage Microsoft Azure applications.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Accounts Management</li>
+<li>Azure Service Management
+
+<ul>
+<li>Storage</li>
+<li>Websites</li>
+<li>Virtual machines</li>
+<li>Network</li>
+<li>Mobile Services</li>
+<li>Service Bus</li>
+<li>SQL Database</li>
+</ul>
+</li>
+<li>Azure Resource Management
+
+<ul>
+<li>Generic resource groups and deployments management</li>
+<li>Role based access control</li>
+<li>Cmdlets for individual resource providers, including compute, storage, network, redis cache, insights, etc.</li>
+<li>Datalake</li>
+<li>CDN</li>
+<li>HDInsight (Note: The HDInsight commands in ASM mode are deprecated and will be removed by Jan. 2017)</li>
+<li>Key Vault</li>
+<li>Batch</li>
+</ul>
+</li>
+<li>Service fabric management (Only works for Linux cluster currently, coming soon on Windows cluster)</li>
+</ul>
+
+<p>Note: The list of features may not be up-to-date. For accurate command details, type <code>azure</code> | <code>azure -h</code> | <code>azure --help</code> to navigate through the help system. Also, use <code>azure config mode asm|arm</code> to switch between service management (Version V1)and resource management (Version V2) of the Azure REST API.</p>
+
+<h2>
+<a id="endpoints-for-azure" class="anchor" href="#endpoints-for-azure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints for Azure</h2>
+
+<p>The CLI targets <strong>"Public Azure Cloud"</strong> by default. You can get more information about the endpoints supported in different environments from <a href="./Documentation/Endpoints.md">here</a>.</p>
+
+<h2>
+<a id="non-interactive-authentication" class="anchor" href="#non-interactive-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Non-Interactive Authentication</h2>
+
+<p>If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over <a href="https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md">here</a>.</p>
+
+<h2>
+<a id="supported-environment-variables" class="anchor" href="#supported-environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Environment Variables</h2>
+
+<p>Please take a look at the list of supported environment variables over <a href="https://github.com/Azure/azure-xplat-cli/wiki/Environment-Variables">here</a>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="installation-from-a-particular-branch-of-this-repository" class="anchor" href="#installation-from-a-particular-branch-of-this-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation from a particular branch of this repository</h3>
+
+<ul>
+<li>Uninstall the previously installed CLI
+
+<ul>
+<li>If you installed via MSI, then uninstall the windows MSI. For mac installer <code>sudo azure-uninstall -g</code>
+</li>
+<li>If you installed via npm then execute: <code>npm uninstall azure-cli –g</code>
+</li>
+</ul>
+</li>
+<li>Clear the global cache: <code>npm cache clear –g</code>
+</li>
+<li>Delete the .streamline folder from the User’s home profile <code>C:\Users\&lt;username&gt;\.streamline</code> | <code>~/.streamline</code>, if present.</li>
+<li>Download the tarball from this link: <code>https://github.com/Azure/azure-xplat-cli/archive/&lt;branch-name&gt;.tar.gz</code>
+</li>
+<li>Install from the tarball: <code>npm install –g &lt;path to the downloaded tarball&gt;</code>
+</li>
+</ul>
+
+<p>And you should be good to go :). 
+Note: You may require admin prompt or sudo access to install via npm.</p>
+
+<h3>
+<a id="installation-from-npm" class="anchor" href="#installation-from-npm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation from npm</h3>
+
+<p>You can install the azure-cli npm package directly.</p>
+
+<div class="highlight highlight-source-shell"><pre>npm install -g azure-cli</pre></div>
+
+<h3>
+<a id="installing-the-latest-version-of-nodejs-on-different-linux-flavors" class="anchor" href="#installing-the-latest-version-of-nodejs-on-different-linux-flavors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing the latest version of node.js on different linux flavors</h3>
+
+<p>This <a href="https://nodejs.org/en/download/package-manager/#installing-node-js-via-package-manager">document</a> provides simple steps to install the latest version of node.js on a linux system. After successful installation of node.js, you can install "azure-cli" via npm as decribed above.</p>
+
+<h3>
+<a id="installation-on-a-docker-host" class="anchor" href="#installation-on-a-docker-host" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation on a Docker Host</h3>
+
+<p>In a Docker host, run:  </p>
+
+<div class="highlight highlight-source-shell"><pre>sudo docker run -it microsoft/azure-cli </pre></div>
+
+<p>You can clone the repo and use the "Dockerfile" from master branch. It should install the last released version of azure-cli.</p>
+
+<h3>
+<a id="pre-compiled-installers" class="anchor" href="#pre-compiled-installers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pre-compiled installers</h3>
+
+<ul>
+<li><a href="http://aka.ms/webpi-azure-cli">Windows</a></li>
+<li>
+<a href="http://aka.ms/mac-azure-cli">Mac</a> </li>
+<li><a href="http://aka.ms/linux-azure-cli">Linux</a></li>
+</ul>
+
+<h3>
+<a id="configure-auto-complete" class="anchor" href="#configure-auto-complete" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure auto-complete</h3>
+
+<p>Auto-complete is supported for Mac and Linux.</p>
+
+<p>To enable it in zsh, run:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>. &lt;(azure --completion)<span class="pl-pds">'</span></span> <span class="pl-k">&gt;&gt;</span> .zshrc</pre></div>
+
+<p>To enable it in bash, run:</p>
+
+<div class="highlight highlight-source-shell"><pre>azure --completion <span class="pl-k">&gt;&gt;</span> <span class="pl-k">~</span>/azure.completion.sh
+<span class="pl-c"># For macOS Terminal(login shell)</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>source ~/azure.completion.sh<span class="pl-pds">'</span></span> <span class="pl-k">&gt;&gt;</span> <span class="pl-k">~</span>/.bash_profile
+<span class="pl-c"># For Linux Terminal(non-login shell)</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>source ~/azure.completion.sh<span class="pl-pds">'</span></span> <span class="pl-k">&gt;&gt;</span> <span class="pl-k">~</span>/.bashrc</pre></div>
+
+<h2>
+<a id="get-started" class="anchor" href="#get-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Started</h2>
+
+<ul>
+<li>First, get authenticated with Microsoft Azure. For details, read <a href="http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/">this article</a>.
+
+<ul>
+<li>Option 1: Login with your Microsoft account, such as live-id, or organizational account, or service principals.</li>
+<li>Option 2: Download and import a publish settings file which contains a management certificate.</li>
+</ul>
+</li>
+</ul>
+
+<p>If you use both mechanisms on the same subscription, Azure Active Directory authentication will be used by default. If you want to go back to management certificate authentication, please use <code>azure logout</code>, which will remove the Azure Active Directory information and bring management certificate authentication back in.</p>
+
+<h4>
+<a id="login-directly-from-xplat-cli-azure-active-directory-authentication---works-with-arm--asm-version-v2--v1-of-azure-api" class="anchor" href="#login-directly-from-xplat-cli-azure-active-directory-authentication---works-with-arm--asm-version-v2--v1-of-azure-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login directly from xplat-cli (Azure Active Directory authentication) - works with ARM &amp; ASM (Version V2 &amp; V1) of Azure API</h4>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># This will output an url and a device code for you to use browser to login  </span>
+azure login
+
+<span class="pl-c"># This will prompt for your password in the console</span>
+azure login -u <span class="pl-k">&lt;</span>your organizational ID email address<span class="pl-k">&gt;</span>
+
+<span class="pl-c"># This will login in using a service principal</span>
+azure login -u <span class="pl-s"><span class="pl-pds">"</span>&lt;service-principal-id&gt;<span class="pl-pds">"</span></span> -p <span class="pl-s"><span class="pl-pds">"</span>&lt;key&gt;<span class="pl-pds">"</span></span> --service-principal --tenant <span class="pl-s"><span class="pl-pds">"</span>&lt;tenant-id&gt;<span class="pl-pds">"</span></span></pre></div>
+
+<h4>
+<a id="use-publish-settings-file-management-certificate-authentication---works-only-with-asm-version-v1-of-azure-api" class="anchor" href="#use-publish-settings-file-management-certificate-authentication---works-only-with-asm-version-v1-of-azure-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use publish settings file (Management certificate authentication) - works only with ASM (Version V1) of Azure API</h4>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Download a file which contains the publish settings information of your subscription.</span>
+<span class="pl-c"># This will open a browser window and ask you to log in to get the file.</span>
+azure account download
+
+<span class="pl-c"># Import the file you just downloaded.</span>
+<span class="pl-c"># Notice that the file contains credential of your subscription so you don't want to make it public</span>
+<span class="pl-c"># (like check in to source control, etc.).</span>
+azure account import <span class="pl-k">&lt;</span>file location<span class="pl-k">&gt;</span>
+
+<span class="pl-c"># Use the commands to manage your services/applications</span>
+azure site create --location <span class="pl-s"><span class="pl-pds">"</span>West US<span class="pl-pds">"</span></span> mywebsite</pre></div>
+
+<h3>
+<a id="azure-cli-with-china-cloud" class="anchor" href="#azure-cli-with-china-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>azure cli with China Cloud</h3>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># This will log you into the China Cloud environment.</span>
+<span class="pl-c"># You can use same set of commands to manage your service/applications</span>
+azure login -u <span class="pl-k">&lt;</span>your organizational ID email address<span class="pl-k">&gt;</span> -e AzureChinaCloud</pre></div>
+
+<h3>
+<a id="azure-cli-on-ubuntu" class="anchor" href="#azure-cli-on-ubuntu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>azure cli on Ubuntu</h3>
+
+<p>If you want to run xplat cli on Ubuntu, then you should install <strong>nodejs-legacy</strong> instead of <strong>nodejs</strong>. For more information please check the following links:</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/14914715/express-js-no-such-file-or-directory/14914716#14914716">why there is a problem with nodejs installation on ubuntu</a></li>
+<li><a href="https://github.com/expressjs/keygrip/issues/7">how to solve the nodejs installation problem on ubuntu</a></li>
+</ul>
+
+<p>Please perform the installation steps in following order:</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install nodejs-legacy
+sudo apt-get install npm
+sudo npm install -g azure-cli</pre></div>
+
+<h2>
+<a id="2-modes" class="anchor" href="#2-modes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2 Modes</h2>
+
+<p>Starting from 0.8.0, we are adding a separate mode for Resource Manager. You can use the following command to switch between the</p>
+
+<ul>
+<li>Service management: commands using the Azure service management API</li>
+<li>Resource manager: commands using the Azure Resource Manager API</li>
+</ul>
+
+<p>They are not designed to work together.</p>
+
+<div class="highlight highlight-source-shell"><pre>azure config mode asm <span class="pl-c"># service management</span>
+azure config mode arm <span class="pl-c"># resource manager</span></pre></div>
+
+<p><strong>For more details on the commands, please see the <a href="http://go.microsoft.com/fwlink/?LinkId=252246&amp;clcid=0x409">command line tool reference</a> and this <a href="http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/">How to Guide</a></strong></p>
+
+<h2>
+<a id="docker" class="anchor" href="#docker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker</h2>
+
+<p>Usage is the same as <code>vm create</code> command:</p>
+
+<pre><code>azure vm docker create [options] &lt;dns-name&gt; &lt;image&gt; &lt;user-name&gt; [password]
+</code></pre>
+
+<p>This command only supports Ubuntu 14.04+ and CoreOS based images. Docker is configured on the VM using HTTPS as described here: <a href="https://docs.docker.com/articles/https/">https://docs.docker.com/articles/https/</a> By default, generated TLS certificates are placed in the <code>~/.docker</code> directory, and Docker is configured to run on port 2376. These can be configured using new options:</p>
+
+<pre><code>-dp, --docker-port [port]              Port to use for docker [2376]
+-dc, --docker-cert-dir [dir]           Directory containing docker certs [~/.docker/]
+</code></pre>
+
+<p>After the VM is created. It can be used as a Docker host with the <code>-H</code> option or <code>DOCKER_HOST</code> environment variable.</p>
+
+<pre><code>docker --tls -H tcp://&lt;my-host&gt;.cloudapp.net:2376 info
+</code></pre>
+
+<p>Note: To run docker commands on windows make sure ssl agent is installed.</p>
+
+<h2>
+<a id="error-diagnostic" class="anchor" href="#error-diagnostic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Error Diagnostic</h2>
+
+<h3>
+<a id="use-the--vv-option-to-see-the-actual-rest-requests-on-the-console" class="anchor" href="#use-the--vv-option-to-see-the-actual-rest-requests-on-the-console" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>use the -vv option to see the actual REST requests on the console.</h3>
+
+<div class="highlight highlight-source-shell"><pre>azure site create --location <span class="pl-s"><span class="pl-pds">"</span>West US<span class="pl-pds">"</span></span> mytestsite -vv</pre></div>
+
+<h3>
+<a id="use-web-debugging-proxy" class="anchor" href="#use-web-debugging-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use web debugging proxy</h3>
+
+<p>Say, use 'Fiddler', setup the following environment variables before execute commands.</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">set</span> NODE_TLS_REJECT_UNAUTHORIZED=0
+<span class="pl-c1">set</span> HTTPS_PROXY=http://127.0.0.1:8888</pre></div>
+
+<h2>
+<a id="running-tests" class="anchor" href="#running-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Tests</h2>
+
+<p>See <a href="https://github.com/Azure/azure-xplat-cli/wiki/Running-Tests">this page for instructions</a> that describe how to run the test suite.</p>
+
+<h2>
+<a id="learn-more" class="anchor" href="#learn-more" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Learn More</h2>
+
+<p>For documentation on how to host Node.js applications on Microsoft Azure, please see the <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Microsoft Azure Node.js Developer Center</a>.</p>
+
+<h2>
+<a id="contribute-code-or-provide-feedback" class="anchor" href="#contribute-code-or-provide-feedback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribute Code or Provide Feedback</h2>
+
+<p>If you would like to become an active contributor to this project please follow the instructions provided in <a href="http://azure.github.io/guidelines/">Microsoft Azure Projects Contribution Guidelines</a>.</p>
+
+<p>Please send pull requests only to the <strong>Dev branch</strong>. Please make sure that you have checked in tests and recorded them live for your contribution. <strong>Pull requests without sufficient tests will not be accepted.</strong></p>
+
+<p>If you encounter any bugs with the library please file an issue in the <a href="https://github.com/Azure/azure-xplat-cli/issues">Issues</a> section of the project.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/zazortik/azure-xplat-clis">Azure-xplat-clis</a> is maintained by <a href="https://github.com/zazortik">zazortik</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
